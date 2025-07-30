@@ -1,0 +1,17 @@
+name: saturn-api
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+    # Generator
+    - openapi-generator-cli[jdk4py]
+    # Linters/Formatters
+    - pytest >= 7.2.1
+    - pytest-cov >= 2.8.1
+    - tox >= 3.9.0
+    - flake8 >= 4.0.0
+    - types-python-dateutil >= 2.8.19.14
+    - mypy >= 1.5

@@ -1,0 +1,3506 @@
+info:
+  description: The API for Saturn Cloud.
+  title: Saturn Cloud
+  version: 2025.04.01-1
+servers: []
+security:
+- bearerAuth: []
+paths:
+  /api/auth/login:
+    post:
+      description: Login with username/password and set session cookie
+      operationId: authorization_login
+      tags:
+      - authorization
+      parameters:
+      - in: query
+        name: username
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: password
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Ok
+  /api/auth/logout:
+    get:
+      description: Logout from current session
+      operationId: authorization_logout
+      tags:
+      - authorization
+      parameters:
+      - in: query
+        name: username
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: password
+        schema:
+          type: string
+        required: true
+      responses:
+        '302':
+          description: Redirect
+  /api/auth/token:
+    get:
+      description: Initialize oauth
+      operationId: authorization_getOauthInit
+      tags:
+      - authorization
+      parameters:
+      - in: query
+        name: response_type
+        schema:
+          type: string
+          enum:
+          - code
+        required: true
+      - in: query
+        name: client_id
+        schema:
+          type: string
+          enum:
+          - saturn-auth-proxy
+        required: true
+      - in: query
+        name: code_challenge
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: code_challenge_method
+        schema:
+          type: string
+          default: plain
+          enum:
+          - plain
+          - S256
+        required: false
+      - in: query
+        name: redirect_uri
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: state
+        schema:
+          type: string
+        required: false
+      responses:
+        '302':
+          description: Redirect
+    post:
+      description: Request new auth tokens from oauth code or refresh token grant
+      operationId: authorization_createOauthToken
+      tags:
+      - authorization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizationGrant'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationTokenResponse'
+          description: Created
+  /api/dask_clusters:
+    get:
+      description: List dask clusters for a user or group
+      operationId: daskclusters_list
+      tags:
+      - dask_clusters
+      parameters:
+      - in: query
+        name: owner_id
+        schema:
+          type: string
+          writeOnly: true
+        required: false
+      - in: query
+        name: owner_name
+        schema:
+          type: string
+          writeOnly: true
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        required: false
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          writeOnly: true
+          nullable: true
+        required: false
+      - in: query
+        name: group_id
+        schema:
+          type: string
+          writeOnly: true
+          nullable: true
+        required: false
+      - in: query
+        name: org_id
+        schema:
+          type: string
+          writeOnly: true
+        required: false
+      - in: query
+        name: include_groups
+        schema:
+          type: boolean
+          default: true
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskClusterList'
+          description: Ok
+    post:
+      description: Create a dask cluster
+      operationId: daskclusters_create
+      tags:
+      - dask_clusters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DaskClusterCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskCluster'
+          description: Created
+  /api/dask_clusters/{dask_cluster_id}:
+    delete:
+      description: Delete dask cluster by ID
+      operationId: daskclusters_delete
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      description: Get dask cluster by ID
+      operationId: daskclusters_get
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskCluster'
+          description: Ok
+    patch:
+      description: Update dask cluster by ID
+      operationId: daskclusters_update
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DaskClusterUpdate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskCluster'
+          description: Updated
+  /api/dask_clusters/{dask_cluster_id}/adapt:
+    post:
+      description: Set adaptive scaling on a dask cluster
+      operationId: daskclusters_adapt
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DaskClusterAdapt'
+        required: true
+      responses:
+        '204':
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/close:
+    post:
+      description: Stop dask cluster by ID
+      operationId: daskclusters_stop
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskCluster'
+          description: Stopped
+  /api/dask_clusters/{dask_cluster_id}/history:
+    get:
+      description: Get dask cluster status history
+      operationId: daskclusters_getStatusHistory
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceHistory'
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/info:
+    get:
+      description: Passthrough to dask's /info route
+      operationId: daskclusters_getInfo
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/kubecluster/runtimesummary:
+    get:
+      description: Get dask kubecluster runtime summary
+      operationId: daskclusters_kubeclusterRuntimeSummary
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: details
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentRuntimeSummary'
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/logs:
+    get:
+      description: Get dask cluster historical logs
+      operationId: daskclusters_getLogHistory
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricLogs'
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/metrics:
+    get:
+      description: Get dask cluster hardware metrics
+      operationId: daskclusters_getMetrics
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: type
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: start
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        required: false
+      - in: query
+        name: end
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        required: false
+      - in: query
+        name: resolution
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: cluster
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: component
+        schema:
+          type: string
+          nullable: true
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metrics'
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/restart:
+    post:
+      description: Restart dask cluster by ID
+      operationId: daskclusters_restart
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskCluster'
+          description: Restarted
+  /api/dask_clusters/{dask_cluster_id}/runtimesummary:
+    get:
+      description: Get dask cluster runtime summary
+      operationId: daskclusters_getRuntimeSummary
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskClusterRuntimeSummary'
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/scale:
+    post:
+      description: Scale dask cluster workers to desired count
+      operationId: daskclusters_scale
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DaskClusterScale'
+        required: true
+      responses:
+        '204':
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/scheduler/runtimesummary:
+    get:
+      description: Get dask scheduler runtime summary
+      operationId: daskclusters_scheduler_runtimesummary
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: details
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PodRuntimeSummary'
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/scheduler_info:
+    get:
+      description: Passthrough to dask's /scheduler_info route
+      operationId: daskclusters_getSchedulerInfo
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/start:
+    post:
+      description: Start dask cluster by ID
+      operationId: daskclusters_start
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskCluster'
+          description: Started
+  /api/dask_clusters/{dask_cluster_id}/status:
+    get:
+      description: Passthrough to dask's /status route
+      operationId: daskclusters_getSchedulerStatus
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/token:
+    get:
+      description: Get dask cluster resource API token info
+      operationId: daskclusters_getTokenInfo
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceTokenInfo'
+          description: Ok
+    patch:
+      description: Update and rotate dask cluster resource API token. Invalidates
+        existing token.
+      operationId: daskclusters_updateToken
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceTokenUpdate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceTokenInfo'
+          description: Ok
+    post:
+      description: Rotate dask cluster resource API token. Invalidates existing token.
+      operationId: daskclusters_rotateToken
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceTokenInfo'
+          description: Ok
+  /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary:
+    get:
+      description: List dask worker runtime summaries
+      operationId: daskclusters_workers_runtimesummary
+      tags:
+      - dask_clusters
+      parameters:
+      - name: dask_cluster_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskWorkersRuntimeSummaryPage'
+          description: Ok
+  /api/dask_clusters/info:
+    get:
+      description: Get server options for dask workers and schedulers
+      operationId: daskclusters_getServerInfo
+      tags:
+      - dask_clusters
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaskClusterServerOptions'
+          description: Ok
+  /api/deployments:
+    get:
+      description: List deployments for a user or group
+      operationId: deployments_list
+      tags:
+      - deployments
+      parameters:
+      - in: query
+        name: owner_id
+        schema:
+          type: string
+          writeOnly: true
+        required: false
+      - in: query
+        name: owner_name
+        schema:
+          type: string
+          writeOnly: true
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        required: false
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          writeOnly: true
+          nullable: true
+        required: false
+      - in: query
+        name: group_id
+        schema:
+          type: string
+          writeOnly: true
+          nullable: true
+        required: false
+      - in: query
+        name: org_id
+        schema:
+          type: string
+          writeOnly: true
+        required: false
+      - in: query
+        name: include_groups
+        schema:
+          type: boolean
+          default: true
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepoloymentsList'
+          description: Ok
+    post:
+      description: Create deployment
+      operationId: deployments_create
+      tags:
+      - deployments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: Created
+  /api/deployments/{deployment_id}:
+    delete:
+      description: Delete deployment by ID
+      operationId: deployments_delete
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      description: Get deployment by ID
+      operationId: deployments_get
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: Ok
+    patch:
+      description: Update deployment by ID
+      operationId: deployments_update
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: Updated
+  /api/deployments/{deployment_id}/clusters:
+    get:
+      description: Get the names of clusters that a deployment has run on
+      operationId: deployments_getClusterHistory
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceClusters'
+          description: Ok
+  /api/deployments/{deployment_id}/history:
+    get:
+      description: Get deployment status history
+      operationId: deployments_getStatusHistory
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: cluster
+        schema:
+          type: string
+          nullable: true
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceHistory'
+          description: Ok
+  /api/deployments/{deployment_id}/logs:
+    get:
+      description: Get deployment historical logs
+      operationId: deployments_getLogHistory
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricLogs'
+          description: Ok
+  /api/deployments/{deployment_id}/metrics:
+    get:
+      description: Get deployment hardware metrics
+      operationId: deployments_getMetrics
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: type
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: start
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        required: false
+      - in: query
+        name: end
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        required: false
+      - in: query
+        name: resolution
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: cluster
+        schema:
+          type: string
+          nullable: true
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metrics'
+          description: Ok
+  /api/deployments/{deployment_id}/restart:
+    post:
+      description: Restart deployment
+      operationId: deployments_restart
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentStart'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: Restarted
+  /api/deployments/{deployment_id}/routes:
+    get:
+      description: List deployment routes
+      operationId: deployments_listRoutes
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutesList'
+          description: Ok
+    post:
+      description: Create deployment route
+      operationId: deployments_createRoute
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RouteCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+          description: Created
+  /api/deployments/{deployment_id}/routes/{route_id}:
+    delete:
+      description: Delete deployment route
+      operationId: deployments_deleteRoute
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: route_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    put:
+      description: Update deployment route
+      operationId: deployments_updateRoute
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: route_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RouteUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+          description: Updated
+  /api/deployments/{deployment_id}/runtimesummary:
+    get:
+      description: Get deployment runtime summary
+      operationId: deployments_getRuntimeSummary
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: details
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentRuntimeSummary'
+          description: Ok
+  /api/deployments/{deployment_id}/service_account:
+    delete:
+      description: Delete deployment service account attachment
+      operationId: deployments_deleteServiceAccountAttachment
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      description: Get deployment service account attachment
+      operationId: deployments_getServiceAccountAttachment
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: ServiceAccountAttachmentSchema
+          description: Ok
+    put:
+      description: Create deployment service account attachment
+      operationId: deployments_createServiceAccountAttachment
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceAccountCreateAttachment'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: ServiceAccountAttachmentSchema
+          description: Created
+  /api/deployments/{deployment_id}/start:
+    post:
+      description: Start deployment
+      operationId: deployments_start
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentStart'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: Started
+  /api/deployments/{deployment_id}/stop:
+    post:
+      description: Stop deployment by ID
+      operationId: deployments_stop
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: Stopped
+  /api/deployments/{deployment_id}/template:
+    get:
+      description: Get deployment resource template
+      operationId: deployments_getResourceTemplate
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceTemplate'
+          description: Ok
+    patch:
+      description: Update deployment resource template
+      operationId: deployments_updateResourceTemplate
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceTemplate'
+          description: Ok
+    post:
+      description: Create deployment resource template
+      operationId: deployments_createResourceTemplate
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceTemplate'
+          description: Ok
+  /api/deployments/{deployment_id}/viewers:
+    get:
+      description: Get deployment viewers
+      operationId: deployments_getViewers
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewersList'
+          description: Ok
+    post:
+      description: Create deployment viewer
+      operationId: deployments_createViewer
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewerCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewersList'
+          description: Created
+  /api/deployments/{deployment_id}/viewers/{viewer_id}:
+    delete:
+      description: Delete deployment viewer
+      operationId: deployments_deleteViewer
+      tags:
+      - deployments
+      parameters:
+      - name: deployment_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: viewer_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+  /api/deployments/info:
+    get:
+      description: Get deployment server options
+      operationId: deployments_getServerOptions
+      tags:
+      - deployments
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentServerOptions'
+          description: Ok
+  /api/info:
+    get:
+      description: Get app info
+      operationId: appinfo_get
+      tags:
+      - app_info
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppInfo'
+          description: Ok
+  /api/info/servers:
+    get:
+      description: Get available server configurations
+      operationId: appinfo_getServerOptions
+      tags:
+      - app_info
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerOptions'
+          description: Ok
+  /api/limits:
+    get:
+      description: List usage limits
+      operationId: usagelimits_list
+      tags:
+      - usage_limits
+      parameters:
+      - in: query
+        name: org_id
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: prev_key
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitsList'
+          description: Ok
+    post:
+      description: Create usage limits
+      operationId: usagelimits_create
+      tags:
+      - usage_limits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Limits'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Limits'
+          description: Created
+  /api/limits/{limits_id}:
+    delete:
+      description: Delete usage limits
+      operationId: usagelimits_delete
+      tags:
+      - usage_limits
+      parameters:
+      - name: limits_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      description: Get usage limits by ID
+      operationId: usagelimits_get
+      tags:
+      - usage_limits
+      parameters:
+      - name: limits_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Limits'
+          description: Ok
+    patch:
+      description: Update usage limits
+      operationId: usagelimits_update
+      tags:
+      - usage_limits
+      parameters:
+      - name: limits_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LimitsPatch'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Limits'
+          description: Patched
+  /api/notifications:
+    delete:
+      description: Delete notifications
+      operationId: notifications_delete
+      tags:
+      - notifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationDelete'
+        required: true
+      responses:
+        '204':
+          description: Ok
+    get:
+      description: Retrieve user notifications
+      operationId: notifications_list
+      tags:
+      - notifications
+      parameters:
+      - in: query
+        name: prev_key
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationList'
+          description: Ok
+    put:
+      description: Mark notifications as read/unread
+      operationId: notifications_acknowledge
+      tags:
+      - notifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationAcknowledged'
+        required: true
+      responses:
+        '204':
+          description: Ok
+  /api/notifications/subscriptions:
+    delete:
+      description: Unsubscribe a user from a notification topic
+      operationId: notifications_deleteSubscription
+      tags:
+      - notifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationSubscriptionDelete'
+        required: true
+      responses:
+        '204':
+          description: Ok
+        '403':
+          description: Access denied
+    get:
+      description: Retrieve user notification subscriptions
+      operationId: notifications_listSubscriptions
+      tags:
+      - notifications
+      parameters:
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: topic
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: prev_key
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationSubscriptionsList'
+          description: Ok
+        '403':
+          description: Access denied
+    put:
+      description: Subscribe a user to a notification topic
+      operationId: notifications_updateSubscription
+      tags:
+      - notifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationSubscriptionUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationSubscription'
+          description: Ok
+        '403':
+          description: Access denied
+openapi: 3.0.2
+components:
+  schemas:
+    AuthorizationGrant:
+      type: object
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - authorization_code
+          - refresh_token
+      required:
+      - grant_type
+    AuthorizationTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        token_type:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+        refresh_expires_at:
+          type: string
+          format: date-time
+          nullable: true
+        expires_in:
+          type: integer
+          x-unit: seconds
+          nullable: true
+        refresh_expires_in:
+          type: integer
+          x-unit: seconds
+          nullable: true
+      required:
+      - access_token
+      - expires_at
+      - expires_in
+      - refresh_expires_at
+      - refresh_expires_in
+      - refresh_token
+      - token_type
+    Owner:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        identity_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        org_admin:
+          type: boolean
+        org_id:
+          type: string
+          readOnly: true
+        user_id:
+          type: string
+          readOnly: true
+          nullable: true
+        group_id:
+          type: string
+          readOnly: true
+          nullable: true
+        identity_type:
+          type: string
+          readOnly: true
+        limits_id:
+          type: string
+          readOnly: true
+          nullable: true
+        avatar_url:
+          type: string
+          readOnly: true
+        is_multiple_ssh_keys:
+          type: boolean
+          readOnly: true
+    ExtraPackages:
+      type: object
+      properties:
+        pip:
+          type: string
+          nullable: true
+        conda:
+          type: string
+          nullable: true
+        as_environment_yml:
+          type: boolean
+          default: false
+        as_requirements_txt:
+          type: boolean
+          default: false
+        apt:
+          type: string
+          nullable: true
+        cran:
+          type: string
+          nullable: true
+        remotes:
+          type: string
+          nullable: true
+        bioconductor:
+          type: string
+          nullable: true
+        use_mamba:
+          type: boolean
+          default: false
+    ExternalRepoAttachmentPartial:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        has_sshkey:
+          type: boolean
+          readOnly: true
+        path:
+          type: string
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        external_repo_id:
+          type: string
+        remote_url:
+          type: string
+          readOnly: true
+        on_restart:
+          type: string
+          enum:
+          - preserve changes
+          - reclone
+          - null
+          nullable: true
+        ref:
+          type: string
+          nullable: true
+        ref_type:
+          type: string
+          enum:
+          - branch
+          - commit
+          - tag
+          - null
+          nullable: true
+      required:
+      - external_repo_id
+      - path
+    OwnerName:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        identity_name:
+          type: string
+          readOnly: true
+    ResourceImage:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        owner:
+          $ref: '#/components/schemas/OwnerName'
+    ResourceImageTag:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: string
+        image_uri:
+          type: string
+        image:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ResourceImage'
+    Workspace:
+      type: object
+      properties:
+        owner_id:
+          type: string
+          writeOnly: true
+        owner_name:
+          type: string
+          writeOnly: true
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        user_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        group_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        org_id:
+          type: string
+          writeOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        name:
+          type: string
+        image:
+          type: string
+          writeOnly: true
+        image_tag_id:
+          type: string
+          writeOnly: true
+        image_enforce_trusted:
+          type: boolean
+          writeOnly: true
+        extra_packages:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/ExtraPackages'
+        ide:
+          type: string
+        start_script:
+          type: string
+          nullable: true
+        environment_variables:
+          type: object
+          additionalProperties:
+            type: string
+        working_dir:
+          type: string
+        description:
+          type: string
+          maxLength: 2048
+        disk_space:
+          type: string
+        instance_size:
+          type: string
+        auto_shutoff:
+          type: string
+        start_ssh:
+          type: boolean
+        is_spot:
+          type: boolean
+        subdomain:
+          type: string
+        start_dind:
+          type: boolean
+        external_repo_attachments:
+          type: array
+          writeOnly: true
+          items:
+            $ref: '#/components/schemas/ExternalRepoAttachmentPartial'
+        id:
+          type: string
+          readOnly: true
+        image_tag:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ResourceImageTag'
+        resource_type:
+          type: string
+          readOnly: true
+        size_display:
+          type: string
+          readOnly: true
+        k8s_name:
+          type: string
+          readOnly: true
+        require_restart:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        updated_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        started_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        self_destruct:
+          type: boolean
+      required:
+      - name
+    Deployment:
+      type: object
+      properties:
+        owner_id:
+          type: string
+          writeOnly: true
+        owner_name:
+          type: string
+          writeOnly: true
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        user_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        group_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        org_id:
+          type: string
+          writeOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        command:
+          type: string
+          readOnly: true
+          minLength: 1
+        description:
+          type: string
+          readOnly: true
+          maxLength: 2048
+        instance_size:
+          type: string
+          readOnly: true
+        extra_packages:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ExtraPackages'
+        scale:
+          type: integer
+          readOnly: true
+          minimum: 1
+        start_script:
+          type: string
+          readOnly: true
+          nullable: true
+        environment_variables:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        working_dir:
+          type: string
+          readOnly: true
+        start_ssh:
+          type: boolean
+          readOnly: true
+        is_spot:
+          type: boolean
+          readOnly: true
+        healthcheck:
+          type: string
+          readOnly: true
+          nullable: true
+        subdomain:
+          type: string
+          readOnly: true
+        start_dind:
+          type: boolean
+          readOnly: true
+        image_tag:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ResourceImageTag'
+        last_deploy:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        running_count:
+          type: string
+          readOnly: true
+        k8s_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        updated_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        require_restart:
+          type: boolean
+          readOnly: true
+        resource_type:
+          type: string
+          readOnly: true
+        size_display:
+          type: string
+          readOnly: true
+        debug_mode:
+          type: boolean
+          readOnly: true
+      required:
+      - command
+      - created_at
+      - debug_mode
+      - description
+      - environment_variables
+      - extra_packages
+      - id
+      - image_tag
+      - instance_size
+      - is_spot
+      - k8s_name
+      - last_deploy
+      - name
+      - require_restart
+      - resource_type
+      - running_count
+      - scale
+      - size_display
+      - start_dind
+      - start_ssh
+      - status
+      - subdomain
+      - updated_at
+      - url
+      - working_dir
+    DaskCluster:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        resource_type:
+          type: string
+          readOnly: true
+        workspace:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Workspace'
+        deployment:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Deployment'
+        worker_size:
+          type: string
+          readOnly: true
+        worker_size_display:
+          type: string
+          readOnly: true
+        worker_is_spot:
+          type: boolean
+          readOnly: true
+        scheduler_size:
+          type: string
+          readOnly: true
+        scheduler_size_display:
+          type: string
+          readOnly: true
+        n_workers:
+          type: integer
+          readOnly: true
+        nprocs:
+          type: integer
+          readOnly: true
+        nthreads:
+          type: integer
+          readOnly: true
+        deployment_id:
+          type: string
+          readOnly: true
+          nullable: true
+        workspace_id:
+          type: string
+          readOnly: true
+          nullable: true
+        scheduler_url:
+          type: string
+          readOnly: true
+        subdomain:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        image:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - image
+      - n_workers
+      - name
+      - nprocs
+      - nthreads
+      - owner
+      - resource_type
+      - scheduler_size
+      - scheduler_size_display
+      - scheduler_url
+      - subdomain
+      - url
+      - worker_is_spot
+      - worker_size
+      - worker_size_display
+    DaskClusterList:
+      type: object
+      properties:
+        dask_clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DaskCluster'
+      required:
+      - dask_clusters
+    DaskClusterCreate:
+      type: object
+      properties:
+        worker_size:
+          type: string
+        worker_is_spot:
+          type: boolean
+        scheduler_size:
+          type: string
+        n_workers:
+          type: integer
+        nprocs:
+          type: integer
+        nthreads:
+          type: integer
+        subdomain:
+          type: string
+        deployment_id:
+          type: string
+          nullable: true
+        workspace_id:
+          type: string
+          nullable: true
+    DaskClusterUpdate:
+      type: object
+      properties:
+        worker_size:
+          type: string
+        worker_is_spot:
+          type: boolean
+        scheduler_size:
+          type: string
+        n_workers:
+          type: integer
+        nprocs:
+          type: integer
+        nthreads:
+          type: integer
+        subdomain:
+          type: string
+        deployment_id:
+          type: string
+          nullable: true
+        workspace_id:
+          type: string
+          nullable: true
+    DaskClusterAdapt:
+      type: object
+      properties:
+        minimum:
+          type: integer
+          minimum: 0
+        maximum:
+          type: integer
+          minimum: 0
+      required:
+      - maximum
+      - minimum
+    PodHistory:
+      type: object
+      properties:
+        pod_name:
+          type: string
+        status:
+          type: string
+        last_seen:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+        start_time:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          nullable: true
+        end_time:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          nullable: true
+        label_job_name:
+          type: string
+          nullable: true
+    ResourceHistory:
+      type: object
+      properties:
+        pods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PodHistory'
+    Condition:
+      type: object
+      properties:
+        type:
+          type: string
+        status:
+          type: string
+        reason:
+          type: string
+          default: null
+          nullable: true
+        message:
+          type: string
+          default: null
+          nullable: true
+        last_transition_time:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        last_probe_time:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+      required:
+      - status
+      - type
+    ContainerRuntimeSummary:
+      type: object
+      properties:
+        name:
+          type: string
+        namespace:
+          type: string
+        uid:
+          type: string
+        controller_uid:
+          type: string
+          default: null
+          nullable: true
+        controller_kind:
+          type: string
+          default: null
+          nullable: true
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Condition'
+        started_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        status:
+          default: waiting
+          enum:
+          - running
+          - pending
+          - waiting
+          - completed
+          - error
+        finished_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        restart_policy:
+          type: string
+          default: Always
+        image_pulled:
+          type: boolean
+          default: false
+        exit_code:
+          type: integer
+          default: null
+          nullable: true
+        logs:
+          type: string
+          default: null
+          nullable: true
+        reason:
+          default: null
+          enum:
+          - Evicted
+          - OOMKilled
+          - null
+          nullable: true
+        ready:
+          type: boolean
+          default: false
+          writeOnly: true
+        is_previous:
+          type: boolean
+          default: false
+          writeOnly: true
+        previous:
+          default: null
+          allOf:
+          - $ref: '#/components/schemas/ContainerRuntimeSummary'
+          nullable: true
+      required:
+      - name
+      - namespace
+      - uid
+    PodRuntimeSummary:
+      type: object
+      properties:
+        name:
+          type: string
+        namespace:
+          type: string
+        uid:
+          type: string
+        controller_uid:
+          type: string
+          default: null
+          nullable: true
+        controller_kind:
+          type: string
+          default: null
+          nullable: true
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Condition'
+        started_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        status:
+          default: stopped
+          enum:
+          - pending
+          - running
+          - error
+          - stopping
+          - stopped
+          - completed
+          - unknown
+        init_container_summaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContainerRuntimeSummary'
+        container_summaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContainerRuntimeSummary'
+        node_name:
+          type: string
+          default: null
+          nullable: true
+        completed_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        phase:
+          type: string
+          default: Unknown
+          writeOnly: true
+        reason:
+          default: null
+          enum:
+          - Evicted
+          - OOMKilled
+          - null
+          nullable: true
+      required:
+      - name
+      - namespace
+      - uid
+    DeploymentRuntimeSummary:
+      type: object
+      properties:
+        name:
+          type: string
+        namespace:
+          type: string
+        uid:
+          type: string
+        controller_uid:
+          type: string
+          default: null
+          nullable: true
+        controller_kind:
+          type: string
+          default: null
+          nullable: true
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Condition'
+        started_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          default: null
+          nullable: true
+        status:
+          default: stopped
+          enum:
+          - pending
+          - running
+          - stopping
+          - stopped
+          - error
+        scale:
+          type: integer
+          default: 0
+        running_count:
+          type: integer
+          default: 0
+        active_count:
+          type: integer
+          default: 0
+        pod_summaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/PodRuntimeSummary'
+        pod_annotations:
+          type: object
+          writeOnly: true
+          additionalProperties:
+            type: string
+      required:
+      - name
+      - namespace
+      - uid
+    HistoricLogs:
+      type: object
+      properties:
+        logs:
+          type: string
+        next_first_key:
+          type: string
+          nullable: true
+        next_last_key:
+          type: string
+          nullable: true
+      required:
+      - logs
+    Stats:
+      type: object
+      properties:
+        avg:
+          type: number
+        min:
+          type: number
+        max:
+          type: number
+        last:
+          type: number
+    DataPoint:
+      type: object
+      properties:
+        datetime:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+        value:
+          type: number
+    MetricSeries:
+      type: object
+      properties:
+        pod_name:
+          type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        stats:
+          $ref: '#/components/schemas/Stats'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataPoint'
+    Metrics:
+      type: object
+      properties:
+        cpu:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSeries'
+          nullable: true
+        memory:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSeries'
+          nullable: true
+        network_in:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSeries'
+          nullable: true
+        network_out:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSeries'
+          nullable: true
+        gpu:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSeries'
+          nullable: true
+        gpu_memory:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSeries'
+          nullable: true
+    DaskClusterRuntimeSummary:
+      type: object
+      properties:
+        name:
+          type: string
+        kubecluster_summary:
+          $ref: '#/components/schemas/DeploymentRuntimeSummary'
+        scheduler_summary:
+          $ref: '#/components/schemas/PodRuntimeSummary'
+        worker_summaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/PodRuntimeSummary'
+        status:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - kubecluster_summary
+      - name
+      - scheduler_summary
+      - status
+      - worker_summaries
+    DaskClusterScale:
+      type: object
+      properties:
+        n:
+          type: integer
+          minimum: 0
+      required:
+      - n
+    ResourceTokenInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        scope:
+          type: string
+          nullable: true
+      required:
+      - id
+      - scope
+    ResourceTokenUpdate:
+      type: object
+      properties:
+        scope:
+          type: string
+          nullable: true
+      required:
+      - scope
+    PaginationOffsetMeta:
+      type: object
+      properties:
+        next:
+          type: string
+          format: url
+        prev:
+          type: string
+          format: url
+        total_count:
+          type: integer
+    DaskWorkersRuntimeSummaryPage:
+      type: object
+      properties:
+        workers:
+          type: array
+          items:
+            $ref: '#/components/schemas/PodRuntimeSummary'
+        pagination:
+          $ref: '#/components/schemas/PaginationOffsetMeta'
+      required:
+      - pagination
+      - workers
+    InstanceSize:
+      type: object
+      properties:
+        name:
+          type: string
+        cores:
+          type: integer
+        memory:
+          type: string
+        gpu:
+          type: integer
+          default: 0
+        cloud:
+          type: string
+          default: null
+          nullable: true
+        display:
+          type: string
+          default: ''
+          readOnly: true
+        display_name:
+          type: string
+          default: ''
+          writeOnly: true
+        node_role:
+          type: string
+          default: ''
+          writeOnly: true
+        reserved_memory:
+          type: string
+          default: 512Mi
+          writeOnly: true
+        reserved_cpu:
+          type: number
+          default: 1.0
+          writeOnly: true
+      required:
+      - cores
+      - memory
+      - name
+    ServerOptionsSizes:
+      type: object
+      properties:
+        sizes:
+          type: object
+          additionalProperties: {}
+    DaskClusterServerOptions:
+      type: object
+      properties:
+        server_options:
+          $ref: '#/components/schemas/ServerOptionsSizes'
+      required:
+      - server_options
+    DepoloymentsList:
+      type: object
+      properties:
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+    DeploymentCreate:
+      type: object
+      properties:
+        owner_id:
+          type: string
+          writeOnly: true
+        owner_name:
+          type: string
+          writeOnly: true
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        user_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        group_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        org_id:
+          type: string
+          writeOnly: true
+        name:
+          type: string
+        command:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          maxLength: 2048
+        instance_size:
+          type: string
+        image:
+          type: string
+        image_tag_id:
+          type: string
+        image_enforce_trusted:
+          type: boolean
+        extra_packages:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/ExtraPackages'
+        scale:
+          type: integer
+          minimum: 1
+        start_script:
+          type: string
+          nullable: true
+        environment_variables:
+          type: object
+          additionalProperties:
+            type: string
+        working_dir:
+          type: string
+        start_ssh:
+          type: boolean
+        is_spot:
+          type: boolean
+        healthcheck:
+          type: string
+          nullable: true
+        subdomain:
+          type: string
+        start_dind:
+          type: boolean
+      required:
+      - command
+      - name
+    DeploymentUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        command:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          maxLength: 2048
+        instance_size:
+          type: string
+        image:
+          type: string
+        image_tag_id:
+          type: string
+        image_enforce_trusted:
+          type: boolean
+        extra_packages:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/ExtraPackages'
+        scale:
+          type: integer
+          minimum: 1
+        start_script:
+          type: string
+          nullable: true
+        environment_variables:
+          type: object
+          additionalProperties:
+            type: string
+        working_dir:
+          type: string
+        start_ssh:
+          type: boolean
+        is_spot:
+          type: boolean
+        healthcheck:
+          type: string
+          nullable: true
+        subdomain:
+          type: string
+        start_dind:
+          type: boolean
+    ResourceClusters:
+      type: object
+      properties:
+        clusters:
+          type: array
+          items:
+            type: string
+            nullable: true
+    DeploymentStart:
+      type: object
+      properties:
+        debug_mode:
+          type: boolean
+    Route:
+      type: object
+      properties:
+        subdomain:
+          type: string
+          readOnly: true
+        container_port:
+          type: integer
+          readOnly: true
+        visibility:
+          type: string
+          readOnly: true
+        id:
+          type: string
+          readOnly: true
+        url:
+          readOnly: true
+        required:
+          type: boolean
+          readOnly: true
+        daskcluster_id:
+          type: string
+          readOnly: true
+        deployment_id:
+          type: string
+          readOnly: true
+        workspace_id:
+          type: string
+          readOnly: true
+      required:
+      - container_port
+      - id
+      - required
+      - subdomain
+      - url
+      - visibility
+    RoutesList:
+      type: object
+      properties:
+        routes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Route'
+    RouteCreate:
+      type: object
+      properties:
+        subdomain:
+          type: string
+        container_port:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+        visibility:
+          type: string
+          enum:
+          - unauthenticated
+          - account
+          - org
+          - owner
+      required:
+      - container_port
+      - subdomain
+    RouteUpdate:
+      type: object
+      properties:
+        subdomain:
+          type: string
+        container_port:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+        visibility:
+          type: string
+          enum:
+          - unauthenticated
+          - account
+          - org
+          - owner
+    ServiceAccountCreateAttachment:
+      type: object
+      properties:
+        service_account_id:
+          type: string
+      required:
+      - service_account_id
+    ResourceTemplate:
+      type: object
+      properties:
+        owner_id:
+          type: string
+          writeOnly: true
+        owner_name:
+          type: string
+          writeOnly: true
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        user_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        group_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        org_id:
+          type: string
+          writeOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+        thumbnail_image_url:
+          type: string
+          nullable: true
+        weight:
+          type: integer
+          nullable: true
+        recipe:
+          type: object
+          additionalProperties: {}
+        access:
+          type: string
+          enum:
+          - account
+          - org
+          - owner
+        id:
+          type: string
+          readOnly: true
+        editable:
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+      required:
+      - description
+      - name
+      - recipe
+    Viewer:
+      type: object
+      properties:
+        user_id:
+          type: string
+          nullable: true
+        group_id:
+          type: string
+          nullable: true
+        route_id:
+          type: string
+          nullable: true
+        id:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        avatar_url:
+          type: string
+          format: url
+          readOnly: true
+      required:
+      - avatar_url
+      - name
+    ViewersList:
+      type: object
+      properties:
+        viewers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Viewer'
+    ViewerCreate:
+      type: object
+      properties:
+        user_id:
+          type: string
+          nullable: true
+        group_id:
+          type: string
+          nullable: true
+        route_id:
+          type: string
+          nullable: true
+    Image:
+      type: object
+      properties:
+        owner_id:
+          type: string
+          writeOnly: true
+        owner_name:
+          type: string
+          writeOnly: true
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        user_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        group_id:
+          type: string
+          writeOnly: true
+          nullable: true
+        org_id:
+          type: string
+          writeOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        is_gpu:
+          type: boolean
+        supports:
+          type: array
+          items:
+            type: string
+        access:
+          type: string
+          enum:
+          - account
+          - org
+          - owner
+        id:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        is_base:
+          type: boolean
+          readOnly: true
+      required:
+      - access
+      - is_gpu
+      - name
+    BuildData:
+      type: object
+      properties:
+        base_image:
+          type: string
+          nullable: true
+        environment_yml:
+          type: string
+          nullable: true
+        requirements_txt:
+          type: string
+          nullable: true
+        cran_packages:
+          type: string
+          nullable: true
+        bioconductor_packages:
+          type: string
+          nullable: true
+        remotes_packages:
+          type: string
+          nullable: true
+        apt_txt:
+          type: string
+          nullable: true
+        post_build:
+          type: string
+          nullable: true
+        use_mamba:
+          type: boolean
+          default: false
+        adapt_image:
+          type: boolean
+        register_ipython_kernel:
+          type: boolean
+        rstudio_version:
+          type: string
+          nullable: true
+        install_r:
+          type: boolean
+    ImageTag:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        image:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Image'
+        image_uri:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          nullable: true
+        version:
+          type: string
+          minLength: 1
+        build_data:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/BuildData'
+        archived:
+          type: boolean
+        is_external:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        saturn_env:
+          type: string
+          readOnly: true
+        resource_type:
+          type: string
+          readOnly: true
+        editable:
+          type: boolean
+          readOnly: true
+      required:
+      - version
+    DefaultImages:
+      type: object
+      properties:
+        cpu:
+          $ref: '#/components/schemas/ImageTag'
+        gpu:
+          $ref: '#/components/schemas/ImageTag'
+    DefaultSizes:
+      type: object
+      properties:
+        cpu:
+          $ref: '#/components/schemas/InstanceSize'
+        gpu:
+          $ref: '#/components/schemas/InstanceSize'
+    DeploymentServerOptions:
+      type: object
+      properties:
+        server_options:
+          $ref: '#/components/schemas/ServerOptionsSizes'
+        default_images:
+          $ref: '#/components/schemas/DefaultImages'
+        default_sizes:
+          $ref: '#/components/schemas/DefaultSizes'
+      required:
+      - default_images
+      - default_sizes
+      - server_options
+    Auth0Info:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        connections:
+          type: object
+          additionalProperties:
+            type: string
+        disable_native_login:
+          type: boolean
+      required:
+      - connections
+      - enabled
+    AppInfo:
+      type: object
+      properties:
+        cloud_provider:
+          type: string
+        allow_deployment_public_access:
+          type: boolean
+        is_enterprise:
+          type: boolean
+        customer_name:
+          type: boolean
+        stripe_public_key:
+          type: boolean
+          nullable: true
+        hotjar_user_tracking:
+          type: boolean
+        version:
+          type: string
+        auth0:
+          $ref: '#/components/schemas/Auth0Info'
+        network_filesystem_enabled:
+          type: boolean
+        git_repo_clone_dir:
+          type: string
+        app_serving_domain:
+          type: string
+        dind_enabled:
+          type: boolean
+        apply_requires_confirm:
+          type: boolean
+        hide_invitations:
+          type: boolean
+        populate_examples:
+          type: boolean
+      required:
+      - allow_deployment_public_access
+      - app_serving_domain
+      - apply_requires_confirm
+      - auth0
+      - cloud_provider
+      - customer_name
+      - dind_enabled
+      - git_repo_clone_dir
+      - hide_invitations
+      - hotjar_user_tracking
+      - is_enterprise
+      - network_filesystem_enabled
+      - populate_examples
+      - stripe_public_key
+      - version
+    ServerOptions:
+      type: object
+      properties:
+        auto_shutoff:
+          type: array
+          items:
+            type: string
+        disk_space:
+          type: array
+          items:
+            type: string
+        sizes:
+          type: object
+          additionalProperties: {}
+    Limits:
+      type: object
+      properties:
+        name:
+          type: string
+        is_default:
+          type: boolean
+        instance_sizes:
+          type: array
+          items:
+            type: string
+          nullable: true
+        resource_types:
+          type: array
+          items:
+            type: string
+          nullable: true
+        num_instances:
+          type: integer
+          minimum: 0
+          nullable: true
+        auto_shutoff:
+          type: integer
+          minimum: 0
+          nullable: true
+        storage_in_gb:
+          type: integer
+          minimum: 0
+          nullable: true
+        num_shared_folders:
+          type: integer
+          minimum: 0
+          nullable: true
+        object_storage_bytes:
+          type: integer
+          minimum: 0
+          nullable: true
+        object_storage_count:
+          type: integer
+          minimum: 0
+          nullable: true
+        hours_per_day:
+          type: integer
+          minimum: 0
+          nullable: true
+        hours_per_month:
+          type: integer
+          minimum: 0
+          nullable: true
+        hours_forever:
+          type: integer
+          minimum: 0
+          nullable: true
+        id:
+          type: string
+          readOnly: true
+        org_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - name
+    LimitsList:
+      type: object
+      properties:
+        usage_limits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Limits'
+        prev_key:
+          type: string
+          nullable: true
+        next_key:
+          type: string
+          nullable: true
+    LimitsPatch:
+      type: object
+      properties:
+        name:
+          type: string
+        is_default:
+          type: boolean
+        instance_sizes:
+          type: array
+          items:
+            type: string
+          nullable: true
+        resource_types:
+          type: array
+          items:
+            type: string
+          nullable: true
+        num_instances:
+          type: integer
+          minimum: 0
+          nullable: true
+        auto_shutoff:
+          type: integer
+          minimum: 0
+          nullable: true
+        storage_in_gb:
+          type: integer
+          minimum: 0
+          nullable: true
+        num_shared_folders:
+          type: integer
+          minimum: 0
+          nullable: true
+        object_storage_bytes:
+          type: integer
+          minimum: 0
+          nullable: true
+        object_storage_count:
+          type: integer
+          minimum: 0
+          nullable: true
+        hours_per_day:
+          type: integer
+          minimum: 0
+          nullable: true
+        hours_per_month:
+          type: integer
+          minimum: 0
+          nullable: true
+        hours_forever:
+          type: integer
+          minimum: 0
+          nullable: true
+    NotificationDelete:
+      type: object
+      properties:
+        notification_ids:
+          type: array
+          maxItems: 1000
+          items:
+            type: string
+      required:
+      - notification_ids
+    Notification:
+      type: object
+      properties:
+        id:
+          type: string
+        user_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        topic:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+          additionalProperties: {}
+        acknowledged:
+          type: boolean
+      required:
+      - acknowledged
+      - created_at
+      - data
+      - id
+      - message
+      - topic
+      - user_id
+    NotificationList:
+      type: object
+      properties:
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Notification'
+        prev_key:
+          type: string
+          nullable: true
+        next_key:
+          type: string
+          nullable: true
+      required:
+      - notifications
+    NotificationAcknowledged:
+      type: object
+      properties:
+        notification_ids:
+          type: array
+          maxItems: 1000
+          items:
+            type: string
+        acknowledged:
+          type: boolean
+          default: true
+      required:
+      - notification_ids
+    NotificationSubscriptionDelete:
+      type: object
+      properties:
+        user_id:
+          type: string
+          nullable: true
+        topic:
+          type: string
+      required:
+      - topic
+    NotificationSubscription:
+      type: object
+      properties:
+        user_id:
+          type: string
+        topic:
+          type: string
+        options:
+          type: object
+          additionalProperties: {}
+        id:
+          type: string
+      required:
+      - id
+      - topic
+      - user_id
+    NotificationSubscriptionsList:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/NotificationSubscription'
+        prev_key:
+          type: string
+          readOnly: true
+          nullable: true
+        next_key:
+          type: string
+          readOnly: true
+          nullable: true
+    NotificationSubscriptionUpdate:
+      type: object
+      properties:
+        user_id:
+          type: string
+          nullable: true
+        topic:
+          type: string
+        options:
+          type: object
+          additionalProperties: {}
+      required:
+      - topic
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
