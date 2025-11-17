@@ -9,7 +9,7 @@ update: copy-client-yaml generate
 
 .PHONY: generate
 generate:
-	openapi-generator-cli generate -g python -i client.yaml -c openapi-generator-config.yaml --remove-operation-id-prefix
+	openapi-generator-cli generate -g python -i client.yaml -c openapi-generator-config.yaml --remove-operation-id-prefix -t templates/python
 
 .PHONY: copy-client-yaml
 copy-client-yaml:

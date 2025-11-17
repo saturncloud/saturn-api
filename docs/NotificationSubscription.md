@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | 
-**topic** | **str** |  | 
-**options** | **Dict[str, object]** |  | [optional] 
-**id** | **str** |  | 
+**id** | **str** |  | [readonly] 
+**user_id** | **str** |  | [readonly] 
+**topic** | **str** |  | [readonly] 
+**options** | **Dict[str, object]** |  | [optional] [readonly] 
 
 ## Example
 

@@ -5,20 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owner_id** | **str** |  | [optional] 
-**owner_name** | **str** |  | [optional] 
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**org_id** | **str** |  | [optional] 
-**owner** | [**Owner**](Owner.md) |  | [optional] [readonly] 
-**name** | **str** |  | 
-**description** | **str** |  | [optional] 
-**is_gpu** | **bool** |  | 
-**supports** | **List[str]** |  | [optional] 
-**access** | **str** |  | 
-**id** | **str** |  | [optional] [readonly] 
-**created_at** | **str** |  | [optional] [readonly] 
-**is_base** | **bool** |  | [optional] [readonly] 
+**id** | **str** |  | [readonly] 
+**name** | **str** |  | [readonly] 
+**owner** | [**Owner**](Owner.md) |  | [readonly] 
+**description** | **str** |  | [readonly] 
+**created_at** | **str** |  | [readonly] 
+**hardware_type** | [**HardwareType**](HardwareType.md) |  | 
+**supports** | **List[str]** |  | [readonly] 
+**access** | [**ImageAccessLevel**](ImageAccessLevel.md) |  | 
+**is_base** | **bool** |  | [readonly] 
+**is_gpu** | **bool** |  | [readonly] 
+**editable** | **bool** |  | [readonly] 
+**trusted** | **bool** |  | [readonly] 
 
 ## Example
 

@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pip** | **str** |  | [optional] 
+**as_requirements_txt** | **bool** |  | [optional] [default to False]
 **conda** | **str** |  | [optional] 
 **as_environment_yml** | **bool** |  | [optional] [default to False]
-**as_requirements_txt** | **bool** |  | [optional] [default to False]
 **apt** | **str** |  | [optional] 
 **cran** | **str** |  | [optional] 
 **remotes** | **str** |  | [optional] 

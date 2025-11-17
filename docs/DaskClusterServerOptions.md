@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**server_options** | [**ServerOptionsSizes**](ServerOptionsSizes.md) |  | 
+**server_options** | [**ServerOptionsSize**](ServerOptionsSize.md) |  | 
 
 ## Example
 

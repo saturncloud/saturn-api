@@ -5,8 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
+**identity** | [**IdentityReference**](IdentityReference.md) |  | 
 **route_id** | **str** |  | [optional] 
 
 ## Example

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**notifications** | [**List[Notification]**](Notification.md) |  | 
-**prev_key** | **str** |  | [optional] 
-**next_key** | **str** |  | [optional] 
+**notifications** | [**List[Notification]**](Notification.md) |  | [readonly] 
+**prev_key** | **str** |  | [optional] [readonly] 
+**next_key** | **str** |  | [optional] [readonly] 
 
 ## Example
 

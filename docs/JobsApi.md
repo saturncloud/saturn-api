@@ -1,0 +1,2441 @@
+# saturn_api.JobsApi
+
+All URIs are relative to *http://localhost*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create**](JobsApi.md#create) | **POST** /api/jobs | 
+[**create_resource_template**](JobsApi.md#create_resource_template) | **POST** /api/jobs/{job_id}/template | 
+[**create_secret_attachment**](JobsApi.md#create_secret_attachment) | **POST** /api/jobs/{job_id}/secrets | 
+[**create_service_account_attachment**](JobsApi.md#create_service_account_attachment) | **PUT** /api/jobs/{job_id}/service_account | 
+[**delete**](JobsApi.md#delete) | **DELETE** /api/jobs/{job_id} | 
+[**delete_secret_attachment**](JobsApi.md#delete_secret_attachment) | **DELETE** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
+[**delete_service_account_attachment**](JobsApi.md#delete_service_account_attachment) | **DELETE** /api/jobs/{job_id}/service_account | 
+[**get**](JobsApi.md#get) | **GET** /api/jobs/{job_id} | 
+[**get_cluster_history**](JobsApi.md#get_cluster_history) | **GET** /api/jobs/{job_id}/clusters | 
+[**get_log_history**](JobsApi.md#get_log_history) | **GET** /api/jobs/{job_id}/logs | 
+[**get_metrics**](JobsApi.md#get_metrics) | **GET** /api/jobs/{job_id}/metrics | 
+[**get_recipe**](JobsApi.md#get_recipe) | **GET** /api/jobs/{job_id}/recipe | 
+[**get_resource_template**](JobsApi.md#get_resource_template) | **GET** /api/jobs/{job_id}/template | 
+[**get_runtime_summary**](JobsApi.md#get_runtime_summary) | **GET** /api/jobs/{job_id}/runtimesummary | 
+[**get_secret_attachment**](JobsApi.md#get_secret_attachment) | **GET** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
+[**get_server_options**](JobsApi.md#get_server_options) | **GET** /api/jobs/info | 
+[**get_service_account_attachment**](JobsApi.md#get_service_account_attachment) | **GET** /api/jobs/{job_id}/service_account | 
+[**get_status_history**](JobsApi.md#get_status_history) | **GET** /api/jobs/{job_id}/history | 
+[**get_token_info**](JobsApi.md#get_token_info) | **GET** /api/jobs/{job_id}/token | 
+[**list**](JobsApi.md#list) | **GET** /api/jobs | 
+[**list_secret_attachments**](JobsApi.md#list_secret_attachments) | **GET** /api/jobs/{job_id}/secrets | 
+[**restart**](JobsApi.md#restart) | **POST** /api/jobs/{job_id}/restart | 
+[**rotate_token**](JobsApi.md#rotate_token) | **POST** /api/jobs/{job_id}/token | 
+[**schedule**](JobsApi.md#schedule) | **POST** /api/jobs/{job_id}/schedule | 
+[**start**](JobsApi.md#start) | **POST** /api/jobs/{job_id}/start | 
+[**stop**](JobsApi.md#stop) | **POST** /api/jobs/{job_id}/stop | 
+[**unschedule**](JobsApi.md#unschedule) | **POST** /api/jobs/{job_id}/unschedule | 
+[**update**](JobsApi.md#update) | **PATCH** /api/jobs/{job_id} | 
+[**update_resource_template**](JobsApi.md#update_resource_template) | **PATCH** /api/jobs/{job_id}/template | 
+[**update_secret_attachment**](JobsApi.md#update_secret_attachment) | **PATCH** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
+[**update_token**](JobsApi.md#update_token) | **PATCH** /api/jobs/{job_id}/token | 
+
+
+# **create**
+> Job create(job_create)
+
+Create job
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.models.job_create import JobCreate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_create = saturn_api.JobCreate() # JobCreate | 
+
+    try:
+        api_response = await api_instance.create(job_create)
+        print("The response of JobsApi->create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_create** | [**JobCreate**](JobCreate.md)|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_resource_template**
+> ResourceTemplate create_resource_template(job_id)
+
+Create job resource template
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_template import ResourceTemplate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.create_resource_template(job_id)
+        print("The response of JobsApi->create_resource_template:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->create_resource_template: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**ResourceTemplate**](ResourceTemplate.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_secret_attachment**
+> SecretAttachment create_secret_attachment(job_id, secret_attachment_create)
+
+Create job secret attachment
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.secret_attachment import SecretAttachment
+from saturn_api.models.secret_attachment_create import SecretAttachmentCreate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    secret_attachment_create = saturn_api.SecretAttachmentCreate() # SecretAttachmentCreate | 
+
+    try:
+        api_response = await api_instance.create_secret_attachment(job_id, secret_attachment_create)
+        print("The response of JobsApi->create_secret_attachment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->create_secret_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **secret_attachment_create** | [**SecretAttachmentCreate**](SecretAttachmentCreate.md)|  | 
+
+### Return type
+
+[**SecretAttachment**](SecretAttachment.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_service_account_attachment**
+> ServiceAccountAttachment create_service_account_attachment(job_id, service_account_create_attachment)
+
+Create job service account attachment
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.service_account_attachment import ServiceAccountAttachment
+from saturn_api.models.service_account_create_attachment import ServiceAccountCreateAttachment
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    service_account_create_attachment = saturn_api.ServiceAccountCreateAttachment() # ServiceAccountCreateAttachment | 
+
+    try:
+        api_response = await api_instance.create_service_account_attachment(job_id, service_account_create_attachment)
+        print("The response of JobsApi->create_service_account_attachment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->create_service_account_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **service_account_create_attachment** | [**ServiceAccountCreateAttachment**](ServiceAccountCreateAttachment.md)|  | 
+
+### Return type
+
+[**ServiceAccountAttachment**](ServiceAccountAttachment.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete**
+> delete(job_id, allow_active=allow_active)
+
+Delete job
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    allow_active = False # bool |  (optional) (default to False)
+
+    try:
+        await api_instance.delete(job_id, allow_active=allow_active)
+    except Exception as e:
+        print("Exception when calling JobsApi->delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **allow_active** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_secret_attachment**
+> delete_secret_attachment(job_id, secret_attachment_id)
+
+Delete job secret attachment
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    secret_attachment_id = 'secret_attachment_id_example' # str | 
+
+    try:
+        await api_instance.delete_secret_attachment(job_id, secret_attachment_id)
+    except Exception as e:
+        print("Exception when calling JobsApi->delete_secret_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **secret_attachment_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_service_account_attachment**
+> delete_service_account_attachment(job_id)
+
+Delete job service account attachment
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        await api_instance.delete_service_account_attachment(job_id)
+    except Exception as e:
+        print("Exception when calling JobsApi->delete_service_account_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get**
+> Job get(job_id)
+
+Get job
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.get(job_id)
+        print("The response of JobsApi->get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_cluster_history**
+> ResourceClusters get_cluster_history(job_id)
+
+Get clusters that a job has run on
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_clusters import ResourceClusters
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.get_cluster_history(job_id)
+        print("The response of JobsApi->get_cluster_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_cluster_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**ResourceClusters**](ResourceClusters.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_log_history**
+> HistoricLogs get_log_history(job_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
+
+Get job historical logs
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    pod_name = 'pod_name_example' # str |  (optional)
+    cluster = 'cluster_example' # str |  (optional)
+    first_key = 'first_key_example' # str |  (optional)
+    last_key = 'last_key_example' # str |  (optional)
+
+    try:
+        api_response = await api_instance.get_log_history(job_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
+        print("The response of JobsApi->get_log_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_log_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **pod_name** | **str**|  | [optional] 
+ **cluster** | **str**|  | [optional] 
+ **first_key** | **str**|  | [optional] 
+ **last_key** | **str**|  | [optional] 
+
+### Return type
+
+[**HistoricLogs**](HistoricLogs.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_metrics**
+> Metrics get_metrics(job_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
+
+Get job hardware metrics
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.metrics import Metrics
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    type = 'type_example' # str |  (optional)
+    start = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    end = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    resolution = 'resolution_example' # str |  (optional)
+    cluster = 'cluster_example' # str |  (optional)
+
+    try:
+        api_response = await api_instance.get_metrics(job_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
+        print("The response of JobsApi->get_metrics:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_metrics: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **type** | **str**|  | [optional] 
+ **start** | **datetime**|  | [optional] 
+ **end** | **datetime**|  | [optional] 
+ **resolution** | **str**|  | [optional] 
+ **cluster** | **str**|  | [optional] 
+
+### Return type
+
+[**Metrics**](Metrics.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_recipe**
+> JobRecipe get_recipe(job_id, as_template=as_template)
+
+Get job recipe
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job_recipe import JobRecipe
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    as_template = False # bool |  (optional) (default to False)
+
+    try:
+        api_response = await api_instance.get_recipe(job_id, as_template=as_template)
+        print("The response of JobsApi->get_recipe:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_recipe: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **as_template** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**JobRecipe**](JobRecipe.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_template**
+> ResourceTemplate get_resource_template(job_id)
+
+Get job resource template
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_template import ResourceTemplate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.get_resource_template(job_id)
+        print("The response of JobsApi->get_resource_template:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_resource_template: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**ResourceTemplate**](ResourceTemplate.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_runtime_summary**
+> JobCollectionRuntimeSummary get_runtime_summary(job_id, details=details)
+
+Get job runtime summary
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job_collection_runtime_summary import JobCollectionRuntimeSummary
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    details = False # bool |  (optional) (default to False)
+
+    try:
+        api_response = await api_instance.get_runtime_summary(job_id, details=details)
+        print("The response of JobsApi->get_runtime_summary:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_runtime_summary: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **details** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**JobCollectionRuntimeSummary**](JobCollectionRuntimeSummary.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_secret_attachment**
+> SecretAttachment get_secret_attachment(job_id, secret_attachment_id)
+
+Get job secret attachment
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.secret_attachment import SecretAttachment
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    secret_attachment_id = 'secret_attachment_id_example' # str | 
+
+    try:
+        api_response = await api_instance.get_secret_attachment(job_id, secret_attachment_id)
+        print("The response of JobsApi->get_secret_attachment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_secret_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **secret_attachment_id** | **str**|  | 
+
+### Return type
+
+[**SecretAttachment**](SecretAttachment.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_server_options**
+> JobServerOptions get_server_options()
+
+Get job server options
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job_server_options import JobServerOptions
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+
+    try:
+        api_response = await api_instance.get_server_options()
+        print("The response of JobsApi->get_server_options:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_server_options: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**JobServerOptions**](JobServerOptions.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_service_account_attachment**
+> ServiceAccountAttachment get_service_account_attachment(job_id)
+
+Get job service account attachment
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.service_account_attachment import ServiceAccountAttachment
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.get_service_account_attachment(job_id)
+        print("The response of JobsApi->get_service_account_attachment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_service_account_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**ServiceAccountAttachment**](ServiceAccountAttachment.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_status_history**
+> ResourceHistory get_status_history(job_id, cluster=cluster)
+
+Get job status history
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_history import ResourceHistory
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    cluster = 'cluster_example' # str |  (optional)
+
+    try:
+        api_response = await api_instance.get_status_history(job_id, cluster=cluster)
+        print("The response of JobsApi->get_status_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_status_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **cluster** | **str**|  | [optional] 
+
+### Return type
+
+[**ResourceHistory**](ResourceHistory.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_token_info**
+> ResourceTokenInfo get_token_info(job_id)
+
+Get job resource API token info
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_token_info import ResourceTokenInfo
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.get_token_info(job_id)
+        print("The response of JobsApi->get_token_info:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_token_info: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**ResourceTokenInfo**](ResourceTokenInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list**
+> JobList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+
+List jobs
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job_list import JobList
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    owner_name = 'owner_name_example' # str |  (optional)
+    owner_id = 'owner_id_example' # str |  (optional)
+    user_id = 'user_id_example' # str |  (optional)
+    group_id = 'group_id_example' # str |  (optional)
+    org_id = 'org_id_example' # str |  (optional)
+    owner = 'owner_example' # str |  (optional)
+    name = 'name_example' # str |  (optional)
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
+    descending = False # bool |  (optional) (default to False)
+
+    try:
+        api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        print("The response of JobsApi->list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner_name** | **str**|  | [optional] 
+ **owner_id** | **str**|  | [optional] 
+ **user_id** | **str**|  | [optional] 
+ **group_id** | **str**|  | [optional] 
+ **org_id** | **str**|  | [optional] 
+ **owner** | **str**|  | [optional] 
+ **name** | **str**|  | [optional] 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
+ **descending** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**JobList**](JobList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_secret_attachments**
+> SecretAttachmentList list_secret_attachments(job_id, attachment_type=attachment_type, location=location, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+
+List job secret attachments
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.secret_attachment_list import SecretAttachmentList
+from saturn_api.models.secret_attachment_type import SecretAttachmentType
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    attachment_type = saturn_api.SecretAttachmentType() # SecretAttachmentType |  (optional)
+    location = 'location_example' # str |  (optional)
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
+    descending = False # bool |  (optional) (default to False)
+
+    try:
+        api_response = await api_instance.list_secret_attachments(job_id, attachment_type=attachment_type, location=location, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        print("The response of JobsApi->list_secret_attachments:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->list_secret_attachments: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **attachment_type** | [**SecretAttachmentType**](.md)|  | [optional] 
+ **location** | **str**|  | [optional] 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
+ **descending** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**SecretAttachmentList**](SecretAttachmentList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **restart**
+> Job restart(job_id, job_restart=job_restart)
+
+Restart job
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.models.job_restart import JobRestart
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    job_restart = saturn_api.JobRestart() # JobRestart |  (optional)
+
+    try:
+        api_response = await api_instance.restart(job_id, job_restart=job_restart)
+        print("The response of JobsApi->restart:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->restart: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **job_restart** | [**JobRestart**](JobRestart.md)|  | [optional] 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Restarted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rotate_token**
+> ResourceTokenInfo rotate_token(job_id)
+
+Rotate job resource API token. Invalidates existing token.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_token_info import ResourceTokenInfo
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.rotate_token(job_id)
+        print("The response of JobsApi->rotate_token:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->rotate_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**ResourceTokenInfo**](ResourceTokenInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Rotated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **schedule**
+> Job schedule(job_id, cron_schedule_update=cron_schedule_update)
+
+Activate job cron schedule
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.cron_schedule_update import CronScheduleUpdate
+from saturn_api.models.job import Job
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    cron_schedule_update = saturn_api.CronScheduleUpdate() # CronScheduleUpdate |  (optional)
+
+    try:
+        api_response = await api_instance.schedule(job_id, cron_schedule_update=cron_schedule_update)
+        print("The response of JobsApi->schedule:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **cron_schedule_update** | [**CronScheduleUpdate**](CronScheduleUpdate.md)|  | [optional] 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Scheduled |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **start**
+> Job start(job_id, job_start=job_start)
+
+Start job
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.models.job_start import JobStart
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    job_start = saturn_api.JobStart() # JobStart |  (optional)
+
+    try:
+        api_response = await api_instance.start(job_id, job_start=job_start)
+        print("The response of JobsApi->start:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->start: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **job_start** | [**JobStart**](JobStart.md)|  | [optional] 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Started |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **stop**
+> Job stop(job_id)
+
+Stop job
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.stop(job_id)
+        print("The response of JobsApi->stop:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->stop: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Stopped |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **unschedule**
+> Job unschedule(job_id)
+
+Deactivate job cron schedule
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.unschedule(job_id)
+        print("The response of JobsApi->unschedule:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->unschedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Unscheduled |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update**
+> Job update(job_id, job_update)
+
+Update job
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.models.job_update import JobUpdate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    job_update = saturn_api.JobUpdate() # JobUpdate | 
+
+    try:
+        api_response = await api_instance.update(job_id, job_update)
+        print("The response of JobsApi->update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **job_update** | [**JobUpdate**](JobUpdate.md)|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_resource_template**
+> ResourceTemplate update_resource_template(job_id)
+
+Update job resource template
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_template import ResourceTemplate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        api_response = await api_instance.update_resource_template(job_id)
+        print("The response of JobsApi->update_resource_template:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->update_resource_template: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**ResourceTemplate**](ResourceTemplate.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_secret_attachment**
+> SecretAttachment update_secret_attachment(job_id, secret_attachment_id, secret_attachment_update)
+
+Update job secret attachment
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.secret_attachment import SecretAttachment
+from saturn_api.models.secret_attachment_update import SecretAttachmentUpdate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    secret_attachment_id = 'secret_attachment_id_example' # str | 
+    secret_attachment_update = saturn_api.SecretAttachmentUpdate() # SecretAttachmentUpdate | 
+
+    try:
+        api_response = await api_instance.update_secret_attachment(job_id, secret_attachment_id, secret_attachment_update)
+        print("The response of JobsApi->update_secret_attachment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->update_secret_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **secret_attachment_id** | **str**|  | 
+ **secret_attachment_update** | [**SecretAttachmentUpdate**](SecretAttachmentUpdate.md)|  | 
+
+### Return type
+
+[**SecretAttachment**](SecretAttachment.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_token**
+> ResourceTokenInfo update_token(job_id, resource_token_update=resource_token_update)
+
+Update and rotate job resource API token. Invalidates existing token.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_token_info import ResourceTokenInfo
+from saturn_api.models.resource_token_update import ResourceTokenUpdate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    resource_token_update = saturn_api.ResourceTokenUpdate() # ResourceTokenUpdate |  (optional)
+
+    try:
+        api_response = await api_instance.update_token(job_id, resource_token_update=resource_token_update)
+        print("The response of JobsApi->update_token:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->update_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **resource_token_update** | [**ResourceTokenUpdate**](ResourceTokenUpdate.md)|  | [optional] 
+
+### Return type
+
+[**ResourceTokenInfo**](ResourceTokenInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

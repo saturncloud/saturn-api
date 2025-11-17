@@ -5,13 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**route_id** | **str** |  | [optional] 
-**id** | **str** |  | [optional] [readonly] 
-**created_at** | **str** |  | [optional] [readonly] 
-**name** | **str** |  | [readonly] 
-**avatar_url** | **str** |  | [readonly] 
+**id** | **str** |  | [readonly] 
+**created_at** | **str** |  | [readonly] 
+**identity** | [**Identity**](Identity.md) |  | [readonly] 
+**route_id** | **str** |  | [readonly] 
+**subdomain** | **str** |  | [readonly] 
 
 ## Example
 

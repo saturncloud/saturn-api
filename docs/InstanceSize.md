@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **cores** | **int** |  | 
 **memory** | **str** |  | 
 **gpu** | **int** |  | [optional] [default to 0]
-**cloud** | **str** |  | [optional] 
-**display** | **str** |  | [optional] [readonly] [default to '']
-**display_name** | **str** |  | [optional] [default to '']
-**node_role** | **str** |  | [optional] [default to '']
-**reserved_memory** | **str** |  | [optional] [default to '512Mi']
-**reserved_cpu** | **float** |  | [optional] [default to 1.0]
+**gpu_type** | **str** |  | [optional] 
+**hardware_type** | [**HardwareType**](HardwareType.md) |  | 
+**cloud** | **str** |  | [default to '']
+**display** | **str** |  | [readonly] [default to '']
+**display_name** | **str** |  | [default to '']
+**price_per_hour** | **float** |  | [optional] 
+**description** | **str** |  | [optional] [default to '']
 
 ## Example
 

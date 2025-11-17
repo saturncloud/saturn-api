@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **recipe** | **Dict[str, object]** |  | 
 **access** | **str** |  | [optional] 
 **id** | **str** |  | [optional] [readonly] 
-**editable** | **object** |  | [optional] [readonly] 
+**editable** | **bool** |  | [optional] [readonly] 
 **created_at** | **str** |  | [optional] [readonly] 
 
 ## Example

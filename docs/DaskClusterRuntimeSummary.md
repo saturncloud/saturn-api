@@ -6,11 +6,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
+**namespace** | **str** |  | 
+**uid** | **str** |  | 
+**controller_uid** | **str** |  | [optional] 
+**controller_kind** | **str** |  | [optional] 
+**labels** | **Dict[str, str]** |  | [optional] 
+**annotations** | **Dict[str, str]** |  | [optional] 
+**conditions** | [**List[Condition]**](Condition.md) |  | [optional] 
+**started_at** | **datetime** |  | [optional] 
+**deleted_at** | **datetime** |  | [optional] 
+**status** | **str** |  | [optional] [default to 'stopped']
 **kubecluster_summary** | [**DeploymentRuntimeSummary**](DeploymentRuntimeSummary.md) |  | 
 **scheduler_summary** | [**PodRuntimeSummary**](PodRuntimeSummary.md) |  | 
-**worker_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | 
-**status** | **str** |  | 
-**errors** | **List[str]** |  | 
+**worker_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [optional] 
+**worker_count** | **int** |  | [optional] [default to 0]
+**errors** | **List[str]** |  | [optional] 
 
 ## Example
 

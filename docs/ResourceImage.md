@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] [readonly] 
-**name** | **str** |  | [optional] [readonly] 
-**owner** | [**OwnerName**](OwnerName.md) |  | [optional] 
+**id** | **str** |  | [readonly] 
+**name** | **str** |  | [readonly] 
+**owner** | [**OwnerName**](OwnerName.md) |  | [readonly] 
 
 ## Example
 

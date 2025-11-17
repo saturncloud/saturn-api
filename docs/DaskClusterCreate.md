@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**resource** | [**ResourceReference**](ResourceReference.md) |  | 
+**tags** | **Dict[str, str]** |  | [optional] 
 **worker_size** | **str** |  | [optional] 
-**worker_is_spot** | **bool** |  | [optional] 
+**worker_is_spot** | **bool** |  | [optional] [default to False]
 **scheduler_size** | **str** |  | [optional] 
-**n_workers** | **int** |  | [optional] 
+**n_workers** | **int** |  | [optional] [default to 1]
+**nthreads** | **int** |  | [optional] [default to 2]
 **nprocs** | **int** |  | [optional] 
-**nthreads** | **int** |  | [optional] 
 **subdomain** | **str** |  | [optional] 
-**deployment_id** | **str** |  | [optional] 
-**workspace_id** | **str** |  | [optional] 
 
 ## Example
 

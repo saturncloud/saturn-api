@@ -5,16 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owner_id** | **str** |  | [optional] 
-**owner_name** | **str** |  | [optional] 
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**org_id** | **str** |  | [optional] 
-**owner** | [**Owner**](Owner.md) |  | [optional] [readonly] 
 **id** | **str** |  | [readonly] 
 **name** | **str** |  | [readonly] 
+**owner** | [**Owner**](Owner.md) |  | [readonly] 
 **command** | **str** |  | [readonly] 
 **description** | **str** |  | [readonly] 
+**tags** | **Dict[str, str]** |  | [optional] 
 **instance_size** | **str** |  | [readonly] 
 **extra_packages** | [**ExtraPackages**](ExtraPackages.md) |  | [readonly] 
 **scale** | **int** |  | [readonly] 
@@ -28,16 +24,18 @@ Name | Type | Description | Notes
 **start_dind** | **bool** |  | [readonly] 
 **image_tag** | [**ResourceImageTag**](ResourceImageTag.md) |  | [readonly] 
 **last_deploy** | **str** |  | [readonly] 
-**url** | **str** |  | [readonly] 
-**status** | **str** |  | [readonly] 
-**running_count** | **str** |  | [readonly] 
 **k8s_name** | **str** |  | [readonly] 
 **created_at** | **str** |  | [readonly] 
 **updated_at** | **str** |  | [readonly] 
 **require_restart** | **bool** |  | [readonly] 
 **resource_type** | **str** |  | [readonly] 
 **size_display** | **str** |  | [readonly] 
+**dask_cluster** | [**DaskClusterNested**](DaskClusterNested.md) |  | [optional] [readonly] 
+**status** | **str** |  | [readonly] 
+**running_count** | **int** |  | [readonly] 
 **debug_mode** | **bool** |  | [readonly] 
+**url** | **str** |  | [readonly] 
+**ssh_url** | **str** |  | [optional] [readonly] 
 
 ## Example
 

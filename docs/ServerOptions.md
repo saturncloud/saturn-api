@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auto_shutoff** | **List[str]** |  | [optional] 
-**disk_space** | **List[str]** |  | [optional] 
-**sizes** | **Dict[str, object]** |  | [optional] 
+**auto_shutoff** | **List[str]** |  | [readonly] 
+**disk_space** | **List[str]** |  | [readonly] 
+**sizes** | [**Dict[str, InstanceSize]**](InstanceSize.md) |  | [readonly] 
 
 ## Example
 

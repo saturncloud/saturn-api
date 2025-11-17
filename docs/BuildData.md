@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **apt_txt** | **str** |  | [optional] 
 **post_build** | **str** |  | [optional] 
 **use_mamba** | **bool** |  | [optional] [default to False]
-**adapt_image** | **bool** |  | [optional] 
+**adapt_image** | **bool** |  | [optional] [default to False]
 **register_ipython_kernel** | **bool** |  | [optional] 
 **rstudio_version** | **str** |  | [optional] 
 **install_r** | **bool** |  | [optional] 

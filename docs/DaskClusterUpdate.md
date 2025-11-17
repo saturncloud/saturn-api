@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**tags** | **Dict[str, str]** |  | [optional] 
 **worker_size** | **str** |  | [optional] 
 **worker_is_spot** | **bool** |  | [optional] 
 **scheduler_size** | **str** |  | [optional] 
@@ -12,8 +13,6 @@ Name | Type | Description | Notes
 **nprocs** | **int** |  | [optional] 
 **nthreads** | **int** |  | [optional] 
 **subdomain** | **str** |  | [optional] 
-**deployment_id** | **str** |  | [optional] 
-**workspace_id** | **str** |  | [optional] 
 
 ## Example
 

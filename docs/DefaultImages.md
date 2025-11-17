@@ -6,7 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cpu** | [**ImageTag**](ImageTag.md) |  | [optional] 
-**gpu** | [**ImageTag**](ImageTag.md) |  | [optional] 
+**nvidia** | [**ImageTag**](ImageTag.md) |  | [optional] 
+**amd** | [**ImageTag**](ImageTag.md) |  | [optional] 
 
 ## Example
 

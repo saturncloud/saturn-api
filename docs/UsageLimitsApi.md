@@ -5,14 +5,14 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create**](UsageLimitsApi.md#create) | **POST** /api/limits | 
-[**delete**](UsageLimitsApi.md#delete) | **DELETE** /api/limits/{limits_id} | 
-[**get**](UsageLimitsApi.md#get) | **GET** /api/limits/{limits_id} | 
+[**delete**](UsageLimitsApi.md#delete) | **DELETE** /api/limits/{usage_limits_id} | 
+[**get**](UsageLimitsApi.md#get) | **GET** /api/limits/{usage_limits_id} | 
 [**list**](UsageLimitsApi.md#list) | **GET** /api/limits | 
-[**update**](UsageLimitsApi.md#update) | **PATCH** /api/limits/{limits_id} | 
+[**update**](UsageLimitsApi.md#update) | **PATCH** /api/limits/{usage_limits_id} | 
 
 
 # **create**
-> Limits create(limits)
+> UsageLimits create(usage_limits_create)
 
 Create usage limits
 
@@ -22,7 +22,8 @@ Create usage limits
 
 ```python
 import saturn_api
-from saturn_api.models.limits import Limits
+from saturn_api.models.usage_limits import UsageLimits
+from saturn_api.models.usage_limits_create import UsageLimitsCreate
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -46,10 +47,10 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsageLimitsApi(api_client)
-    limits = saturn_api.Limits() # Limits | 
+    usage_limits_create = saturn_api.UsageLimitsCreate() # UsageLimitsCreate | 
 
     try:
-        api_response = await api_instance.create(limits)
+        api_response = await api_instance.create(usage_limits_create)
         print("The response of UsageLimitsApi->create:\n")
         pprint(api_response)
     except Exception as e:
@@ -63,11 +64,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limits** | [**Limits**](Limits.md)|  | 
+ **usage_limits_create** | [**UsageLimitsCreate**](UsageLimitsCreate.md)|  | 
 
 ### Return type
 
-[**Limits**](Limits.md)
+[**UsageLimits**](UsageLimits.md)
 
 ### Authorization
 
@@ -87,7 +88,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> delete(limits_id)
+> delete(usage_limits_id)
 
 Delete usage limits
 
@@ -120,10 +121,10 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsageLimitsApi(api_client)
-    limits_id = 'limits_id_example' # str | 
+    usage_limits_id = 'usage_limits_id_example' # str | 
 
     try:
-        await api_instance.delete(limits_id)
+        await api_instance.delete(usage_limits_id)
     except Exception as e:
         print("Exception when calling UsageLimitsApi->delete: %s\n" % e)
 ```
@@ -135,7 +136,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limits_id** | **str**|  | 
+ **usage_limits_id** | **str**|  | 
 
 ### Return type
 
@@ -159,9 +160,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> Limits get(limits_id)
+> UsageLimits get(usage_limits_id)
 
-Get usage limits by ID
+Get usage limits
 
 ### Example
 
@@ -169,7 +170,7 @@ Get usage limits by ID
 
 ```python
 import saturn_api
-from saturn_api.models.limits import Limits
+from saturn_api.models.usage_limits import UsageLimits
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -193,10 +194,10 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsageLimitsApi(api_client)
-    limits_id = 'limits_id_example' # str | 
+    usage_limits_id = 'usage_limits_id_example' # str | 
 
     try:
-        api_response = await api_instance.get(limits_id)
+        api_response = await api_instance.get(usage_limits_id)
         print("The response of UsageLimitsApi->get:\n")
         pprint(api_response)
     except Exception as e:
@@ -210,11 +211,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limits_id** | **str**|  | 
+ **usage_limits_id** | **str**|  | 
 
 ### Return type
 
-[**Limits**](Limits.md)
+[**UsageLimits**](UsageLimits.md)
 
 ### Authorization
 
@@ -234,7 +235,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> LimitsList list(org_id=org_id, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size)
+> UsageLimitsList list(name=name, org_id=org_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List usage limits
 
@@ -244,7 +245,7 @@ List usage limits
 
 ```python
 import saturn_api
-from saturn_api.models.limits_list import LimitsList
+from saturn_api.models.usage_limits_list import UsageLimitsList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -268,14 +269,15 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsageLimitsApi(api_client)
-    org_id = 'org_id_example' # str |  (optional)
     name = 'name_example' # str |  (optional)
+    org_id = 'org_id_example' # str |  (optional)
     prev_key = 'prev_key_example' # str |  (optional)
     next_key = 'next_key_example' # str |  (optional)
-    page_size = 56 # int |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
+    descending = False # bool |  (optional) (default to False)
 
     try:
-        api_response = await api_instance.list(org_id=org_id, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        api_response = await api_instance.list(name=name, org_id=org_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of UsageLimitsApi->list:\n")
         pprint(api_response)
     except Exception as e:
@@ -289,15 +291,16 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | [optional] 
  **name** | **str**|  | [optional] 
+ **org_id** | **str**|  | [optional] 
  **prev_key** | **str**|  | [optional] 
  **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
+ **descending** | **bool**|  | [optional] [default to False]
 
 ### Return type
 
-[**LimitsList**](LimitsList.md)
+[**UsageLimitsList**](UsageLimitsList.md)
 
 ### Authorization
 
@@ -317,7 +320,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Limits update(limits_id, limits_patch=limits_patch)
+> UsageLimits update(usage_limits_id, usage_limits_update)
 
 Update usage limits
 
@@ -327,8 +330,8 @@ Update usage limits
 
 ```python
 import saturn_api
-from saturn_api.models.limits import Limits
-from saturn_api.models.limits_patch import LimitsPatch
+from saturn_api.models.usage_limits import UsageLimits
+from saturn_api.models.usage_limits_update import UsageLimitsUpdate
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -352,11 +355,11 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsageLimitsApi(api_client)
-    limits_id = 'limits_id_example' # str | 
-    limits_patch = saturn_api.LimitsPatch() # LimitsPatch |  (optional)
+    usage_limits_id = 'usage_limits_id_example' # str | 
+    usage_limits_update = saturn_api.UsageLimitsUpdate() # UsageLimitsUpdate | 
 
     try:
-        api_response = await api_instance.update(limits_id, limits_patch=limits_patch)
+        api_response = await api_instance.update(usage_limits_id, usage_limits_update)
         print("The response of UsageLimitsApi->update:\n")
         pprint(api_response)
     except Exception as e:
@@ -370,12 +373,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limits_id** | **str**|  | 
- **limits_patch** | [**LimitsPatch**](LimitsPatch.md)|  | [optional] 
+ **usage_limits_id** | **str**|  | 
+ **usage_limits_update** | [**UsageLimitsUpdate**](UsageLimitsUpdate.md)|  | 
 
 ### Return type
 
-[**Limits**](Limits.md)
+[**UsageLimits**](UsageLimits.md)
 
 ### Authorization
 
@@ -390,7 +393,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Patched |  -  |
+**200** | Updated |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

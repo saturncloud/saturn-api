@@ -7,10 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [readonly] 
 **name** | **str** |  | [readonly] 
-**owner** | [**Owner**](Owner.md) |  | [readonly] 
 **resource_type** | **str** |  | [readonly] 
-**workspace** | [**Workspace**](Workspace.md) |  | [optional] [readonly] 
-**deployment** | [**Deployment**](Deployment.md) |  | [optional] [readonly] 
+**tags** | **Dict[str, str]** |  | [readonly] 
 **worker_size** | **str** |  | [readonly] 
 **worker_size_display** | **str** |  | [readonly] 
 **worker_is_spot** | **bool** |  | [readonly] 
@@ -19,13 +17,18 @@ Name | Type | Description | Notes
 **n_workers** | **int** |  | [readonly] 
 **nprocs** | **int** |  | [readonly] 
 **nthreads** | **int** |  | [readonly] 
-**deployment_id** | **str** |  | [optional] [readonly] 
-**workspace_id** | **str** |  | [optional] [readonly] 
 **scheduler_url** | **str** |  | [readonly] 
 **subdomain** | **str** |  | [readonly] 
-**url** | **str** |  | [readonly] 
 **image** | **str** |  | [readonly] 
 **created_at** | **str** |  | [readonly] 
+**status** | **str** |  | [readonly] 
+**warnings** | **List[str]** |  | [optional] 
+**errors** | **List[str]** |  | [optional] 
+**url** | **str** |  | [readonly] 
+**owner** | [**Owner**](Owner.md) |  | [readonly] 
+**deployment_id** | **str** |  | [optional] [readonly] 
+**job_id** | **str** |  | [optional] [readonly] 
+**workspace_id** | **str** |  | [optional] [readonly] 
 
 ## Example
 

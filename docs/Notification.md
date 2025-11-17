@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**user_id** | **str** |  | 
-**created_at** | **datetime** |  | 
-**topic** | **str** |  | 
-**message** | **str** |  | 
-**data** | **Dict[str, object]** |  | 
-**acknowledged** | **bool** |  | 
+**id** | **str** |  | [readonly] 
+**user_id** | **str** |  | [readonly] 
+**created_at** | **datetime** |  | [readonly] 
+**topic** | **str** |  | [readonly] 
+**message** | **str** |  | [readonly] 
+**data** | **Dict[str, object]** |  | [readonly] 
+**acknowledged** | **bool** |  | [readonly] 
 
 ## Example
 

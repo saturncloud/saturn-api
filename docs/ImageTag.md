@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] [readonly] 
-**created_at** | **str** |  | [optional] [readonly] 
-**image** | [**Image**](Image.md) |  | [optional] [readonly] 
-**image_uri** | **str** |  | [optional] [readonly] 
-**description** | **str** |  | [optional] 
-**version** | **str** |  | 
+**id** | **str** |  | [readonly] 
+**created_at** | **str** |  | [readonly] 
+**image** | [**Image**](Image.md) |  | [readonly] 
+**image_uri** | **str** |  | [readonly] 
+**description** | **str** |  | [readonly] 
+**version** | **str** |  | [readonly] 
 **build_data** | [**BuildData**](BuildData.md) |  | [optional] [readonly] 
-**archived** | **bool** |  | [optional] 
-**is_external** | **bool** |  | [optional] [readonly] 
-**status** | **str** |  | [optional] [readonly] 
+**archived** | **bool** |  | [readonly] 
+**is_external** | **bool** |  | [readonly] 
+**status** | **str** |  | [readonly] 
 **saturn_env** | **str** |  | [optional] [readonly] 
-**resource_type** | **str** |  | [optional] [readonly] 
-**editable** | **bool** |  | [optional] [readonly] 
+**resource_type** | **str** |  | [readonly] 
+**editable** | **bool** |  | [readonly] 
 
 ## Example
 

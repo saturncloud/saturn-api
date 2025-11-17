@@ -6,7 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cpu** | [**InstanceSize**](InstanceSize.md) |  | [optional] 
-**gpu** | [**InstanceSize**](InstanceSize.md) |  | [optional] 
+**nvidia** | [**InstanceSize**](InstanceSize.md) |  | [optional] 
+**amd** | [**InstanceSize**](InstanceSize.md) |  | [optional] 
 
 ## Example
 

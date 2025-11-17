@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** |  | 
 **connections** | **Dict[str, str]** |  | 
-**disable_native_login** | **bool** |  | [optional] 
+**disable_native_login** | **bool** |  | 
 
 ## Example
 

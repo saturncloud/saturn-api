@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**version** | **str** |  | [optional] 
-**image_uri** | **str** |  | [optional] 
-**image** | [**ResourceImage**](ResourceImage.md) |  | [optional] [readonly] 
+**id** | **str** |  | [readonly] 
+**version** | **str** |  | [readonly] 
+**image_uri** | **str** |  | [readonly] 
+**image** | [**ResourceImage**](ResourceImage.md) |  | [readonly] 
 
 ## Example
 

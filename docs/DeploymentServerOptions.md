@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**server_options** | [**ServerOptionsSizes**](ServerOptionsSizes.md) |  | 
+**server_options** | [**ServerOptionsSize**](ServerOptionsSize.md) |  | 
 **default_images** | [**DefaultImages**](DefaultImages.md) |  | 
 **default_sizes** | [**DefaultSizes**](DefaultSizes.md) |  | 
 

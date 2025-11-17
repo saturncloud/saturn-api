@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **apply_requires_confirm** | **bool** |  | 
 **hide_invitations** | **bool** |  | 
 **populate_examples** | **bool** |  | 
+**user_tracking** | **bool** |  | 
 
 ## Example
 

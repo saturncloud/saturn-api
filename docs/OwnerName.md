@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] [readonly] 
 **identity_name** | **str** |  | [optional] [readonly] 
+**avatar_url** | **str** |  | [readonly] 
 
 ## Example
 

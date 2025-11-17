@@ -5,18 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] [readonly] 
-**name** | **str** |  | [optional] [readonly] 
-**identity_name** | **str** |  | [optional] [readonly] 
-**created_at** | **str** |  | [optional] [readonly] 
-**org_admin** | **bool** |  | [optional] 
-**org_id** | **str** |  | [optional] [readonly] 
-**user_id** | **str** |  | [optional] [readonly] 
-**group_id** | **str** |  | [optional] [readonly] 
-**identity_type** | **str** |  | [optional] [readonly] 
-**limits_id** | **str** |  | [optional] [readonly] 
-**avatar_url** | **str** |  | [optional] [readonly] 
-**is_multiple_ssh_keys** | **bool** |  | [optional] [readonly] 
+**id** | **str** |  | [readonly] 
+**name** | **str** |  | [readonly] 
+**identity_name** | **str** |  | [readonly] 
+**created_at** | **str** |  | [readonly] 
+**org_admin** | **bool** |  | [readonly] 
+**org_id** | **str** |  | [readonly] 
+**user_id** | **str** |  | [readonly] 
+**group_id** | **str** |  | [readonly] 
+**identity_type** | [**IdentityType**](IdentityType.md) |  | 
+**limits_id** | **str** |  | [readonly] 
+**avatar_url** | **str** |  | [readonly] 
+**is_multiple_ssh_keys** | **bool** |  | [readonly] 
 
 ## Example
 

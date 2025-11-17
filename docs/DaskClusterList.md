@@ -5,7 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dask_clusters** | [**List[DaskCluster]**](DaskCluster.md) |  | 
+**dask_clusters** | [**List[DaskCluster]**](DaskCluster.md) |  | [readonly] 
+**prev_key** | **str** |  | [optional] [readonly] 
+**next_key** | **str** |  | [optional] [readonly] 
 
 ## Example
 

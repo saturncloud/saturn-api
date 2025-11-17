@@ -1,0 +1,79 @@
+from __future__ import annotations
+import json
+import pprint
+{{#vendorExtensions.x-py-other-imports}}
+{{{.}}}
+{{/vendorExtensions.x-py-other-imports}}
+{{#vendorExtensions.x-py-model-imports}}
+{{{.}}}
+{{/vendorExtensions.x-py-model-imports}}
+from pydantic import RootModel, StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
+from typing_extensions import Literal, Self, TypeVar
+
+{{#lambda.uppercase}}{{{classname}}}{{/lambda.uppercase}}_ONE_OF_SCHEMAS = [{{#oneOf}}"{{.}}"{{^-last}}, {{/-last}}{{/oneOf}}]
+
+T = TypeVar("T", {{#oneOf}}{{.}}{{^-last}}, {{/-last}}{{/oneOf}}, default=Union[{{#oneOf}}{{.}}{{^-last}}, {{/-last}}{{/oneOf}}])
+
+class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}RootModel[T]{{/parent}}):
+    """
+    {{{description}}}{{^description}}{{{classname}}}{{/description}}
+    """
+    model_config = ConfigDict(
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
+{{#discriminator}}
+    root: T = Field(discriminator="{{discriminator.propertyBaseName}}")
+{{/discriminator}}
+{{^discriminator}}
+    root: T
+{{/discriminator}}
+
+    @classmethod
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+        return cls.from_json(json.dumps(obj))
+
+    @classmethod
+    {{#isNullable}}
+    def from_json(cls, json_str: Optional[str]) -> Self:
+    {{/isNullable}}
+    {{^isNullable}}
+    def from_json(cls, json_str: str) -> Self:
+    {{/isNullable}}
+        """Returns the object represented by the json string"""
+        {{#isNullable}}
+        if json_str is None:
+            return cls.model_validate(None)
+        {{/isNullable}}
+        return cls.model_validate_json(json_str)
+
+    def to_json(self) -> str:
+        """Returns the JSON representation of the actual instance"""
+        if self.root is None:
+            return "null"
+
+        return self.model_dump_json()
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Returns the dict representation of the actual instance"""
+        if self.root is None:
+            return None
+
+        if hasattr(self.root, "to_dict") and callable(self.root.to_dict):
+            return self.root.to_dict()
+        else:
+            return self.model_dump()
+
+    def to_str(self) -> str:
+        """Returns the string representation of the actual instance"""
+        return pprint.pformat(self.model_dump())
+
+{{#vendorExtensions.x-py-postponed-model-imports.size}}
+{{#vendorExtensions.x-py-postponed-model-imports}}
+{{{.}}}
+{{/vendorExtensions.x-py-postponed-model-imports}}
+# TODO: Rewrite to not use raise_errors
+{{classname}}.model_rebuild(raise_errors=False)
+{{/vendorExtensions.x-py-postponed-model-imports.size}}

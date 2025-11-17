@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **container_port** | **int** |  | [readonly] 
 **visibility** | **str** |  | [readonly] 
 **id** | **str** |  | [readonly] 
-**url** | **object** |  | [readonly] 
+**url** | **str** |  | [readonly] 
 **required** | **bool** |  | [readonly] 
 **daskcluster_id** | **str** |  | [optional] [readonly] 
 **deployment_id** | **str** |  | [optional] [readonly] 

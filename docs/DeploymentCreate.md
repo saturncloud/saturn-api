@@ -5,28 +5,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owner_id** | **str** |  | [optional] 
-**owner_name** | **str** |  | [optional] 
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**org_id** | **str** |  | [optional] 
 **name** | **str** |  | 
-**command** | **str** |  | 
-**description** | **str** |  | [optional] 
+**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
+**description** | **str** |  | [optional] [default to '']
+**tags** | **Dict[str, str]** |  | [optional] 
 **instance_size** | **str** |  | [optional] 
-**image** | **str** |  | [optional] 
+**image_uri** | **str** |  | [optional] 
 **image_tag_id** | **str** |  | [optional] 
-**image_enforce_trusted** | **bool** |  | [optional] 
-**extra_packages** | [**ExtraPackages**](ExtraPackages.md) |  | [optional] 
-**scale** | **int** |  | [optional] 
-**start_script** | **str** |  | [optional] 
+**image_enforce_trusted** | **bool** |  | [optional] [default to True]
 **environment_variables** | **Dict[str, str]** |  | [optional] 
-**working_dir** | **str** |  | [optional] 
-**start_ssh** | **bool** |  | [optional] 
-**is_spot** | **bool** |  | [optional] 
-**healthcheck** | **str** |  | [optional] 
+**external_repo_attachments** | [**List[ExternalRepoAttachmentNested]**](ExternalRepoAttachmentNested.md) |  | [optional] 
+**extra_packages** | [**ExtraPackages**](ExtraPackages.md) |  | [optional] 
+**start_script** | **str** |  | [optional] 
+**working_dir** | **str** |  | [optional] [default to '/home/jovyan/workspace']
+**is_spot** | **bool** |  | [optional] [default to False]
+**start_dind** | **bool** |  | [optional] [default to False]
+**command** | **str** |  | 
+**scale** | **int** |  | [optional] [default to 1]
 **subdomain** | **str** |  | [optional] 
-**start_dind** | **bool** |  | [optional] 
+**healthcheck** | **str** |  | [optional] 
+**start_ssh** | **bool** |  | [optional] [default to False]
 
 ## Example
 

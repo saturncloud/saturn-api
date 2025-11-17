@@ -1,0 +1,403 @@
+# saturn_api.SshPublicKeysApi
+
+All URIs are relative to *http://localhost*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create**](SshPublicKeysApi.md#create) | **POST** /api/ssh_public_keys | 
+[**delete**](SshPublicKeysApi.md#delete) | **DELETE** /api/ssh_public_keys/{ssh_publickey_id} | 
+[**get**](SshPublicKeysApi.md#get) | **GET** /api/ssh_public_keys/{ssh_publickey_id} | 
+[**list**](SshPublicKeysApi.md#list) | **GET** /api/ssh_public_keys | 
+[**update**](SshPublicKeysApi.md#update) | **PATCH** /api/ssh_public_keys/{ssh_publickey_id} | 
+
+
+# **create**
+> SSHPublicKey create(ssh_public_key_create)
+
+Create ssh public key
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.ssh_public_key import SSHPublicKey
+from saturn_api.models.ssh_public_key_create import SSHPublicKeyCreate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.SshPublicKeysApi(api_client)
+    ssh_public_key_create = saturn_api.SSHPublicKeyCreate() # SSHPublicKeyCreate | 
+
+    try:
+        api_response = await api_instance.create(ssh_public_key_create)
+        print("The response of SshPublicKeysApi->create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SshPublicKeysApi->create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ssh_public_key_create** | [**SSHPublicKeyCreate**](SSHPublicKeyCreate.md)|  | 
+
+### Return type
+
+[**SSHPublicKey**](SSHPublicKey.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete**
+> delete(ssh_publickey_id)
+
+Delete ssh public key
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.SshPublicKeysApi(api_client)
+    ssh_publickey_id = 'ssh_publickey_id_example' # str | 
+
+    try:
+        await api_instance.delete(ssh_publickey_id)
+    except Exception as e:
+        print("Exception when calling SshPublicKeysApi->delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ssh_publickey_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get**
+> SSHPublicKey get(ssh_publickey_id)
+
+Get ssh public key
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.ssh_public_key import SSHPublicKey
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.SshPublicKeysApi(api_client)
+    ssh_publickey_id = 'ssh_publickey_id_example' # str | 
+
+    try:
+        api_response = await api_instance.get(ssh_publickey_id)
+        print("The response of SshPublicKeysApi->get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SshPublicKeysApi->get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ssh_publickey_id** | **str**|  | 
+
+### Return type
+
+[**SSHPublicKey**](SSHPublicKey.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list**
+> SSHPublicKeyList list(user_id=user_id, group_id=group_id, identity=identity, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+
+List ssh public keys
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.ssh_public_key_list import SSHPublicKeyList
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.SshPublicKeysApi(api_client)
+    user_id = 'user_id_example' # str |  (optional)
+    group_id = 'group_id_example' # str |  (optional)
+    identity = 'identity_example' # str |  (optional)
+    name = 'name_example' # str |  (optional)
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
+    descending = False # bool |  (optional) (default to False)
+
+    try:
+        api_response = await api_instance.list(user_id=user_id, group_id=group_id, identity=identity, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        print("The response of SshPublicKeysApi->list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SshPublicKeysApi->list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**|  | [optional] 
+ **group_id** | **str**|  | [optional] 
+ **identity** | **str**|  | [optional] 
+ **name** | **str**|  | [optional] 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
+ **descending** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**SSHPublicKeyList**](SSHPublicKeyList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update**
+> SSHPublicKey update(ssh_publickey_id, ssh_public_key_update)
+
+Update ssh public key
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.ssh_public_key import SSHPublicKey
+from saturn_api.models.ssh_public_key_update import SSHPublicKeyUpdate
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.SshPublicKeysApi(api_client)
+    ssh_publickey_id = 'ssh_publickey_id_example' # str | 
+    ssh_public_key_update = saturn_api.SSHPublicKeyUpdate() # SSHPublicKeyUpdate | 
+
+    try:
+        api_response = await api_instance.update(ssh_publickey_id, ssh_public_key_update)
+        print("The response of SshPublicKeysApi->update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SshPublicKeysApi->update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ssh_publickey_id** | **str**|  | 
+ **ssh_public_key_update** | [**SSHPublicKeyUpdate**](SSHPublicKeyUpdate.md)|  | 
+
+### Return type
+
+[**SSHPublicKey**](SSHPublicKey.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
