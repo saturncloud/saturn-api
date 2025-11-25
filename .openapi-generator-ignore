@@ -22,5 +22,8 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
+# Don't overwrite .gitignore
+.gitignore
+
 # Ignore test stubs
 test/
