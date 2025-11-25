@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](SecretsApi.md#create) | **POST** /api/secrets | 
-[**delete**](SecretsApi.md#delete) | **DELETE** /api/secrets/{secret_id} | 
-[**get**](SecretsApi.md#get) | **GET** /api/secrets/{secret_id} | 
-[**list**](SecretsApi.md#list) | **GET** /api/secrets | 
-[**update**](SecretsApi.md#update) | **PATCH** /api/secrets/{secret_id} | 
+[**create**](SecretsApi.md#create) | **POST** /api/secrets | Create secret
+[**delete**](SecretsApi.md#delete) | **DELETE** /api/secrets/{secret_id} | Delete secret
+[**get**](SecretsApi.md#get) | **GET** /api/secrets/{secret_id} | Get secret
+[**list**](SecretsApi.md#list) | **GET** /api/secrets | List secrets
+[**update**](SecretsApi.md#update) | **PATCH** /api/secrets/{secret_id} | Update secret
 
 
 # **create**
 > Secret create(secret_create)
 
 Create secret
+
+Create a new secret.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_create = saturn_api.SecretCreate() # SecretCreate | 
 
     try:
+        # Create secret
         api_response = await api_instance.create(secret_create)
         print("The response of SecretsApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete secret
 
+Delete a secret.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_id = 'secret_id_example' # str | 
 
     try:
+        # Delete secret
         await api_instance.delete(secret_id)
     except Exception as e:
         print("Exception when calling SecretsApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get secret
 
+Get a secret.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_id = 'secret_id_example' # str | 
 
     try:
+        # Get secret
         api_response = await api_instance.get(secret_id)
         print("The response of SecretsApi->get:\n")
         pprint(api_response)
@@ -238,6 +247,8 @@ Name | Type | Description  | Notes
 > SecretList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, access=access, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List secrets
+
+Paginated list of secrets.
 
 ### Example
 
@@ -284,6 +295,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List secrets
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, access=access, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of SecretsApi->list:\n")
         pprint(api_response)
@@ -337,6 +349,8 @@ Name | Type | Description  | Notes
 
 Update secret
 
+Update a secret.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -372,6 +386,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_update = saturn_api.SecretUpdate() # SecretUpdate | 
 
     try:
+        # Update secret
         api_response = await api_instance.update(secret_id, secret_update)
         print("The response of SecretsApi->update:\n")
         pprint(api_response)

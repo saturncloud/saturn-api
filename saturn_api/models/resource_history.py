@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from saturn_api.models.pod_history import PodHistory
 from typing import Literal, Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class ResourceHistory(BaseModel):
     """
     ResourceHistory
     """ # noqa: E501
-    pods: Optional[List[PodHistory]] = None
+    pods: List[PodHistory]
     __properties: ClassVar[List[str]] = ["pods"]
 
     model_config = ConfigDict(
@@ -60,8 +60,10 @@ class ResourceHistory(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "pods",
         ])
 
         _dict = self.model_dump(

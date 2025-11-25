@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ExternalRepoAttachmentsApi.md#create) | **POST** /api/external_repo_attachments | 
-[**delete**](ExternalRepoAttachmentsApi.md#delete) | **DELETE** /api/external_repo_attachments/{external_repo_attachment_id} | 
-[**get**](ExternalRepoAttachmentsApi.md#get) | **GET** /api/external_repo_attachments/{external_repo_attachment_id} | 
-[**list**](ExternalRepoAttachmentsApi.md#list) | **GET** /api/external_repo_attachments | 
-[**update**](ExternalRepoAttachmentsApi.md#update) | **PATCH** /api/external_repo_attachments/{external_repo_attachment_id} | 
+[**create**](ExternalRepoAttachmentsApi.md#create) | **POST** /api/external_repo_attachments | Create external repo attachment
+[**delete**](ExternalRepoAttachmentsApi.md#delete) | **DELETE** /api/external_repo_attachments/{external_repo_attachment_id} | Delete external repo attachment
+[**get**](ExternalRepoAttachmentsApi.md#get) | **GET** /api/external_repo_attachments/{external_repo_attachment_id} | Get external repo attachment
+[**list**](ExternalRepoAttachmentsApi.md#list) | **GET** /api/external_repo_attachments | List external repo attachments
+[**update**](ExternalRepoAttachmentsApi.md#update) | **PATCH** /api/external_repo_attachments/{external_repo_attachment_id} | Update external repo attachment
 
 
 # **create**
 > ExternalRepoAttachment create(external_repo_attachment_create)
 
 Create external repo attachment
+
+Create a new external repo attachment.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_attachment_create = saturn_api.ExternalRepoAttachmentCreate() # ExternalRepoAttachmentCreate | 
 
     try:
+        # Create external repo attachment
         api_response = await api_instance.create(external_repo_attachment_create)
         print("The response of ExternalRepoAttachmentsApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete external repo attachment
 
+Delete an external repo attachment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_attachment_id = 'external_repo_attachment_id_example' # str | 
 
     try:
+        # Delete external repo attachment
         await api_instance.delete(external_repo_attachment_id)
     except Exception as e:
         print("Exception when calling ExternalRepoAttachmentsApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get external repo attachment
 
+Get an external repo attachment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_attachment_id = 'external_repo_attachment_id_example' # str | 
 
     try:
+        # Get external repo attachment
         api_response = await api_instance.get(external_repo_attachment_id)
         print("The response of ExternalRepoAttachmentsApi->get:\n")
         pprint(api_response)
@@ -239,6 +248,8 @@ Name | Type | Description  | Notes
 
 List external repo attachments
 
+Paginated list of external repo attachments.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -278,6 +289,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List external repo attachments
         api_response = await api_instance.list(job_id=job_id, deployment_id=deployment_id, workspace_id=workspace_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of ExternalRepoAttachmentsApi->list:\n")
         pprint(api_response)
@@ -326,6 +338,8 @@ Name | Type | Description  | Notes
 
 Update external repo attachment
 
+Update an external repo attachment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -361,6 +375,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_attachment_update = saturn_api.ExternalRepoAttachmentUpdate() # ExternalRepoAttachmentUpdate | 
 
     try:
+        # Update external repo attachment
         api_response = await api_instance.update(external_repo_attachment_id, external_repo_attachment_update)
         print("The response of ExternalRepoAttachmentsApi->update:\n")
         pprint(api_response)

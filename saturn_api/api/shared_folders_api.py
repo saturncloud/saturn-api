@@ -60,9 +60,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolder:
-        """create
+        """Create shared folder
 
-        Create shared folder
+        Create a new shared folder.
 
         :param shared_folder_create: (required)
         :type shared_folder_create: SharedFolderCreate
@@ -127,9 +127,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolder]:
-        """create
+        """Create shared folder
 
-        Create shared folder
+        Create a new shared folder.
 
         :param shared_folder_create: (required)
         :type shared_folder_create: SharedFolderCreate
@@ -194,9 +194,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create shared folder
 
-        Create shared folder
+        Create a new shared folder.
 
         :param shared_folder_create: (required)
         :type shared_folder_create: SharedFolderCreate
@@ -334,9 +334,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete shared folder
 
-        Delete shared folder
+        Delete a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -401,9 +401,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete shared folder
 
-        Delete shared folder
+        Delete a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -468,9 +468,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete shared folder
 
-        Delete shared folder
+        Delete a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -588,9 +588,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolder:
-        """get
+        """Get shared folder
 
-        Get shared folder
+        Get a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -655,9 +655,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolder]:
-        """get
+        """Get shared folder
 
-        Get shared folder
+        Get a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -722,9 +722,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get shared folder
 
-        Get shared folder
+        Get a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -835,7 +835,7 @@ class SharedFoldersApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -860,9 +860,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolderList:
-        """list
+        """List shared folders
 
-        List shared folders
+        Paginated list of shared folders.
 
         :param owner_name:
         :type owner_name: str
@@ -946,7 +946,7 @@ class SharedFoldersApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -971,9 +971,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolderList]:
-        """list
+        """List shared folders
 
-        List shared folders
+        Paginated list of shared folders.
 
         :param owner_name:
         :type owner_name: str
@@ -1057,7 +1057,7 @@ class SharedFoldersApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -1082,9 +1082,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List shared folders
 
-        List shared folders
+        Paginated list of shared folders.
 
         :param owner_name:
         :type owner_name: str
@@ -1300,9 +1300,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolder:
-        """update
+        """Update shared folder
 
-        Update shared folder
+        Update a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -1371,9 +1371,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolder]:
-        """update
+        """Update shared folder
 
-        Update shared folder
+        Update a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str
@@ -1442,9 +1442,9 @@ class SharedFoldersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update shared folder
 
-        Update shared folder
+        Update a shared folder.
 
         :param shared_folder_id: (required)
         :type shared_folder_id: str

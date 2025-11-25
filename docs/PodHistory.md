@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pod_name** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
-**last_seen** | **str** |  | [optional] 
-**start_time** | **str** |  | [optional] 
-**end_time** | **str** |  | [optional] 
-**label_job_name** | **str** |  | [optional] 
+**pod_name** | **str** |  | [readonly] 
+**status** | **str** |  | [readonly] 
+**last_seen** | **str** |  | [readonly] 
+**start_time** | **str** |  | [readonly] 
+**end_time** | **str** |  | [readonly] 
+**label_job_name** | **str** |  | [optional] [readonly] 
 
 ## Example
 

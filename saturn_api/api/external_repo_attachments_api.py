@@ -59,9 +59,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepoAttachment:
-        """create
+        """Create external repo attachment
 
-        Create external repo attachment
+        Create a new external repo attachment.
 
         :param external_repo_attachment_create: (required)
         :type external_repo_attachment_create: ExternalRepoAttachmentCreate
@@ -126,9 +126,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepoAttachment]:
-        """create
+        """Create external repo attachment
 
-        Create external repo attachment
+        Create a new external repo attachment.
 
         :param external_repo_attachment_create: (required)
         :type external_repo_attachment_create: ExternalRepoAttachmentCreate
@@ -193,9 +193,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create external repo attachment
 
-        Create external repo attachment
+        Create a new external repo attachment.
 
         :param external_repo_attachment_create: (required)
         :type external_repo_attachment_create: ExternalRepoAttachmentCreate
@@ -333,9 +333,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete external repo attachment
 
-        Delete external repo attachment
+        Delete an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -400,9 +400,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete external repo attachment
 
-        Delete external repo attachment
+        Delete an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -467,9 +467,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete external repo attachment
 
-        Delete external repo attachment
+        Delete an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -587,9 +587,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepoAttachment:
-        """get
+        """Get external repo attachment
 
-        Get external repo attachment
+        Get an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -654,9 +654,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepoAttachment]:
-        """get
+        """Get external repo attachment
 
-        Get external repo attachment
+        Get an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -721,9 +721,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get external repo attachment
 
-        Get external repo attachment
+        Get an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -854,9 +854,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepoAttachmentList:
-        """list
+        """List external repo attachments
 
-        List external repo attachments
+        Paginated list of external repo attachments.
 
         :param job_id:
         :type job_id: str
@@ -945,9 +945,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepoAttachmentList]:
-        """list
+        """List external repo attachments
 
-        List external repo attachments
+        Paginated list of external repo attachments.
 
         :param job_id:
         :type job_id: str
@@ -1036,9 +1036,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List external repo attachments
 
-        List external repo attachments
+        Paginated list of external repo attachments.
 
         :param job_id:
         :type job_id: str
@@ -1214,9 +1214,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepoAttachment:
-        """update
+        """Update external repo attachment
 
-        Update external repo attachment
+        Update an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -1285,9 +1285,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepoAttachment]:
-        """update
+        """Update external repo attachment
 
-        Update external repo attachment
+        Update an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str
@@ -1356,9 +1356,9 @@ class ExternalRepoAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update external repo attachment
 
-        Update external repo attachment
+        Update an external repo attachment.
 
         :param external_repo_attachment_id: (required)
         :type external_repo_attachment_id: str

@@ -4,43 +4,45 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](JobsApi.md#create) | **POST** /api/jobs | 
-[**create_resource_template**](JobsApi.md#create_resource_template) | **POST** /api/jobs/{job_id}/template | 
-[**create_secret_attachment**](JobsApi.md#create_secret_attachment) | **POST** /api/jobs/{job_id}/secrets | 
-[**create_service_account_attachment**](JobsApi.md#create_service_account_attachment) | **PUT** /api/jobs/{job_id}/service_account | 
-[**delete**](JobsApi.md#delete) | **DELETE** /api/jobs/{job_id} | 
-[**delete_secret_attachment**](JobsApi.md#delete_secret_attachment) | **DELETE** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
-[**delete_service_account_attachment**](JobsApi.md#delete_service_account_attachment) | **DELETE** /api/jobs/{job_id}/service_account | 
-[**get**](JobsApi.md#get) | **GET** /api/jobs/{job_id} | 
-[**get_cluster_history**](JobsApi.md#get_cluster_history) | **GET** /api/jobs/{job_id}/clusters | 
-[**get_log_history**](JobsApi.md#get_log_history) | **GET** /api/jobs/{job_id}/logs | 
-[**get_metrics**](JobsApi.md#get_metrics) | **GET** /api/jobs/{job_id}/metrics | 
-[**get_recipe**](JobsApi.md#get_recipe) | **GET** /api/jobs/{job_id}/recipe | 
-[**get_resource_template**](JobsApi.md#get_resource_template) | **GET** /api/jobs/{job_id}/template | 
-[**get_runtime_summary**](JobsApi.md#get_runtime_summary) | **GET** /api/jobs/{job_id}/runtimesummary | 
-[**get_secret_attachment**](JobsApi.md#get_secret_attachment) | **GET** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
-[**get_server_options**](JobsApi.md#get_server_options) | **GET** /api/jobs/info | 
-[**get_service_account_attachment**](JobsApi.md#get_service_account_attachment) | **GET** /api/jobs/{job_id}/service_account | 
-[**get_status_history**](JobsApi.md#get_status_history) | **GET** /api/jobs/{job_id}/history | 
-[**get_token_info**](JobsApi.md#get_token_info) | **GET** /api/jobs/{job_id}/token | 
-[**list**](JobsApi.md#list) | **GET** /api/jobs | 
-[**list_secret_attachments**](JobsApi.md#list_secret_attachments) | **GET** /api/jobs/{job_id}/secrets | 
-[**restart**](JobsApi.md#restart) | **POST** /api/jobs/{job_id}/restart | 
-[**rotate_token**](JobsApi.md#rotate_token) | **POST** /api/jobs/{job_id}/token | 
-[**schedule**](JobsApi.md#schedule) | **POST** /api/jobs/{job_id}/schedule | 
-[**start**](JobsApi.md#start) | **POST** /api/jobs/{job_id}/start | 
-[**stop**](JobsApi.md#stop) | **POST** /api/jobs/{job_id}/stop | 
-[**unschedule**](JobsApi.md#unschedule) | **POST** /api/jobs/{job_id}/unschedule | 
-[**update**](JobsApi.md#update) | **PATCH** /api/jobs/{job_id} | 
-[**update_resource_template**](JobsApi.md#update_resource_template) | **PATCH** /api/jobs/{job_id}/template | 
-[**update_secret_attachment**](JobsApi.md#update_secret_attachment) | **PATCH** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
-[**update_token**](JobsApi.md#update_token) | **PATCH** /api/jobs/{job_id}/token | 
+[**create**](JobsApi.md#create) | **POST** /api/jobs | Create job
+[**create_resource_template**](JobsApi.md#create_resource_template) | **POST** /api/jobs/{job_id}/template | Create job resource template
+[**create_secret_attachment**](JobsApi.md#create_secret_attachment) | **POST** /api/jobs/{job_id}/secrets | Create job secret attachment
+[**create_service_account_attachment**](JobsApi.md#create_service_account_attachment) | **PUT** /api/jobs/{job_id}/service_account | Create job service account attachment
+[**delete**](JobsApi.md#delete) | **DELETE** /api/jobs/{job_id} | Delete job
+[**delete_secret_attachment**](JobsApi.md#delete_secret_attachment) | **DELETE** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Delete job secret attachment
+[**delete_service_account_attachment**](JobsApi.md#delete_service_account_attachment) | **DELETE** /api/jobs/{job_id}/service_account | Delete job service account attachment
+[**get**](JobsApi.md#get) | **GET** /api/jobs/{job_id} | Get job
+[**get_cluster_history**](JobsApi.md#get_cluster_history) | **GET** /api/jobs/{job_id}/clusters | Get job cluster history
+[**get_logs**](JobsApi.md#get_logs) | **GET** /api/jobs/{job_id}/logs | Get job historical logs
+[**get_metrics**](JobsApi.md#get_metrics) | **GET** /api/jobs/{job_id}/metrics | Get job metrics
+[**get_pod_history**](JobsApi.md#get_pod_history) | **GET** /api/jobs/{job_id}/history | Get job pod history
+[**get_recipe**](JobsApi.md#get_recipe) | **GET** /api/jobs/{job_id}/recipe | Get job recipe
+[**get_resource_template**](JobsApi.md#get_resource_template) | **GET** /api/jobs/{job_id}/template | Get job resource template
+[**get_runtime_summary**](JobsApi.md#get_runtime_summary) | **GET** /api/jobs/{job_id}/runtimesummary | Get job runtime summary
+[**get_secret_attachment**](JobsApi.md#get_secret_attachment) | **GET** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Get job secret attachment
+[**get_server_options**](JobsApi.md#get_server_options) | **GET** /api/jobs/info | Get job server options
+[**get_service_account_attachment**](JobsApi.md#get_service_account_attachment) | **GET** /api/jobs/{job_id}/service_account | Get job service account attachment
+[**get_token_info**](JobsApi.md#get_token_info) | **GET** /api/jobs/{job_id}/token | Get job API token info
+[**list**](JobsApi.md#list) | **GET** /api/jobs | List jobs
+[**list_secret_attachments**](JobsApi.md#list_secret_attachments) | **GET** /api/jobs/{job_id}/secrets | List job secret attachments
+[**restart**](JobsApi.md#restart) | **POST** /api/jobs/{job_id}/restart | Restart job
+[**rotate_token**](JobsApi.md#rotate_token) | **POST** /api/jobs/{job_id}/token | Rotate job API token
+[**schedule**](JobsApi.md#schedule) | **POST** /api/jobs/{job_id}/schedule | Activate job cron schedule
+[**start**](JobsApi.md#start) | **POST** /api/jobs/{job_id}/start | Start job
+[**stop**](JobsApi.md#stop) | **POST** /api/jobs/{job_id}/stop | Stop job
+[**unschedule**](JobsApi.md#unschedule) | **POST** /api/jobs/{job_id}/unschedule | Deactivate job cron schedule
+[**update**](JobsApi.md#update) | **PATCH** /api/jobs/{job_id} | Update job
+[**update_resource_template**](JobsApi.md#update_resource_template) | **PATCH** /api/jobs/{job_id}/template | Update job resource template
+[**update_secret_attachment**](JobsApi.md#update_secret_attachment) | **PATCH** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Update job secret attachment
+[**update_token**](JobsApi.md#update_token) | **PATCH** /api/jobs/{job_id}/token | Update job API token
 
 
 # **create**
 > Job create(job_create)
 
 Create job
+
+Create a new job.
 
 ### Example
 
@@ -76,6 +78,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_create = saturn_api.JobCreate() # JobCreate | 
 
     try:
+        # Create job
         api_response = await api_instance.create(job_create)
         print("The response of JobsApi->create:\n")
         pprint(api_response)
@@ -151,6 +154,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Create job resource template
         api_response = await api_instance.create_resource_template(job_id)
         print("The response of JobsApi->create_resource_template:\n")
         pprint(api_response)
@@ -228,6 +232,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_create = saturn_api.SecretAttachmentCreate() # SecretAttachmentCreate | 
 
     try:
+        # Create job secret attachment
         api_response = await api_instance.create_secret_attachment(job_id, secret_attachment_create)
         print("The response of JobsApi->create_secret_attachment:\n")
         pprint(api_response)
@@ -306,6 +311,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_create_attachment = saturn_api.ServiceAccountCreateAttachment() # ServiceAccountCreateAttachment | 
 
     try:
+        # Create job service account attachment
         api_response = await api_instance.create_service_account_attachment(job_id, service_account_create_attachment)
         print("The response of JobsApi->create_service_account_attachment:\n")
         pprint(api_response)
@@ -349,6 +355,8 @@ Name | Type | Description  | Notes
 
 Delete job
 
+Delete a job.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -382,6 +390,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     allow_active = False # bool |  (optional) (default to False)
 
     try:
+        # Delete job
         await api_instance.delete(job_id, allow_active=allow_active)
     except Exception as e:
         print("Exception when calling JobsApi->delete: %s\n" % e)
@@ -456,6 +465,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_id = 'secret_attachment_id_example' # str | 
 
     try:
+        # Delete job secret attachment
         await api_instance.delete_secret_attachment(job_id, secret_attachment_id)
     except Exception as e:
         print("Exception when calling JobsApi->delete_secret_attachment: %s\n" % e)
@@ -529,6 +539,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Delete job service account attachment
         await api_instance.delete_service_account_attachment(job_id)
     except Exception as e:
         print("Exception when calling JobsApi->delete_service_account_attachment: %s\n" % e)
@@ -569,6 +580,8 @@ void (empty response body)
 
 Get job
 
+Get a job.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -602,6 +615,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Get job
         api_response = await api_instance.get(job_id)
         print("The response of JobsApi->get:\n")
         pprint(api_response)
@@ -642,7 +656,9 @@ Name | Type | Description  | Notes
 # **get_cluster_history**
 > ResourceClusters get_cluster_history(job_id)
 
-Get clusters that a job has run on
+Get job cluster history
+
+Get a list of clusters that the job has recently run on.
 
 ### Example
 
@@ -677,6 +693,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Get job cluster history
         api_response = await api_instance.get_cluster_history(job_id)
         print("The response of JobsApi->get_cluster_history:\n")
         pprint(api_response)
@@ -714,10 +731,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_log_history**
-> HistoricLogs get_log_history(job_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
+# **get_logs**
+> HistoricLogList get_logs(job_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
 
 Get job historical logs
+
+Historical record of logs from the resource.
 
 ### Example
 
@@ -725,7 +744,7 @@ Get job historical logs
 
 ```python
 import saturn_api
-from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -752,15 +771,17 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
     pod_name = 'pod_name_example' # str |  (optional)
     cluster = 'cluster_example' # str |  (optional)
-    first_key = 'first_key_example' # str |  (optional)
-    last_key = 'last_key_example' # str |  (optional)
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
 
     try:
-        api_response = await api_instance.get_log_history(job_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
-        print("The response of JobsApi->get_log_history:\n")
+        # Get job historical logs
+        api_response = await api_instance.get_logs(job_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of JobsApi->get_logs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling JobsApi->get_log_history: %s\n" % e)
+        print("Exception when calling JobsApi->get_logs: %s\n" % e)
 ```
 
 
@@ -773,12 +794,13 @@ Name | Type | Description  | Notes
  **job_id** | **str**|  | 
  **pod_name** | **str**|  | [optional] 
  **cluster** | **str**|  | [optional] 
- **first_key** | **str**|  | [optional] 
- **last_key** | **str**|  | [optional] 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-[**HistoricLogs**](HistoricLogs.md)
+[**HistoricLogList**](HistoricLogList.md)
 
 ### Authorization
 
@@ -800,7 +822,9 @@ Name | Type | Description  | Notes
 # **get_metrics**
 > Metrics get_metrics(job_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
 
-Get job hardware metrics
+Get job metrics
+
+Hardware utilization metrics.
 
 ### Example
 
@@ -840,6 +864,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     cluster = 'cluster_example' # str |  (optional)
 
     try:
+        # Get job metrics
         api_response = await api_instance.get_metrics(job_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
         print("The response of JobsApi->get_metrics:\n")
         pprint(api_response)
@@ -864,6 +889,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Metrics**](Metrics.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_pod_history**
+> ResourceHistory get_pod_history(job_id, cluster=cluster)
+
+Get job pod history
+
+Get history of pods run for the job.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_history import ResourceHistory
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    cluster = 'cluster_example' # str |  (optional)
+
+    try:
+        # Get job pod history
+        api_response = await api_instance.get_pod_history(job_id, cluster=cluster)
+        print("The response of JobsApi->get_pod_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->get_pod_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **cluster** | **str**|  | [optional] 
+
+### Return type
+
+[**ResourceHistory**](ResourceHistory.md)
 
 ### Authorization
 
@@ -921,6 +1026,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     as_template = False # bool |  (optional) (default to False)
 
     try:
+        # Get job recipe
         api_response = await api_instance.get_recipe(job_id, as_template=as_template)
         print("The response of JobsApi->get_recipe:\n")
         pprint(api_response)
@@ -997,6 +1103,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Get job resource template
         api_response = await api_instance.get_resource_template(job_id)
         print("The response of JobsApi->get_resource_template:\n")
         pprint(api_response)
@@ -1039,6 +1146,8 @@ Name | Type | Description  | Notes
 
 Get job runtime summary
 
+Summary of the current runtime status.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1073,6 +1182,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     details = False # bool |  (optional) (default to False)
 
     try:
+        # Get job runtime summary
         api_response = await api_instance.get_runtime_summary(job_id, details=details)
         print("The response of JobsApi->get_runtime_summary:\n")
         pprint(api_response)
@@ -1150,6 +1260,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_id = 'secret_attachment_id_example' # str | 
 
     try:
+        # Get job secret attachment
         api_response = await api_instance.get_secret_attachment(job_id, secret_attachment_id)
         print("The response of JobsApi->get_secret_attachment:\n")
         pprint(api_response)
@@ -1225,6 +1336,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.JobsApi(api_client)
 
     try:
+        # Get job server options
         api_response = await api_instance.get_server_options()
         print("The response of JobsApi->get_server_options:\n")
         pprint(api_response)
@@ -1297,6 +1409,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Get job service account attachment
         api_response = await api_instance.get_service_account_attachment(job_id)
         print("The response of JobsApi->get_service_account_attachment:\n")
         pprint(api_response)
@@ -1334,87 +1447,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_status_history**
-> ResourceHistory get_status_history(job_id, cluster=cluster)
-
-Get job status history
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.resource_history import ResourceHistory
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth
-configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.JobsApi(api_client)
-    job_id = 'job_id_example' # str | 
-    cluster = 'cluster_example' # str |  (optional)
-
-    try:
-        api_response = await api_instance.get_status_history(job_id, cluster=cluster)
-        print("The response of JobsApi->get_status_history:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling JobsApi->get_status_history: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **job_id** | **str**|  | 
- **cluster** | **str**|  | [optional] 
-
-### Return type
-
-[**ResourceHistory**](ResourceHistory.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Ok |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_token_info**
 > ResourceTokenInfo get_token_info(job_id)
 
-Get job resource API token info
+Get job API token info
 
 ### Example
 
@@ -1449,6 +1485,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Get job API token info
         api_response = await api_instance.get_token_info(job_id)
         print("The response of JobsApi->get_token_info:\n")
         pprint(api_response)
@@ -1490,6 +1527,8 @@ Name | Type | Description  | Notes
 > JobList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List jobs
+
+Paginated list of jobs.
 
 ### Example
 
@@ -1534,6 +1573,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List jobs
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of JobsApi->list:\n")
         pprint(api_response)
@@ -1626,6 +1666,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List job secret attachments
         api_response = await api_instance.list_secret_attachments(job_id, attachment_type=attachment_type, location=location, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of JobsApi->list_secret_attachments:\n")
         pprint(api_response)
@@ -1674,6 +1715,8 @@ Name | Type | Description  | Notes
 
 Restart job
 
+Restart a running job.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1709,6 +1752,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_restart = saturn_api.JobRestart() # JobRestart |  (optional)
 
     try:
+        # Restart job
         api_response = await api_instance.restart(job_id, job_restart=job_restart)
         print("The response of JobsApi->restart:\n")
         pprint(api_response)
@@ -1750,7 +1794,9 @@ Name | Type | Description  | Notes
 # **rotate_token**
 > ResourceTokenInfo rotate_token(job_id)
 
-Rotate job resource API token. Invalidates existing token.
+Rotate job API token
+
+Invalidate existing API tokens for the job.
 
 ### Example
 
@@ -1785,6 +1831,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Rotate job API token
         api_response = await api_instance.rotate_token(job_id)
         print("The response of JobsApi->rotate_token:\n")
         pprint(api_response)
@@ -1862,6 +1909,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     cron_schedule_update = saturn_api.CronScheduleUpdate() # CronScheduleUpdate |  (optional)
 
     try:
+        # Activate job cron schedule
         api_response = await api_instance.schedule(job_id, cron_schedule_update=cron_schedule_update)
         print("The response of JobsApi->schedule:\n")
         pprint(api_response)
@@ -1905,6 +1953,8 @@ Name | Type | Description  | Notes
 
 Start job
 
+Run a job.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1940,6 +1990,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_start = saturn_api.JobStart() # JobStart |  (optional)
 
     try:
+        # Start job
         api_response = await api_instance.start(job_id, job_start=job_start)
         print("The response of JobsApi->start:\n")
         pprint(api_response)
@@ -1983,6 +2034,8 @@ Name | Type | Description  | Notes
 
 Stop job
 
+Stop a running job.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2016,6 +2069,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Stop job
         api_response = await api_instance.stop(job_id)
         print("The response of JobsApi->stop:\n")
         pprint(api_response)
@@ -2091,6 +2145,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Deactivate job cron schedule
         api_response = await api_instance.unschedule(job_id)
         print("The response of JobsApi->unschedule:\n")
         pprint(api_response)
@@ -2133,6 +2188,8 @@ Name | Type | Description  | Notes
 
 Update job
 
+Update a job.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2168,6 +2225,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_update = saturn_api.JobUpdate() # JobUpdate | 
 
     try:
+        # Update job
         api_response = await api_instance.update(job_id, job_update)
         print("The response of JobsApi->update:\n")
         pprint(api_response)
@@ -2244,6 +2302,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     job_id = 'job_id_example' # str | 
 
     try:
+        # Update job resource template
         api_response = await api_instance.update_resource_template(job_id)
         print("The response of JobsApi->update_resource_template:\n")
         pprint(api_response)
@@ -2322,6 +2381,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_update = saturn_api.SecretAttachmentUpdate() # SecretAttachmentUpdate | 
 
     try:
+        # Update job secret attachment
         api_response = await api_instance.update_secret_attachment(job_id, secret_attachment_id, secret_attachment_update)
         print("The response of JobsApi->update_secret_attachment:\n")
         pprint(api_response)
@@ -2364,7 +2424,9 @@ Name | Type | Description  | Notes
 # **update_token**
 > ResourceTokenInfo update_token(job_id, resource_token_update=resource_token_update)
 
-Update and rotate job resource API token. Invalidates existing token.
+Update job API token
+
+Update API token scope on the job. Invalidates existing tokens.
 
 ### Example
 
@@ -2401,6 +2463,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     resource_token_update = saturn_api.ResourceTokenUpdate() # ResourceTokenUpdate |  (optional)
 
     try:
+        # Update job API token
         api_response = await api_instance.update_token(job_id, resource_token_update=resource_token_update)
         print("The response of JobsApi->update_token:\n")
         pprint(api_response)

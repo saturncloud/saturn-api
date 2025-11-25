@@ -59,9 +59,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccount:
-        """create
+        """Create service account
 
-        Create service account
+        Create a new service account.
 
         :param service_account_create: (required)
         :type service_account_create: ServiceAccountCreate
@@ -126,9 +126,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccount]:
-        """create
+        """Create service account
 
-        Create service account
+        Create a new service account.
 
         :param service_account_create: (required)
         :type service_account_create: ServiceAccountCreate
@@ -193,9 +193,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create service account
 
-        Create service account
+        Create a new service account.
 
         :param service_account_create: (required)
         :type service_account_create: ServiceAccountCreate
@@ -333,9 +333,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete service account
 
-        Delete service account
+        Delete a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -400,9 +400,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete service account
 
-        Delete service account
+        Delete a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -467,9 +467,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete service account
 
-        Delete service account
+        Delete a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -587,9 +587,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccount:
-        """get
+        """Get service account
 
-        Get service account
+        Get a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -654,9 +654,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccount]:
-        """get
+        """Get service account
 
-        Get service account
+        Get a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -721,9 +721,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get service account
 
-        Get service account
+        Get a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -852,9 +852,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountList:
-        """list
+        """List service accounts
 
-        List service accounts
+        Paginated list of service accounts.
 
         :param name:
         :type name: str
@@ -935,9 +935,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountList]:
-        """list
+        """List service accounts
 
-        List service accounts
+        Paginated list of service accounts.
 
         :param name:
         :type name: str
@@ -1018,9 +1018,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List service accounts
 
-        List service accounts
+        Paginated list of service accounts.
 
         :param name:
         :type name: str
@@ -1180,9 +1180,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccount:
-        """update
+        """Update service account
 
-        Update service account
+        Update a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -1251,9 +1251,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccount]:
-        """update
+        """Update service account
 
-        Update service account
+        Update a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str
@@ -1322,9 +1322,9 @@ class ServiceAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update service account
 
-        Update service account
+        Update a service account.
 
         :param service_account_id: (required)
         :type service_account_id: str

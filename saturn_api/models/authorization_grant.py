@@ -13,82 +13,59 @@
 
 
 from __future__ import annotations
-import pprint
-import re  # noqa: F401
 import json
+import pprint
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
+from typing import Any, List, Optional
+from saturn_api.models.authorization_code_grant import AuthorizationCodeGrant
+from saturn_api.models.authorization_refresh_grant import AuthorizationRefreshGrant
+from pydantic import RootModel, StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
+from typing_extensions import Literal, Self, TypeVar
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
-from typing import Literal, Optional, Set
-from typing_extensions import Self
+AUTHORIZATIONGRANT_ONE_OF_SCHEMAS = ["AuthorizationCodeGrant", "AuthorizationRefreshGrant"]
 
-class AuthorizationGrant(BaseModel):
+T = TypeVar("T", AuthorizationCodeGrant, AuthorizationRefreshGrant, default=Union[AuthorizationCodeGrant, AuthorizationRefreshGrant])
+
+class AuthorizationGrant(RootModel[T]):
     """
     AuthorizationGrant
-    """ # noqa: E501
-    grant_type: Literal['authorization_code', 'refresh_token']
-    __properties: ClassVar[List[str]] = ["grant_type"]
-
-    @field_validator('grant_type')
-    def grant_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['authorization_code', 'refresh_token']):
-            raise ValueError("must be one of enum values ('authorization_code', 'refresh_token')")
-        return value
-
+    """
     model_config = ConfigDict(
-        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
 
+    root: T = Field(discriminator="grant_type")
 
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+    @classmethod
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+        return cls.from_json(json.dumps(obj))
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Self:
+        """Returns the object represented by the json string"""
+        return cls.model_validate_json(json_str)
 
     def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        """Returns the JSON representation of the actual instance"""
+        if self.root is None:
+            return "null"
 
-    @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AuthorizationGrant from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
+        return self.model_dump_json()
 
     def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
-        return _dict
-
-    @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AuthorizationGrant from a dict"""
-        if obj is None:
+        """Returns the dict representation of the actual instance"""
+        if self.root is None:
             return None
 
-        if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+        if hasattr(self.root, "to_dict") and callable(self.root.to_dict):
+            return self.root.to_dict()
+        else:
+            return self.model_dump()
 
-        _obj = cls.model_validate({
-            "grant_type": obj.get("grant_type")
-        })
-        return _obj
+    def to_str(self) -> str:
+        """Returns the string representation of the actual instance"""
+        return pprint.pformat(self.model_dump())
 
 

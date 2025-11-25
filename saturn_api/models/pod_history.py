@@ -26,11 +26,11 @@ class PodHistory(BaseModel):
     """
     PodHistory
     """ # noqa: E501
-    pod_name: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    last_seen: Optional[StrictStr] = None
-    start_time: Optional[StrictStr] = None
-    end_time: Optional[StrictStr] = None
+    pod_name: StrictStr
+    status: StrictStr
+    last_seen: StrictStr
+    start_time: Optional[StrictStr]
+    end_time: Optional[StrictStr]
     label_job_name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["pod_name", "status", "last_seen", "start_time", "end_time", "label_job_name"]
 
@@ -64,8 +64,20 @@ class PodHistory(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "pod_name",
+            "status",
+            "last_seen",
+            "start_time",
+            "end_time",
+            "label_job_name",
         ])
 
         _dict = self.model_dump(

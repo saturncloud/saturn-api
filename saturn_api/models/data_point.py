@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -26,8 +26,8 @@ class DataPoint(BaseModel):
     """
     DataPoint
     """ # noqa: E501
-    datetime: Optional[StrictStr] = None
-    value: Optional[Union[StrictFloat, StrictInt]] = None
+    datetime: StrictStr
+    value: Union[StrictFloat, StrictInt]
     __properties: ClassVar[List[str]] = ["datetime", "value"]
 
     model_config = ConfigDict(
@@ -60,8 +60,12 @@ class DataPoint(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "datetime",
+            "value",
         ])
 
         _dict = self.model_dump(

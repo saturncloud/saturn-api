@@ -57,9 +57,8 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Recipe:
-        """apply
+        """Apply recipe
 
-        Apply recipe
 
         :param recipe:
         :type recipe: Recipe
@@ -124,9 +123,8 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Recipe]:
-        """apply
+        """Apply recipe
 
-        Apply recipe
 
         :param recipe:
         :type recipe: Recipe
@@ -191,9 +189,8 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """apply
+        """Apply recipe
 
-        Apply recipe
 
         :param recipe:
         :type recipe: Recipe
@@ -331,9 +328,9 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Recipe:
-        """create
+        """Create recipe
 
-        Create recipe
+        Create a new recipe.
 
         :param recipe: (required)
         :type recipe: Recipe
@@ -398,9 +395,9 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Recipe]:
-        """create
+        """Create recipe
 
-        Create recipe
+        Create a new recipe.
 
         :param recipe: (required)
         :type recipe: Recipe
@@ -465,9 +462,9 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create recipe
 
-        Create recipe
+        Create a new recipe.
 
         :param recipe: (required)
         :type recipe: Recipe
@@ -593,7 +590,7 @@ class RecipesApi:
         self,
         recipe_type: StrictStr,
         name: StrictStr,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -613,9 +610,8 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Recipe:
-        """get
+        """Get recipe
 
-        Get recipe
 
         :param recipe_type: (required)
         :type recipe_type: str
@@ -692,7 +688,7 @@ class RecipesApi:
         self,
         recipe_type: StrictStr,
         name: StrictStr,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -712,9 +708,8 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Recipe]:
-        """get
+        """Get recipe
 
-        Get recipe
 
         :param recipe_type: (required)
         :type recipe_type: str
@@ -791,7 +786,7 @@ class RecipesApi:
         self,
         recipe_type: StrictStr,
         name: StrictStr,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -811,9 +806,8 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get recipe
 
-        Get recipe
 
         :param recipe_type: (required)
         :type recipe_type: str
@@ -986,7 +980,7 @@ class RecipesApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -1012,9 +1006,9 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RecipeList:
-        """list
+        """List recipes
 
-        List recipes
+        Paginated list of recipes.
 
         :param owner_name:
         :type owner_name: str
@@ -1101,7 +1095,7 @@ class RecipesApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -1127,9 +1121,9 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[RecipeList]:
-        """list
+        """List recipes
 
-        List recipes
+        Paginated list of recipes.
 
         :param owner_name:
         :type owner_name: str
@@ -1216,7 +1210,7 @@ class RecipesApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -1242,9 +1236,9 @@ class RecipesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List recipes
 
-        List recipes
+        Paginated list of recipes.
 
         :param owner_name:
         :type owner_name: str

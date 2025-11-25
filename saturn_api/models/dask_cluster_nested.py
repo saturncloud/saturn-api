@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class DaskClusterNested(BaseModel):
     """ # noqa: E501
     id: StrictStr
     name: StrictStr
-    resource_type: StrictStr
+    resource_type: ResourceType
     tags: Dict[str, StrictStr]
     worker_size: StrictStr
     worker_size_display: StrictStr
@@ -95,12 +96,10 @@ class DaskClusterNested(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "name",
-            "resource_type",
             "tags",
             "worker_size",
             "worker_size_display",

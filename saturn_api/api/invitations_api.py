@@ -60,9 +60,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Invitation:
-        """create
+        """Create invitation
 
-        Create invitation
+        Create a new invitation.
 
         :param invitation_create: (required)
         :type invitation_create: InvitationCreate
@@ -127,9 +127,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Invitation]:
-        """create
+        """Create invitation
 
-        Create invitation
+        Create a new invitation.
 
         :param invitation_create: (required)
         :type invitation_create: InvitationCreate
@@ -194,9 +194,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create invitation
 
-        Create invitation
+        Create a new invitation.
 
         :param invitation_create: (required)
         :type invitation_create: InvitationCreate
@@ -334,9 +334,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete invitation
 
-        Delete invitation
+        Delete an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -401,9 +401,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete invitation
 
-        Delete invitation
+        Delete an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -468,9 +468,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete invitation
 
-        Delete invitation
+        Delete an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -588,9 +588,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Invitation:
-        """get
+        """Get invitation
 
-        Get invitation
+        Get an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -655,9 +655,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Invitation]:
-        """get
+        """Get invitation
 
-        Get invitation
+        Get an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -722,9 +722,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get invitation
 
-        Get invitation
+        Get an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -855,9 +855,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> InvitationList:
-        """list
+        """List invitations
 
-        List invitations
+        Paginated list of invitations.
 
         :param status:
         :type status: InvitationStatus
@@ -946,9 +946,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[InvitationList]:
-        """list
+        """List invitations
 
-        List invitations
+        Paginated list of invitations.
 
         :param status:
         :type status: InvitationStatus
@@ -1037,9 +1037,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List invitations
 
-        List invitations
+        Paginated list of invitations.
 
         :param status:
         :type status: InvitationStatus
@@ -1215,9 +1215,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Invitation:
-        """update
+        """Update invitation
 
-        Update invitation
+        Update an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -1286,9 +1286,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Invitation]:
-        """update
+        """Update invitation
 
-        Update invitation
+        Update an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str
@@ -1357,9 +1357,9 @@ class InvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update invitation
 
-        Update invitation
+        Update an invitation.
 
         :param invitation_id: (required)
         :type invitation_id: str

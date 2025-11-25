@@ -4,18 +4,20 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**acknowledge**](NotificationsApi.md#acknowledge) | **PUT** /api/notifications | 
-[**delete**](NotificationsApi.md#delete) | **DELETE** /api/notifications | 
-[**list**](NotificationsApi.md#list) | **GET** /api/notifications | 
-[**list_subscriptions**](NotificationsApi.md#list_subscriptions) | **GET** /api/notifications/subscriptions | 
-[**subscribe**](NotificationsApi.md#subscribe) | **PUT** /api/notifications/subscriptions | 
-[**unsubscribe**](NotificationsApi.md#unsubscribe) | **DELETE** /api/notifications/subscriptions | 
+[**acknowledge**](NotificationsApi.md#acknowledge) | **PUT** /api/notifications | Acknowledge notifications
+[**delete**](NotificationsApi.md#delete) | **DELETE** /api/notifications | Delete notifications
+[**list**](NotificationsApi.md#list) | **GET** /api/notifications | List notifications
+[**list_subscriptions**](NotificationsApi.md#list_subscriptions) | **GET** /api/notifications/subscriptions | List notification subscriptions
+[**subscribe**](NotificationsApi.md#subscribe) | **PUT** /api/notifications/subscriptions | Subscribe to topic
+[**unsubscribe**](NotificationsApi.md#unsubscribe) | **DELETE** /api/notifications/subscriptions | Unsubscribe from topic
 
 
 # **acknowledge**
 > acknowledge(notification_acknowledged)
 
-Mark notifications as read/unread
+Acknowledge notifications
+
+Mark notifications as read/unread.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     notification_acknowledged = saturn_api.NotificationAcknowledged() # NotificationAcknowledged | 
 
     try:
+        # Acknowledge notifications
         await api_instance.acknowledge(notification_acknowledged)
     except Exception as e:
         print("Exception when calling NotificationsApi->acknowledge: %s\n" % e)
@@ -123,6 +126,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     notification_delete = saturn_api.NotificationDelete() # NotificationDelete | 
 
     try:
+        # Delete notifications
         await api_instance.delete(notification_delete)
     except Exception as e:
         print("Exception when calling NotificationsApi->delete: %s\n" % e)
@@ -199,6 +203,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = True # bool |  (optional) (default to True)
 
     try:
+        # List notifications
         api_response = await api_instance.list(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of NotificationsApi->list:\n")
         pprint(api_response)
@@ -282,6 +287,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List notification subscriptions
         api_response = await api_instance.list_subscriptions(topic=topic, user_id=user_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of NotificationsApi->list_subscriptions:\n")
         pprint(api_response)
@@ -327,7 +333,7 @@ Name | Type | Description  | Notes
 # **subscribe**
 > NotificationSubscription subscribe(notification_subscribe)
 
-Subscribe to a notification topic
+Subscribe to topic
 
 ### Example
 
@@ -363,6 +369,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     notification_subscribe = saturn_api.NotificationSubscribe() # NotificationSubscribe | 
 
     try:
+        # Subscribe to topic
         api_response = await api_instance.subscribe(notification_subscribe)
         print("The response of NotificationsApi->subscribe:\n")
         pprint(api_response)
@@ -403,7 +410,7 @@ Name | Type | Description  | Notes
 # **unsubscribe**
 > unsubscribe(notification_unsubscribe)
 
-Unsubscribe from a notification topic
+Unsubscribe from topic
 
 ### Example
 
@@ -438,6 +445,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     notification_unsubscribe = saturn_api.NotificationUnsubscribe() # NotificationUnsubscribe | 
 
     try:
+        # Unsubscribe from topic
         await api_instance.unsubscribe(notification_unsubscribe)
     except Exception as e:
         print("Exception when calling NotificationsApi->unsubscribe: %s\n" % e)

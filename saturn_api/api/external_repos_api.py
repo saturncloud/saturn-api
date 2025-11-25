@@ -59,9 +59,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepo:
-        """create
+        """Create external repo
 
-        Create external repo
+        Create a new external repo.
 
         :param external_repo_create: (required)
         :type external_repo_create: ExternalRepoCreate
@@ -126,9 +126,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepo]:
-        """create
+        """Create external repo
 
-        Create external repo
+        Create a new external repo.
 
         :param external_repo_create: (required)
         :type external_repo_create: ExternalRepoCreate
@@ -193,9 +193,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create external repo
 
-        Create external repo
+        Create a new external repo.
 
         :param external_repo_create: (required)
         :type external_repo_create: ExternalRepoCreate
@@ -333,9 +333,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete external repo
 
-        Delete external repo
+        Delete an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -400,9 +400,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete external repo
 
-        Delete external repo
+        Delete an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -467,9 +467,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete external repo
 
-        Delete external repo
+        Delete an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -587,9 +587,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepo:
-        """get
+        """Get external repo
 
-        Get external repo
+        Get an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -654,9 +654,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepo]:
-        """get
+        """Get external repo
 
-        Get external repo
+        Get an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -721,9 +721,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get external repo
 
-        Get external repo
+        Get an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -834,7 +834,7 @@ class ExternalReposApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -858,9 +858,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepoList:
-        """list
+        """List external repos
 
-        List external repos
+        Paginated list of external repos.
 
         :param owner_name:
         :type owner_name: str
@@ -941,7 +941,7 @@ class ExternalReposApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -965,9 +965,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepoList]:
-        """list
+        """List external repos
 
-        List external repos
+        Paginated list of external repos.
 
         :param owner_name:
         :type owner_name: str
@@ -1048,7 +1048,7 @@ class ExternalReposApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -1072,9 +1072,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List external repos
 
-        List external repos
+        Paginated list of external repos.
 
         :param owner_name:
         :type owner_name: str
@@ -1282,9 +1282,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExternalRepo:
-        """update
+        """Update external repo
 
-        Update external repo
+        Update an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -1353,9 +1353,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExternalRepo]:
-        """update
+        """Update external repo
 
-        Update external repo
+        Update an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str
@@ -1424,9 +1424,9 @@ class ExternalReposApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update external repo
 
-        Update external repo
+        Update an external repo.
 
         :param external_repo_id: (required)
         :type external_repo_id: str

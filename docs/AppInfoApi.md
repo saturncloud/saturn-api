@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](AppInfoApi.md#get) | **GET** /api/info | 
-[**get_server_options**](AppInfoApi.md#get_server_options) | **GET** /api/info/servers | 
+[**get**](AppInfoApi.md#get) | **GET** /api/info | Get app info
+[**get_server_options**](AppInfoApi.md#get_server_options) | **GET** /api/info/servers | Get available server configurations
 
 
 # **get**
@@ -45,6 +45,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.AppInfoApi(api_client)
 
     try:
+        # Get app info
         api_response = await api_instance.get()
         print("The response of AppInfoApi->get:\n")
         pprint(api_response)
@@ -116,6 +117,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.AppInfoApi(api_client)
 
     try:
+        # Get available server configurations
         api_response = await api_instance.get_server_options()
         print("The response of AppInfoApi->get_server_options:\n")
         pprint(api_response)

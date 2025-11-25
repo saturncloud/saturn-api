@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**clusters** | **List[Optional[str]]** |  | [optional] 
+**clusters** | **List[Optional[str]]** |  | [readonly] 
 
 ## Example
 

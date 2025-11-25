@@ -24,6 +24,7 @@ from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
 from saturn_api.models.owner import Owner
 from saturn_api.models.resource_image_tag import ResourceImageTag
+from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -49,7 +50,7 @@ class Job(BaseModel):
     scale: StrictInt
     k8s_name: StrictStr
     require_restart: StrictBool
-    resource_type: StrictStr
+    resource_type: ResourceType
     created_at: StrictStr
     updated_at: StrictStr
     last_deploy: StrictStr
@@ -116,7 +117,6 @@ class Job(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -137,7 +137,6 @@ class Job(BaseModel):
             "scale",
             "k8s_name",
             "require_restart",
-            "resource_type",
             "created_at",
             "updated_at",
             "last_deploy",

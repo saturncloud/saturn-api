@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **is_spot** | **bool** |  | [readonly] 
 **subdomain** | **str** |  | [readonly] 
 **start_dind** | **bool** |  | [readonly] 
-**resource_type** | **str** |  | [readonly] 
+**resource_type** | [**ResourceType**](ResourceType.md) |  | 
 **size_display** | **str** |  | [readonly] 
 **k8s_name** | **str** |  | [readonly] 
 **require_restart** | **bool** |  | [readonly] 

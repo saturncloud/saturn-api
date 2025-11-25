@@ -58,9 +58,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountEntitlement:
-        """create
+        """Create service account entitlement
 
-        Create service account entitlement
+        Create a new service account entitlement.
 
         :param service_account_entitlement_create: (required)
         :type service_account_entitlement_create: ServiceAccountEntitlementCreate
@@ -125,9 +125,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountEntitlement]:
-        """create
+        """Create service account entitlement
 
-        Create service account entitlement
+        Create a new service account entitlement.
 
         :param service_account_entitlement_create: (required)
         :type service_account_entitlement_create: ServiceAccountEntitlementCreate
@@ -192,9 +192,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create service account entitlement
 
-        Create service account entitlement
+        Create a new service account entitlement.
 
         :param service_account_entitlement_create: (required)
         :type service_account_entitlement_create: ServiceAccountEntitlementCreate
@@ -332,9 +332,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete service account entitlement
 
-        Delete service account entitlement
+        Delete a service account entitlement.
 
         :param service_account_entitlement_id: (required)
         :type service_account_entitlement_id: str
@@ -399,9 +399,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete service account entitlement
 
-        Delete service account entitlement
+        Delete a service account entitlement.
 
         :param service_account_entitlement_id: (required)
         :type service_account_entitlement_id: str
@@ -466,9 +466,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete service account entitlement
 
-        Delete service account entitlement
+        Delete a service account entitlement.
 
         :param service_account_entitlement_id: (required)
         :type service_account_entitlement_id: str
@@ -586,9 +586,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountEntitlement:
-        """get
+        """Get service account entitlement
 
-        Get service account entitlement
+        Get a service account entitlement.
 
         :param service_account_entitlement_id: (required)
         :type service_account_entitlement_id: str
@@ -653,9 +653,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountEntitlement]:
-        """get
+        """Get service account entitlement
 
-        Get service account entitlement
+        Get a service account entitlement.
 
         :param service_account_entitlement_id: (required)
         :type service_account_entitlement_id: str
@@ -720,9 +720,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get service account entitlement
 
-        Get service account entitlement
+        Get a service account entitlement.
 
         :param service_account_entitlement_id: (required)
         :type service_account_entitlement_id: str
@@ -854,9 +854,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountEntitlementList:
-        """list
+        """List service account entitlements
 
-        List service account entitlements
+        Paginated list of service account entitlements.
 
         :param user_id:
         :type user_id: str
@@ -949,9 +949,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountEntitlementList]:
-        """list
+        """List service account entitlements
 
-        List service account entitlements
+        Paginated list of service account entitlements.
 
         :param user_id:
         :type user_id: str
@@ -1044,9 +1044,9 @@ class ServiceAccountEntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List service account entitlements
 
-        List service account entitlements
+        Paginated list of service account entitlements.
 
         :param user_id:
         :type user_id: str

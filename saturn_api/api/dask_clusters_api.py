@@ -28,9 +28,10 @@ from saturn_api.models.dask_cluster_runtime_summary import DaskClusterRuntimeSum
 from saturn_api.models.dask_cluster_scale import DaskClusterScale
 from saturn_api.models.dask_cluster_server_options import DaskClusterServerOptions
 from saturn_api.models.dask_cluster_update import DaskClusterUpdate
+from saturn_api.models.dask_components import DaskComponents
 from saturn_api.models.dask_workers_runtime_summary_page import DaskWorkersRuntimeSummaryPage
 from saturn_api.models.deployment_runtime_summary import DeploymentRuntimeSummary
-from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.models.metrics import Metrics
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from saturn_api.models.resource_history import ResourceHistory
@@ -73,9 +74,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """adapt
+        """Set dask cluster adaptive scaling
 
-        Set dask cluster adaptive scaling
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -144,9 +144,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """adapt
+        """Set dask cluster adaptive scaling
 
-        Set dask cluster adaptive scaling
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -215,9 +214,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """adapt
+        """Set dask cluster adaptive scaling
 
-        Set dask cluster adaptive scaling
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -354,9 +352,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskCluster:
-        """create
+        """Create dask cluster
 
-        Create dask cluster
+        Create a new dask cluster.
 
         :param dask_cluster_create: (required)
         :type dask_cluster_create: DaskClusterCreate
@@ -421,9 +419,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskCluster]:
-        """create
+        """Create dask cluster
 
-        Create dask cluster
+        Create a new dask cluster.
 
         :param dask_cluster_create: (required)
         :type dask_cluster_create: DaskClusterCreate
@@ -488,9 +486,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create dask cluster
 
-        Create dask cluster
+        Create a new dask cluster.
 
         :param dask_cluster_create: (required)
         :type dask_cluster_create: DaskClusterCreate
@@ -629,9 +627,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete dask cluster
 
-        Delete dask cluster
+        Delete a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -700,9 +698,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete dask cluster
 
-        Delete dask cluster
+        Delete a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -771,9 +769,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete dask cluster
 
-        Delete dask cluster
+        Delete a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -899,9 +897,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskCluster:
-        """get
+        """Get dask cluster
 
-        Get dask cluster
+        Get a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -966,9 +964,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskCluster]:
-        """get
+        """Get dask cluster
 
-        Get dask cluster
+        Get a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1033,9 +1031,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get dask cluster
 
-        Get dask cluster
+        Get a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1160,9 +1158,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Dict[str, object]:
-        """get_info
+        """Get dask cluster info
 
-        Get dask cluster info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1227,9 +1224,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Dict[str, object]]:
-        """get_info
+        """Get dask cluster info
 
-        Get dask cluster info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1294,9 +1290,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_info
+        """Get dask cluster info
 
-        Get dask cluster info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1422,9 +1417,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeploymentRuntimeSummary:
-        """get_kubecluster_runtime_summary
+        """Get dask cluster kubecluster runtime summary
 
-        Get dask cluster kubecluster runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1493,9 +1488,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeploymentRuntimeSummary]:
-        """get_kubecluster_runtime_summary
+        """Get dask cluster kubecluster runtime summary
 
-        Get dask cluster kubecluster runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1564,9 +1559,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_kubecluster_runtime_summary
+        """Get dask cluster kubecluster runtime summary
 
-        Get dask cluster kubecluster runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -1683,14 +1678,15 @@ class DaskClustersApi:
 
 
     @validate_call
-    async def get_log_history(
+    async def get_logs(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        component: Optional[DaskComponents] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1703,23 +1699,25 @@ class DaskClustersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> HistoricLogs:
-        """get_log_history
+    ) -> HistoricLogList:
+        """Get dask cluster historical logs
 
-        Get dask cluster historical logs
+        Historical record of logs from the resource.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
-        :type component: str
         :param pod_name:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
+        :param component:
+        :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1742,13 +1740,14 @@ class DaskClustersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             dask_cluster_id=dask_cluster_id,
-            component=component,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
+            component=component,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1756,7 +1755,7 @@ class DaskClustersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1770,14 +1769,15 @@ class DaskClustersApi:
 
 
     @validate_call
-    async def get_log_history_with_http_info(
+    async def get_logs_with_http_info(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        component: Optional[DaskComponents] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1790,23 +1790,25 @@ class DaskClustersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[HistoricLogs]:
-        """get_log_history
+    ) -> ApiResponse[HistoricLogList]:
+        """Get dask cluster historical logs
 
-        Get dask cluster historical logs
+        Historical record of logs from the resource.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
-        :type component: str
         :param pod_name:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
+        :param component:
+        :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1829,13 +1831,14 @@ class DaskClustersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             dask_cluster_id=dask_cluster_id,
-            component=component,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
+            component=component,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1843,7 +1846,7 @@ class DaskClustersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1857,14 +1860,15 @@ class DaskClustersApi:
 
 
     @validate_call
-    async def get_log_history_without_preload_content(
+    async def get_logs_without_preload_content(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        component: Optional[DaskComponents] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1878,22 +1882,24 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_log_history
+        """Get dask cluster historical logs
 
-        Get dask cluster historical logs
+        Historical record of logs from the resource.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
-        :type component: str
         :param pod_name:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
+        :param component:
+        :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1916,13 +1922,14 @@ class DaskClustersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             dask_cluster_id=dask_cluster_id,
-            component=component,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
+            component=component,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1930,7 +1937,7 @@ class DaskClustersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1939,14 +1946,15 @@ class DaskClustersApi:
         return response_data.response
 
 
-    def _get_log_history_serialize(
+    def _get_logs_serialize(
         self,
         dask_cluster_id,
-        component,
         pod_name,
         cluster,
-        first_key,
-        last_key,
+        prev_key,
+        next_key,
+        page_size,
+        component,
         _request_auth,
         _content_type,
         _headers,
@@ -1971,10 +1979,6 @@ class DaskClustersApi:
         if dask_cluster_id is not None:
             _path_params['dask_cluster_id'] = dask_cluster_id
         # process the query parameters
-        if component is not None:
-            
-            _query_params.append(('component', component))
-            
         if pod_name is not None:
             
             _query_params.append(('pod_name', pod_name))
@@ -1983,13 +1987,21 @@ class DaskClustersApi:
             
             _query_params.append(('cluster', cluster))
             
-        if first_key is not None:
+        if prev_key is not None:
             
-            _query_params.append(('first_key', first_key))
+            _query_params.append(('prev_key', prev_key))
             
-        if last_key is not None:
+        if next_key is not None:
             
-            _query_params.append(('last_key', last_key))
+            _query_params.append(('next_key', next_key))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        if component is not None:
+            
+            _query_params.append(('component', component.value))
             
         # process the header parameters
         # process the form parameters
@@ -2032,7 +2044,7 @@ class DaskClustersApi:
     async def get_metrics(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
+        component: Optional[DaskComponents] = None,
         type: Optional[StrictStr] = None,
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
@@ -2051,14 +2063,14 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Metrics:
-        """get_metrics
+        """Get dask cluster metrics
 
-        Get dask cluster hardware metrics
+        Hardware utilization metrics.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
         :param component:
-        :type component: str
+        :type component: DaskComponents
         :param type:
         :type type: str
         :param start:
@@ -2123,7 +2135,7 @@ class DaskClustersApi:
     async def get_metrics_with_http_info(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
+        component: Optional[DaskComponents] = None,
         type: Optional[StrictStr] = None,
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
@@ -2142,14 +2154,14 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Metrics]:
-        """get_metrics
+        """Get dask cluster metrics
 
-        Get dask cluster hardware metrics
+        Hardware utilization metrics.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
         :param component:
-        :type component: str
+        :type component: DaskComponents
         :param type:
         :type type: str
         :param start:
@@ -2214,7 +2226,7 @@ class DaskClustersApi:
     async def get_metrics_without_preload_content(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
+        component: Optional[DaskComponents] = None,
         type: Optional[StrictStr] = None,
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
@@ -2233,14 +2245,14 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_metrics
+        """Get dask cluster metrics
 
-        Get dask cluster hardware metrics
+        Hardware utilization metrics.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
         :param component:
-        :type component: str
+        :type component: DaskComponents
         :param type:
         :type type: str
         :param start:
@@ -2332,7 +2344,7 @@ class DaskClustersApi:
         # process the query parameters
         if component is not None:
             
-            _query_params.append(('component', component))
+            _query_params.append(('component', component.value))
             
         if type is not None:
             
@@ -2410,6 +2422,284 @@ class DaskClustersApi:
 
 
     @validate_call
+    async def get_pod_history(
+        self,
+        dask_cluster_id: StrictStr,
+        component: Optional[DaskComponents] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ResourceHistory:
+        """Get dask cluster pod history
+
+        Get history of pods run for the dask cluster.
+
+        :param dask_cluster_id: (required)
+        :type dask_cluster_id: str
+        :param component:
+        :type component: DaskComponents
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            dask_cluster_id=dask_cluster_id,
+            component=component,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_pod_history_with_http_info(
+        self,
+        dask_cluster_id: StrictStr,
+        component: Optional[DaskComponents] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ResourceHistory]:
+        """Get dask cluster pod history
+
+        Get history of pods run for the dask cluster.
+
+        :param dask_cluster_id: (required)
+        :type dask_cluster_id: str
+        :param component:
+        :type component: DaskComponents
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            dask_cluster_id=dask_cluster_id,
+            component=component,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_pod_history_without_preload_content(
+        self,
+        dask_cluster_id: StrictStr,
+        component: Optional[DaskComponents] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get dask cluster pod history
+
+        Get history of pods run for the dask cluster.
+
+        :param dask_cluster_id: (required)
+        :type dask_cluster_id: str
+        :param component:
+        :type component: DaskComponents
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            dask_cluster_id=dask_cluster_id,
+            component=component,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_pod_history_serialize(
+        self,
+        dask_cluster_id,
+        component,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if dask_cluster_id is not None:
+            _path_params['dask_cluster_id'] = dask_cluster_id
+        # process the query parameters
+        if component is not None:
+            
+            _query_params.append(('component', component.value))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/dask_clusters/{dask_cluster_id}/history',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_runtime_summary(
         self,
         dask_cluster_id: StrictStr,
@@ -2427,9 +2717,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskClusterRuntimeSummary:
-        """get_runtime_summary
+        """Get dask cluster runtime summary
 
-        Get dask cluster runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -2498,9 +2788,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskClusterRuntimeSummary]:
-        """get_runtime_summary
+        """Get dask cluster runtime summary
 
-        Get dask cluster runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -2569,9 +2859,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_runtime_summary
+        """Get dask cluster runtime summary
 
-        Get dask cluster runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -2704,9 +2994,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Dict[str, object]:
-        """get_scheduler_info
+        """Get dask cluster scheduler info
 
-        Get dask cluster scheduler info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -2771,9 +3060,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Dict[str, object]]:
-        """get_scheduler_info
+        """Get dask cluster scheduler info
 
-        Get dask cluster scheduler info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -2838,9 +3126,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_scheduler_info
+        """Get dask cluster scheduler info
 
-        Get dask cluster scheduler info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -2966,9 +3253,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PodRuntimeSummary:
-        """get_scheduler_runtimesummary
+        """Get dask cluster scheduler runtime summary
 
-        Get dask cluster scheduler runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -3037,9 +3324,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PodRuntimeSummary]:
-        """get_scheduler_runtimesummary
+        """Get dask cluster scheduler runtime summary
 
-        Get dask cluster scheduler runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -3108,9 +3395,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_scheduler_runtimesummary
+        """Get dask cluster scheduler runtime summary
 
-        Get dask cluster scheduler runtime summary
+        Summary of the current runtime status.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -3243,9 +3530,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Dict[str, object]:
-        """get_scheduler_status
+        """Get dask cluster scheduler status
 
-        Get dask cluster scheduler status
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -3310,9 +3596,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Dict[str, object]]:
-        """get_scheduler_status
+        """Get dask cluster scheduler status
 
-        Get dask cluster scheduler status
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -3377,9 +3662,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_scheduler_status
+        """Get dask cluster scheduler status
 
-        Get dask cluster scheduler status
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -3503,9 +3787,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskClusterServerOptions:
-        """get_server_options
+        """Get dask cluster server options
 
-        Get dask cluster server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3566,9 +3849,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskClusterServerOptions]:
-        """get_server_options
+        """Get dask cluster server options
 
-        Get dask cluster server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3629,9 +3911,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_server_options
+        """Get dask cluster server options
 
-        Get dask cluster server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3734,284 +4015,6 @@ class DaskClustersApi:
 
 
     @validate_call
-    async def get_status_history(
-        self,
-        dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ResourceHistory:
-        """get_status_history
-
-        Get dask cluster status history
-
-        :param dask_cluster_id: (required)
-        :type dask_cluster_id: str
-        :param component:
-        :type component: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            dask_cluster_id=dask_cluster_id,
-            component=component,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_status_history_with_http_info(
-        self,
-        dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ResourceHistory]:
-        """get_status_history
-
-        Get dask cluster status history
-
-        :param dask_cluster_id: (required)
-        :type dask_cluster_id: str
-        :param component:
-        :type component: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            dask_cluster_id=dask_cluster_id,
-            component=component,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_status_history_without_preload_content(
-        self,
-        dask_cluster_id: StrictStr,
-        component: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """get_status_history
-
-        Get dask cluster status history
-
-        :param dask_cluster_id: (required)
-        :type dask_cluster_id: str
-        :param component:
-        :type component: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            dask_cluster_id=dask_cluster_id,
-            component=component,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_status_history_serialize(
-        self,
-        dask_cluster_id,
-        component,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if dask_cluster_id is not None:
-            _path_params['dask_cluster_id'] = dask_cluster_id
-        # process the query parameters
-        if component is not None:
-            
-            _query_params.append(('component', component))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/api/dask_clusters/{dask_cluster_id}/history',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     async def get_token_info(
         self,
         dask_cluster_id: StrictStr,
@@ -4028,9 +4031,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTokenInfo:
-        """get_token_info
+        """Get dask cluster API token info
 
-        Get dask cluster resource API token info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -4095,9 +4097,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTokenInfo]:
-        """get_token_info
+        """Get dask cluster API token info
 
-        Get dask cluster resource API token info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -4162,9 +4163,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_token_info
+        """Get dask cluster API token info
 
-        Get dask cluster resource API token info
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -4291,9 +4291,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskWorkersRuntimeSummaryPage:
-        """get_workers_runtimesummary
+        """List dask cluster worker runtime summaries
 
-        List dask cluster worker runtime summaries
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -4366,9 +4365,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskWorkersRuntimeSummaryPage]:
-        """get_workers_runtimesummary
+        """List dask cluster worker runtime summaries
 
-        List dask cluster worker runtime summaries
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -4441,9 +4439,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_workers_runtimesummary
+        """List dask cluster worker runtime summaries
 
-        List dask cluster worker runtime summaries
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -4570,7 +4567,7 @@ class DaskClustersApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -4593,9 +4590,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskClusterList:
-        """list
+        """List dask clusters
 
-        List dask clusters
+        Paginated list of dask clusters.
 
         :param owner_name:
         :type owner_name: str
@@ -4673,7 +4670,7 @@ class DaskClustersApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -4696,9 +4693,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskClusterList]:
-        """list
+        """List dask clusters
 
-        List dask clusters
+        Paginated list of dask clusters.
 
         :param owner_name:
         :type owner_name: str
@@ -4776,7 +4773,7 @@ class DaskClustersApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -4799,9 +4796,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List dask clusters
 
-        List dask clusters
+        Paginated list of dask clusters.
 
         :param owner_name:
         :type owner_name: str
@@ -5000,9 +4997,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskCluster:
-        """restart
+        """Restart dask cluster
 
-        Restart dask cluster
+        Restart a running dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5067,9 +5064,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskCluster]:
-        """restart
+        """Restart dask cluster
 
-        Restart dask cluster
+        Restart a running dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5134,9 +5131,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """restart
+        """Restart dask cluster
 
-        Restart dask cluster
+        Restart a running dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5261,9 +5258,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTokenInfo:
-        """rotate_token
+        """Rotate dask cluster API token
 
-        Rotate dask cluster resource API token. Invalidates existing token.
+        Invalidate existing API tokens for the dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5328,9 +5325,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTokenInfo]:
-        """rotate_token
+        """Rotate dask cluster API token
 
-        Rotate dask cluster resource API token. Invalidates existing token.
+        Invalidate existing API tokens for the dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5395,9 +5392,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """rotate_token
+        """Rotate dask cluster API token
 
-        Rotate dask cluster resource API token. Invalidates existing token.
+        Invalidate existing API tokens for the dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5523,9 +5520,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """scale
+        """Scale dask cluster worker count
 
-        Scale dask cluster worker count
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5594,9 +5590,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """scale
+        """Scale dask cluster worker count
 
-        Scale dask cluster worker count
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5665,9 +5660,8 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """scale
+        """Scale dask cluster worker count
 
-        Scale dask cluster worker count
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5804,9 +5798,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskCluster:
-        """start
+        """Start dask cluster
 
-        Start dask cluster
+        Run a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5871,9 +5865,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskCluster]:
-        """start
+        """Start dask cluster
 
-        Start dask cluster
+        Run a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -5938,9 +5932,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """start
+        """Start dask cluster
 
-        Start dask cluster
+        Run a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6065,9 +6059,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskCluster:
-        """stop
+        """Stop dask cluster
 
-        Stop dask cluster
+        Stop a running dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6132,9 +6126,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskCluster]:
-        """stop
+        """Stop dask cluster
 
-        Stop dask cluster
+        Stop a running dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6199,9 +6193,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """stop
+        """Stop dask cluster
 
-        Stop dask cluster
+        Stop a running dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6327,9 +6321,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DaskCluster:
-        """update
+        """Update dask cluster
 
-        Update dask cluster
+        Update a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6398,9 +6392,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DaskCluster]:
-        """update
+        """Update dask cluster
 
-        Update dask cluster
+        Update a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6469,9 +6463,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update dask cluster
 
-        Update dask cluster
+        Update a dask cluster.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6616,9 +6610,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTokenInfo:
-        """update_token
+        """Update dask cluster API token
 
-        Update and rotate dask cluster resource API token. Invalidates existing token.
+        Update API token scope on the dask cluster. Invalidates existing tokens.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6687,9 +6681,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTokenInfo]:
-        """update_token
+        """Update dask cluster API token
 
-        Update and rotate dask cluster resource API token. Invalidates existing token.
+        Update API token scope on the dask cluster. Invalidates existing tokens.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
@@ -6758,9 +6752,9 @@ class DaskClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_token
+        """Update dask cluster API token
 
-        Update and rotate dask cluster resource API token. Invalidates existing token.
+        Update API token scope on the dask cluster. Invalidates existing tokens.
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str

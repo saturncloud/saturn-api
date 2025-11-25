@@ -61,9 +61,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Image:
-        """create
+        """Create image
 
-        Create image
+        Create a new image.
 
         :param image_create: (required)
         :type image_create: ImageCreate
@@ -128,9 +128,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Image]:
-        """create
+        """Create image
 
-        Create image
+        Create a new image.
 
         :param image_create: (required)
         :type image_create: ImageCreate
@@ -195,9 +195,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create image
 
-        Create image
+        Create a new image.
 
         :param image_create: (required)
         :type image_create: ImageCreate
@@ -335,9 +335,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete image
 
-        Delete image
+        Delete an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -402,9 +402,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete image
 
-        Delete image
+        Delete an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -469,9 +469,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete image
 
-        Delete image
+        Delete an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -589,9 +589,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Image:
-        """get
+        """Get image
 
-        Get image
+        Get an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -656,9 +656,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Image]:
-        """get
+        """Get image
 
-        Get image
+        Get an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -723,9 +723,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get image
 
-        Get image
+        Get an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -836,7 +836,7 @@ class ImagesApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -864,9 +864,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageList:
-        """list
+        """List images
 
-        List images
+        Paginated list of images.
 
         :param owner_name:
         :type owner_name: str
@@ -959,7 +959,7 @@ class ImagesApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -987,9 +987,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageList]:
-        """list
+        """List images
 
-        List images
+        Paginated list of images.
 
         :param owner_name:
         :type owner_name: str
@@ -1082,7 +1082,7 @@ class ImagesApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -1110,9 +1110,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List images
 
-        List images
+        Paginated list of images.
 
         :param owner_name:
         :type owner_name: str
@@ -1352,9 +1352,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Image:
-        """update
+        """Update image
 
-        Update image
+        Update an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -1423,9 +1423,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Image]:
-        """update
+        """Update image
 
-        Update image
+        Update an image.
 
         :param image_id: (required)
         :type image_id: str
@@ -1494,9 +1494,9 @@ class ImagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update image
 
-        Update image
+        Update an image.
 
         :param image_id: (required)
         :type image_id: str

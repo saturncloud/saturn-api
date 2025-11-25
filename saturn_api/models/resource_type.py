@@ -18,22 +18,22 @@ from enum import Enum
 from typing_extensions import Self
 
 
-class RecipeType(str, Enum):
+class ResourceType(str, Enum):
     """
-    RecipeType
+    ResourceType
     """
 
     """
     allowed enum values
     """
-    WORKSPACE = 'workspace'
     DEPLOYMENT = 'deployment'
     JOB = 'job'
-    IMAGE = 'image'
+    WORKSPACE = 'workspace'
+    DASK = 'dask'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of RecipeType from a JSON string"""
+        """Create an instance of ResourceType from a JSON string"""
         return cls(json.loads(json_str))
 
 

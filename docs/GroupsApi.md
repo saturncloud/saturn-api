@@ -4,21 +4,23 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](GroupsApi.md#create) | **POST** /api/groups | 
-[**create_member**](GroupsApi.md#create_member) | **POST** /api/groups/{group_id}/members | 
-[**delete**](GroupsApi.md#delete) | **DELETE** /api/groups/{group_id} | 
-[**delete_member**](GroupsApi.md#delete_member) | **DELETE** /api/groups/{group_id}/members | 
-[**get**](GroupsApi.md#get) | **GET** /api/groups/{group_id} | 
-[**get_daily_usage**](GroupsApi.md#get_daily_usage) | **GET** /api/groups/{group_id}/usage/daily | 
-[**list**](GroupsApi.md#list) | **GET** /api/groups | 
-[**list_members**](GroupsApi.md#list_members) | **GET** /api/groups/{group_id}/members | 
-[**update**](GroupsApi.md#update) | **PATCH** /api/groups/{group_id} | 
+[**create**](GroupsApi.md#create) | **POST** /api/groups | Create group
+[**create_member**](GroupsApi.md#create_member) | **POST** /api/groups/{group_id}/members | Create group member
+[**delete**](GroupsApi.md#delete) | **DELETE** /api/groups/{group_id} | Delete group
+[**delete_member**](GroupsApi.md#delete_member) | **DELETE** /api/groups/{group_id}/members | Delete group member
+[**get**](GroupsApi.md#get) | **GET** /api/groups/{group_id} | Get group
+[**get_daily_usage**](GroupsApi.md#get_daily_usage) | **GET** /api/groups/{group_id}/usage/daily | Get group daily usage
+[**list**](GroupsApi.md#list) | **GET** /api/groups | List groups
+[**list_members**](GroupsApi.md#list_members) | **GET** /api/groups/{group_id}/members | List group members
+[**update**](GroupsApi.md#update) | **PATCH** /api/groups/{group_id} | Update group
 
 
 # **create**
 > Group create(group_create)
 
 Create group
+
+Create a new group.
 
 ### Example
 
@@ -54,6 +56,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_create = saturn_api.GroupCreate() # GroupCreate | 
 
     try:
+        # Create group
         api_response = await api_instance.create(group_create)
         print("The response of GroupsApi->create:\n")
         pprint(api_response)
@@ -131,6 +134,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_member_create = saturn_api.GroupMemberCreate() # GroupMemberCreate | 
 
     try:
+        # Create group member
         api_response = await api_instance.create_member(group_id, group_member_create)
         print("The response of GroupsApi->create_member:\n")
         pprint(api_response)
@@ -174,6 +178,8 @@ Name | Type | Description  | Notes
 
 Delete group
 
+Delete a group.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -206,6 +212,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_id = 'group_id_example' # str | 
 
     try:
+        # Delete group
         await api_instance.delete(group_id)
     except Exception as e:
         print("Exception when calling GroupsApi->delete: %s\n" % e)
@@ -279,6 +286,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | 
 
     try:
+        # Delete group member
         await api_instance.delete_member(group_id, user_id)
     except Exception as e:
         print("Exception when calling GroupsApi->delete_member: %s\n" % e)
@@ -320,6 +328,8 @@ void (empty response body)
 
 Get group
 
+Get a group.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -353,6 +363,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_id = 'group_id_example' # str | 
 
     try:
+        # Get group
         api_response = await api_instance.get(group_id)
         print("The response of GroupsApi->get:\n")
         pprint(api_response)
@@ -393,7 +404,9 @@ Name | Type | Description  | Notes
 # **get_daily_usage**
 > DailyUsageList get_daily_usage(group_id, start=start, end=end)
 
-List group usage data aggregated by day
+Get group daily usage
+
+Get usage for the group aggregated by day.
 
 ### Example
 
@@ -430,6 +443,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     end = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
 
     try:
+        # Get group daily usage
         api_response = await api_instance.get_daily_usage(group_id, start=start, end=end)
         print("The response of GroupsApi->get_daily_usage:\n")
         pprint(api_response)
@@ -474,6 +488,8 @@ Name | Type | Description  | Notes
 
 List groups
 
+Paginated list of groups.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -513,6 +529,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List groups
         api_response = await api_instance.list(name=name, org_id=org_id, all_groups=all_groups, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of GroupsApi->list:\n")
         pprint(api_response)
@@ -599,6 +616,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List group members
         api_response = await api_instance.list_members(group_id, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of GroupsApi->list_members:\n")
         pprint(api_response)
@@ -646,6 +664,8 @@ Name | Type | Description  | Notes
 
 Update group
 
+Update a group.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -681,6 +701,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_update = saturn_api.GroupUpdate() # GroupUpdate | 
 
     try:
+        # Update group
         api_response = await api_instance.update(group_id, group_update)
         print("The response of GroupsApi->update:\n")
         pprint(api_response)

@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](SshPublicKeysApi.md#create) | **POST** /api/ssh_public_keys | 
-[**delete**](SshPublicKeysApi.md#delete) | **DELETE** /api/ssh_public_keys/{ssh_publickey_id} | 
-[**get**](SshPublicKeysApi.md#get) | **GET** /api/ssh_public_keys/{ssh_publickey_id} | 
-[**list**](SshPublicKeysApi.md#list) | **GET** /api/ssh_public_keys | 
-[**update**](SshPublicKeysApi.md#update) | **PATCH** /api/ssh_public_keys/{ssh_publickey_id} | 
+[**create**](SshPublicKeysApi.md#create) | **POST** /api/ssh_public_keys | Create ssh public key
+[**delete**](SshPublicKeysApi.md#delete) | **DELETE** /api/ssh_public_keys/{ssh_publickey_id} | Delete ssh public key
+[**get**](SshPublicKeysApi.md#get) | **GET** /api/ssh_public_keys/{ssh_publickey_id} | Get ssh public key
+[**list**](SshPublicKeysApi.md#list) | **GET** /api/ssh_public_keys | List ssh public keys
+[**update**](SshPublicKeysApi.md#update) | **PATCH** /api/ssh_public_keys/{ssh_publickey_id} | Update ssh public key
 
 
 # **create**
 > SSHPublicKey create(ssh_public_key_create)
 
 Create ssh public key
+
+Create a new ssh public key.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_public_key_create = saturn_api.SSHPublicKeyCreate() # SSHPublicKeyCreate | 
 
     try:
+        # Create ssh public key
         api_response = await api_instance.create(ssh_public_key_create)
         print("The response of SshPublicKeysApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete ssh public key
 
+Delete a ssh public key.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_publickey_id = 'ssh_publickey_id_example' # str | 
 
     try:
+        # Delete ssh public key
         await api_instance.delete(ssh_publickey_id)
     except Exception as e:
         print("Exception when calling SshPublicKeysApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get ssh public key
 
+Get a ssh public key.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_publickey_id = 'ssh_publickey_id_example' # str | 
 
     try:
+        # Get ssh public key
         api_response = await api_instance.get(ssh_publickey_id)
         print("The response of SshPublicKeysApi->get:\n")
         pprint(api_response)
@@ -239,6 +248,8 @@ Name | Type | Description  | Notes
 
 List ssh public keys
 
+Paginated list of ssh public keys.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -279,6 +290,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List ssh public keys
         api_response = await api_instance.list(user_id=user_id, group_id=group_id, identity=identity, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of SshPublicKeysApi->list:\n")
         pprint(api_response)
@@ -328,6 +340,8 @@ Name | Type | Description  | Notes
 
 Update ssh public key
 
+Update a ssh public key.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -363,6 +377,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_public_key_update = saturn_api.SSHPublicKeyUpdate() # SSHPublicKeyUpdate | 
 
     try:
+        # Update ssh public key
         api_response = await api_instance.update(ssh_publickey_id, ssh_public_key_update)
         print("The response of SshPublicKeysApi->update:\n")
         pprint(api_response)

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**datetime** | **str** |  | [optional] 
-**value** | **float** |  | [optional] 
+**datetime** | **str** |  | [readonly] 
+**value** | **float** |  | [readonly] 
 
 ## Example
 

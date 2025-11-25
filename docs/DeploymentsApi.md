@@ -4,46 +4,48 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](DeploymentsApi.md#create) | **POST** /api/deployments | 
-[**create_resource_template**](DeploymentsApi.md#create_resource_template) | **POST** /api/deployments/{deployment_id}/template | 
-[**create_route**](DeploymentsApi.md#create_route) | **POST** /api/deployments/{deployment_id}/routes | 
-[**create_secret_attachment**](DeploymentsApi.md#create_secret_attachment) | **POST** /api/deployments/{deployment_id}/secrets | 
-[**create_service_account_attachment**](DeploymentsApi.md#create_service_account_attachment) | **PUT** /api/deployments/{deployment_id}/service_account | 
-[**create_viewer**](DeploymentsApi.md#create_viewer) | **POST** /api/deployments/{deployment_id}/viewers | 
-[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/deployments/{deployment_id} | 
-[**delete_route**](DeploymentsApi.md#delete_route) | **DELETE** /api/deployments/{deployment_id}/routes/{route_id} | 
-[**delete_secret_attachment**](DeploymentsApi.md#delete_secret_attachment) | **DELETE** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | 
-[**delete_service_account_attachment**](DeploymentsApi.md#delete_service_account_attachment) | **DELETE** /api/deployments/{deployment_id}/service_account | 
-[**delete_viewer**](DeploymentsApi.md#delete_viewer) | **DELETE** /api/deployments/{deployment_id}/viewers/{viewer_id} | 
-[**get**](DeploymentsApi.md#get) | **GET** /api/deployments/{deployment_id} | 
-[**get_cluster_history**](DeploymentsApi.md#get_cluster_history) | **GET** /api/deployments/{deployment_id}/clusters | 
-[**get_log_history**](DeploymentsApi.md#get_log_history) | **GET** /api/deployments/{deployment_id}/logs | 
-[**get_metrics**](DeploymentsApi.md#get_metrics) | **GET** /api/deployments/{deployment_id}/metrics | 
-[**get_recipe**](DeploymentsApi.md#get_recipe) | **GET** /api/deployments/{deployment_id}/recipe | 
-[**get_resource_template**](DeploymentsApi.md#get_resource_template) | **GET** /api/deployments/{deployment_id}/template | 
-[**get_route**](DeploymentsApi.md#get_route) | **GET** /api/deployments/{deployment_id}/routes/{route_id} | 
-[**get_runtime_summary**](DeploymentsApi.md#get_runtime_summary) | **GET** /api/deployments/{deployment_id}/runtimesummary | 
-[**get_secret_attachment**](DeploymentsApi.md#get_secret_attachment) | **GET** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | 
-[**get_server_options**](DeploymentsApi.md#get_server_options) | **GET** /api/deployments/info | 
-[**get_service_account_attachment**](DeploymentsApi.md#get_service_account_attachment) | **GET** /api/deployments/{deployment_id}/service_account | 
-[**get_status_history**](DeploymentsApi.md#get_status_history) | **GET** /api/deployments/{deployment_id}/history | 
-[**list**](DeploymentsApi.md#list) | **GET** /api/deployments | 
-[**list_routes**](DeploymentsApi.md#list_routes) | **GET** /api/deployments/{deployment_id}/routes | 
-[**list_secret_attachments**](DeploymentsApi.md#list_secret_attachments) | **GET** /api/deployments/{deployment_id}/secrets | 
-[**list_viewers**](DeploymentsApi.md#list_viewers) | **GET** /api/deployments/{deployment_id}/viewers | 
-[**restart**](DeploymentsApi.md#restart) | **POST** /api/deployments/{deployment_id}/restart | 
-[**start**](DeploymentsApi.md#start) | **POST** /api/deployments/{deployment_id}/start | 
-[**stop**](DeploymentsApi.md#stop) | **POST** /api/deployments/{deployment_id}/stop | 
-[**update**](DeploymentsApi.md#update) | **PATCH** /api/deployments/{deployment_id} | 
-[**update_resource_template**](DeploymentsApi.md#update_resource_template) | **PATCH** /api/deployments/{deployment_id}/template | 
-[**update_route**](DeploymentsApi.md#update_route) | **PATCH** /api/deployments/{deployment_id}/routes/{route_id} | 
-[**update_secret_attachment**](DeploymentsApi.md#update_secret_attachment) | **PATCH** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | 
+[**create**](DeploymentsApi.md#create) | **POST** /api/deployments | Create deployment
+[**create_resource_template**](DeploymentsApi.md#create_resource_template) | **POST** /api/deployments/{deployment_id}/template | Create deployment resource template
+[**create_route**](DeploymentsApi.md#create_route) | **POST** /api/deployments/{deployment_id}/routes | Create deployment route
+[**create_secret_attachment**](DeploymentsApi.md#create_secret_attachment) | **POST** /api/deployments/{deployment_id}/secrets | Create deployment secret attachment
+[**create_service_account_attachment**](DeploymentsApi.md#create_service_account_attachment) | **PUT** /api/deployments/{deployment_id}/service_account | Create deployment service account attachment
+[**create_viewer**](DeploymentsApi.md#create_viewer) | **POST** /api/deployments/{deployment_id}/viewers | Create deployment viewer
+[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/deployments/{deployment_id} | Delete deployment
+[**delete_route**](DeploymentsApi.md#delete_route) | **DELETE** /api/deployments/{deployment_id}/routes/{route_id} | Delete deployment route
+[**delete_secret_attachment**](DeploymentsApi.md#delete_secret_attachment) | **DELETE** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | Delete deployment secret attachment
+[**delete_service_account_attachment**](DeploymentsApi.md#delete_service_account_attachment) | **DELETE** /api/deployments/{deployment_id}/service_account | Delete deployment service account attachment
+[**delete_viewer**](DeploymentsApi.md#delete_viewer) | **DELETE** /api/deployments/{deployment_id}/viewers/{viewer_id} | Delete deployment viewer
+[**get**](DeploymentsApi.md#get) | **GET** /api/deployments/{deployment_id} | Get deployment
+[**get_cluster_history**](DeploymentsApi.md#get_cluster_history) | **GET** /api/deployments/{deployment_id}/clusters | Get deployment cluster history
+[**get_logs**](DeploymentsApi.md#get_logs) | **GET** /api/deployments/{deployment_id}/logs | Get deployment historical logs
+[**get_metrics**](DeploymentsApi.md#get_metrics) | **GET** /api/deployments/{deployment_id}/metrics | Get deployment metrics
+[**get_pod_history**](DeploymentsApi.md#get_pod_history) | **GET** /api/deployments/{deployment_id}/history | Get deployment pod history
+[**get_recipe**](DeploymentsApi.md#get_recipe) | **GET** /api/deployments/{deployment_id}/recipe | Get deployment recipe
+[**get_resource_template**](DeploymentsApi.md#get_resource_template) | **GET** /api/deployments/{deployment_id}/template | Get deployment resource template
+[**get_route**](DeploymentsApi.md#get_route) | **GET** /api/deployments/{deployment_id}/routes/{route_id} | Get deployment route
+[**get_runtime_summary**](DeploymentsApi.md#get_runtime_summary) | **GET** /api/deployments/{deployment_id}/runtimesummary | Get deployment runtime summary
+[**get_secret_attachment**](DeploymentsApi.md#get_secret_attachment) | **GET** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | Get deployment secret attachment
+[**get_server_options**](DeploymentsApi.md#get_server_options) | **GET** /api/deployments/info | Get deployment server options
+[**get_service_account_attachment**](DeploymentsApi.md#get_service_account_attachment) | **GET** /api/deployments/{deployment_id}/service_account | Get deployment service account attachment
+[**list**](DeploymentsApi.md#list) | **GET** /api/deployments | List deployments
+[**list_routes**](DeploymentsApi.md#list_routes) | **GET** /api/deployments/{deployment_id}/routes | List deployment routes
+[**list_secret_attachments**](DeploymentsApi.md#list_secret_attachments) | **GET** /api/deployments/{deployment_id}/secrets | List deployment secret attachments
+[**list_viewers**](DeploymentsApi.md#list_viewers) | **GET** /api/deployments/{deployment_id}/viewers | List deployment viewers
+[**restart**](DeploymentsApi.md#restart) | **POST** /api/deployments/{deployment_id}/restart | Restart deployment
+[**start**](DeploymentsApi.md#start) | **POST** /api/deployments/{deployment_id}/start | Start deployment
+[**stop**](DeploymentsApi.md#stop) | **POST** /api/deployments/{deployment_id}/stop | Stop deployment
+[**update**](DeploymentsApi.md#update) | **PATCH** /api/deployments/{deployment_id} | Update deployment
+[**update_resource_template**](DeploymentsApi.md#update_resource_template) | **PATCH** /api/deployments/{deployment_id}/template | Update deployment resource template
+[**update_route**](DeploymentsApi.md#update_route) | **PATCH** /api/deployments/{deployment_id}/routes/{route_id} | Update deployment route
+[**update_secret_attachment**](DeploymentsApi.md#update_secret_attachment) | **PATCH** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | Update deployment secret attachment
 
 
 # **create**
 > Deployment create(deployment_create)
 
 Create deployment
+
+Create a new deployment.
 
 ### Example
 
@@ -79,6 +81,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_create = saturn_api.DeploymentCreate() # DeploymentCreate | 
 
     try:
+        # Create deployment
         api_response = await api_instance.create(deployment_create)
         print("The response of DeploymentsApi->create:\n")
         pprint(api_response)
@@ -154,6 +157,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Create deployment resource template
         api_response = await api_instance.create_resource_template(deployment_id)
         print("The response of DeploymentsApi->create_resource_template:\n")
         pprint(api_response)
@@ -196,6 +200,8 @@ Name | Type | Description  | Notes
 
 Create deployment route
 
+Add a new ingress route to the deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -231,6 +237,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_create = saturn_api.SecretAttachmentCreate() # SecretAttachmentCreate | 
 
     try:
+        # Create deployment route
         api_response = await api_instance.create_route(deployment_id, secret_attachment_create)
         print("The response of DeploymentsApi->create_route:\n")
         pprint(api_response)
@@ -309,6 +316,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_create = saturn_api.SecretAttachmentCreate() # SecretAttachmentCreate | 
 
     try:
+        # Create deployment secret attachment
         api_response = await api_instance.create_secret_attachment(deployment_id, secret_attachment_create)
         print("The response of DeploymentsApi->create_secret_attachment:\n")
         pprint(api_response)
@@ -387,6 +395,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_create_attachment = saturn_api.ServiceAccountCreateAttachment() # ServiceAccountCreateAttachment | 
 
     try:
+        # Create deployment service account attachment
         api_response = await api_instance.create_service_account_attachment(deployment_id, service_account_create_attachment)
         print("The response of DeploymentsApi->create_service_account_attachment:\n")
         pprint(api_response)
@@ -430,6 +439,8 @@ Name | Type | Description  | Notes
 
 Create deployment viewer
 
+Grant a user or group access to routes on the deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -465,6 +476,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     viewer_create = saturn_api.ViewerCreate() # ViewerCreate | 
 
     try:
+        # Create deployment viewer
         api_response = await api_instance.create_viewer(deployment_id, viewer_create)
         print("The response of DeploymentsApi->create_viewer:\n")
         pprint(api_response)
@@ -508,6 +520,8 @@ Name | Type | Description  | Notes
 
 Delete deployment
 
+Delete a deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -541,6 +555,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     allow_active = False # bool |  (optional) (default to False)
 
     try:
+        # Delete deployment
         await api_instance.delete(deployment_id, allow_active=allow_active)
     except Exception as e:
         print("Exception when calling DeploymentsApi->delete: %s\n" % e)
@@ -582,6 +597,8 @@ void (empty response body)
 
 Delete deployment route
 
+Remove an ingress route from deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -615,6 +632,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     route_id = 'route_id_example' # str | 
 
     try:
+        # Delete deployment route
         await api_instance.delete_route(deployment_id, route_id)
     except Exception as e:
         print("Exception when calling DeploymentsApi->delete_route: %s\n" % e)
@@ -689,6 +707,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_id = 'secret_attachment_id_example' # str | 
 
     try:
+        # Delete deployment secret attachment
         await api_instance.delete_secret_attachment(deployment_id, secret_attachment_id)
     except Exception as e:
         print("Exception when calling DeploymentsApi->delete_secret_attachment: %s\n" % e)
@@ -762,6 +781,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Delete deployment service account attachment
         await api_instance.delete_service_account_attachment(deployment_id)
     except Exception as e:
         print("Exception when calling DeploymentsApi->delete_service_account_attachment: %s\n" % e)
@@ -802,6 +822,8 @@ void (empty response body)
 
 Delete deployment viewer
 
+Remove a viewer's access permissions.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -835,6 +857,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     viewer_id = 'viewer_id_example' # str | 
 
     try:
+        # Delete deployment viewer
         await api_instance.delete_viewer(deployment_id, viewer_id)
     except Exception as e:
         print("Exception when calling DeploymentsApi->delete_viewer: %s\n" % e)
@@ -876,6 +899,8 @@ void (empty response body)
 
 Get deployment
 
+Get a deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -909,6 +934,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Get deployment
         api_response = await api_instance.get(deployment_id)
         print("The response of DeploymentsApi->get:\n")
         pprint(api_response)
@@ -949,7 +975,9 @@ Name | Type | Description  | Notes
 # **get_cluster_history**
 > ResourceClusters get_cluster_history(deployment_id)
 
-Get clusters that a deployment has run on
+Get deployment cluster history
+
+Get a list of clusters that the deployment has recently run on.
 
 ### Example
 
@@ -984,6 +1012,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Get deployment cluster history
         api_response = await api_instance.get_cluster_history(deployment_id)
         print("The response of DeploymentsApi->get_cluster_history:\n")
         pprint(api_response)
@@ -1021,10 +1050,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_log_history**
-> HistoricLogs get_log_history(deployment_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
+# **get_logs**
+> HistoricLogList get_logs(deployment_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
 
 Get deployment historical logs
+
+Historical record of logs from the resource.
 
 ### Example
 
@@ -1032,7 +1063,7 @@ Get deployment historical logs
 
 ```python
 import saturn_api
-from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -1059,15 +1090,17 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
     pod_name = 'pod_name_example' # str |  (optional)
     cluster = 'cluster_example' # str |  (optional)
-    first_key = 'first_key_example' # str |  (optional)
-    last_key = 'last_key_example' # str |  (optional)
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
 
     try:
-        api_response = await api_instance.get_log_history(deployment_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
-        print("The response of DeploymentsApi->get_log_history:\n")
+        # Get deployment historical logs
+        api_response = await api_instance.get_logs(deployment_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of DeploymentsApi->get_logs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DeploymentsApi->get_log_history: %s\n" % e)
+        print("Exception when calling DeploymentsApi->get_logs: %s\n" % e)
 ```
 
 
@@ -1080,12 +1113,13 @@ Name | Type | Description  | Notes
  **deployment_id** | **str**|  | 
  **pod_name** | **str**|  | [optional] 
  **cluster** | **str**|  | [optional] 
- **first_key** | **str**|  | [optional] 
- **last_key** | **str**|  | [optional] 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-[**HistoricLogs**](HistoricLogs.md)
+[**HistoricLogList**](HistoricLogList.md)
 
 ### Authorization
 
@@ -1107,7 +1141,9 @@ Name | Type | Description  | Notes
 # **get_metrics**
 > Metrics get_metrics(deployment_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
 
-Get deployment hardware metrics
+Get deployment metrics
+
+Hardware utilization metrics.
 
 ### Example
 
@@ -1147,6 +1183,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     cluster = 'cluster_example' # str |  (optional)
 
     try:
+        # Get deployment metrics
         api_response = await api_instance.get_metrics(deployment_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
         print("The response of DeploymentsApi->get_metrics:\n")
         pprint(api_response)
@@ -1171,6 +1208,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Metrics**](Metrics.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_pod_history**
+> ResourceHistory get_pod_history(deployment_id, cluster=cluster)
+
+Get deployment pod history
+
+Get history of pods run for the deployment.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_history import ResourceHistory
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.DeploymentsApi(api_client)
+    deployment_id = 'deployment_id_example' # str | 
+    cluster = 'cluster_example' # str |  (optional)
+
+    try:
+        # Get deployment pod history
+        api_response = await api_instance.get_pod_history(deployment_id, cluster=cluster)
+        print("The response of DeploymentsApi->get_pod_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DeploymentsApi->get_pod_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deployment_id** | **str**|  | 
+ **cluster** | **str**|  | [optional] 
+
+### Return type
+
+[**ResourceHistory**](ResourceHistory.md)
 
 ### Authorization
 
@@ -1228,6 +1345,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     as_template = False # bool |  (optional) (default to False)
 
     try:
+        # Get deployment recipe
         api_response = await api_instance.get_recipe(deployment_id, as_template=as_template)
         print("The response of DeploymentsApi->get_recipe:\n")
         pprint(api_response)
@@ -1304,6 +1422,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Get deployment resource template
         api_response = await api_instance.get_resource_template(deployment_id)
         print("The response of DeploymentsApi->get_resource_template:\n")
         pprint(api_response)
@@ -1346,6 +1465,8 @@ Name | Type | Description  | Notes
 
 Get deployment route
 
+Get an ingress route.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1380,6 +1501,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     route_id = 'route_id_example' # str | 
 
     try:
+        # Get deployment route
         api_response = await api_instance.get_route(deployment_id, route_id)
         print("The response of DeploymentsApi->get_route:\n")
         pprint(api_response)
@@ -1423,6 +1545,8 @@ Name | Type | Description  | Notes
 
 Get deployment runtime summary
 
+Summary of the current runtime status.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1457,6 +1581,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     details = False # bool |  (optional) (default to False)
 
     try:
+        # Get deployment runtime summary
         api_response = await api_instance.get_runtime_summary(deployment_id, details=details)
         print("The response of DeploymentsApi->get_runtime_summary:\n")
         pprint(api_response)
@@ -1534,6 +1659,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_id = 'secret_attachment_id_example' # str | 
 
     try:
+        # Get deployment secret attachment
         api_response = await api_instance.get_secret_attachment(deployment_id, secret_attachment_id)
         print("The response of DeploymentsApi->get_secret_attachment:\n")
         pprint(api_response)
@@ -1609,6 +1735,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.DeploymentsApi(api_client)
 
     try:
+        # Get deployment server options
         api_response = await api_instance.get_server_options()
         print("The response of DeploymentsApi->get_server_options:\n")
         pprint(api_response)
@@ -1681,6 +1808,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Get deployment service account attachment
         api_response = await api_instance.get_service_account_attachment(deployment_id)
         print("The response of DeploymentsApi->get_service_account_attachment:\n")
         pprint(api_response)
@@ -1718,87 +1846,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_status_history**
-> ResourceHistory get_status_history(deployment_id, cluster=cluster)
-
-Get deployment status history
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.resource_history import ResourceHistory
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth
-configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.DeploymentsApi(api_client)
-    deployment_id = 'deployment_id_example' # str | 
-    cluster = 'cluster_example' # str |  (optional)
-
-    try:
-        api_response = await api_instance.get_status_history(deployment_id, cluster=cluster)
-        print("The response of DeploymentsApi->get_status_history:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DeploymentsApi->get_status_history: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_id** | **str**|  | 
- **cluster** | **str**|  | [optional] 
-
-### Return type
-
-[**ResourceHistory**](ResourceHistory.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Ok |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **list**
 > DeploymentList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List deployments
+
+Paginated list of deployments.
 
 ### Example
 
@@ -1843,6 +1896,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List deployments
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of DeploymentsApi->list:\n")
         pprint(api_response)
@@ -1895,6 +1949,8 @@ Name | Type | Description  | Notes
 
 List deployment routes
 
+List ingress routes on the deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1933,6 +1989,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List deployment routes
         api_response = await api_instance.list_routes(deployment_id, subdomain=subdomain, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of DeploymentsApi->list_routes:\n")
         pprint(api_response)
@@ -2020,6 +2077,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List deployment secret attachments
         api_response = await api_instance.list_secret_attachments(deployment_id, attachment_type=attachment_type, location=location, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of DeploymentsApi->list_secret_attachments:\n")
         pprint(api_response)
@@ -2068,6 +2126,8 @@ Name | Type | Description  | Notes
 
 List deployment viewers
 
+List users and groups with view permissions.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2106,6 +2166,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List deployment viewers
         api_response = await api_instance.list_viewers(deployment_id, route_id=route_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of DeploymentsApi->list_viewers:\n")
         pprint(api_response)
@@ -2153,6 +2214,8 @@ Name | Type | Description  | Notes
 
 Restart deployment
 
+Restart a running deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2188,6 +2251,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_start = saturn_api.DeploymentStart() # DeploymentStart |  (optional)
 
     try:
+        # Restart deployment
         api_response = await api_instance.restart(deployment_id, deployment_start=deployment_start)
         print("The response of DeploymentsApi->restart:\n")
         pprint(api_response)
@@ -2231,6 +2295,8 @@ Name | Type | Description  | Notes
 
 Start deployment
 
+Run a deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2266,6 +2332,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_start = saturn_api.DeploymentStart() # DeploymentStart |  (optional)
 
     try:
+        # Start deployment
         api_response = await api_instance.start(deployment_id, deployment_start=deployment_start)
         print("The response of DeploymentsApi->start:\n")
         pprint(api_response)
@@ -2309,6 +2376,8 @@ Name | Type | Description  | Notes
 
 Stop deployment
 
+Stop a running deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2342,6 +2411,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Stop deployment
         api_response = await api_instance.stop(deployment_id)
         print("The response of DeploymentsApi->stop:\n")
         pprint(api_response)
@@ -2384,6 +2454,8 @@ Name | Type | Description  | Notes
 
 Update deployment
 
+Update a deployment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2419,6 +2491,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_update = saturn_api.DeploymentUpdate() # DeploymentUpdate | 
 
     try:
+        # Update deployment
         api_response = await api_instance.update(deployment_id, deployment_update)
         print("The response of DeploymentsApi->update:\n")
         pprint(api_response)
@@ -2495,6 +2568,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | 
 
     try:
+        # Update deployment resource template
         api_response = await api_instance.update_resource_template(deployment_id)
         print("The response of DeploymentsApi->update_resource_template:\n")
         pprint(api_response)
@@ -2537,6 +2611,8 @@ Name | Type | Description  | Notes
 
 Update deployment route
 
+Edit the configuration of an ingress route.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2573,6 +2649,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     route_update = saturn_api.RouteUpdate() # RouteUpdate | 
 
     try:
+        # Update deployment route
         api_response = await api_instance.update_route(deployment_id, route_id, route_update)
         print("The response of DeploymentsApi->update_route:\n")
         pprint(api_response)
@@ -2653,6 +2730,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_update = saturn_api.SecretAttachmentUpdate() # SecretAttachmentUpdate | 
 
     try:
+        # Update deployment secret attachment
         api_response = await api_instance.update_secret_attachment(deployment_id, secret_attachment_id, secret_attachment_update)
         print("The response of DeploymentsApi->update_secret_attachment:\n")
         pprint(api_response)

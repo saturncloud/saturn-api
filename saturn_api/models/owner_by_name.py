@@ -17,9 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List
-from typing_extensions import Annotated
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -27,15 +26,8 @@ class OwnerByName(BaseModel):
     """
     OwnerByName
     """ # noqa: E501
-    name: Annotated[str, Field(strict=True)]
+    name: StrictStr
     __properties: ClassVar[List[str]] = ["name"]
-
-    @field_validator('name')
-    def name_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$", value):
-            raise ValueError(r"must validate the regular expression /^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$/")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

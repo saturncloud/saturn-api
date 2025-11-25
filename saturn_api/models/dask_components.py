@@ -18,21 +18,21 @@ from enum import Enum
 from typing_extensions import Self
 
 
-class ResourceRecipeType(str, Enum):
+class DaskComponents(str, Enum):
     """
-    ResourceRecipeType
+    DaskComponents
     """
 
     """
     allowed enum values
     """
-    WORKSPACE = 'workspace'
-    DEPLOYMENT = 'deployment'
-    JOB = 'job'
+    KUBECLUSTER = 'kubecluster'
+    SCHEDULER = 'scheduler'
+    WORKER = 'worker'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ResourceRecipeType from a JSON string"""
+        """Create an instance of DaskComponents from a JSON string"""
         return cls(json.loads(json_str))
 
 

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schema_version** | **str** |  | [optional] [default to '2025.10.01']
-**type** | [**ResourceRecipeType**](ResourceRecipeType.md) |  | 
+**type** | **str** |  | 
 **spec** | [**WorkspaceSpec**](WorkspaceSpec.md) |  | 
 **state** | [**ResourceState**](ResourceState.md) |  | [optional] [readonly] 
 

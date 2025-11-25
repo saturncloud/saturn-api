@@ -6,6 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **grant_type** | **str** |  | 
+**code** | **str** |  | 
+**code_verifier** | **str** |  | 
+**redirect_uri** | **str** |  | 
+**refresh_token** | **str** |  | 
 
 ## Example
 

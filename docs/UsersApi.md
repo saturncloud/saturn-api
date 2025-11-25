@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](UsersApi.md#create) | **POST** /api/users | 
-[**delete**](UsersApi.md#delete) | **DELETE** /api/users/{user_id} | 
-[**get**](UsersApi.md#get) | **GET** /api/users/{user_id} | 
-[**list**](UsersApi.md#list) | **GET** /api/users | 
-[**update**](UsersApi.md#update) | **PATCH** /api/users/{user_id} | 
+[**create**](UsersApi.md#create) | **POST** /api/users | Create user
+[**delete**](UsersApi.md#delete) | **DELETE** /api/users/{user_id} | Delete user
+[**get**](UsersApi.md#get) | **GET** /api/users/{user_id} | Get user
+[**list**](UsersApi.md#list) | **GET** /api/users | List users
+[**update**](UsersApi.md#update) | **PATCH** /api/users/{user_id} | Update user
 
 
 # **create**
 > UserDetailed create(user_admin_create)
 
 Create user
+
+Create a new user.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     user_admin_create = saturn_api.UserAdminCreate() # UserAdminCreate | 
 
     try:
+        # Create user
         api_response = await api_instance.create(user_admin_create)
         print("The response of UsersApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete user
 
+Delete an user.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | 
 
     try:
+        # Delete user
         await api_instance.delete(user_id)
     except Exception as e:
         print("Exception when calling UsersApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get user
 
+Get an user.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -198,6 +206,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     details = False # bool |  (optional) (default to False)
 
     try:
+        # Get user
         api_response = await api_instance.get(user_id, details=details)
         print("The response of UsersApi->get:\n")
         pprint(api_response)
@@ -241,6 +250,8 @@ Name | Type | Description  | Notes
 
 List users
 
+Paginated list of users.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -279,6 +290,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List users
         api_response = await api_instance.list(username=username, details=details, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of UsersApi->list:\n")
         pprint(api_response)
@@ -326,6 +338,8 @@ Name | Type | Description  | Notes
 
 Update user
 
+Update an user.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -361,6 +375,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     user_update = saturn_api.UserUpdate() # UserUpdate | 
 
     try:
+        # Update user
         api_response = await api_instance.update(user_id, user_update)
         print("The response of UsersApi->update:\n")
         pprint(api_response)

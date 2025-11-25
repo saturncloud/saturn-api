@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from saturn_api.models.data_point import DataPoint
 from saturn_api.models.stats import Stats
 from typing import Literal, Optional, Set
@@ -28,10 +28,10 @@ class MetricSeries(BaseModel):
     """
     MetricSeries
     """ # noqa: E501
-    pod_name: Optional[StrictStr] = None
-    labels: Optional[Dict[str, StrictStr]] = None
-    stats: Optional[Stats] = None
-    data: Optional[List[DataPoint]] = None
+    pod_name: StrictStr
+    labels: Dict[str, StrictStr]
+    stats: Stats
+    data: List[DataPoint]
     __properties: ClassVar[List[str]] = ["pod_name", "labels", "stats", "data"]
 
     model_config = ConfigDict(
@@ -64,8 +64,16 @@ class MetricSeries(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "pod_name",
+            "labels",
+            "stats",
+            "data",
         ])
 
         _dict = self.model_dump(

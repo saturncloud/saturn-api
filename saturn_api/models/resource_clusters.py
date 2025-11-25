@@ -26,7 +26,7 @@ class ResourceClusters(BaseModel):
     """
     ResourceClusters
     """ # noqa: E501
-    clusters: Optional[List[Optional[StrictStr]]] = None
+    clusters: List[Optional[StrictStr]]
     __properties: ClassVar[List[str]] = ["clusters"]
 
     model_config = ConfigDict(
@@ -59,8 +59,10 @@ class ResourceClusters(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "clusters",
         ])
 
         _dict = self.model_dump(

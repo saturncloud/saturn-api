@@ -4,10 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apply**](RecipesApi.md#apply) | **PUT** /api/recipes | 
-[**create**](RecipesApi.md#create) | **POST** /api/recipes | 
-[**get**](RecipesApi.md#get) | **GET** /api/recipes/{recipe_type}/{name} | 
-[**list**](RecipesApi.md#list) | **GET** /api/recipes | 
+[**apply**](RecipesApi.md#apply) | **PUT** /api/recipes | Apply recipe
+[**create**](RecipesApi.md#create) | **POST** /api/recipes | Create recipe
+[**get**](RecipesApi.md#get) | **GET** /api/recipes/{recipe_type}/{name} | Get recipe
+[**list**](RecipesApi.md#list) | **GET** /api/recipes | List recipes
 
 
 # **apply**
@@ -48,6 +48,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     recipe = saturn_api.Recipe() # Recipe |  (optional)
 
     try:
+        # Apply recipe
         api_response = await api_instance.apply(recipe=recipe)
         print("The response of RecipesApi->apply:\n")
         pprint(api_response)
@@ -90,6 +91,8 @@ Name | Type | Description  | Notes
 
 Create recipe
 
+Create a new recipe.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -123,6 +126,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     recipe = saturn_api.Recipe() # Recipe | 
 
     try:
+        # Create recipe
         api_response = await api_instance.create(recipe)
         print("The response of RecipesApi->create:\n")
         pprint(api_response)
@@ -206,6 +210,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     as_template = False # bool |  (optional) (default to False)
 
     try:
+        # Get recipe
         api_response = await api_instance.get(recipe_type, name, owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, as_template=as_template)
         print("The response of RecipesApi->get:\n")
         pprint(api_response)
@@ -256,6 +261,8 @@ Name | Type | Description  | Notes
 
 List recipes
 
+Paginated list of recipes.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -301,6 +308,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List recipes
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, type=type, name=name, as_template=as_template, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of RecipesApi->list:\n")
         pprint(api_response)

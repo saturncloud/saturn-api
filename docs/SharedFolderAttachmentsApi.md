@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](SharedFolderAttachmentsApi.md#create) | **POST** /api/shared_folder_attachments | 
-[**delete**](SharedFolderAttachmentsApi.md#delete) | **DELETE** /api/shared_folder_attachments/{shared_folder_attachment_id} | 
-[**get**](SharedFolderAttachmentsApi.md#get) | **GET** /api/shared_folder_attachments/{shared_folder_attachment_id} | 
-[**list**](SharedFolderAttachmentsApi.md#list) | **GET** /api/shared_folder_attachments | 
-[**update**](SharedFolderAttachmentsApi.md#update) | **PATCH** /api/shared_folder_attachments/{shared_folder_attachment_id} | 
+[**create**](SharedFolderAttachmentsApi.md#create) | **POST** /api/shared_folder_attachments | Create shared folder attachment
+[**delete**](SharedFolderAttachmentsApi.md#delete) | **DELETE** /api/shared_folder_attachments/{shared_folder_attachment_id} | Delete shared folder attachment
+[**get**](SharedFolderAttachmentsApi.md#get) | **GET** /api/shared_folder_attachments/{shared_folder_attachment_id} | Get shared folder attachment
+[**list**](SharedFolderAttachmentsApi.md#list) | **GET** /api/shared_folder_attachments | List shared folder attachments
+[**update**](SharedFolderAttachmentsApi.md#update) | **PATCH** /api/shared_folder_attachments/{shared_folder_attachment_id} | Update shared folder attachment
 
 
 # **create**
 > SharedFolderAttachment create(shared_folder_attachment_create)
 
 Create shared folder attachment
+
+Create a new shared folder attachment.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_attachment_create = saturn_api.SharedFolderAttachmentCreate() # SharedFolderAttachmentCreate | 
 
     try:
+        # Create shared folder attachment
         api_response = await api_instance.create(shared_folder_attachment_create)
         print("The response of SharedFolderAttachmentsApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete shared folder attachment
 
+Delete a shared folder attachment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_attachment_id = 'shared_folder_attachment_id_example' # str | 
 
     try:
+        # Delete shared folder attachment
         await api_instance.delete(shared_folder_attachment_id)
     except Exception as e:
         print("Exception when calling SharedFolderAttachmentsApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get shared folder attachment
 
+Get a shared folder attachment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_attachment_id = 'shared_folder_attachment_id_example' # str | 
 
     try:
+        # Get shared folder attachment
         api_response = await api_instance.get(shared_folder_attachment_id)
         print("The response of SharedFolderAttachmentsApi->get:\n")
         pprint(api_response)
@@ -239,6 +248,8 @@ Name | Type | Description  | Notes
 
 List shared folder attachments
 
+Paginated list of shared folder attachments.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -278,6 +289,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List shared folder attachments
         api_response = await api_instance.list(job_id=job_id, deployment_id=deployment_id, workspace_id=workspace_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of SharedFolderAttachmentsApi->list:\n")
         pprint(api_response)
@@ -326,6 +338,8 @@ Name | Type | Description  | Notes
 
 Update shared folder attachment
 
+Update a shared folder attachment.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -361,6 +375,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_attachment_update = saturn_api.SharedFolderAttachmentUpdate() # SharedFolderAttachmentUpdate | 
 
     try:
+        # Update shared folder attachment
         api_response = await api_instance.update(shared_folder_attachment_id, shared_folder_attachment_update)
         print("The response of SharedFolderAttachmentsApi->update:\n")
         pprint(api_response)

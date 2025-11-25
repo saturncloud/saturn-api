@@ -59,9 +59,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPrivateKey:
-        """create
+        """Create ssh private key
 
-        Create ssh private key
+        Create a new ssh private key.
 
         :param ssh_private_key_create: (required)
         :type ssh_private_key_create: SSHPrivateKeyCreate
@@ -126,9 +126,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPrivateKey]:
-        """create
+        """Create ssh private key
 
-        Create ssh private key
+        Create a new ssh private key.
 
         :param ssh_private_key_create: (required)
         :type ssh_private_key_create: SSHPrivateKeyCreate
@@ -193,9 +193,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create ssh private key
 
-        Create ssh private key
+        Create a new ssh private key.
 
         :param ssh_private_key_create: (required)
         :type ssh_private_key_create: SSHPrivateKeyCreate
@@ -333,9 +333,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete ssh private key
 
-        Delete ssh private key
+        Delete a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -400,9 +400,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete ssh private key
 
-        Delete ssh private key
+        Delete a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -467,9 +467,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete ssh private key
 
-        Delete ssh private key
+        Delete a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -587,9 +587,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPrivateKey:
-        """get
+        """Get ssh private key
 
-        Get ssh private key
+        Get a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -654,9 +654,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPrivateKey]:
-        """get
+        """Get ssh private key
 
-        Get ssh private key
+        Get a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -721,9 +721,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get ssh private key
 
-        Get ssh private key
+        Get a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -856,9 +856,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPrivateKeyList:
-        """list
+        """List ssh private keys
 
-        List ssh private keys
+        Paginated list of ssh private keys.
 
         :param user_id:
         :type user_id: str
@@ -955,9 +955,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPrivateKeyList]:
-        """list
+        """List ssh private keys
 
-        List ssh private keys
+        Paginated list of ssh private keys.
 
         :param user_id:
         :type user_id: str
@@ -1054,9 +1054,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List ssh private keys
 
-        List ssh private keys
+        Paginated list of ssh private keys.
 
         :param user_id:
         :type user_id: str
@@ -1248,9 +1248,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPrivateKey:
-        """update
+        """Update ssh private key
 
-        Update ssh private key
+        Update a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -1319,9 +1319,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPrivateKey]:
-        """update
+        """Update ssh private key
 
-        Update ssh private key
+        Update a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str
@@ -1390,9 +1390,9 @@ class SshPrivateKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update ssh private key
 
-        Update ssh private key
+        Update a ssh private key.
 
         :param ssh_privatekey_id: (required)
         :type ssh_privatekey_id: str

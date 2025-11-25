@@ -19,12 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.models.image_build_status import ImageBuildStatus
 from saturn_api.models.image_tag import ImageTag
 from saturn_api.models.image_tag_create import ImageTagCreate
 from saturn_api.models.image_tag_list import ImageTagList
 from saturn_api.models.image_tag_update import ImageTagUpdate
+from saturn_api.models.job_runtime_summary import JobRuntimeSummary
 from saturn_api.models.resource_history import ResourceHistory
 
 from saturn_api.api_client import ApiClient, RequestSerialized
@@ -63,9 +64,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageTag:
-        """create
+        """Create image tag
 
-        Create image tag
+        Create a new image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -134,9 +135,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageTag]:
-        """create
+        """Create image tag
 
-        Create image tag
+        Create a new image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -205,9 +206,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create image tag
 
-        Create image tag
+        Create a new image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -352,9 +353,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete image tag
 
-        Delete image tag
+        Delete an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -423,9 +424,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete image tag
 
-        Delete image tag
+        Delete an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -494,9 +495,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete image tag
 
-        Delete image tag
+        Delete an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -621,9 +622,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageTag:
-        """get
+        """Get image tag
 
-        Get image tag
+        Get an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -692,9 +693,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageTag]:
-        """get
+        """Get image tag
 
-        Get image tag
+        Get an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -763,9 +764,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get image tag
 
-        Get image tag
+        Get an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -880,14 +881,15 @@ class ImageTagsApi:
 
 
     @validate_call
-    async def get_log_history(
+    async def get_logs(
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -900,10 +902,10 @@ class ImageTagsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> HistoricLogs:
-        """get_log_history
+    ) -> HistoricLogList:
+        """Get image tag historical logs
 
-        Get image tag historical logs
+        Historical record of logs from the resource.
 
         :param image_id: (required)
         :type image_id: str
@@ -913,10 +915,12 @@ class ImageTagsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -939,13 +943,14 @@ class ImageTagsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             image_id=image_id,
             image_tag_id=image_tag_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -953,7 +958,7 @@ class ImageTagsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -967,14 +972,15 @@ class ImageTagsApi:
 
 
     @validate_call
-    async def get_log_history_with_http_info(
+    async def get_logs_with_http_info(
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -987,10 +993,10 @@ class ImageTagsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[HistoricLogs]:
-        """get_log_history
+    ) -> ApiResponse[HistoricLogList]:
+        """Get image tag historical logs
 
-        Get image tag historical logs
+        Historical record of logs from the resource.
 
         :param image_id: (required)
         :type image_id: str
@@ -1000,10 +1006,12 @@ class ImageTagsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1026,13 +1034,14 @@ class ImageTagsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             image_id=image_id,
             image_tag_id=image_tag_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1040,7 +1049,7 @@ class ImageTagsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1054,14 +1063,15 @@ class ImageTagsApi:
 
 
     @validate_call
-    async def get_log_history_without_preload_content(
+    async def get_logs_without_preload_content(
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1075,9 +1085,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_log_history
+        """Get image tag historical logs
 
-        Get image tag historical logs
+        Historical record of logs from the resource.
 
         :param image_id: (required)
         :type image_id: str
@@ -1087,10 +1097,12 @@ class ImageTagsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1113,13 +1125,14 @@ class ImageTagsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             image_id=image_id,
             image_tag_id=image_tag_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1127,7 +1140,7 @@ class ImageTagsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1136,14 +1149,15 @@ class ImageTagsApi:
         return response_data.response
 
 
-    def _get_log_history_serialize(
+    def _get_logs_serialize(
         self,
         image_id,
         image_tag_id,
         pod_name,
         cluster,
-        first_key,
-        last_key,
+        prev_key,
+        next_key,
+        page_size,
         _request_auth,
         _content_type,
         _headers,
@@ -1178,13 +1192,17 @@ class ImageTagsApi:
             
             _query_params.append(('cluster', cluster))
             
-        if first_key is not None:
+        if prev_key is not None:
             
-            _query_params.append(('first_key', first_key))
+            _query_params.append(('prev_key', prev_key))
             
-        if last_key is not None:
+        if next_key is not None:
             
-            _query_params.append(('last_key', last_key))
+            _query_params.append(('next_key', next_key))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
             
         # process the header parameters
         # process the form parameters
@@ -1224,6 +1242,299 @@ class ImageTagsApi:
 
 
     @validate_call
+    async def get_runtimesummary(
+        self,
+        image_id: StrictStr,
+        image_tag_id: StrictStr,
+        details: Optional[StrictBool] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> JobRuntimeSummary:
+        """Get image tag build runtime summary
+
+        Summary of the current runtime status.
+
+        :param image_id: (required)
+        :type image_id: str
+        :param image_tag_id: (required)
+        :type image_tag_id: str
+        :param details:
+        :type details: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_runtimesummary_serialize(
+            image_id=image_id,
+            image_tag_id=image_tag_id,
+            details=details,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JobRuntimeSummary",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_runtimesummary_with_http_info(
+        self,
+        image_id: StrictStr,
+        image_tag_id: StrictStr,
+        details: Optional[StrictBool] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[JobRuntimeSummary]:
+        """Get image tag build runtime summary
+
+        Summary of the current runtime status.
+
+        :param image_id: (required)
+        :type image_id: str
+        :param image_tag_id: (required)
+        :type image_tag_id: str
+        :param details:
+        :type details: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_runtimesummary_serialize(
+            image_id=image_id,
+            image_tag_id=image_tag_id,
+            details=details,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JobRuntimeSummary",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_runtimesummary_without_preload_content(
+        self,
+        image_id: StrictStr,
+        image_tag_id: StrictStr,
+        details: Optional[StrictBool] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get image tag build runtime summary
+
+        Summary of the current runtime status.
+
+        :param image_id: (required)
+        :type image_id: str
+        :param image_tag_id: (required)
+        :type image_tag_id: str
+        :param details:
+        :type details: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_runtimesummary_serialize(
+            image_id=image_id,
+            image_tag_id=image_tag_id,
+            details=details,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JobRuntimeSummary",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_runtimesummary_serialize(
+        self,
+        image_id,
+        image_tag_id,
+        details,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if image_id is not None:
+            _path_params['image_id'] = image_id
+        if image_tag_id is not None:
+            _path_params['image_tag_id'] = image_tag_id
+        # process the query parameters
+        if details is not None:
+            
+            _query_params.append(('details', details))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/images/{image_id}/tags/{image_tag_id}/runtimesummary',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_status_history(
         self,
         image_id: StrictStr,
@@ -1241,9 +1552,8 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceHistory:
-        """get_status_history
+        """Get image tag status history
 
-        Get image tag status history
 
         :param image_id: (required)
         :type image_id: str
@@ -1312,9 +1622,8 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceHistory]:
-        """get_status_history
+        """Get image tag status history
 
-        Get image tag status history
 
         :param image_id: (required)
         :type image_id: str
@@ -1383,9 +1692,8 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_status_history
+        """Get image tag status history
 
-        Get image tag status history
 
         :param image_id: (required)
         :type image_id: str
@@ -1525,9 +1833,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageTagList:
-        """list
+        """List image tags
 
-        List image tags
+        Paginated list of image tags.
 
         :param image_id: (required)
         :type image_id: str
@@ -1628,9 +1936,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageTagList]:
-        """list
+        """List image tags
 
-        List image tags
+        Paginated list of image tags.
 
         :param image_id: (required)
         :type image_id: str
@@ -1731,9 +2039,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List image tags
 
-        List image tags
+        Paginated list of image tags.
 
         :param image_id: (required)
         :type image_id: str
@@ -1931,9 +2239,8 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageTag:
-        """stop
+        """Stop image tag build
 
-        Stop image tag build
 
         :param image_id: (required)
         :type image_id: str
@@ -2002,9 +2309,8 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageTag]:
-        """stop
+        """Stop image tag build
 
-        Stop image tag build
 
         :param image_id: (required)
         :type image_id: str
@@ -2073,9 +2379,8 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """stop
+        """Stop image tag build
 
-        Stop image tag build
 
         :param image_id: (required)
         :type image_id: str
@@ -2208,9 +2513,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageTag:
-        """update
+        """Update image tag
 
-        Update image tag
+        Update an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -2283,9 +2588,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageTag]:
-        """update
+        """Update image tag
 
-        Update image tag
+        Update an image tag.
 
         :param image_id: (required)
         :type image_id: str
@@ -2358,9 +2663,9 @@ class ImageTagsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update image tag
 
-        Update image tag
+        Update an image tag.
 
         :param image_id: (required)
         :type image_id: str

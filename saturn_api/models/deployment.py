@@ -23,6 +23,7 @@ from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
 from saturn_api.models.owner import Owner
 from saturn_api.models.resource_image_tag import ResourceImageTag
+from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -53,7 +54,7 @@ class Deployment(BaseModel):
     created_at: StrictStr
     updated_at: StrictStr
     require_restart: StrictBool
-    resource_type: StrictStr
+    resource_type: ResourceType
     size_display: StrictStr
     dask_cluster: Optional[DaskClusterNested] = None
     status: StrictStr
@@ -122,7 +123,6 @@ class Deployment(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -147,7 +147,6 @@ class Deployment(BaseModel):
             "created_at",
             "updated_at",
             "require_restart",
-            "resource_type",
             "size_display",
             "dask_cluster",
             "status",

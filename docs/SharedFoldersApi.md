@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](SharedFoldersApi.md#create) | **POST** /api/shared_folders | 
-[**delete**](SharedFoldersApi.md#delete) | **DELETE** /api/shared_folders/{shared_folder_id} | 
-[**get**](SharedFoldersApi.md#get) | **GET** /api/shared_folders/{shared_folder_id} | 
-[**list**](SharedFoldersApi.md#list) | **GET** /api/shared_folders | 
-[**update**](SharedFoldersApi.md#update) | **PATCH** /api/shared_folders/{shared_folder_id} | 
+[**create**](SharedFoldersApi.md#create) | **POST** /api/shared_folders | Create shared folder
+[**delete**](SharedFoldersApi.md#delete) | **DELETE** /api/shared_folders/{shared_folder_id} | Delete shared folder
+[**get**](SharedFoldersApi.md#get) | **GET** /api/shared_folders/{shared_folder_id} | Get shared folder
+[**list**](SharedFoldersApi.md#list) | **GET** /api/shared_folders | List shared folders
+[**update**](SharedFoldersApi.md#update) | **PATCH** /api/shared_folders/{shared_folder_id} | Update shared folder
 
 
 # **create**
 > SharedFolder create(shared_folder_create)
 
 Create shared folder
+
+Create a new shared folder.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_create = saturn_api.SharedFolderCreate() # SharedFolderCreate | 
 
     try:
+        # Create shared folder
         api_response = await api_instance.create(shared_folder_create)
         print("The response of SharedFoldersApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete shared folder
 
+Delete a shared folder.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_id = 'shared_folder_id_example' # str | 
 
     try:
+        # Delete shared folder
         await api_instance.delete(shared_folder_id)
     except Exception as e:
         print("Exception when calling SharedFoldersApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get shared folder
 
+Get a shared folder.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_id = 'shared_folder_id_example' # str | 
 
     try:
+        # Get shared folder
         api_response = await api_instance.get(shared_folder_id)
         print("The response of SharedFoldersApi->get:\n")
         pprint(api_response)
@@ -238,6 +247,8 @@ Name | Type | Description  | Notes
 > SharedFolderList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, access=access, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List shared folders
+
+Paginated list of shared folders.
 
 ### Example
 
@@ -284,6 +295,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List shared folders
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, access=access, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of SharedFoldersApi->list:\n")
         pprint(api_response)
@@ -337,6 +349,8 @@ Name | Type | Description  | Notes
 
 Update shared folder
 
+Update a shared folder.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -372,6 +386,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     shared_folder_update = saturn_api.SharedFolderUpdate() # SharedFolderUpdate | 
 
     try:
+        # Update shared folder
         api_response = await api_instance.update(shared_folder_id, shared_folder_update)
         print("The response of SharedFoldersApi->update:\n")
         pprint(api_response)

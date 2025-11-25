@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](UsageLimitsApi.md#create) | **POST** /api/limits | 
-[**delete**](UsageLimitsApi.md#delete) | **DELETE** /api/limits/{usage_limits_id} | 
-[**get**](UsageLimitsApi.md#get) | **GET** /api/limits/{usage_limits_id} | 
-[**list**](UsageLimitsApi.md#list) | **GET** /api/limits | 
-[**update**](UsageLimitsApi.md#update) | **PATCH** /api/limits/{usage_limits_id} | 
+[**create**](UsageLimitsApi.md#create) | **POST** /api/limits | Create usage limits
+[**delete**](UsageLimitsApi.md#delete) | **DELETE** /api/limits/{usage_limits_id} | Delete usage limits
+[**get**](UsageLimitsApi.md#get) | **GET** /api/limits/{usage_limits_id} | Get usage limits
+[**list**](UsageLimitsApi.md#list) | **GET** /api/limits | List usage limits
+[**update**](UsageLimitsApi.md#update) | **PATCH** /api/limits/{usage_limits_id} | Update usage limits
 
 
 # **create**
@@ -50,6 +50,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     usage_limits_create = saturn_api.UsageLimitsCreate() # UsageLimitsCreate | 
 
     try:
+        # Create usage limits
         api_response = await api_instance.create(usage_limits_create)
         print("The response of UsageLimitsApi->create:\n")
         pprint(api_response)
@@ -124,6 +125,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     usage_limits_id = 'usage_limits_id_example' # str | 
 
     try:
+        # Delete usage limits
         await api_instance.delete(usage_limits_id)
     except Exception as e:
         print("Exception when calling UsageLimitsApi->delete: %s\n" % e)
@@ -197,6 +199,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     usage_limits_id = 'usage_limits_id_example' # str | 
 
     try:
+        # Get usage limits
         api_response = await api_instance.get(usage_limits_id)
         print("The response of UsageLimitsApi->get:\n")
         pprint(api_response)
@@ -277,6 +280,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List usage limits
         api_response = await api_instance.list(name=name, org_id=org_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of UsageLimitsApi->list:\n")
         pprint(api_response)
@@ -359,6 +363,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     usage_limits_update = saturn_api.UsageLimitsUpdate() # UsageLimitsUpdate | 
 
     try:
+        # Update usage limits
         api_response = await api_instance.update(usage_limits_id, usage_limits_update)
         print("The response of UsageLimitsApi->update:\n")
         pprint(api_response)

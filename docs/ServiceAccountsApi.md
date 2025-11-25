@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ServiceAccountsApi.md#create) | **POST** /api/service_accounts | 
-[**delete**](ServiceAccountsApi.md#delete) | **DELETE** /api/service_accounts/{service_account_id} | 
-[**get**](ServiceAccountsApi.md#get) | **GET** /api/service_accounts/{service_account_id} | 
-[**list**](ServiceAccountsApi.md#list) | **GET** /api/service_accounts | 
-[**update**](ServiceAccountsApi.md#update) | **PATCH** /api/service_accounts/{service_account_id} | 
+[**create**](ServiceAccountsApi.md#create) | **POST** /api/service_accounts | Create service account
+[**delete**](ServiceAccountsApi.md#delete) | **DELETE** /api/service_accounts/{service_account_id} | Delete service account
+[**get**](ServiceAccountsApi.md#get) | **GET** /api/service_accounts/{service_account_id} | Get service account
+[**list**](ServiceAccountsApi.md#list) | **GET** /api/service_accounts | List service accounts
+[**update**](ServiceAccountsApi.md#update) | **PATCH** /api/service_accounts/{service_account_id} | Update service account
 
 
 # **create**
 > ServiceAccount create(service_account_create)
 
 Create service account
+
+Create a new service account.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_create = saturn_api.ServiceAccountCreate() # ServiceAccountCreate | 
 
     try:
+        # Create service account
         api_response = await api_instance.create(service_account_create)
         print("The response of ServiceAccountsApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete service account
 
+Delete a service account.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_id = 'service_account_id_example' # str | 
 
     try:
+        # Delete service account
         await api_instance.delete(service_account_id)
     except Exception as e:
         print("Exception when calling ServiceAccountsApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get service account
 
+Get a service account.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_id = 'service_account_id_example' # str | 
 
     try:
+        # Get service account
         api_response = await api_instance.get(service_account_id)
         print("The response of ServiceAccountsApi->get:\n")
         pprint(api_response)
@@ -239,6 +248,8 @@ Name | Type | Description  | Notes
 
 List service accounts
 
+Paginated list of service accounts.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -276,6 +287,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List service accounts
         api_response = await api_instance.list(name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of ServiceAccountsApi->list:\n")
         pprint(api_response)
@@ -322,6 +334,8 @@ Name | Type | Description  | Notes
 
 Update service account
 
+Update a service account.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -357,6 +371,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_update = saturn_api.ServiceAccountUpdate() # ServiceAccountUpdate | 
 
     try:
+        # Update service account
         api_response = await api_instance.update(service_account_id, service_account_update)
         print("The response of ServiceAccountsApi->update:\n")
         pprint(api_response)

@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](SshPrivateKeysApi.md#create) | **POST** /api/ssh_private_keys | 
-[**delete**](SshPrivateKeysApi.md#delete) | **DELETE** /api/ssh_private_keys/{ssh_privatekey_id} | 
-[**get**](SshPrivateKeysApi.md#get) | **GET** /api/ssh_private_keys/{ssh_privatekey_id} | 
-[**list**](SshPrivateKeysApi.md#list) | **GET** /api/ssh_private_keys | 
-[**update**](SshPrivateKeysApi.md#update) | **PATCH** /api/ssh_private_keys/{ssh_privatekey_id} | 
+[**create**](SshPrivateKeysApi.md#create) | **POST** /api/ssh_private_keys | Create ssh private key
+[**delete**](SshPrivateKeysApi.md#delete) | **DELETE** /api/ssh_private_keys/{ssh_privatekey_id} | Delete ssh private key
+[**get**](SshPrivateKeysApi.md#get) | **GET** /api/ssh_private_keys/{ssh_privatekey_id} | Get ssh private key
+[**list**](SshPrivateKeysApi.md#list) | **GET** /api/ssh_private_keys | List ssh private keys
+[**update**](SshPrivateKeysApi.md#update) | **PATCH** /api/ssh_private_keys/{ssh_privatekey_id} | Update ssh private key
 
 
 # **create**
 > SSHPrivateKey create(ssh_private_key_create)
 
 Create ssh private key
+
+Create a new ssh private key.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_private_key_create = saturn_api.SSHPrivateKeyCreate() # SSHPrivateKeyCreate | 
 
     try:
+        # Create ssh private key
         api_response = await api_instance.create(ssh_private_key_create)
         print("The response of SshPrivateKeysApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete ssh private key
 
+Delete a ssh private key.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_privatekey_id = 'ssh_privatekey_id_example' # str | 
 
     try:
+        # Delete ssh private key
         await api_instance.delete(ssh_privatekey_id)
     except Exception as e:
         print("Exception when calling SshPrivateKeysApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get ssh private key
 
+Get a ssh private key.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_privatekey_id = 'ssh_privatekey_id_example' # str | 
 
     try:
+        # Get ssh private key
         api_response = await api_instance.get(ssh_privatekey_id)
         print("The response of SshPrivateKeysApi->get:\n")
         pprint(api_response)
@@ -239,6 +248,8 @@ Name | Type | Description  | Notes
 
 List ssh private keys
 
+Paginated list of ssh private keys.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -280,6 +291,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List ssh private keys
         api_response = await api_instance.list(user_id=user_id, group_id=group_id, identity=identity, name=name, is_default=is_default, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of SshPrivateKeysApi->list:\n")
         pprint(api_response)
@@ -330,6 +342,8 @@ Name | Type | Description  | Notes
 
 Update ssh private key
 
+Update a ssh private key.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -365,6 +379,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     ssh_private_key_update = saturn_api.SSHPrivateKeyUpdate() # SSHPrivateKeyUpdate | 
 
     try:
+        # Update ssh private key
         api_response = await api_instance.update(ssh_privatekey_id, ssh_private_key_update)
         print("The response of SshPrivateKeysApi->update:\n")
         pprint(api_response)

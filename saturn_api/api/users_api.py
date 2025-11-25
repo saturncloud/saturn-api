@@ -60,9 +60,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UserDetailed:
-        """create
+        """Create user
 
-        Create user
+        Create a new user.
 
         :param user_admin_create: (required)
         :type user_admin_create: UserAdminCreate
@@ -127,9 +127,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UserDetailed]:
-        """create
+        """Create user
 
-        Create user
+        Create a new user.
 
         :param user_admin_create: (required)
         :type user_admin_create: UserAdminCreate
@@ -194,9 +194,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create user
 
-        Create user
+        Create a new user.
 
         :param user_admin_create: (required)
         :type user_admin_create: UserAdminCreate
@@ -334,9 +334,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete user
 
-        Delete user
+        Delete an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -401,9 +401,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete user
 
-        Delete user
+        Delete an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -468,9 +468,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete user
 
-        Delete user
+        Delete an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -589,9 +589,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UsersGet200Response:
-        """get
+        """Get user
 
-        Get user
+        Get an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -660,9 +660,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UsersGet200Response]:
-        """get
+        """Get user
 
-        Get user
+        Get an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -731,9 +731,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get user
 
-        Get user
+        Get an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -871,9 +871,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UsersList200Response:
-        """list
+        """List users
 
-        List users
+        Paginated list of users.
 
         :param username:
         :type username: str
@@ -958,9 +958,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UsersList200Response]:
-        """list
+        """List users
 
-        List users
+        Paginated list of users.
 
         :param username:
         :type username: str
@@ -1045,9 +1045,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List users
 
-        List users
+        Paginated list of users.
 
         :param username:
         :type username: str
@@ -1215,9 +1215,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UserDetailed:
-        """update
+        """Update user
 
-        Update user
+        Update an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -1286,9 +1286,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UserDetailed]:
-        """update
+        """Update user
 
-        Update user
+        Update an user.
 
         :param user_id: (required)
         :type user_id: str
@@ -1357,9 +1357,9 @@ class UsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update user
 
-        Update user
+        Update an user.
 
         :param user_id: (required)
         :type user_id: str

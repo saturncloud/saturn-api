@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](ApiStatusApi.md#get) | **GET** /api/status | 
+[**get**](ApiStatusApi.md#get) | **GET** /api/status | Get API status
 
 
 # **get**
@@ -44,6 +44,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.ApiStatusApi(api_client)
 
     try:
+        # Get API status
         api_response = await api_instance.get()
         print("The response of ApiStatusApi->get:\n")
         pprint(api_response)

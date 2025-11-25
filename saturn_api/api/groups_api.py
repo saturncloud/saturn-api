@@ -64,9 +64,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Group:
-        """create
+        """Create group
 
-        Create group
+        Create a new group.
 
         :param group_create: (required)
         :type group_create: GroupCreate
@@ -131,9 +131,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Group]:
-        """create
+        """Create group
 
-        Create group
+        Create a new group.
 
         :param group_create: (required)
         :type group_create: GroupCreate
@@ -198,9 +198,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create group
 
-        Create group
+        Create a new group.
 
         :param group_create: (required)
         :type group_create: GroupCreate
@@ -339,9 +339,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GroupMember:
-        """create_member
+        """Create group member
 
-        Create group member
 
         :param group_id: (required)
         :type group_id: str
@@ -410,9 +409,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GroupMember]:
-        """create_member
+        """Create group member
 
-        Create group member
 
         :param group_id: (required)
         :type group_id: str
@@ -481,9 +479,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_member
+        """Create group member
 
-        Create group member
 
         :param group_id: (required)
         :type group_id: str
@@ -627,9 +624,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete group
 
-        Delete group
+        Delete a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -694,9 +691,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete group
 
-        Delete group
+        Delete a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -761,9 +758,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete group
 
-        Delete group
+        Delete a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -882,9 +879,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_member
+        """Delete group member
 
-        Delete group member
 
         :param group_id: (required)
         :type group_id: str
@@ -953,9 +949,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_member
+        """Delete group member
 
-        Delete group member
 
         :param group_id: (required)
         :type group_id: str
@@ -1024,9 +1019,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_member
+        """Delete group member
 
-        Delete group member
 
         :param group_id: (required)
         :type group_id: str
@@ -1152,9 +1146,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Group:
-        """get
+        """Get group
 
-        Get group
+        Get a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -1219,9 +1213,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Group]:
-        """get
+        """Get group
 
-        Get group
+        Get a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -1286,9 +1280,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get group
 
-        Get group
+        Get a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -1415,9 +1409,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DailyUsageList:
-        """get_daily_usage
+        """Get group daily usage
 
-        List group usage data aggregated by day
+        Get usage for the group aggregated by day.
 
         :param group_id: (required)
         :type group_id: str
@@ -1490,9 +1484,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DailyUsageList]:
-        """get_daily_usage
+        """Get group daily usage
 
-        List group usage data aggregated by day
+        Get usage for the group aggregated by day.
 
         :param group_id: (required)
         :type group_id: str
@@ -1565,9 +1559,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_daily_usage
+        """Get group daily usage
 
-        List group usage data aggregated by day
+        Get usage for the group aggregated by day.
 
         :param group_id: (required)
         :type group_id: str
@@ -1732,9 +1726,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GroupList:
-        """list
+        """List groups
 
-        List groups
+        Paginated list of groups.
 
         :param name:
         :type name: str
@@ -1823,9 +1817,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GroupList]:
-        """list
+        """List groups
 
-        List groups
+        Paginated list of groups.
 
         :param name:
         :type name: str
@@ -1914,9 +1908,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List groups
 
-        List groups
+        Paginated list of groups.
 
         :param name:
         :type name: str
@@ -2096,9 +2090,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GroupMemberList:
-        """list_members
+        """List group members
 
-        List group members
 
         :param group_id: (required)
         :type group_id: str
@@ -2183,9 +2176,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GroupMemberList]:
-        """list_members
+        """List group members
 
-        List group members
 
         :param group_id: (required)
         :type group_id: str
@@ -2270,9 +2262,8 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_members
+        """List group members
 
-        List group members
 
         :param group_id: (required)
         :type group_id: str
@@ -2438,9 +2429,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Group:
-        """update
+        """Update group
 
-        Update group
+        Update a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -2509,9 +2500,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Group]:
-        """update
+        """Update group
 
-        Update group
+        Update a group.
 
         :param group_id: (required)
         :type group_id: str
@@ -2580,9 +2571,9 @@ class GroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update group
 
-        Update group
+        Update a group.
 
         :param group_id: (required)
         :type group_id: str

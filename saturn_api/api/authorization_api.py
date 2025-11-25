@@ -56,9 +56,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AuthorizationTokenResponse:
-        """create_oauth_token
+        """Create OAuth token
 
-        Request new auth tokens from oauth code or refresh token grant
+        Request new token from oauth code or refresh token grant.
 
         :param authorization_grant: (required)
         :type authorization_grant: AuthorizationGrant
@@ -123,9 +123,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AuthorizationTokenResponse]:
-        """create_oauth_token
+        """Create OAuth token
 
-        Request new auth tokens from oauth code or refresh token grant
+        Request new token from oauth code or refresh token grant.
 
         :param authorization_grant: (required)
         :type authorization_grant: AuthorizationGrant
@@ -190,9 +190,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_oauth_token
+        """Create OAuth token
 
-        Request new auth tokens from oauth code or refresh token grant
+        Request new token from oauth code or refresh token grant.
 
         :param authorization_grant: (required)
         :type authorization_grant: AuthorizationGrant
@@ -335,9 +335,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """get_oauth_init
+        """Initialize oauth
 
-        Initialize oauth
+        Begin an OAuth code grant flow.
 
         :param response_type: (required)
         :type response_type: str
@@ -422,9 +422,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """get_oauth_init
+        """Initialize oauth
 
-        Initialize oauth
+        Begin an OAuth code grant flow.
 
         :param response_type: (required)
         :type response_type: str
@@ -509,9 +509,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_oauth_init
+        """Initialize oauth
 
-        Initialize oauth
+        Begin an OAuth code grant flow.
 
         :param response_type: (required)
         :type response_type: str
@@ -672,9 +672,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """login
+        """Login
 
-        Login with username/password and set session cookie
+        Create a new browser session.
 
         :param username: (required)
         :type username: str
@@ -743,9 +743,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """login
+        """Login
 
-        Login with username/password and set session cookie
+        Create a new browser session.
 
         :param username: (required)
         :type username: str
@@ -814,9 +814,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """login
+        """Login
 
-        Login with username/password and set session cookie
+        Create a new browser session.
 
         :param username: (required)
         :type username: str
@@ -945,9 +945,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """logout
+        """Logout
 
-        Logout from current session
+        End the current browser session.
 
         :param username: (required)
         :type username: str
@@ -1016,9 +1016,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """logout
+        """Logout
 
-        Logout from current session
+        End the current browser session.
 
         :param username: (required)
         :type username: str
@@ -1087,9 +1087,9 @@ class AuthorizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """logout
+        """Logout
 
-        Logout from current session
+        End the current browser session.
 
         :param username: (required)
         :type username: str

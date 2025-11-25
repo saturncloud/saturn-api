@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **cloud_provider** | **str** |  | 
 **allow_deployment_public_access** | **bool** |  | 
 **is_enterprise** | **bool** |  | 
-**customer_name** | **bool** |  | 
+**customer_name** | **str** |  | 
 **stripe_public_key** | **bool** |  | 
 **hotjar_user_tracking** | **bool** |  | 
 **version** | **str** |  | 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **apply_requires_confirm** | **bool** |  | 
 **hide_invitations** | **bool** |  | 
 **populate_examples** | **bool** |  | 
+**whitelabel** | [**WhiteLabelConfiguration**](WhiteLabelConfiguration.md) |  | 
 **user_tracking** | **bool** |  | 
 
 ## Example

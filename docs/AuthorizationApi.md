@@ -4,16 +4,18 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_oauth_token**](AuthorizationApi.md#create_oauth_token) | **POST** /api/auth/token | 
-[**get_oauth_init**](AuthorizationApi.md#get_oauth_init) | **GET** /api/auth/token | 
-[**login**](AuthorizationApi.md#login) | **POST** /api/auth/login | 
-[**logout**](AuthorizationApi.md#logout) | **GET** /api/auth/logout | 
+[**create_oauth_token**](AuthorizationApi.md#create_oauth_token) | **POST** /api/auth/token | Create OAuth token
+[**get_oauth_init**](AuthorizationApi.md#get_oauth_init) | **GET** /api/auth/token | Initialize oauth
+[**login**](AuthorizationApi.md#login) | **POST** /api/auth/login | Login
+[**logout**](AuthorizationApi.md#logout) | **GET** /api/auth/logout | Logout
 
 
 # **create_oauth_token**
 > AuthorizationTokenResponse create_oauth_token(authorization_grant)
 
-Request new auth tokens from oauth code or refresh token grant
+Create OAuth token
+
+Request new token from oauth code or refresh token grant.
 
 ### Example
 
@@ -49,6 +51,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     authorization_grant = saturn_api.AuthorizationGrant() # AuthorizationGrant | 
 
     try:
+        # Create OAuth token
         api_response = await api_instance.create_oauth_token(authorization_grant)
         print("The response of AuthorizationApi->create_oauth_token:\n")
         pprint(api_response)
@@ -91,6 +94,8 @@ Name | Type | Description  | Notes
 
 Initialize oauth
 
+Begin an OAuth code grant flow.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -128,6 +133,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     state = 'state_example' # str |  (optional)
 
     try:
+        # Initialize oauth
         await api_instance.get_oauth_init(response_type, client_id, code_challenge, redirect_uri, code_challenge_method=code_challenge_method, state=state)
     except Exception as e:
         print("Exception when calling AuthorizationApi->get_oauth_init: %s\n" % e)
@@ -171,7 +177,9 @@ void (empty response body)
 # **login**
 > login(username, password)
 
-Login with username/password and set session cookie
+Login
+
+Create a new browser session.
 
 ### Example
 
@@ -206,6 +214,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     password = 'password_example' # str | 
 
     try:
+        # Login
         await api_instance.login(username, password)
     except Exception as e:
         print("Exception when calling AuthorizationApi->login: %s\n" % e)
@@ -245,7 +254,9 @@ void (empty response body)
 # **logout**
 > logout(username, password)
 
-Logout from current session
+Logout
+
+End the current browser session.
 
 ### Example
 
@@ -280,6 +291,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     password = 'password_example' # str | 
 
     try:
+        # Logout
         await api_instance.logout(username, password)
     except Exception as e:
         print("Exception when calling AuthorizationApi->logout: %s\n" % e)

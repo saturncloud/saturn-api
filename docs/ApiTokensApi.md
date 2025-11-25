@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ApiTokensApi.md#create) | **POST** /api/tokens | 
-[**delete**](ApiTokensApi.md#delete) | **DELETE** /api/tokens/{api_token_id} | 
-[**get**](ApiTokensApi.md#get) | **GET** /api/tokens/{api_token_id} | 
-[**list**](ApiTokensApi.md#list) | **GET** /api/tokens | 
-[**update**](ApiTokensApi.md#update) | **PATCH** /api/tokens/{api_token_id} | 
+[**create**](ApiTokensApi.md#create) | **POST** /api/tokens | Create api token
+[**delete**](ApiTokensApi.md#delete) | **DELETE** /api/tokens/{api_token_id} | Delete api token
+[**get**](ApiTokensApi.md#get) | **GET** /api/tokens/{api_token_id} | Get api token
+[**list**](ApiTokensApi.md#list) | **GET** /api/tokens | List api tokens
+[**update**](ApiTokensApi.md#update) | **PATCH** /api/tokens/{api_token_id} | Update api token
 
 
 # **create**
 > ApiToken create(api_token_create)
 
 Create api token
+
+Create a new api token.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_token_create = saturn_api.ApiTokenCreate() # ApiTokenCreate | 
 
     try:
+        # Create api token
         api_response = await api_instance.create(api_token_create)
         print("The response of ApiTokensApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete api token
 
+Delete an api token.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_token_id = 'api_token_id_example' # str | 
 
     try:
+        # Delete api token
         await api_instance.delete(api_token_id)
     except Exception as e:
         print("Exception when calling ApiTokensApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get api token
 
+Get an api token.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_token_id = 'api_token_id_example' # str | 
 
     try:
+        # Get api token
         api_response = await api_instance.get(api_token_id)
         print("The response of ApiTokensApi->get:\n")
         pprint(api_response)
@@ -239,6 +248,8 @@ Name | Type | Description  | Notes
 
 List api tokens
 
+Paginated list of api tokens.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -278,6 +289,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List api tokens
         api_response = await api_instance.list(user_id=user_id, group_id=group_id, identity=identity, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of ApiTokensApi->list:\n")
         pprint(api_response)
@@ -326,6 +338,8 @@ Name | Type | Description  | Notes
 
 Update api token
 
+Update an api token.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -361,6 +375,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_token_update = saturn_api.ApiTokenUpdate() # ApiTokenUpdate | 
 
     try:
+        # Update api token
         api_response = await api_instance.update(api_token_id, api_token_update)
         print("The response of ApiTokensApi->update:\n")
         pprint(api_response)

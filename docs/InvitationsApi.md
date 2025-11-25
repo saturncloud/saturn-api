@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](InvitationsApi.md#create) | **POST** /api/invitations | 
-[**delete**](InvitationsApi.md#delete) | **DELETE** /api/invitations/{invitation_id} | 
-[**get**](InvitationsApi.md#get) | **GET** /api/invitations/{invitation_id} | 
-[**list**](InvitationsApi.md#list) | **GET** /api/invitations | 
-[**update**](InvitationsApi.md#update) | **PATCH** /api/invitations/{invitation_id} | 
+[**create**](InvitationsApi.md#create) | **POST** /api/invitations | Create invitation
+[**delete**](InvitationsApi.md#delete) | **DELETE** /api/invitations/{invitation_id} | Delete invitation
+[**get**](InvitationsApi.md#get) | **GET** /api/invitations/{invitation_id} | Get invitation
+[**list**](InvitationsApi.md#list) | **GET** /api/invitations | List invitations
+[**update**](InvitationsApi.md#update) | **PATCH** /api/invitations/{invitation_id} | Update invitation
 
 
 # **create**
 > Invitation create(invitation_create)
 
 Create invitation
+
+Create a new invitation.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     invitation_create = saturn_api.InvitationCreate() # InvitationCreate | 
 
     try:
+        # Create invitation
         api_response = await api_instance.create(invitation_create)
         print("The response of InvitationsApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete invitation
 
+Delete an invitation.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     invitation_id = 'invitation_id_example' # str | 
 
     try:
+        # Delete invitation
         await api_instance.delete(invitation_id)
     except Exception as e:
         print("Exception when calling InvitationsApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get invitation
 
+Get an invitation.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     invitation_id = 'invitation_id_example' # str | 
 
     try:
+        # Get invitation
         api_response = await api_instance.get(invitation_id)
         print("The response of InvitationsApi->get:\n")
         pprint(api_response)
@@ -239,6 +248,8 @@ Name | Type | Description  | Notes
 
 List invitations
 
+Paginated list of invitations.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -279,6 +290,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List invitations
         api_response = await api_instance.list(status=status, email=email, invitor_id=invitor_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of InvitationsApi->list:\n")
         pprint(api_response)
@@ -327,6 +339,8 @@ Name | Type | Description  | Notes
 
 Update invitation
 
+Update an invitation.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -362,6 +376,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     invitation_update = saturn_api.InvitationUpdate() # InvitationUpdate | 
 
     try:
+        # Update invitation
         api_response = await api_instance.update(invitation_id, invitation_update)
         print("The response of InvitationsApi->update:\n")
         pprint(api_response)

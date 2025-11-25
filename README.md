@@ -78,6 +78,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.ApiStatusApi(api_client)
 
     try:
+        # Get API status
         api_response = await api_instance.get()
         print("The response of ApiStatusApi->get:\n")
         pprint(api_response)
@@ -92,257 +93,276 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApiStatusApi* | [**get**](docs/ApiStatusApi.md#get) | **GET** /api/status | 
-*ApiTokensApi* | [**create**](docs/ApiTokensApi.md#create) | **POST** /api/tokens | 
-*ApiTokensApi* | [**delete**](docs/ApiTokensApi.md#delete) | **DELETE** /api/tokens/{api_token_id} | 
-*ApiTokensApi* | [**get**](docs/ApiTokensApi.md#get) | **GET** /api/tokens/{api_token_id} | 
-*ApiTokensApi* | [**list**](docs/ApiTokensApi.md#list) | **GET** /api/tokens | 
-*ApiTokensApi* | [**update**](docs/ApiTokensApi.md#update) | **PATCH** /api/tokens/{api_token_id} | 
-*AppInfoApi* | [**get**](docs/AppInfoApi.md#get) | **GET** /api/info | 
-*AppInfoApi* | [**get_server_options**](docs/AppInfoApi.md#get_server_options) | **GET** /api/info/servers | 
-*AuthorizationApi* | [**create_oauth_token**](docs/AuthorizationApi.md#create_oauth_token) | **POST** /api/auth/token | 
-*AuthorizationApi* | [**get_oauth_init**](docs/AuthorizationApi.md#get_oauth_init) | **GET** /api/auth/token | 
-*AuthorizationApi* | [**login**](docs/AuthorizationApi.md#login) | **POST** /api/auth/login | 
-*AuthorizationApi* | [**logout**](docs/AuthorizationApi.md#logout) | **GET** /api/auth/logout | 
-*CurrentUserApi* | [**get**](docs/CurrentUserApi.md#get) | **GET** /api/user | 
-*CurrentUserApi* | [**get_aggregated_usage**](docs/CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | 
-*CurrentUserApi* | [**get_preferences**](docs/CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | 
-*CurrentUserApi* | [**list_org_memberships**](docs/CurrentUserApi.md#list_org_memberships) | **GET** /api/user/org_memberships | 
-*CurrentUserApi* | [**update**](docs/CurrentUserApi.md#update) | **PATCH** /api/user | 
-*CurrentUserApi* | [**update_preferences**](docs/CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | 
-*DaskClustersApi* | [**adapt**](docs/DaskClustersApi.md#adapt) | **POST** /api/dask_clusters/{dask_cluster_id}/adapt | 
-*DaskClustersApi* | [**create**](docs/DaskClustersApi.md#create) | **POST** /api/dask_clusters | 
-*DaskClustersApi* | [**delete**](docs/DaskClustersApi.md#delete) | **DELETE** /api/dask_clusters/{dask_cluster_id} | 
-*DaskClustersApi* | [**get**](docs/DaskClustersApi.md#get) | **GET** /api/dask_clusters/{dask_cluster_id} | 
-*DaskClustersApi* | [**get_info**](docs/DaskClustersApi.md#get_info) | **GET** /api/dask_clusters/{dask_cluster_id}/info | 
-*DaskClustersApi* | [**get_kubecluster_runtime_summary**](docs/DaskClustersApi.md#get_kubecluster_runtime_summary) | **GET** /api/dask_clusters/{dask_cluster_id}/kubecluster/runtimesummary | 
-*DaskClustersApi* | [**get_log_history**](docs/DaskClustersApi.md#get_log_history) | **GET** /api/dask_clusters/{dask_cluster_id}/logs | 
-*DaskClustersApi* | [**get_metrics**](docs/DaskClustersApi.md#get_metrics) | **GET** /api/dask_clusters/{dask_cluster_id}/metrics | 
-*DaskClustersApi* | [**get_runtime_summary**](docs/DaskClustersApi.md#get_runtime_summary) | **GET** /api/dask_clusters/{dask_cluster_id}/runtimesummary | 
-*DaskClustersApi* | [**get_scheduler_info**](docs/DaskClustersApi.md#get_scheduler_info) | **GET** /api/dask_clusters/{dask_cluster_id}/scheduler_info | 
-*DaskClustersApi* | [**get_scheduler_runtimesummary**](docs/DaskClustersApi.md#get_scheduler_runtimesummary) | **GET** /api/dask_clusters/{dask_cluster_id}/scheduler/runtimesummary | 
-*DaskClustersApi* | [**get_scheduler_status**](docs/DaskClustersApi.md#get_scheduler_status) | **GET** /api/dask_clusters/{dask_cluster_id}/status | 
-*DaskClustersApi* | [**get_server_options**](docs/DaskClustersApi.md#get_server_options) | **GET** /api/dask_clusters/info | 
-*DaskClustersApi* | [**get_status_history**](docs/DaskClustersApi.md#get_status_history) | **GET** /api/dask_clusters/{dask_cluster_id}/history | 
-*DaskClustersApi* | [**get_token_info**](docs/DaskClustersApi.md#get_token_info) | **GET** /api/dask_clusters/{dask_cluster_id}/token | 
-*DaskClustersApi* | [**get_workers_runtimesummary**](docs/DaskClustersApi.md#get_workers_runtimesummary) | **GET** /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary | 
-*DaskClustersApi* | [**list**](docs/DaskClustersApi.md#list) | **GET** /api/dask_clusters | 
-*DaskClustersApi* | [**restart**](docs/DaskClustersApi.md#restart) | **POST** /api/dask_clusters/{dask_cluster_id}/restart | 
-*DaskClustersApi* | [**rotate_token**](docs/DaskClustersApi.md#rotate_token) | **POST** /api/dask_clusters/{dask_cluster_id}/token | 
-*DaskClustersApi* | [**scale**](docs/DaskClustersApi.md#scale) | **POST** /api/dask_clusters/{dask_cluster_id}/scale | 
-*DaskClustersApi* | [**start**](docs/DaskClustersApi.md#start) | **POST** /api/dask_clusters/{dask_cluster_id}/start | 
-*DaskClustersApi* | [**stop**](docs/DaskClustersApi.md#stop) | **POST** /api/dask_clusters/{dask_cluster_id}/stop | 
-*DaskClustersApi* | [**update**](docs/DaskClustersApi.md#update) | **PATCH** /api/dask_clusters/{dask_cluster_id} | 
-*DaskClustersApi* | [**update_token**](docs/DaskClustersApi.md#update_token) | **PATCH** /api/dask_clusters/{dask_cluster_id}/token | 
-*DefaultApi* | [**get_runtimesummary**](docs/DefaultApi.md#get_runtimesummary) | **GET** /api/images/{image_id}/tags/{image_tag_id}/runtimesummary | 
-*DeploymentsApi* | [**create**](docs/DeploymentsApi.md#create) | **POST** /api/deployments | 
-*DeploymentsApi* | [**create_resource_template**](docs/DeploymentsApi.md#create_resource_template) | **POST** /api/deployments/{deployment_id}/template | 
-*DeploymentsApi* | [**create_route**](docs/DeploymentsApi.md#create_route) | **POST** /api/deployments/{deployment_id}/routes | 
-*DeploymentsApi* | [**create_secret_attachment**](docs/DeploymentsApi.md#create_secret_attachment) | **POST** /api/deployments/{deployment_id}/secrets | 
-*DeploymentsApi* | [**create_service_account_attachment**](docs/DeploymentsApi.md#create_service_account_attachment) | **PUT** /api/deployments/{deployment_id}/service_account | 
-*DeploymentsApi* | [**create_viewer**](docs/DeploymentsApi.md#create_viewer) | **POST** /api/deployments/{deployment_id}/viewers | 
-*DeploymentsApi* | [**delete**](docs/DeploymentsApi.md#delete) | **DELETE** /api/deployments/{deployment_id} | 
-*DeploymentsApi* | [**delete_route**](docs/DeploymentsApi.md#delete_route) | **DELETE** /api/deployments/{deployment_id}/routes/{route_id} | 
-*DeploymentsApi* | [**delete_secret_attachment**](docs/DeploymentsApi.md#delete_secret_attachment) | **DELETE** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | 
-*DeploymentsApi* | [**delete_service_account_attachment**](docs/DeploymentsApi.md#delete_service_account_attachment) | **DELETE** /api/deployments/{deployment_id}/service_account | 
-*DeploymentsApi* | [**delete_viewer**](docs/DeploymentsApi.md#delete_viewer) | **DELETE** /api/deployments/{deployment_id}/viewers/{viewer_id} | 
-*DeploymentsApi* | [**get**](docs/DeploymentsApi.md#get) | **GET** /api/deployments/{deployment_id} | 
-*DeploymentsApi* | [**get_cluster_history**](docs/DeploymentsApi.md#get_cluster_history) | **GET** /api/deployments/{deployment_id}/clusters | 
-*DeploymentsApi* | [**get_log_history**](docs/DeploymentsApi.md#get_log_history) | **GET** /api/deployments/{deployment_id}/logs | 
-*DeploymentsApi* | [**get_metrics**](docs/DeploymentsApi.md#get_metrics) | **GET** /api/deployments/{deployment_id}/metrics | 
-*DeploymentsApi* | [**get_recipe**](docs/DeploymentsApi.md#get_recipe) | **GET** /api/deployments/{deployment_id}/recipe | 
-*DeploymentsApi* | [**get_resource_template**](docs/DeploymentsApi.md#get_resource_template) | **GET** /api/deployments/{deployment_id}/template | 
-*DeploymentsApi* | [**get_route**](docs/DeploymentsApi.md#get_route) | **GET** /api/deployments/{deployment_id}/routes/{route_id} | 
-*DeploymentsApi* | [**get_runtime_summary**](docs/DeploymentsApi.md#get_runtime_summary) | **GET** /api/deployments/{deployment_id}/runtimesummary | 
-*DeploymentsApi* | [**get_secret_attachment**](docs/DeploymentsApi.md#get_secret_attachment) | **GET** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | 
-*DeploymentsApi* | [**get_server_options**](docs/DeploymentsApi.md#get_server_options) | **GET** /api/deployments/info | 
-*DeploymentsApi* | [**get_service_account_attachment**](docs/DeploymentsApi.md#get_service_account_attachment) | **GET** /api/deployments/{deployment_id}/service_account | 
-*DeploymentsApi* | [**get_status_history**](docs/DeploymentsApi.md#get_status_history) | **GET** /api/deployments/{deployment_id}/history | 
-*DeploymentsApi* | [**list**](docs/DeploymentsApi.md#list) | **GET** /api/deployments | 
-*DeploymentsApi* | [**list_routes**](docs/DeploymentsApi.md#list_routes) | **GET** /api/deployments/{deployment_id}/routes | 
-*DeploymentsApi* | [**list_secret_attachments**](docs/DeploymentsApi.md#list_secret_attachments) | **GET** /api/deployments/{deployment_id}/secrets | 
-*DeploymentsApi* | [**list_viewers**](docs/DeploymentsApi.md#list_viewers) | **GET** /api/deployments/{deployment_id}/viewers | 
-*DeploymentsApi* | [**restart**](docs/DeploymentsApi.md#restart) | **POST** /api/deployments/{deployment_id}/restart | 
-*DeploymentsApi* | [**start**](docs/DeploymentsApi.md#start) | **POST** /api/deployments/{deployment_id}/start | 
-*DeploymentsApi* | [**stop**](docs/DeploymentsApi.md#stop) | **POST** /api/deployments/{deployment_id}/stop | 
-*DeploymentsApi* | [**update**](docs/DeploymentsApi.md#update) | **PATCH** /api/deployments/{deployment_id} | 
-*DeploymentsApi* | [**update_resource_template**](docs/DeploymentsApi.md#update_resource_template) | **PATCH** /api/deployments/{deployment_id}/template | 
-*DeploymentsApi* | [**update_route**](docs/DeploymentsApi.md#update_route) | **PATCH** /api/deployments/{deployment_id}/routes/{route_id} | 
-*DeploymentsApi* | [**update_secret_attachment**](docs/DeploymentsApi.md#update_secret_attachment) | **PATCH** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | 
-*ExternalRepoAttachmentsApi* | [**create**](docs/ExternalRepoAttachmentsApi.md#create) | **POST** /api/external_repo_attachments | 
-*ExternalRepoAttachmentsApi* | [**delete**](docs/ExternalRepoAttachmentsApi.md#delete) | **DELETE** /api/external_repo_attachments/{external_repo_attachment_id} | 
-*ExternalRepoAttachmentsApi* | [**get**](docs/ExternalRepoAttachmentsApi.md#get) | **GET** /api/external_repo_attachments/{external_repo_attachment_id} | 
-*ExternalRepoAttachmentsApi* | [**list**](docs/ExternalRepoAttachmentsApi.md#list) | **GET** /api/external_repo_attachments | 
-*ExternalRepoAttachmentsApi* | [**update**](docs/ExternalRepoAttachmentsApi.md#update) | **PATCH** /api/external_repo_attachments/{external_repo_attachment_id} | 
-*ExternalReposApi* | [**create**](docs/ExternalReposApi.md#create) | **POST** /api/external_repos | 
-*ExternalReposApi* | [**delete**](docs/ExternalReposApi.md#delete) | **DELETE** /api/external_repos/{external_repo_id} | 
-*ExternalReposApi* | [**get**](docs/ExternalReposApi.md#get) | **GET** /api/external_repos/{external_repo_id} | 
-*ExternalReposApi* | [**list**](docs/ExternalReposApi.md#list) | **GET** /api/external_repos | 
-*ExternalReposApi* | [**update**](docs/ExternalReposApi.md#update) | **PATCH** /api/external_repos/{external_repo_id} | 
-*GroupsApi* | [**create**](docs/GroupsApi.md#create) | **POST** /api/groups | 
-*GroupsApi* | [**create_member**](docs/GroupsApi.md#create_member) | **POST** /api/groups/{group_id}/members | 
-*GroupsApi* | [**delete**](docs/GroupsApi.md#delete) | **DELETE** /api/groups/{group_id} | 
-*GroupsApi* | [**delete_member**](docs/GroupsApi.md#delete_member) | **DELETE** /api/groups/{group_id}/members | 
-*GroupsApi* | [**get**](docs/GroupsApi.md#get) | **GET** /api/groups/{group_id} | 
-*GroupsApi* | [**get_daily_usage**](docs/GroupsApi.md#get_daily_usage) | **GET** /api/groups/{group_id}/usage/daily | 
-*GroupsApi* | [**list**](docs/GroupsApi.md#list) | **GET** /api/groups | 
-*GroupsApi* | [**list_members**](docs/GroupsApi.md#list_members) | **GET** /api/groups/{group_id}/members | 
-*GroupsApi* | [**update**](docs/GroupsApi.md#update) | **PATCH** /api/groups/{group_id} | 
-*ImageTagsApi* | [**create**](docs/ImageTagsApi.md#create) | **POST** /api/images/{image_id}/tags | 
-*ImageTagsApi* | [**delete**](docs/ImageTagsApi.md#delete) | **DELETE** /api/images/{image_id}/tags/{image_tag_id} | 
-*ImageTagsApi* | [**get**](docs/ImageTagsApi.md#get) | **GET** /api/images/{image_id}/tags/{image_tag_id} | 
-*ImageTagsApi* | [**get_log_history**](docs/ImageTagsApi.md#get_log_history) | **GET** /api/images/{image_id}/tags/{image_tag_id}/logs | 
-*ImageTagsApi* | [**get_status_history**](docs/ImageTagsApi.md#get_status_history) | **GET** /api/images/{image_id}/tags/{image_tag_id}/history | 
-*ImageTagsApi* | [**list**](docs/ImageTagsApi.md#list) | **GET** /api/images/{image_id}/tags | 
-*ImageTagsApi* | [**stop**](docs/ImageTagsApi.md#stop) | **POST** /api/images/{image_id}/tags/{image_tag_id}/stop | 
-*ImageTagsApi* | [**update**](docs/ImageTagsApi.md#update) | **PATCH** /api/images/{image_id}/tags/{image_tag_id} | 
-*ImagesApi* | [**create**](docs/ImagesApi.md#create) | **POST** /api/images | 
-*ImagesApi* | [**delete**](docs/ImagesApi.md#delete) | **DELETE** /api/images/{image_id} | 
-*ImagesApi* | [**get**](docs/ImagesApi.md#get) | **GET** /api/images/{image_id} | 
-*ImagesApi* | [**list**](docs/ImagesApi.md#list) | **GET** /api/images | 
-*ImagesApi* | [**update**](docs/ImagesApi.md#update) | **PATCH** /api/images/{image_id} | 
-*InvitationsApi* | [**create**](docs/InvitationsApi.md#create) | **POST** /api/invitations | 
-*InvitationsApi* | [**delete**](docs/InvitationsApi.md#delete) | **DELETE** /api/invitations/{invitation_id} | 
-*InvitationsApi* | [**get**](docs/InvitationsApi.md#get) | **GET** /api/invitations/{invitation_id} | 
-*InvitationsApi* | [**list**](docs/InvitationsApi.md#list) | **GET** /api/invitations | 
-*InvitationsApi* | [**update**](docs/InvitationsApi.md#update) | **PATCH** /api/invitations/{invitation_id} | 
-*JobsApi* | [**create**](docs/JobsApi.md#create) | **POST** /api/jobs | 
-*JobsApi* | [**create_resource_template**](docs/JobsApi.md#create_resource_template) | **POST** /api/jobs/{job_id}/template | 
-*JobsApi* | [**create_secret_attachment**](docs/JobsApi.md#create_secret_attachment) | **POST** /api/jobs/{job_id}/secrets | 
-*JobsApi* | [**create_service_account_attachment**](docs/JobsApi.md#create_service_account_attachment) | **PUT** /api/jobs/{job_id}/service_account | 
-*JobsApi* | [**delete**](docs/JobsApi.md#delete) | **DELETE** /api/jobs/{job_id} | 
-*JobsApi* | [**delete_secret_attachment**](docs/JobsApi.md#delete_secret_attachment) | **DELETE** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
-*JobsApi* | [**delete_service_account_attachment**](docs/JobsApi.md#delete_service_account_attachment) | **DELETE** /api/jobs/{job_id}/service_account | 
-*JobsApi* | [**get**](docs/JobsApi.md#get) | **GET** /api/jobs/{job_id} | 
-*JobsApi* | [**get_cluster_history**](docs/JobsApi.md#get_cluster_history) | **GET** /api/jobs/{job_id}/clusters | 
-*JobsApi* | [**get_log_history**](docs/JobsApi.md#get_log_history) | **GET** /api/jobs/{job_id}/logs | 
-*JobsApi* | [**get_metrics**](docs/JobsApi.md#get_metrics) | **GET** /api/jobs/{job_id}/metrics | 
-*JobsApi* | [**get_recipe**](docs/JobsApi.md#get_recipe) | **GET** /api/jobs/{job_id}/recipe | 
-*JobsApi* | [**get_resource_template**](docs/JobsApi.md#get_resource_template) | **GET** /api/jobs/{job_id}/template | 
-*JobsApi* | [**get_runtime_summary**](docs/JobsApi.md#get_runtime_summary) | **GET** /api/jobs/{job_id}/runtimesummary | 
-*JobsApi* | [**get_secret_attachment**](docs/JobsApi.md#get_secret_attachment) | **GET** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
-*JobsApi* | [**get_server_options**](docs/JobsApi.md#get_server_options) | **GET** /api/jobs/info | 
-*JobsApi* | [**get_service_account_attachment**](docs/JobsApi.md#get_service_account_attachment) | **GET** /api/jobs/{job_id}/service_account | 
-*JobsApi* | [**get_status_history**](docs/JobsApi.md#get_status_history) | **GET** /api/jobs/{job_id}/history | 
-*JobsApi* | [**get_token_info**](docs/JobsApi.md#get_token_info) | **GET** /api/jobs/{job_id}/token | 
-*JobsApi* | [**list**](docs/JobsApi.md#list) | **GET** /api/jobs | 
-*JobsApi* | [**list_secret_attachments**](docs/JobsApi.md#list_secret_attachments) | **GET** /api/jobs/{job_id}/secrets | 
-*JobsApi* | [**restart**](docs/JobsApi.md#restart) | **POST** /api/jobs/{job_id}/restart | 
-*JobsApi* | [**rotate_token**](docs/JobsApi.md#rotate_token) | **POST** /api/jobs/{job_id}/token | 
-*JobsApi* | [**schedule**](docs/JobsApi.md#schedule) | **POST** /api/jobs/{job_id}/schedule | 
-*JobsApi* | [**start**](docs/JobsApi.md#start) | **POST** /api/jobs/{job_id}/start | 
-*JobsApi* | [**stop**](docs/JobsApi.md#stop) | **POST** /api/jobs/{job_id}/stop | 
-*JobsApi* | [**unschedule**](docs/JobsApi.md#unschedule) | **POST** /api/jobs/{job_id}/unschedule | 
-*JobsApi* | [**update**](docs/JobsApi.md#update) | **PATCH** /api/jobs/{job_id} | 
-*JobsApi* | [**update_resource_template**](docs/JobsApi.md#update_resource_template) | **PATCH** /api/jobs/{job_id}/template | 
-*JobsApi* | [**update_secret_attachment**](docs/JobsApi.md#update_secret_attachment) | **PATCH** /api/jobs/{job_id}/secrets/{secret_attachment_id} | 
-*JobsApi* | [**update_token**](docs/JobsApi.md#update_token) | **PATCH** /api/jobs/{job_id}/token | 
-*NotificationsApi* | [**acknowledge**](docs/NotificationsApi.md#acknowledge) | **PUT** /api/notifications | 
-*NotificationsApi* | [**delete**](docs/NotificationsApi.md#delete) | **DELETE** /api/notifications | 
-*NotificationsApi* | [**list**](docs/NotificationsApi.md#list) | **GET** /api/notifications | 
-*NotificationsApi* | [**list_subscriptions**](docs/NotificationsApi.md#list_subscriptions) | **GET** /api/notifications/subscriptions | 
-*NotificationsApi* | [**subscribe**](docs/NotificationsApi.md#subscribe) | **PUT** /api/notifications/subscriptions | 
-*NotificationsApi* | [**unsubscribe**](docs/NotificationsApi.md#unsubscribe) | **DELETE** /api/notifications/subscriptions | 
-*OrgsApi* | [**create**](docs/OrgsApi.md#create) | **POST** /api/orgs | 
-*OrgsApi* | [**create_member**](docs/OrgsApi.md#create_member) | **POST** /api/orgs/{org_id}/members | 
-*OrgsApi* | [**delete**](docs/OrgsApi.md#delete) | **DELETE** /api/orgs/{org_id} | 
-*OrgsApi* | [**delete_member**](docs/OrgsApi.md#delete_member) | **DELETE** /api/orgs/{org_id}/members/{user_id} | 
-*OrgsApi* | [**get**](docs/OrgsApi.md#get) | **GET** /api/orgs/{org_id} | 
-*OrgsApi* | [**get_aggregated_usage**](docs/OrgsApi.md#get_aggregated_usage) | **GET** /api/orgs/{org_id}/usage/aggregated | 
-*OrgsApi* | [**get_daily_usage**](docs/OrgsApi.md#get_daily_usage) | **GET** /api/orgs/{org_id}/usage/daily | 
-*OrgsApi* | [**get_daily_user_usage**](docs/OrgsApi.md#get_daily_user_usage) | **GET** /api/orgs/{org_id}/members/{user_id}/usage/daily | 
-*OrgsApi* | [**get_member**](docs/OrgsApi.md#get_member) | **GET** /api/orgs/{org_id}/members/{user_id} | 
-*OrgsApi* | [**get_owner_usage**](docs/OrgsApi.md#get_owner_usage) | **GET** /api/orgs/{org_id}/usage/owners | 
-*OrgsApi* | [**get_usage_limits**](docs/OrgsApi.md#get_usage_limits) | **GET** /api/orgs/{org_id}/limits | 
-*OrgsApi* | [**list**](docs/OrgsApi.md#list) | **GET** /api/orgs | 
-*OrgsApi* | [**list_owners**](docs/OrgsApi.md#list_owners) | **GET** /api/orgs/{org_id}/owners | 
-*OrgsApi* | [**update**](docs/OrgsApi.md#update) | **PATCH** /api/orgs/{org_id} | 
-*OrgsApi* | [**update_member**](docs/OrgsApi.md#update_member) | **PATCH** /api/orgs/{org_id}/members/{user_id} | 
-*RecipesApi* | [**apply**](docs/RecipesApi.md#apply) | **PUT** /api/recipes | 
-*RecipesApi* | [**create**](docs/RecipesApi.md#create) | **POST** /api/recipes | 
-*RecipesApi* | [**get**](docs/RecipesApi.md#get) | **GET** /api/recipes/{recipe_type}/{name} | 
-*RecipesApi* | [**list**](docs/RecipesApi.md#list) | **GET** /api/recipes | 
-*SecretsApi* | [**create**](docs/SecretsApi.md#create) | **POST** /api/secrets | 
-*SecretsApi* | [**delete**](docs/SecretsApi.md#delete) | **DELETE** /api/secrets/{secret_id} | 
-*SecretsApi* | [**get**](docs/SecretsApi.md#get) | **GET** /api/secrets/{secret_id} | 
-*SecretsApi* | [**list**](docs/SecretsApi.md#list) | **GET** /api/secrets | 
-*SecretsApi* | [**update**](docs/SecretsApi.md#update) | **PATCH** /api/secrets/{secret_id} | 
-*ServiceAccountEntitlementsApi* | [**create**](docs/ServiceAccountEntitlementsApi.md#create) | **POST** /api/service_account_entitlements | 
-*ServiceAccountEntitlementsApi* | [**delete**](docs/ServiceAccountEntitlementsApi.md#delete) | **DELETE** /api/service_account_entitlements/{service_account_entitlement_id} | 
-*ServiceAccountEntitlementsApi* | [**get**](docs/ServiceAccountEntitlementsApi.md#get) | **GET** /api/service_account_entitlements/{service_account_entitlement_id} | 
-*ServiceAccountEntitlementsApi* | [**list**](docs/ServiceAccountEntitlementsApi.md#list) | **GET** /api/service_account_entitlements | 
-*ServiceAccountsApi* | [**create**](docs/ServiceAccountsApi.md#create) | **POST** /api/service_accounts | 
-*ServiceAccountsApi* | [**delete**](docs/ServiceAccountsApi.md#delete) | **DELETE** /api/service_accounts/{service_account_id} | 
-*ServiceAccountsApi* | [**get**](docs/ServiceAccountsApi.md#get) | **GET** /api/service_accounts/{service_account_id} | 
-*ServiceAccountsApi* | [**list**](docs/ServiceAccountsApi.md#list) | **GET** /api/service_accounts | 
-*ServiceAccountsApi* | [**update**](docs/ServiceAccountsApi.md#update) | **PATCH** /api/service_accounts/{service_account_id} | 
-*SharedFolderAttachmentsApi* | [**create**](docs/SharedFolderAttachmentsApi.md#create) | **POST** /api/shared_folder_attachments | 
-*SharedFolderAttachmentsApi* | [**delete**](docs/SharedFolderAttachmentsApi.md#delete) | **DELETE** /api/shared_folder_attachments/{shared_folder_attachment_id} | 
-*SharedFolderAttachmentsApi* | [**get**](docs/SharedFolderAttachmentsApi.md#get) | **GET** /api/shared_folder_attachments/{shared_folder_attachment_id} | 
-*SharedFolderAttachmentsApi* | [**list**](docs/SharedFolderAttachmentsApi.md#list) | **GET** /api/shared_folder_attachments | 
-*SharedFolderAttachmentsApi* | [**update**](docs/SharedFolderAttachmentsApi.md#update) | **PATCH** /api/shared_folder_attachments/{shared_folder_attachment_id} | 
-*SharedFoldersApi* | [**create**](docs/SharedFoldersApi.md#create) | **POST** /api/shared_folders | 
-*SharedFoldersApi* | [**delete**](docs/SharedFoldersApi.md#delete) | **DELETE** /api/shared_folders/{shared_folder_id} | 
-*SharedFoldersApi* | [**get**](docs/SharedFoldersApi.md#get) | **GET** /api/shared_folders/{shared_folder_id} | 
-*SharedFoldersApi* | [**list**](docs/SharedFoldersApi.md#list) | **GET** /api/shared_folders | 
-*SharedFoldersApi* | [**update**](docs/SharedFoldersApi.md#update) | **PATCH** /api/shared_folders/{shared_folder_id} | 
-*SshPrivateKeysApi* | [**create**](docs/SshPrivateKeysApi.md#create) | **POST** /api/ssh_private_keys | 
-*SshPrivateKeysApi* | [**delete**](docs/SshPrivateKeysApi.md#delete) | **DELETE** /api/ssh_private_keys/{ssh_privatekey_id} | 
-*SshPrivateKeysApi* | [**get**](docs/SshPrivateKeysApi.md#get) | **GET** /api/ssh_private_keys/{ssh_privatekey_id} | 
-*SshPrivateKeysApi* | [**list**](docs/SshPrivateKeysApi.md#list) | **GET** /api/ssh_private_keys | 
-*SshPrivateKeysApi* | [**update**](docs/SshPrivateKeysApi.md#update) | **PATCH** /api/ssh_private_keys/{ssh_privatekey_id} | 
-*SshPublicKeysApi* | [**create**](docs/SshPublicKeysApi.md#create) | **POST** /api/ssh_public_keys | 
-*SshPublicKeysApi* | [**delete**](docs/SshPublicKeysApi.md#delete) | **DELETE** /api/ssh_public_keys/{ssh_publickey_id} | 
-*SshPublicKeysApi* | [**get**](docs/SshPublicKeysApi.md#get) | **GET** /api/ssh_public_keys/{ssh_publickey_id} | 
-*SshPublicKeysApi* | [**list**](docs/SshPublicKeysApi.md#list) | **GET** /api/ssh_public_keys | 
-*SshPublicKeysApi* | [**update**](docs/SshPublicKeysApi.md#update) | **PATCH** /api/ssh_public_keys/{ssh_publickey_id} | 
-*UsageLimitsApi* | [**create**](docs/UsageLimitsApi.md#create) | **POST** /api/limits | 
-*UsageLimitsApi* | [**delete**](docs/UsageLimitsApi.md#delete) | **DELETE** /api/limits/{usage_limits_id} | 
-*UsageLimitsApi* | [**get**](docs/UsageLimitsApi.md#get) | **GET** /api/limits/{usage_limits_id} | 
-*UsageLimitsApi* | [**list**](docs/UsageLimitsApi.md#list) | **GET** /api/limits | 
-*UsageLimitsApi* | [**update**](docs/UsageLimitsApi.md#update) | **PATCH** /api/limits/{usage_limits_id} | 
-*UsersApi* | [**create**](docs/UsersApi.md#create) | **POST** /api/users | 
-*UsersApi* | [**delete**](docs/UsersApi.md#delete) | **DELETE** /api/users/{user_id} | 
-*UsersApi* | [**get**](docs/UsersApi.md#get) | **GET** /api/users/{user_id} | 
-*UsersApi* | [**list**](docs/UsersApi.md#list) | **GET** /api/users | 
-*UsersApi* | [**update**](docs/UsersApi.md#update) | **PATCH** /api/users/{user_id} | 
-*WorkspacesApi* | [**create**](docs/WorkspacesApi.md#create) | **POST** /api/workspaces | 
-*WorkspacesApi* | [**create_resource_template**](docs/WorkspacesApi.md#create_resource_template) | **POST** /api/workspaces/{workspace_id}/template | 
-*WorkspacesApi* | [**create_route**](docs/WorkspacesApi.md#create_route) | **POST** /api/workspaces/{workspace_id}/routes | 
-*WorkspacesApi* | [**create_secret_attachment**](docs/WorkspacesApi.md#create_secret_attachment) | **POST** /api/workspaces/{workspace_id}/secrets | 
-*WorkspacesApi* | [**create_service_account_attachment**](docs/WorkspacesApi.md#create_service_account_attachment) | **PUT** /api/workspaces/{workspace_id}/service_account | 
-*WorkspacesApi* | [**create_viewer**](docs/WorkspacesApi.md#create_viewer) | **POST** /api/workspaces/{workspace_id}/viewers | 
-*WorkspacesApi* | [**delete**](docs/WorkspacesApi.md#delete) | **DELETE** /api/workspaces/{workspace_id} | 
-*WorkspacesApi* | [**delete_route**](docs/WorkspacesApi.md#delete_route) | **DELETE** /api/workspaces/{workspace_id}/routes/{route_id} | 
-*WorkspacesApi* | [**delete_secret_attachment**](docs/WorkspacesApi.md#delete_secret_attachment) | **DELETE** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | 
-*WorkspacesApi* | [**delete_service_account_attachment**](docs/WorkspacesApi.md#delete_service_account_attachment) | **DELETE** /api/workspaces/{workspace_id}/service_account | 
-*WorkspacesApi* | [**delete_viewer**](docs/WorkspacesApi.md#delete_viewer) | **DELETE** /api/workspaces/{workspace_id}/viewers/{viewer_id} | 
-*WorkspacesApi* | [**get**](docs/WorkspacesApi.md#get) | **GET** /api/workspaces/{workspace_id} | 
-*WorkspacesApi* | [**get_cluster_history**](docs/WorkspacesApi.md#get_cluster_history) | **GET** /api/workspaces/{workspace_id}/clusters | 
-*WorkspacesApi* | [**get_log_history**](docs/WorkspacesApi.md#get_log_history) | **GET** /api/workspaces/{workspace_id}/logs | 
-*WorkspacesApi* | [**get_metrics**](docs/WorkspacesApi.md#get_metrics) | **GET** /api/workspaces/{workspace_id}/metrics | 
-*WorkspacesApi* | [**get_recipe**](docs/WorkspacesApi.md#get_recipe) | **GET** /api/workspaces/{workspace_id}/recipe | 
-*WorkspacesApi* | [**get_resource_template**](docs/WorkspacesApi.md#get_resource_template) | **GET** /api/workspaces/{workspace_id}/template | 
-*WorkspacesApi* | [**get_route**](docs/WorkspacesApi.md#get_route) | **GET** /api/workspaces/{workspace_id}/routes/{route_id} | 
-*WorkspacesApi* | [**get_runtime_summary**](docs/WorkspacesApi.md#get_runtime_summary) | **GET** /api/workspaces/{workspace_id}/runtimesummary | 
-*WorkspacesApi* | [**get_secret_attachment**](docs/WorkspacesApi.md#get_secret_attachment) | **GET** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | 
-*WorkspacesApi* | [**get_server_options**](docs/WorkspacesApi.md#get_server_options) | **GET** /api/workspaces/info | 
-*WorkspacesApi* | [**get_service_account_attachment**](docs/WorkspacesApi.md#get_service_account_attachment) | **GET** /api/workspaces/{workspace_id}/service_account | 
-*WorkspacesApi* | [**get_status_history**](docs/WorkspacesApi.md#get_status_history) | **GET** /api/workspaces/{workspace_id}/history | 
-*WorkspacesApi* | [**get_token_info**](docs/WorkspacesApi.md#get_token_info) | **GET** /api/workspaces/{workspace_id}/token | 
-*WorkspacesApi* | [**list**](docs/WorkspacesApi.md#list) | **GET** /api/workspaces | 
-*WorkspacesApi* | [**list_routes**](docs/WorkspacesApi.md#list_routes) | **GET** /api/workspaces/{workspace_id}/routes | 
-*WorkspacesApi* | [**list_secret_attachments**](docs/WorkspacesApi.md#list_secret_attachments) | **GET** /api/workspaces/{workspace_id}/secrets | 
-*WorkspacesApi* | [**list_viewers**](docs/WorkspacesApi.md#list_viewers) | **GET** /api/workspaces/{workspace_id}/viewers | 
-*WorkspacesApi* | [**restart**](docs/WorkspacesApi.md#restart) | **POST** /api/workspaces/{workspace_id}/restart | 
-*WorkspacesApi* | [**rotate_token**](docs/WorkspacesApi.md#rotate_token) | **POST** /api/workspaces/{workspace_id}/token | 
-*WorkspacesApi* | [**start**](docs/WorkspacesApi.md#start) | **POST** /api/workspaces/{workspace_id}/start | 
-*WorkspacesApi* | [**stop**](docs/WorkspacesApi.md#stop) | **POST** /api/workspaces/{workspace_id}/stop | 
-*WorkspacesApi* | [**update**](docs/WorkspacesApi.md#update) | **PATCH** /api/workspaces/{workspace_id} | 
-*WorkspacesApi* | [**update_resource_template**](docs/WorkspacesApi.md#update_resource_template) | **PATCH** /api/workspaces/{workspace_id}/template | 
-*WorkspacesApi* | [**update_route**](docs/WorkspacesApi.md#update_route) | **PATCH** /api/workspaces/{workspace_id}/routes/{route_id} | 
-*WorkspacesApi* | [**update_secret_attachment**](docs/WorkspacesApi.md#update_secret_attachment) | **PATCH** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | 
-*WorkspacesApi* | [**update_token**](docs/WorkspacesApi.md#update_token) | **PATCH** /api/workspaces/{workspace_id}/token | 
+*ApiStatusApi* | [**get**](docs/ApiStatusApi.md#get) | **GET** /api/status | Get API status
+*ApiTokensApi* | [**create**](docs/ApiTokensApi.md#create) | **POST** /api/tokens | Create api token
+*ApiTokensApi* | [**delete**](docs/ApiTokensApi.md#delete) | **DELETE** /api/tokens/{api_token_id} | Delete api token
+*ApiTokensApi* | [**get**](docs/ApiTokensApi.md#get) | **GET** /api/tokens/{api_token_id} | Get api token
+*ApiTokensApi* | [**list**](docs/ApiTokensApi.md#list) | **GET** /api/tokens | List api tokens
+*ApiTokensApi* | [**update**](docs/ApiTokensApi.md#update) | **PATCH** /api/tokens/{api_token_id} | Update api token
+*AuthorizationApi* | [**create_oauth_token**](docs/AuthorizationApi.md#create_oauth_token) | **POST** /api/auth/token | Create OAuth token
+*AuthorizationApi* | [**get_oauth_init**](docs/AuthorizationApi.md#get_oauth_init) | **GET** /api/auth/token | Initialize oauth
+*AuthorizationApi* | [**login**](docs/AuthorizationApi.md#login) | **POST** /api/auth/login | Login
+*AuthorizationApi* | [**logout**](docs/AuthorizationApi.md#logout) | **GET** /api/auth/logout | Logout
+*CurrentUserApi* | [**get**](docs/CurrentUserApi.md#get) | **GET** /api/user | Get current user
+*CurrentUserApi* | [**get_aggregated_usage**](docs/CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | Get aggregated usage
+*CurrentUserApi* | [**get_preferences**](docs/CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | Get current user preferences
+*CurrentUserApi* | [**list_org_memberships**](docs/CurrentUserApi.md#list_org_memberships) | **GET** /api/user/org_memberships | List current user org memberships
+*CurrentUserApi* | [**update**](docs/CurrentUserApi.md#update) | **PATCH** /api/user | Update current user
+*CurrentUserApi* | [**update_preferences**](docs/CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | Update current user preferences
+*DaskClustersApi* | [**adapt**](docs/DaskClustersApi.md#adapt) | **POST** /api/dask_clusters/{dask_cluster_id}/adapt | Set dask cluster adaptive scaling
+*DaskClustersApi* | [**create**](docs/DaskClustersApi.md#create) | **POST** /api/dask_clusters | Create dask cluster
+*DaskClustersApi* | [**delete**](docs/DaskClustersApi.md#delete) | **DELETE** /api/dask_clusters/{dask_cluster_id} | Delete dask cluster
+*DaskClustersApi* | [**get**](docs/DaskClustersApi.md#get) | **GET** /api/dask_clusters/{dask_cluster_id} | Get dask cluster
+*DaskClustersApi* | [**get_info**](docs/DaskClustersApi.md#get_info) | **GET** /api/dask_clusters/{dask_cluster_id}/info | Get dask cluster info
+*DaskClustersApi* | [**get_kubecluster_runtime_summary**](docs/DaskClustersApi.md#get_kubecluster_runtime_summary) | **GET** /api/dask_clusters/{dask_cluster_id}/kubecluster/runtimesummary | Get dask cluster kubecluster runtime summary
+*DaskClustersApi* | [**get_logs**](docs/DaskClustersApi.md#get_logs) | **GET** /api/dask_clusters/{dask_cluster_id}/logs | Get dask cluster historical logs
+*DaskClustersApi* | [**get_metrics**](docs/DaskClustersApi.md#get_metrics) | **GET** /api/dask_clusters/{dask_cluster_id}/metrics | Get dask cluster metrics
+*DaskClustersApi* | [**get_pod_history**](docs/DaskClustersApi.md#get_pod_history) | **GET** /api/dask_clusters/{dask_cluster_id}/history | Get dask cluster pod history
+*DaskClustersApi* | [**get_runtime_summary**](docs/DaskClustersApi.md#get_runtime_summary) | **GET** /api/dask_clusters/{dask_cluster_id}/runtimesummary | Get dask cluster runtime summary
+*DaskClustersApi* | [**get_scheduler_info**](docs/DaskClustersApi.md#get_scheduler_info) | **GET** /api/dask_clusters/{dask_cluster_id}/scheduler_info | Get dask cluster scheduler info
+*DaskClustersApi* | [**get_scheduler_runtimesummary**](docs/DaskClustersApi.md#get_scheduler_runtimesummary) | **GET** /api/dask_clusters/{dask_cluster_id}/scheduler/runtimesummary | Get dask cluster scheduler runtime summary
+*DaskClustersApi* | [**get_scheduler_status**](docs/DaskClustersApi.md#get_scheduler_status) | **GET** /api/dask_clusters/{dask_cluster_id}/status | Get dask cluster scheduler status
+*DaskClustersApi* | [**get_server_options**](docs/DaskClustersApi.md#get_server_options) | **GET** /api/dask_clusters/info | Get dask cluster server options
+*DaskClustersApi* | [**get_token_info**](docs/DaskClustersApi.md#get_token_info) | **GET** /api/dask_clusters/{dask_cluster_id}/token | Get dask cluster API token info
+*DaskClustersApi* | [**get_workers_runtimesummary**](docs/DaskClustersApi.md#get_workers_runtimesummary) | **GET** /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary | List dask cluster worker runtime summaries
+*DaskClustersApi* | [**list**](docs/DaskClustersApi.md#list) | **GET** /api/dask_clusters | List dask clusters
+*DaskClustersApi* | [**restart**](docs/DaskClustersApi.md#restart) | **POST** /api/dask_clusters/{dask_cluster_id}/restart | Restart dask cluster
+*DaskClustersApi* | [**rotate_token**](docs/DaskClustersApi.md#rotate_token) | **POST** /api/dask_clusters/{dask_cluster_id}/token | Rotate dask cluster API token
+*DaskClustersApi* | [**scale**](docs/DaskClustersApi.md#scale) | **POST** /api/dask_clusters/{dask_cluster_id}/scale | Scale dask cluster worker count
+*DaskClustersApi* | [**start**](docs/DaskClustersApi.md#start) | **POST** /api/dask_clusters/{dask_cluster_id}/start | Start dask cluster
+*DaskClustersApi* | [**stop**](docs/DaskClustersApi.md#stop) | **POST** /api/dask_clusters/{dask_cluster_id}/stop | Stop dask cluster
+*DaskClustersApi* | [**update**](docs/DaskClustersApi.md#update) | **PATCH** /api/dask_clusters/{dask_cluster_id} | Update dask cluster
+*DaskClustersApi* | [**update_token**](docs/DaskClustersApi.md#update_token) | **PATCH** /api/dask_clusters/{dask_cluster_id}/token | Update dask cluster API token
+*DeploymentsApi* | [**create**](docs/DeploymentsApi.md#create) | **POST** /api/deployments | Create deployment
+*DeploymentsApi* | [**create_resource_template**](docs/DeploymentsApi.md#create_resource_template) | **POST** /api/deployments/{deployment_id}/template | Create deployment resource template
+*DeploymentsApi* | [**create_route**](docs/DeploymentsApi.md#create_route) | **POST** /api/deployments/{deployment_id}/routes | Create deployment route
+*DeploymentsApi* | [**create_secret_attachment**](docs/DeploymentsApi.md#create_secret_attachment) | **POST** /api/deployments/{deployment_id}/secrets | Create deployment secret attachment
+*DeploymentsApi* | [**create_service_account_attachment**](docs/DeploymentsApi.md#create_service_account_attachment) | **PUT** /api/deployments/{deployment_id}/service_account | Create deployment service account attachment
+*DeploymentsApi* | [**create_viewer**](docs/DeploymentsApi.md#create_viewer) | **POST** /api/deployments/{deployment_id}/viewers | Create deployment viewer
+*DeploymentsApi* | [**delete**](docs/DeploymentsApi.md#delete) | **DELETE** /api/deployments/{deployment_id} | Delete deployment
+*DeploymentsApi* | [**delete_route**](docs/DeploymentsApi.md#delete_route) | **DELETE** /api/deployments/{deployment_id}/routes/{route_id} | Delete deployment route
+*DeploymentsApi* | [**delete_secret_attachment**](docs/DeploymentsApi.md#delete_secret_attachment) | **DELETE** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | Delete deployment secret attachment
+*DeploymentsApi* | [**delete_service_account_attachment**](docs/DeploymentsApi.md#delete_service_account_attachment) | **DELETE** /api/deployments/{deployment_id}/service_account | Delete deployment service account attachment
+*DeploymentsApi* | [**delete_viewer**](docs/DeploymentsApi.md#delete_viewer) | **DELETE** /api/deployments/{deployment_id}/viewers/{viewer_id} | Delete deployment viewer
+*DeploymentsApi* | [**get**](docs/DeploymentsApi.md#get) | **GET** /api/deployments/{deployment_id} | Get deployment
+*DeploymentsApi* | [**get_cluster_history**](docs/DeploymentsApi.md#get_cluster_history) | **GET** /api/deployments/{deployment_id}/clusters | Get deployment cluster history
+*DeploymentsApi* | [**get_logs**](docs/DeploymentsApi.md#get_logs) | **GET** /api/deployments/{deployment_id}/logs | Get deployment historical logs
+*DeploymentsApi* | [**get_metrics**](docs/DeploymentsApi.md#get_metrics) | **GET** /api/deployments/{deployment_id}/metrics | Get deployment metrics
+*DeploymentsApi* | [**get_pod_history**](docs/DeploymentsApi.md#get_pod_history) | **GET** /api/deployments/{deployment_id}/history | Get deployment pod history
+*DeploymentsApi* | [**get_recipe**](docs/DeploymentsApi.md#get_recipe) | **GET** /api/deployments/{deployment_id}/recipe | Get deployment recipe
+*DeploymentsApi* | [**get_resource_template**](docs/DeploymentsApi.md#get_resource_template) | **GET** /api/deployments/{deployment_id}/template | Get deployment resource template
+*DeploymentsApi* | [**get_route**](docs/DeploymentsApi.md#get_route) | **GET** /api/deployments/{deployment_id}/routes/{route_id} | Get deployment route
+*DeploymentsApi* | [**get_runtime_summary**](docs/DeploymentsApi.md#get_runtime_summary) | **GET** /api/deployments/{deployment_id}/runtimesummary | Get deployment runtime summary
+*DeploymentsApi* | [**get_secret_attachment**](docs/DeploymentsApi.md#get_secret_attachment) | **GET** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | Get deployment secret attachment
+*DeploymentsApi* | [**get_server_options**](docs/DeploymentsApi.md#get_server_options) | **GET** /api/deployments/info | Get deployment server options
+*DeploymentsApi* | [**get_service_account_attachment**](docs/DeploymentsApi.md#get_service_account_attachment) | **GET** /api/deployments/{deployment_id}/service_account | Get deployment service account attachment
+*DeploymentsApi* | [**list**](docs/DeploymentsApi.md#list) | **GET** /api/deployments | List deployments
+*DeploymentsApi* | [**list_routes**](docs/DeploymentsApi.md#list_routes) | **GET** /api/deployments/{deployment_id}/routes | List deployment routes
+*DeploymentsApi* | [**list_secret_attachments**](docs/DeploymentsApi.md#list_secret_attachments) | **GET** /api/deployments/{deployment_id}/secrets | List deployment secret attachments
+*DeploymentsApi* | [**list_viewers**](docs/DeploymentsApi.md#list_viewers) | **GET** /api/deployments/{deployment_id}/viewers | List deployment viewers
+*DeploymentsApi* | [**restart**](docs/DeploymentsApi.md#restart) | **POST** /api/deployments/{deployment_id}/restart | Restart deployment
+*DeploymentsApi* | [**start**](docs/DeploymentsApi.md#start) | **POST** /api/deployments/{deployment_id}/start | Start deployment
+*DeploymentsApi* | [**stop**](docs/DeploymentsApi.md#stop) | **POST** /api/deployments/{deployment_id}/stop | Stop deployment
+*DeploymentsApi* | [**update**](docs/DeploymentsApi.md#update) | **PATCH** /api/deployments/{deployment_id} | Update deployment
+*DeploymentsApi* | [**update_resource_template**](docs/DeploymentsApi.md#update_resource_template) | **PATCH** /api/deployments/{deployment_id}/template | Update deployment resource template
+*DeploymentsApi* | [**update_route**](docs/DeploymentsApi.md#update_route) | **PATCH** /api/deployments/{deployment_id}/routes/{route_id} | Update deployment route
+*DeploymentsApi* | [**update_secret_attachment**](docs/DeploymentsApi.md#update_secret_attachment) | **PATCH** /api/deployments/{deployment_id}/secrets/{secret_attachment_id} | Update deployment secret attachment
+*ExternalRepoAttachmentsApi* | [**create**](docs/ExternalRepoAttachmentsApi.md#create) | **POST** /api/external_repo_attachments | Create external repo attachment
+*ExternalRepoAttachmentsApi* | [**delete**](docs/ExternalRepoAttachmentsApi.md#delete) | **DELETE** /api/external_repo_attachments/{external_repo_attachment_id} | Delete external repo attachment
+*ExternalRepoAttachmentsApi* | [**get**](docs/ExternalRepoAttachmentsApi.md#get) | **GET** /api/external_repo_attachments/{external_repo_attachment_id} | Get external repo attachment
+*ExternalRepoAttachmentsApi* | [**list**](docs/ExternalRepoAttachmentsApi.md#list) | **GET** /api/external_repo_attachments | List external repo attachments
+*ExternalRepoAttachmentsApi* | [**update**](docs/ExternalRepoAttachmentsApi.md#update) | **PATCH** /api/external_repo_attachments/{external_repo_attachment_id} | Update external repo attachment
+*ExternalReposApi* | [**create**](docs/ExternalReposApi.md#create) | **POST** /api/external_repos | Create external repo
+*ExternalReposApi* | [**delete**](docs/ExternalReposApi.md#delete) | **DELETE** /api/external_repos/{external_repo_id} | Delete external repo
+*ExternalReposApi* | [**get**](docs/ExternalReposApi.md#get) | **GET** /api/external_repos/{external_repo_id} | Get external repo
+*ExternalReposApi* | [**list**](docs/ExternalReposApi.md#list) | **GET** /api/external_repos | List external repos
+*ExternalReposApi* | [**update**](docs/ExternalReposApi.md#update) | **PATCH** /api/external_repos/{external_repo_id} | Update external repo
+*GroupsApi* | [**create**](docs/GroupsApi.md#create) | **POST** /api/groups | Create group
+*GroupsApi* | [**create_member**](docs/GroupsApi.md#create_member) | **POST** /api/groups/{group_id}/members | Create group member
+*GroupsApi* | [**delete**](docs/GroupsApi.md#delete) | **DELETE** /api/groups/{group_id} | Delete group
+*GroupsApi* | [**delete_member**](docs/GroupsApi.md#delete_member) | **DELETE** /api/groups/{group_id}/members | Delete group member
+*GroupsApi* | [**get**](docs/GroupsApi.md#get) | **GET** /api/groups/{group_id} | Get group
+*GroupsApi* | [**get_daily_usage**](docs/GroupsApi.md#get_daily_usage) | **GET** /api/groups/{group_id}/usage/daily | Get group daily usage
+*GroupsApi* | [**list**](docs/GroupsApi.md#list) | **GET** /api/groups | List groups
+*GroupsApi* | [**list_members**](docs/GroupsApi.md#list_members) | **GET** /api/groups/{group_id}/members | List group members
+*GroupsApi* | [**update**](docs/GroupsApi.md#update) | **PATCH** /api/groups/{group_id} | Update group
+*ImageTagsApi* | [**create**](docs/ImageTagsApi.md#create) | **POST** /api/images/{image_id}/tags | Create image tag
+*ImageTagsApi* | [**delete**](docs/ImageTagsApi.md#delete) | **DELETE** /api/images/{image_id}/tags/{image_tag_id} | Delete image tag
+*ImageTagsApi* | [**get**](docs/ImageTagsApi.md#get) | **GET** /api/images/{image_id}/tags/{image_tag_id} | Get image tag
+*ImageTagsApi* | [**get_logs**](docs/ImageTagsApi.md#get_logs) | **GET** /api/images/{image_id}/tags/{image_tag_id}/logs | Get image tag historical logs
+*ImageTagsApi* | [**get_runtimesummary**](docs/ImageTagsApi.md#get_runtimesummary) | **GET** /api/images/{image_id}/tags/{image_tag_id}/runtimesummary | Get image tag build runtime summary
+*ImageTagsApi* | [**get_status_history**](docs/ImageTagsApi.md#get_status_history) | **GET** /api/images/{image_id}/tags/{image_tag_id}/history | Get image tag status history
+*ImageTagsApi* | [**list**](docs/ImageTagsApi.md#list) | **GET** /api/images/{image_id}/tags | List image tags
+*ImageTagsApi* | [**stop**](docs/ImageTagsApi.md#stop) | **POST** /api/images/{image_id}/tags/{image_tag_id}/stop | Stop image tag build
+*ImageTagsApi* | [**update**](docs/ImageTagsApi.md#update) | **PATCH** /api/images/{image_id}/tags/{image_tag_id} | Update image tag
+*ImagesApi* | [**create**](docs/ImagesApi.md#create) | **POST** /api/images | Create image
+*ImagesApi* | [**delete**](docs/ImagesApi.md#delete) | **DELETE** /api/images/{image_id} | Delete image
+*ImagesApi* | [**get**](docs/ImagesApi.md#get) | **GET** /api/images/{image_id} | Get image
+*ImagesApi* | [**list**](docs/ImagesApi.md#list) | **GET** /api/images | List images
+*ImagesApi* | [**update**](docs/ImagesApi.md#update) | **PATCH** /api/images/{image_id} | Update image
+*InfoApi* | [**get**](docs/InfoApi.md#get) | **GET** /api/info | Get app info
+*InfoApi* | [**get_server_options**](docs/InfoApi.md#get_server_options) | **GET** /api/info/servers | Get server options
+*InvitationsApi* | [**create**](docs/InvitationsApi.md#create) | **POST** /api/invitations | Create invitation
+*InvitationsApi* | [**delete**](docs/InvitationsApi.md#delete) | **DELETE** /api/invitations/{invitation_id} | Delete invitation
+*InvitationsApi* | [**get**](docs/InvitationsApi.md#get) | **GET** /api/invitations/{invitation_id} | Get invitation
+*InvitationsApi* | [**list**](docs/InvitationsApi.md#list) | **GET** /api/invitations | List invitations
+*InvitationsApi* | [**update**](docs/InvitationsApi.md#update) | **PATCH** /api/invitations/{invitation_id} | Update invitation
+*JobsApi* | [**create**](docs/JobsApi.md#create) | **POST** /api/jobs | Create job
+*JobsApi* | [**create_resource_template**](docs/JobsApi.md#create_resource_template) | **POST** /api/jobs/{job_id}/template | Create job resource template
+*JobsApi* | [**create_secret_attachment**](docs/JobsApi.md#create_secret_attachment) | **POST** /api/jobs/{job_id}/secrets | Create job secret attachment
+*JobsApi* | [**create_service_account_attachment**](docs/JobsApi.md#create_service_account_attachment) | **PUT** /api/jobs/{job_id}/service_account | Create job service account attachment
+*JobsApi* | [**delete**](docs/JobsApi.md#delete) | **DELETE** /api/jobs/{job_id} | Delete job
+*JobsApi* | [**delete_secret_attachment**](docs/JobsApi.md#delete_secret_attachment) | **DELETE** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Delete job secret attachment
+*JobsApi* | [**delete_service_account_attachment**](docs/JobsApi.md#delete_service_account_attachment) | **DELETE** /api/jobs/{job_id}/service_account | Delete job service account attachment
+*JobsApi* | [**get**](docs/JobsApi.md#get) | **GET** /api/jobs/{job_id} | Get job
+*JobsApi* | [**get_cluster_history**](docs/JobsApi.md#get_cluster_history) | **GET** /api/jobs/{job_id}/clusters | Get job cluster history
+*JobsApi* | [**get_logs**](docs/JobsApi.md#get_logs) | **GET** /api/jobs/{job_id}/logs | Get job historical logs
+*JobsApi* | [**get_metrics**](docs/JobsApi.md#get_metrics) | **GET** /api/jobs/{job_id}/metrics | Get job metrics
+*JobsApi* | [**get_pod_history**](docs/JobsApi.md#get_pod_history) | **GET** /api/jobs/{job_id}/history | Get job pod history
+*JobsApi* | [**get_recipe**](docs/JobsApi.md#get_recipe) | **GET** /api/jobs/{job_id}/recipe | Get job recipe
+*JobsApi* | [**get_resource_template**](docs/JobsApi.md#get_resource_template) | **GET** /api/jobs/{job_id}/template | Get job resource template
+*JobsApi* | [**get_runtime_summary**](docs/JobsApi.md#get_runtime_summary) | **GET** /api/jobs/{job_id}/runtimesummary | Get job runtime summary
+*JobsApi* | [**get_secret_attachment**](docs/JobsApi.md#get_secret_attachment) | **GET** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Get job secret attachment
+*JobsApi* | [**get_server_options**](docs/JobsApi.md#get_server_options) | **GET** /api/jobs/info | Get job server options
+*JobsApi* | [**get_service_account_attachment**](docs/JobsApi.md#get_service_account_attachment) | **GET** /api/jobs/{job_id}/service_account | Get job service account attachment
+*JobsApi* | [**get_token_info**](docs/JobsApi.md#get_token_info) | **GET** /api/jobs/{job_id}/token | Get job API token info
+*JobsApi* | [**list**](docs/JobsApi.md#list) | **GET** /api/jobs | List jobs
+*JobsApi* | [**list_secret_attachments**](docs/JobsApi.md#list_secret_attachments) | **GET** /api/jobs/{job_id}/secrets | List job secret attachments
+*JobsApi* | [**restart**](docs/JobsApi.md#restart) | **POST** /api/jobs/{job_id}/restart | Restart job
+*JobsApi* | [**rotate_token**](docs/JobsApi.md#rotate_token) | **POST** /api/jobs/{job_id}/token | Rotate job API token
+*JobsApi* | [**schedule**](docs/JobsApi.md#schedule) | **POST** /api/jobs/{job_id}/schedule | Activate job cron schedule
+*JobsApi* | [**start**](docs/JobsApi.md#start) | **POST** /api/jobs/{job_id}/start | Start job
+*JobsApi* | [**stop**](docs/JobsApi.md#stop) | **POST** /api/jobs/{job_id}/stop | Stop job
+*JobsApi* | [**unschedule**](docs/JobsApi.md#unschedule) | **POST** /api/jobs/{job_id}/unschedule | Deactivate job cron schedule
+*JobsApi* | [**update**](docs/JobsApi.md#update) | **PATCH** /api/jobs/{job_id} | Update job
+*JobsApi* | [**update_resource_template**](docs/JobsApi.md#update_resource_template) | **PATCH** /api/jobs/{job_id}/template | Update job resource template
+*JobsApi* | [**update_secret_attachment**](docs/JobsApi.md#update_secret_attachment) | **PATCH** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Update job secret attachment
+*JobsApi* | [**update_token**](docs/JobsApi.md#update_token) | **PATCH** /api/jobs/{job_id}/token | Update job API token
+*LimitsApi* | [**create**](docs/LimitsApi.md#create) | **POST** /api/limits | Create limits
+*LimitsApi* | [**delete**](docs/LimitsApi.md#delete) | **DELETE** /api/limits/{limits_id} | Delete limits
+*LimitsApi* | [**get**](docs/LimitsApi.md#get) | **GET** /api/limits/{limits_id} | Get limits
+*LimitsApi* | [**list**](docs/LimitsApi.md#list) | **GET** /api/limits | List limits
+*LimitsApi* | [**update**](docs/LimitsApi.md#update) | **PATCH** /api/limits/{limits_id} | Update limits
+*NotificationsApi* | [**acknowledge**](docs/NotificationsApi.md#acknowledge) | **PUT** /api/notifications | Acknowledge notifications
+*NotificationsApi* | [**delete**](docs/NotificationsApi.md#delete) | **DELETE** /api/notifications | Delete notifications
+*NotificationsApi* | [**list**](docs/NotificationsApi.md#list) | **GET** /api/notifications | List notifications
+*NotificationsApi* | [**list_subscriptions**](docs/NotificationsApi.md#list_subscriptions) | **GET** /api/notifications/subscriptions | List notification subscriptions
+*NotificationsApi* | [**subscribe**](docs/NotificationsApi.md#subscribe) | **PUT** /api/notifications/subscriptions | Subscribe to topic
+*NotificationsApi* | [**unsubscribe**](docs/NotificationsApi.md#unsubscribe) | **DELETE** /api/notifications/subscriptions | Unsubscribe from topic
+*ObjectStorageApi* | [**cancel_upload**](docs/ObjectStorageApi.md#cancel_upload) | **DELETE** /api/object_storage/upload/{object_storage_upload_id} | Cancel object storage upload
+*ObjectStorageApi* | [**complete_upload**](docs/ObjectStorageApi.md#complete_upload) | **POST** /api/object_storage/upload/{object_storage_upload_id} | Complete object storage upload
+*ObjectStorageApi* | [**delete**](docs/ObjectStorageApi.md#delete) | **DELETE** /api/object_storage/delete | Delete object storage
+*ObjectStorageApi* | [**delete_bulk**](docs/ObjectStorageApi.md#delete_bulk) | **DELETE** /api/object_storage/bulk_delete | Delete multiple object storage
+*ObjectStorageApi* | [**download**](docs/ObjectStorageApi.md#download) | **POST** /api/object_storage/download | Download object storage
+*ObjectStorageApi* | [**download_bulk**](docs/ObjectStorageApi.md#download_bulk) | **POST** /api/object_storage/bulk_download | Download bulk object storage
+*ObjectStorageApi* | [**get_usage**](docs/ObjectStorageApi.md#get_usage) | **GET** /api/object_storage/usage | Get object storage usage stats
+*ObjectStorageApi* | [**list**](docs/ObjectStorageApi.md#list) | **GET** /api/object_storage | List object storage
+*ObjectStorageApi* | [**list_shared**](docs/ObjectStorageApi.md#list_shared) | **GET** /api/object_storage/shared | List shared object storage
+*ObjectStorageApi* | [**list_uploads**](docs/ObjectStorageApi.md#list_uploads) | **GET** /api/object_storage/upload | List object storage uploads
+*ObjectStorageApi* | [**resume_upload**](docs/ObjectStorageApi.md#resume_upload) | **GET** /api/object_storage/upload/{object_storage_upload_id} | Resume object storage upload
+*ObjectStorageApi* | [**upload**](docs/ObjectStorageApi.md#upload) | **POST** /api/object_storage/upload | Create object storage upload
+*OrgsApi* | [**accept_invitation**](docs/OrgsApi.md#accept_invitation) | **POST** /api/orgs/invitation/{token}/accept | Accept org invitation
+*OrgsApi* | [**create**](docs/OrgsApi.md#create) | **POST** /api/orgs | Create org
+*OrgsApi* | [**create_invitation**](docs/OrgsApi.md#create_invitation) | **POST** /api/orgs/{org_id}/invitations | Create org invitation
+*OrgsApi* | [**create_member**](docs/OrgsApi.md#create_member) | **POST** /api/orgs/{org_id}/members | Create org member
+*OrgsApi* | [**decline_invitation**](docs/OrgsApi.md#decline_invitation) | **DELETE** /api/orgs/invitation/{token}/decline | Decline org invitation
+*OrgsApi* | [**delete**](docs/OrgsApi.md#delete) | **DELETE** /api/orgs/{org_id} | Delete org
+*OrgsApi* | [**delete_invitation**](docs/OrgsApi.md#delete_invitation) | **DELETE** /api/orgs/{org_id}/invitations/{invitation_id} | Delete org invitation
+*OrgsApi* | [**delete_member**](docs/OrgsApi.md#delete_member) | **DELETE** /api/orgs/{org_id}/members/{user_id} | Delete org member
+*OrgsApi* | [**get**](docs/OrgsApi.md#get) | **GET** /api/orgs/{org_id} | Get org
+*OrgsApi* | [**get_aggregated_usage**](docs/OrgsApi.md#get_aggregated_usage) | **GET** /api/orgs/{org_id}/usage/aggregated | Get org usage
+*OrgsApi* | [**get_daily_usage**](docs/OrgsApi.md#get_daily_usage) | **GET** /api/orgs/{org_id}/usage/daily | Get org daily usage
+*OrgsApi* | [**get_daily_user_usage**](docs/OrgsApi.md#get_daily_user_usage) | **GET** /api/orgs/{org_id}/members/{user_id}/usage/daily | Get org member daily usage
+*OrgsApi* | [**get_invitation**](docs/OrgsApi.md#get_invitation) | **GET** /api/orgs/{org_id}/invitations/{invitation_id} | Get org invitation
+*OrgsApi* | [**get_member**](docs/OrgsApi.md#get_member) | **GET** /api/orgs/{org_id}/members/{user_id} | Get org member
+*OrgsApi* | [**get_owner_usage**](docs/OrgsApi.md#get_owner_usage) | **GET** /api/orgs/{org_id}/usage/owners | Get org owner usage
+*OrgsApi* | [**get_usage_limits**](docs/OrgsApi.md#get_usage_limits) | **GET** /api/orgs/{org_id}/limits | Get org usage limits
+*OrgsApi* | [**list**](docs/OrgsApi.md#list) | **GET** /api/orgs | List orgs
+*OrgsApi* | [**list_invitations**](docs/OrgsApi.md#list_invitations) | **GET** /api/orgs/{org_id}/invitations | List org invitations
+*OrgsApi* | [**list_owners**](docs/OrgsApi.md#list_owners) | **GET** /api/orgs/{org_id}/owners | List org owners
+*OrgsApi* | [**update**](docs/OrgsApi.md#update) | **PATCH** /api/orgs/{org_id} | Update org
+*OrgsApi* | [**update_invitation**](docs/OrgsApi.md#update_invitation) | **PATCH** /api/orgs/{org_id}/invitations/{invitation_id} | Update org invitation
+*OrgsApi* | [**update_member**](docs/OrgsApi.md#update_member) | **PATCH** /api/orgs/{org_id}/members/{user_id} | Update org member
+*RecipesApi* | [**apply**](docs/RecipesApi.md#apply) | **PUT** /api/recipes | Apply recipe
+*RecipesApi* | [**create**](docs/RecipesApi.md#create) | **POST** /api/recipes | Create recipe
+*RecipesApi* | [**get**](docs/RecipesApi.md#get) | **GET** /api/recipes/{recipe_type}/{name} | Get recipe
+*RecipesApi* | [**list**](docs/RecipesApi.md#list) | **GET** /api/recipes | List recipes
+*SecretsApi* | [**create**](docs/SecretsApi.md#create) | **POST** /api/secrets | Create secret
+*SecretsApi* | [**delete**](docs/SecretsApi.md#delete) | **DELETE** /api/secrets/{secret_id} | Delete secret
+*SecretsApi* | [**get**](docs/SecretsApi.md#get) | **GET** /api/secrets/{secret_id} | Get secret
+*SecretsApi* | [**list**](docs/SecretsApi.md#list) | **GET** /api/secrets | List secrets
+*SecretsApi* | [**update**](docs/SecretsApi.md#update) | **PATCH** /api/secrets/{secret_id} | Update secret
+*ServiceAccountEntitlementsApi* | [**create**](docs/ServiceAccountEntitlementsApi.md#create) | **POST** /api/service_account_entitlements | Create service account entitlement
+*ServiceAccountEntitlementsApi* | [**delete**](docs/ServiceAccountEntitlementsApi.md#delete) | **DELETE** /api/service_account_entitlements/{service_account_entitlement_id} | Delete service account entitlement
+*ServiceAccountEntitlementsApi* | [**get**](docs/ServiceAccountEntitlementsApi.md#get) | **GET** /api/service_account_entitlements/{service_account_entitlement_id} | Get service account entitlement
+*ServiceAccountEntitlementsApi* | [**list**](docs/ServiceAccountEntitlementsApi.md#list) | **GET** /api/service_account_entitlements | List service account entitlements
+*ServiceAccountsApi* | [**create**](docs/ServiceAccountsApi.md#create) | **POST** /api/service_accounts | Create service account
+*ServiceAccountsApi* | [**delete**](docs/ServiceAccountsApi.md#delete) | **DELETE** /api/service_accounts/{service_account_id} | Delete service account
+*ServiceAccountsApi* | [**get**](docs/ServiceAccountsApi.md#get) | **GET** /api/service_accounts/{service_account_id} | Get service account
+*ServiceAccountsApi* | [**list**](docs/ServiceAccountsApi.md#list) | **GET** /api/service_accounts | List service accounts
+*ServiceAccountsApi* | [**update**](docs/ServiceAccountsApi.md#update) | **PATCH** /api/service_accounts/{service_account_id} | Update service account
+*SharedFolderAttachmentsApi* | [**create**](docs/SharedFolderAttachmentsApi.md#create) | **POST** /api/shared_folder_attachments | Create shared folder attachment
+*SharedFolderAttachmentsApi* | [**delete**](docs/SharedFolderAttachmentsApi.md#delete) | **DELETE** /api/shared_folder_attachments/{shared_folder_attachment_id} | Delete shared folder attachment
+*SharedFolderAttachmentsApi* | [**get**](docs/SharedFolderAttachmentsApi.md#get) | **GET** /api/shared_folder_attachments/{shared_folder_attachment_id} | Get shared folder attachment
+*SharedFolderAttachmentsApi* | [**list**](docs/SharedFolderAttachmentsApi.md#list) | **GET** /api/shared_folder_attachments | List shared folder attachments
+*SharedFolderAttachmentsApi* | [**update**](docs/SharedFolderAttachmentsApi.md#update) | **PATCH** /api/shared_folder_attachments/{shared_folder_attachment_id} | Update shared folder attachment
+*SharedFoldersApi* | [**create**](docs/SharedFoldersApi.md#create) | **POST** /api/shared_folders | Create shared folder
+*SharedFoldersApi* | [**delete**](docs/SharedFoldersApi.md#delete) | **DELETE** /api/shared_folders/{shared_folder_id} | Delete shared folder
+*SharedFoldersApi* | [**get**](docs/SharedFoldersApi.md#get) | **GET** /api/shared_folders/{shared_folder_id} | Get shared folder
+*SharedFoldersApi* | [**list**](docs/SharedFoldersApi.md#list) | **GET** /api/shared_folders | List shared folders
+*SharedFoldersApi* | [**update**](docs/SharedFoldersApi.md#update) | **PATCH** /api/shared_folders/{shared_folder_id} | Update shared folder
+*SshPrivateKeysApi* | [**create**](docs/SshPrivateKeysApi.md#create) | **POST** /api/ssh_private_keys | Create ssh private key
+*SshPrivateKeysApi* | [**delete**](docs/SshPrivateKeysApi.md#delete) | **DELETE** /api/ssh_private_keys/{ssh_privatekey_id} | Delete ssh private key
+*SshPrivateKeysApi* | [**get**](docs/SshPrivateKeysApi.md#get) | **GET** /api/ssh_private_keys/{ssh_privatekey_id} | Get ssh private key
+*SshPrivateKeysApi* | [**list**](docs/SshPrivateKeysApi.md#list) | **GET** /api/ssh_private_keys | List ssh private keys
+*SshPrivateKeysApi* | [**update**](docs/SshPrivateKeysApi.md#update) | **PATCH** /api/ssh_private_keys/{ssh_privatekey_id} | Update ssh private key
+*SshPublicKeysApi* | [**create**](docs/SshPublicKeysApi.md#create) | **POST** /api/ssh_public_keys | Create ssh public key
+*SshPublicKeysApi* | [**delete**](docs/SshPublicKeysApi.md#delete) | **DELETE** /api/ssh_public_keys/{ssh_publickey_id} | Delete ssh public key
+*SshPublicKeysApi* | [**get**](docs/SshPublicKeysApi.md#get) | **GET** /api/ssh_public_keys/{ssh_publickey_id} | Get ssh public key
+*SshPublicKeysApi* | [**list**](docs/SshPublicKeysApi.md#list) | **GET** /api/ssh_public_keys | List ssh public keys
+*SshPublicKeysApi* | [**update**](docs/SshPublicKeysApi.md#update) | **PATCH** /api/ssh_public_keys/{ssh_publickey_id} | Update ssh public key
+*UsersApi* | [**create**](docs/UsersApi.md#create) | **POST** /api/users | Create user
+*UsersApi* | [**delete**](docs/UsersApi.md#delete) | **DELETE** /api/users/{user_id} | Delete user
+*UsersApi* | [**get**](docs/UsersApi.md#get) | **GET** /api/users/{user_id} | Get user
+*UsersApi* | [**list**](docs/UsersApi.md#list) | **GET** /api/users | List users
+*UsersApi* | [**update**](docs/UsersApi.md#update) | **PATCH** /api/users/{user_id} | Update user
+*WorkspacesApi* | [**create**](docs/WorkspacesApi.md#create) | **POST** /api/workspaces | Create workspace
+*WorkspacesApi* | [**create_resource_template**](docs/WorkspacesApi.md#create_resource_template) | **POST** /api/workspaces/{workspace_id}/template | Create workspace resource template
+*WorkspacesApi* | [**create_route**](docs/WorkspacesApi.md#create_route) | **POST** /api/workspaces/{workspace_id}/routes | Create workspace route
+*WorkspacesApi* | [**create_secret_attachment**](docs/WorkspacesApi.md#create_secret_attachment) | **POST** /api/workspaces/{workspace_id}/secrets | Create workspace secret attachment
+*WorkspacesApi* | [**create_service_account_attachment**](docs/WorkspacesApi.md#create_service_account_attachment) | **PUT** /api/workspaces/{workspace_id}/service_account | Create workspace service account attachment
+*WorkspacesApi* | [**create_viewer**](docs/WorkspacesApi.md#create_viewer) | **POST** /api/workspaces/{workspace_id}/viewers | Create workspace viewer
+*WorkspacesApi* | [**delete**](docs/WorkspacesApi.md#delete) | **DELETE** /api/workspaces/{workspace_id} | Delete workspace
+*WorkspacesApi* | [**delete_route**](docs/WorkspacesApi.md#delete_route) | **DELETE** /api/workspaces/{workspace_id}/routes/{route_id} | Delete workspace route
+*WorkspacesApi* | [**delete_secret_attachment**](docs/WorkspacesApi.md#delete_secret_attachment) | **DELETE** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | Delete workspace secret attachment
+*WorkspacesApi* | [**delete_service_account_attachment**](docs/WorkspacesApi.md#delete_service_account_attachment) | **DELETE** /api/workspaces/{workspace_id}/service_account | Delete workspace service account attachment
+*WorkspacesApi* | [**delete_viewer**](docs/WorkspacesApi.md#delete_viewer) | **DELETE** /api/workspaces/{workspace_id}/viewers/{viewer_id} | Delete workspace viewer
+*WorkspacesApi* | [**get**](docs/WorkspacesApi.md#get) | **GET** /api/workspaces/{workspace_id} | Get workspace
+*WorkspacesApi* | [**get_cluster_history**](docs/WorkspacesApi.md#get_cluster_history) | **GET** /api/workspaces/{workspace_id}/clusters | Get workspace cluster history
+*WorkspacesApi* | [**get_logs**](docs/WorkspacesApi.md#get_logs) | **GET** /api/workspaces/{workspace_id}/logs | Get workspace historical logs
+*WorkspacesApi* | [**get_metrics**](docs/WorkspacesApi.md#get_metrics) | **GET** /api/workspaces/{workspace_id}/metrics | Get workspace metrics
+*WorkspacesApi* | [**get_pod_history**](docs/WorkspacesApi.md#get_pod_history) | **GET** /api/workspaces/{workspace_id}/history | Get workspace pod history
+*WorkspacesApi* | [**get_recipe**](docs/WorkspacesApi.md#get_recipe) | **GET** /api/workspaces/{workspace_id}/recipe | Get workspace recipe
+*WorkspacesApi* | [**get_resource_template**](docs/WorkspacesApi.md#get_resource_template) | **GET** /api/workspaces/{workspace_id}/template | Get workspace resource template
+*WorkspacesApi* | [**get_route**](docs/WorkspacesApi.md#get_route) | **GET** /api/workspaces/{workspace_id}/routes/{route_id} | Get workspace route
+*WorkspacesApi* | [**get_runtime_summary**](docs/WorkspacesApi.md#get_runtime_summary) | **GET** /api/workspaces/{workspace_id}/runtimesummary | Get workspace runtime summary
+*WorkspacesApi* | [**get_secret_attachment**](docs/WorkspacesApi.md#get_secret_attachment) | **GET** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | Get workspace secret attachment
+*WorkspacesApi* | [**get_server_options**](docs/WorkspacesApi.md#get_server_options) | **GET** /api/workspaces/info | Get workspace server options
+*WorkspacesApi* | [**get_service_account_attachment**](docs/WorkspacesApi.md#get_service_account_attachment) | **GET** /api/workspaces/{workspace_id}/service_account | Get workspace service account attachment
+*WorkspacesApi* | [**get_token_info**](docs/WorkspacesApi.md#get_token_info) | **GET** /api/workspaces/{workspace_id}/token | Get workspace API token info
+*WorkspacesApi* | [**list**](docs/WorkspacesApi.md#list) | **GET** /api/workspaces | List workspaces
+*WorkspacesApi* | [**list_routes**](docs/WorkspacesApi.md#list_routes) | **GET** /api/workspaces/{workspace_id}/routes | List workspace routes
+*WorkspacesApi* | [**list_secret_attachments**](docs/WorkspacesApi.md#list_secret_attachments) | **GET** /api/workspaces/{workspace_id}/secrets | List workspace secret attachments
+*WorkspacesApi* | [**list_viewers**](docs/WorkspacesApi.md#list_viewers) | **GET** /api/workspaces/{workspace_id}/viewers | List workspace viewers
+*WorkspacesApi* | [**restart**](docs/WorkspacesApi.md#restart) | **POST** /api/workspaces/{workspace_id}/restart | Restart workspace
+*WorkspacesApi* | [**rotate_token**](docs/WorkspacesApi.md#rotate_token) | **POST** /api/workspaces/{workspace_id}/token | Rotate workspace API token
+*WorkspacesApi* | [**start**](docs/WorkspacesApi.md#start) | **POST** /api/workspaces/{workspace_id}/start | Start workspace
+*WorkspacesApi* | [**stop**](docs/WorkspacesApi.md#stop) | **POST** /api/workspaces/{workspace_id}/stop | Stop workspace
+*WorkspacesApi* | [**update**](docs/WorkspacesApi.md#update) | **PATCH** /api/workspaces/{workspace_id} | Update workspace
+*WorkspacesApi* | [**update_resource_template**](docs/WorkspacesApi.md#update_resource_template) | **PATCH** /api/workspaces/{workspace_id}/template | Update workspace resource template
+*WorkspacesApi* | [**update_route**](docs/WorkspacesApi.md#update_route) | **PATCH** /api/workspaces/{workspace_id}/routes/{route_id} | Update workspace route
+*WorkspacesApi* | [**update_secret_attachment**](docs/WorkspacesApi.md#update_secret_attachment) | **PATCH** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | Update workspace secret attachment
+*WorkspacesApi* | [**update_token**](docs/WorkspacesApi.md#update_token) | **PATCH** /api/workspaces/{workspace_id}/token | Update workspace API token
 
 
 ## Documentation For Models
@@ -356,7 +376,9 @@ Class | Method | HTTP request | Description
  - [ApiTokenUpdate](docs/ApiTokenUpdate.md)
  - [AppInfo](docs/AppInfo.md)
  - [Auth0Info](docs/Auth0Info.md)
+ - [AuthorizationCodeGrant](docs/AuthorizationCodeGrant.md)
  - [AuthorizationGrant](docs/AuthorizationGrant.md)
+ - [AuthorizationRefreshGrant](docs/AuthorizationRefreshGrant.md)
  - [AuthorizationTokenResponse](docs/AuthorizationTokenResponse.md)
  - [BuildData](docs/BuildData.md)
  - [ConcurrencyPolicy](docs/ConcurrencyPolicy.md)
@@ -379,6 +401,7 @@ Class | Method | HTTP request | Description
  - [DaskClusterScale](docs/DaskClusterScale.md)
  - [DaskClusterServerOptions](docs/DaskClusterServerOptions.md)
  - [DaskClusterUpdate](docs/DaskClusterUpdate.md)
+ - [DaskComponents](docs/DaskComponents.md)
  - [DaskWorkersRuntimeSummaryPage](docs/DaskWorkersRuntimeSummaryPage.md)
  - [DataPoint](docs/DataPoint.md)
  - [DefaultImages](docs/DefaultImages.md)
@@ -416,7 +439,8 @@ Class | Method | HTTP request | Description
  - [GroupMemberList](docs/GroupMemberList.md)
  - [GroupUpdate](docs/GroupUpdate.md)
  - [HardwareType](docs/HardwareType.md)
- - [HistoricLogs](docs/HistoricLogs.md)
+ - [HistoricLog](docs/HistoricLog.md)
+ - [HistoricLogList](docs/HistoricLogList.md)
  - [Identity](docs/Identity.md)
  - [IdentityByGroupId](docs/IdentityByGroupId.md)
  - [IdentityByUserId](docs/IdentityByUserId.md)
@@ -470,8 +494,31 @@ Class | Method | HTTP request | Description
  - [NotificationSubscription](docs/NotificationSubscription.md)
  - [NotificationSubscriptionList](docs/NotificationSubscriptionList.md)
  - [NotificationUnsubscribe](docs/NotificationUnsubscribe.md)
+ - [ObjectStorageBulkDeleteResults](docs/ObjectStorageBulkDeleteResults.md)
+ - [ObjectStorageBulkDownload](docs/ObjectStorageBulkDownload.md)
+ - [ObjectStorageBulkReference](docs/ObjectStorageBulkReference.md)
+ - [ObjectStorageCompletePart](docs/ObjectStorageCompletePart.md)
+ - [ObjectStorageCompletedUpload](docs/ObjectStorageCompletedUpload.md)
+ - [ObjectStorageCopySource](docs/ObjectStorageCopySource.md)
+ - [ObjectStorageDirDetails](docs/ObjectStorageDirDetails.md)
+ - [ObjectStorageFileDetails](docs/ObjectStorageFileDetails.md)
+ - [ObjectStorageList](docs/ObjectStorageList.md)
+ - [ObjectStoragePresignedDownload](docs/ObjectStoragePresignedDownload.md)
+ - [ObjectStoragePresignedPart](docs/ObjectStoragePresignedPart.md)
+ - [ObjectStoragePresignedUpload](docs/ObjectStoragePresignedUpload.md)
+ - [ObjectStorageReference](docs/ObjectStorageReference.md)
+ - [ObjectStorageSharedOwner](docs/ObjectStorageSharedOwner.md)
+ - [ObjectStorageSharedOwnerList](docs/ObjectStorageSharedOwnerList.md)
+ - [ObjectStorageUpload](docs/ObjectStorageUpload.md)
+ - [ObjectStorageUploadCreate](docs/ObjectStorageUploadCreate.md)
+ - [ObjectStorageUploadList](docs/ObjectStorageUploadList.md)
+ - [ObjectStorageUsageStats](docs/ObjectStorageUsageStats.md)
  - [Org](docs/Org.md)
  - [OrgCreate](docs/OrgCreate.md)
+ - [OrgInvitation](docs/OrgInvitation.md)
+ - [OrgInvitationCreate](docs/OrgInvitationCreate.md)
+ - [OrgInvitationList](docs/OrgInvitationList.md)
+ - [OrgInvitationUpdate](docs/OrgInvitationUpdate.md)
  - [OrgList](docs/OrgList.md)
  - [OrgMemberCreate](docs/OrgMemberCreate.md)
  - [OrgMemberDetailed](docs/OrgMemberDetailed.md)
@@ -495,7 +542,6 @@ Class | Method | HTTP request | Description
  - [PodRuntimeSummary](docs/PodRuntimeSummary.md)
  - [Recipe](docs/Recipe.md)
  - [RecipeList](docs/RecipeList.md)
- - [RecipeType](docs/RecipeType.md)
  - [ResourceByDeploymentId](docs/ResourceByDeploymentId.md)
  - [ResourceByJobId](docs/ResourceByJobId.md)
  - [ResourceByWorkspaceId](docs/ResourceByWorkspaceId.md)
@@ -504,12 +550,13 @@ Class | Method | HTTP request | Description
  - [ResourceImage](docs/ResourceImage.md)
  - [ResourceImageTag](docs/ResourceImageTag.md)
  - [ResourceRecipe](docs/ResourceRecipe.md)
- - [ResourceRecipeType](docs/ResourceRecipeType.md)
  - [ResourceReference](docs/ResourceReference.md)
  - [ResourceState](docs/ResourceState.md)
  - [ResourceTemplate](docs/ResourceTemplate.md)
+ - [ResourceTemplateAccessLevel](docs/ResourceTemplateAccessLevel.md)
  - [ResourceTokenInfo](docs/ResourceTokenInfo.md)
  - [ResourceTokenUpdate](docs/ResourceTokenUpdate.md)
+ - [ResourceType](docs/ResourceType.md)
  - [Route](docs/Route.md)
  - [RouteByContainerPort](docs/RouteByContainerPort.md)
  - [RouteById](docs/RouteById.md)
@@ -579,6 +626,7 @@ Class | Method | HTTP request | Description
  - [ViewerCreate](docs/ViewerCreate.md)
  - [ViewerList](docs/ViewerList.md)
  - [ViewerRecipe](docs/ViewerRecipe.md)
+ - [WhiteLabelConfiguration](docs/WhiteLabelConfiguration.md)
  - [Workspace](docs/Workspace.md)
  - [WorkspaceCreate](docs/WorkspaceCreate.md)
  - [WorkspaceIdeDefaultImages](docs/WorkspaceIdeDefaultImages.md)

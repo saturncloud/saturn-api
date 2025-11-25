@@ -59,9 +59,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolderAttachment:
-        """create
+        """Create shared folder attachment
 
-        Create shared folder attachment
+        Create a new shared folder attachment.
 
         :param shared_folder_attachment_create: (required)
         :type shared_folder_attachment_create: SharedFolderAttachmentCreate
@@ -126,9 +126,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolderAttachment]:
-        """create
+        """Create shared folder attachment
 
-        Create shared folder attachment
+        Create a new shared folder attachment.
 
         :param shared_folder_attachment_create: (required)
         :type shared_folder_attachment_create: SharedFolderAttachmentCreate
@@ -193,9 +193,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create shared folder attachment
 
-        Create shared folder attachment
+        Create a new shared folder attachment.
 
         :param shared_folder_attachment_create: (required)
         :type shared_folder_attachment_create: SharedFolderAttachmentCreate
@@ -333,9 +333,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete shared folder attachment
 
-        Delete shared folder attachment
+        Delete a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -400,9 +400,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete shared folder attachment
 
-        Delete shared folder attachment
+        Delete a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -467,9 +467,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete shared folder attachment
 
-        Delete shared folder attachment
+        Delete a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -587,9 +587,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolderAttachment:
-        """get
+        """Get shared folder attachment
 
-        Get shared folder attachment
+        Get a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -654,9 +654,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolderAttachment]:
-        """get
+        """Get shared folder attachment
 
-        Get shared folder attachment
+        Get a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -721,9 +721,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get shared folder attachment
 
-        Get shared folder attachment
+        Get a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -854,9 +854,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolderAttachmentList:
-        """list
+        """List shared folder attachments
 
-        List shared folder attachments
+        Paginated list of shared folder attachments.
 
         :param job_id:
         :type job_id: str
@@ -945,9 +945,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolderAttachmentList]:
-        """list
+        """List shared folder attachments
 
-        List shared folder attachments
+        Paginated list of shared folder attachments.
 
         :param job_id:
         :type job_id: str
@@ -1036,9 +1036,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List shared folder attachments
 
-        List shared folder attachments
+        Paginated list of shared folder attachments.
 
         :param job_id:
         :type job_id: str
@@ -1214,9 +1214,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SharedFolderAttachment:
-        """update
+        """Update shared folder attachment
 
-        Update shared folder attachment
+        Update a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -1285,9 +1285,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SharedFolderAttachment]:
-        """update
+        """Update shared folder attachment
 
-        Update shared folder attachment
+        Update a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str
@@ -1356,9 +1356,9 @@ class SharedFolderAttachmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update shared folder attachment
 
-        Update shared folder attachment
+        Update a shared folder attachment.
 
         :param shared_folder_attachment_id: (required)
         :type shared_folder_attachment_id: str

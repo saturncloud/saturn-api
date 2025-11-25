@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](CurrentUserApi.md#get) | **GET** /api/user | 
-[**get_aggregated_usage**](CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | 
-[**get_preferences**](CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | 
-[**list_org_memberships**](CurrentUserApi.md#list_org_memberships) | **GET** /api/user/org_memberships | 
-[**update**](CurrentUserApi.md#update) | **PATCH** /api/user | 
-[**update_preferences**](CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | 
+[**get**](CurrentUserApi.md#get) | **GET** /api/user | Get current user
+[**get_aggregated_usage**](CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | Get aggregated usage
+[**get_preferences**](CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | Get current user preferences
+[**list_org_memberships**](CurrentUserApi.md#list_org_memberships) | **GET** /api/user/org_memberships | List current user org memberships
+[**update**](CurrentUserApi.md#update) | **PATCH** /api/user | Update current user
+[**update_preferences**](CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | Update current user preferences
 
 
 # **get**
@@ -49,6 +49,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.CurrentUserApi(api_client)
 
     try:
+        # Get current user
         api_response = await api_instance.get()
         print("The response of CurrentUserApi->get:\n")
         pprint(api_response)
@@ -87,7 +88,9 @@ This endpoint does not need any parameter.
 # **get_aggregated_usage**
 > UsageLimits get_aggregated_usage(start=start, end=end)
 
-Get current user aggregated usage
+Get aggregated usage
+
+Get total aggregated usage for the current user.
 
 ### Example
 
@@ -123,6 +126,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     end = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
 
     try:
+        # Get aggregated usage
         api_response = await api_instance.get_aggregated_usage(start=start, end=end)
         print("The response of CurrentUserApi->get_aggregated_usage:\n")
         pprint(api_response)
@@ -198,6 +202,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.CurrentUserApi(api_client)
 
     try:
+        # Get current user preferences
         api_response = await api_instance.get_preferences()
         print("The response of CurrentUserApi->get_preferences:\n")
         pprint(api_response)
@@ -273,6 +278,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List current user org memberships
         api_response = await api_instance.list_org_memberships(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of CurrentUserApi->list_org_memberships:\n")
         pprint(api_response)
@@ -352,6 +358,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     user_update = saturn_api.UserUpdate() # UserUpdate | 
 
     try:
+        # Update current user
         api_response = await api_instance.update(user_update)
         print("The response of CurrentUserApi->update:\n")
         pprint(api_response)
@@ -428,6 +435,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     user_preferences_update = saturn_api.UserPreferencesUpdate() # UserPreferencesUpdate | 
 
     try:
+        # Update current user preferences
         api_response = await api_instance.update_preferences(user_preferences_update)
         print("The response of CurrentUserApi->update_preferences:\n")
         pprint(api_response)

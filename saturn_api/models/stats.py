@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -26,10 +26,10 @@ class Stats(BaseModel):
     """
     Stats
     """ # noqa: E501
-    avg: Optional[Union[StrictFloat, StrictInt]] = None
-    min: Optional[Union[StrictFloat, StrictInt]] = None
-    max: Optional[Union[StrictFloat, StrictInt]] = None
-    last: Optional[Union[StrictFloat, StrictInt]] = None
+    avg: Union[StrictFloat, StrictInt]
+    min: Union[StrictFloat, StrictInt]
+    max: Union[StrictFloat, StrictInt]
+    last: Union[StrictFloat, StrictInt]
     __properties: ClassVar[List[str]] = ["avg", "min", "max", "last"]
 
     model_config = ConfigDict(
@@ -62,8 +62,16 @@ class Stats(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "avg",
+            "min",
+            "max",
+            "last",
         ])
 
         _dict = self.model_dump(

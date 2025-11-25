@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schema_version** | **str** |  | [optional] [default to '2025.10.01']
-**type** | [**RecipeType**](RecipeType.md) |  | 
+**type** | **str** |  | 
 **spec** | [**ImageSpec**](ImageSpec.md) |  | 
 **state** | [**ImageState**](ImageState.md) |  | [optional] [readonly] 
 

@@ -17,10 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from saturn_api.models.owner import Owner
+from saturn_api.models.resource_template_access_level import ResourceTemplateAccessLevel
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -28,42 +28,17 @@ class ResourceTemplate(BaseModel):
     """
     ResourceTemplate
     """ # noqa: E501
-    owner_id: Optional[StrictStr] = None
-    owner_name: Optional[Annotated[str, Field(strict=True)]] = None
-    user_id: Optional[StrictStr] = None
-    group_id: Optional[StrictStr] = None
-    org_id: Optional[StrictStr] = None
-    owner: Optional[Owner] = None
-    name: Annotated[str, Field(min_length=1, strict=True)]
+    id: StrictStr
+    name: StrictStr
+    owner: Owner
     description: StrictStr
-    thumbnail_image_url: Optional[StrictStr] = None
-    weight: Optional[StrictInt] = None
+    created_at: StrictStr
+    thumbnail_image_url: Optional[StrictStr]
+    weight: Optional[StrictInt]
     recipe: Dict[str, Any]
-    access: Literal['account', 'org', 'owner'] | None = None
-    id: Optional[StrictStr] = None
-    editable: Optional[StrictBool] = None
-    created_at: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["owner_id", "owner_name", "user_id", "group_id", "org_id", "owner", "name", "description", "thumbnail_image_url", "weight", "recipe", "access", "id", "editable", "created_at"]
-
-    @field_validator('owner_name')
-    def owner_name_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$", value):
-            raise ValueError(r"must validate the regular expression /^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$/")
-        return value
-
-    @field_validator('access')
-    def access_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['account', 'org', 'owner']):
-            raise ValueError("must be one of enum values ('account', 'org', 'owner')")
-        return value
+    access: ResourceTemplateAccessLevel
+    editable: StrictBool
+    __properties: ClassVar[List[str]] = ["id", "name", "owner", "description", "created_at", "thumbnail_image_url", "weight", "recipe", "access", "editable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,12 +74,22 @@ class ResourceTemplate(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "owner",
             "id",
-            "editable",
+            "name",
+            "owner",
+            "description",
             "created_at",
+            "thumbnail_image_url",
+            "weight",
+            "recipe",
+            "editable",
         ])
 
         _dict = self.model_dump(
@@ -115,16 +100,6 @@ class ResourceTemplate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
-        # set to None if user_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.user_id is None and "user_id" in self.model_fields_set:
-            _dict['user_id'] = None
-
-        # set to None if group_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.group_id is None and "group_id" in self.model_fields_set:
-            _dict['group_id'] = None
-
         # set to None if thumbnail_image_url (nullable) is None
         # and model_fields_set contains the field
         if self.thumbnail_image_url is None and "thumbnail_image_url" in self.model_fields_set:
@@ -147,21 +122,16 @@ class ResourceTemplate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "owner_id": obj.get("owner_id"),
-            "owner_name": obj.get("owner_name"),
-            "user_id": obj.get("user_id"),
-            "group_id": obj.get("group_id"),
-            "org_id": obj.get("org_id"),
-            "owner": Owner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "id": obj.get("id"),
             "name": obj.get("name"),
+            "owner": Owner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "description": obj.get("description"),
+            "created_at": obj.get("created_at"),
             "thumbnail_image_url": obj.get("thumbnail_image_url"),
             "weight": obj.get("weight"),
             "recipe": obj.get("recipe"),
             "access": obj.get("access"),
-            "id": obj.get("id"),
-            "editable": obj.get("editable"),
-            "created_at": obj.get("created_at")
+            "editable": obj.get("editable")
         })
         return _obj
 

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pod_name** | **str** |  | [optional] 
-**labels** | **Dict[str, str]** |  | [optional] 
-**stats** | [**Stats**](Stats.md) |  | [optional] 
-**data** | [**List[DataPoint]**](DataPoint.md) |  | [optional] 
+**pod_name** | **str** |  | [readonly] 
+**labels** | **Dict[str, str]** |  | [readonly] 
+**stats** | [**Stats**](Stats.md) |  | [readonly] 
+**data** | [**List[DataPoint]**](DataPoint.md) |  | [readonly] 
 
 ## Example
 

@@ -23,6 +23,7 @@ from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
 from saturn_api.models.owner import Owner
 from saturn_api.models.resource_image_tag import ResourceImageTag
+from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -48,7 +49,7 @@ class Workspace(BaseModel):
     is_spot: StrictBool
     subdomain: StrictStr
     start_dind: StrictBool
-    resource_type: StrictStr
+    resource_type: ResourceType
     size_display: StrictStr
     k8s_name: StrictStr
     require_restart: StrictBool
@@ -122,7 +123,6 @@ class Workspace(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -142,7 +142,6 @@ class Workspace(BaseModel):
             "is_spot",
             "subdomain",
             "start_dind",
-            "resource_type",
             "size_display",
             "k8s_name",
             "require_restart",

@@ -62,9 +62,9 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """acknowledge
+        """Acknowledge notifications
 
-        Mark notifications as read/unread
+        Mark notifications as read/unread.
 
         :param notification_acknowledged: (required)
         :type notification_acknowledged: NotificationAcknowledged
@@ -129,9 +129,9 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """acknowledge
+        """Acknowledge notifications
 
-        Mark notifications as read/unread
+        Mark notifications as read/unread.
 
         :param notification_acknowledged: (required)
         :type notification_acknowledged: NotificationAcknowledged
@@ -196,9 +196,9 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """acknowledge
+        """Acknowledge notifications
 
-        Mark notifications as read/unread
+        Mark notifications as read/unread.
 
         :param notification_acknowledged: (required)
         :type notification_acknowledged: NotificationAcknowledged
@@ -329,9 +329,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete notifications
 
-        Delete notifications
 
         :param notification_delete: (required)
         :type notification_delete: NotificationDelete
@@ -396,9 +395,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete notifications
 
-        Delete notifications
 
         :param notification_delete: (required)
         :type notification_delete: NotificationDelete
@@ -463,9 +461,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete notifications
 
-        Delete notifications
 
         :param notification_delete: (required)
         :type notification_delete: NotificationDelete
@@ -599,9 +596,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NotificationList:
-        """list
+        """List notifications
 
-        List notifications
 
         :param prev_key:
         :type prev_key: str
@@ -678,9 +674,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NotificationList]:
-        """list
+        """List notifications
 
-        List notifications
 
         :param prev_key:
         :type prev_key: str
@@ -757,9 +752,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List notifications
 
-        List notifications
 
         :param prev_key:
         :type prev_key: str
@@ -915,9 +909,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NotificationSubscriptionList:
-        """list_subscriptions
+        """List notification subscriptions
 
-        List notification subscriptions
 
         :param topic:
         :type topic: str
@@ -1002,9 +995,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NotificationSubscriptionList]:
-        """list_subscriptions
+        """List notification subscriptions
 
-        List notification subscriptions
 
         :param topic:
         :type topic: str
@@ -1089,9 +1081,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_subscriptions
+        """List notification subscriptions
 
-        List notification subscriptions
 
         :param topic:
         :type topic: str
@@ -1258,9 +1249,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NotificationSubscription:
-        """subscribe
+        """Subscribe to topic
 
-        Subscribe to a notification topic
 
         :param notification_subscribe: (required)
         :type notification_subscribe: NotificationSubscribe
@@ -1325,9 +1315,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NotificationSubscription]:
-        """subscribe
+        """Subscribe to topic
 
-        Subscribe to a notification topic
 
         :param notification_subscribe: (required)
         :type notification_subscribe: NotificationSubscribe
@@ -1392,9 +1381,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """subscribe
+        """Subscribe to topic
 
-        Subscribe to a notification topic
 
         :param notification_subscribe: (required)
         :type notification_subscribe: NotificationSubscribe
@@ -1532,9 +1520,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """unsubscribe
+        """Unsubscribe from topic
 
-        Unsubscribe from a notification topic
 
         :param notification_unsubscribe: (required)
         :type notification_unsubscribe: NotificationUnsubscribe
@@ -1599,9 +1586,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """unsubscribe
+        """Unsubscribe from topic
 
-        Unsubscribe from a notification topic
 
         :param notification_unsubscribe: (required)
         :type notification_unsubscribe: NotificationUnsubscribe
@@ -1666,9 +1652,8 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """unsubscribe
+        """Unsubscribe from topic
 
-        Unsubscribe from a notification topic
 
         :param notification_unsubscribe: (required)
         :type notification_unsubscribe: NotificationUnsubscribe

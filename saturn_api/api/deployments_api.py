@@ -28,7 +28,7 @@ from saturn_api.models.deployment_runtime_summary import DeploymentRuntimeSummar
 from saturn_api.models.deployment_server_options import DeploymentServerOptions
 from saturn_api.models.deployment_start import DeploymentStart
 from saturn_api.models.deployment_update import DeploymentUpdate
-from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.models.metrics import Metrics
 from saturn_api.models.resource_clusters import ResourceClusters
 from saturn_api.models.resource_history import ResourceHistory
@@ -82,9 +82,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Deployment:
-        """create
+        """Create deployment
 
-        Create deployment
+        Create a new deployment.
 
         :param deployment_create: (required)
         :type deployment_create: DeploymentCreate
@@ -149,9 +149,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Deployment]:
-        """create
+        """Create deployment
 
-        Create deployment
+        Create a new deployment.
 
         :param deployment_create: (required)
         :type deployment_create: DeploymentCreate
@@ -216,9 +216,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create deployment
 
-        Create deployment
+        Create a new deployment.
 
         :param deployment_create: (required)
         :type deployment_create: DeploymentCreate
@@ -356,9 +356,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTemplate:
-        """create_resource_template
+        """Create deployment resource template
 
-        Create deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -423,9 +422,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTemplate]:
-        """create_resource_template
+        """Create deployment resource template
 
-        Create deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -490,9 +488,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_resource_template
+        """Create deployment resource template
 
-        Create deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -618,9 +615,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachment:
-        """create_route
+        """Create deployment route
 
-        Create deployment route
+        Add a new ingress route to the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -689,9 +686,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachment]:
-        """create_route
+        """Create deployment route
 
-        Create deployment route
+        Add a new ingress route to the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -760,9 +757,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_route
+        """Create deployment route
 
-        Create deployment route
+        Add a new ingress route to the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -907,9 +904,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachment:
-        """create_secret_attachment
+        """Create deployment secret attachment
 
-        Create deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -978,9 +974,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachment]:
-        """create_secret_attachment
+        """Create deployment secret attachment
 
-        Create deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1049,9 +1044,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_secret_attachment
+        """Create deployment secret attachment
 
-        Create deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1196,9 +1190,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountAttachment:
-        """create_service_account_attachment
+        """Create deployment service account attachment
 
-        Create deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1267,9 +1260,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountAttachment]:
-        """create_service_account_attachment
+        """Create deployment service account attachment
 
-        Create deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1338,9 +1330,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_service_account_attachment
+        """Create deployment service account attachment
 
-        Create deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1485,9 +1476,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Viewer:
-        """create_viewer
+        """Create deployment viewer
 
-        Create deployment viewer
+        Grant a user or group access to routes on the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1556,9 +1547,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Viewer]:
-        """create_viewer
+        """Create deployment viewer
 
-        Create deployment viewer
+        Grant a user or group access to routes on the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1627,9 +1618,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_viewer
+        """Create deployment viewer
 
-        Create deployment viewer
+        Grant a user or group access to routes on the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1774,9 +1765,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete deployment
 
-        Delete deployment
+        Delete a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1845,9 +1836,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete deployment
 
-        Delete deployment
+        Delete a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -1916,9 +1907,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete deployment
 
-        Delete deployment
+        Delete a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2045,9 +2036,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_route
+        """Delete deployment route
 
-        Delete deployment route
+        Remove an ingress route from deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2116,9 +2107,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_route
+        """Delete deployment route
 
-        Delete deployment route
+        Remove an ingress route from deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2187,9 +2178,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_route
+        """Delete deployment route
 
-        Delete deployment route
+        Remove an ingress route from deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2314,9 +2305,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_secret_attachment
+        """Delete deployment secret attachment
 
-        Delete deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2385,9 +2375,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_secret_attachment
+        """Delete deployment secret attachment
 
-        Delete deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2456,9 +2445,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_secret_attachment
+        """Delete deployment secret attachment
 
-        Delete deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2582,9 +2570,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_service_account_attachment
+        """Delete deployment service account attachment
 
-        Delete deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2649,9 +2636,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_service_account_attachment
+        """Delete deployment service account attachment
 
-        Delete deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2716,9 +2702,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_service_account_attachment
+        """Delete deployment service account attachment
 
-        Delete deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2837,9 +2822,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_viewer
+        """Delete deployment viewer
 
-        Delete deployment viewer
+        Remove a viewer's access permissions.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2908,9 +2893,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_viewer
+        """Delete deployment viewer
 
-        Delete deployment viewer
+        Remove a viewer's access permissions.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -2979,9 +2964,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_viewer
+        """Delete deployment viewer
 
-        Delete deployment viewer
+        Remove a viewer's access permissions.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3105,9 +3090,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Deployment:
-        """get
+        """Get deployment
 
-        Get deployment
+        Get a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3172,9 +3157,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Deployment]:
-        """get
+        """Get deployment
 
-        Get deployment
+        Get a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3239,9 +3224,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get deployment
 
-        Get deployment
+        Get a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3366,9 +3351,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceClusters:
-        """get_cluster_history
+        """Get deployment cluster history
 
-        Get clusters that a deployment has run on
+        Get a list of clusters that the deployment has recently run on.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3433,9 +3418,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceClusters]:
-        """get_cluster_history
+        """Get deployment cluster history
 
-        Get clusters that a deployment has run on
+        Get a list of clusters that the deployment has recently run on.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3500,9 +3485,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_cluster_history
+        """Get deployment cluster history
 
-        Get clusters that a deployment has run on
+        Get a list of clusters that the deployment has recently run on.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3611,13 +3596,14 @@ class DeploymentsApi:
 
 
     @validate_call
-    async def get_log_history(
+    async def get_logs(
         self,
         deployment_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3630,10 +3616,10 @@ class DeploymentsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> HistoricLogs:
-        """get_log_history
+    ) -> HistoricLogList:
+        """Get deployment historical logs
 
-        Get deployment historical logs
+        Historical record of logs from the resource.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3641,10 +3627,12 @@ class DeploymentsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3667,12 +3655,13 @@ class DeploymentsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             deployment_id=deployment_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3680,7 +3669,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3694,13 +3683,14 @@ class DeploymentsApi:
 
 
     @validate_call
-    async def get_log_history_with_http_info(
+    async def get_logs_with_http_info(
         self,
         deployment_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3713,10 +3703,10 @@ class DeploymentsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[HistoricLogs]:
-        """get_log_history
+    ) -> ApiResponse[HistoricLogList]:
+        """Get deployment historical logs
 
-        Get deployment historical logs
+        Historical record of logs from the resource.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3724,10 +3714,12 @@ class DeploymentsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3750,12 +3742,13 @@ class DeploymentsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             deployment_id=deployment_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3763,7 +3756,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3777,13 +3770,14 @@ class DeploymentsApi:
 
 
     @validate_call
-    async def get_log_history_without_preload_content(
+    async def get_logs_without_preload_content(
         self,
         deployment_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3797,9 +3791,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_log_history
+        """Get deployment historical logs
 
-        Get deployment historical logs
+        Historical record of logs from the resource.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -3807,10 +3801,12 @@ class DeploymentsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3833,12 +3829,13 @@ class DeploymentsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             deployment_id=deployment_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3846,7 +3843,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3855,13 +3852,14 @@ class DeploymentsApi:
         return response_data.response
 
 
-    def _get_log_history_serialize(
+    def _get_logs_serialize(
         self,
         deployment_id,
         pod_name,
         cluster,
-        first_key,
-        last_key,
+        prev_key,
+        next_key,
+        page_size,
         _request_auth,
         _content_type,
         _headers,
@@ -3894,13 +3892,17 @@ class DeploymentsApi:
             
             _query_params.append(('cluster', cluster))
             
-        if first_key is not None:
+        if prev_key is not None:
             
-            _query_params.append(('first_key', first_key))
+            _query_params.append(('prev_key', prev_key))
             
-        if last_key is not None:
+        if next_key is not None:
             
-            _query_params.append(('last_key', last_key))
+            _query_params.append(('next_key', next_key))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
             
         # process the header parameters
         # process the form parameters
@@ -3961,9 +3963,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Metrics:
-        """get_metrics
+        """Get deployment metrics
 
-        Get deployment hardware metrics
+        Hardware utilization metrics.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4048,9 +4050,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Metrics]:
-        """get_metrics
+        """Get deployment metrics
 
-        Get deployment hardware metrics
+        Hardware utilization metrics.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4135,9 +4137,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_metrics
+        """Get deployment metrics
 
-        Get deployment hardware metrics
+        Hardware utilization metrics.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4304,6 +4306,284 @@ class DeploymentsApi:
 
 
     @validate_call
+    async def get_pod_history(
+        self,
+        deployment_id: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ResourceHistory:
+        """Get deployment pod history
+
+        Get history of pods run for the deployment.
+
+        :param deployment_id: (required)
+        :type deployment_id: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            deployment_id=deployment_id,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_pod_history_with_http_info(
+        self,
+        deployment_id: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ResourceHistory]:
+        """Get deployment pod history
+
+        Get history of pods run for the deployment.
+
+        :param deployment_id: (required)
+        :type deployment_id: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            deployment_id=deployment_id,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_pod_history_without_preload_content(
+        self,
+        deployment_id: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get deployment pod history
+
+        Get history of pods run for the deployment.
+
+        :param deployment_id: (required)
+        :type deployment_id: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            deployment_id=deployment_id,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_pod_history_serialize(
+        self,
+        deployment_id,
+        cluster,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if deployment_id is not None:
+            _path_params['deployment_id'] = deployment_id
+        # process the query parameters
+        if cluster is not None:
+            
+            _query_params.append(('cluster', cluster))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/deployments/{deployment_id}/history',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_recipe(
         self,
         deployment_id: StrictStr,
@@ -4321,9 +4601,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeploymentRecipe:
-        """get_recipe
+        """Get deployment recipe
 
-        Get deployment recipe
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4392,9 +4671,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeploymentRecipe]:
-        """get_recipe
+        """Get deployment recipe
 
-        Get deployment recipe
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4463,9 +4741,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_recipe
+        """Get deployment recipe
 
-        Get deployment recipe
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4598,9 +4875,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTemplate:
-        """get_resource_template
+        """Get deployment resource template
 
-        Get deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4665,9 +4941,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTemplate]:
-        """get_resource_template
+        """Get deployment resource template
 
-        Get deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4732,9 +5007,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_resource_template
+        """Get deployment resource template
 
-        Get deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4860,9 +5134,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Route:
-        """get_route
+        """Get deployment route
 
-        Get deployment route
+        Get an ingress route.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -4931,9 +5205,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Route]:
-        """get_route
+        """Get deployment route
 
-        Get deployment route
+        Get an ingress route.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5002,9 +5276,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_route
+        """Get deployment route
 
-        Get deployment route
+        Get an ingress route.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5136,9 +5410,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeploymentRuntimeSummary:
-        """get_runtime_summary
+        """Get deployment runtime summary
 
-        Get deployment runtime summary
+        Summary of the current runtime status.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5207,9 +5481,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeploymentRuntimeSummary]:
-        """get_runtime_summary
+        """Get deployment runtime summary
 
-        Get deployment runtime summary
+        Summary of the current runtime status.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5278,9 +5552,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_runtime_summary
+        """Get deployment runtime summary
 
-        Get deployment runtime summary
+        Summary of the current runtime status.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5414,9 +5688,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachment:
-        """get_secret_attachment
+        """Get deployment secret attachment
 
-        Get deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5485,9 +5758,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachment]:
-        """get_secret_attachment
+        """Get deployment secret attachment
 
-        Get deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5556,9 +5828,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_secret_attachment
+        """Get deployment secret attachment
 
-        Get deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -5688,9 +5959,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeploymentServerOptions:
-        """get_server_options
+        """Get deployment server options
 
-        Get deployment server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5751,9 +6021,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeploymentServerOptions]:
-        """get_server_options
+        """Get deployment server options
 
-        Get deployment server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5814,9 +6083,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_server_options
+        """Get deployment server options
 
-        Get deployment server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5935,9 +6203,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountAttachment:
-        """get_service_account_attachment
+        """Get deployment service account attachment
 
-        Get deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -6002,9 +6269,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountAttachment]:
-        """get_service_account_attachment
+        """Get deployment service account attachment
 
-        Get deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -6069,9 +6335,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_service_account_attachment
+        """Get deployment service account attachment
 
-        Get deployment service account attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -6180,287 +6445,9 @@ class DeploymentsApi:
 
 
     @validate_call
-    async def get_status_history(
-        self,
-        deployment_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ResourceHistory:
-        """get_status_history
-
-        Get deployment status history
-
-        :param deployment_id: (required)
-        :type deployment_id: str
-        :param cluster:
-        :type cluster: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            deployment_id=deployment_id,
-            cluster=cluster,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_status_history_with_http_info(
-        self,
-        deployment_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ResourceHistory]:
-        """get_status_history
-
-        Get deployment status history
-
-        :param deployment_id: (required)
-        :type deployment_id: str
-        :param cluster:
-        :type cluster: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            deployment_id=deployment_id,
-            cluster=cluster,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_status_history_without_preload_content(
-        self,
-        deployment_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """get_status_history
-
-        Get deployment status history
-
-        :param deployment_id: (required)
-        :type deployment_id: str
-        :param cluster:
-        :type cluster: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            deployment_id=deployment_id,
-            cluster=cluster,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_status_history_serialize(
-        self,
-        deployment_id,
-        cluster,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if deployment_id is not None:
-            _path_params['deployment_id'] = deployment_id
-        # process the query parameters
-        if cluster is not None:
-            
-            _query_params.append(('cluster', cluster))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/api/deployments/{deployment_id}/history',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -6484,9 +6471,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeploymentList:
-        """list
+        """List deployments
 
-        List deployments
+        Paginated list of deployments.
 
         :param owner_name:
         :type owner_name: str
@@ -6567,7 +6554,7 @@ class DeploymentsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -6591,9 +6578,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeploymentList]:
-        """list
+        """List deployments
 
-        List deployments
+        Paginated list of deployments.
 
         :param owner_name:
         :type owner_name: str
@@ -6674,7 +6661,7 @@ class DeploymentsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -6698,9 +6685,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List deployments
 
-        List deployments
+        Paginated list of deployments.
 
         :param owner_name:
         :type owner_name: str
@@ -6912,9 +6899,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RouteList:
-        """list_routes
+        """List deployment routes
 
-        List deployment routes
+        List ingress routes on the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -6999,9 +6986,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[RouteList]:
-        """list_routes
+        """List deployment routes
 
-        List deployment routes
+        List ingress routes on the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7086,9 +7073,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_routes
+        """List deployment routes
 
-        List deployment routes
+        List ingress routes on the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7259,9 +7246,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachmentList:
-        """list_secret_attachments
+        """List deployment secret attachments
 
-        List deployment secret attachments
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7350,9 +7336,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachmentList]:
-        """list_secret_attachments
+        """List deployment secret attachments
 
-        List deployment secret attachments
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7441,9 +7426,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_secret_attachments
+        """List deployment secret attachments
 
-        List deployment secret attachments
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7621,9 +7605,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ViewerList:
-        """list_viewers
+        """List deployment viewers
 
-        List deployment viewers
+        List users and groups with view permissions.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7708,9 +7692,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ViewerList]:
-        """list_viewers
+        """List deployment viewers
 
-        List deployment viewers
+        List users and groups with view permissions.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7795,9 +7779,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_viewers
+        """List deployment viewers
 
-        List deployment viewers
+        List users and groups with view permissions.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -7963,9 +7947,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Deployment:
-        """restart
+        """Restart deployment
 
-        Restart deployment
+        Restart a running deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8034,9 +8018,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Deployment]:
-        """restart
+        """Restart deployment
 
-        Restart deployment
+        Restart a running deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8105,9 +8089,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """restart
+        """Restart deployment
 
-        Restart deployment
+        Restart a running deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8252,9 +8236,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Deployment:
-        """start
+        """Start deployment
 
-        Start deployment
+        Run a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8323,9 +8307,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Deployment]:
-        """start
+        """Start deployment
 
-        Start deployment
+        Run a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8394,9 +8378,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """start
+        """Start deployment
 
-        Start deployment
+        Run a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8540,9 +8524,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Deployment:
-        """stop
+        """Stop deployment
 
-        Stop deployment
+        Stop a running deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8607,9 +8591,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Deployment]:
-        """stop
+        """Stop deployment
 
-        Stop deployment
+        Stop a running deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8674,9 +8658,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """stop
+        """Stop deployment
 
-        Stop deployment
+        Stop a running deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8802,9 +8786,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Deployment:
-        """update
+        """Update deployment
 
-        Update deployment
+        Update a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8873,9 +8857,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Deployment]:
-        """update
+        """Update deployment
 
-        Update deployment
+        Update a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -8944,9 +8928,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update deployment
 
-        Update deployment
+        Update a deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9090,9 +9074,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTemplate:
-        """update_resource_template
+        """Update deployment resource template
 
-        Update deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9157,9 +9140,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTemplate]:
-        """update_resource_template
+        """Update deployment resource template
 
-        Update deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9224,9 +9206,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_resource_template
+        """Update deployment resource template
 
-        Update deployment resource template
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9353,9 +9334,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Route:
-        """update_route
+        """Update deployment route
 
-        Update deployment route
+        Edit the configuration of an ingress route.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9428,9 +9409,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Route]:
-        """update_route
+        """Update deployment route
 
-        Update deployment route
+        Edit the configuration of an ingress route.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9503,9 +9484,9 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_route
+        """Update deployment route
 
-        Update deployment route
+        Edit the configuration of an ingress route.
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9657,9 +9638,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachment:
-        """update_secret_attachment
+        """Update deployment secret attachment
 
-        Update deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9732,9 +9712,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachment]:
-        """update_secret_attachment
+        """Update deployment secret attachment
 
-        Update deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str
@@ -9807,9 +9786,8 @@ class DeploymentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_secret_attachment
+        """Update deployment secret attachment
 
-        Update deployment secret attachment
 
         :param deployment_id: (required)
         :type deployment_id: str

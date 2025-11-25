@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ImagesApi.md#create) | **POST** /api/images | 
-[**delete**](ImagesApi.md#delete) | **DELETE** /api/images/{image_id} | 
-[**get**](ImagesApi.md#get) | **GET** /api/images/{image_id} | 
-[**list**](ImagesApi.md#list) | **GET** /api/images | 
-[**update**](ImagesApi.md#update) | **PATCH** /api/images/{image_id} | 
+[**create**](ImagesApi.md#create) | **POST** /api/images | Create image
+[**delete**](ImagesApi.md#delete) | **DELETE** /api/images/{image_id} | Delete image
+[**get**](ImagesApi.md#get) | **GET** /api/images/{image_id} | Get image
+[**list**](ImagesApi.md#list) | **GET** /api/images | List images
+[**update**](ImagesApi.md#update) | **PATCH** /api/images/{image_id} | Update image
 
 
 # **create**
 > Image create(image_create)
 
 Create image
+
+Create a new image.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     image_create = saturn_api.ImageCreate() # ImageCreate | 
 
     try:
+        # Create image
         api_response = await api_instance.create(image_create)
         print("The response of ImagesApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete image
 
+Delete an image.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     image_id = 'image_id_example' # str | 
 
     try:
+        # Delete image
         await api_instance.delete(image_id)
     except Exception as e:
         print("Exception when calling ImagesApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get image
 
+Get an image.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     image_id = 'image_id_example' # str | 
 
     try:
+        # Get image
         api_response = await api_instance.get(image_id)
         print("The response of ImagesApi->get:\n")
         pprint(api_response)
@@ -238,6 +247,8 @@ Name | Type | Description  | Notes
 > ImageList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, access=access, supports=supports, hardware_type=hardware_type, is_base=is_base, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List images
+
+Paginated list of images.
 
 ### Example
 
@@ -288,6 +299,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List images
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, access=access, supports=supports, hardware_type=hardware_type, is_base=is_base, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of ImagesApi->list:\n")
         pprint(api_response)
@@ -344,6 +356,8 @@ Name | Type | Description  | Notes
 
 Update image
 
+Update an image.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -379,6 +393,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     image_update = saturn_api.ImageUpdate() # ImageUpdate | 
 
     try:
+        # Update image
         api_response = await api_instance.update(image_id, image_update)
         print("The response of ImagesApi->update:\n")
         pprint(api_response)

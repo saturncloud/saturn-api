@@ -60,9 +60,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiToken:
-        """create
+        """Create api token
 
-        Create api token
+        Create a new api token.
 
         :param api_token_create: (required)
         :type api_token_create: ApiTokenCreate
@@ -127,9 +127,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApiToken]:
-        """create
+        """Create api token
 
-        Create api token
+        Create a new api token.
 
         :param api_token_create: (required)
         :type api_token_create: ApiTokenCreate
@@ -194,9 +194,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create api token
 
-        Create api token
+        Create a new api token.
 
         :param api_token_create: (required)
         :type api_token_create: ApiTokenCreate
@@ -334,9 +334,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete api token
 
-        Delete api token
+        Delete an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -401,9 +401,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete api token
 
-        Delete api token
+        Delete an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -468,9 +468,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete api token
 
-        Delete api token
+        Delete an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -588,9 +588,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiTokenInfo:
-        """get
+        """Get api token
 
-        Get api token
+        Get an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -655,9 +655,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApiTokenInfo]:
-        """get
+        """Get api token
 
-        Get api token
+        Get an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -722,9 +722,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get api token
 
-        Get api token
+        Get an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -855,9 +855,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiTokenList:
-        """list
+        """List api tokens
 
-        List api tokens
+        Paginated list of api tokens.
 
         :param user_id:
         :type user_id: str
@@ -946,9 +946,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApiTokenList]:
-        """list
+        """List api tokens
 
-        List api tokens
+        Paginated list of api tokens.
 
         :param user_id:
         :type user_id: str
@@ -1037,9 +1037,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List api tokens
 
-        List api tokens
+        Paginated list of api tokens.
 
         :param user_id:
         :type user_id: str
@@ -1215,9 +1215,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiTokenInfo:
-        """update
+        """Update api token
 
-        Update api token
+        Update an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -1286,9 +1286,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApiTokenInfo]:
-        """update
+        """Update api token
 
-        Update api token
+        Update an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str
@@ -1357,9 +1357,9 @@ class ApiTokensApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update api token
 
-        Update api token
+        Update an api token.
 
         :param api_token_id: (required)
         :type api_token_id: str

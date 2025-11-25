@@ -21,7 +21,7 @@ from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from saturn_api.models.cron_schedule_update import CronScheduleUpdate
-from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.models.job import Job
 from saturn_api.models.job_collection_runtime_summary import JobCollectionRuntimeSummary
 from saturn_api.models.job_create import JobCreate
@@ -80,9 +80,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """create
+        """Create job
 
-        Create job
+        Create a new job.
 
         :param job_create: (required)
         :type job_create: JobCreate
@@ -147,9 +147,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """create
+        """Create job
 
-        Create job
+        Create a new job.
 
         :param job_create: (required)
         :type job_create: JobCreate
@@ -214,9 +214,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create job
 
-        Create job
+        Create a new job.
 
         :param job_create: (required)
         :type job_create: JobCreate
@@ -354,9 +354,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTemplate:
-        """create_resource_template
+        """Create job resource template
 
-        Create job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -421,9 +420,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTemplate]:
-        """create_resource_template
+        """Create job resource template
 
-        Create job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -488,9 +486,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_resource_template
+        """Create job resource template
 
-        Create job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -616,9 +613,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachment:
-        """create_secret_attachment
+        """Create job secret attachment
 
-        Create job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -687,9 +683,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachment]:
-        """create_secret_attachment
+        """Create job secret attachment
 
-        Create job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -758,9 +753,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_secret_attachment
+        """Create job secret attachment
 
-        Create job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -905,9 +899,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountAttachment:
-        """create_service_account_attachment
+        """Create job service account attachment
 
-        Create job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -976,9 +969,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountAttachment]:
-        """create_service_account_attachment
+        """Create job service account attachment
 
-        Create job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1047,9 +1039,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_service_account_attachment
+        """Create job service account attachment
 
-        Create job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1194,9 +1185,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete job
 
-        Delete job
+        Delete a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -1265,9 +1256,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete job
 
-        Delete job
+        Delete a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -1336,9 +1327,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete job
 
-        Delete job
+        Delete a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -1465,9 +1456,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_secret_attachment
+        """Delete job secret attachment
 
-        Delete job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1536,9 +1526,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_secret_attachment
+        """Delete job secret attachment
 
-        Delete job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1607,9 +1596,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_secret_attachment
+        """Delete job secret attachment
 
-        Delete job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1733,9 +1721,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_service_account_attachment
+        """Delete job service account attachment
 
-        Delete job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1800,9 +1787,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_service_account_attachment
+        """Delete job service account attachment
 
-        Delete job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1867,9 +1853,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_service_account_attachment
+        """Delete job service account attachment
 
-        Delete job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -1987,9 +1972,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """get
+        """Get job
 
-        Get job
+        Get a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -2054,9 +2039,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """get
+        """Get job
 
-        Get job
+        Get a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -2121,9 +2106,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get job
 
-        Get job
+        Get a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -2248,9 +2233,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceClusters:
-        """get_cluster_history
+        """Get job cluster history
 
-        Get clusters that a job has run on
+        Get a list of clusters that the job has recently run on.
 
         :param job_id: (required)
         :type job_id: str
@@ -2315,9 +2300,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceClusters]:
-        """get_cluster_history
+        """Get job cluster history
 
-        Get clusters that a job has run on
+        Get a list of clusters that the job has recently run on.
 
         :param job_id: (required)
         :type job_id: str
@@ -2382,9 +2367,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_cluster_history
+        """Get job cluster history
 
-        Get clusters that a job has run on
+        Get a list of clusters that the job has recently run on.
 
         :param job_id: (required)
         :type job_id: str
@@ -2493,13 +2478,14 @@ class JobsApi:
 
 
     @validate_call
-    async def get_log_history(
+    async def get_logs(
         self,
         job_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2512,10 +2498,10 @@ class JobsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> HistoricLogs:
-        """get_log_history
+    ) -> HistoricLogList:
+        """Get job historical logs
 
-        Get job historical logs
+        Historical record of logs from the resource.
 
         :param job_id: (required)
         :type job_id: str
@@ -2523,10 +2509,12 @@ class JobsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2549,12 +2537,13 @@ class JobsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             job_id=job_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2562,7 +2551,7 @@ class JobsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2576,13 +2565,14 @@ class JobsApi:
 
 
     @validate_call
-    async def get_log_history_with_http_info(
+    async def get_logs_with_http_info(
         self,
         job_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2595,10 +2585,10 @@ class JobsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[HistoricLogs]:
-        """get_log_history
+    ) -> ApiResponse[HistoricLogList]:
+        """Get job historical logs
 
-        Get job historical logs
+        Historical record of logs from the resource.
 
         :param job_id: (required)
         :type job_id: str
@@ -2606,10 +2596,12 @@ class JobsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2632,12 +2624,13 @@ class JobsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             job_id=job_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2645,7 +2638,7 @@ class JobsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2659,13 +2652,14 @@ class JobsApi:
 
 
     @validate_call
-    async def get_log_history_without_preload_content(
+    async def get_logs_without_preload_content(
         self,
         job_id: StrictStr,
         pod_name: Optional[StrictStr] = None,
         cluster: Optional[StrictStr] = None,
-        first_key: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
+        prev_key: Optional[StrictStr] = None,
+        next_key: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2679,9 +2673,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_log_history
+        """Get job historical logs
 
-        Get job historical logs
+        Historical record of logs from the resource.
 
         :param job_id: (required)
         :type job_id: str
@@ -2689,10 +2683,12 @@ class JobsApi:
         :type pod_name: str
         :param cluster:
         :type cluster: str
-        :param first_key:
-        :type first_key: str
-        :param last_key:
-        :type last_key: str
+        :param prev_key:
+        :type prev_key: str
+        :param next_key:
+        :type next_key: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2715,12 +2711,13 @@ class JobsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_log_history_serialize(
+        _param = self._get_logs_serialize(
             job_id=job_id,
             pod_name=pod_name,
             cluster=cluster,
-            first_key=first_key,
-            last_key=last_key,
+            prev_key=prev_key,
+            next_key=next_key,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2728,7 +2725,7 @@ class JobsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "HistoricLogs",
+            '200': "HistoricLogList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2737,13 +2734,14 @@ class JobsApi:
         return response_data.response
 
 
-    def _get_log_history_serialize(
+    def _get_logs_serialize(
         self,
         job_id,
         pod_name,
         cluster,
-        first_key,
-        last_key,
+        prev_key,
+        next_key,
+        page_size,
         _request_auth,
         _content_type,
         _headers,
@@ -2776,13 +2774,17 @@ class JobsApi:
             
             _query_params.append(('cluster', cluster))
             
-        if first_key is not None:
+        if prev_key is not None:
             
-            _query_params.append(('first_key', first_key))
+            _query_params.append(('prev_key', prev_key))
             
-        if last_key is not None:
+        if next_key is not None:
             
-            _query_params.append(('last_key', last_key))
+            _query_params.append(('next_key', next_key))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
             
         # process the header parameters
         # process the form parameters
@@ -2843,9 +2845,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Metrics:
-        """get_metrics
+        """Get job metrics
 
-        Get job hardware metrics
+        Hardware utilization metrics.
 
         :param job_id: (required)
         :type job_id: str
@@ -2930,9 +2932,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Metrics]:
-        """get_metrics
+        """Get job metrics
 
-        Get job hardware metrics
+        Hardware utilization metrics.
 
         :param job_id: (required)
         :type job_id: str
@@ -3017,9 +3019,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_metrics
+        """Get job metrics
 
-        Get job hardware metrics
+        Hardware utilization metrics.
 
         :param job_id: (required)
         :type job_id: str
@@ -3186,6 +3188,284 @@ class JobsApi:
 
 
     @validate_call
+    async def get_pod_history(
+        self,
+        job_id: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ResourceHistory:
+        """Get job pod history
+
+        Get history of pods run for the job.
+
+        :param job_id: (required)
+        :type job_id: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            job_id=job_id,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_pod_history_with_http_info(
+        self,
+        job_id: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ResourceHistory]:
+        """Get job pod history
+
+        Get history of pods run for the job.
+
+        :param job_id: (required)
+        :type job_id: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            job_id=job_id,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_pod_history_without_preload_content(
+        self,
+        job_id: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get job pod history
+
+        Get history of pods run for the job.
+
+        :param job_id: (required)
+        :type job_id: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_history_serialize(
+            job_id=job_id,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResourceHistory",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_pod_history_serialize(
+        self,
+        job_id,
+        cluster,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['job_id'] = job_id
+        # process the query parameters
+        if cluster is not None:
+            
+            _query_params.append(('cluster', cluster))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/jobs/{job_id}/history',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_recipe(
         self,
         job_id: StrictStr,
@@ -3203,9 +3483,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> JobRecipe:
-        """get_recipe
+        """Get job recipe
 
-        Get job recipe
 
         :param job_id: (required)
         :type job_id: str
@@ -3274,9 +3553,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[JobRecipe]:
-        """get_recipe
+        """Get job recipe
 
-        Get job recipe
 
         :param job_id: (required)
         :type job_id: str
@@ -3345,9 +3623,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_recipe
+        """Get job recipe
 
-        Get job recipe
 
         :param job_id: (required)
         :type job_id: str
@@ -3480,9 +3757,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTemplate:
-        """get_resource_template
+        """Get job resource template
 
-        Get job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -3547,9 +3823,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTemplate]:
-        """get_resource_template
+        """Get job resource template
 
-        Get job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -3614,9 +3889,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_resource_template
+        """Get job resource template
 
-        Get job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -3742,9 +4016,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> JobCollectionRuntimeSummary:
-        """get_runtime_summary
+        """Get job runtime summary
 
-        Get job runtime summary
+        Summary of the current runtime status.
 
         :param job_id: (required)
         :type job_id: str
@@ -3813,9 +4087,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[JobCollectionRuntimeSummary]:
-        """get_runtime_summary
+        """Get job runtime summary
 
-        Get job runtime summary
+        Summary of the current runtime status.
 
         :param job_id: (required)
         :type job_id: str
@@ -3884,9 +4158,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_runtime_summary
+        """Get job runtime summary
 
-        Get job runtime summary
+        Summary of the current runtime status.
 
         :param job_id: (required)
         :type job_id: str
@@ -4020,9 +4294,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachment:
-        """get_secret_attachment
+        """Get job secret attachment
 
-        Get job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -4091,9 +4364,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachment]:
-        """get_secret_attachment
+        """Get job secret attachment
 
-        Get job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -4162,9 +4434,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_secret_attachment
+        """Get job secret attachment
 
-        Get job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -4294,9 +4565,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> JobServerOptions:
-        """get_server_options
+        """Get job server options
 
-        Get job server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4357,9 +4627,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[JobServerOptions]:
-        """get_server_options
+        """Get job server options
 
-        Get job server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4420,9 +4689,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_server_options
+        """Get job server options
 
-        Get job server options
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4541,9 +4809,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceAccountAttachment:
-        """get_service_account_attachment
+        """Get job service account attachment
 
-        Get job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -4608,9 +4875,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceAccountAttachment]:
-        """get_service_account_attachment
+        """Get job service account attachment
 
-        Get job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -4675,9 +4941,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_service_account_attachment
+        """Get job service account attachment
 
-        Get job service account attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -4786,284 +5051,6 @@ class JobsApi:
 
 
     @validate_call
-    async def get_status_history(
-        self,
-        job_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ResourceHistory:
-        """get_status_history
-
-        Get job status history
-
-        :param job_id: (required)
-        :type job_id: str
-        :param cluster:
-        :type cluster: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            job_id=job_id,
-            cluster=cluster,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_status_history_with_http_info(
-        self,
-        job_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ResourceHistory]:
-        """get_status_history
-
-        Get job status history
-
-        :param job_id: (required)
-        :type job_id: str
-        :param cluster:
-        :type cluster: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            job_id=job_id,
-            cluster=cluster,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_status_history_without_preload_content(
-        self,
-        job_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """get_status_history
-
-        Get job status history
-
-        :param job_id: (required)
-        :type job_id: str
-        :param cluster:
-        :type cluster: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_status_history_serialize(
-            job_id=job_id,
-            cluster=cluster,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResourceHistory",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_status_history_serialize(
-        self,
-        job_id,
-        cluster,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if job_id is not None:
-            _path_params['job_id'] = job_id
-        # process the query parameters
-        if cluster is not None:
-            
-            _query_params.append(('cluster', cluster))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/api/jobs/{job_id}/history',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     async def get_token_info(
         self,
         job_id: StrictStr,
@@ -5080,9 +5067,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTokenInfo:
-        """get_token_info
+        """Get job API token info
 
-        Get job resource API token info
 
         :param job_id: (required)
         :type job_id: str
@@ -5147,9 +5133,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTokenInfo]:
-        """get_token_info
+        """Get job API token info
 
-        Get job resource API token info
 
         :param job_id: (required)
         :type job_id: str
@@ -5214,9 +5199,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_token_info
+        """Get job API token info
 
-        Get job resource API token info
 
         :param job_id: (required)
         :type job_id: str
@@ -5327,7 +5311,7 @@ class JobsApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -5351,9 +5335,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> JobList:
-        """list
+        """List jobs
 
-        List jobs
+        Paginated list of jobs.
 
         :param owner_name:
         :type owner_name: str
@@ -5434,7 +5418,7 @@ class JobsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -5458,9 +5442,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[JobList]:
-        """list
+        """List jobs
 
-        List jobs
+        Paginated list of jobs.
 
         :param owner_name:
         :type owner_name: str
@@ -5541,7 +5525,7 @@ class JobsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -5565,9 +5549,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List jobs
 
-        List jobs
+        Paginated list of jobs.
 
         :param owner_name:
         :type owner_name: str
@@ -5780,9 +5764,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachmentList:
-        """list_secret_attachments
+        """List job secret attachments
 
-        List job secret attachments
 
         :param job_id: (required)
         :type job_id: str
@@ -5871,9 +5854,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachmentList]:
-        """list_secret_attachments
+        """List job secret attachments
 
-        List job secret attachments
 
         :param job_id: (required)
         :type job_id: str
@@ -5962,9 +5944,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_secret_attachments
+        """List job secret attachments
 
-        List job secret attachments
 
         :param job_id: (required)
         :type job_id: str
@@ -6138,9 +6119,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """restart
+        """Restart job
 
-        Restart job
+        Restart a running job.
 
         :param job_id: (required)
         :type job_id: str
@@ -6209,9 +6190,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """restart
+        """Restart job
 
-        Restart job
+        Restart a running job.
 
         :param job_id: (required)
         :type job_id: str
@@ -6280,9 +6261,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """restart
+        """Restart job
 
-        Restart job
+        Restart a running job.
 
         :param job_id: (required)
         :type job_id: str
@@ -6426,9 +6407,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTokenInfo:
-        """rotate_token
+        """Rotate job API token
 
-        Rotate job resource API token. Invalidates existing token.
+        Invalidate existing API tokens for the job.
 
         :param job_id: (required)
         :type job_id: str
@@ -6493,9 +6474,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTokenInfo]:
-        """rotate_token
+        """Rotate job API token
 
-        Rotate job resource API token. Invalidates existing token.
+        Invalidate existing API tokens for the job.
 
         :param job_id: (required)
         :type job_id: str
@@ -6560,9 +6541,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """rotate_token
+        """Rotate job API token
 
-        Rotate job resource API token. Invalidates existing token.
+        Invalidate existing API tokens for the job.
 
         :param job_id: (required)
         :type job_id: str
@@ -6688,9 +6669,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """schedule
+        """Activate job cron schedule
 
-        Activate job cron schedule
 
         :param job_id: (required)
         :type job_id: str
@@ -6759,9 +6739,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """schedule
+        """Activate job cron schedule
 
-        Activate job cron schedule
 
         :param job_id: (required)
         :type job_id: str
@@ -6830,9 +6809,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """schedule
+        """Activate job cron schedule
 
-        Activate job cron schedule
 
         :param job_id: (required)
         :type job_id: str
@@ -6977,9 +6955,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """start
+        """Start job
 
-        Start job
+        Run a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7048,9 +7026,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """start
+        """Start job
 
-        Start job
+        Run a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7119,9 +7097,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """start
+        """Start job
 
-        Start job
+        Run a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7265,9 +7243,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """stop
+        """Stop job
 
-        Stop job
+        Stop a running job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7332,9 +7310,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """stop
+        """Stop job
 
-        Stop job
+        Stop a running job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7399,9 +7377,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """stop
+        """Stop job
 
-        Stop job
+        Stop a running job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7526,9 +7504,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """unschedule
+        """Deactivate job cron schedule
 
-        Deactivate job cron schedule
 
         :param job_id: (required)
         :type job_id: str
@@ -7593,9 +7570,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """unschedule
+        """Deactivate job cron schedule
 
-        Deactivate job cron schedule
 
         :param job_id: (required)
         :type job_id: str
@@ -7660,9 +7636,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """unschedule
+        """Deactivate job cron schedule
 
-        Deactivate job cron schedule
 
         :param job_id: (required)
         :type job_id: str
@@ -7788,9 +7763,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Job:
-        """update
+        """Update job
 
-        Update job
+        Update a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7859,9 +7834,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Job]:
-        """update
+        """Update job
 
-        Update job
+        Update a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -7930,9 +7905,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update job
 
-        Update job
+        Update a job.
 
         :param job_id: (required)
         :type job_id: str
@@ -8076,9 +8051,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTemplate:
-        """update_resource_template
+        """Update job resource template
 
-        Update job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -8143,9 +8117,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTemplate]:
-        """update_resource_template
+        """Update job resource template
 
-        Update job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -8210,9 +8183,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_resource_template
+        """Update job resource template
 
-        Update job resource template
 
         :param job_id: (required)
         :type job_id: str
@@ -8339,9 +8311,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretAttachment:
-        """update_secret_attachment
+        """Update job secret attachment
 
-        Update job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -8414,9 +8385,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretAttachment]:
-        """update_secret_attachment
+        """Update job secret attachment
 
-        Update job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -8489,9 +8459,8 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_secret_attachment
+        """Update job secret attachment
 
-        Update job secret attachment
 
         :param job_id: (required)
         :type job_id: str
@@ -8642,9 +8611,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResourceTokenInfo:
-        """update_token
+        """Update job API token
 
-        Update and rotate job resource API token. Invalidates existing token.
+        Update API token scope on the job. Invalidates existing tokens.
 
         :param job_id: (required)
         :type job_id: str
@@ -8713,9 +8682,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResourceTokenInfo]:
-        """update_token
+        """Update job API token
 
-        Update and rotate job resource API token. Invalidates existing token.
+        Update API token scope on the job. Invalidates existing tokens.
 
         :param job_id: (required)
         :type job_id: str
@@ -8784,9 +8753,9 @@ class JobsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_token
+        """Update job API token
 
-        Update and rotate job resource API token. Invalidates existing token.
+        Update API token scope on the job. Invalidates existing tokens.
 
         :param job_id: (required)
         :type job_id: str

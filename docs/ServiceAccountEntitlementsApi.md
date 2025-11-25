@@ -4,16 +4,18 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ServiceAccountEntitlementsApi.md#create) | **POST** /api/service_account_entitlements | 
-[**delete**](ServiceAccountEntitlementsApi.md#delete) | **DELETE** /api/service_account_entitlements/{service_account_entitlement_id} | 
-[**get**](ServiceAccountEntitlementsApi.md#get) | **GET** /api/service_account_entitlements/{service_account_entitlement_id} | 
-[**list**](ServiceAccountEntitlementsApi.md#list) | **GET** /api/service_account_entitlements | 
+[**create**](ServiceAccountEntitlementsApi.md#create) | **POST** /api/service_account_entitlements | Create service account entitlement
+[**delete**](ServiceAccountEntitlementsApi.md#delete) | **DELETE** /api/service_account_entitlements/{service_account_entitlement_id} | Delete service account entitlement
+[**get**](ServiceAccountEntitlementsApi.md#get) | **GET** /api/service_account_entitlements/{service_account_entitlement_id} | Get service account entitlement
+[**list**](ServiceAccountEntitlementsApi.md#list) | **GET** /api/service_account_entitlements | List service account entitlements
 
 
 # **create**
 > ServiceAccountEntitlement create(service_account_entitlement_create)
 
 Create service account entitlement
+
+Create a new service account entitlement.
 
 ### Example
 
@@ -49,6 +51,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_entitlement_create = saturn_api.ServiceAccountEntitlementCreate() # ServiceAccountEntitlementCreate | 
 
     try:
+        # Create service account entitlement
         api_response = await api_instance.create(service_account_entitlement_create)
         print("The response of ServiceAccountEntitlementsApi->create:\n")
         pprint(api_response)
@@ -91,6 +94,8 @@ Name | Type | Description  | Notes
 
 Delete service account entitlement
 
+Delete a service account entitlement.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -123,6 +128,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_entitlement_id = 'service_account_entitlement_id_example' # str | 
 
     try:
+        # Delete service account entitlement
         await api_instance.delete(service_account_entitlement_id)
     except Exception as e:
         print("Exception when calling ServiceAccountEntitlementsApi->delete: %s\n" % e)
@@ -163,6 +169,8 @@ void (empty response body)
 
 Get service account entitlement
 
+Get a service account entitlement.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -196,6 +204,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_entitlement_id = 'service_account_entitlement_id_example' # str | 
 
     try:
+        # Get service account entitlement
         api_response = await api_instance.get(service_account_entitlement_id)
         print("The response of ServiceAccountEntitlementsApi->get:\n")
         pprint(api_response)
@@ -238,6 +247,8 @@ Name | Type | Description  | Notes
 
 List service account entitlements
 
+Paginated list of service account entitlements.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -278,6 +289,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List service account entitlements
         api_response = await api_instance.list(user_id=user_id, group_id=group_id, identity=identity, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of ServiceAccountEntitlementsApi->list:\n")
         pprint(api_response)

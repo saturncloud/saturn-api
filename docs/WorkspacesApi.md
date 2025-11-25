@@ -4,49 +4,51 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](WorkspacesApi.md#create) | **POST** /api/workspaces | 
-[**create_resource_template**](WorkspacesApi.md#create_resource_template) | **POST** /api/workspaces/{workspace_id}/template | 
-[**create_route**](WorkspacesApi.md#create_route) | **POST** /api/workspaces/{workspace_id}/routes | 
-[**create_secret_attachment**](WorkspacesApi.md#create_secret_attachment) | **POST** /api/workspaces/{workspace_id}/secrets | 
-[**create_service_account_attachment**](WorkspacesApi.md#create_service_account_attachment) | **PUT** /api/workspaces/{workspace_id}/service_account | 
-[**create_viewer**](WorkspacesApi.md#create_viewer) | **POST** /api/workspaces/{workspace_id}/viewers | 
-[**delete**](WorkspacesApi.md#delete) | **DELETE** /api/workspaces/{workspace_id} | 
-[**delete_route**](WorkspacesApi.md#delete_route) | **DELETE** /api/workspaces/{workspace_id}/routes/{route_id} | 
-[**delete_secret_attachment**](WorkspacesApi.md#delete_secret_attachment) | **DELETE** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | 
-[**delete_service_account_attachment**](WorkspacesApi.md#delete_service_account_attachment) | **DELETE** /api/workspaces/{workspace_id}/service_account | 
-[**delete_viewer**](WorkspacesApi.md#delete_viewer) | **DELETE** /api/workspaces/{workspace_id}/viewers/{viewer_id} | 
-[**get**](WorkspacesApi.md#get) | **GET** /api/workspaces/{workspace_id} | 
-[**get_cluster_history**](WorkspacesApi.md#get_cluster_history) | **GET** /api/workspaces/{workspace_id}/clusters | 
-[**get_log_history**](WorkspacesApi.md#get_log_history) | **GET** /api/workspaces/{workspace_id}/logs | 
-[**get_metrics**](WorkspacesApi.md#get_metrics) | **GET** /api/workspaces/{workspace_id}/metrics | 
-[**get_recipe**](WorkspacesApi.md#get_recipe) | **GET** /api/workspaces/{workspace_id}/recipe | 
-[**get_resource_template**](WorkspacesApi.md#get_resource_template) | **GET** /api/workspaces/{workspace_id}/template | 
-[**get_route**](WorkspacesApi.md#get_route) | **GET** /api/workspaces/{workspace_id}/routes/{route_id} | 
-[**get_runtime_summary**](WorkspacesApi.md#get_runtime_summary) | **GET** /api/workspaces/{workspace_id}/runtimesummary | 
-[**get_secret_attachment**](WorkspacesApi.md#get_secret_attachment) | **GET** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | 
-[**get_server_options**](WorkspacesApi.md#get_server_options) | **GET** /api/workspaces/info | 
-[**get_service_account_attachment**](WorkspacesApi.md#get_service_account_attachment) | **GET** /api/workspaces/{workspace_id}/service_account | 
-[**get_status_history**](WorkspacesApi.md#get_status_history) | **GET** /api/workspaces/{workspace_id}/history | 
-[**get_token_info**](WorkspacesApi.md#get_token_info) | **GET** /api/workspaces/{workspace_id}/token | 
-[**list**](WorkspacesApi.md#list) | **GET** /api/workspaces | 
-[**list_routes**](WorkspacesApi.md#list_routes) | **GET** /api/workspaces/{workspace_id}/routes | 
-[**list_secret_attachments**](WorkspacesApi.md#list_secret_attachments) | **GET** /api/workspaces/{workspace_id}/secrets | 
-[**list_viewers**](WorkspacesApi.md#list_viewers) | **GET** /api/workspaces/{workspace_id}/viewers | 
-[**restart**](WorkspacesApi.md#restart) | **POST** /api/workspaces/{workspace_id}/restart | 
-[**rotate_token**](WorkspacesApi.md#rotate_token) | **POST** /api/workspaces/{workspace_id}/token | 
-[**start**](WorkspacesApi.md#start) | **POST** /api/workspaces/{workspace_id}/start | 
-[**stop**](WorkspacesApi.md#stop) | **POST** /api/workspaces/{workspace_id}/stop | 
-[**update**](WorkspacesApi.md#update) | **PATCH** /api/workspaces/{workspace_id} | 
-[**update_resource_template**](WorkspacesApi.md#update_resource_template) | **PATCH** /api/workspaces/{workspace_id}/template | 
-[**update_route**](WorkspacesApi.md#update_route) | **PATCH** /api/workspaces/{workspace_id}/routes/{route_id} | 
-[**update_secret_attachment**](WorkspacesApi.md#update_secret_attachment) | **PATCH** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | 
-[**update_token**](WorkspacesApi.md#update_token) | **PATCH** /api/workspaces/{workspace_id}/token | 
+[**create**](WorkspacesApi.md#create) | **POST** /api/workspaces | Create workspace
+[**create_resource_template**](WorkspacesApi.md#create_resource_template) | **POST** /api/workspaces/{workspace_id}/template | Create workspace resource template
+[**create_route**](WorkspacesApi.md#create_route) | **POST** /api/workspaces/{workspace_id}/routes | Create workspace route
+[**create_secret_attachment**](WorkspacesApi.md#create_secret_attachment) | **POST** /api/workspaces/{workspace_id}/secrets | Create workspace secret attachment
+[**create_service_account_attachment**](WorkspacesApi.md#create_service_account_attachment) | **PUT** /api/workspaces/{workspace_id}/service_account | Create workspace service account attachment
+[**create_viewer**](WorkspacesApi.md#create_viewer) | **POST** /api/workspaces/{workspace_id}/viewers | Create workspace viewer
+[**delete**](WorkspacesApi.md#delete) | **DELETE** /api/workspaces/{workspace_id} | Delete workspace
+[**delete_route**](WorkspacesApi.md#delete_route) | **DELETE** /api/workspaces/{workspace_id}/routes/{route_id} | Delete workspace route
+[**delete_secret_attachment**](WorkspacesApi.md#delete_secret_attachment) | **DELETE** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | Delete workspace secret attachment
+[**delete_service_account_attachment**](WorkspacesApi.md#delete_service_account_attachment) | **DELETE** /api/workspaces/{workspace_id}/service_account | Delete workspace service account attachment
+[**delete_viewer**](WorkspacesApi.md#delete_viewer) | **DELETE** /api/workspaces/{workspace_id}/viewers/{viewer_id} | Delete workspace viewer
+[**get**](WorkspacesApi.md#get) | **GET** /api/workspaces/{workspace_id} | Get workspace
+[**get_cluster_history**](WorkspacesApi.md#get_cluster_history) | **GET** /api/workspaces/{workspace_id}/clusters | Get workspace cluster history
+[**get_logs**](WorkspacesApi.md#get_logs) | **GET** /api/workspaces/{workspace_id}/logs | Get workspace historical logs
+[**get_metrics**](WorkspacesApi.md#get_metrics) | **GET** /api/workspaces/{workspace_id}/metrics | Get workspace metrics
+[**get_pod_history**](WorkspacesApi.md#get_pod_history) | **GET** /api/workspaces/{workspace_id}/history | Get workspace pod history
+[**get_recipe**](WorkspacesApi.md#get_recipe) | **GET** /api/workspaces/{workspace_id}/recipe | Get workspace recipe
+[**get_resource_template**](WorkspacesApi.md#get_resource_template) | **GET** /api/workspaces/{workspace_id}/template | Get workspace resource template
+[**get_route**](WorkspacesApi.md#get_route) | **GET** /api/workspaces/{workspace_id}/routes/{route_id} | Get workspace route
+[**get_runtime_summary**](WorkspacesApi.md#get_runtime_summary) | **GET** /api/workspaces/{workspace_id}/runtimesummary | Get workspace runtime summary
+[**get_secret_attachment**](WorkspacesApi.md#get_secret_attachment) | **GET** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | Get workspace secret attachment
+[**get_server_options**](WorkspacesApi.md#get_server_options) | **GET** /api/workspaces/info | Get workspace server options
+[**get_service_account_attachment**](WorkspacesApi.md#get_service_account_attachment) | **GET** /api/workspaces/{workspace_id}/service_account | Get workspace service account attachment
+[**get_token_info**](WorkspacesApi.md#get_token_info) | **GET** /api/workspaces/{workspace_id}/token | Get workspace API token info
+[**list**](WorkspacesApi.md#list) | **GET** /api/workspaces | List workspaces
+[**list_routes**](WorkspacesApi.md#list_routes) | **GET** /api/workspaces/{workspace_id}/routes | List workspace routes
+[**list_secret_attachments**](WorkspacesApi.md#list_secret_attachments) | **GET** /api/workspaces/{workspace_id}/secrets | List workspace secret attachments
+[**list_viewers**](WorkspacesApi.md#list_viewers) | **GET** /api/workspaces/{workspace_id}/viewers | List workspace viewers
+[**restart**](WorkspacesApi.md#restart) | **POST** /api/workspaces/{workspace_id}/restart | Restart workspace
+[**rotate_token**](WorkspacesApi.md#rotate_token) | **POST** /api/workspaces/{workspace_id}/token | Rotate workspace API token
+[**start**](WorkspacesApi.md#start) | **POST** /api/workspaces/{workspace_id}/start | Start workspace
+[**stop**](WorkspacesApi.md#stop) | **POST** /api/workspaces/{workspace_id}/stop | Stop workspace
+[**update**](WorkspacesApi.md#update) | **PATCH** /api/workspaces/{workspace_id} | Update workspace
+[**update_resource_template**](WorkspacesApi.md#update_resource_template) | **PATCH** /api/workspaces/{workspace_id}/template | Update workspace resource template
+[**update_route**](WorkspacesApi.md#update_route) | **PATCH** /api/workspaces/{workspace_id}/routes/{route_id} | Update workspace route
+[**update_secret_attachment**](WorkspacesApi.md#update_secret_attachment) | **PATCH** /api/workspaces/{workspace_id}/secrets/{secret_attachment_id} | Update workspace secret attachment
+[**update_token**](WorkspacesApi.md#update_token) | **PATCH** /api/workspaces/{workspace_id}/token | Update workspace API token
 
 
 # **create**
 > Workspace create(workspace_create)
 
 Create workspace
+
+Create a new workspace.
 
 ### Example
 
@@ -82,6 +84,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_create = saturn_api.WorkspaceCreate() # WorkspaceCreate | 
 
     try:
+        # Create workspace
         api_response = await api_instance.create(workspace_create)
         print("The response of WorkspacesApi->create:\n")
         pprint(api_response)
@@ -157,6 +160,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Create workspace resource template
         api_response = await api_instance.create_resource_template(workspace_id)
         print("The response of WorkspacesApi->create_resource_template:\n")
         pprint(api_response)
@@ -199,6 +203,8 @@ Name | Type | Description  | Notes
 
 Create workspace route
 
+Add a new ingress route to the workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -234,6 +240,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_create = saturn_api.SecretAttachmentCreate() # SecretAttachmentCreate | 
 
     try:
+        # Create workspace route
         api_response = await api_instance.create_route(workspace_id, secret_attachment_create)
         print("The response of WorkspacesApi->create_route:\n")
         pprint(api_response)
@@ -312,6 +319,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_create = saturn_api.SecretAttachmentCreate() # SecretAttachmentCreate | 
 
     try:
+        # Create workspace secret attachment
         api_response = await api_instance.create_secret_attachment(workspace_id, secret_attachment_create)
         print("The response of WorkspacesApi->create_secret_attachment:\n")
         pprint(api_response)
@@ -390,6 +398,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     service_account_create_attachment = saturn_api.ServiceAccountCreateAttachment() # ServiceAccountCreateAttachment | 
 
     try:
+        # Create workspace service account attachment
         api_response = await api_instance.create_service_account_attachment(workspace_id, service_account_create_attachment)
         print("The response of WorkspacesApi->create_service_account_attachment:\n")
         pprint(api_response)
@@ -433,6 +442,8 @@ Name | Type | Description  | Notes
 
 Create workspace viewer
 
+Grant a user or group access to routes on the workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -468,6 +479,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     viewer_create = saturn_api.ViewerCreate() # ViewerCreate | 
 
     try:
+        # Create workspace viewer
         api_response = await api_instance.create_viewer(workspace_id, viewer_create)
         print("The response of WorkspacesApi->create_viewer:\n")
         pprint(api_response)
@@ -511,6 +523,8 @@ Name | Type | Description  | Notes
 
 Delete workspace
 
+Delete a workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -544,6 +558,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     allow_active = False # bool |  (optional) (default to False)
 
     try:
+        # Delete workspace
         await api_instance.delete(workspace_id, allow_active=allow_active)
     except Exception as e:
         print("Exception when calling WorkspacesApi->delete: %s\n" % e)
@@ -585,6 +600,8 @@ void (empty response body)
 
 Delete workspace route
 
+Remove an ingress route from workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -618,6 +635,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     route_id = 'route_id_example' # str | 
 
     try:
+        # Delete workspace route
         await api_instance.delete_route(workspace_id, route_id)
     except Exception as e:
         print("Exception when calling WorkspacesApi->delete_route: %s\n" % e)
@@ -692,6 +710,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_id = 'secret_attachment_id_example' # str | 
 
     try:
+        # Delete workspace secret attachment
         await api_instance.delete_secret_attachment(workspace_id, secret_attachment_id)
     except Exception as e:
         print("Exception when calling WorkspacesApi->delete_secret_attachment: %s\n" % e)
@@ -765,6 +784,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Delete workspace service account attachment
         await api_instance.delete_service_account_attachment(workspace_id)
     except Exception as e:
         print("Exception when calling WorkspacesApi->delete_service_account_attachment: %s\n" % e)
@@ -805,6 +825,8 @@ void (empty response body)
 
 Delete workspace viewer
 
+Remove a viewer's access permissions.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -838,6 +860,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     viewer_id = 'viewer_id_example' # str | 
 
     try:
+        # Delete workspace viewer
         await api_instance.delete_viewer(workspace_id, viewer_id)
     except Exception as e:
         print("Exception when calling WorkspacesApi->delete_viewer: %s\n" % e)
@@ -879,6 +902,8 @@ void (empty response body)
 
 Get workspace
 
+Get a workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -912,6 +937,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Get workspace
         api_response = await api_instance.get(workspace_id)
         print("The response of WorkspacesApi->get:\n")
         pprint(api_response)
@@ -952,7 +978,9 @@ Name | Type | Description  | Notes
 # **get_cluster_history**
 > ResourceClusters get_cluster_history(workspace_id)
 
-Get clusters that a workspace has run on
+Get workspace cluster history
+
+Get a list of clusters that the workspace has recently run on.
 
 ### Example
 
@@ -987,6 +1015,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Get workspace cluster history
         api_response = await api_instance.get_cluster_history(workspace_id)
         print("The response of WorkspacesApi->get_cluster_history:\n")
         pprint(api_response)
@@ -1024,10 +1053,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_log_history**
-> HistoricLogs get_log_history(workspace_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
+# **get_logs**
+> HistoricLogList get_logs(workspace_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
 
 Get workspace historical logs
+
+Historical record of logs from the resource.
 
 ### Example
 
@@ -1035,7 +1066,7 @@ Get workspace historical logs
 
 ```python
 import saturn_api
-from saturn_api.models.historic_logs import HistoricLogs
+from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -1062,15 +1093,17 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
     pod_name = 'pod_name_example' # str |  (optional)
     cluster = 'cluster_example' # str |  (optional)
-    first_key = 'first_key_example' # str |  (optional)
-    last_key = 'last_key_example' # str |  (optional)
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
 
     try:
-        api_response = await api_instance.get_log_history(workspace_id, pod_name=pod_name, cluster=cluster, first_key=first_key, last_key=last_key)
-        print("The response of WorkspacesApi->get_log_history:\n")
+        # Get workspace historical logs
+        api_response = await api_instance.get_logs(workspace_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of WorkspacesApi->get_logs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WorkspacesApi->get_log_history: %s\n" % e)
+        print("Exception when calling WorkspacesApi->get_logs: %s\n" % e)
 ```
 
 
@@ -1083,12 +1116,13 @@ Name | Type | Description  | Notes
  **workspace_id** | **str**|  | 
  **pod_name** | **str**|  | [optional] 
  **cluster** | **str**|  | [optional] 
- **first_key** | **str**|  | [optional] 
- **last_key** | **str**|  | [optional] 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-[**HistoricLogs**](HistoricLogs.md)
+[**HistoricLogList**](HistoricLogList.md)
 
 ### Authorization
 
@@ -1110,7 +1144,9 @@ Name | Type | Description  | Notes
 # **get_metrics**
 > Metrics get_metrics(workspace_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
 
-Get workspace hardware metrics
+Get workspace metrics
+
+Hardware utilization metrics.
 
 ### Example
 
@@ -1150,6 +1186,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     cluster = 'cluster_example' # str |  (optional)
 
     try:
+        # Get workspace metrics
         api_response = await api_instance.get_metrics(workspace_id, type=type, start=start, end=end, resolution=resolution, cluster=cluster)
         print("The response of WorkspacesApi->get_metrics:\n")
         pprint(api_response)
@@ -1174,6 +1211,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Metrics**](Metrics.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_pod_history**
+> ResourceHistory get_pod_history(workspace_id, cluster=cluster)
+
+Get workspace pod history
+
+Get history of pods run for the workspace.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.resource_history import ResourceHistory
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = saturn_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.WorkspacesApi(api_client)
+    workspace_id = 'workspace_id_example' # str | 
+    cluster = 'cluster_example' # str |  (optional)
+
+    try:
+        # Get workspace pod history
+        api_response = await api_instance.get_pod_history(workspace_id, cluster=cluster)
+        print("The response of WorkspacesApi->get_pod_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WorkspacesApi->get_pod_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_id** | **str**|  | 
+ **cluster** | **str**|  | [optional] 
+
+### Return type
+
+[**ResourceHistory**](ResourceHistory.md)
 
 ### Authorization
 
@@ -1231,6 +1348,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     as_template = False # bool |  (optional) (default to False)
 
     try:
+        # Get workspace recipe
         api_response = await api_instance.get_recipe(workspace_id, as_template=as_template)
         print("The response of WorkspacesApi->get_recipe:\n")
         pprint(api_response)
@@ -1307,6 +1425,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Get workspace resource template
         api_response = await api_instance.get_resource_template(workspace_id)
         print("The response of WorkspacesApi->get_resource_template:\n")
         pprint(api_response)
@@ -1349,6 +1468,8 @@ Name | Type | Description  | Notes
 
 Get workspace route
 
+Get an ingress route.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1383,6 +1504,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     route_id = 'route_id_example' # str | 
 
     try:
+        # Get workspace route
         api_response = await api_instance.get_route(workspace_id, route_id)
         print("The response of WorkspacesApi->get_route:\n")
         pprint(api_response)
@@ -1426,6 +1548,8 @@ Name | Type | Description  | Notes
 
 Get workspace runtime summary
 
+Summary of the current runtime status.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -1460,6 +1584,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     details = False # bool |  (optional) (default to False)
 
     try:
+        # Get workspace runtime summary
         api_response = await api_instance.get_runtime_summary(workspace_id, details=details)
         print("The response of WorkspacesApi->get_runtime_summary:\n")
         pprint(api_response)
@@ -1537,6 +1662,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_id = 'secret_attachment_id_example' # str | 
 
     try:
+        # Get workspace secret attachment
         api_response = await api_instance.get_secret_attachment(workspace_id, secret_attachment_id)
         print("The response of WorkspacesApi->get_secret_attachment:\n")
         pprint(api_response)
@@ -1612,6 +1738,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.WorkspacesApi(api_client)
 
     try:
+        # Get workspace server options
         api_response = await api_instance.get_server_options()
         print("The response of WorkspacesApi->get_server_options:\n")
         pprint(api_response)
@@ -1684,6 +1811,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Get workspace service account attachment
         api_response = await api_instance.get_service_account_attachment(workspace_id)
         print("The response of WorkspacesApi->get_service_account_attachment:\n")
         pprint(api_response)
@@ -1721,87 +1849,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_status_history**
-> ResourceHistory get_status_history(workspace_id, cluster=cluster)
-
-Get workspace status history
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.resource_history import ResourceHistory
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth
-configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.WorkspacesApi(api_client)
-    workspace_id = 'workspace_id_example' # str | 
-    cluster = 'cluster_example' # str |  (optional)
-
-    try:
-        api_response = await api_instance.get_status_history(workspace_id, cluster=cluster)
-        print("The response of WorkspacesApi->get_status_history:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling WorkspacesApi->get_status_history: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace_id** | **str**|  | 
- **cluster** | **str**|  | [optional] 
-
-### Return type
-
-[**ResourceHistory**](ResourceHistory.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Ok |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_token_info**
 > ResourceTokenInfo get_token_info(workspace_id)
 
-Get workspace resource API token info
+Get workspace API token info
 
 ### Example
 
@@ -1836,6 +1887,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Get workspace API token info
         api_response = await api_instance.get_token_info(workspace_id)
         print("The response of WorkspacesApi->get_token_info:\n")
         pprint(api_response)
@@ -1877,6 +1929,8 @@ Name | Type | Description  | Notes
 > WorkspaceList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List workspaces
+
+Paginated list of workspaces.
 
 ### Example
 
@@ -1921,6 +1975,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List workspaces
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of WorkspacesApi->list:\n")
         pprint(api_response)
@@ -1973,6 +2028,8 @@ Name | Type | Description  | Notes
 
 List workspace routes
 
+List ingress routes on the workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2011,6 +2068,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List workspace routes
         api_response = await api_instance.list_routes(workspace_id, subdomain=subdomain, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of WorkspacesApi->list_routes:\n")
         pprint(api_response)
@@ -2098,6 +2156,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List workspace secret attachments
         api_response = await api_instance.list_secret_attachments(workspace_id, attachment_type=attachment_type, location=location, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of WorkspacesApi->list_secret_attachments:\n")
         pprint(api_response)
@@ -2146,6 +2205,8 @@ Name | Type | Description  | Notes
 
 List workspace viewers
 
+List users and groups with view permissions.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2184,6 +2245,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List workspace viewers
         api_response = await api_instance.list_viewers(workspace_id, route_id=route_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of WorkspacesApi->list_viewers:\n")
         pprint(api_response)
@@ -2231,6 +2293,8 @@ Name | Type | Description  | Notes
 
 Restart workspace
 
+Restart a running workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2266,6 +2330,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_start = saturn_api.WorkspaceStart() # WorkspaceStart |  (optional)
 
     try:
+        # Restart workspace
         api_response = await api_instance.restart(workspace_id, workspace_start=workspace_start)
         print("The response of WorkspacesApi->restart:\n")
         pprint(api_response)
@@ -2307,7 +2372,9 @@ Name | Type | Description  | Notes
 # **rotate_token**
 > ResourceTokenInfo rotate_token(workspace_id)
 
-Rotate workspace resource API token. Invalidates existing token.
+Rotate workspace API token
+
+Invalidate existing API tokens for the workspace.
 
 ### Example
 
@@ -2342,6 +2409,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Rotate workspace API token
         api_response = await api_instance.rotate_token(workspace_id)
         print("The response of WorkspacesApi->rotate_token:\n")
         pprint(api_response)
@@ -2384,6 +2452,8 @@ Name | Type | Description  | Notes
 
 Start workspace
 
+Run a workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2419,6 +2489,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_start = saturn_api.WorkspaceStart() # WorkspaceStart |  (optional)
 
     try:
+        # Start workspace
         api_response = await api_instance.start(workspace_id, workspace_start=workspace_start)
         print("The response of WorkspacesApi->start:\n")
         pprint(api_response)
@@ -2462,6 +2533,8 @@ Name | Type | Description  | Notes
 
 Stop workspace
 
+Stop a running workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2495,6 +2568,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Stop workspace
         api_response = await api_instance.stop(workspace_id)
         print("The response of WorkspacesApi->stop:\n")
         pprint(api_response)
@@ -2537,6 +2611,8 @@ Name | Type | Description  | Notes
 
 Update workspace
 
+Update a workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2572,6 +2648,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_update = saturn_api.WorkspaceUpdate() # WorkspaceUpdate | 
 
     try:
+        # Update workspace
         api_response = await api_instance.update(workspace_id, workspace_update)
         print("The response of WorkspacesApi->update:\n")
         pprint(api_response)
@@ -2648,6 +2725,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | 
 
     try:
+        # Update workspace resource template
         api_response = await api_instance.update_resource_template(workspace_id)
         print("The response of WorkspacesApi->update_resource_template:\n")
         pprint(api_response)
@@ -2690,6 +2768,8 @@ Name | Type | Description  | Notes
 
 Update workspace route
 
+Edit the configuration of an ingress route.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -2726,6 +2806,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     route_update = saturn_api.RouteUpdate() # RouteUpdate | 
 
     try:
+        # Update workspace route
         api_response = await api_instance.update_route(workspace_id, route_id, route_update)
         print("The response of WorkspacesApi->update_route:\n")
         pprint(api_response)
@@ -2806,6 +2887,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     secret_attachment_update = saturn_api.SecretAttachmentUpdate() # SecretAttachmentUpdate | 
 
     try:
+        # Update workspace secret attachment
         api_response = await api_instance.update_secret_attachment(workspace_id, secret_attachment_id, secret_attachment_update)
         print("The response of WorkspacesApi->update_secret_attachment:\n")
         pprint(api_response)
@@ -2848,7 +2930,9 @@ Name | Type | Description  | Notes
 # **update_token**
 > ResourceTokenInfo update_token(workspace_id, resource_token_update=resource_token_update)
 
-Update and rotate workspace resource API token. Invalidates existing token.
+Update workspace API token
+
+Update API token scope on the workspace. Invalidates existing tokens.
 
 ### Example
 
@@ -2885,6 +2969,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     resource_token_update = saturn_api.ResourceTokenUpdate() # ResourceTokenUpdate |  (optional)
 
     try:
+        # Update workspace API token
         api_response = await api_instance.update_token(workspace_id, resource_token_update=resource_token_update)
         print("The response of WorkspacesApi->update_token:\n")
         pprint(api_response)

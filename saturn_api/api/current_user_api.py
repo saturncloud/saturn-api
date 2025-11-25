@@ -61,9 +61,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UserDetailed:
-        """get
+        """Get current user
 
-        Get current user
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -125,9 +124,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UserDetailed]:
-        """get
+        """Get current user
 
-        Get current user
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -189,9 +187,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get current user
 
-        Get current user
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -312,9 +309,9 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UsageLimits:
-        """get_aggregated_usage
+        """Get aggregated usage
 
-        Get current user aggregated usage
+        Get total aggregated usage for the current user.
 
         :param start:
         :type start: datetime
@@ -383,9 +380,9 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UsageLimits]:
-        """get_aggregated_usage
+        """Get aggregated usage
 
-        Get current user aggregated usage
+        Get total aggregated usage for the current user.
 
         :param start:
         :type start: datetime
@@ -454,9 +451,9 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_aggregated_usage
+        """Get aggregated usage
 
-        Get current user aggregated usage
+        Get total aggregated usage for the current user.
 
         :param start:
         :type start: datetime
@@ -608,9 +605,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UserPreferences:
-        """get_preferences
+        """Get current user preferences
 
-        Get current user preferences
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -671,9 +667,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UserPreferences]:
-        """get_preferences
+        """Get current user preferences
 
-        Get current user preferences
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -734,9 +729,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_preferences
+        """Get current user preferences
 
-        Get current user preferences
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -858,9 +852,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OrgMembershipList:
-        """list_org_memberships
+        """List current user org memberships
 
-        List current user org memberships
 
         :param prev_key:
         :type prev_key: str
@@ -937,9 +930,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OrgMembershipList]:
-        """list_org_memberships
+        """List current user org memberships
 
-        List current user org memberships
 
         :param prev_key:
         :type prev_key: str
@@ -1016,9 +1008,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_org_memberships
+        """List current user org memberships
 
-        List current user org memberships
 
         :param prev_key:
         :type prev_key: str
@@ -1169,9 +1160,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UserDetailed:
-        """update
+        """Update current user
 
-        Update current user
 
         :param user_update: (required)
         :type user_update: UserUpdate
@@ -1236,9 +1226,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UserDetailed]:
-        """update
+        """Update current user
 
-        Update current user
 
         :param user_update: (required)
         :type user_update: UserUpdate
@@ -1303,9 +1292,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update current user
 
-        Update current user
 
         :param user_update: (required)
         :type user_update: UserUpdate
@@ -1443,9 +1431,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UserPreferences:
-        """update_preferences
+        """Update current user preferences
 
-        Update current user preferences
 
         :param user_preferences_update: (required)
         :type user_preferences_update: UserPreferencesUpdate
@@ -1510,9 +1497,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UserPreferences]:
-        """update_preferences
+        """Update current user preferences
 
-        Update current user preferences
 
         :param user_preferences_update: (required)
         :type user_preferences_update: UserPreferencesUpdate
@@ -1577,9 +1563,8 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_preferences
+        """Update current user preferences
 
-        Update current user preferences
 
         :param user_preferences_update: (required)
         :type user_preferences_update: UserPreferencesUpdate

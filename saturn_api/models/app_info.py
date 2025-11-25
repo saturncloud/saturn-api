@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.auth0_info import Auth0Info
+from saturn_api.models.white_label_configuration import WhiteLabelConfiguration
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +31,7 @@ class AppInfo(BaseModel):
     cloud_provider: StrictStr
     allow_deployment_public_access: StrictBool
     is_enterprise: StrictBool
-    customer_name: StrictBool
+    customer_name: StrictStr
     stripe_public_key: Optional[StrictBool]
     hotjar_user_tracking: StrictBool
     version: StrictStr
@@ -42,8 +43,9 @@ class AppInfo(BaseModel):
     apply_requires_confirm: StrictBool
     hide_invitations: StrictBool
     populate_examples: StrictBool
+    whitelabel: WhiteLabelConfiguration
     user_tracking: StrictBool
-    __properties: ClassVar[List[str]] = ["cloud_provider", "allow_deployment_public_access", "is_enterprise", "customer_name", "stripe_public_key", "hotjar_user_tracking", "version", "auth0", "network_filesystem_enabled", "git_repo_clone_dir", "app_serving_domain", "dind_enabled", "apply_requires_confirm", "hide_invitations", "populate_examples", "user_tracking"]
+    __properties: ClassVar[List[str]] = ["cloud_provider", "allow_deployment_public_access", "is_enterprise", "customer_name", "stripe_public_key", "hotjar_user_tracking", "version", "auth0", "network_filesystem_enabled", "git_repo_clone_dir", "app_serving_domain", "dind_enabled", "apply_requires_confirm", "hide_invitations", "populate_examples", "whitelabel", "user_tracking"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +89,9 @@ class AppInfo(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of auth0
         if self.auth0:
             _dict['auth0'] = self.auth0.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of whitelabel
+        if self.whitelabel:
+            _dict['whitelabel'] = self.whitelabel.to_dict()
         # set to None if stripe_public_key (nullable) is None
         # and model_fields_set contains the field
         if self.stripe_public_key is None and "stripe_public_key" in self.model_fields_set:
@@ -119,6 +124,7 @@ class AppInfo(BaseModel):
             "apply_requires_confirm": obj.get("apply_requires_confirm"),
             "hide_invitations": obj.get("hide_invitations"),
             "populate_examples": obj.get("populate_examples"),
+            "whitelabel": WhiteLabelConfiguration.from_dict(obj["whitelabel"]) if obj.get("whitelabel") is not None else None,
             "user_tracking": obj.get("user_tracking")
         })
         return _obj

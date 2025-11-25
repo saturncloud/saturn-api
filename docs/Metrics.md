@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cpu** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] 
-**memory** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] 
-**network_in** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] 
-**network_out** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] 
-**gpu** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] 
-**gpu_memory** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] 
+**cpu** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] [readonly] 
+**memory** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] [readonly] 
+**network_in** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] [readonly] 
+**network_out** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] [readonly] 
+**gpu** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] [readonly] 
+**gpu_memory** | [**List[MetricSeries]**](MetricSeries.md) |  | [optional] [readonly] 
 
 ## Example
 

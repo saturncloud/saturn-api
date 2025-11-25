@@ -59,9 +59,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPublicKey:
-        """create
+        """Create ssh public key
 
-        Create ssh public key
+        Create a new ssh public key.
 
         :param ssh_public_key_create: (required)
         :type ssh_public_key_create: SSHPublicKeyCreate
@@ -126,9 +126,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPublicKey]:
-        """create
+        """Create ssh public key
 
-        Create ssh public key
+        Create a new ssh public key.
 
         :param ssh_public_key_create: (required)
         :type ssh_public_key_create: SSHPublicKeyCreate
@@ -193,9 +193,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create ssh public key
 
-        Create ssh public key
+        Create a new ssh public key.
 
         :param ssh_public_key_create: (required)
         :type ssh_public_key_create: SSHPublicKeyCreate
@@ -333,9 +333,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete ssh public key
 
-        Delete ssh public key
+        Delete a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -400,9 +400,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete ssh public key
 
-        Delete ssh public key
+        Delete a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -467,9 +467,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete ssh public key
 
-        Delete ssh public key
+        Delete a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -587,9 +587,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPublicKey:
-        """get
+        """Get ssh public key
 
-        Get ssh public key
+        Get a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -654,9 +654,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPublicKey]:
-        """get
+        """Get ssh public key
 
-        Get ssh public key
+        Get a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -721,9 +721,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get ssh public key
 
-        Get ssh public key
+        Get a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -855,9 +855,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPublicKeyList:
-        """list
+        """List ssh public keys
 
-        List ssh public keys
+        Paginated list of ssh public keys.
 
         :param user_id:
         :type user_id: str
@@ -950,9 +950,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPublicKeyList]:
-        """list
+        """List ssh public keys
 
-        List ssh public keys
+        Paginated list of ssh public keys.
 
         :param user_id:
         :type user_id: str
@@ -1045,9 +1045,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List ssh public keys
 
-        List ssh public keys
+        Paginated list of ssh public keys.
 
         :param user_id:
         :type user_id: str
@@ -1231,9 +1231,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SSHPublicKey:
-        """update
+        """Update ssh public key
 
-        Update ssh public key
+        Update a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -1302,9 +1302,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SSHPublicKey]:
-        """update
+        """Update ssh public key
 
-        Update ssh public key
+        Update a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str
@@ -1373,9 +1373,9 @@ class SshPublicKeysApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update ssh public key
 
-        Update ssh public key
+        Update a ssh public key.
 
         :param ssh_publickey_id: (required)
         :type ssh_publickey_id: str

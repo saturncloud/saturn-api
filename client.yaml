@@ -8,7 +8,8 @@ security:
 paths:
   /api/auth/login:
     post:
-      description: Login with username/password and set session cookie
+      summary: Login
+      description: Create a new browser session.
       operationId: authorization_login
       tags:
       - authorization
@@ -28,7 +29,8 @@ paths:
           description: Ok
   /api/auth/logout:
     get:
-      description: Logout from current session
+      summary: Logout
+      description: End the current browser session.
       operationId: authorization_logout
       tags:
       - authorization
@@ -48,7 +50,8 @@ paths:
           description: Redirect
   /api/auth/token:
     get:
-      description: Initialize oauth
+      summary: Initialize oauth
+      description: Begin an OAuth code grant flow.
       operationId: authorization_getOauthInit
       tags:
       - authorization
@@ -95,7 +98,8 @@ paths:
         '302':
           description: Redirect
     post:
-      description: Request new auth tokens from oauth code or refresh token grant
+      summary: Create OAuth token
+      description: Request new token from oauth code or refresh token grant.
       operationId: authorization_createOauthToken
       tags:
       - authorization
@@ -114,7 +118,8 @@ paths:
           description: Created
   /api/dask_clusters:
     get:
-      description: List dask clusters
+      summary: List dask clusters
+      description: Paginated list of dask clusters.
       operationId: daskclusters_list
       tags:
       - dask_clusters
@@ -123,7 +128,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -189,7 +193,8 @@ paths:
                 $ref: '#/components/schemas/DaskClusterList'
           description: Ok
     post:
-      description: Create dask cluster
+      summary: Create dask cluster
+      description: Create a new dask cluster.
       operationId: daskclusters_create
       tags:
       - dask_clusters
@@ -208,7 +213,8 @@ paths:
           description: Created
   /api/dask_clusters/{dask_cluster_id}:
     delete:
-      description: Delete dask cluster
+      summary: Delete dask cluster
+      description: Delete a dask cluster.
       operationId: daskclusters_delete
       tags:
       - dask_clusters
@@ -228,7 +234,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get dask cluster
+      summary: Get dask cluster
+      description: Get a dask cluster.
       operationId: daskclusters_get
       tags:
       - dask_clusters
@@ -246,7 +253,8 @@ paths:
                 $ref: '#/components/schemas/DaskCluster'
           description: Ok
     patch:
-      description: Update dask cluster
+      summary: Update dask cluster
+      description: Update a dask cluster.
       operationId: daskclusters_update
       tags:
       - dask_clusters
@@ -271,7 +279,7 @@ paths:
           description: Updated
   /api/dask_clusters/{dask_cluster_id}/adapt:
     post:
-      description: Set dask cluster adaptive scaling
+      summary: Set dask cluster adaptive scaling
       operationId: daskclusters_adapt
       tags:
       - dask_clusters
@@ -292,8 +300,9 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/history:
     get:
-      description: Get dask cluster status history
-      operationId: daskclusters_getStatusHistory
+      summary: Get dask cluster pod history
+      description: Get history of pods run for the dask cluster.
+      operationId: daskclusters_getPodHistory
       tags:
       - dask_clusters
       parameters:
@@ -305,13 +314,7 @@ paths:
       - in: query
         name: component
         schema:
-          type: string
-          enum:
-          - kubecluster
-          - scheduler
-          - worker
-          - null
-          nullable: true
+          $ref: '#/components/schemas/DaskComponents'
         required: false
       responses:
         '200':
@@ -322,7 +325,7 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/info:
     get:
-      description: Get dask cluster info
+      summary: Get dask cluster info
       operationId: daskclusters_getInfo
       tags:
       - dask_clusters
@@ -342,7 +345,8 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/kubecluster/runtimesummary:
     get:
-      description: Get dask cluster kubecluster runtime summary
+      summary: Get dask cluster kubecluster runtime summary
+      description: Summary of the current runtime status.
       operationId: daskclusters_getKubeclusterRuntimeSummary
       tags:
       - dask_clusters
@@ -367,8 +371,9 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/logs:
     get:
-      description: Get dask cluster historical logs
-      operationId: daskclusters_getLogHistory
+      summary: Get dask cluster historical logs
+      description: Historical record of logs from the resource.
+      operationId: daskclusters_getLogs
       tags:
       - dask_clusters
       parameters:
@@ -378,50 +383,49 @@ paths:
           type: string
         required: true
       - in: query
-        name: component
-        schema:
-          type: string
-          enum:
-          - kubecluster
-          - scheduler
-          - worker
-          - null
-          nullable: true
-        required: false
-      - in: query
         name: pod_name
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: first_key
+        name: prev_key
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: last_key
+        name: next_key
         schema:
           type: string
-          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: component
+        schema:
+          $ref: '#/components/schemas/DaskComponents'
         required: false
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HistoricLogs'
+                $ref: '#/components/schemas/HistoricLogList'
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/metrics:
     get:
-      description: Get dask cluster hardware metrics
+      summary: Get dask cluster metrics
+      description: Hardware utilization metrics.
       operationId: daskclusters_getMetrics
       tags:
       - dask_clusters
@@ -434,45 +438,34 @@ paths:
       - in: query
         name: component
         schema:
-          type: string
-          enum:
-          - kubecluster
-          - scheduler
-          - worker
-          - null
-          nullable: true
+          $ref: '#/components/schemas/DaskComponents'
         required: false
       - in: query
         name: type
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: start
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: end
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: resolution
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       responses:
         '200':
@@ -483,7 +476,8 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/restart:
     post:
-      description: Restart dask cluster
+      summary: Restart dask cluster
+      description: Restart a running dask cluster.
       operationId: daskclusters_restart
       tags:
       - dask_clusters
@@ -502,7 +496,8 @@ paths:
           description: Restarted
   /api/dask_clusters/{dask_cluster_id}/runtimesummary:
     get:
-      description: Get dask cluster runtime summary
+      summary: Get dask cluster runtime summary
+      description: Summary of the current runtime status.
       operationId: daskclusters_getRuntimeSummary
       tags:
       - dask_clusters
@@ -527,7 +522,7 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/scale:
     post:
-      description: Scale dask cluster worker count
+      summary: Scale dask cluster worker count
       operationId: daskclusters_scale
       tags:
       - dask_clusters
@@ -548,7 +543,8 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/scheduler/runtimesummary:
     get:
-      description: Get dask cluster scheduler runtime summary
+      summary: Get dask cluster scheduler runtime summary
+      description: Summary of the current runtime status.
       operationId: daskclusters_getSchedulerRuntimesummary
       tags:
       - dask_clusters
@@ -573,7 +569,7 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/scheduler_info:
     get:
-      description: Get dask cluster scheduler info
+      summary: Get dask cluster scheduler info
       operationId: daskclusters_getSchedulerInfo
       tags:
       - dask_clusters
@@ -593,7 +589,8 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/start:
     post:
-      description: Start dask cluster
+      summary: Start dask cluster
+      description: Run a dask cluster.
       operationId: daskclusters_start
       tags:
       - dask_clusters
@@ -612,7 +609,7 @@ paths:
           description: Started
   /api/dask_clusters/{dask_cluster_id}/status:
     get:
-      description: Get dask cluster scheduler status
+      summary: Get dask cluster scheduler status
       operationId: daskclusters_getSchedulerStatus
       tags:
       - dask_clusters
@@ -632,7 +629,8 @@ paths:
           description: Ok
   /api/dask_clusters/{dask_cluster_id}/stop:
     post:
-      description: Stop dask cluster
+      summary: Stop dask cluster
+      description: Stop a running dask cluster.
       operationId: daskclusters_stop
       tags:
       - dask_clusters
@@ -651,7 +649,7 @@ paths:
           description: Stopped
   /api/dask_clusters/{dask_cluster_id}/token:
     get:
-      description: Get dask cluster resource API token info
+      summary: Get dask cluster API token info
       operationId: daskclusters_getTokenInfo
       tags:
       - dask_clusters
@@ -669,8 +667,9 @@ paths:
                 $ref: '#/components/schemas/ResourceTokenInfo'
           description: Ok
     patch:
-      description: Update and rotate dask cluster resource API token. Invalidates
-        existing token.
+      summary: Update dask cluster API token
+      description: Update API token scope on the dask cluster. Invalidates existing
+        tokens.
       operationId: daskclusters_updateToken
       tags:
       - dask_clusters
@@ -693,7 +692,8 @@ paths:
                 $ref: '#/components/schemas/ResourceTokenInfo'
           description: Updated
     post:
-      description: Rotate dask cluster resource API token. Invalidates existing token.
+      summary: Rotate dask cluster API token
+      description: Invalidate existing API tokens for the dask cluster.
       operationId: daskclusters_rotateToken
       tags:
       - dask_clusters
@@ -712,7 +712,7 @@ paths:
           description: Rotated
   /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary:
     get:
-      description: List dask cluster worker runtime summaries
+      summary: List dask cluster worker runtime summaries
       operationId: daskclusters_getWorkersRuntimesummary
       tags:
       - dask_clusters
@@ -745,7 +745,7 @@ paths:
           description: Ok
   /api/dask_clusters/info:
     get:
-      description: Get dask cluster server options
+      summary: Get dask cluster server options
       operationId: daskclusters_getServerOptions
       tags:
       - dask_clusters
@@ -758,7 +758,8 @@ paths:
           description: Ok
   /api/deployments:
     get:
-      description: List deployments
+      summary: List deployments
+      description: Paginated list of deployments.
       operationId: deployments_list
       tags:
       - deployments
@@ -767,7 +768,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -838,7 +838,8 @@ paths:
                 $ref: '#/components/schemas/DeploymentList'
           description: Ok
     post:
-      description: Create deployment
+      summary: Create deployment
+      description: Create a new deployment.
       operationId: deployments_create
       tags:
       - deployments
@@ -857,7 +858,8 @@ paths:
           description: Created
   /api/deployments/{deployment_id}:
     delete:
-      description: Delete deployment
+      summary: Delete deployment
+      description: Delete a deployment.
       operationId: deployments_delete
       tags:
       - deployments
@@ -877,7 +879,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get deployment
+      summary: Get deployment
+      description: Get a deployment.
       operationId: deployments_get
       tags:
       - deployments
@@ -895,7 +898,8 @@ paths:
                 $ref: '#/components/schemas/Deployment'
           description: Ok
     patch:
-      description: Update deployment
+      summary: Update deployment
+      description: Update a deployment.
       operationId: deployments_update
       tags:
       - deployments
@@ -920,7 +924,8 @@ paths:
           description: Updated
   /api/deployments/{deployment_id}/clusters:
     get:
-      description: Get clusters that a deployment has run on
+      summary: Get deployment cluster history
+      description: Get a list of clusters that the deployment has recently run on.
       operationId: deployments_getClusterHistory
       tags:
       - deployments
@@ -939,8 +944,9 @@ paths:
           description: Ok
   /api/deployments/{deployment_id}/history:
     get:
-      description: Get deployment status history
-      operationId: deployments_getStatusHistory
+      summary: Get deployment pod history
+      description: Get history of pods run for the deployment.
+      operationId: deployments_getPodHistory
       tags:
       - deployments
       parameters:
@@ -964,8 +970,9 @@ paths:
           description: Ok
   /api/deployments/{deployment_id}/logs:
     get:
-      description: Get deployment historical logs
-      operationId: deployments_getLogHistory
+      summary: Get deployment historical logs
+      description: Historical record of logs from the resource.
+      operationId: deployments_getLogs
       tags:
       - deployments
       parameters:
@@ -978,36 +985,41 @@ paths:
         name: pod_name
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: first_key
+        name: prev_key
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: last_key
+        name: next_key
         schema:
           type: string
-          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
         required: false
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HistoricLogs'
+                $ref: '#/components/schemas/HistoricLogList'
           description: Ok
   /api/deployments/{deployment_id}/metrics:
     get:
-      description: Get deployment hardware metrics
+      summary: Get deployment metrics
+      description: Hardware utilization metrics.
       operationId: deployments_getMetrics
       tags:
       - deployments
@@ -1021,33 +1033,28 @@ paths:
         name: type
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: start
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: end
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: resolution
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       responses:
         '200':
@@ -1058,7 +1065,7 @@ paths:
           description: Ok
   /api/deployments/{deployment_id}/recipe:
     get:
-      description: Get deployment recipe
+      summary: Get deployment recipe
       operationId: deployments_getRecipe
       tags:
       - deployments
@@ -1083,7 +1090,8 @@ paths:
           description: Ok
   /api/deployments/{deployment_id}/restart:
     post:
-      description: Restart deployment
+      summary: Restart deployment
+      description: Restart a running deployment.
       operationId: deployments_restart
       tags:
       - deployments
@@ -1108,7 +1116,8 @@ paths:
           description: Restarted
   /api/deployments/{deployment_id}/routes:
     get:
-      description: List deployment routes
+      summary: List deployment routes
+      description: List ingress routes on the deployment.
       operationId: deployments_listRoutes
       tags:
       - deployments
@@ -1155,7 +1164,8 @@ paths:
                 $ref: '#/components/schemas/RouteList'
           description: Ok
     post:
-      description: Create deployment route
+      summary: Create deployment route
+      description: Add a new ingress route to the deployment.
       operationId: deployments_createRoute
       tags:
       - deployments
@@ -1180,7 +1190,8 @@ paths:
           description: Created
   /api/deployments/{deployment_id}/routes/{route_id}:
     delete:
-      description: Delete deployment route
+      summary: Delete deployment route
+      description: Remove an ingress route from deployment.
       operationId: deployments_deleteRoute
       tags:
       - deployments
@@ -1199,7 +1210,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get deployment route
+      summary: Get deployment route
+      description: Get an ingress route.
       operationId: deployments_getRoute
       tags:
       - deployments
@@ -1222,7 +1234,8 @@ paths:
                 $ref: '#/components/schemas/Route'
           description: Ok
     patch:
-      description: Update deployment route
+      summary: Update deployment route
+      description: Edit the configuration of an ingress route.
       operationId: deployments_updateRoute
       tags:
       - deployments
@@ -1252,7 +1265,8 @@ paths:
           description: Updated
   /api/deployments/{deployment_id}/runtimesummary:
     get:
-      description: Get deployment runtime summary
+      summary: Get deployment runtime summary
+      description: Summary of the current runtime status.
       operationId: deployments_getRuntimeSummary
       tags:
       - deployments
@@ -1277,7 +1291,7 @@ paths:
           description: Ok
   /api/deployments/{deployment_id}/secrets:
     get:
-      description: List deployment secret attachments
+      summary: List deployment secret attachments
       operationId: deployments_listSecretAttachments
       tags:
       - deployments
@@ -1329,7 +1343,7 @@ paths:
                 $ref: '#/components/schemas/SecretAttachmentList'
           description: Ok
     post:
-      description: Create deployment secret attachment
+      summary: Create deployment secret attachment
       operationId: deployments_createSecretAttachment
       tags:
       - deployments
@@ -1354,7 +1368,7 @@ paths:
           description: Created
   /api/deployments/{deployment_id}/secrets/{secret_attachment_id}:
     delete:
-      description: Delete deployment secret attachment
+      summary: Delete deployment secret attachment
       operationId: deployments_deleteSecretAttachment
       tags:
       - deployments
@@ -1373,7 +1387,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get deployment secret attachment
+      summary: Get deployment secret attachment
       operationId: deployments_getSecretAttachment
       tags:
       - deployments
@@ -1396,7 +1410,7 @@ paths:
                 $ref: '#/components/schemas/SecretAttachment'
           description: Ok
     patch:
-      description: Update deployment secret attachment
+      summary: Update deployment secret attachment
       operationId: deployments_updateSecretAttachment
       tags:
       - deployments
@@ -1426,7 +1440,7 @@ paths:
           description: Updated
   /api/deployments/{deployment_id}/service_account:
     delete:
-      description: Delete deployment service account attachment
+      summary: Delete deployment service account attachment
       operationId: deployments_deleteServiceAccountAttachment
       tags:
       - deployments
@@ -1440,7 +1454,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get deployment service account attachment
+      summary: Get deployment service account attachment
       operationId: deployments_getServiceAccountAttachment
       tags:
       - deployments
@@ -1458,7 +1472,7 @@ paths:
                 $ref: '#/components/schemas/ServiceAccountAttachment'
           description: Ok
     put:
-      description: Create deployment service account attachment
+      summary: Create deployment service account attachment
       operationId: deployments_createServiceAccountAttachment
       tags:
       - deployments
@@ -1483,7 +1497,8 @@ paths:
           description: Created
   /api/deployments/{deployment_id}/start:
     post:
-      description: Start deployment
+      summary: Start deployment
+      description: Run a deployment.
       operationId: deployments_start
       tags:
       - deployments
@@ -1508,7 +1523,8 @@ paths:
           description: Started
   /api/deployments/{deployment_id}/stop:
     post:
-      description: Stop deployment
+      summary: Stop deployment
+      description: Stop a running deployment.
       operationId: deployments_stop
       tags:
       - deployments
@@ -1527,7 +1543,7 @@ paths:
           description: Stopped
   /api/deployments/{deployment_id}/template:
     get:
-      description: Get deployment resource template
+      summary: Get deployment resource template
       operationId: deployments_getResourceTemplate
       tags:
       - deployments
@@ -1545,7 +1561,7 @@ paths:
                 $ref: '#/components/schemas/ResourceTemplate'
           description: Ok
     patch:
-      description: Update deployment resource template
+      summary: Update deployment resource template
       operationId: deployments_updateResourceTemplate
       tags:
       - deployments
@@ -1563,7 +1579,7 @@ paths:
                 $ref: '#/components/schemas/ResourceTemplate'
           description: Ok
     post:
-      description: Create deployment resource template
+      summary: Create deployment resource template
       operationId: deployments_createResourceTemplate
       tags:
       - deployments
@@ -1582,7 +1598,8 @@ paths:
           description: Ok
   /api/deployments/{deployment_id}/viewers:
     get:
-      description: List deployment viewers
+      summary: List deployment viewers
+      description: List users and groups with view permissions.
       operationId: deployments_listViewers
       tags:
       - deployments
@@ -1629,7 +1646,8 @@ paths:
                 $ref: '#/components/schemas/ViewerList'
           description: Ok
     post:
-      description: Create deployment viewer
+      summary: Create deployment viewer
+      description: Grant a user or group access to routes on the deployment.
       operationId: deployments_createViewer
       tags:
       - deployments
@@ -1654,7 +1672,8 @@ paths:
           description: Created
   /api/deployments/{deployment_id}/viewers/{viewer_id}:
     delete:
-      description: Delete deployment viewer
+      summary: Delete deployment viewer
+      description: Remove a viewer's access permissions.
       operationId: deployments_deleteViewer
       tags:
       - deployments
@@ -1674,7 +1693,7 @@ paths:
           description: Deleted
   /api/deployments/info:
     get:
-      description: Get deployment server options
+      summary: Get deployment server options
       operationId: deployments_getServerOptions
       tags:
       - deployments
@@ -1687,7 +1706,8 @@ paths:
           description: Ok
   /api/external_repo_attachments:
     get:
-      description: List external repo attachments
+      summary: List external repo attachments
+      description: Paginated list of external repo attachments.
       operationId: externalrepoattachments_list
       tags:
       - external_repo_attachments
@@ -1739,7 +1759,8 @@ paths:
                 $ref: '#/components/schemas/ExternalRepoAttachmentList'
           description: Ok
     post:
-      description: Create external repo attachment
+      summary: Create external repo attachment
+      description: Create a new external repo attachment.
       operationId: externalrepoattachments_create
       tags:
       - external_repo_attachments
@@ -1758,7 +1779,8 @@ paths:
           description: Created
   /api/external_repo_attachments/{external_repo_attachment_id}:
     delete:
-      description: Delete external repo attachment
+      summary: Delete external repo attachment
+      description: Delete an external repo attachment.
       operationId: externalrepoattachments_delete
       tags:
       - external_repo_attachments
@@ -1772,7 +1794,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get external repo attachment
+      summary: Get external repo attachment
+      description: Get an external repo attachment.
       operationId: externalrepoattachments_get
       tags:
       - external_repo_attachments
@@ -1790,7 +1813,8 @@ paths:
                 $ref: '#/components/schemas/ExternalRepoAttachment'
           description: Ok
     patch:
-      description: Update external repo attachment
+      summary: Update external repo attachment
+      description: Update an external repo attachment.
       operationId: externalrepoattachments_update
       tags:
       - external_repo_attachments
@@ -1815,7 +1839,8 @@ paths:
           description: Updated
   /api/external_repos:
     get:
-      description: List external repos
+      summary: List external repos
+      description: Paginated list of external repos.
       operationId: externalrepos_list
       tags:
       - external_repos
@@ -1824,7 +1849,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -1895,7 +1919,8 @@ paths:
                 $ref: '#/components/schemas/ExternalRepoList'
           description: Ok
     post:
-      description: Create external repo
+      summary: Create external repo
+      description: Create a new external repo.
       operationId: externalrepos_create
       tags:
       - external_repos
@@ -1914,7 +1939,8 @@ paths:
           description: Created
   /api/external_repos/{external_repo_id}:
     delete:
-      description: Delete external repo
+      summary: Delete external repo
+      description: Delete an external repo.
       operationId: externalrepos_delete
       tags:
       - external_repos
@@ -1928,7 +1954,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get external repo
+      summary: Get external repo
+      description: Get an external repo.
       operationId: externalrepos_get
       tags:
       - external_repos
@@ -1946,7 +1973,8 @@ paths:
                 $ref: '#/components/schemas/ExternalRepo'
           description: Ok
     patch:
-      description: Update external repo
+      summary: Update external repo
+      description: Update an external repo.
       operationId: externalrepos_update
       tags:
       - external_repos
@@ -1971,7 +1999,8 @@ paths:
           description: Updated
   /api/groups:
     get:
-      description: List groups
+      summary: List groups
+      description: Paginated list of groups.
       operationId: groups_list
       tags:
       - groups
@@ -2024,7 +2053,8 @@ paths:
                 $ref: '#/components/schemas/GroupList'
           description: Ok
     post:
-      description: Create group
+      summary: Create group
+      description: Create a new group.
       operationId: groups_create
       tags:
       - groups
@@ -2043,7 +2073,8 @@ paths:
           description: Created
   /api/groups/{group_id}:
     delete:
-      description: Delete group
+      summary: Delete group
+      description: Delete a group.
       operationId: groups_delete
       tags:
       - groups
@@ -2057,7 +2088,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get group
+      summary: Get group
+      description: Get a group.
       operationId: groups_get
       tags:
       - groups
@@ -2075,7 +2107,8 @@ paths:
                 $ref: '#/components/schemas/Group'
           description: Ok
     patch:
-      description: Update group
+      summary: Update group
+      description: Update a group.
       operationId: groups_update
       tags:
       - groups
@@ -2100,7 +2133,7 @@ paths:
           description: Updated
   /api/groups/{group_id}/members:
     delete:
-      description: Delete group member
+      summary: Delete group member
       operationId: groups_deleteMember
       tags:
       - groups
@@ -2119,7 +2152,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: List group members
+      summary: List group members
       operationId: groups_listMembers
       tags:
       - groups
@@ -2166,7 +2199,7 @@ paths:
                 $ref: '#/components/schemas/GroupMemberList'
           description: Ok
     post:
-      description: Create group member
+      summary: Create group member
       operationId: groups_createMember
       tags:
       - groups
@@ -2191,7 +2224,8 @@ paths:
           description: Created
   /api/groups/{group_id}/usage/daily:
     get:
-      description: List group usage data aggregated by day
+      summary: Get group daily usage
+      description: Get usage for the group aggregated by day.
       operationId: groups_getDailyUsage
       tags:
       - groups
@@ -2222,7 +2256,8 @@ paths:
           description: Ok
   /api/images:
     get:
-      description: List images
+      summary: List images
+      description: Paginated list of images.
       operationId: images_list
       tags:
       - images
@@ -2231,7 +2266,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -2323,7 +2357,8 @@ paths:
                 $ref: '#/components/schemas/ImageList'
           description: Ok
     post:
-      description: Create image
+      summary: Create image
+      description: Create a new image.
       operationId: images_create
       tags:
       - images
@@ -2342,7 +2377,8 @@ paths:
           description: Created
   /api/images/{image_id}:
     delete:
-      description: Delete image
+      summary: Delete image
+      description: Delete an image.
       operationId: images_delete
       tags:
       - images
@@ -2356,7 +2392,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get image
+      summary: Get image
+      description: Get an image.
       operationId: images_get
       tags:
       - images
@@ -2374,7 +2411,8 @@ paths:
                 $ref: '#/components/schemas/Image'
           description: Ok
     patch:
-      description: Update image
+      summary: Update image
+      description: Update an image.
       operationId: images_update
       tags:
       - images
@@ -2399,7 +2437,8 @@ paths:
           description: Updated
   /api/images/{image_id}/tags:
     get:
-      description: List image tags
+      summary: List image tags
+      description: Paginated list of image tags.
       operationId: imagetags_list
       tags:
       - image_tags
@@ -2466,7 +2505,8 @@ paths:
                 $ref: '#/components/schemas/ImageTagList'
           description: Ok
     post:
-      description: Create image tag
+      summary: Create image tag
+      description: Create a new image tag.
       operationId: imagetags_create
       tags:
       - image_tags
@@ -2491,7 +2531,8 @@ paths:
           description: Created
   /api/images/{image_id}/tags/{image_tag_id}:
     delete:
-      description: Delete image tag
+      summary: Delete image tag
+      description: Delete an image tag.
       operationId: imagetags_delete
       tags:
       - image_tags
@@ -2510,7 +2551,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get image tag
+      summary: Get image tag
+      description: Get an image tag.
       operationId: imagetags_get
       tags:
       - image_tags
@@ -2533,7 +2575,8 @@ paths:
                 $ref: '#/components/schemas/ImageTag'
           description: Ok
     patch:
-      description: Update image tag
+      summary: Update image tag
+      description: Update an image tag.
       operationId: imagetags_update
       tags:
       - image_tags
@@ -2563,7 +2606,7 @@ paths:
           description: Updated
   /api/images/{image_id}/tags/{image_tag_id}/history:
     get:
-      description: Get image tag status history
+      summary: Get image tag status history
       operationId: imagetags_getStatusHistory
       tags:
       - image_tags
@@ -2587,8 +2630,9 @@ paths:
           description: Ok
   /api/images/{image_id}/tags/{image_tag_id}/logs:
     get:
-      description: Get image tag historical logs
-      operationId: imagetags_getLogHistory
+      summary: Get image tag historical logs
+      description: Historical record of logs from the resource.
+      operationId: imagetags_getLogs
       tags:
       - image_tags
       parameters:
@@ -2606,37 +2650,44 @@ paths:
         name: pod_name
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: first_key
+        name: prev_key
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: last_key
+        name: next_key
         schema:
           type: string
-          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
         required: false
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HistoricLogs'
+                $ref: '#/components/schemas/HistoricLogList'
           description: Ok
   /api/images/{image_id}/tags/{image_tag_id}/runtimesummary:
     get:
-      description: Get image tag build runtime summary
+      summary: Get image tag build runtime summary
+      description: Summary of the current runtime status.
       operationId: imagetags_getRuntimesummary
+      tags:
+      - image_tags
       parameters:
       - name: image_id
         in: path
@@ -2663,7 +2714,7 @@ paths:
           description: Ok
   /api/images/{image_id}/tags/{image_tag_id}/stop:
     post:
-      description: Stop image tag build
+      summary: Stop image tag build
       operationId: imagetags_stop
       tags:
       - image_tags
@@ -2687,10 +2738,11 @@ paths:
           description: Stopped
   /api/info:
     get:
-      description: Get app info
-      operationId: appinfo_get
+      summary: Get app info
+      description: Get information about the Saturn installation.
+      operationId: info_get
       tags:
-      - app_info
+      - info
       responses:
         '200':
           content:
@@ -2700,10 +2752,11 @@ paths:
           description: Ok
   /api/info/servers:
     get:
-      description: Get available server configurations
-      operationId: appinfo_getServerOptions
+      summary: Get server options
+      description: Get available configuration options for resources.
+      operationId: info_getServerOptions
       tags:
-      - app_info
+      - info
       responses:
         '200':
           content:
@@ -2713,7 +2766,8 @@ paths:
           description: Ok
   /api/invitations:
     get:
-      description: List invitations
+      summary: List invitations
+      description: Paginated list of invitations.
       operationId: invitations_list
       tags:
       - invitations
@@ -2765,7 +2819,8 @@ paths:
                 $ref: '#/components/schemas/InvitationList'
           description: Ok
     post:
-      description: Create invitation
+      summary: Create invitation
+      description: Create a new invitation.
       operationId: invitations_create
       tags:
       - invitations
@@ -2784,7 +2839,8 @@ paths:
           description: Created
   /api/invitations/{invitation_id}:
     delete:
-      description: Delete invitation
+      summary: Delete invitation
+      description: Delete an invitation.
       operationId: invitations_delete
       tags:
       - invitations
@@ -2798,7 +2854,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get invitation
+      summary: Get invitation
+      description: Get an invitation.
       operationId: invitations_get
       tags:
       - invitations
@@ -2816,7 +2873,8 @@ paths:
                 $ref: '#/components/schemas/Invitation'
           description: Ok
     patch:
-      description: Update invitation
+      summary: Update invitation
+      description: Update an invitation.
       operationId: invitations_update
       tags:
       - invitations
@@ -2841,7 +2899,8 @@ paths:
           description: Updated
   /api/jobs:
     get:
-      description: List jobs
+      summary: List jobs
+      description: Paginated list of jobs.
       operationId: jobs_list
       tags:
       - jobs
@@ -2850,7 +2909,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -2921,7 +2979,8 @@ paths:
                 $ref: '#/components/schemas/JobList'
           description: Ok
     post:
-      description: Create job
+      summary: Create job
+      description: Create a new job.
       operationId: jobs_create
       tags:
       - jobs
@@ -2940,7 +2999,8 @@ paths:
           description: Created
   /api/jobs/{job_id}:
     delete:
-      description: Delete job
+      summary: Delete job
+      description: Delete a job.
       operationId: jobs_delete
       tags:
       - jobs
@@ -2960,7 +3020,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get job
+      summary: Get job
+      description: Get a job.
       operationId: jobs_get
       tags:
       - jobs
@@ -2978,7 +3039,8 @@ paths:
                 $ref: '#/components/schemas/Job'
           description: Ok
     patch:
-      description: Update job
+      summary: Update job
+      description: Update a job.
       operationId: jobs_update
       tags:
       - jobs
@@ -3003,7 +3065,8 @@ paths:
           description: Updated
   /api/jobs/{job_id}/clusters:
     get:
-      description: Get clusters that a job has run on
+      summary: Get job cluster history
+      description: Get a list of clusters that the job has recently run on.
       operationId: jobs_getClusterHistory
       tags:
       - jobs
@@ -3022,8 +3085,9 @@ paths:
           description: Ok
   /api/jobs/{job_id}/history:
     get:
-      description: Get job status history
-      operationId: jobs_getStatusHistory
+      summary: Get job pod history
+      description: Get history of pods run for the job.
+      operationId: jobs_getPodHistory
       tags:
       - jobs
       parameters:
@@ -3047,8 +3111,9 @@ paths:
           description: Ok
   /api/jobs/{job_id}/logs:
     get:
-      description: Get job historical logs
-      operationId: jobs_getLogHistory
+      summary: Get job historical logs
+      description: Historical record of logs from the resource.
+      operationId: jobs_getLogs
       tags:
       - jobs
       parameters:
@@ -3061,36 +3126,41 @@ paths:
         name: pod_name
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: first_key
+        name: prev_key
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: last_key
+        name: next_key
         schema:
           type: string
-          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
         required: false
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HistoricLogs'
+                $ref: '#/components/schemas/HistoricLogList'
           description: Ok
   /api/jobs/{job_id}/metrics:
     get:
-      description: Get job hardware metrics
+      summary: Get job metrics
+      description: Hardware utilization metrics.
       operationId: jobs_getMetrics
       tags:
       - jobs
@@ -3104,33 +3174,28 @@ paths:
         name: type
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: start
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: end
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: resolution
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       responses:
         '200':
@@ -3141,7 +3206,7 @@ paths:
           description: Ok
   /api/jobs/{job_id}/recipe:
     get:
-      description: Get job recipe
+      summary: Get job recipe
       operationId: jobs_getRecipe
       tags:
       - jobs
@@ -3166,7 +3231,8 @@ paths:
           description: Ok
   /api/jobs/{job_id}/restart:
     post:
-      description: Restart job
+      summary: Restart job
+      description: Restart a running job.
       operationId: jobs_restart
       tags:
       - jobs
@@ -3191,7 +3257,8 @@ paths:
           description: Restarted
   /api/jobs/{job_id}/runtimesummary:
     get:
-      description: Get job runtime summary
+      summary: Get job runtime summary
+      description: Summary of the current runtime status.
       operationId: jobs_getRuntimeSummary
       tags:
       - jobs
@@ -3216,7 +3283,7 @@ paths:
           description: Ok
   /api/jobs/{job_id}/schedule:
     post:
-      description: Activate job cron schedule
+      summary: Activate job cron schedule
       operationId: jobs_schedule
       tags:
       - jobs
@@ -3241,7 +3308,7 @@ paths:
           description: Scheduled
   /api/jobs/{job_id}/secrets:
     get:
-      description: List job secret attachments
+      summary: List job secret attachments
       operationId: jobs_listSecretAttachments
       tags:
       - jobs
@@ -3293,7 +3360,7 @@ paths:
                 $ref: '#/components/schemas/SecretAttachmentList'
           description: Ok
     post:
-      description: Create job secret attachment
+      summary: Create job secret attachment
       operationId: jobs_createSecretAttachment
       tags:
       - jobs
@@ -3318,7 +3385,7 @@ paths:
           description: Created
   /api/jobs/{job_id}/secrets/{secret_attachment_id}:
     delete:
-      description: Delete job secret attachment
+      summary: Delete job secret attachment
       operationId: jobs_deleteSecretAttachment
       tags:
       - jobs
@@ -3337,7 +3404,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get job secret attachment
+      summary: Get job secret attachment
       operationId: jobs_getSecretAttachment
       tags:
       - jobs
@@ -3360,7 +3427,7 @@ paths:
                 $ref: '#/components/schemas/SecretAttachment'
           description: Ok
     patch:
-      description: Update job secret attachment
+      summary: Update job secret attachment
       operationId: jobs_updateSecretAttachment
       tags:
       - jobs
@@ -3390,7 +3457,7 @@ paths:
           description: Updated
   /api/jobs/{job_id}/service_account:
     delete:
-      description: Delete job service account attachment
+      summary: Delete job service account attachment
       operationId: jobs_deleteServiceAccountAttachment
       tags:
       - jobs
@@ -3404,7 +3471,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get job service account attachment
+      summary: Get job service account attachment
       operationId: jobs_getServiceAccountAttachment
       tags:
       - jobs
@@ -3422,7 +3489,7 @@ paths:
                 $ref: '#/components/schemas/ServiceAccountAttachment'
           description: Ok
     put:
-      description: Create job service account attachment
+      summary: Create job service account attachment
       operationId: jobs_createServiceAccountAttachment
       tags:
       - jobs
@@ -3447,7 +3514,8 @@ paths:
           description: Created
   /api/jobs/{job_id}/start:
     post:
-      description: Start job
+      summary: Start job
+      description: Run a job.
       operationId: jobs_start
       tags:
       - jobs
@@ -3472,7 +3540,8 @@ paths:
           description: Started
   /api/jobs/{job_id}/stop:
     post:
-      description: Stop job
+      summary: Stop job
+      description: Stop a running job.
       operationId: jobs_stop
       tags:
       - jobs
@@ -3491,7 +3560,7 @@ paths:
           description: Stopped
   /api/jobs/{job_id}/template:
     get:
-      description: Get job resource template
+      summary: Get job resource template
       operationId: jobs_getResourceTemplate
       tags:
       - jobs
@@ -3509,7 +3578,7 @@ paths:
                 $ref: '#/components/schemas/ResourceTemplate'
           description: Ok
     patch:
-      description: Update job resource template
+      summary: Update job resource template
       operationId: jobs_updateResourceTemplate
       tags:
       - jobs
@@ -3527,7 +3596,7 @@ paths:
                 $ref: '#/components/schemas/ResourceTemplate'
           description: Ok
     post:
-      description: Create job resource template
+      summary: Create job resource template
       operationId: jobs_createResourceTemplate
       tags:
       - jobs
@@ -3546,7 +3615,7 @@ paths:
           description: Ok
   /api/jobs/{job_id}/token:
     get:
-      description: Get job resource API token info
+      summary: Get job API token info
       operationId: jobs_getTokenInfo
       tags:
       - jobs
@@ -3564,8 +3633,8 @@ paths:
                 $ref: '#/components/schemas/ResourceTokenInfo'
           description: Ok
     patch:
-      description: Update and rotate job resource API token. Invalidates existing
-        token.
+      summary: Update job API token
+      description: Update API token scope on the job. Invalidates existing tokens.
       operationId: jobs_updateToken
       tags:
       - jobs
@@ -3588,7 +3657,8 @@ paths:
                 $ref: '#/components/schemas/ResourceTokenInfo'
           description: Updated
     post:
-      description: Rotate job resource API token. Invalidates existing token.
+      summary: Rotate job API token
+      description: Invalidate existing API tokens for the job.
       operationId: jobs_rotateToken
       tags:
       - jobs
@@ -3607,7 +3677,7 @@ paths:
           description: Rotated
   /api/jobs/{job_id}/unschedule:
     post:
-      description: Deactivate job cron schedule
+      summary: Deactivate job cron schedule
       operationId: jobs_unschedule
       tags:
       - jobs
@@ -3626,7 +3696,7 @@ paths:
           description: Unscheduled
   /api/jobs/info:
     get:
-      description: Get job server options
+      summary: Get job server options
       operationId: jobs_getServerOptions
       tags:
       - jobs
@@ -3639,10 +3709,11 @@ paths:
           description: Ok
   /api/limits:
     get:
-      description: List usage limits
-      operationId: usagelimits_list
+      summary: List limits
+      description: Paginated list of limits.
+      operationId: limits_list
       tags:
-      - usage_limits
+      - limits
       parameters:
       - in: query
         name: name
@@ -3686,10 +3757,11 @@ paths:
                 $ref: '#/components/schemas/UsageLimitsList'
           description: Ok
     post:
-      description: Create usage limits
-      operationId: usagelimits_create
+      summary: Create limits
+      description: Create a new limits.
+      operationId: limits_create
       tags:
-      - usage_limits
+      - limits
       requestBody:
         content:
           application/json:
@@ -3703,14 +3775,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/UsageLimits'
           description: Created
-  /api/limits/{usage_limits_id}:
+  /api/limits/{limits_id}:
     delete:
-      description: Delete usage limits
-      operationId: usagelimits_delete
+      summary: Delete limits
+      description: Delete a limits.
+      operationId: limits_delete
       tags:
-      - usage_limits
+      - limits
       parameters:
-      - name: usage_limits_id
+      - name: limits_id
         in: path
         schema:
           type: string
@@ -3719,12 +3792,13 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get usage limits
-      operationId: usagelimits_get
+      summary: Get limits
+      description: Get a limits.
+      operationId: limits_get
       tags:
-      - usage_limits
+      - limits
       parameters:
-      - name: usage_limits_id
+      - name: limits_id
         in: path
         schema:
           type: string
@@ -3737,12 +3811,13 @@ paths:
                 $ref: '#/components/schemas/UsageLimits'
           description: Ok
     patch:
-      description: Update usage limits
-      operationId: usagelimits_update
+      summary: Update limits
+      description: Update a limits.
+      operationId: limits_update
       tags:
-      - usage_limits
+      - limits
       parameters:
-      - name: usage_limits_id
+      - name: limits_id
         in: path
         schema:
           type: string
@@ -3762,7 +3837,7 @@ paths:
           description: Updated
   /api/notifications:
     delete:
-      description: Delete notifications
+      summary: Delete notifications
       operationId: notifications_delete
       tags:
       - notifications
@@ -3776,7 +3851,7 @@ paths:
         '204':
           description: Ok
     get:
-      description: List notifications
+      summary: List notifications
       operationId: notifications_list
       tags:
       - notifications
@@ -3813,7 +3888,8 @@ paths:
                 $ref: '#/components/schemas/NotificationList'
           description: Ok
     put:
-      description: Mark notifications as read/unread
+      summary: Acknowledge notifications
+      description: Mark notifications as read/unread.
       operationId: notifications_acknowledge
       tags:
       - notifications
@@ -3828,7 +3904,7 @@ paths:
           description: Ok
   /api/notifications/subscriptions:
     delete:
-      description: Unsubscribe from a notification topic
+      summary: Unsubscribe from topic
       operationId: notifications_unsubscribe
       tags:
       - notifications
@@ -3842,7 +3918,7 @@ paths:
         '204':
           description: Unsubscribed
     get:
-      description: List notification subscriptions
+      summary: List notification subscriptions
       operationId: notifications_listSubscriptions
       tags:
       - notifications
@@ -3889,7 +3965,7 @@ paths:
                 $ref: '#/components/schemas/NotificationSubscriptionList'
           description: Ok
     put:
-      description: Subscribe to a notification topic
+      summary: Subscribe to topic
       operationId: notifications_subscribe
       tags:
       - notifications
@@ -3906,9 +3982,437 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotificationSubscription'
           description: Subscribed
+  /api/object_storage:
+    get:
+      summary: List object storage
+      description: Paginated list of object storage.
+      operationId: objectstorage_list
+      tags:
+      - object_storage
+      parameters:
+      - in: query
+        name: owner_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: owner_id
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: group_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: org_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: owner
+        schema:
+          type: string
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        required: false
+      - in: query
+        name: prefix
+        schema:
+          type: string
+          default: ''
+        required: false
+      - in: query
+        name: last_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: max_keys
+        schema:
+          type: integer
+          default: 1000
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: delimited
+        schema:
+          type: boolean
+          default: true
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageList'
+          description: Ok
+  /api/object_storage/bulk_delete:
+    delete:
+      summary: Delete multiple object storage
+      operationId: objectstorage_deleteBulk
+      tags:
+      - object_storage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageBulkReference'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageBulkDeleteResults'
+          description: Deleted
+  /api/object_storage/bulk_download:
+    post:
+      summary: Download bulk object storage
+      description: Create presigned download URLs for multiple files.
+      operationId: objectstorage_downloadBulk
+      tags:
+      - object_storage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageBulkReference'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageBulkDownload'
+          description: Ok
+  /api/object_storage/delete:
+    delete:
+      summary: Delete object storage
+      operationId: objectstorage_delete
+      tags:
+      - object_storage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageReference'
+        required: true
+      responses:
+        '204':
+          description: Deleted
+  /api/object_storage/download:
+    post:
+      summary: Download object storage
+      description: Create a presigned download URL for a file.
+      operationId: objectstorage_download
+      tags:
+      - object_storage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageReference'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStoragePresignedDownload'
+          description: Ok
+  /api/object_storage/shared:
+    get:
+      summary: List shared object storage
+      description: List owners that have shared object storage accessible to the given
+        owner.
+      operationId: objectstorage_listShared
+      tags:
+      - object_storage
+      parameters:
+      - in: query
+        name: owner_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: owner_id
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: group_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: org_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: owner
+        schema:
+          type: string
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        required: false
+      - in: query
+        name: last_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: max_keys
+        schema:
+          type: integer
+          default: 1000
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageSharedOwnerList'
+          description: Ok
+  /api/object_storage/upload:
+    get:
+      summary: List object storage uploads
+      operationId: objectstorage_listUploads
+      tags:
+      - object_storage
+      parameters:
+      - in: query
+        name: owner_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: owner_id
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: group_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: org_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: owner
+        schema:
+          type: string
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        required: false
+      - in: query
+        name: prefix
+        schema:
+          type: string
+          default: ''
+        required: false
+      - in: query
+        name: is_copy
+        schema:
+          type: boolean
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageUploadList'
+          description: Ok
+    post:
+      summary: Create object storage upload
+      operationId: objectstorage_upload
+      tags:
+      - object_storage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageUploadCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStoragePresignedUpload'
+          description: Created
+  /api/object_storage/upload/{object_storage_upload_id}:
+    delete:
+      summary: Cancel object storage upload
+      operationId: objectstorage_cancelUpload
+      tags:
+      - object_storage
+      parameters:
+      - in: path
+        name: object_storage_upload_id
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Canceled
+    get:
+      summary: Resume object storage upload
+      operationId: objectstorage_resumeUpload
+      tags:
+      - object_storage
+      parameters:
+      - in: path
+        name: object_storage_upload_id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: first_part
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+          maximum: 10000
+        required: false
+      - in: query
+        name: last_part
+        schema:
+          type: integer
+          default: null
+          minimum: 1
+          maximum: 10000
+          nullable: true
+        required: false
+      - in: query
+        name: last_part_size
+        schema:
+          type: integer
+          default: null
+          minimum: 0
+          maximum: 5368709120
+          nullable: true
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStoragePresignedUpload'
+          description: Ok
+    post:
+      summary: Complete object storage upload
+      operationId: objectstorage_completeUpload
+      tags:
+      - object_storage
+      parameters:
+      - in: path
+        name: object_storage_upload_id
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageCompletedUpload'
+        required: true
+      responses:
+        '204':
+          description: Completed
+  /api/object_storage/usage:
+    get:
+      summary: Get object storage usage stats
+      operationId: objectstorage_getUsage
+      tags:
+      - object_storage
+      parameters:
+      - in: query
+        name: owner_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: owner_id
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: group_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: org_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: owner
+        schema:
+          type: string
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageUsageStats'
+          description: Ok
   /api/orgs:
     get:
-      description: List orgs
+      summary: List orgs
+      description: Paginated list of orgs.
       operationId: orgs_list
       tags:
       - orgs
@@ -3955,7 +4459,8 @@ paths:
                 $ref: '#/components/schemas/OrgList'
           description: Ok
     post:
-      description: Create org
+      summary: Create org
+      description: Create a new org.
       operationId: orgs_create
       tags:
       - orgs
@@ -3974,7 +4479,8 @@ paths:
           description: Created
   /api/orgs/{org_id}:
     delete:
-      description: Delete org
+      summary: Delete org
+      description: Delete an org.
       operationId: orgs_delete
       tags:
       - orgs
@@ -3988,7 +4494,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get org
+      summary: Get org
+      description: Get an org.
       operationId: orgs_get
       tags:
       - orgs
@@ -4006,7 +4513,8 @@ paths:
                 $ref: '#/components/schemas/Org'
           description: Ok
     patch:
-      description: Update org
+      summary: Update org
+      description: Update an org.
       operationId: orgs_update
       tags:
       - orgs
@@ -4029,18 +4537,172 @@ paths:
               schema:
                 $ref: '#/components/schemas/Org'
           description: Updated
+  /api/orgs/{org_id}/invitations:
+    get:
+      summary: List org invitations
+      operationId: orgs_listInvitations
+      tags:
+      - orgs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: status
+        schema:
+          $ref: '#/components/schemas/InvitationStatus'
+        required: false
+      - in: query
+        name: email
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: invitor_id
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: prev_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: descending
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgInvitationList'
+          description: Ok
+    post:
+      summary: Create org invitation
+      operationId: orgs_createInvitation
+      tags:
+      - orgs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrgInvitationCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgInvitation'
+          description: Created
+  /api/orgs/{org_id}/invitations/{invitation_id}:
+    delete:
+      summary: Delete org invitation
+      operationId: orgs_deleteInvitation
+      tags:
+      - orgs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: invitation_id
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      summary: Get org invitation
+      operationId: orgs_getInvitation
+      tags:
+      - orgs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: invitation_id
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgInvitation'
+          description: Ok
+    patch:
+      summary: Update org invitation
+      operationId: orgs_updateInvitation
+      tags:
+      - orgs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: invitation_id
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrgInvitationUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgInvitation'
+          description: Updated
   /api/orgs/{org_id}/limits:
     get:
-      description: Get org usage limits
+      summary: Get org usage limits
       operationId: orgs_getUsageLimits
       tags:
       - orgs
       parameters:
       - name: org_id
         in: path
-        required: true
         schema:
           type: string
+        required: true
       responses:
         '200':
           content:
@@ -4050,7 +4712,8 @@ paths:
           description: Ok
   /api/orgs/{org_id}/members:
     post:
-      description: Create org member (admin only)
+      summary: Create org member
+      description: Add a user to the org.
       operationId: orgs_createMember
       tags:
       - orgs
@@ -4075,7 +4738,7 @@ paths:
           description: Added
   /api/orgs/{org_id}/members/{user_id}:
     delete:
-      description: Delete org member
+      summary: Delete org member
       operationId: orgs_deleteMember
       tags:
       - orgs
@@ -4094,7 +4757,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get org member
+      summary: Get org member
       operationId: orgs_getMember
       tags:
       - orgs
@@ -4117,7 +4780,7 @@ paths:
                 $ref: '#/components/schemas/OrgMemberDetailed'
           description: Ok
     patch:
-      description: Update org member
+      summary: Update org member
       operationId: orgs_updateMember
       tags:
       - orgs
@@ -4147,13 +4810,14 @@ paths:
           description: Updated
   /api/orgs/{org_id}/members/{user_id}/usage/daily:
     get:
-      description: Get org member usage data aggregated by day
+      summary: Get org member daily usage
+      description: Get usage for a user in the org aggregated by day.
       operationId: orgs_getDailyUserUsage
       tags:
       - orgs
       parameters:
-      - in: path
-        name: org_id
+      - name: org_id
+        in: path
         schema:
           type: string
         required: true
@@ -4183,16 +4847,17 @@ paths:
           description: Ok
   /api/orgs/{org_id}/owners:
     get:
-      description: List org owners (users/groups)
+      summary: List org owners
+      description: List users and groups that are in the org.
       operationId: orgs_listOwners
       tags:
       - orgs
       parameters:
       - name: org_id
         in: path
-        required: true
         schema:
           type: string
+        required: true
       - in: query
         name: name
         schema:
@@ -4256,13 +4921,14 @@ paths:
           description: Ok
   /api/orgs/{org_id}/usage/aggregated:
     get:
-      description: Get total org usage
+      summary: Get org usage
+      description: Get total aggregated usage for the org.
       operationId: orgs_getAggregatedUsage
       tags:
       - orgs
       parameters:
-      - in: path
-        name: org_id
+      - name: org_id
+        in: path
         schema:
           type: string
         required: true
@@ -4287,13 +4953,14 @@ paths:
           description: Ok
   /api/orgs/{org_id}/usage/daily:
     get:
-      description: List org usage data aggregated by day
+      summary: Get org daily usage
+      description: Get usage for the org aggregated by day.
       operationId: orgs_getDailyUsage
       tags:
       - orgs
       parameters:
-      - in: path
-        name: org_id
+      - name: org_id
+        in: path
         schema:
           type: string
         required: true
@@ -4318,13 +4985,14 @@ paths:
           description: Ok
   /api/orgs/{org_id}/usage/owners:
     get:
-      description: List org usage data aggregated by owner
+      summary: Get org owner usage
+      description: Get aggregated usage for users and groups in the org.
       operationId: orgs_getOwnerUsage
       tags:
       - orgs
       parameters:
-      - in: path
-        name: org_id
+      - name: org_id
+        in: path
         schema:
           type: string
         required: true
@@ -4347,9 +5015,44 @@ paths:
               schema:
                 $ref: '#/components/schemas/OwnerUsageList'
           description: Ok
+  /api/orgs/invitation/{token}/accept:
+    post:
+      summary: Accept org invitation
+      operationId: orgs_acceptInvitation
+      tags:
+      - orgs
+      parameters:
+      - in: path
+        name: token
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OwnerDetailed'
+          description: Accepted
+  /api/orgs/invitation/{token}/decline:
+    delete:
+      summary: Decline org invitation
+      operationId: orgs_declineInvitation
+      tags:
+      - orgs
+      parameters:
+      - in: path
+        name: token
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Declined
   /api/recipes:
     get:
-      description: List recipes
+      summary: List recipes
+      description: Paginated list of recipes.
       operationId: recipes_list
       tags:
       - recipes
@@ -4358,7 +5061,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -4445,7 +5147,8 @@ paths:
                 $ref: '#/components/schemas/RecipeList'
           description: Ok
     post:
-      description: Create recipe
+      summary: Create recipe
+      description: Create a new recipe.
       operationId: recipes_create
       tags:
       - recipes
@@ -4463,7 +5166,7 @@ paths:
                 $ref: '#/components/schemas/Recipe'
           description: Created
     put:
-      description: Apply recipe
+      summary: Apply recipe
       operationId: recipes_apply
       tags:
       - recipes
@@ -4481,7 +5184,7 @@ paths:
           description: Applied
   /api/recipes/{recipe_type}/{name}:
     get:
-      description: Get recipe
+      summary: Get recipe
       operationId: recipes_get
       tags:
       - recipes
@@ -4500,7 +5203,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -4549,7 +5251,8 @@ paths:
           description: '200'
   /api/secrets:
     get:
-      description: List secrets
+      summary: List secrets
+      description: Paginated list of secrets.
       operationId: secrets_list
       tags:
       - secrets
@@ -4558,7 +5261,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -4634,7 +5336,8 @@ paths:
                 $ref: '#/components/schemas/SecretList'
           description: Ok
     post:
-      description: Create secret
+      summary: Create secret
+      description: Create a new secret.
       operationId: secrets_create
       tags:
       - secrets
@@ -4653,7 +5356,8 @@ paths:
           description: Created
   /api/secrets/{secret_id}:
     delete:
-      description: Delete secret
+      summary: Delete secret
+      description: Delete a secret.
       operationId: secrets_delete
       tags:
       - secrets
@@ -4667,7 +5371,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get secret
+      summary: Get secret
+      description: Get a secret.
       operationId: secrets_get
       tags:
       - secrets
@@ -4685,7 +5390,8 @@ paths:
                 $ref: '#/components/schemas/Secret'
           description: Ok
     patch:
-      description: Update secret
+      summary: Update secret
+      description: Update a secret.
       operationId: secrets_update
       tags:
       - secrets
@@ -4710,7 +5416,8 @@ paths:
           description: Updated
   /api/service_account_entitlements:
     get:
-      description: List service account entitlements
+      summary: List service account entitlements
+      description: Paginated list of service account entitlements.
       operationId: serviceaccountentitlements_list
       tags:
       - service_account_entitlements
@@ -4768,7 +5475,8 @@ paths:
                 $ref: '#/components/schemas/ServiceAccountEntitlementList'
           description: Ok
     post:
-      description: Create service account entitlement
+      summary: Create service account entitlement
+      description: Create a new service account entitlement.
       operationId: serviceaccountentitlements_create
       tags:
       - service_account_entitlements
@@ -4787,7 +5495,8 @@ paths:
           description: Created
   /api/service_account_entitlements/{service_account_entitlement_id}:
     delete:
-      description: Delete service account entitlement
+      summary: Delete service account entitlement
+      description: Delete a service account entitlement.
       operationId: serviceaccountentitlements_delete
       tags:
       - service_account_entitlements
@@ -4801,7 +5510,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get service account entitlement
+      summary: Get service account entitlement
+      description: Get a service account entitlement.
       operationId: serviceaccountentitlements_get
       tags:
       - service_account_entitlements
@@ -4820,7 +5530,8 @@ paths:
           description: Ok
   /api/service_accounts:
     get:
-      description: List service accounts
+      summary: List service accounts
+      description: Paginated list of service accounts.
       operationId: serviceaccounts_list
       tags:
       - service_accounts
@@ -4862,7 +5573,8 @@ paths:
                 $ref: '#/components/schemas/ServiceAccountList'
           description: Ok
     post:
-      description: Create service account
+      summary: Create service account
+      description: Create a new service account.
       operationId: serviceaccounts_create
       tags:
       - service_accounts
@@ -4881,7 +5593,8 @@ paths:
           description: Created
   /api/service_accounts/{service_account_id}:
     delete:
-      description: Delete service account
+      summary: Delete service account
+      description: Delete a service account.
       operationId: serviceaccounts_delete
       tags:
       - service_accounts
@@ -4895,7 +5608,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get service account
+      summary: Get service account
+      description: Get a service account.
       operationId: serviceaccounts_get
       tags:
       - service_accounts
@@ -4913,7 +5627,8 @@ paths:
                 $ref: '#/components/schemas/ServiceAccount'
           description: Ok
     patch:
-      description: Update service account
+      summary: Update service account
+      description: Update a service account.
       operationId: serviceaccounts_update
       tags:
       - service_accounts
@@ -4938,7 +5653,8 @@ paths:
           description: Updated
   /api/shared_folder_attachments:
     get:
-      description: List shared folder attachments
+      summary: List shared folder attachments
+      description: Paginated list of shared folder attachments.
       operationId: sharedfolderattachments_list
       tags:
       - shared_folder_attachments
@@ -4990,7 +5706,8 @@ paths:
                 $ref: '#/components/schemas/SharedFolderAttachmentList'
           description: Ok
     post:
-      description: Create shared folder attachment
+      summary: Create shared folder attachment
+      description: Create a new shared folder attachment.
       operationId: sharedfolderattachments_create
       tags:
       - shared_folder_attachments
@@ -5009,7 +5726,8 @@ paths:
           description: Created
   /api/shared_folder_attachments/{shared_folder_attachment_id}:
     delete:
-      description: Delete shared folder attachment
+      summary: Delete shared folder attachment
+      description: Delete a shared folder attachment.
       operationId: sharedfolderattachments_delete
       tags:
       - shared_folder_attachments
@@ -5023,7 +5741,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get shared folder attachment
+      summary: Get shared folder attachment
+      description: Get a shared folder attachment.
       operationId: sharedfolderattachments_get
       tags:
       - shared_folder_attachments
@@ -5041,7 +5760,8 @@ paths:
                 $ref: '#/components/schemas/SharedFolderAttachment'
           description: Ok
     patch:
-      description: Update shared folder attachment
+      summary: Update shared folder attachment
+      description: Update a shared folder attachment.
       operationId: sharedfolderattachments_update
       tags:
       - shared_folder_attachments
@@ -5066,7 +5786,8 @@ paths:
           description: Updated
   /api/shared_folders:
     get:
-      description: List shared folders
+      summary: List shared folders
+      description: Paginated list of shared folders.
       operationId: sharedfolders_list
       tags:
       - shared_folders
@@ -5075,7 +5796,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -5151,7 +5871,8 @@ paths:
                 $ref: '#/components/schemas/SharedFolderList'
           description: Ok
     post:
-      description: Create shared folder
+      summary: Create shared folder
+      description: Create a new shared folder.
       operationId: sharedfolders_create
       tags:
       - shared_folders
@@ -5170,7 +5891,8 @@ paths:
           description: Created
   /api/shared_folders/{shared_folder_id}:
     delete:
-      description: Delete shared folder
+      summary: Delete shared folder
+      description: Delete a shared folder.
       operationId: sharedfolders_delete
       tags:
       - shared_folders
@@ -5184,7 +5906,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get shared folder
+      summary: Get shared folder
+      description: Get a shared folder.
       operationId: sharedfolders_get
       tags:
       - shared_folders
@@ -5202,7 +5925,8 @@ paths:
                 $ref: '#/components/schemas/SharedFolder'
           description: Ok
     patch:
-      description: Update shared folder
+      summary: Update shared folder
+      description: Update a shared folder.
       operationId: sharedfolders_update
       tags:
       - shared_folders
@@ -5227,7 +5951,8 @@ paths:
           description: Updated
   /api/ssh_private_keys:
     get:
-      description: List ssh private keys
+      summary: List ssh private keys
+      description: Paginated list of ssh private keys.
       operationId: sshprivatekeys_list
       tags:
       - ssh_private_keys
@@ -5290,7 +6015,8 @@ paths:
                 $ref: '#/components/schemas/SSHPrivateKeyList'
           description: Ok
     post:
-      description: Create ssh private key
+      summary: Create ssh private key
+      description: Create a new ssh private key.
       operationId: sshprivatekeys_create
       tags:
       - ssh_private_keys
@@ -5309,7 +6035,8 @@ paths:
           description: Created
   /api/ssh_private_keys/{ssh_privatekey_id}:
     delete:
-      description: Delete ssh private key
+      summary: Delete ssh private key
+      description: Delete a ssh private key.
       operationId: sshprivatekeys_delete
       tags:
       - ssh_private_keys
@@ -5323,7 +6050,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get ssh private key
+      summary: Get ssh private key
+      description: Get a ssh private key.
       operationId: sshprivatekeys_get
       tags:
       - ssh_private_keys
@@ -5341,7 +6069,8 @@ paths:
                 $ref: '#/components/schemas/SSHPrivateKey'
           description: Ok
     patch:
-      description: Update ssh private key
+      summary: Update ssh private key
+      description: Update a ssh private key.
       operationId: sshprivatekeys_update
       tags:
       - ssh_private_keys
@@ -5366,7 +6095,8 @@ paths:
           description: Updated
   /api/ssh_public_keys:
     get:
-      description: List ssh public keys
+      summary: List ssh public keys
+      description: Paginated list of ssh public keys.
       operationId: sshpublickeys_list
       tags:
       - ssh_public_keys
@@ -5424,7 +6154,8 @@ paths:
                 $ref: '#/components/schemas/SSHPublicKeyList'
           description: Ok
     post:
-      description: Create ssh public key
+      summary: Create ssh public key
+      description: Create a new ssh public key.
       operationId: sshpublickeys_create
       tags:
       - ssh_public_keys
@@ -5443,7 +6174,8 @@ paths:
           description: Created
   /api/ssh_public_keys/{ssh_publickey_id}:
     delete:
-      description: Delete ssh public key
+      summary: Delete ssh public key
+      description: Delete a ssh public key.
       operationId: sshpublickeys_delete
       tags:
       - ssh_public_keys
@@ -5457,7 +6189,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get ssh public key
+      summary: Get ssh public key
+      description: Get a ssh public key.
       operationId: sshpublickeys_get
       tags:
       - ssh_public_keys
@@ -5475,7 +6208,8 @@ paths:
                 $ref: '#/components/schemas/SSHPublicKey'
           description: Ok
     patch:
-      description: Update ssh public key
+      summary: Update ssh public key
+      description: Update a ssh public key.
       operationId: sshpublickeys_update
       tags:
       - ssh_public_keys
@@ -5500,7 +6234,7 @@ paths:
           description: Updated
   /api/status:
     get:
-      description: Get API status
+      summary: Get API status
       operationId: apistatus_get
       tags:
       - api_status
@@ -5513,7 +6247,8 @@ paths:
           description: Ok
   /api/tokens:
     get:
-      description: List api tokens
+      summary: List api tokens
+      description: Paginated list of api tokens.
       operationId: apitokens_list
       tags:
       - api_tokens
@@ -5566,7 +6301,8 @@ paths:
                 $ref: '#/components/schemas/ApiTokenList'
           description: Ok
     post:
-      description: Create api token
+      summary: Create api token
+      description: Create a new api token.
       operationId: apitokens_create
       tags:
       - api_tokens
@@ -5585,7 +6321,8 @@ paths:
           description: Created
   /api/tokens/{api_token_id}:
     delete:
-      description: Delete api token
+      summary: Delete api token
+      description: Delete an api token.
       operationId: apitokens_delete
       tags:
       - api_tokens
@@ -5599,7 +6336,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get api token
+      summary: Get api token
+      description: Get an api token.
       operationId: apitokens_get
       tags:
       - api_tokens
@@ -5617,7 +6355,8 @@ paths:
                 $ref: '#/components/schemas/ApiTokenInfo'
           description: Ok
     patch:
-      description: Update api token
+      summary: Update api token
+      description: Update an api token.
       operationId: apitokens_update
       tags:
       - api_tokens
@@ -5642,7 +6381,7 @@ paths:
           description: Updated
   /api/user:
     get:
-      description: Get current user
+      summary: Get current user
       operationId: currentuser_get
       tags:
       - current_user
@@ -5656,7 +6395,7 @@ paths:
         '204':
           description: No authenticated user
     patch:
-      description: Update current user
+      summary: Update current user
       operationId: currentuser_update
       tags:
       - current_user
@@ -5675,7 +6414,7 @@ paths:
           description: Updated
   /api/user/org_memberships:
     get:
-      description: List current user org memberships
+      summary: List current user org memberships
       operationId: currentuser_listOrgMemberships
       tags:
       - current_user
@@ -5713,7 +6452,7 @@ paths:
           description: Ok
   /api/user/preferences:
     get:
-      description: Get current user preferences
+      summary: Get current user preferences
       operationId: currentuser_getPreferences
       tags:
       - current_user
@@ -5725,7 +6464,7 @@ paths:
                 $ref: '#/components/schemas/UserPreferences'
           description: Ok
     patch:
-      description: Update current user preferences
+      summary: Update current user preferences
       operationId: currentuser_updatePreferences
       tags:
       - current_user
@@ -5744,7 +6483,8 @@ paths:
           description: Updated
   /api/user/usage/aggregated:
     get:
-      description: Get current user aggregated usage
+      summary: Get aggregated usage
+      description: Get total aggregated usage for the current user.
       operationId: currentuser_getAggregatedUsage
       tags:
       - current_user
@@ -5770,7 +6510,8 @@ paths:
           description: Ok
   /api/users:
     get:
-      description: List users
+      summary: List users
+      description: Paginated list of users.
       operationId: users_list
       tags:
       - users
@@ -5820,7 +6561,8 @@ paths:
                 - $ref: '#/components/schemas/UserDetailedList'
           description: Ok
     post:
-      description: Create user
+      summary: Create user
+      description: Create a new user.
       operationId: users_create
       tags:
       - users
@@ -5839,7 +6581,8 @@ paths:
           description: Created
   /api/users/{user_id}:
     delete:
-      description: Delete user
+      summary: Delete user
+      description: Delete an user.
       operationId: users_delete
       tags:
       - users
@@ -5853,7 +6596,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get user
+      summary: Get user
+      description: Get an user.
       operationId: users_get
       tags:
       - users
@@ -5879,7 +6623,8 @@ paths:
                 - $ref: '#/components/schemas/UserDetailed'
           description: Ok
     patch:
-      description: Update user
+      summary: Update user
+      description: Update an user.
       operationId: users_update
       tags:
       - users
@@ -5904,7 +6649,8 @@ paths:
           description: Updated
   /api/workspaces:
     get:
-      description: List workspaces
+      summary: List workspaces
+      description: Paginated list of workspaces.
       operationId: workspaces_list
       tags:
       - workspaces
@@ -5913,7 +6659,6 @@ paths:
         name: owner_name
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
         required: false
       - in: query
         name: owner_id
@@ -5984,7 +6729,8 @@ paths:
                 $ref: '#/components/schemas/WorkspaceList'
           description: Ok
     post:
-      description: Create workspace
+      summary: Create workspace
+      description: Create a new workspace.
       operationId: workspaces_create
       tags:
       - workspaces
@@ -6003,7 +6749,8 @@ paths:
           description: Created
   /api/workspaces/{workspace_id}:
     delete:
-      description: Delete workspace
+      summary: Delete workspace
+      description: Delete a workspace.
       operationId: workspaces_delete
       tags:
       - workspaces
@@ -6023,7 +6770,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get workspace
+      summary: Get workspace
+      description: Get a workspace.
       operationId: workspaces_get
       tags:
       - workspaces
@@ -6041,7 +6789,8 @@ paths:
                 $ref: '#/components/schemas/Workspace'
           description: Ok
     patch:
-      description: Update workspace
+      summary: Update workspace
+      description: Update a workspace.
       operationId: workspaces_update
       tags:
       - workspaces
@@ -6066,7 +6815,8 @@ paths:
           description: Updated
   /api/workspaces/{workspace_id}/clusters:
     get:
-      description: Get clusters that a workspace has run on
+      summary: Get workspace cluster history
+      description: Get a list of clusters that the workspace has recently run on.
       operationId: workspaces_getClusterHistory
       tags:
       - workspaces
@@ -6085,8 +6835,9 @@ paths:
           description: Ok
   /api/workspaces/{workspace_id}/history:
     get:
-      description: Get workspace status history
-      operationId: workspaces_getStatusHistory
+      summary: Get workspace pod history
+      description: Get history of pods run for the workspace.
+      operationId: workspaces_getPodHistory
       tags:
       - workspaces
       parameters:
@@ -6110,8 +6861,9 @@ paths:
           description: Ok
   /api/workspaces/{workspace_id}/logs:
     get:
-      description: Get workspace historical logs
-      operationId: workspaces_getLogHistory
+      summary: Get workspace historical logs
+      description: Historical record of logs from the resource.
+      operationId: workspaces_getLogs
       tags:
       - workspaces
       parameters:
@@ -6124,36 +6876,41 @@ paths:
         name: pod_name
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: first_key
+        name: prev_key
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
-        name: last_key
+        name: next_key
         schema:
           type: string
-          nullable: true
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
         required: false
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HistoricLogs'
+                $ref: '#/components/schemas/HistoricLogList'
           description: Ok
   /api/workspaces/{workspace_id}/metrics:
     get:
-      description: Get workspace hardware metrics
+      summary: Get workspace metrics
+      description: Hardware utilization metrics.
       operationId: workspaces_getMetrics
       tags:
       - workspaces
@@ -6167,33 +6924,28 @@ paths:
         name: type
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: start
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: end
         schema:
           type: string
           format: date-time
-          nullable: true
         required: false
       - in: query
         name: resolution
         schema:
           type: string
-          nullable: true
         required: false
       - in: query
         name: cluster
         schema:
           type: string
-          nullable: true
         required: false
       responses:
         '200':
@@ -6204,7 +6956,7 @@ paths:
           description: Ok
   /api/workspaces/{workspace_id}/recipe:
     get:
-      description: Get workspace recipe
+      summary: Get workspace recipe
       operationId: workspaces_getRecipe
       tags:
       - workspaces
@@ -6229,7 +6981,8 @@ paths:
           description: Ok
   /api/workspaces/{workspace_id}/restart:
     post:
-      description: Restart workspace
+      summary: Restart workspace
+      description: Restart a running workspace.
       operationId: workspaces_restart
       tags:
       - workspaces
@@ -6254,7 +7007,8 @@ paths:
           description: Restarted
   /api/workspaces/{workspace_id}/routes:
     get:
-      description: List workspace routes
+      summary: List workspace routes
+      description: List ingress routes on the workspace.
       operationId: workspaces_listRoutes
       tags:
       - workspaces
@@ -6301,7 +7055,8 @@ paths:
                 $ref: '#/components/schemas/RouteList'
           description: Ok
     post:
-      description: Create workspace route
+      summary: Create workspace route
+      description: Add a new ingress route to the workspace.
       operationId: workspaces_createRoute
       tags:
       - workspaces
@@ -6326,7 +7081,8 @@ paths:
           description: Created
   /api/workspaces/{workspace_id}/routes/{route_id}:
     delete:
-      description: Delete workspace route
+      summary: Delete workspace route
+      description: Remove an ingress route from workspace.
       operationId: workspaces_deleteRoute
       tags:
       - workspaces
@@ -6345,7 +7101,8 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get workspace route
+      summary: Get workspace route
+      description: Get an ingress route.
       operationId: workspaces_getRoute
       tags:
       - workspaces
@@ -6368,7 +7125,8 @@ paths:
                 $ref: '#/components/schemas/Route'
           description: Ok
     patch:
-      description: Update workspace route
+      summary: Update workspace route
+      description: Edit the configuration of an ingress route.
       operationId: workspaces_updateRoute
       tags:
       - workspaces
@@ -6398,7 +7156,8 @@ paths:
           description: Updated
   /api/workspaces/{workspace_id}/runtimesummary:
     get:
-      description: Get workspace runtime summary
+      summary: Get workspace runtime summary
+      description: Summary of the current runtime status.
       operationId: workspaces_getRuntimeSummary
       tags:
       - workspaces
@@ -6423,7 +7182,7 @@ paths:
           description: Ok
   /api/workspaces/{workspace_id}/secrets:
     get:
-      description: List workspace secret attachments
+      summary: List workspace secret attachments
       operationId: workspaces_listSecretAttachments
       tags:
       - workspaces
@@ -6475,7 +7234,7 @@ paths:
                 $ref: '#/components/schemas/SecretAttachmentList'
           description: Ok
     post:
-      description: Create workspace secret attachment
+      summary: Create workspace secret attachment
       operationId: workspaces_createSecretAttachment
       tags:
       - workspaces
@@ -6500,7 +7259,7 @@ paths:
           description: Created
   /api/workspaces/{workspace_id}/secrets/{secret_attachment_id}:
     delete:
-      description: Delete workspace secret attachment
+      summary: Delete workspace secret attachment
       operationId: workspaces_deleteSecretAttachment
       tags:
       - workspaces
@@ -6519,7 +7278,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get workspace secret attachment
+      summary: Get workspace secret attachment
       operationId: workspaces_getSecretAttachment
       tags:
       - workspaces
@@ -6542,7 +7301,7 @@ paths:
                 $ref: '#/components/schemas/SecretAttachment'
           description: Ok
     patch:
-      description: Update workspace secret attachment
+      summary: Update workspace secret attachment
       operationId: workspaces_updateSecretAttachment
       tags:
       - workspaces
@@ -6572,7 +7331,7 @@ paths:
           description: Updated
   /api/workspaces/{workspace_id}/service_account:
     delete:
-      description: Delete workspace service account attachment
+      summary: Delete workspace service account attachment
       operationId: workspaces_deleteServiceAccountAttachment
       tags:
       - workspaces
@@ -6586,7 +7345,7 @@ paths:
         '204':
           description: Deleted
     get:
-      description: Get workspace service account attachment
+      summary: Get workspace service account attachment
       operationId: workspaces_getServiceAccountAttachment
       tags:
       - workspaces
@@ -6604,7 +7363,7 @@ paths:
                 $ref: '#/components/schemas/ServiceAccountAttachment'
           description: Ok
     put:
-      description: Create workspace service account attachment
+      summary: Create workspace service account attachment
       operationId: workspaces_createServiceAccountAttachment
       tags:
       - workspaces
@@ -6629,7 +7388,8 @@ paths:
           description: Created
   /api/workspaces/{workspace_id}/start:
     post:
-      description: Start workspace
+      summary: Start workspace
+      description: Run a workspace.
       operationId: workspaces_start
       tags:
       - workspaces
@@ -6654,7 +7414,8 @@ paths:
           description: Started
   /api/workspaces/{workspace_id}/stop:
     post:
-      description: Stop workspace
+      summary: Stop workspace
+      description: Stop a running workspace.
       operationId: workspaces_stop
       tags:
       - workspaces
@@ -6673,7 +7434,7 @@ paths:
           description: Stopped
   /api/workspaces/{workspace_id}/template:
     get:
-      description: Get workspace resource template
+      summary: Get workspace resource template
       operationId: workspaces_getResourceTemplate
       tags:
       - workspaces
@@ -6691,7 +7452,7 @@ paths:
                 $ref: '#/components/schemas/ResourceTemplate'
           description: Ok
     patch:
-      description: Update workspace resource template
+      summary: Update workspace resource template
       operationId: workspaces_updateResourceTemplate
       tags:
       - workspaces
@@ -6709,7 +7470,7 @@ paths:
                 $ref: '#/components/schemas/ResourceTemplate'
           description: Ok
     post:
-      description: Create workspace resource template
+      summary: Create workspace resource template
       operationId: workspaces_createResourceTemplate
       tags:
       - workspaces
@@ -6728,7 +7489,7 @@ paths:
           description: Ok
   /api/workspaces/{workspace_id}/token:
     get:
-      description: Get workspace resource API token info
+      summary: Get workspace API token info
       operationId: workspaces_getTokenInfo
       tags:
       - workspaces
@@ -6746,8 +7507,8 @@ paths:
                 $ref: '#/components/schemas/ResourceTokenInfo'
           description: Ok
     patch:
-      description: Update and rotate workspace resource API token. Invalidates existing
-        token.
+      summary: Update workspace API token
+      description: Update API token scope on the workspace. Invalidates existing tokens.
       operationId: workspaces_updateToken
       tags:
       - workspaces
@@ -6770,7 +7531,8 @@ paths:
                 $ref: '#/components/schemas/ResourceTokenInfo'
           description: Updated
     post:
-      description: Rotate workspace resource API token. Invalidates existing token.
+      summary: Rotate workspace API token
+      description: Invalidate existing API tokens for the workspace.
       operationId: workspaces_rotateToken
       tags:
       - workspaces
@@ -6789,7 +7551,8 @@ paths:
           description: Rotated
   /api/workspaces/{workspace_id}/viewers:
     get:
-      description: List workspace viewers
+      summary: List workspace viewers
+      description: List users and groups with view permissions.
       operationId: workspaces_listViewers
       tags:
       - workspaces
@@ -6836,7 +7599,8 @@ paths:
                 $ref: '#/components/schemas/ViewerList'
           description: Ok
     post:
-      description: Create workspace viewer
+      summary: Create workspace viewer
+      description: Grant a user or group access to routes on the workspace.
       operationId: workspaces_createViewer
       tags:
       - workspaces
@@ -6861,7 +7625,8 @@ paths:
           description: Created
   /api/workspaces/{workspace_id}/viewers/{viewer_id}:
     delete:
-      description: Delete workspace viewer
+      summary: Delete workspace viewer
+      description: Remove a viewer's access permissions.
       operationId: workspaces_deleteViewer
       tags:
       - workspaces
@@ -6881,7 +7646,7 @@ paths:
           description: Deleted
   /api/workspaces/info:
     get:
-      description: Get workspace server options
+      summary: Get workspace server options
       operationId: workspaces_getServerOptions
       tags:
       - workspaces
@@ -6895,13 +7660,6 @@ paths:
 openapi: 3.0.2
 components:
   schemas:
-    RecipeType:
-      type: string
-      enum:
-      - workspace
-      - deployment
-      - job
-      - image
     Recipe:
       discriminator:
         propertyName: type
@@ -6916,20 +7674,12 @@ components:
       - $ref: '#/components/schemas/WorkspaceRecipe'
       - $ref: '#/components/schemas/ImageRecipe'
       type: object
-      properties:
-        schema_version:
-          type: string
-          default: 2025.10.01
-        type:
-          $ref: '#/components/schemas/RecipeType'
-      required:
-      - type
+      properties: {}
     OwnerByName:
       type: object
       properties:
         name:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
       required:
       - name
     OwnerById:
@@ -7655,12 +8405,6 @@ components:
       required:
       - spec
       - type
-    ResourceRecipeType:
-      type: string
-      enum:
-      - workspace
-      - deployment
-      - job
     ResourceRecipe:
       discriminator:
         propertyName: type
@@ -7673,24 +8417,48 @@ components:
       - $ref: '#/components/schemas/JobRecipe'
       - $ref: '#/components/schemas/WorkspaceRecipe'
       type: object
-      properties:
-        schema_version:
-          type: string
-          default: 2025.10.01
-        type:
-          $ref: '#/components/schemas/ResourceRecipeType'
-      required:
-      - type
+      properties: {}
     AuthorizationGrant:
+      discriminator:
+        propertyName: grant_type
+        mapping:
+          authorization_code: '#/components/schemas/AuthorizationCodeGrant'
+          refresh_token: '#/components/schemas/AuthorizationRefreshGrant'
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizationCodeGrant'
+      - $ref: '#/components/schemas/AuthorizationRefreshGrant'
+      type: object
+      properties: {}
+    AuthorizationCodeGrant:
       type: object
       properties:
         grant_type:
           type: string
           enum:
           - authorization_code
+        code:
+          type: string
+        code_verifier:
+          type: string
+        redirect_uri:
+          type: string
+      required:
+      - code
+      - code_verifier
+      - grant_type
+      - redirect_uri
+    AuthorizationRefreshGrant:
+      type: object
+      properties:
+        grant_type:
+          type: string
+          enum:
           - refresh_token
+        refresh_token:
+          type: string
       required:
       - grant_type
+      - refresh_token
     AuthorizationTokenResponse:
       type: object
       properties:
@@ -7724,6 +8492,13 @@ components:
       - refresh_expires_in
       - refresh_token
       - token_type
+    ResourceType:
+      type: string
+      enum:
+      - deployment
+      - job
+      - workspace
+      - dask
     IdentityType:
       type: string
       enum:
@@ -7795,8 +8570,8 @@ components:
           type: string
           readOnly: true
         resource_type:
-          type: string
           readOnly: true
+          $ref: '#/components/schemas/ResourceType'
         tags:
           type: object
           readOnly: true
@@ -8002,34 +8777,55 @@ components:
       required:
       - maximum
       - minimum
+    DaskComponents:
+      type: string
+      enum:
+      - kubecluster
+      - scheduler
+      - worker
     PodHistory:
       type: object
       properties:
         pod_name:
           type: string
+          readOnly: true
         status:
           type: string
+          readOnly: true
         last_seen:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
         start_time:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
           nullable: true
         end_time:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
           nullable: true
         label_job_name:
           type: string
+          readOnly: true
           nullable: true
+      required:
+      - end_time
+      - last_seen
+      - pod_name
+      - start_time
+      - status
     ResourceHistory:
       type: object
       properties:
         pods:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/PodHistory'
+      required:
+      - pods
     Condition:
       type: object
       properties:
@@ -8298,17 +9094,41 @@ components:
       - name
       - namespace
       - uid
-    HistoricLogs:
+    HistoricLog:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        content:
+          type: string
+          readOnly: true
+        pod_name:
+          type: string
+          readOnly: true
+        container_name:
+          type: string
+          readOnly: true
+      required:
+      - container_name
+      - content
+      - pod_name
+      - timestamp
+    HistoricLogList:
       type: object
       properties:
         logs:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/HistoricLog'
+        prev_key:
           type: string
-        next_first_key:
+          readOnly: true
+        next_key:
           type: string
-          nullable: true
-        next_last_key:
-          type: string
-          nullable: true
+          readOnly: true
       required:
       - logs
     Stats:
@@ -8316,65 +9136,95 @@ components:
       properties:
         avg:
           type: number
+          readOnly: true
         min:
           type: number
+          readOnly: true
         max:
           type: number
+          readOnly: true
         last:
           type: number
+          readOnly: true
+      required:
+      - avg
+      - last
+      - max
+      - min
     DataPoint:
       type: object
       properties:
         datetime:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
         value:
           type: number
+          readOnly: true
+      required:
+      - datetime
+      - value
     MetricSeries:
       type: object
       properties:
         pod_name:
           type: string
+          readOnly: true
         labels:
           type: object
+          readOnly: true
           additionalProperties:
             type: string
         stats:
-          $ref: '#/components/schemas/Stats'
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Stats'
         data:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/DataPoint'
+      required:
+      - data
+      - labels
+      - pod_name
+      - stats
     Metrics:
       type: object
       properties:
         cpu:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/MetricSeries'
           nullable: true
         memory:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/MetricSeries'
           nullable: true
         network_in:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/MetricSeries'
           nullable: true
         network_out:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/MetricSeries'
           nullable: true
         gpu:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/MetricSeries'
           nullable: true
         gpu_memory:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/MetricSeries'
           nullable: true
@@ -8657,8 +9507,8 @@ components:
           type: string
           readOnly: true
         resource_type:
-          type: string
           readOnly: true
+          $ref: '#/components/schemas/ResourceType'
         tags:
           type: object
           readOnly: true
@@ -8820,8 +9670,8 @@ components:
           type: boolean
           readOnly: true
         resource_type:
-          type: string
           readOnly: true
+          $ref: '#/components/schemas/ResourceType'
         size_display:
           type: string
           readOnly: true
@@ -9053,9 +9903,12 @@ components:
       properties:
         clusters:
           type: array
+          readOnly: true
           items:
             type: string
             nullable: true
+      required:
+      - clusters
     DeploymentStart:
       type: object
       properties:
@@ -9309,65 +10162,61 @@ components:
           type: string
       required:
       - service_account_id
+    ResourceTemplateAccessLevel:
+      type: string
+      enum:
+      - account
+      - org
+      - owner
     ResourceTemplate:
       type: object
       properties:
-        owner_id:
+        id:
           type: string
-          writeOnly: true
-        owner_name:
+          readOnly: true
+        name:
           type: string
-          writeOnly: true
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
-        user_id:
-          type: string
-          writeOnly: true
-          nullable: true
-        group_id:
-          type: string
-          writeOnly: true
-          nullable: true
-        org_id:
-          type: string
-          writeOnly: true
+          readOnly: true
         owner:
           readOnly: true
           allOf:
           - $ref: '#/components/schemas/Owner'
-        name:
-          type: string
-          minLength: 1
         description:
           type: string
-        thumbnail_image_url:
-          type: string
-          nullable: true
-        weight:
-          type: integer
-          nullable: true
-        recipe:
-          type: object
-          additionalProperties: {}
-        access:
-          type: string
-          enum:
-          - account
-          - org
-          - owner
-        id:
-          type: string
-          readOnly: true
-        editable:
-          type: boolean
           readOnly: true
         created_at:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
           readOnly: true
+        thumbnail_image_url:
+          type: string
+          readOnly: true
+          nullable: true
+        weight:
+          type: integer
+          readOnly: true
+          nullable: true
+        recipe:
+          type: object
+          readOnly: true
+          additionalProperties: {}
+        access:
+          readOnly: true
+          $ref: '#/components/schemas/ResourceTemplateAccessLevel'
+        editable:
+          type: boolean
+          readOnly: true
       required:
+      - access
+      - created_at
       - description
+      - editable
+      - id
       - name
+      - owner
       - recipe
+      - thumbnail_image_url
+      - weight
     Identity:
       type: object
       properties:
@@ -9626,9 +10475,6 @@ components:
         saturn_env:
           type: string
           readOnly: true
-        resource_type:
-          type: string
-          readOnly: true
         editable:
           type: boolean
           readOnly: true
@@ -9641,7 +10487,6 @@ components:
       - image
       - image_uri
       - is_external
-      - resource_type
       - status
       - version
     DefaultImages:
@@ -10272,6 +11117,43 @@ components:
       - connections
       - disable_native_login
       - enabled
+    WhiteLabelConfiguration:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        brand_name:
+          type: string
+        brand_short_name:
+          type: string
+          default: null
+          nullable: true
+        logo_icon_url:
+          type: string
+        logo_full_url:
+          type: string
+        favicon_url:
+          type: string
+          default: null
+          nullable: true
+        primary_color:
+          type: string
+        support_email:
+          type: string
+        website_url:
+          type: string
+        docs_url:
+          type: string
+          default: null
+          nullable: true
+      required:
+      - brand_name
+      - enabled
+      - logo_full_url
+      - logo_icon_url
+      - primary_color
+      - support_email
+      - website_url
     AppInfo:
       type: object
       properties:
@@ -10282,7 +11164,7 @@ components:
         is_enterprise:
           type: boolean
         customer_name:
-          type: boolean
+          type: string
         stripe_public_key:
           type: boolean
           nullable: true
@@ -10306,6 +11188,8 @@ components:
           type: boolean
         populate_examples:
           type: boolean
+        whitelabel:
+          $ref: '#/components/schemas/WhiteLabelConfiguration'
         user_tracking:
           type: boolean
       required:
@@ -10325,6 +11209,7 @@ components:
       - stripe_public_key
       - user_tracking
       - version
+      - whitelabel
     ServerOptions:
       type: object
       properties:
@@ -10513,8 +11398,8 @@ components:
           type: boolean
           readOnly: true
         resource_type:
-          type: string
           readOnly: true
+          $ref: '#/components/schemas/ResourceType'
         created_at:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
@@ -11191,6 +12076,323 @@ components:
           additionalProperties: {}
       required:
       - topic
+    ObjectStorageDirDetails:
+      type: object
+      properties:
+        prefix:
+          type: string
+          readOnly: true
+      required:
+      - prefix
+    ObjectStorageFileDetails:
+      type: object
+      properties:
+        file_path:
+          type: string
+          readOnly: true
+        size:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - file_path
+      - size
+      - updated_at
+    ObjectStorageList:
+      type: object
+      properties:
+        dirs:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ObjectStorageDirDetails'
+        files:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ObjectStorageFileDetails'
+        next_last_key:
+          type: string
+          default: null
+          readOnly: true
+          nullable: true
+      required:
+      - dirs
+      - files
+      - next_last_key
+    ObjectStorageBulkReference:
+      type: object
+      properties:
+        file_paths:
+          type: array
+          minItems: 1
+          maxItems: 1000
+          items:
+            type: string
+        owner:
+          $ref: '#/components/schemas/OwnerReference'
+      required:
+      - file_paths
+    ObjectStorageBulkDeleteResults:
+      type: object
+      properties:
+        failed_file_paths:
+          type: array
+          readOnly: true
+          items:
+            type: string
+      required:
+      - failed_file_paths
+    ObjectStoragePresignedDownload:
+      type: object
+      properties:
+        file_path:
+          type: string
+          readOnly: true
+        size:
+          type: integer
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        url:
+          type: string
+          format: url
+          readOnly: true
+      required:
+      - file_path
+      - size
+      - updated_at
+      - url
+    ObjectStorageBulkDownload:
+      type: object
+      properties:
+        files:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ObjectStoragePresignedDownload'
+      required:
+      - files
+    ObjectStorageReference:
+      type: object
+      properties:
+        file_path:
+          type: string
+        owner:
+          $ref: '#/components/schemas/OwnerReference'
+      required:
+      - file_path
+    ObjectStorageSharedOwner:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        count:
+          type: integer
+          readOnly: true
+      required:
+      - count
+      - id
+      - name
+    ObjectStorageSharedOwnerList:
+      type: object
+      properties:
+        owners:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ObjectStorageSharedOwner'
+        next_last_key:
+          type: string
+          default: null
+          readOnly: true
+          nullable: true
+      required:
+      - next_last_key
+      - owners
+    ObjectStorageCopySource:
+      type: object
+      properties:
+        file_path:
+          type: string
+          readOnly: true
+        owner_name:
+          type: string
+          readOnly: true
+      required:
+      - file_path
+      - owner_name
+    ObjectStorageUpload:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        file_path:
+          type: string
+          readOnly: true
+        size:
+          type: integer
+          readOnly: true
+          nullable: true
+        part_size:
+          type: integer
+          readOnly: true
+        expires_at:
+          type: string
+          format: date-time
+          readOnly: true
+        copy_source:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ObjectStorageCopySource'
+          nullable: true
+      required:
+      - expires_at
+      - file_path
+      - id
+      - part_size
+      - size
+    ObjectStorageUploadList:
+      type: object
+      properties:
+        uploads:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ObjectStorageUpload'
+      required:
+      - uploads
+    ObjectStorageUploadCreate:
+      type: object
+      properties:
+        file_path:
+          type: string
+        owner:
+          $ref: '#/components/schemas/OwnerReference'
+        size:
+          type: integer
+          default: null
+          minimum: 0
+          nullable: true
+        part_size:
+          type: integer
+        copy_source:
+          default: null
+          allOf:
+          - $ref: '#/components/schemas/ObjectStorageReference'
+          nullable: true
+      required:
+      - file_path
+    ObjectStoragePresignedPart:
+      type: object
+      properties:
+        url:
+          type: string
+          format: url
+          readOnly: true
+        part_number:
+          type: integer
+          readOnly: true
+        size:
+          type: integer
+          readOnly: true
+        headers:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+      required:
+      - headers
+      - part_number
+      - size
+      - url
+    ObjectStoragePresignedUpload:
+      type: object
+      properties:
+        object_storage_upload_id:
+          type: string
+          readOnly: true
+        is_copy:
+          type: boolean
+          default: false
+          readOnly: true
+        parts:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ObjectStoragePresignedPart'
+      required:
+      - is_copy
+      - object_storage_upload_id
+      - parts
+    ObjectStorageCompletePart:
+      type: object
+      properties:
+        etag:
+          type: string
+        part_number:
+          type: integer
+      required:
+      - etag
+      - part_number
+    ObjectStorageCompletedUpload:
+      type: object
+      properties:
+        parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectStorageCompletePart'
+      required:
+      - parts
+    ObjectStorageUsageStats:
+      type: object
+      properties:
+        used_bytes:
+          type: integer
+          readOnly: true
+        reserved_bytes:
+          type: integer
+          readOnly: true
+        file_count:
+          type: integer
+          readOnly: true
+        active_uploads:
+          type: integer
+          readOnly: true
+        max_bytes:
+          type: integer
+          readOnly: true
+          nullable: true
+        max_files:
+          type: integer
+          readOnly: true
+          nullable: true
+        max_uploads:
+          type: integer
+          readOnly: true
+      required:
+      - active_uploads
+      - file_count
+      - max_bytes
+      - max_files
+      - max_uploads
+      - reserved_bytes
+      - used_bytes
     Org:
       type: object
       properties:
@@ -11315,6 +12517,97 @@ components:
           nullable: true
         locked:
           type: boolean
+    OrgInvitation:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        invitee_name:
+          type: string
+          readOnly: true
+          nullable: true
+        invitor:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/User'
+          nullable: true
+        invitor_name:
+          type: string
+          readOnly: true
+          nullable: true
+        org_id:
+          type: string
+          readOnly: true
+        org_name:
+          type: string
+          readOnly: true
+        status:
+          readOnly: true
+          $ref: '#/components/schemas/InvitationStatus'
+        expiration:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          nullable: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+      required:
+      - created_at
+      - email
+      - expiration
+      - id
+      - invitee_name
+      - invitor
+      - invitor_name
+      - org_id
+      - org_name
+      - status
+    OrgInvitationList:
+      type: object
+      properties:
+        invitations:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/OrgInvitation'
+        prev_key:
+          type: string
+          readOnly: true
+        next_key:
+          type: string
+          readOnly: true
+      required:
+      - invitations
+    OrgInvitationCreate:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        invitee_name:
+          type: string
+          default: null
+          nullable: true
+        invitor_name:
+          type: string
+          default: null
+          nullable: true
+      required:
+      - email
+    OrgInvitationUpdate:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/InvitationStatus'
+      required:
+      - status
     OrgMemberCreate:
       type: object
       properties:
@@ -12366,8 +13659,8 @@ components:
           type: boolean
           readOnly: true
         resource_type:
-          type: string
           readOnly: true
+          $ref: '#/components/schemas/ResourceType'
         size_display:
           type: string
           readOnly: true

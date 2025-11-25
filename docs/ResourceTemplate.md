@@ -5,21 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owner_id** | **str** |  | [optional] 
-**owner_name** | **str** |  | [optional] 
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**org_id** | **str** |  | [optional] 
-**owner** | [**Owner**](Owner.md) |  | [optional] [readonly] 
-**name** | **str** |  | 
-**description** | **str** |  | 
-**thumbnail_image_url** | **str** |  | [optional] 
-**weight** | **int** |  | [optional] 
-**recipe** | **Dict[str, object]** |  | 
-**access** | **str** |  | [optional] 
-**id** | **str** |  | [optional] [readonly] 
-**editable** | **bool** |  | [optional] [readonly] 
-**created_at** | **str** |  | [optional] [readonly] 
+**id** | **str** |  | [readonly] 
+**name** | **str** |  | [readonly] 
+**owner** | [**Owner**](Owner.md) |  | [readonly] 
+**description** | **str** |  | [readonly] 
+**created_at** | **str** |  | [readonly] 
+**thumbnail_image_url** | **str** |  | [readonly] 
+**weight** | **int** |  | [readonly] 
+**recipe** | **Dict[str, object]** |  | [readonly] 
+**access** | [**ResourceTemplateAccessLevel**](ResourceTemplateAccessLevel.md) |  | 
+**editable** | **bool** |  | [readonly] 
 
 ## Example
 

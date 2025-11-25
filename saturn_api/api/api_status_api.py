@@ -52,9 +52,8 @@ class ApiStatusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiStatus:
-        """get
+        """Get API status
 
-        Get API status
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -115,9 +114,8 @@ class ApiStatusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApiStatus]:
-        """get
+        """Get API status
 
-        Get API status
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -178,9 +176,8 @@ class ApiStatusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get API status
 
-        Get API status
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

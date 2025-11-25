@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**avg** | **float** |  | [optional] 
-**min** | **float** |  | [optional] 
-**max** | **float** |  | [optional] 
-**last** | **float** |  | [optional] 
+**avg** | **float** |  | [readonly] 
+**min** | **float** |  | [readonly] 
+**max** | **float** |  | [readonly] 
+**last** | **float** |  | [readonly] 
 
 ## Example
 

@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **created_at** | **str** |  | [readonly] 
 **updated_at** | **str** |  | [readonly] 
 **require_restart** | **bool** |  | [readonly] 
-**resource_type** | **str** |  | [readonly] 
+**resource_type** | [**ResourceType**](ResourceType.md) |  | 
 **size_display** | **str** |  | [readonly] 
 **dask_cluster** | [**DaskClusterNested**](DaskClusterNested.md) |  | [optional] [readonly] 
 **status** | **str** |  | [readonly] 

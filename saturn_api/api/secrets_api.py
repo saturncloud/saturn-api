@@ -60,9 +60,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Secret:
-        """create
+        """Create secret
 
-        Create secret
+        Create a new secret.
 
         :param secret_create: (required)
         :type secret_create: SecretCreate
@@ -127,9 +127,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Secret]:
-        """create
+        """Create secret
 
-        Create secret
+        Create a new secret.
 
         :param secret_create: (required)
         :type secret_create: SecretCreate
@@ -194,9 +194,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create
+        """Create secret
 
-        Create secret
+        Create a new secret.
 
         :param secret_create: (required)
         :type secret_create: SecretCreate
@@ -334,9 +334,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete
+        """Delete secret
 
-        Delete secret
+        Delete a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -401,9 +401,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete
+        """Delete secret
 
-        Delete secret
+        Delete a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -468,9 +468,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete
+        """Delete secret
 
-        Delete secret
+        Delete a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -588,9 +588,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Secret:
-        """get
+        """Get secret
 
-        Get secret
+        Get a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -655,9 +655,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Secret]:
-        """get
+        """Get secret
 
-        Get secret
+        Get a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -722,9 +722,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get
+        """Get secret
 
-        Get secret
+        Get a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -835,7 +835,7 @@ class SecretsApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -860,9 +860,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SecretList:
-        """list
+        """List secrets
 
-        List secrets
+        Paginated list of secrets.
 
         :param owner_name:
         :type owner_name: str
@@ -946,7 +946,7 @@ class SecretsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -971,9 +971,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SecretList]:
-        """list
+        """List secrets
 
-        List secrets
+        Paginated list of secrets.
 
         :param owner_name:
         :type owner_name: str
@@ -1057,7 +1057,7 @@ class SecretsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Optional[StrictStr] = None,
         owner_id: Optional[StrictStr] = None,
         user_id: Optional[StrictStr] = None,
         group_id: Optional[StrictStr] = None,
@@ -1082,9 +1082,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list
+        """List secrets
 
-        List secrets
+        Paginated list of secrets.
 
         :param owner_name:
         :type owner_name: str
@@ -1300,9 +1300,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Secret:
-        """update
+        """Update secret
 
-        Update secret
+        Update a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -1371,9 +1371,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Secret]:
-        """update
+        """Update secret
 
-        Update secret
+        Update a secret.
 
         :param secret_id: (required)
         :type secret_id: str
@@ -1442,9 +1442,9 @@ class SecretsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update
+        """Update secret
 
-        Update secret
+        Update a secret.
 
         :param secret_id: (required)
         :type secret_id: str

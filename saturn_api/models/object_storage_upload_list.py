@@ -17,19 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List
+from saturn_api.models.object_storage_upload import ObjectStorageUpload
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
-class HistoricLogs(BaseModel):
+class ObjectStorageUploadList(BaseModel):
     """
-    HistoricLogs
+    ObjectStorageUploadList
     """ # noqa: E501
-    logs: StrictStr
-    next_first_key: Optional[StrictStr] = None
-    next_last_key: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["logs", "next_first_key", "next_last_key"]
+    uploads: List[ObjectStorageUpload]
+    __properties: ClassVar[List[str]] = ["uploads"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +48,7 @@ class HistoricLogs(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of HistoricLogs from a JSON string"""
+        """Create an instance of ObjectStorageUploadList from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -61,8 +60,10 @@ class HistoricLogs(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "uploads",
         ])
 
         _dict = self.model_dump(
@@ -70,21 +71,18 @@ class HistoricLogs(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if next_first_key (nullable) is None
-        # and model_fields_set contains the field
-        if self.next_first_key is None and "next_first_key" in self.model_fields_set:
-            _dict['next_first_key'] = None
-
-        # set to None if next_last_key (nullable) is None
-        # and model_fields_set contains the field
-        if self.next_last_key is None and "next_last_key" in self.model_fields_set:
-            _dict['next_last_key'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of each item in uploads (list)
+        _items = []
+        if self.uploads:
+            for _item_uploads in self.uploads:
+                if _item_uploads:
+                    _items.append(_item_uploads.to_dict())
+            _dict['uploads'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of HistoricLogs from a dict"""
+        """Create an instance of ObjectStorageUploadList from a dict"""
         if obj is None:
             return None
 
@@ -92,9 +90,7 @@ class HistoricLogs(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "logs": obj.get("logs"),
-            "next_first_key": obj.get("next_first_key"),
-            "next_last_key": obj.get("next_last_key")
+            "uploads": [ObjectStorageUpload.from_dict(_item) for _item in obj["uploads"]] if obj.get("uploads") is not None else None
         })
         return _obj
 

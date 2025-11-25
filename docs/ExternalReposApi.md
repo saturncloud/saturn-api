@@ -4,17 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ExternalReposApi.md#create) | **POST** /api/external_repos | 
-[**delete**](ExternalReposApi.md#delete) | **DELETE** /api/external_repos/{external_repo_id} | 
-[**get**](ExternalReposApi.md#get) | **GET** /api/external_repos/{external_repo_id} | 
-[**list**](ExternalReposApi.md#list) | **GET** /api/external_repos | 
-[**update**](ExternalReposApi.md#update) | **PATCH** /api/external_repos/{external_repo_id} | 
+[**create**](ExternalReposApi.md#create) | **POST** /api/external_repos | Create external repo
+[**delete**](ExternalReposApi.md#delete) | **DELETE** /api/external_repos/{external_repo_id} | Delete external repo
+[**get**](ExternalReposApi.md#get) | **GET** /api/external_repos/{external_repo_id} | Get external repo
+[**list**](ExternalReposApi.md#list) | **GET** /api/external_repos | List external repos
+[**update**](ExternalReposApi.md#update) | **PATCH** /api/external_repos/{external_repo_id} | Update external repo
 
 
 # **create**
 > ExternalRepo create(external_repo_create)
 
 Create external repo
+
+Create a new external repo.
 
 ### Example
 
@@ -50,6 +52,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_create = saturn_api.ExternalRepoCreate() # ExternalRepoCreate | 
 
     try:
+        # Create external repo
         api_response = await api_instance.create(external_repo_create)
         print("The response of ExternalReposApi->create:\n")
         pprint(api_response)
@@ -92,6 +95,8 @@ Name | Type | Description  | Notes
 
 Delete external repo
 
+Delete an external repo.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -124,6 +129,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_id = 'external_repo_id_example' # str | 
 
     try:
+        # Delete external repo
         await api_instance.delete(external_repo_id)
     except Exception as e:
         print("Exception when calling ExternalReposApi->delete: %s\n" % e)
@@ -164,6 +170,8 @@ void (empty response body)
 
 Get external repo
 
+Get an external repo.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -197,6 +205,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_id = 'external_repo_id_example' # str | 
 
     try:
+        # Get external repo
         api_response = await api_instance.get(external_repo_id)
         print("The response of ExternalReposApi->get:\n")
         pprint(api_response)
@@ -238,6 +247,8 @@ Name | Type | Description  | Notes
 > ExternalRepoList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, remote_url=remote_url, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List external repos
+
+Paginated list of external repos.
 
 ### Example
 
@@ -282,6 +293,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
+        # List external repos
         api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, remote_url=remote_url, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of ExternalReposApi->list:\n")
         pprint(api_response)
@@ -334,6 +346,8 @@ Name | Type | Description  | Notes
 
 Update external repo
 
+Update an external repo.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -369,6 +383,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     external_repo_update = saturn_api.ExternalRepoUpdate() # ExternalRepoUpdate | 
 
     try:
+        # Update external repo
         api_response = await api_instance.update(external_repo_id, external_repo_update)
         print("The response of ExternalReposApi->update:\n")
         pprint(api_response)
