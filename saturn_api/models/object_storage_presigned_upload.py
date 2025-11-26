@@ -97,7 +97,7 @@ class ObjectStoragePresignedUpload(BaseModel):
 
         _obj = cls.model_validate({
             "object_storage_upload_id": obj.get("object_storage_upload_id"),
-            "is_copy": obj.get("is_copy") if obj.get("is_copy") is not None else False,
+            "is_copy": obj.get("is_copy"),
             "parts": [ObjectStoragePresignedPart.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None
         })
         return _obj

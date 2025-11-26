@@ -5,23 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**namespace** | **str** |  | 
-**uid** | **str** |  | 
-**controller_uid** | **str** |  | [optional] 
-**controller_kind** | **str** |  | [optional] 
-**labels** | **Dict[str, str]** |  | [optional] 
-**annotations** | **Dict[str, str]** |  | [optional] 
-**conditions** | [**List[Condition]**](Condition.md) |  | [optional] 
-**started_at** | **datetime** |  | [optional] 
-**deleted_at** | **datetime** |  | [optional] 
-**status** | **str** |  | [optional] [default to 'stopped']
-**scale** | **int** |  | [optional] [default to 0]
-**running_count** | **int** |  | [optional] [default to 0]
-**active_count** | **int** |  | [optional] [default to 0]
-**pod_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [optional] 
-**pod_annotations** | **Dict[str, str]** |  | [optional] 
-**disk_space** | **str** |  | 
+**name** | **str** |  | [readonly] 
+**namespace** | **str** |  | [readonly] 
+**uid** | **str** |  | [readonly] 
+**controller_uid** | **str** |  | [readonly] 
+**controller_kind** | **str** |  | [readonly] 
+**labels** | **Dict[str, str]** |  | [readonly] 
+**annotations** | **Dict[str, str]** |  | [readonly] 
+**conditions** | [**List[Condition]**](Condition.md) |  | [readonly] 
+**started_at** | **datetime** |  | [readonly] 
+**deleted_at** | **datetime** |  | [readonly] 
+**status** | [**DeploymentStatus**](DeploymentStatus.md) |  | 
+**scale** | **int** |  | [readonly] 
+**running_count** | **int** |  | [readonly] 
+**active_count** | **int** |  | [readonly] 
+**pod_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [readonly] 
+**disk_space** | **str** |  | [readonly] 
 
 ## Example
 

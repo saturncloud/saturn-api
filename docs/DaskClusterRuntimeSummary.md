@@ -5,22 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**namespace** | **str** |  | 
-**uid** | **str** |  | 
-**controller_uid** | **str** |  | [optional] 
-**controller_kind** | **str** |  | [optional] 
-**labels** | **Dict[str, str]** |  | [optional] 
-**annotations** | **Dict[str, str]** |  | [optional] 
-**conditions** | [**List[Condition]**](Condition.md) |  | [optional] 
-**started_at** | **datetime** |  | [optional] 
-**deleted_at** | **datetime** |  | [optional] 
-**status** | **str** |  | [optional] [default to 'stopped']
-**kubecluster_summary** | [**DeploymentRuntimeSummary**](DeploymentRuntimeSummary.md) |  | 
-**scheduler_summary** | [**PodRuntimeSummary**](PodRuntimeSummary.md) |  | 
-**worker_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [optional] 
-**worker_count** | **int** |  | [optional] [default to 0]
-**errors** | **List[str]** |  | [optional] 
+**name** | **str** |  | [readonly] 
+**namespace** | **str** |  | [readonly] 
+**uid** | **str** |  | [readonly] 
+**controller_uid** | **str** |  | [readonly] 
+**controller_kind** | **str** |  | [readonly] 
+**labels** | **Dict[str, str]** |  | [readonly] 
+**annotations** | **Dict[str, str]** |  | [readonly] 
+**conditions** | [**List[Condition]**](Condition.md) |  | [readonly] 
+**started_at** | **datetime** |  | [readonly] 
+**deleted_at** | **datetime** |  | [readonly] 
+**status** | [**PodStatus**](PodStatus.md) |  | 
+**kubecluster_summary** | [**DeploymentRuntimeSummary**](DeploymentRuntimeSummary.md) |  | [readonly] 
+**scheduler_summary** | [**PodRuntimeSummary**](PodRuntimeSummary.md) |  | [readonly] 
+**worker_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [readonly] 
+**worker_count** | **int** |  | [readonly] 
+**errors** | **List[str]** |  | [readonly] 
 
 ## Example
 

@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **gpu** | **int** |  | [optional] [default to 0]
 **gpu_type** | **str** |  | [optional] 
 **hardware_type** | [**HardwareType**](HardwareType.md) |  | 
-**cloud** | **str** |  | [default to '']
-**display** | **str** |  | [readonly] [default to '']
-**display_name** | **str** |  | [default to '']
+**cloud** | **str** |  | 
+**display** | **str** |  | [readonly] 
+**display_name** | **str** |  | 
 **price_per_hour** | **float** |  | [optional] 
 **description** | **str** |  | [optional] [default to '']
 

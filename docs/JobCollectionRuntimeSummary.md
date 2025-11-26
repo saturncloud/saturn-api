@@ -5,20 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**namespace** | **str** |  | 
-**uid** | **str** |  | 
-**controller_uid** | **str** |  | [optional] 
-**controller_kind** | **str** |  | [optional] 
-**labels** | **Dict[str, str]** |  | [optional] 
-**annotations** | **Dict[str, str]** |  | [optional] 
-**conditions** | [**List[Condition]**](Condition.md) |  | [optional] 
-**started_at** | **datetime** |  | [optional] 
-**deleted_at** | **datetime** |  | [optional] 
-**status** | **str** |  | [optional] [default to 'stopped']
-**scale** | **int** |  | [optional] [default to 0]
-**scheduled** | **bool** |  | [optional] [default to False]
-**job_summaries** | [**List[JobRuntimeSummary]**](JobRuntimeSummary.md) |  | [optional] 
+**name** | **str** |  | [readonly] 
+**namespace** | **str** |  | [readonly] 
+**uid** | **str** |  | [readonly] 
+**controller_uid** | **str** |  | [readonly] 
+**controller_kind** | **str** |  | [readonly] 
+**labels** | **Dict[str, str]** |  | [readonly] 
+**annotations** | **Dict[str, str]** |  | [readonly] 
+**conditions** | [**List[Condition]**](Condition.md) |  | [readonly] 
+**started_at** | **datetime** |  | [readonly] 
+**deleted_at** | **datetime** |  | [readonly] 
+**status** | [**JobStatus**](JobStatus.md) |  | 
+**scale** | **int** |  | [readonly] 
+**scheduled** | **bool** |  | [readonly] 
+**job_summaries** | [**List[JobRuntimeSummary]**](JobRuntimeSummary.md) |  | [readonly] 
 
 ## Example
 

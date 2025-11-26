@@ -5,23 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**namespace** | **str** |  | 
-**uid** | **str** |  | 
-**controller_uid** | **str** |  | [optional] 
-**controller_kind** | **str** |  | [optional] 
-**labels** | **Dict[str, str]** |  | [optional] 
-**annotations** | **Dict[str, str]** |  | [optional] 
-**conditions** | [**List[Condition]**](Condition.md) |  | [optional] 
-**started_at** | **datetime** |  | [optional] 
-**deleted_at** | **datetime** |  | [optional] 
-**status** | **str** |  | [optional] [default to 'stopped']
-**init_container_summaries** | [**List[ContainerRuntimeSummary]**](ContainerRuntimeSummary.md) |  | [optional] 
-**container_summaries** | [**List[ContainerRuntimeSummary]**](ContainerRuntimeSummary.md) |  | [optional] 
-**node_name** | **str** |  | [optional] 
-**completed_at** | **datetime** |  | [optional] 
-**phase** | **str** |  | [optional] [default to 'Unknown']
-**reason** | **str** |  | [optional] 
+**name** | **str** |  | [readonly] 
+**namespace** | **str** |  | [readonly] 
+**uid** | **str** |  | [readonly] 
+**controller_uid** | **str** |  | [readonly] 
+**controller_kind** | **str** |  | [readonly] 
+**labels** | **Dict[str, str]** |  | [readonly] 
+**annotations** | **Dict[str, str]** |  | [readonly] 
+**conditions** | [**List[Condition]**](Condition.md) |  | [readonly] 
+**started_at** | **datetime** |  | [readonly] 
+**deleted_at** | **datetime** |  | [readonly] 
+**status** | [**PodStatus**](PodStatus.md) |  | 
+**init_container_summaries** | [**List[ContainerRuntimeSummary]**](ContainerRuntimeSummary.md) |  | [readonly] 
+**container_summaries** | [**List[ContainerRuntimeSummary]**](ContainerRuntimeSummary.md) |  | [readonly] 
+**node_name** | **str** |  | [readonly] 
+**completed_at** | **datetime** |  | [readonly] 
+**reason** | **str** |  | [readonly] 
 
 ## Example
 

@@ -5,26 +5,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**namespace** | **str** |  | 
-**uid** | **str** |  | 
-**controller_uid** | **str** |  | [optional] 
-**controller_kind** | **str** |  | [optional] 
-**labels** | **Dict[str, str]** |  | [optional] 
-**annotations** | **Dict[str, str]** |  | [optional] 
-**conditions** | [**List[Condition]**](Condition.md) |  | [optional] 
-**started_at** | **datetime** |  | [optional] 
-**deleted_at** | **datetime** |  | [optional] 
-**status** | **str** |  | [optional] [default to 'waiting']
-**finished_at** | **datetime** |  | [optional] 
-**restart_policy** | **str** |  | [optional] [default to 'Always']
-**image_pulled** | **bool** |  | [optional] [default to False]
-**exit_code** | **int** |  | [optional] 
-**logs** | **str** |  | [optional] 
-**reason** | **str** |  | [optional] 
-**ready** | **bool** |  | [optional] [default to False]
-**is_previous** | **bool** |  | [optional] [default to False]
-**previous** | [**ContainerRuntimeSummary**](ContainerRuntimeSummary.md) |  | [optional] 
+**name** | **str** |  | [readonly] 
+**namespace** | **str** |  | [readonly] 
+**uid** | **str** |  | [readonly] 
+**controller_uid** | **str** |  | [readonly] 
+**controller_kind** | **str** |  | [readonly] 
+**labels** | **Dict[str, str]** |  | [readonly] 
+**annotations** | **Dict[str, str]** |  | [readonly] 
+**conditions** | [**List[Condition]**](Condition.md) |  | [readonly] 
+**started_at** | **datetime** |  | [readonly] 
+**deleted_at** | **datetime** |  | [readonly] 
+**status** | [**ContainerStatus**](ContainerStatus.md) |  | 
+**finished_at** | **datetime** |  | [readonly] 
+**restart_policy** | [**RestartPolicy**](RestartPolicy.md) |  | 
+**image_pulled** | **bool** |  | [readonly] 
+**exit_code** | **int** |  | [readonly] 
+**logs** | **str** |  | [readonly] 
+**reason** | **str** |  | [readonly] 
+**previous** | [**ContainerRuntimeSummary**](ContainerRuntimeSummary.md) |  | [readonly] 
 
 ## Example
 

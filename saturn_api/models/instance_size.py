@@ -109,9 +109,9 @@ class InstanceSize(BaseModel):
             "gpu": obj.get("gpu") if obj.get("gpu") is not None else 0,
             "gpu_type": obj.get("gpu_type"),
             "hardware_type": obj.get("hardware_type"),
-            "cloud": obj.get("cloud") if obj.get("cloud") is not None else '',
-            "display": obj.get("display") if obj.get("display") is not None else '',
-            "display_name": obj.get("display_name") if obj.get("display_name") is not None else '',
+            "cloud": obj.get("cloud"),
+            "display": obj.get("display"),
+            "display_name": obj.get("display_name"),
             "price_per_hour": obj.get("price_per_hour"),
             "description": obj.get("description") if obj.get("description") is not None else ''
         })

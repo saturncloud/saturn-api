@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**status** | **str** |  | 
-**reason** | **str** |  | [optional] 
-**message** | **str** |  | [optional] 
-**last_transition_time** | **datetime** |  | [optional] 
-**last_probe_time** | **datetime** |  | [optional] 
+**type** | **str** |  | [readonly] 
+**status** | **str** |  | [readonly] 
+**reason** | **str** |  | [readonly] 
+**message** | **str** |  | [readonly] 
+**last_transition_time** | **datetime** |  | [readonly] 
+**last_probe_time** | **datetime** |  | [readonly] 
 
 ## Example
 

@@ -18,9 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.condition import Condition
+from saturn_api.models.job_status import JobStatus
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from typing import Literal, Optional, Set
 from typing_extensions import Self
@@ -32,31 +33,20 @@ class JobRuntimeSummary(BaseModel):
     name: StrictStr
     namespace: StrictStr
     uid: StrictStr
-    controller_uid: Optional[StrictStr] = None
-    controller_kind: Optional[StrictStr] = None
-    labels: Optional[Dict[str, StrictStr]] = None
-    annotations: Optional[Dict[str, StrictStr]] = None
-    conditions: Optional[List[Condition]] = None
-    started_at: Optional[datetime] = None
-    deleted_at: Optional[datetime] = None
-    status: Literal['pending', 'running', 'stopping', 'stopped', 'completed', 'error'] = 'stopped'
-    scale: Optional[StrictInt] = 1
-    completions: Optional[StrictInt] = 1
-    running_count: Optional[StrictInt] = 0
-    active_count: Optional[StrictInt] = 0
-    completed_at: Optional[datetime] = None
-    pod_summaries: Optional[List[PodRuntimeSummary]] = None
-    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "scale", "completions", "running_count", "active_count", "completed_at", "pod_summaries"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['pending', 'running', 'stopping', 'stopped', 'completed', 'error']):
-            raise ValueError("must be one of enum values ('pending', 'running', 'stopping', 'stopped', 'completed', 'error')")
-        return value
+    controller_uid: Optional[StrictStr]
+    controller_kind: Optional[StrictStr]
+    labels: Dict[str, StrictStr]
+    annotations: Dict[str, StrictStr]
+    conditions: List[Condition]
+    started_at: Optional[datetime]
+    deleted_at: Optional[datetime]
+    status: JobStatus
+    scale: StrictInt
+    running_count: StrictInt
+    active_count: StrictInt
+    completed_at: Optional[datetime]
+    pod_summaries: List[PodRuntimeSummary]
+    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "scale", "running_count", "active_count", "completed_at", "pod_summaries"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,8 +78,38 @@ class JobRuntimeSummary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "name",
+            "namespace",
+            "uid",
+            "controller_uid",
+            "controller_kind",
+            "labels",
+            "annotations",
+            "conditions",
+            "started_at",
+            "deleted_at",
+            "scale",
+            "running_count",
+            "active_count",
+            "completed_at",
+            "pod_summaries",
         ])
 
         _dict = self.model_dump(
@@ -158,11 +178,10 @@ class JobRuntimeSummary(BaseModel):
             "conditions": [Condition.from_dict(_item) for _item in obj["conditions"]] if obj.get("conditions") is not None else None,
             "started_at": obj.get("started_at"),
             "deleted_at": obj.get("deleted_at"),
-            "status": obj.get("status") if obj.get("status") is not None else 'stopped',
-            "scale": obj.get("scale") if obj.get("scale") is not None else 1,
-            "completions": obj.get("completions") if obj.get("completions") is not None else 1,
-            "running_count": obj.get("running_count") if obj.get("running_count") is not None else 0,
-            "active_count": obj.get("active_count") if obj.get("active_count") is not None else 0,
+            "status": obj.get("status"),
+            "scale": obj.get("scale"),
+            "running_count": obj.get("running_count"),
+            "active_count": obj.get("active_count"),
             "completed_at": obj.get("completed_at"),
             "pod_summaries": [PodRuntimeSummary.from_dict(_item) for _item in obj["pod_summaries"]] if obj.get("pod_summaries") is not None else None
         })

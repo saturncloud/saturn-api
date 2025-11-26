@@ -18,11 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.condition import Condition
 from saturn_api.models.deployment_runtime_summary import DeploymentRuntimeSummary
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
+from saturn_api.models.pod_status import PodStatus
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -33,30 +34,20 @@ class DaskClusterRuntimeSummary(BaseModel):
     name: StrictStr
     namespace: StrictStr
     uid: StrictStr
-    controller_uid: Optional[StrictStr] = None
-    controller_kind: Optional[StrictStr] = None
-    labels: Optional[Dict[str, StrictStr]] = None
-    annotations: Optional[Dict[str, StrictStr]] = None
-    conditions: Optional[List[Condition]] = None
-    started_at: Optional[datetime] = None
-    deleted_at: Optional[datetime] = None
-    status: Literal['pending', 'running', 'error', 'stopping', 'stopped', 'completed', 'unknown'] = 'stopped'
+    controller_uid: Optional[StrictStr]
+    controller_kind: Optional[StrictStr]
+    labels: Dict[str, StrictStr]
+    annotations: Dict[str, StrictStr]
+    conditions: List[Condition]
+    started_at: Optional[datetime]
+    deleted_at: Optional[datetime]
+    status: PodStatus
     kubecluster_summary: DeploymentRuntimeSummary
     scheduler_summary: PodRuntimeSummary
-    worker_summaries: Optional[List[PodRuntimeSummary]] = None
-    worker_count: Optional[StrictInt] = 0
-    errors: Optional[List[StrictStr]] = None
+    worker_summaries: List[PodRuntimeSummary]
+    worker_count: StrictInt
+    errors: List[StrictStr]
     __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "kubecluster_summary", "scheduler_summary", "worker_summaries", "worker_count", "errors"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['pending', 'running', 'error', 'stopping', 'stopped', 'completed', 'unknown']):
-            raise ValueError("must be one of enum values ('pending', 'running', 'error', 'stopping', 'stopped', 'completed', 'unknown')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,8 +79,38 @@ class DaskClusterRuntimeSummary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "name",
+            "namespace",
+            "uid",
+            "controller_uid",
+            "controller_kind",
+            "labels",
+            "annotations",
+            "conditions",
+            "started_at",
+            "deleted_at",
+            "kubecluster_summary",
+            "scheduler_summary",
+            "worker_summaries",
+            "worker_count",
+            "errors",
         ])
 
         _dict = self.model_dump(
@@ -159,11 +180,11 @@ class DaskClusterRuntimeSummary(BaseModel):
             "conditions": [Condition.from_dict(_item) for _item in obj["conditions"]] if obj.get("conditions") is not None else None,
             "started_at": obj.get("started_at"),
             "deleted_at": obj.get("deleted_at"),
-            "status": obj.get("status") if obj.get("status") is not None else 'stopped',
+            "status": obj.get("status"),
             "kubecluster_summary": DeploymentRuntimeSummary.from_dict(obj["kubecluster_summary"]) if obj.get("kubecluster_summary") is not None else None,
             "scheduler_summary": PodRuntimeSummary.from_dict(obj["scheduler_summary"]) if obj.get("scheduler_summary") is not None else None,
             "worker_summaries": [PodRuntimeSummary.from_dict(_item) for _item in obj["worker_summaries"]] if obj.get("worker_summaries") is not None else None,
-            "worker_count": obj.get("worker_count") if obj.get("worker_count") is not None else 0,
+            "worker_count": obj.get("worker_count"),
             "errors": obj.get("errors")
         })
         return _obj

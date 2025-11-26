@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.condition import Condition
 from saturn_api.models.container_runtime_summary import ContainerRuntimeSummary
+from saturn_api.models.pod_status import PodStatus
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -32,31 +33,20 @@ class PodRuntimeSummary(BaseModel):
     name: StrictStr
     namespace: StrictStr
     uid: StrictStr
-    controller_uid: Optional[StrictStr] = None
-    controller_kind: Optional[StrictStr] = None
-    labels: Optional[Dict[str, StrictStr]] = None
-    annotations: Optional[Dict[str, StrictStr]] = None
-    conditions: Optional[List[Condition]] = None
-    started_at: Optional[datetime] = None
-    deleted_at: Optional[datetime] = None
-    status: Literal['pending', 'running', 'error', 'stopping', 'stopped', 'completed', 'unknown'] = 'stopped'
-    init_container_summaries: Optional[List[ContainerRuntimeSummary]] = None
-    container_summaries: Optional[List[ContainerRuntimeSummary]] = None
-    node_name: Optional[StrictStr] = None
-    completed_at: Optional[datetime] = None
-    phase: Optional[StrictStr] = 'Unknown'
-    reason: Literal['Evicted', 'OOMKilled'] | None = None
-    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "init_container_summaries", "container_summaries", "node_name", "completed_at", "phase", "reason"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['pending', 'running', 'error', 'stopping', 'stopped', 'completed', 'unknown']):
-            raise ValueError("must be one of enum values ('pending', 'running', 'error', 'stopping', 'stopped', 'completed', 'unknown')")
-        return value
+    controller_uid: Optional[StrictStr]
+    controller_kind: Optional[StrictStr]
+    labels: Dict[str, StrictStr]
+    annotations: Dict[str, StrictStr]
+    conditions: List[Condition]
+    started_at: Optional[datetime]
+    deleted_at: Optional[datetime]
+    status: PodStatus
+    init_container_summaries: List[ContainerRuntimeSummary]
+    container_summaries: List[ContainerRuntimeSummary]
+    node_name: Optional[StrictStr]
+    completed_at: Optional[datetime]
+    reason: Literal['Evicted', 'OOMKilled'] | None
+    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "init_container_summaries", "container_summaries", "node_name", "completed_at", "reason"]
 
     @field_validator('reason')
     def reason_validate_enum(cls, value):
@@ -98,8 +88,38 @@ class PodRuntimeSummary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "name",
+            "namespace",
+            "uid",
+            "controller_uid",
+            "controller_kind",
+            "labels",
+            "annotations",
+            "conditions",
+            "started_at",
+            "deleted_at",
+            "init_container_summaries",
+            "container_summaries",
+            "node_name",
+            "completed_at",
+            "reason",
         ])
 
         _dict = self.model_dump(
@@ -185,12 +205,11 @@ class PodRuntimeSummary(BaseModel):
             "conditions": [Condition.from_dict(_item) for _item in obj["conditions"]] if obj.get("conditions") is not None else None,
             "started_at": obj.get("started_at"),
             "deleted_at": obj.get("deleted_at"),
-            "status": obj.get("status") if obj.get("status") is not None else 'stopped',
+            "status": obj.get("status"),
             "init_container_summaries": [ContainerRuntimeSummary.from_dict(_item) for _item in obj["init_container_summaries"]] if obj.get("init_container_summaries") is not None else None,
             "container_summaries": [ContainerRuntimeSummary.from_dict(_item) for _item in obj["container_summaries"]] if obj.get("container_summaries") is not None else None,
             "node_name": obj.get("node_name"),
             "completed_at": obj.get("completed_at"),
-            "phase": obj.get("phase") if obj.get("phase") is not None else 'Unknown',
             "reason": obj.get("reason")
         })
         return _obj

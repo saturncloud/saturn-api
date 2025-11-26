@@ -29,10 +29,10 @@ class Condition(BaseModel):
     """ # noqa: E501
     type: StrictStr
     status: StrictStr
-    reason: Optional[StrictStr] = None
-    message: Optional[StrictStr] = None
-    last_transition_time: Optional[datetime] = None
-    last_probe_time: Optional[datetime] = None
+    reason: Optional[StrictStr]
+    message: Optional[StrictStr]
+    last_transition_time: Optional[datetime]
+    last_probe_time: Optional[datetime]
     __properties: ClassVar[List[str]] = ["type", "status", "reason", "message", "last_transition_time", "last_probe_time"]
 
     model_config = ConfigDict(
@@ -65,8 +65,20 @@ class Condition(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "type",
+            "status",
+            "reason",
+            "message",
+            "last_transition_time",
+            "last_probe_time",
         ])
 
         _dict = self.model_dump(

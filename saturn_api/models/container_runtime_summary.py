@@ -21,6 +21,8 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.condition import Condition
+from saturn_api.models.container_status import ContainerStatus
+from saturn_api.models.restart_policy import RestartPolicy
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -31,34 +33,22 @@ class ContainerRuntimeSummary(BaseModel):
     name: StrictStr
     namespace: StrictStr
     uid: StrictStr
-    controller_uid: Optional[StrictStr] = None
-    controller_kind: Optional[StrictStr] = None
-    labels: Optional[Dict[str, StrictStr]] = None
-    annotations: Optional[Dict[str, StrictStr]] = None
-    conditions: Optional[List[Condition]] = None
-    started_at: Optional[datetime] = None
-    deleted_at: Optional[datetime] = None
-    status: Literal['running', 'pending', 'waiting', 'completed', 'error'] = 'waiting'
-    finished_at: Optional[datetime] = None
-    restart_policy: Optional[StrictStr] = 'Always'
-    image_pulled: Optional[StrictBool] = False
-    exit_code: Optional[StrictInt] = None
-    logs: Optional[StrictStr] = None
-    reason: Literal['Evicted', 'OOMKilled'] | None = None
-    ready: Optional[StrictBool] = False
-    is_previous: Optional[StrictBool] = False
-    previous: Optional[ContainerRuntimeSummary] = None
-    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "finished_at", "restart_policy", "image_pulled", "exit_code", "logs", "reason", "ready", "is_previous", "previous"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['running', 'pending', 'waiting', 'completed', 'error']):
-            raise ValueError("must be one of enum values ('running', 'pending', 'waiting', 'completed', 'error')")
-        return value
+    controller_uid: Optional[StrictStr]
+    controller_kind: Optional[StrictStr]
+    labels: Dict[str, StrictStr]
+    annotations: Dict[str, StrictStr]
+    conditions: List[Condition]
+    started_at: Optional[datetime]
+    deleted_at: Optional[datetime]
+    status: ContainerStatus
+    finished_at: Optional[datetime]
+    restart_policy: RestartPolicy
+    image_pulled: StrictBool
+    exit_code: Optional[StrictInt]
+    logs: Optional[StrictStr]
+    reason: Literal['Evicted', 'OOMKilled'] | None
+    previous: Optional[ContainerRuntimeSummary]
+    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "finished_at", "restart_policy", "image_pulled", "exit_code", "logs", "reason", "previous"]
 
     @field_validator('reason')
     def reason_validate_enum(cls, value):
@@ -100,8 +90,40 @@ class ContainerRuntimeSummary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "name",
+            "namespace",
+            "uid",
+            "controller_uid",
+            "controller_kind",
+            "labels",
+            "annotations",
+            "conditions",
+            "started_at",
+            "deleted_at",
+            "finished_at",
+            "image_pulled",
+            "exit_code",
+            "logs",
+            "reason",
+            "previous",
         ])
 
         _dict = self.model_dump(
@@ -186,15 +208,13 @@ class ContainerRuntimeSummary(BaseModel):
             "conditions": [Condition.from_dict(_item) for _item in obj["conditions"]] if obj.get("conditions") is not None else None,
             "started_at": obj.get("started_at"),
             "deleted_at": obj.get("deleted_at"),
-            "status": obj.get("status") if obj.get("status") is not None else 'waiting',
+            "status": obj.get("status"),
             "finished_at": obj.get("finished_at"),
-            "restart_policy": obj.get("restart_policy") if obj.get("restart_policy") is not None else 'Always',
-            "image_pulled": obj.get("image_pulled") if obj.get("image_pulled") is not None else False,
+            "restart_policy": obj.get("restart_policy"),
+            "image_pulled": obj.get("image_pulled"),
             "exit_code": obj.get("exit_code"),
             "logs": obj.get("logs"),
             "reason": obj.get("reason"),
-            "ready": obj.get("ready") if obj.get("ready") is not None else False,
-            "is_previous": obj.get("is_previous") if obj.get("is_previous") is not None else False,
             "previous": ContainerRuntimeSummary.from_dict(obj["previous"]) if obj.get("previous") is not None else None
         })
         return _obj

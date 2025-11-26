@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object_storage_upload_id** | **str** |  | [readonly] 
-**is_copy** | **bool** |  | [readonly] [default to False]
+**is_copy** | **bool** |  | [readonly] 
 **parts** | [**List[ObjectStoragePresignedPart]**](ObjectStoragePresignedPart.md) |  | [readonly] 
 
 ## Example

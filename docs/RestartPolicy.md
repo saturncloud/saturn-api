@@ -1,13 +1,13 @@
-# ResourceRecipeType
+# RestartPolicy
 
 
 ## Enum
 
-* `WORKSPACE` (value: `'workspace'`)
+* `ALWAYS` (value: `'Always'`)
 
-* `DEPLOYMENT` (value: `'deployment'`)
+* `NEVER` (value: `'Never'`)
 
-* `JOB` (value: `'job'`)
+* `ONFAILURE` (value: `'OnFailure'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,6 +22,7 @@ docs/BuildData.md
 docs/ConcurrencyPolicy.md
 docs/Condition.md
 docs/ContainerRuntimeSummary.md
+docs/ContainerStatus.md
 docs/CronSchedule.md
 docs/CronScheduleCreate.md
 docs/CronScheduleUpdate.md
@@ -55,6 +56,7 @@ docs/DeploymentRuntimeSummary.md
 docs/DeploymentServerOptions.md
 docs/DeploymentSpec.md
 docs/DeploymentStart.md
+docs/DeploymentStatus.md
 docs/DeploymentUpdate.md
 docs/DeploymentsApi.md
 docs/ExternalRepo.md
@@ -131,6 +133,7 @@ docs/JobRuntimeSummary.md
 docs/JobServerOptions.md
 docs/JobSpec.md
 docs/JobStart.md
+docs/JobStatus.md
 docs/JobUpdate.md
 docs/JobsApi.md
 docs/LimitsApi.md
@@ -193,6 +196,7 @@ docs/OwnerUsageList.md
 docs/PaginationOffsetMeta.md
 docs/PodHistory.md
 docs/PodRuntimeSummary.md
+docs/PodStatus.md
 docs/Recipe.md
 docs/RecipeList.md
 docs/RecipesApi.md
@@ -211,6 +215,7 @@ docs/ResourceTemplateAccessLevel.md
 docs/ResourceTokenInfo.md
 docs/ResourceTokenUpdate.md
 docs/ResourceType.md
+docs/RestartPolicy.md
 docs/Route.md
 docs/RouteByContainerPort.md
 docs/RouteById.md
@@ -357,6 +362,7 @@ saturn_api/models/build_data.py
 saturn_api/models/concurrency_policy.py
 saturn_api/models/condition.py
 saturn_api/models/container_runtime_summary.py
+saturn_api/models/container_status.py
 saturn_api/models/cron_schedule.py
 saturn_api/models/cron_schedule_create.py
 saturn_api/models/cron_schedule_update.py
@@ -388,6 +394,7 @@ saturn_api/models/deployment_runtime_summary.py
 saturn_api/models/deployment_server_options.py
 saturn_api/models/deployment_spec.py
 saturn_api/models/deployment_start.py
+saturn_api/models/deployment_status.py
 saturn_api/models/deployment_update.py
 saturn_api/models/external_repo.py
 saturn_api/models/external_repo_attachment.py
@@ -456,6 +463,7 @@ saturn_api/models/job_runtime_summary.py
 saturn_api/models/job_server_options.py
 saturn_api/models/job_spec.py
 saturn_api/models/job_start.py
+saturn_api/models/job_status.py
 saturn_api/models/job_update.py
 saturn_api/models/metric_series.py
 saturn_api/models/metrics.py
@@ -513,6 +521,7 @@ saturn_api/models/owner_usage_list.py
 saturn_api/models/pagination_offset_meta.py
 saturn_api/models/pod_history.py
 saturn_api/models/pod_runtime_summary.py
+saturn_api/models/pod_status.py
 saturn_api/models/recipe.py
 saturn_api/models/recipe_list.py
 saturn_api/models/resource_by_deployment_id.py
@@ -530,6 +539,7 @@ saturn_api/models/resource_template_access_level.py
 saturn_api/models/resource_token_info.py
 saturn_api/models/resource_token_update.py
 saturn_api/models/resource_type.py
+saturn_api/models/restart_policy.py
 saturn_api/models/route.py
 saturn_api/models/route_by_container_port.py
 saturn_api/models/route_by_id.py
