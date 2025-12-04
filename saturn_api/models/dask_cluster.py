@@ -31,7 +31,7 @@ class DaskCluster(BaseModel):
     id: StrictStr
     name: StrictStr
     resource_type: ResourceType
-    tags: Dict[str, StrictStr]
+    tags: Optional[Dict[str, StrictStr]]
     worker_size: StrictStr
     worker_size_display: StrictStr
     worker_is_spot: StrictBool
@@ -138,6 +138,11 @@ class DaskCluster(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict['tags'] = None
+
         # set to None if deployment_id (nullable) is None
         # and model_fields_set contains the field
         if self.deployment_id is None and "deployment_id" in self.model_fields_set:

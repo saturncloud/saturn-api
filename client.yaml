@@ -8616,6 +8616,7 @@ components:
           readOnly: true
           additionalProperties:
             type: string
+          nullable: true
         worker_size:
           type: string
           readOnly: true
@@ -8804,6 +8805,7 @@ components:
           readOnly: true
           additionalProperties:
             type: string
+          nullable: true
         worker_size:
           type: string
           readOnly: true
@@ -8914,6 +8916,7 @@ components:
         start_script:
           type: string
           readOnly: true
+          nullable: true
         environment_variables:
           type: object
           readOnly: true
@@ -9073,6 +9076,7 @@ components:
         start_script:
           type: string
           readOnly: true
+          nullable: true
         environment_variables:
           type: object
           readOnly: true
@@ -9180,6 +9184,7 @@ components:
         start_script:
           type: string
           readOnly: true
+          nullable: true
         environment_variables:
           type: object
           readOnly: true
@@ -9241,6 +9246,7 @@ components:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
           readOnly: true
+          nullable: true
         self_destruct:
           type: boolean
           readOnly: true
@@ -9262,6 +9268,7 @@ components:
           type: string
           format: url
           readOnly: true
+          nullable: true
       required:
       - auto_shutoff
       - created_at

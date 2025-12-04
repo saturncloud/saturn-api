@@ -30,7 +30,7 @@ class DaskClusterNested(BaseModel):
     id: StrictStr
     name: StrictStr
     resource_type: ResourceType
-    tags: Dict[str, StrictStr]
+    tags: Optional[Dict[str, StrictStr]]
     worker_size: StrictStr
     worker_size_display: StrictStr
     worker_is_spot: StrictBool
@@ -122,6 +122,11 @@ class DaskClusterNested(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict['tags'] = None
+
         return _dict
 
     @classmethod

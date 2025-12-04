@@ -37,7 +37,7 @@ class Workspace(BaseModel):
     image_tag: ResourceImageTag
     extra_packages: Optional[ExtraPackages]
     ide: StrictStr
-    start_script: StrictStr
+    start_script: Optional[StrictStr]
     environment_variables: Dict[str, StrictStr]
     working_dir: StrictStr
     description: StrictStr
@@ -55,13 +55,13 @@ class Workspace(BaseModel):
     require_restart: StrictBool
     created_at: StrictStr
     updated_at: StrictStr
-    started_at: StrictStr
+    started_at: Optional[StrictStr]
     self_destruct: Optional[StrictBool] = None
     dask_cluster: Optional[DaskClusterNested] = None
     status: StrictStr
     debug_mode: StrictBool
     url: StrictStr
-    ssh_url: StrictStr
+    ssh_url: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "name", "owner", "image_tag", "extra_packages", "ide", "start_script", "environment_variables", "working_dir", "description", "tags", "disk_space", "instance_size", "auto_shutoff", "start_ssh", "is_spot", "subdomain", "start_dind", "resource_type", "size_display", "k8s_name", "require_restart", "created_at", "updated_at", "started_at", "self_destruct", "dask_cluster", "status", "debug_mode", "url", "ssh_url"]
 
     model_config = ConfigDict(
@@ -178,10 +178,25 @@ class Workspace(BaseModel):
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
             _dict['extra_packages'] = None
 
+        # set to None if start_script (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_script is None and "start_script" in self.model_fields_set:
+            _dict['start_script'] = None
+
         # set to None if tags (nullable) is None
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
             _dict['tags'] = None
+
+        # set to None if started_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.started_at is None and "started_at" in self.model_fields_set:
+            _dict['started_at'] = None
+
+        # set to None if ssh_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.ssh_url is None and "ssh_url" in self.model_fields_set:
+            _dict['ssh_url'] = None
 
         return _dict
 

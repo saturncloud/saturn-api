@@ -172,6 +172,11 @@ class Job(BaseModel):
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
             _dict['extra_packages'] = None
 
+        # set to None if start_script (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_script is None and "start_script" in self.model_fields_set:
+            _dict['start_script'] = None
+
         return _dict
 
     @classmethod
