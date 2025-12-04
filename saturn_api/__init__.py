@@ -18,6 +18,7 @@ __version__ = "1.0.0"
 
 # Define package exports
 __all__ = [
+    "ActiveResourcesApi",
     "ApiStatusApi",
     "ApiTokensApi",
     "AuthorizationApi",
@@ -55,6 +56,7 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "ActiveResourceList",
     "AggregatedUsage",
     "ApiStatus",
     "ApiToken",
@@ -234,6 +236,7 @@ __all__ = [
     "PodStatus",
     "Recipe",
     "RecipeList",
+    "Resource",
     "ResourceByDeploymentId",
     "ResourceByJobId",
     "ResourceByWorkspaceId",
@@ -335,6 +338,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
+from saturn_api.api.active_resources_api import ActiveResourcesApi as ActiveResourcesApi
 from saturn_api.api.api_status_api import ApiStatusApi as ApiStatusApi
 from saturn_api.api.api_tokens_api import ApiTokensApi as ApiTokensApi
 from saturn_api.api.authorization_api import AuthorizationApi as AuthorizationApi
@@ -376,6 +380,7 @@ from saturn_api.exceptions import ApiAttributeError as ApiAttributeError
 from saturn_api.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from saturn_api.models.active_resource_list import ActiveResourceList as ActiveResourceList
 from saturn_api.models.aggregated_usage import AggregatedUsage as AggregatedUsage
 from saturn_api.models.api_status import ApiStatus as ApiStatus
 from saturn_api.models.api_token import ApiToken as ApiToken
@@ -555,6 +560,7 @@ from saturn_api.models.pod_runtime_summary import PodRuntimeSummary as PodRuntim
 from saturn_api.models.pod_status import PodStatus as PodStatus
 from saturn_api.models.recipe import Recipe as Recipe
 from saturn_api.models.recipe_list import RecipeList as RecipeList
+from saturn_api.models.resource import Resource as Resource
 from saturn_api.models.resource_by_deployment_id import ResourceByDeploymentId as ResourceByDeploymentId
 from saturn_api.models.resource_by_job_id import ResourceByJobId as ResourceByJobId
 from saturn_api.models.resource_by_workspace_id import ResourceByWorkspaceId as ResourceByWorkspaceId

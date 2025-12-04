@@ -2,6 +2,8 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
+docs/ActiveResourceList.md
+docs/ActiveResourcesApi.md
 docs/AggregatedUsage.md
 docs/ApiStatus.md
 docs/ApiStatusApi.md
@@ -200,6 +202,7 @@ docs/PodStatus.md
 docs/Recipe.md
 docs/RecipeList.md
 docs/RecipesApi.md
+docs/Resource.md
 docs/ResourceByDeploymentId.md
 docs/ResourceByJobId.md
 docs/ResourceByWorkspaceId.md
@@ -312,6 +315,7 @@ pyproject.toml
 requirements.txt
 saturn_api/__init__.py
 saturn_api/api/__init__.py
+saturn_api/api/active_resources_api.py
 saturn_api/api/api_status_api.py
 saturn_api/api/api_tokens_api.py
 saturn_api/api/authorization_api.py
@@ -345,6 +349,7 @@ saturn_api/api_response.py
 saturn_api/configuration.py
 saturn_api/exceptions.py
 saturn_api/models/__init__.py
+saturn_api/models/active_resource_list.py
 saturn_api/models/aggregated_usage.py
 saturn_api/models/api_status.py
 saturn_api/models/api_token.py
@@ -524,6 +529,7 @@ saturn_api/models/pod_runtime_summary.py
 saturn_api/models/pod_status.py
 saturn_api/models/recipe.py
 saturn_api/models/recipe_list.py
+saturn_api/models/resource.py
 saturn_api/models/resource_by_deployment_id.py
 saturn_api/models/resource_by_job_id.py
 saturn_api/models/resource_by_workspace_id.py

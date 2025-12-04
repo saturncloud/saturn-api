@@ -14,6 +14,7 @@
 
 
 # import models into model package
+from saturn_api.models.active_resource_list import ActiveResourceList
 from saturn_api.models.aggregated_usage import AggregatedUsage
 from saturn_api.models.api_status import ApiStatus
 from saturn_api.models.api_token import ApiToken
@@ -193,6 +194,7 @@ from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from saturn_api.models.pod_status import PodStatus
 from saturn_api.models.recipe import Recipe
 from saturn_api.models.recipe_list import RecipeList
+from saturn_api.models.resource import Resource
 from saturn_api.models.resource_by_deployment_id import ResourceByDeploymentId
 from saturn_api.models.resource_by_job_id import ResourceByJobId
 from saturn_api.models.resource_by_workspace_id import ResourceByWorkspaceId

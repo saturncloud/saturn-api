@@ -30,6 +30,7 @@ class Owner(BaseModel):
     id: StrictStr
     name: StrictStr
     identity_name: StrictStr
+    org_name: StrictStr
     created_at: StrictStr
     org_admin: StrictBool
     org_id: StrictStr
@@ -39,7 +40,7 @@ class Owner(BaseModel):
     limits_id: Optional[StrictStr]
     avatar_url: StrictStr
     is_multiple_ssh_keys: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "name", "identity_name", "created_at", "org_admin", "org_id", "user_id", "group_id", "identity_type", "limits_id", "avatar_url", "is_multiple_ssh_keys"]
+    __properties: ClassVar[List[str]] = ["id", "name", "identity_name", "org_name", "created_at", "org_admin", "org_id", "user_id", "group_id", "identity_type", "limits_id", "avatar_url", "is_multiple_ssh_keys"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,11 +83,13 @@ class Owner(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "name",
             "identity_name",
+            "org_name",
             "created_at",
             "org_admin",
             "org_id",
@@ -132,6 +135,7 @@ class Owner(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "identity_name": obj.get("identity_name"),
+            "org_name": obj.get("org_name"),
             "created_at": obj.get("created_at"),
             "org_admin": obj.get("org_admin"),
             "org_id": obj.get("org_id"),

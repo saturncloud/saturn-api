@@ -17,20 +17,21 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from saturn_api.models.image_tag_by_id import ImageTagById
-from saturn_api.models.image_tag_by_name import ImageTagByName
-from saturn_api.models.image_tag_by_uri import ImageTagByUri
+from saturn_api.models.dask_cluster import DaskCluster
+from saturn_api.models.deployment import Deployment
+from saturn_api.models.job import Job
+from saturn_api.models.workspace import Workspace
 from pydantic import RootModel, StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self, TypeVar
 
-IMAGETAGREFERENCE_ONE_OF_SCHEMAS = ["ImageTagById", "ImageTagByName", "ImageTagByUri", "str"]
+RESOURCE_ONE_OF_SCHEMAS = ["DaskCluster", "Deployment", "Job", "Workspace"]
 
-T = TypeVar("T", ImageTagById, ImageTagByName, ImageTagByUri, str, default=Union[ImageTagById, ImageTagByName, ImageTagByUri, str])
+T = TypeVar("T", DaskCluster, Deployment, Job, Workspace, default=Union[DaskCluster, Deployment, Job, Workspace])
 
-class ImageTagReference(RootModel[T]):
+class Resource(RootModel[T]):
     """
-    ImageTagReference
+    Resource
     """
     model_config = ConfigDict(
         validate_assignment=True,

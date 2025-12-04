@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from saturn_api.api.active_resources_api import ActiveResourcesApi
 from saturn_api.api.api_status_api import ApiStatusApi
 from saturn_api.api.api_tokens_api import ApiTokensApi
 from saturn_api.api.authorization_api import AuthorizationApi

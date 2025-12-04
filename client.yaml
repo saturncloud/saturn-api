@@ -6,6 +6,74 @@ servers: []
 security:
 - bearerAuth: []
 paths:
+  /api/active/resources:
+    get:
+      summary: List active resources
+      operationId: activeresources_list
+      tags:
+      - active_resources
+      parameters:
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: group_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: org_id
+        schema:
+          type: string
+          default: null
+          nullable: true
+        required: false
+      - in: query
+        name: resource_type
+        schema:
+          $ref: '#/components/schemas/ResourceType'
+        required: false
+      - in: query
+        name: list_by
+        schema:
+          type: string
+          default: owner
+          enum:
+          - owner
+          - org
+          - account
+        required: false
+      - in: query
+        name: prev_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveResourceList'
+          description: Ok
   /api/auth/login:
     post:
       summary: Login
@@ -7756,7 +7824,7 @@ components:
     ImageTagByPath:
       type: string
     ImageTagReference:
-      anyOf:
+      oneOf:
       - $ref: '#/components/schemas/ImageTagById'
       - $ref: '#/components/schemas/ImageTagByUri'
       - $ref: '#/components/schemas/ImageTagByName'
@@ -7942,7 +8010,7 @@ components:
       required:
       - container_port
     RouteReference:
-      anyOf:
+      oneOf:
       - $ref: '#/components/schemas/RouteById'
       - $ref: '#/components/schemas/RouteBySubdomain'
       - $ref: '#/components/schemas/RouteBySubdomainPath'
@@ -8459,39 +8527,6 @@ components:
       required:
       - grant_type
       - refresh_token
-    AuthorizationTokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        refresh_token:
-          type: string
-        token_type:
-          type: string
-        expires_at:
-          type: string
-          format: date-time
-          nullable: true
-        refresh_expires_at:
-          type: string
-          format: date-time
-          nullable: true
-        expires_in:
-          type: integer
-          x-unit: seconds
-          nullable: true
-        refresh_expires_in:
-          type: integer
-          x-unit: seconds
-          nullable: true
-      required:
-      - access_token
-      - expires_at
-      - expires_in
-      - refresh_expires_at
-      - refresh_expires_in
-      - refresh_token
-      - token_type
     ResourceType:
       type: string
       enum:
@@ -8514,6 +8549,9 @@ components:
           type: string
           readOnly: true
         identity_name:
+          type: string
+          readOnly: true
+        org_name:
           type: string
           readOnly: true
         created_at:
@@ -8559,6 +8597,7 @@ components:
       - name
       - org_admin
       - org_id
+      - org_name
       - user_id
     DaskCluster:
       type: object
@@ -8666,6 +8705,647 @@ components:
       - worker_is_spot
       - worker_size
       - worker_size_display
+    ExtraPackages:
+      type: object
+      properties:
+        pip:
+          type: string
+          nullable: true
+        as_requirements_txt:
+          type: boolean
+          default: false
+        conda:
+          type: string
+          nullable: true
+        as_environment_yml:
+          type: boolean
+          default: false
+        apt:
+          type: string
+          nullable: true
+        cran:
+          type: string
+          nullable: true
+        remotes:
+          type: string
+          nullable: true
+        bioconductor:
+          type: string
+          nullable: true
+        use_mamba:
+          type: boolean
+          default: false
+    OwnerName:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        identity_name:
+          type: string
+          readOnly: true
+        avatar_url:
+          type: string
+          readOnly: true
+      required:
+      - avatar_url
+    ResourceImage:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/OwnerName'
+      required:
+      - id
+      - name
+      - owner
+    ResourceImageTag:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        version:
+          type: string
+          readOnly: true
+        image_uri:
+          type: string
+          readOnly: true
+        image:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ResourceImage'
+      required:
+      - id
+      - image
+      - image_uri
+      - version
+    DaskClusterNested:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        resource_type:
+          readOnly: true
+          $ref: '#/components/schemas/ResourceType'
+        tags:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        worker_size:
+          type: string
+          readOnly: true
+        worker_size_display:
+          type: string
+          readOnly: true
+        worker_is_spot:
+          type: boolean
+          readOnly: true
+        scheduler_size:
+          type: string
+          readOnly: true
+        scheduler_size_display:
+          type: string
+          readOnly: true
+        n_workers:
+          type: integer
+          readOnly: true
+        nprocs:
+          type: integer
+          readOnly: true
+        nthreads:
+          type: integer
+          readOnly: true
+        scheduler_url:
+          type: string
+          readOnly: true
+        subdomain:
+          type: string
+          readOnly: true
+        image:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        warnings:
+          type: array
+          items:
+            type: string
+            readOnly: true
+        errors:
+          type: array
+          items:
+            type: string
+            readOnly: true
+        url:
+          type: string
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - image
+      - n_workers
+      - name
+      - nprocs
+      - nthreads
+      - resource_type
+      - scheduler_size
+      - scheduler_size_display
+      - scheduler_url
+      - status
+      - subdomain
+      - tags
+      - url
+      - worker_is_spot
+      - worker_size
+      - worker_size_display
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        command:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        instance_size:
+          type: string
+          readOnly: true
+        extra_packages:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ExtraPackages'
+          nullable: true
+        scale:
+          type: integer
+          readOnly: true
+        start_script:
+          type: string
+          readOnly: true
+        environment_variables:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        working_dir:
+          type: string
+          readOnly: true
+        start_ssh:
+          type: boolean
+          readOnly: true
+        is_spot:
+          type: boolean
+          readOnly: true
+        healthcheck:
+          type: string
+          readOnly: true
+        subdomain:
+          type: string
+          readOnly: true
+        start_dind:
+          type: boolean
+          readOnly: true
+        image_tag:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ResourceImageTag'
+        last_deploy:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        k8s_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        updated_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        require_restart:
+          type: boolean
+          readOnly: true
+        resource_type:
+          readOnly: true
+          $ref: '#/components/schemas/ResourceType'
+        size_display:
+          type: string
+          readOnly: true
+        dask_cluster:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/DaskClusterNested'
+        status:
+          type: string
+          readOnly: true
+        running_count:
+          type: integer
+          readOnly: true
+        debug_mode:
+          type: boolean
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        ssh_url:
+          type: string
+          readOnly: true
+      required:
+      - command
+      - created_at
+      - debug_mode
+      - description
+      - environment_variables
+      - extra_packages
+      - id
+      - image_tag
+      - instance_size
+      - is_spot
+      - k8s_name
+      - last_deploy
+      - name
+      - owner
+      - require_restart
+      - resource_type
+      - running_count
+      - scale
+      - size_display
+      - start_dind
+      - start_ssh
+      - status
+      - subdomain
+      - updated_at
+      - url
+      - working_dir
+    CronSchedule:
+      type: object
+      properties:
+        schedule:
+          type: string
+          readOnly: true
+        concurrency_policy:
+          type: string
+          enum:
+          - Allow
+          - Forbid
+          - Replace
+          readOnly: true
+        backoff_limit:
+          type: integer
+          readOnly: true
+          minimum: 0
+      required:
+      - backoff_limit
+      - concurrency_policy
+      - schedule
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        command:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        image_tag:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ResourceImageTag'
+        instance_size:
+          type: string
+          readOnly: true
+        size_display:
+          type: string
+          readOnly: true
+        extra_packages:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ExtraPackages'
+          nullable: true
+        cron_schedule_options:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/CronSchedule'
+        start_script:
+          type: string
+          readOnly: true
+        environment_variables:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        working_dir:
+          type: string
+          readOnly: true
+        is_spot:
+          type: boolean
+          readOnly: true
+        start_dind:
+          type: boolean
+          readOnly: true
+        scale:
+          type: integer
+          readOnly: true
+        k8s_name:
+          type: string
+          readOnly: true
+        require_restart:
+          type: boolean
+          readOnly: true
+        resource_type:
+          readOnly: true
+          $ref: '#/components/schemas/ResourceType'
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        updated_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        last_deploy:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        dask_cluster:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/DaskClusterNested'
+        status:
+          type: string
+          readOnly: true
+        running_count:
+          type: integer
+          readOnly: true
+        debug_mode:
+          type: boolean
+          readOnly: true
+        scheduled:
+          type: boolean
+          readOnly: true
+      required:
+      - command
+      - created_at
+      - debug_mode
+      - description
+      - environment_variables
+      - extra_packages
+      - id
+      - image_tag
+      - instance_size
+      - is_spot
+      - k8s_name
+      - last_deploy
+      - name
+      - owner
+      - require_restart
+      - resource_type
+      - running_count
+      - scale
+      - scheduled
+      - size_display
+      - start_dind
+      - status
+      - updated_at
+      - working_dir
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        owner:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Owner'
+        image_tag:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ResourceImageTag'
+        extra_packages:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ExtraPackages'
+          nullable: true
+        ide:
+          type: string
+          readOnly: true
+        start_script:
+          type: string
+          readOnly: true
+        environment_variables:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        working_dir:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        disk_space:
+          type: string
+          readOnly: true
+        instance_size:
+          type: string
+          readOnly: true
+        auto_shutoff:
+          type: string
+          readOnly: true
+        start_ssh:
+          type: boolean
+          readOnly: true
+        is_spot:
+          type: boolean
+          readOnly: true
+        subdomain:
+          type: string
+          readOnly: true
+        start_dind:
+          type: boolean
+          readOnly: true
+        resource_type:
+          readOnly: true
+          $ref: '#/components/schemas/ResourceType'
+        size_display:
+          type: string
+          readOnly: true
+        k8s_name:
+          type: string
+          readOnly: true
+        require_restart:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        updated_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        started_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        self_destruct:
+          type: boolean
+          readOnly: true
+        dask_cluster:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/DaskClusterNested'
+        status:
+          type: string
+          readOnly: true
+        debug_mode:
+          type: boolean
+          readOnly: true
+        url:
+          type: string
+          format: url
+          readOnly: true
+        ssh_url:
+          type: string
+          format: url
+          readOnly: true
+      required:
+      - auto_shutoff
+      - created_at
+      - debug_mode
+      - description
+      - disk_space
+      - environment_variables
+      - extra_packages
+      - id
+      - ide
+      - image_tag
+      - instance_size
+      - is_spot
+      - k8s_name
+      - name
+      - owner
+      - require_restart
+      - resource_type
+      - size_display
+      - ssh_url
+      - start_dind
+      - start_script
+      - start_ssh
+      - started_at
+      - status
+      - subdomain
+      - updated_at
+      - url
+      - working_dir
+    Resource:
+      oneOf:
+      - $ref: '#/components/schemas/DaskCluster'
+      - $ref: '#/components/schemas/Deployment'
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/Workspace'
+    ActiveResourceList:
+      type: object
+      properties:
+        resources:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Resource'
+        prev_key:
+          type: string
+          readOnly: true
+        next_key:
+          type: string
+          readOnly: true
+      required:
+      - resources
+    AuthorizationTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        token_type:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+        refresh_expires_at:
+          type: string
+          format: date-time
+          nullable: true
+        expires_in:
+          type: integer
+          x-unit: seconds
+          nullable: true
+        refresh_expires_in:
+          type: integer
+          x-unit: seconds
+          nullable: true
+      required:
+      - access_token
+      - expires_at
+      - expires_in
+      - refresh_expires_at
+      - refresh_expires_in
+      - refresh_token
+      - token_type
     DaskClusterList:
       type: object
       properties:
@@ -9494,312 +10174,6 @@ components:
           $ref: '#/components/schemas/ServerOptionsSize'
       required:
       - server_options
-    ExtraPackages:
-      type: object
-      properties:
-        pip:
-          type: string
-          nullable: true
-        as_requirements_txt:
-          type: boolean
-          default: false
-        conda:
-          type: string
-          nullable: true
-        as_environment_yml:
-          type: boolean
-          default: false
-        apt:
-          type: string
-          nullable: true
-        cran:
-          type: string
-          nullable: true
-        remotes:
-          type: string
-          nullable: true
-        bioconductor:
-          type: string
-          nullable: true
-        use_mamba:
-          type: boolean
-          default: false
-    OwnerName:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        identity_name:
-          type: string
-          readOnly: true
-        avatar_url:
-          type: string
-          readOnly: true
-      required:
-      - avatar_url
-    ResourceImage:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        owner:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/OwnerName'
-      required:
-      - id
-      - name
-      - owner
-    ResourceImageTag:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        version:
-          type: string
-          readOnly: true
-        image_uri:
-          type: string
-          readOnly: true
-        image:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ResourceImage'
-      required:
-      - id
-      - image
-      - image_uri
-      - version
-    DaskClusterNested:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        resource_type:
-          readOnly: true
-          $ref: '#/components/schemas/ResourceType'
-        tags:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        worker_size:
-          type: string
-          readOnly: true
-        worker_size_display:
-          type: string
-          readOnly: true
-        worker_is_spot:
-          type: boolean
-          readOnly: true
-        scheduler_size:
-          type: string
-          readOnly: true
-        scheduler_size_display:
-          type: string
-          readOnly: true
-        n_workers:
-          type: integer
-          readOnly: true
-        nprocs:
-          type: integer
-          readOnly: true
-        nthreads:
-          type: integer
-          readOnly: true
-        scheduler_url:
-          type: string
-          readOnly: true
-        subdomain:
-          type: string
-          readOnly: true
-        image:
-          type: string
-          readOnly: true
-        created_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        status:
-          type: string
-          readOnly: true
-        warnings:
-          type: array
-          items:
-            type: string
-            readOnly: true
-        errors:
-          type: array
-          items:
-            type: string
-            readOnly: true
-        url:
-          type: string
-          readOnly: true
-      required:
-      - created_at
-      - id
-      - image
-      - n_workers
-      - name
-      - nprocs
-      - nthreads
-      - resource_type
-      - scheduler_size
-      - scheduler_size_display
-      - scheduler_url
-      - status
-      - subdomain
-      - tags
-      - url
-      - worker_is_spot
-      - worker_size
-      - worker_size_display
-    Deployment:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        owner:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/Owner'
-        command:
-          type: string
-          readOnly: true
-        description:
-          type: string
-          readOnly: true
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          nullable: true
-        instance_size:
-          type: string
-          readOnly: true
-        extra_packages:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ExtraPackages'
-          nullable: true
-        scale:
-          type: integer
-          readOnly: true
-        start_script:
-          type: string
-          readOnly: true
-        environment_variables:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        working_dir:
-          type: string
-          readOnly: true
-        start_ssh:
-          type: boolean
-          readOnly: true
-        is_spot:
-          type: boolean
-          readOnly: true
-        healthcheck:
-          type: string
-          readOnly: true
-        subdomain:
-          type: string
-          readOnly: true
-        start_dind:
-          type: boolean
-          readOnly: true
-        image_tag:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ResourceImageTag'
-        last_deploy:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        k8s_name:
-          type: string
-          readOnly: true
-        created_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        updated_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        require_restart:
-          type: boolean
-          readOnly: true
-        resource_type:
-          readOnly: true
-          $ref: '#/components/schemas/ResourceType'
-        size_display:
-          type: string
-          readOnly: true
-        dask_cluster:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/DaskClusterNested'
-        status:
-          type: string
-          readOnly: true
-        running_count:
-          type: integer
-          readOnly: true
-        debug_mode:
-          type: boolean
-          readOnly: true
-        url:
-          type: string
-          readOnly: true
-        ssh_url:
-          type: string
-          readOnly: true
-      required:
-      - command
-      - created_at
-      - debug_mode
-      - description
-      - environment_variables
-      - extra_packages
-      - id
-      - image_tag
-      - instance_size
-      - is_spot
-      - k8s_name
-      - last_deploy
-      - name
-      - owner
-      - require_restart
-      - resource_type
-      - running_count
-      - scale
-      - size_display
-      - start_dind
-      - start_ssh
-      - status
-      - subdomain
-      - updated_at
-      - url
-      - working_dir
     DeploymentList:
       type: object
       properties:
@@ -11095,7 +11469,7 @@ components:
       required:
       - image_uri
     ImageTagCreate:
-      anyOf:
+      oneOf:
       - $ref: '#/components/schemas/ImageTagCreateBuild'
       - $ref: '#/components/schemas/ImageTagCreateExternal'
     ImageTagUpdate:
@@ -11410,147 +11784,6 @@ components:
           $ref: '#/components/schemas/InvitationStatus'
       required:
       - status
-    CronSchedule:
-      type: object
-      properties:
-        schedule:
-          type: string
-          readOnly: true
-        concurrency_policy:
-          type: string
-          enum:
-          - Allow
-          - Forbid
-          - Replace
-          readOnly: true
-        backoff_limit:
-          type: integer
-          readOnly: true
-          minimum: 0
-      required:
-      - backoff_limit
-      - concurrency_policy
-      - schedule
-    Job:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        owner:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/Owner'
-        command:
-          type: string
-          readOnly: true
-        description:
-          type: string
-          readOnly: true
-        image_tag:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ResourceImageTag'
-        instance_size:
-          type: string
-          readOnly: true
-        size_display:
-          type: string
-          readOnly: true
-        extra_packages:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ExtraPackages'
-          nullable: true
-        cron_schedule_options:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/CronSchedule'
-        start_script:
-          type: string
-          readOnly: true
-        environment_variables:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        working_dir:
-          type: string
-          readOnly: true
-        is_spot:
-          type: boolean
-          readOnly: true
-        start_dind:
-          type: boolean
-          readOnly: true
-        scale:
-          type: integer
-          readOnly: true
-        k8s_name:
-          type: string
-          readOnly: true
-        require_restart:
-          type: boolean
-          readOnly: true
-        resource_type:
-          readOnly: true
-          $ref: '#/components/schemas/ResourceType'
-        created_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        updated_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        last_deploy:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        dask_cluster:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/DaskClusterNested'
-        status:
-          type: string
-          readOnly: true
-        running_count:
-          type: integer
-          readOnly: true
-        debug_mode:
-          type: boolean
-          readOnly: true
-        scheduled:
-          type: boolean
-          readOnly: true
-      required:
-      - command
-      - created_at
-      - debug_mode
-      - description
-      - environment_variables
-      - extra_packages
-      - id
-      - image_tag
-      - instance_size
-      - is_spot
-      - k8s_name
-      - last_deploy
-      - name
-      - owner
-      - require_restart
-      - resource_type
-      - running_count
-      - scale
-      - scheduled
-      - size_display
-      - start_dind
-      - status
-      - updated_at
-      - working_dir
     JobList:
       type: object
       properties:
@@ -12792,6 +13025,9 @@ components:
         identity_name:
           type: string
           readOnly: true
+        org_name:
+          type: string
+          readOnly: true
         created_at:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
@@ -12840,6 +13076,7 @@ components:
       - org
       - org_admin
       - org_id
+      - org_name
       - user
       - user_id
     OrgMemberUpdate:
@@ -12877,6 +13114,9 @@ components:
           type: string
           readOnly: true
         identity_name:
+          type: string
+          readOnly: true
+        org_name:
           type: string
           readOnly: true
         created_at:
@@ -12944,6 +13184,7 @@ components:
       - org
       - org_admin
       - org_id
+      - org_name
       - user
       - user_id
     OwnerDetailedList:
@@ -13700,145 +13941,6 @@ components:
       required:
       - email
       - username
-    Workspace:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        owner:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/Owner'
-        image_tag:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ResourceImageTag'
-        extra_packages:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ExtraPackages'
-          nullable: true
-        ide:
-          type: string
-          readOnly: true
-        start_script:
-          type: string
-          readOnly: true
-        environment_variables:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        working_dir:
-          type: string
-          readOnly: true
-        description:
-          type: string
-          readOnly: true
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          nullable: true
-        disk_space:
-          type: string
-          readOnly: true
-        instance_size:
-          type: string
-          readOnly: true
-        auto_shutoff:
-          type: string
-          readOnly: true
-        start_ssh:
-          type: boolean
-          readOnly: true
-        is_spot:
-          type: boolean
-          readOnly: true
-        subdomain:
-          type: string
-          readOnly: true
-        start_dind:
-          type: boolean
-          readOnly: true
-        resource_type:
-          readOnly: true
-          $ref: '#/components/schemas/ResourceType'
-        size_display:
-          type: string
-          readOnly: true
-        k8s_name:
-          type: string
-          readOnly: true
-        require_restart:
-          type: boolean
-          readOnly: true
-        created_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        updated_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        started_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        self_destruct:
-          type: boolean
-          readOnly: true
-        dask_cluster:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/DaskClusterNested'
-        status:
-          type: string
-          readOnly: true
-        debug_mode:
-          type: boolean
-          readOnly: true
-        url:
-          type: string
-          format: url
-          readOnly: true
-        ssh_url:
-          type: string
-          format: url
-          readOnly: true
-      required:
-      - auto_shutoff
-      - created_at
-      - debug_mode
-      - description
-      - disk_space
-      - environment_variables
-      - extra_packages
-      - id
-      - ide
-      - image_tag
-      - instance_size
-      - is_spot
-      - k8s_name
-      - name
-      - owner
-      - require_restart
-      - resource_type
-      - size_display
-      - ssh_url
-      - start_dind
-      - start_script
-      - start_ssh
-      - started_at
-      - status
-      - subdomain
-      - updated_at
-      - url
-      - working_dir
     WorkspaceList:
       type: object
       properties:

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [readonly] 
 **name** | **str** |  | [readonly] 
 **identity_name** | **str** |  | [readonly] 
+**org_name** | **str** |  | [readonly] 
 **created_at** | **str** |  | [readonly] 
 **org_admin** | **bool** |  | [readonly] 
 **org_id** | **str** |  | [readonly] 

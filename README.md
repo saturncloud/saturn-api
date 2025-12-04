@@ -75,15 +75,23 @@ configuration = saturn_api.Configuration(
 # Enter a context with an instance of the API client
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = saturn_api.ApiStatusApi(api_client)
+    api_instance = saturn_api.ActiveResourcesApi(api_client)
+    user_id = 'user_id_example' # str |  (optional)
+    group_id = 'group_id_example' # str |  (optional)
+    org_id = 'org_id_example' # str |  (optional)
+    resource_type = saturn_api.ResourceType() # ResourceType |  (optional)
+    list_by = owner # str |  (optional) (default to owner)
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
 
     try:
-        # Get API status
-        api_response = await api_instance.get()
-        print("The response of ApiStatusApi->get:\n")
+        # List active resources
+        api_response = await api_instance.list(user_id=user_id, group_id=group_id, org_id=org_id, resource_type=resource_type, list_by=list_by, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of ActiveResourcesApi->list:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ApiStatusApi->get: %s\n" % e)
+        print("Exception when calling ActiveResourcesApi->list: %s\n" % e)
 
 ```
 
@@ -93,6 +101,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ActiveResourcesApi* | [**list**](docs/ActiveResourcesApi.md#list) | **GET** /api/active/resources | List active resources
 *ApiStatusApi* | [**get**](docs/ApiStatusApi.md#get) | **GET** /api/status | Get API status
 *ApiTokensApi* | [**create**](docs/ApiTokensApi.md#create) | **POST** /api/tokens | Create api token
 *ApiTokensApi* | [**delete**](docs/ApiTokensApi.md#delete) | **DELETE** /api/tokens/{api_token_id} | Delete api token
@@ -367,6 +376,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ActiveResourceList](docs/ActiveResourceList.md)
  - [AggregatedUsage](docs/AggregatedUsage.md)
  - [ApiStatus](docs/ApiStatus.md)
  - [ApiToken](docs/ApiToken.md)
@@ -546,6 +556,7 @@ Class | Method | HTTP request | Description
  - [PodStatus](docs/PodStatus.md)
  - [Recipe](docs/Recipe.md)
  - [RecipeList](docs/RecipeList.md)
+ - [Resource](docs/Resource.md)
  - [ResourceByDeploymentId](docs/ResourceByDeploymentId.md)
  - [ResourceByJobId](docs/ResourceByJobId.md)
  - [ResourceByWorkspaceId](docs/ResourceByWorkspaceId.md)
