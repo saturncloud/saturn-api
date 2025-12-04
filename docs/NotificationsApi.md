@@ -29,10 +29,10 @@ from saturn_api.models.notification_acknowledged import NotificationAcknowledged
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -40,9 +40,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -103,10 +103,10 @@ from saturn_api.models.notification_delete import NotificationDelete
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -114,9 +114,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -177,10 +177,10 @@ from saturn_api.models.notification_list import NotificationList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -188,9 +188,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -259,10 +259,10 @@ from saturn_api.models.notification_subscription_list import NotificationSubscri
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -270,9 +270,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -346,10 +346,10 @@ from saturn_api.models.notification_subscription import NotificationSubscription
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -357,9 +357,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -422,10 +422,10 @@ from saturn_api.models.notification_unsubscribe import NotificationUnsubscribe
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -433,9 +433,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client

@@ -45,10 +45,10 @@ from saturn_api.models.dask_cluster_adapt import DaskClusterAdapt
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -56,9 +56,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -124,10 +124,10 @@ from saturn_api.models.dask_cluster_create import DaskClusterCreate
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -135,9 +135,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -201,10 +201,10 @@ import saturn_api
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -212,9 +212,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -279,10 +279,10 @@ from saturn_api.models.dask_cluster import DaskCluster
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -290,9 +290,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -354,10 +354,10 @@ import saturn_api
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -365,9 +365,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -432,10 +432,10 @@ from saturn_api.models.deployment_runtime_summary import DeploymentRuntimeSummar
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -443,9 +443,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -513,10 +513,10 @@ from saturn_api.models.historic_log_list import HistoricLogList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -524,9 +524,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -604,10 +604,10 @@ from saturn_api.models.metrics import Metrics
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -615,9 +615,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -695,10 +695,10 @@ from saturn_api.models.resource_history import ResourceHistory
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -706,9 +706,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -775,10 +775,10 @@ from saturn_api.models.dask_cluster_runtime_summary import DaskClusterRuntimeSum
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -786,9 +786,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -852,10 +852,10 @@ import saturn_api
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -863,9 +863,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -930,10 +930,10 @@ from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -941,9 +941,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1007,10 +1007,10 @@ import saturn_api
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1018,9 +1018,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1083,10 +1083,10 @@ from saturn_api.models.dask_cluster_server_options import DaskClusterServerOptio
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1094,9 +1094,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1155,10 +1155,10 @@ from saturn_api.models.resource_token_info import ResourceTokenInfo
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1166,9 +1166,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1231,10 +1231,10 @@ from saturn_api.models.dask_workers_runtime_summary_page import DaskWorkersRunti
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1242,9 +1242,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1313,10 +1313,10 @@ from saturn_api.models.dask_cluster_list import DaskClusterList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1324,9 +1324,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1409,10 +1409,10 @@ from saturn_api.models.dask_cluster import DaskCluster
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1420,9 +1420,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1487,10 +1487,10 @@ from saturn_api.models.resource_token_info import ResourceTokenInfo
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1498,9 +1498,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1563,10 +1563,10 @@ from saturn_api.models.dask_cluster_scale import DaskClusterScale
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1574,9 +1574,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1641,10 +1641,10 @@ from saturn_api.models.dask_cluster import DaskCluster
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1652,9 +1652,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1719,10 +1719,10 @@ from saturn_api.models.dask_cluster import DaskCluster
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1730,9 +1730,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1798,10 +1798,10 @@ from saturn_api.models.dask_cluster_update import DaskClusterUpdate
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1809,9 +1809,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1879,10 +1879,10 @@ from saturn_api.models.resource_token_update import ResourceTokenUpdate
 from saturn_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = saturn_api.Configuration(
-    host = "http://localhost"
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1890,9 +1890,9 @@ configuration = saturn_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
 configuration = saturn_api.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+    access_token = os.environ["SATURN_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
