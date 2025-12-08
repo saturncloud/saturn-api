@@ -38,7 +38,7 @@ class Resource(RootModel[T]):
         protected_namespaces=(),
     )
 
-    root: T
+    root: T = Field(discriminator="resource_type")
 
     @classmethod
     def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:

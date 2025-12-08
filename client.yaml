@@ -8473,67 +8473,21 @@ components:
       required:
       - spec
       - type
-    ResourceRecipe:
+    Resource:
       discriminator:
-        propertyName: type
+        propertyName: resource_type
         mapping:
-          deployment: '#/components/schemas/DeploymentRecipe'
-          job: '#/components/schemas/JobRecipe'
-          workspace: '#/components/schemas/WorkspaceRecipe'
+          dask: '#/components/schemas/DaskCluster'
+          deployment: '#/components/schemas/Deployment'
+          job: '#/components/schemas/Job'
+          workspace: '#/components/schemas/Workspace'
       oneOf:
-      - $ref: '#/components/schemas/DeploymentRecipe'
-      - $ref: '#/components/schemas/JobRecipe'
-      - $ref: '#/components/schemas/WorkspaceRecipe'
+      - $ref: '#/components/schemas/DaskCluster'
+      - $ref: '#/components/schemas/Deployment'
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/Workspace'
       type: object
       properties: {}
-    AuthorizationGrant:
-      discriminator:
-        propertyName: grant_type
-        mapping:
-          authorization_code: '#/components/schemas/AuthorizationCodeGrant'
-          refresh_token: '#/components/schemas/AuthorizationRefreshGrant'
-      oneOf:
-      - $ref: '#/components/schemas/AuthorizationCodeGrant'
-      - $ref: '#/components/schemas/AuthorizationRefreshGrant'
-      type: object
-      properties: {}
-    AuthorizationCodeGrant:
-      type: object
-      properties:
-        grant_type:
-          type: string
-          enum:
-          - authorization_code
-        code:
-          type: string
-        code_verifier:
-          type: string
-        redirect_uri:
-          type: string
-      required:
-      - code
-      - code_verifier
-      - grant_type
-      - redirect_uri
-    AuthorizationRefreshGrant:
-      type: object
-      properties:
-        grant_type:
-          type: string
-          enum:
-          - refresh_token
-        refresh_token:
-          type: string
-      required:
-      - grant_type
-      - refresh_token
-    ResourceType:
-      type: string
-      enum:
-      - deployment
-      - job
-      - workspace
-      - dask
     IdentityType:
       type: string
       enum:
@@ -8609,8 +8563,10 @@ components:
           type: string
           readOnly: true
         resource_type:
+          type: string
+          enum:
+          - dask
           readOnly: true
-          $ref: '#/components/schemas/ResourceType'
         tags:
           type: object
           readOnly: true
@@ -8798,8 +8754,10 @@ components:
           type: string
           readOnly: true
         resource_type:
+          type: string
+          enum:
+          - dask
           readOnly: true
-          $ref: '#/components/schemas/ResourceType'
         tags:
           type: object
           readOnly: true
@@ -8963,8 +8921,10 @@ components:
           type: boolean
           readOnly: true
         resource_type:
+          type: string
+          enum:
+          - deployment
           readOnly: true
-          $ref: '#/components/schemas/ResourceType'
         size_display:
           type: string
           readOnly: true
@@ -9101,8 +9061,10 @@ components:
           type: boolean
           readOnly: true
         resource_type:
+          type: string
+          enum:
+          - job
           readOnly: true
-          $ref: '#/components/schemas/ResourceType'
         created_at:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
@@ -9223,8 +9185,10 @@ components:
           type: boolean
           readOnly: true
         resource_type:
+          type: string
+          enum:
+          - workspace
           readOnly: true
-          $ref: '#/components/schemas/ResourceType'
         size_display:
           type: string
           readOnly: true
@@ -9298,12 +9262,67 @@ components:
       - updated_at
       - url
       - working_dir
-    Resource:
+    ResourceRecipe:
+      discriminator:
+        propertyName: type
+        mapping:
+          deployment: '#/components/schemas/DeploymentRecipe'
+          job: '#/components/schemas/JobRecipe'
+          workspace: '#/components/schemas/WorkspaceRecipe'
       oneOf:
-      - $ref: '#/components/schemas/DaskCluster'
-      - $ref: '#/components/schemas/Deployment'
-      - $ref: '#/components/schemas/Job'
-      - $ref: '#/components/schemas/Workspace'
+      - $ref: '#/components/schemas/DeploymentRecipe'
+      - $ref: '#/components/schemas/JobRecipe'
+      - $ref: '#/components/schemas/WorkspaceRecipe'
+      type: object
+      properties: {}
+    AuthorizationGrant:
+      discriminator:
+        propertyName: grant_type
+        mapping:
+          authorization_code: '#/components/schemas/AuthorizationCodeGrant'
+          refresh_token: '#/components/schemas/AuthorizationRefreshGrant'
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizationCodeGrant'
+      - $ref: '#/components/schemas/AuthorizationRefreshGrant'
+      type: object
+      properties: {}
+    AuthorizationCodeGrant:
+      type: object
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - authorization_code
+        code:
+          type: string
+        code_verifier:
+          type: string
+        redirect_uri:
+          type: string
+      required:
+      - code
+      - code_verifier
+      - grant_type
+      - redirect_uri
+    AuthorizationRefreshGrant:
+      type: object
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - refresh_token
+        refresh_token:
+          type: string
+      required:
+      - grant_type
+      - refresh_token
+    ResourceType:
+      type: string
+      enum:
+      - deployment
+      - job
+      - workspace
+      - dask
     ActiveResourceList:
       type: object
       properties:

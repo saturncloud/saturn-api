@@ -17,14 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.cron_schedule import CronSchedule
 from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
 from saturn_api.models.owner import Owner
 from saturn_api.models.resource_image_tag import ResourceImageTag
-from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -50,7 +49,7 @@ class Job(BaseModel):
     scale: StrictInt
     k8s_name: StrictStr
     require_restart: StrictBool
-    resource_type: ResourceType
+    resource_type: Literal['job']
     created_at: StrictStr
     updated_at: StrictStr
     last_deploy: StrictStr
@@ -60,6 +59,13 @@ class Job(BaseModel):
     debug_mode: StrictBool
     scheduled: StrictBool
     __properties: ClassVar[List[str]] = ["id", "name", "owner", "command", "description", "image_tag", "instance_size", "size_display", "extra_packages", "cron_schedule_options", "start_script", "environment_variables", "working_dir", "is_spot", "start_dind", "scale", "k8s_name", "require_restart", "resource_type", "created_at", "updated_at", "last_deploy", "dask_cluster", "status", "running_count", "debug_mode", "scheduled"]
+
+    @field_validator('resource_type')
+    def resource_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['job']):
+            raise ValueError("must be one of enum values ('job')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -117,6 +123,7 @@ class Job(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -137,6 +144,7 @@ class Job(BaseModel):
             "scale",
             "k8s_name",
             "require_restart",
+            "resource_type",
             "created_at",
             "updated_at",
             "last_deploy",

@@ -17,9 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +28,7 @@ class DaskClusterNested(BaseModel):
     """ # noqa: E501
     id: StrictStr
     name: StrictStr
-    resource_type: ResourceType
+    resource_type: Literal['dask']
     tags: Optional[Dict[str, StrictStr]]
     worker_size: StrictStr
     worker_size_display: StrictStr
@@ -48,6 +47,13 @@ class DaskClusterNested(BaseModel):
     errors: Optional[List[StrictStr]] = None
     url: StrictStr
     __properties: ClassVar[List[str]] = ["id", "name", "resource_type", "tags", "worker_size", "worker_size_display", "worker_is_spot", "scheduler_size", "scheduler_size_display", "n_workers", "nprocs", "nthreads", "scheduler_url", "subdomain", "image", "created_at", "status", "warnings", "errors", "url"]
+
+    @field_validator('resource_type')
+    def resource_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['dask']):
+            raise ValueError("must be one of enum values ('dask')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,10 +102,12 @@ class DaskClusterNested(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "name",
+            "resource_type",
             "tags",
             "worker_size",
             "worker_size_display",

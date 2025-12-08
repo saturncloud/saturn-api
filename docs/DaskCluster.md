@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [readonly] 
 **name** | **str** |  | [readonly] 
-**resource_type** | [**ResourceType**](ResourceType.md) |  | 
+**resource_type** | **str** |  | [readonly] 
 **tags** | **Dict[str, str]** |  | [readonly] 
 **worker_size** | **str** |  | [readonly] 
 **worker_size_display** | **str** |  | [readonly] 

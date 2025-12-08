@@ -17,13 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
 from saturn_api.models.owner import Owner
 from saturn_api.models.resource_image_tag import ResourceImageTag
-from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -54,7 +53,7 @@ class Deployment(BaseModel):
     created_at: StrictStr
     updated_at: StrictStr
     require_restart: StrictBool
-    resource_type: ResourceType
+    resource_type: Literal['deployment']
     size_display: StrictStr
     dask_cluster: Optional[DaskClusterNested] = None
     status: StrictStr
@@ -63,6 +62,13 @@ class Deployment(BaseModel):
     url: StrictStr
     ssh_url: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "name", "owner", "command", "description", "tags", "instance_size", "extra_packages", "scale", "start_script", "environment_variables", "working_dir", "start_ssh", "is_spot", "healthcheck", "subdomain", "start_dind", "image_tag", "last_deploy", "k8s_name", "created_at", "updated_at", "require_restart", "resource_type", "size_display", "dask_cluster", "status", "running_count", "debug_mode", "url", "ssh_url"]
+
+    @field_validator('resource_type')
+    def resource_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['deployment']):
+            raise ValueError("must be one of enum values ('deployment')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -123,6 +129,7 @@ class Deployment(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -147,6 +154,7 @@ class Deployment(BaseModel):
             "created_at",
             "updated_at",
             "require_restart",
+            "resource_type",
             "size_display",
             "dask_cluster",
             "status",

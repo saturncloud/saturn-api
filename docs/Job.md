@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **scale** | **int** |  | [readonly] 
 **k8s_name** | **str** |  | [readonly] 
 **require_restart** | **bool** |  | [readonly] 
-**resource_type** | [**ResourceType**](ResourceType.md) |  | 
+**resource_type** | **str** |  | [readonly] 
 **created_at** | **str** |  | [readonly] 
 **updated_at** | **str** |  | [readonly] 
 **last_deploy** | **str** |  | [readonly] 

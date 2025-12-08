@@ -17,13 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
 from saturn_api.models.owner import Owner
 from saturn_api.models.resource_image_tag import ResourceImageTag
-from saturn_api.models.resource_type import ResourceType
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -49,7 +48,7 @@ class Workspace(BaseModel):
     is_spot: StrictBool
     subdomain: StrictStr
     start_dind: StrictBool
-    resource_type: ResourceType
+    resource_type: Literal['workspace']
     size_display: StrictStr
     k8s_name: StrictStr
     require_restart: StrictBool
@@ -63,6 +62,13 @@ class Workspace(BaseModel):
     url: StrictStr
     ssh_url: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "name", "owner", "image_tag", "extra_packages", "ide", "start_script", "environment_variables", "working_dir", "description", "tags", "disk_space", "instance_size", "auto_shutoff", "start_ssh", "is_spot", "subdomain", "start_dind", "resource_type", "size_display", "k8s_name", "require_restart", "created_at", "updated_at", "started_at", "self_destruct", "dask_cluster", "status", "debug_mode", "url", "ssh_url"]
+
+    @field_validator('resource_type')
+    def resource_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['workspace']):
+            raise ValueError("must be one of enum values ('workspace')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -123,6 +129,7 @@ class Workspace(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -142,6 +149,7 @@ class Workspace(BaseModel):
             "is_spot",
             "subdomain",
             "start_dind",
+            "resource_type",
             "size_display",
             "k8s_name",
             "require_restart",
