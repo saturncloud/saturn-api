@@ -11,6 +11,10 @@ update: copy-client-yaml generate
 generate:
 	openapi-generator-cli generate -g python -i client.yaml -c openapi-generator-config.yaml --remove-operation-id-prefix -t templates/python
 
+.PHONY: templates
+templates:
+	openapi-generator-cli author template -g python --library httpx
+
 .PHONY: copy-client-yaml
 copy-client-yaml:
 	@if [ ! -d ../saturn ]; then echo "Unable to find new client.yaml"; exit 1; fi

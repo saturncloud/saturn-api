@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from saturn_api.models.active_resource_list import ActiveResourceList
 from saturn_api.models.aggregated_usage import AggregatedUsage
@@ -293,3 +292,4 @@ from saturn_api.models.workspace_server_size_schemas import WorkspaceServerSizeS
 from saturn_api.models.workspace_spec import WorkspaceSpec
 from saturn_api.models.workspace_start import WorkspaceStart
 from saturn_api.models.workspace_update import WorkspaceUpdate
+

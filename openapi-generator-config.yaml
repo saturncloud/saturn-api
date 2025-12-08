@@ -2,4 +2,4 @@ projectName: saturn-api
 packageName: saturn_api
 packageUrl: github.com/saturncloud/saturn-api
 packageVersion: 1.0.0
-library: asyncio
+library: httpx
