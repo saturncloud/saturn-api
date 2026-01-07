@@ -5396,7 +5396,6 @@ class DeploymentsApi:
     async def get_runtime_summary(
         self,
         deployment_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5416,8 +5415,6 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5442,7 +5439,6 @@ class DeploymentsApi:
 
         _param = self._get_runtime_summary_serialize(
             deployment_id=deployment_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5467,7 +5463,6 @@ class DeploymentsApi:
     async def get_runtime_summary_with_http_info(
         self,
         deployment_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5487,8 +5482,6 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5513,7 +5506,6 @@ class DeploymentsApi:
 
         _param = self._get_runtime_summary_serialize(
             deployment_id=deployment_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5538,7 +5530,6 @@ class DeploymentsApi:
     async def get_runtime_summary_without_preload_content(
         self,
         deployment_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5558,8 +5549,6 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5584,7 +5573,6 @@ class DeploymentsApi:
 
         _param = self._get_runtime_summary_serialize(
             deployment_id=deployment_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5604,7 +5592,6 @@ class DeploymentsApi:
     def _get_runtime_summary_serialize(
         self,
         deployment_id,
-        details,
         _request_auth,
         _content_type,
         _headers,
@@ -5629,10 +5616,6 @@ class DeploymentsApi:
         if deployment_id is not None:
             _path_params['deployment_id'] = deployment_id
         # process the query parameters
-        if details is not None:
-            
-            _query_params.append(('details', details))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter

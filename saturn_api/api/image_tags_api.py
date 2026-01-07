@@ -1242,11 +1242,10 @@ class ImageTagsApi:
 
 
     @validate_call
-    async def get_runtimesummary(
+    async def get_runtime_summary(
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1268,8 +1267,6 @@ class ImageTagsApi:
         :type image_id: str
         :param image_tag_id: (required)
         :type image_tag_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1292,10 +1289,9 @@ class ImageTagsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_runtimesummary_serialize(
+        _param = self._get_runtime_summary_serialize(
             image_id=image_id,
             image_tag_id=image_tag_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1317,11 +1313,10 @@ class ImageTagsApi:
 
 
     @validate_call
-    async def get_runtimesummary_with_http_info(
+    async def get_runtime_summary_with_http_info(
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1343,8 +1338,6 @@ class ImageTagsApi:
         :type image_id: str
         :param image_tag_id: (required)
         :type image_tag_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1367,10 +1360,9 @@ class ImageTagsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_runtimesummary_serialize(
+        _param = self._get_runtime_summary_serialize(
             image_id=image_id,
             image_tag_id=image_tag_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1392,11 +1384,10 @@ class ImageTagsApi:
 
 
     @validate_call
-    async def get_runtimesummary_without_preload_content(
+    async def get_runtime_summary_without_preload_content(
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1418,8 +1409,6 @@ class ImageTagsApi:
         :type image_id: str
         :param image_tag_id: (required)
         :type image_tag_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1442,10 +1431,9 @@ class ImageTagsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_runtimesummary_serialize(
+        _param = self._get_runtime_summary_serialize(
             image_id=image_id,
             image_tag_id=image_tag_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1462,11 +1450,10 @@ class ImageTagsApi:
         return response_data.response
 
 
-    def _get_runtimesummary_serialize(
+    def _get_runtime_summary_serialize(
         self,
         image_id,
         image_tag_id,
-        details,
         _request_auth,
         _content_type,
         _headers,
@@ -1493,10 +1480,6 @@ class ImageTagsApi:
         if image_tag_id is not None:
             _path_params['image_tag_id'] = image_tag_id
         # process the query parameters
-        if details is not None:
-            
-            _query_params.append(('details', details))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter

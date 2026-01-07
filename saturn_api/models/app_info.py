@@ -29,6 +29,7 @@ class AppInfo(BaseModel):
     AppInfo
     """ # noqa: E501
     cloud_provider: StrictStr
+    is_multicluster: StrictBool
     allow_deployment_public_access: StrictBool
     is_enterprise: StrictBool
     customer_name: StrictStr
@@ -45,7 +46,7 @@ class AppInfo(BaseModel):
     populate_examples: StrictBool
     whitelabel: WhiteLabelConfiguration
     user_tracking: StrictBool
-    __properties: ClassVar[List[str]] = ["cloud_provider", "allow_deployment_public_access", "is_enterprise", "customer_name", "stripe_public_key", "hotjar_user_tracking", "version", "auth0", "network_filesystem_enabled", "git_repo_clone_dir", "app_serving_domain", "dind_enabled", "apply_requires_confirm", "hide_invitations", "populate_examples", "whitelabel", "user_tracking"]
+    __properties: ClassVar[List[str]] = ["cloud_provider", "is_multicluster", "allow_deployment_public_access", "is_enterprise", "customer_name", "stripe_public_key", "hotjar_user_tracking", "version", "auth0", "network_filesystem_enabled", "git_repo_clone_dir", "app_serving_domain", "dind_enabled", "apply_requires_confirm", "hide_invitations", "populate_examples", "whitelabel", "user_tracking"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -110,6 +111,7 @@ class AppInfo(BaseModel):
 
         _obj = cls.model_validate({
             "cloud_provider": obj.get("cloud_provider"),
+            "is_multicluster": obj.get("is_multicluster"),
             "allow_deployment_public_access": obj.get("allow_deployment_public_access"),
             "is_enterprise": obj.get("is_enterprise"),
             "customer_name": obj.get("customer_name"),

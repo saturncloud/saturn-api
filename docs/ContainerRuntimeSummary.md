@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **restart_policy** | [**RestartPolicy**](RestartPolicy.md) |  | 
 **image_pulled** | **bool** |  | [readonly] 
 **exit_code** | **int** |  | [readonly] 
-**logs** | **str** |  | [readonly] 
 **reason** | **str** |  | [readonly] 
 **previous** | [**ContainerRuntimeSummary**](ContainerRuntimeSummary.md) |  | [readonly] 
 

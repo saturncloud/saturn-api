@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **scale** | **int** |  | [readonly] 
 **running_count** | **int** |  | [readonly] 
 **active_count** | **int** |  | [readonly] 
-**pod_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [readonly] 
 **disk_space** | **str** |  | [readonly] 
 
 ## Example

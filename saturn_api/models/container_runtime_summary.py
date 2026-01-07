@@ -45,10 +45,9 @@ class ContainerRuntimeSummary(BaseModel):
     restart_policy: RestartPolicy
     image_pulled: StrictBool
     exit_code: Optional[StrictInt]
-    logs: Optional[StrictStr]
     reason: Literal['Evicted', 'OOMKilled'] | None
     previous: Optional[ContainerRuntimeSummary]
-    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "finished_at", "restart_policy", "image_pulled", "exit_code", "logs", "reason", "previous"]
+    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "finished_at", "restart_policy", "image_pulled", "exit_code", "reason", "previous"]
 
     @field_validator('reason')
     def reason_validate_enum(cls, value):
@@ -105,7 +104,6 @@ class ContainerRuntimeSummary(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "name",
@@ -121,7 +119,6 @@ class ContainerRuntimeSummary(BaseModel):
             "finished_at",
             "image_pulled",
             "exit_code",
-            "logs",
             "reason",
             "previous",
         ])
@@ -171,11 +168,6 @@ class ContainerRuntimeSummary(BaseModel):
         if self.exit_code is None and "exit_code" in self.model_fields_set:
             _dict['exit_code'] = None
 
-        # set to None if logs (nullable) is None
-        # and model_fields_set contains the field
-        if self.logs is None and "logs" in self.model_fields_set:
-            _dict['logs'] = None
-
         # set to None if reason (nullable) is None
         # and model_fields_set contains the field
         if self.reason is None and "reason" in self.model_fields_set:
@@ -213,7 +205,6 @@ class ContainerRuntimeSummary(BaseModel):
             "restart_policy": obj.get("restart_policy"),
             "image_pulled": obj.get("image_pulled"),
             "exit_code": obj.get("exit_code"),
-            "logs": obj.get("logs"),
             "reason": obj.get("reason"),
             "previous": ContainerRuntimeSummary.from_dict(obj["previous"]) if obj.get("previous") is not None else None
         })

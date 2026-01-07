@@ -17,19 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
-class PaginationOffsetMeta(BaseModel):
+class DaskWorkerRuntimeSummaryList(BaseModel):
     """
-    PaginationOffsetMeta
+    DaskWorkerRuntimeSummaryList
     """ # noqa: E501
-    next: Optional[StrictStr] = None
-    prev: Optional[StrictStr] = None
-    total_count: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["next", "prev", "total_count"]
+    workers: List[PodRuntimeSummary]
+    prev_key: Optional[StrictStr] = None
+    next_key: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["workers", "prev_key", "next_key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +50,7 @@ class PaginationOffsetMeta(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PaginationOffsetMeta from a JSON string"""
+        """Create an instance of DaskWorkerRuntimeSummaryList from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -61,8 +62,14 @@ class PaginationOffsetMeta(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "workers",
+            "prev_key",
+            "next_key",
         ])
 
         _dict = self.model_dump(
@@ -70,11 +77,18 @@ class PaginationOffsetMeta(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in workers (list)
+        _items = []
+        if self.workers:
+            for _item_workers in self.workers:
+                if _item_workers:
+                    _items.append(_item_workers.to_dict())
+            _dict['workers'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PaginationOffsetMeta from a dict"""
+        """Create an instance of DaskWorkerRuntimeSummaryList from a dict"""
         if obj is None:
             return None
 
@@ -82,9 +96,9 @@ class PaginationOffsetMeta(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "next": obj.get("next"),
-            "prev": obj.get("prev"),
-            "total_count": obj.get("total_count")
+            "workers": [PodRuntimeSummary.from_dict(_item) for _item in obj["workers"]] if obj.get("workers") is not None else None,
+            "prev_key": obj.get("prev_key"),
+            "next_key": obj.get("next_key")
         })
         return _obj
 

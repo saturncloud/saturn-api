@@ -17,20 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List
-from saturn_api.models.pagination_offset_meta import PaginationOffsetMeta
+from pydantic import BaseModel, ConfigDict, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
-class DaskWorkersRuntimeSummaryPage(BaseModel):
+class PodRuntimeSummaryList(BaseModel):
     """
-    DaskWorkersRuntimeSummaryPage
+    PodRuntimeSummaryList
     """ # noqa: E501
-    workers: List[PodRuntimeSummary]
-    pagination: PaginationOffsetMeta
-    __properties: ClassVar[List[str]] = ["workers", "pagination"]
+    pod_summaries: List[PodRuntimeSummary]
+    prev_key: Optional[StrictStr] = None
+    next_key: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["pod_summaries", "prev_key", "next_key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class DaskWorkersRuntimeSummaryPage(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DaskWorkersRuntimeSummaryPage from a JSON string"""
+        """Create an instance of PodRuntimeSummaryList from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,8 +62,14 @@ class DaskWorkersRuntimeSummaryPage(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "pod_summaries",
+            "prev_key",
+            "next_key",
         ])
 
         _dict = self.model_dump(
@@ -71,21 +77,18 @@ class DaskWorkersRuntimeSummaryPage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in workers (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in pod_summaries (list)
         _items = []
-        if self.workers:
-            for _item_workers in self.workers:
-                if _item_workers:
-                    _items.append(_item_workers.to_dict())
-            _dict['workers'] = _items
-        # override the default output from pydantic by calling `to_dict()` of pagination
-        if self.pagination:
-            _dict['pagination'] = self.pagination.to_dict()
+        if self.pod_summaries:
+            for _item_pod_summaries in self.pod_summaries:
+                if _item_pod_summaries:
+                    _items.append(_item_pod_summaries.to_dict())
+            _dict['pod_summaries'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DaskWorkersRuntimeSummaryPage from a dict"""
+        """Create an instance of PodRuntimeSummaryList from a dict"""
         if obj is None:
             return None
 
@@ -93,8 +96,9 @@ class DaskWorkersRuntimeSummaryPage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "workers": [PodRuntimeSummary.from_dict(_item) for _item in obj["workers"]] if obj.get("workers") is not None else None,
-            "pagination": PaginationOffsetMeta.from_dict(obj["pagination"]) if obj.get("pagination") is not None else None
+            "pod_summaries": [PodRuntimeSummary.from_dict(_item) for _item in obj["pod_summaries"]] if obj.get("pod_summaries") is not None else None,
+            "prev_key": obj.get("prev_key"),
+            "next_key": obj.get("next_key")
         })
         return _obj
 

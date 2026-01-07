@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cloud_provider** | **str** |  | 
+**is_multicluster** | **bool** |  | 
 **allow_deployment_public_access** | **bool** |  | 
 **is_enterprise** | **bool** |  | 
 **customer_name** | **str** |  | 

@@ -22,7 +22,6 @@ from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.condition import Condition
 from saturn_api.models.deployment_status import DeploymentStatus
-from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -44,9 +43,8 @@ class WorkspaceRuntimeSummary(BaseModel):
     scale: StrictInt
     running_count: StrictInt
     active_count: StrictInt
-    pod_summaries: List[PodRuntimeSummary]
     disk_space: StrictStr
-    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "scale", "running_count", "active_count", "pod_summaries", "disk_space"]
+    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "scale", "running_count", "active_count", "disk_space"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,7 +90,6 @@ class WorkspaceRuntimeSummary(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "name",
@@ -108,7 +105,6 @@ class WorkspaceRuntimeSummary(BaseModel):
             "scale",
             "running_count",
             "active_count",
-            "pod_summaries",
             "disk_space",
         ])
 
@@ -124,13 +120,6 @@ class WorkspaceRuntimeSummary(BaseModel):
                 if _item_conditions:
                     _items.append(_item_conditions.to_dict())
             _dict['conditions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in pod_summaries (list)
-        _items = []
-        if self.pod_summaries:
-            for _item_pod_summaries in self.pod_summaries:
-                if _item_pod_summaries:
-                    _items.append(_item_pod_summaries.to_dict())
-            _dict['pod_summaries'] = _items
         # set to None if controller_uid (nullable) is None
         # and model_fields_set contains the field
         if self.controller_uid is None and "controller_uid" in self.model_fields_set:
@@ -177,7 +166,6 @@ class WorkspaceRuntimeSummary(BaseModel):
             "scale": obj.get("scale"),
             "running_count": obj.get("running_count"),
             "active_count": obj.get("active_count"),
-            "pod_summaries": [PodRuntimeSummary.from_dict(_item) for _item in obj["pod_summaries"]] if obj.get("pod_summaries") is not None else None,
             "disk_space": obj.get("disk_space")
         })
         return _obj

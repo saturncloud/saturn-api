@@ -5398,7 +5398,6 @@ class WorkspacesApi:
     async def get_runtime_summary(
         self,
         workspace_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5418,8 +5417,6 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5444,7 +5441,6 @@ class WorkspacesApi:
 
         _param = self._get_runtime_summary_serialize(
             workspace_id=workspace_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5469,7 +5465,6 @@ class WorkspacesApi:
     async def get_runtime_summary_with_http_info(
         self,
         workspace_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5489,8 +5484,6 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5515,7 +5508,6 @@ class WorkspacesApi:
 
         _param = self._get_runtime_summary_serialize(
             workspace_id=workspace_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5540,7 +5532,6 @@ class WorkspacesApi:
     async def get_runtime_summary_without_preload_content(
         self,
         workspace_id: StrictStr,
-        details: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5560,8 +5551,6 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param details:
-        :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5586,7 +5575,6 @@ class WorkspacesApi:
 
         _param = self._get_runtime_summary_serialize(
             workspace_id=workspace_id,
-            details=details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5606,7 +5594,6 @@ class WorkspacesApi:
     def _get_runtime_summary_serialize(
         self,
         workspace_id,
-        details,
         _request_auth,
         _content_type,
         _headers,
@@ -5631,10 +5618,6 @@ class WorkspacesApi:
         if workspace_id is not None:
             _path_params['workspace_id'] = workspace_id
         # process the query parameters
-        if details is not None:
-            
-            _query_params.append(('details', details))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter

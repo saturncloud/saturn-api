@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **running_count** | **int** |  | [readonly] 
 **active_count** | **int** |  | [readonly] 
 **completed_at** | **datetime** |  | [readonly] 
-**pod_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [readonly] 
 
 ## Example
 

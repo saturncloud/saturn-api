@@ -1544,7 +1544,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_runtime_summary**
-> WorkspaceRuntimeSummary get_runtime_summary(workspace_id, details=details)
+> WorkspaceRuntimeSummary get_runtime_summary(workspace_id)
 
 Get workspace runtime summary
 
@@ -1581,11 +1581,10 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.WorkspacesApi(api_client)
     workspace_id = 'workspace_id_example' # str | 
-    details = False # bool |  (optional) (default to False)
 
     try:
         # Get workspace runtime summary
-        api_response = await api_instance.get_runtime_summary(workspace_id, details=details)
+        api_response = await api_instance.get_runtime_summary(workspace_id)
         print("The response of WorkspacesApi->get_runtime_summary:\n")
         pprint(api_response)
     except Exception as e:
@@ -1600,7 +1599,6 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_id** | **str**|  | 
- **details** | **bool**|  | [optional] [default to False]
 
 ### Return type
 

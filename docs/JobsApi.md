@@ -18,18 +18,19 @@ Method | HTTP request | Description
 [**get_pod_history**](JobsApi.md#get_pod_history) | **GET** /api/jobs/{job_id}/history | Get job pod history
 [**get_recipe**](JobsApi.md#get_recipe) | **GET** /api/jobs/{job_id}/recipe | Get job recipe
 [**get_resource_template**](JobsApi.md#get_resource_template) | **GET** /api/jobs/{job_id}/template | Get job resource template
-[**get_runtime_summary**](JobsApi.md#get_runtime_summary) | **GET** /api/jobs/{job_id}/runtimesummary | Get job runtime summary
 [**get_secret_attachment**](JobsApi.md#get_secret_attachment) | **GET** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Get job secret attachment
 [**get_server_options**](JobsApi.md#get_server_options) | **GET** /api/jobs/info | Get job server options
 [**get_service_account_attachment**](JobsApi.md#get_service_account_attachment) | **GET** /api/jobs/{job_id}/service_account | Get job service account attachment
 [**get_token_info**](JobsApi.md#get_token_info) | **GET** /api/jobs/{job_id}/token | Get job API token info
 [**list**](JobsApi.md#list) | **GET** /api/jobs | List jobs
+[**list_runtime_summaries**](JobsApi.md#list_runtime_summaries) | **GET** /api/jobs/{job_id}/runtimesummary | List job runtime summaries
 [**list_secret_attachments**](JobsApi.md#list_secret_attachments) | **GET** /api/jobs/{job_id}/secrets | List job secret attachments
 [**restart**](JobsApi.md#restart) | **POST** /api/jobs/{job_id}/restart | Restart job
 [**rotate_token**](JobsApi.md#rotate_token) | **POST** /api/jobs/{job_id}/token | Rotate job API token
 [**schedule**](JobsApi.md#schedule) | **POST** /api/jobs/{job_id}/schedule | Activate job cron schedule
 [**start**](JobsApi.md#start) | **POST** /api/jobs/{job_id}/start | Start job
 [**stop**](JobsApi.md#stop) | **POST** /api/jobs/{job_id}/stop | Stop job
+[**stop_run**](JobsApi.md#stop_run) | **POST** /api/jobs/{job_id}/stop/{run_name} | Stop job run
 [**unschedule**](JobsApi.md#unschedule) | **POST** /api/jobs/{job_id}/unschedule | Deactivate job cron schedule
 [**update**](JobsApi.md#update) | **PATCH** /api/jobs/{job_id} | Update job
 [**update_resource_template**](JobsApi.md#update_resource_template) | **PATCH** /api/jobs/{job_id}/template | Update job resource template
@@ -1141,86 +1142,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_runtime_summary**
-> JobCollectionRuntimeSummary get_runtime_summary(job_id, details=details)
-
-Get job runtime summary
-
-Summary of the current runtime status.
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.job_collection_runtime_summary import JobCollectionRuntimeSummary
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = os.getenv("SATURN_BASE_URL", "http://localhost")
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
-configuration = saturn_api.Configuration(
-    access_token = os.environ["SATURN_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.JobsApi(api_client)
-    job_id = 'job_id_example' # str | 
-    details = False # bool |  (optional) (default to False)
-
-    try:
-        # Get job runtime summary
-        api_response = await api_instance.get_runtime_summary(job_id, details=details)
-        print("The response of JobsApi->get_runtime_summary:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling JobsApi->get_runtime_summary: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **job_id** | **str**|  | 
- **details** | **bool**|  | [optional] [default to False]
-
-### Return type
-
-[**JobCollectionRuntimeSummary**](JobCollectionRuntimeSummary.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Ok |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_secret_attachment**
 > SecretAttachment get_secret_attachment(job_id, secret_attachment_id)
 
@@ -1603,6 +1524,90 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobList**](JobList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_runtime_summaries**
+> JobRuntimeSummaryList list_runtime_summaries(job_id, prev_key=prev_key, next_key=next_key, page_size=page_size)
+
+List job runtime summaries
+
+List of current runtime summaries.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job_runtime_summary_list import JobRuntimeSummaryList
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
+
+    try:
+        # List job runtime summaries
+        api_response = await api_instance.list_runtime_summaries(job_id, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of JobsApi->list_runtime_summaries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->list_runtime_summaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
+
+### Return type
+
+[**JobRuntimeSummaryList**](JobRuntimeSummaryList.md)
 
 ### Authorization
 
@@ -2085,6 +2090,86 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **str**|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Stopped |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **stop_run**
+> Job stop_run(job_id, run_name)
+
+Stop job run
+
+Stop a single job run.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.job import Job
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.JobsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    run_name = 'run_name_example' # str | 
+
+    try:
+        # Stop job run
+        api_response = await api_instance.stop_run(job_id, run_name)
+        print("The response of JobsApi->stop_run:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling JobsApi->stop_run: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **run_name** | **str**|  | 
 
 ### Return type
 

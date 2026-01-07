@@ -18,9 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.condition import Condition
+from saturn_api.models.dask_worker_summary import DaskWorkerSummary
 from saturn_api.models.deployment_runtime_summary import DeploymentRuntimeSummary
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from saturn_api.models.pod_status import PodStatus
@@ -44,10 +45,9 @@ class DaskClusterRuntimeSummary(BaseModel):
     status: PodStatus
     kubecluster_summary: DeploymentRuntimeSummary
     scheduler_summary: PodRuntimeSummary
-    worker_summaries: List[PodRuntimeSummary]
-    worker_count: StrictInt
+    worker_summary: DaskWorkerSummary
     errors: List[StrictStr]
-    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "kubecluster_summary", "scheduler_summary", "worker_summaries", "worker_count", "errors"]
+    __properties: ClassVar[List[str]] = ["name", "namespace", "uid", "controller_uid", "controller_kind", "labels", "annotations", "conditions", "started_at", "deleted_at", "status", "kubecluster_summary", "scheduler_summary", "worker_summary", "errors"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,7 +93,6 @@ class DaskClusterRuntimeSummary(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "name",
@@ -108,8 +107,7 @@ class DaskClusterRuntimeSummary(BaseModel):
             "deleted_at",
             "kubecluster_summary",
             "scheduler_summary",
-            "worker_summaries",
-            "worker_count",
+            "worker_summary",
             "errors",
         ])
 
@@ -131,13 +129,9 @@ class DaskClusterRuntimeSummary(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of scheduler_summary
         if self.scheduler_summary:
             _dict['scheduler_summary'] = self.scheduler_summary.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in worker_summaries (list)
-        _items = []
-        if self.worker_summaries:
-            for _item_worker_summaries in self.worker_summaries:
-                if _item_worker_summaries:
-                    _items.append(_item_worker_summaries.to_dict())
-            _dict['worker_summaries'] = _items
+        # override the default output from pydantic by calling `to_dict()` of worker_summary
+        if self.worker_summary:
+            _dict['worker_summary'] = self.worker_summary.to_dict()
         # set to None if controller_uid (nullable) is None
         # and model_fields_set contains the field
         if self.controller_uid is None and "controller_uid" in self.model_fields_set:
@@ -183,8 +177,7 @@ class DaskClusterRuntimeSummary(BaseModel):
             "status": obj.get("status"),
             "kubecluster_summary": DeploymentRuntimeSummary.from_dict(obj["kubecluster_summary"]) if obj.get("kubecluster_summary") is not None else None,
             "scheduler_summary": PodRuntimeSummary.from_dict(obj["scheduler_summary"]) if obj.get("scheduler_summary") is not None else None,
-            "worker_summaries": [PodRuntimeSummary.from_dict(_item) for _item in obj["worker_summaries"]] if obj.get("worker_summaries") is not None else None,
-            "worker_count": obj.get("worker_count"),
+            "worker_summary": DaskWorkerSummary.from_dict(obj["worker_summary"]) if obj.get("worker_summary") is not None else None,
             "errors": obj.get("errors")
         })
         return _obj

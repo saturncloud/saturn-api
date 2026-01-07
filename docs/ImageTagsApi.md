@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete**](ImageTagsApi.md#delete) | **DELETE** /api/images/{image_id}/tags/{image_tag_id} | Delete image tag
 [**get**](ImageTagsApi.md#get) | **GET** /api/images/{image_id}/tags/{image_tag_id} | Get image tag
 [**get_logs**](ImageTagsApi.md#get_logs) | **GET** /api/images/{image_id}/tags/{image_tag_id}/logs | Get image tag historical logs
-[**get_runtimesummary**](ImageTagsApi.md#get_runtimesummary) | **GET** /api/images/{image_id}/tags/{image_tag_id}/runtimesummary | Get image tag build runtime summary
+[**get_runtime_summary**](ImageTagsApi.md#get_runtime_summary) | **GET** /api/images/{image_id}/tags/{image_tag_id}/runtimesummary | Get image tag build runtime summary
 [**get_status_history**](ImageTagsApi.md#get_status_history) | **GET** /api/images/{image_id}/tags/{image_tag_id}/history | Get image tag status history
 [**list**](ImageTagsApi.md#list) | **GET** /api/images/{image_id}/tags | List image tags
 [**stop**](ImageTagsApi.md#stop) | **POST** /api/images/{image_id}/tags/{image_tag_id}/stop | Stop image tag build
@@ -343,8 +343,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_runtimesummary**
-> JobRuntimeSummary get_runtimesummary(image_id, image_tag_id, details=details)
+# **get_runtime_summary**
+> JobRuntimeSummary get_runtime_summary(image_id, image_tag_id)
 
 Get image tag build runtime summary
 
@@ -382,15 +382,14 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.ImageTagsApi(api_client)
     image_id = 'image_id_example' # str | 
     image_tag_id = 'image_tag_id_example' # str | 
-    details = False # bool |  (optional) (default to False)
 
     try:
         # Get image tag build runtime summary
-        api_response = await api_instance.get_runtimesummary(image_id, image_tag_id, details=details)
-        print("The response of ImageTagsApi->get_runtimesummary:\n")
+        api_response = await api_instance.get_runtime_summary(image_id, image_tag_id)
+        print("The response of ImageTagsApi->get_runtime_summary:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ImageTagsApi->get_runtimesummary: %s\n" % e)
+        print("Exception when calling ImageTagsApi->get_runtime_summary: %s\n" % e)
 ```
 
 
@@ -402,7 +401,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_id** | **str**|  | 
  **image_tag_id** | **str**|  | 
- **details** | **bool**|  | [optional] [default to False]
 
 ### Return type
 

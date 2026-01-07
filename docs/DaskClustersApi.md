@@ -19,8 +19,8 @@ Method | HTTP request | Description
 [**get_scheduler_status**](DaskClustersApi.md#get_scheduler_status) | **GET** /api/dask_clusters/{dask_cluster_id}/status | Get dask cluster scheduler status
 [**get_server_options**](DaskClustersApi.md#get_server_options) | **GET** /api/dask_clusters/info | Get dask cluster server options
 [**get_token_info**](DaskClustersApi.md#get_token_info) | **GET** /api/dask_clusters/{dask_cluster_id}/token | Get dask cluster API token info
-[**get_workers_runtimesummary**](DaskClustersApi.md#get_workers_runtimesummary) | **GET** /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary | List dask cluster worker runtime summaries
 [**list**](DaskClustersApi.md#list) | **GET** /api/dask_clusters | List dask clusters
+[**list_worker_runtime_summaries**](DaskClustersApi.md#list_worker_runtime_summaries) | **GET** /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary | List dask cluster worker runtime summaries
 [**restart**](DaskClustersApi.md#restart) | **POST** /api/dask_clusters/{dask_cluster_id}/restart | Restart dask cluster
 [**rotate_token**](DaskClustersApi.md#rotate_token) | **POST** /api/dask_clusters/{dask_cluster_id}/token | Rotate dask cluster API token
 [**scale**](DaskClustersApi.md#scale) | **POST** /api/dask_clusters/{dask_cluster_id}/scale | Scale dask cluster worker count
@@ -416,7 +416,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_kubecluster_runtime_summary**
-> DeploymentRuntimeSummary get_kubecluster_runtime_summary(dask_cluster_id, details=details)
+> DeploymentRuntimeSummary get_kubecluster_runtime_summary(dask_cluster_id)
 
 Get dask cluster kubecluster runtime summary
 
@@ -453,11 +453,10 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DaskClustersApi(api_client)
     dask_cluster_id = 'dask_cluster_id_example' # str | 
-    details = False # bool |  (optional) (default to False)
 
     try:
         # Get dask cluster kubecluster runtime summary
-        api_response = await api_instance.get_kubecluster_runtime_summary(dask_cluster_id, details=details)
+        api_response = await api_instance.get_kubecluster_runtime_summary(dask_cluster_id)
         print("The response of DaskClustersApi->get_kubecluster_runtime_summary:\n")
         pprint(api_response)
     except Exception as e:
@@ -472,7 +471,6 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dask_cluster_id** | **str**|  | 
- **details** | **bool**|  | [optional] [default to False]
 
 ### Return type
 
@@ -759,7 +757,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_runtime_summary**
-> DaskClusterRuntimeSummary get_runtime_summary(dask_cluster_id, details=details)
+> DaskClusterRuntimeSummary get_runtime_summary(dask_cluster_id)
 
 Get dask cluster runtime summary
 
@@ -796,11 +794,10 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DaskClustersApi(api_client)
     dask_cluster_id = 'dask_cluster_id_example' # str | 
-    details = False # bool |  (optional) (default to False)
 
     try:
         # Get dask cluster runtime summary
-        api_response = await api_instance.get_runtime_summary(dask_cluster_id, details=details)
+        api_response = await api_instance.get_runtime_summary(dask_cluster_id)
         print("The response of DaskClustersApi->get_runtime_summary:\n")
         pprint(api_response)
     except Exception as e:
@@ -815,7 +812,6 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dask_cluster_id** | **str**|  | 
- **details** | **bool**|  | [optional] [default to False]
 
 ### Return type
 
@@ -914,7 +910,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_scheduler_runtimesummary**
-> PodRuntimeSummary get_scheduler_runtimesummary(dask_cluster_id, details=details)
+> PodRuntimeSummary get_scheduler_runtimesummary(dask_cluster_id)
 
 Get dask cluster scheduler runtime summary
 
@@ -951,11 +947,10 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DaskClustersApi(api_client)
     dask_cluster_id = 'dask_cluster_id_example' # str | 
-    details = False # bool |  (optional) (default to False)
 
     try:
         # Get dask cluster scheduler runtime summary
-        api_response = await api_instance.get_scheduler_runtimesummary(dask_cluster_id, details=details)
+        api_response = await api_instance.get_scheduler_runtimesummary(dask_cluster_id)
         print("The response of DaskClustersApi->get_scheduler_runtimesummary:\n")
         pprint(api_response)
     except Exception as e:
@@ -970,7 +965,6 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dask_cluster_id** | **str**|  | 
- **details** | **bool**|  | [optional] [default to False]
 
 ### Return type
 
@@ -1216,86 +1210,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_workers_runtimesummary**
-> DaskWorkersRuntimeSummaryPage get_workers_runtimesummary(dask_cluster_id, page=page, page_size=page_size)
-
-List dask cluster worker runtime summaries
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.dask_workers_runtime_summary_page import DaskWorkersRuntimeSummaryPage
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = os.getenv("SATURN_BASE_URL", "http://localhost")
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
-configuration = saturn_api.Configuration(
-    access_token = os.environ["SATURN_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.DaskClustersApi(api_client)
-    dask_cluster_id = 'dask_cluster_id_example' # str | 
-    page = 1 # int |  (optional) (default to 1)
-    page_size = 100 # int |  (optional) (default to 100)
-
-    try:
-        # List dask cluster worker runtime summaries
-        api_response = await api_instance.get_workers_runtimesummary(dask_cluster_id, page=page, page_size=page_size)
-        print("The response of DaskClustersApi->get_workers_runtimesummary:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DaskClustersApi->get_workers_runtimesummary: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dask_cluster_id** | **str**|  | 
- **page** | **int**|  | [optional] [default to 1]
- **page_size** | **int**|  | [optional] [default to 100]
-
-### Return type
-
-[**DaskWorkersRuntimeSummaryPage**](DaskWorkersRuntimeSummaryPage.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Ok |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **list**
 > DaskClusterList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
@@ -1374,6 +1288,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DaskClusterList**](DaskClusterList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_worker_runtime_summaries**
+> DaskWorkerRuntimeSummaryList list_worker_runtime_summaries(dask_cluster_id, prev_key=prev_key, next_key=next_key, page_size=page_size)
+
+List dask cluster worker runtime summaries
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.dask_worker_runtime_summary_list import DaskWorkerRuntimeSummaryList
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.DaskClustersApi(api_client)
+    dask_cluster_id = 'dask_cluster_id_example' # str | 
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
+
+    try:
+        # List dask cluster worker runtime summaries
+        api_response = await api_instance.list_worker_runtime_summaries(dask_cluster_id, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of DaskClustersApi->list_worker_runtime_summaries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DaskClustersApi->list_worker_runtime_summaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dask_cluster_id** | **str**|  | 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
+
+### Return type
+
+[**DaskWorkerRuntimeSummaryList**](DaskWorkerRuntimeSummaryList.md)
 
 ### Authorization
 

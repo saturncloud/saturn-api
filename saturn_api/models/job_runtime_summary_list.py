@@ -17,17 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from saturn_api.models.job_runtime_summary import JobRuntimeSummary
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
-class JobStart(BaseModel):
+class JobRuntimeSummaryList(BaseModel):
     """
-    JobStart
+    JobRuntimeSummaryList
     """ # noqa: E501
-    debug_mode: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["debug_mode"]
+    job_summaries: List[JobRuntimeSummary]
+    prev_key: Optional[StrictStr] = None
+    next_key: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["job_summaries", "prev_key", "next_key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +50,7 @@ class JobStart(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of JobStart from a JSON string"""
+        """Create an instance of JobRuntimeSummaryList from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -59,8 +62,14 @@ class JobStart(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "job_summaries",
+            "prev_key",
+            "next_key",
         ])
 
         _dict = self.model_dump(
@@ -68,11 +77,18 @@ class JobStart(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in job_summaries (list)
+        _items = []
+        if self.job_summaries:
+            for _item_job_summaries in self.job_summaries:
+                if _item_job_summaries:
+                    _items.append(_item_job_summaries.to_dict())
+            _dict['job_summaries'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of JobStart from a dict"""
+        """Create an instance of JobRuntimeSummaryList from a dict"""
         if obj is None:
             return None
 
@@ -80,7 +96,9 @@ class JobStart(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "debug_mode": obj.get("debug_mode")
+            "job_summaries": [JobRuntimeSummary.from_dict(_item) for _item in obj["job_summaries"]] if obj.get("job_summaries") is not None else None,
+            "prev_key": obj.get("prev_key"),
+            "next_key": obj.get("next_key")
         })
         return _obj
 

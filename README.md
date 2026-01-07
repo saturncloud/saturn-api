@@ -75,23 +75,20 @@ configuration = saturn_api.Configuration(
 # Enter a context with an instance of the API client
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = saturn_api.ActiveResourcesApi(api_client)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    resource_type = saturn_api.ResourceType() # ResourceType |  (optional)
-    list_by = owner # str |  (optional) (default to owner)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
+    api_instance = saturn_api.ActiveApi(api_client)
+    pod_name = 'pod_name_example' # str | 
+    container_name = 'container_name_example' # str |  (optional)
+    previous = False # bool |  (optional) (default to False)
+    count = 1000 # int |  (optional) (default to 1000)
+    cluster = 'cluster_example' # str |  (optional)
 
     try:
-        # List active resources
-        api_response = await api_instance.list(user_id=user_id, group_id=group_id, org_id=org_id, resource_type=resource_type, list_by=list_by, prev_key=prev_key, next_key=next_key, page_size=page_size)
-        print("The response of ActiveResourcesApi->list:\n")
+        # Get pod logs
+        api_response = await api_instance.get_logs(pod_name, container_name=container_name, previous=previous, count=count, cluster=cluster)
+        print("The response of ActiveApi->get_logs:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ActiveResourcesApi->list: %s\n" % e)
+        print("Exception when calling ActiveApi->get_logs: %s\n" % e)
 
 ```
 
@@ -101,7 +98,9 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ActiveResourcesApi* | [**list**](docs/ActiveResourcesApi.md#list) | **GET** /api/active/resources | List active resources
+*ActiveApi* | [**get_logs**](docs/ActiveApi.md#get_logs) | **GET** /api/active/logs | Get pod logs
+*ActiveApi* | [**list_pod_summaries**](docs/ActiveApi.md#list_pod_summaries) | **GET** /api/active/pod_summaries | List pod runtime summaries
+*ActiveApi* | [**list_resources**](docs/ActiveApi.md#list_resources) | **GET** /api/active/resources | List active resources
 *ApiStatusApi* | [**get**](docs/ApiStatusApi.md#get) | **GET** /api/status | Get API status
 *ApiTokensApi* | [**create**](docs/ApiTokensApi.md#create) | **POST** /api/tokens | Create api token
 *ApiTokensApi* | [**delete**](docs/ApiTokensApi.md#delete) | **DELETE** /api/tokens/{api_token_id} | Delete api token
@@ -133,8 +132,8 @@ Class | Method | HTTP request | Description
 *DaskClustersApi* | [**get_scheduler_status**](docs/DaskClustersApi.md#get_scheduler_status) | **GET** /api/dask_clusters/{dask_cluster_id}/status | Get dask cluster scheduler status
 *DaskClustersApi* | [**get_server_options**](docs/DaskClustersApi.md#get_server_options) | **GET** /api/dask_clusters/info | Get dask cluster server options
 *DaskClustersApi* | [**get_token_info**](docs/DaskClustersApi.md#get_token_info) | **GET** /api/dask_clusters/{dask_cluster_id}/token | Get dask cluster API token info
-*DaskClustersApi* | [**get_workers_runtimesummary**](docs/DaskClustersApi.md#get_workers_runtimesummary) | **GET** /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary | List dask cluster worker runtime summaries
 *DaskClustersApi* | [**list**](docs/DaskClustersApi.md#list) | **GET** /api/dask_clusters | List dask clusters
+*DaskClustersApi* | [**list_worker_runtime_summaries**](docs/DaskClustersApi.md#list_worker_runtime_summaries) | **GET** /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary | List dask cluster worker runtime summaries
 *DaskClustersApi* | [**restart**](docs/DaskClustersApi.md#restart) | **POST** /api/dask_clusters/{dask_cluster_id}/restart | Restart dask cluster
 *DaskClustersApi* | [**rotate_token**](docs/DaskClustersApi.md#rotate_token) | **POST** /api/dask_clusters/{dask_cluster_id}/token | Rotate dask cluster API token
 *DaskClustersApi* | [**scale**](docs/DaskClustersApi.md#scale) | **POST** /api/dask_clusters/{dask_cluster_id}/scale | Scale dask cluster worker count
@@ -199,7 +198,7 @@ Class | Method | HTTP request | Description
 *ImageTagsApi* | [**delete**](docs/ImageTagsApi.md#delete) | **DELETE** /api/images/{image_id}/tags/{image_tag_id} | Delete image tag
 *ImageTagsApi* | [**get**](docs/ImageTagsApi.md#get) | **GET** /api/images/{image_id}/tags/{image_tag_id} | Get image tag
 *ImageTagsApi* | [**get_logs**](docs/ImageTagsApi.md#get_logs) | **GET** /api/images/{image_id}/tags/{image_tag_id}/logs | Get image tag historical logs
-*ImageTagsApi* | [**get_runtimesummary**](docs/ImageTagsApi.md#get_runtimesummary) | **GET** /api/images/{image_id}/tags/{image_tag_id}/runtimesummary | Get image tag build runtime summary
+*ImageTagsApi* | [**get_runtime_summary**](docs/ImageTagsApi.md#get_runtime_summary) | **GET** /api/images/{image_id}/tags/{image_tag_id}/runtimesummary | Get image tag build runtime summary
 *ImageTagsApi* | [**get_status_history**](docs/ImageTagsApi.md#get_status_history) | **GET** /api/images/{image_id}/tags/{image_tag_id}/history | Get image tag status history
 *ImageTagsApi* | [**list**](docs/ImageTagsApi.md#list) | **GET** /api/images/{image_id}/tags | List image tags
 *ImageTagsApi* | [**stop**](docs/ImageTagsApi.md#stop) | **POST** /api/images/{image_id}/tags/{image_tag_id}/stop | Stop image tag build
@@ -230,18 +229,19 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**get_pod_history**](docs/JobsApi.md#get_pod_history) | **GET** /api/jobs/{job_id}/history | Get job pod history
 *JobsApi* | [**get_recipe**](docs/JobsApi.md#get_recipe) | **GET** /api/jobs/{job_id}/recipe | Get job recipe
 *JobsApi* | [**get_resource_template**](docs/JobsApi.md#get_resource_template) | **GET** /api/jobs/{job_id}/template | Get job resource template
-*JobsApi* | [**get_runtime_summary**](docs/JobsApi.md#get_runtime_summary) | **GET** /api/jobs/{job_id}/runtimesummary | Get job runtime summary
 *JobsApi* | [**get_secret_attachment**](docs/JobsApi.md#get_secret_attachment) | **GET** /api/jobs/{job_id}/secrets/{secret_attachment_id} | Get job secret attachment
 *JobsApi* | [**get_server_options**](docs/JobsApi.md#get_server_options) | **GET** /api/jobs/info | Get job server options
 *JobsApi* | [**get_service_account_attachment**](docs/JobsApi.md#get_service_account_attachment) | **GET** /api/jobs/{job_id}/service_account | Get job service account attachment
 *JobsApi* | [**get_token_info**](docs/JobsApi.md#get_token_info) | **GET** /api/jobs/{job_id}/token | Get job API token info
 *JobsApi* | [**list**](docs/JobsApi.md#list) | **GET** /api/jobs | List jobs
+*JobsApi* | [**list_runtime_summaries**](docs/JobsApi.md#list_runtime_summaries) | **GET** /api/jobs/{job_id}/runtimesummary | List job runtime summaries
 *JobsApi* | [**list_secret_attachments**](docs/JobsApi.md#list_secret_attachments) | **GET** /api/jobs/{job_id}/secrets | List job secret attachments
 *JobsApi* | [**restart**](docs/JobsApi.md#restart) | **POST** /api/jobs/{job_id}/restart | Restart job
 *JobsApi* | [**rotate_token**](docs/JobsApi.md#rotate_token) | **POST** /api/jobs/{job_id}/token | Rotate job API token
 *JobsApi* | [**schedule**](docs/JobsApi.md#schedule) | **POST** /api/jobs/{job_id}/schedule | Activate job cron schedule
 *JobsApi* | [**start**](docs/JobsApi.md#start) | **POST** /api/jobs/{job_id}/start | Start job
 *JobsApi* | [**stop**](docs/JobsApi.md#stop) | **POST** /api/jobs/{job_id}/stop | Stop job
+*JobsApi* | [**stop_run**](docs/JobsApi.md#stop_run) | **POST** /api/jobs/{job_id}/stop/{run_name} | Stop job run
 *JobsApi* | [**unschedule**](docs/JobsApi.md#unschedule) | **POST** /api/jobs/{job_id}/unschedule | Deactivate job cron schedule
 *JobsApi* | [**update**](docs/JobsApi.md#update) | **PATCH** /api/jobs/{job_id} | Update job
 *JobsApi* | [**update_resource_template**](docs/JobsApi.md#update_resource_template) | **PATCH** /api/jobs/{job_id}/template | Update job resource template
@@ -376,6 +376,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ActiveLogs](docs/ActiveLogs.md)
  - [ActiveResourceList](docs/ActiveResourceList.md)
  - [AggregatedUsage](docs/AggregatedUsage.md)
  - [ApiStatus](docs/ApiStatus.md)
@@ -413,7 +414,8 @@ Class | Method | HTTP request | Description
  - [DaskClusterServerOptions](docs/DaskClusterServerOptions.md)
  - [DaskClusterUpdate](docs/DaskClusterUpdate.md)
  - [DaskComponents](docs/DaskComponents.md)
- - [DaskWorkersRuntimeSummaryPage](docs/DaskWorkersRuntimeSummaryPage.md)
+ - [DaskWorkerRuntimeSummaryList](docs/DaskWorkerRuntimeSummaryList.md)
+ - [DaskWorkerSummary](docs/DaskWorkerSummary.md)
  - [DataPoint](docs/DataPoint.md)
  - [DefaultImages](docs/DefaultImages.md)
  - [DefaultSizes](docs/DefaultSizes.md)
@@ -486,12 +488,12 @@ Class | Method | HTTP request | Description
  - [InvitationStatus](docs/InvitationStatus.md)
  - [InvitationUpdate](docs/InvitationUpdate.md)
  - [Job](docs/Job.md)
- - [JobCollectionRuntimeSummary](docs/JobCollectionRuntimeSummary.md)
  - [JobCreate](docs/JobCreate.md)
  - [JobList](docs/JobList.md)
  - [JobRecipe](docs/JobRecipe.md)
  - [JobRestart](docs/JobRestart.md)
  - [JobRuntimeSummary](docs/JobRuntimeSummary.md)
+ - [JobRuntimeSummaryList](docs/JobRuntimeSummaryList.md)
  - [JobServerOptions](docs/JobServerOptions.md)
  - [JobSpec](docs/JobSpec.md)
  - [JobStart](docs/JobStart.md)
@@ -550,9 +552,9 @@ Class | Method | HTTP request | Description
  - [OwnerReference](docs/OwnerReference.md)
  - [OwnerUsage](docs/OwnerUsage.md)
  - [OwnerUsageList](docs/OwnerUsageList.md)
- - [PaginationOffsetMeta](docs/PaginationOffsetMeta.md)
  - [PodHistory](docs/PodHistory.md)
  - [PodRuntimeSummary](docs/PodRuntimeSummary.md)
+ - [PodRuntimeSummaryList](docs/PodRuntimeSummaryList.md)
  - [PodStatus](docs/PodStatus.md)
  - [Recipe](docs/Recipe.md)
  - [RecipeList](docs/RecipeList.md)
@@ -643,6 +645,7 @@ Class | Method | HTTP request | Description
  - [ViewerList](docs/ViewerList.md)
  - [ViewerRecipe](docs/ViewerRecipe.md)
  - [WhiteLabelConfiguration](docs/WhiteLabelConfiguration.md)
+ - [WorkloadType](docs/WorkloadType.md)
  - [Workspace](docs/Workspace.md)
  - [WorkspaceCreate](docs/WorkspaceCreate.md)
  - [WorkspaceIdeDefaultImages](docs/WorkspaceIdeDefaultImages.md)

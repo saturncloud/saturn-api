@@ -18,8 +18,7 @@ Name | Type | Description | Notes
 **status** | [**PodStatus**](PodStatus.md) |  | 
 **kubecluster_summary** | [**DeploymentRuntimeSummary**](DeploymentRuntimeSummary.md) |  | [readonly] 
 **scheduler_summary** | [**PodRuntimeSummary**](PodRuntimeSummary.md) |  | [readonly] 
-**worker_summaries** | [**List[PodRuntimeSummary]**](PodRuntimeSummary.md) |  | [readonly] 
-**worker_count** | **int** |  | [readonly] 
+**worker_summary** | [**DaskWorkerSummary**](DaskWorkerSummary.md) |  | [readonly] 
 **errors** | **List[str]** |  | [readonly] 
 
 ## Example

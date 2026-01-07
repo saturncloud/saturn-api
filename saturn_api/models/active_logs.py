@@ -17,17 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
-class JobStart(BaseModel):
+class ActiveLogs(BaseModel):
     """
-    JobStart
+    ActiveLogs
     """ # noqa: E501
-    debug_mode: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["debug_mode"]
+    logs: StrictStr
+    __properties: ClassVar[List[str]] = ["logs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +47,7 @@ class JobStart(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of JobStart from a JSON string"""
+        """Create an instance of ActiveLogs from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -59,8 +59,10 @@ class JobStart(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "logs",
         ])
 
         _dict = self.model_dump(
@@ -72,7 +74,7 @@ class JobStart(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of JobStart from a dict"""
+        """Create an instance of ActiveLogs from a dict"""
         if obj is None:
             return None
 
@@ -80,7 +82,7 @@ class JobStart(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "debug_mode": obj.get("debug_mode")
+            "logs": obj.get("logs")
         })
         return _obj
 

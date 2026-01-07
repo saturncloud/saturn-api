@@ -6,12 +6,102 @@ servers: []
 security:
 - bearerAuth: []
 paths:
+  /api/active/logs:
+    get:
+      summary: Get pod logs
+      operationId: active_getLogs
+      tags:
+      - active
+      parameters:
+      - in: query
+        name: pod_name
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: container_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: previous
+        schema:
+          type: boolean
+          default: false
+        required: false
+      - in: query
+        name: count
+        schema:
+          type: integer
+          default: 1000
+          minimum: 1
+          maximum: 5000
+        required: false
+      - in: query
+        name: cluster
+        schema:
+          type: string
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveLogs'
+          description: Ok
+  /api/active/pod_summaries:
+    get:
+      summary: List pod runtime summaries
+      operationId: active_listPodSummaries
+      tags:
+      - active
+      parameters:
+      - in: query
+        name: workload_type
+        schema:
+          $ref: '#/components/schemas/WorkloadType'
+        required: true
+      - in: query
+        name: workload_id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: cluster
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: prev_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PodRuntimeSummaryList'
+          description: Ok
   /api/active/resources:
     get:
       summary: List active resources
-      operationId: activeresources_list
+      operationId: active_listResources
       tags:
-      - active_resources
+      - active
       parameters:
       - in: query
         name: user_id
@@ -424,12 +514,6 @@ paths:
         schema:
           type: string
         required: true
-      - in: query
-        name: details
-        schema:
-          type: boolean
-          default: false
-        required: false
       responses:
         '200':
           content:
@@ -575,12 +659,6 @@ paths:
         schema:
           type: string
         required: true
-      - in: query
-        name: details
-        schema:
-          type: boolean
-          default: false
-        required: false
       responses:
         '200':
           content:
@@ -622,12 +700,6 @@ paths:
         schema:
           type: string
         required: true
-      - in: query
-        name: details
-        schema:
-          type: boolean
-          default: false
-        required: false
       responses:
         '200':
           content:
@@ -781,7 +853,7 @@ paths:
   /api/dask_clusters/{dask_cluster_id}/workers/runtimesummary:
     get:
       summary: List dask cluster worker runtime summaries
-      operationId: daskclusters_getWorkersRuntimesummary
+      operationId: daskclusters_listWorkerRuntimeSummaries
       tags:
       - dask_clusters
       parameters:
@@ -791,17 +863,21 @@ paths:
           type: string
         required: true
       - in: query
-        name: page
+        name: prev_key
         schema:
-          type: integer
-          default: 1
-          minimum: 1
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
         required: false
       - in: query
         name: page_size
         schema:
           type: integer
           default: 100
+          minimum: 1
           maximum: 1000
         required: false
       responses:
@@ -809,7 +885,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DaskWorkersRuntimeSummaryPage'
+                $ref: '#/components/schemas/DaskWorkerRuntimeSummaryList'
           description: Ok
   /api/dask_clusters/info:
     get:
@@ -1344,12 +1420,6 @@ paths:
         schema:
           type: string
         required: true
-      - in: query
-        name: details
-        schema:
-          type: boolean
-          default: false
-        required: false
       responses:
         '200':
           content:
@@ -2753,7 +2823,7 @@ paths:
     get:
       summary: Get image tag build runtime summary
       description: Summary of the current runtime status.
-      operationId: imagetags_getRuntimesummary
+      operationId: imagetags_getRuntimeSummary
       tags:
       - image_tags
       parameters:
@@ -2767,12 +2837,6 @@ paths:
         schema:
           type: string
         required: true
-      - in: query
-        name: details
-        schema:
-          type: boolean
-          default: false
-        required: false
       responses:
         '200':
           content:
@@ -3325,9 +3389,9 @@ paths:
           description: Restarted
   /api/jobs/{job_id}/runtimesummary:
     get:
-      summary: Get job runtime summary
-      description: Summary of the current runtime status.
-      operationId: jobs_getRuntimeSummary
+      summary: List job runtime summaries
+      description: List of current runtime summaries.
+      operationId: jobs_listRuntimeSummaries
       tags:
       - jobs
       parameters:
@@ -3337,17 +3401,29 @@ paths:
           type: string
         required: true
       - in: query
-        name: details
+        name: prev_key
         schema:
-          type: boolean
-          default: false
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
         required: false
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobCollectionRuntimeSummary'
+                $ref: '#/components/schemas/JobRuntimeSummaryList'
           description: Ok
   /api/jobs/{job_id}/schedule:
     post:
@@ -3616,6 +3692,31 @@ paths:
       parameters:
       - name: job_id
         in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: Stopped
+  /api/jobs/{job_id}/stop/{run_name}:
+    post:
+      summary: Stop job run
+      description: Stop a single job run.
+      operationId: jobs_stopRun
+      tags:
+      - jobs
+      parameters:
+      - name: job_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: run_name
         schema:
           type: string
         required: true
@@ -7235,12 +7336,6 @@ paths:
         schema:
           type: string
         required: true
-      - in: query
-        name: details
-        schema:
-          type: boolean
-          default: false
-        required: false
       responses:
         '200':
           content:
@@ -9316,6 +9411,282 @@ components:
       required:
       - grant_type
       - refresh_token
+    ActiveLogs:
+      type: object
+      properties:
+        logs:
+          type: string
+          readOnly: true
+      required:
+      - logs
+    WorkloadType:
+      type: string
+      enum:
+      - dask
+      - deployment
+      - image_build
+      - job
+      - workspace
+    Condition:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        reason:
+          type: string
+          readOnly: true
+          nullable: true
+        message:
+          type: string
+          readOnly: true
+          nullable: true
+        last_transition_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_probe_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - last_probe_time
+      - last_transition_time
+      - message
+      - reason
+      - status
+      - type
+    PodStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - error
+      - stopping
+      - stopped
+      - completed
+      - unknown
+    ContainerStatus:
+      type: string
+      enum:
+      - running
+      - pending
+      - waiting
+      - completed
+      - error
+    RestartPolicy:
+      type: string
+      enum:
+      - Always
+      - Never
+      - OnFailure
+    ContainerRuntimeSummary:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        namespace:
+          type: string
+          readOnly: true
+        uid:
+          type: string
+          readOnly: true
+        controller_uid:
+          type: string
+          readOnly: true
+          nullable: true
+        controller_kind:
+          type: string
+          readOnly: true
+          nullable: true
+        labels:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        annotations:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        conditions:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Condition'
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        status:
+          readOnly: true
+          $ref: '#/components/schemas/ContainerStatus'
+        finished_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        restart_policy:
+          readOnly: true
+          $ref: '#/components/schemas/RestartPolicy'
+        image_pulled:
+          type: boolean
+          readOnly: true
+        exit_code:
+          type: integer
+          readOnly: true
+          nullable: true
+        reason:
+          type: string
+          enum:
+          - Evicted
+          - OOMKilled
+          - null
+          readOnly: true
+          nullable: true
+        previous:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/ContainerRuntimeSummary'
+          nullable: true
+      required:
+      - annotations
+      - conditions
+      - controller_kind
+      - controller_uid
+      - deleted_at
+      - exit_code
+      - finished_at
+      - image_pulled
+      - labels
+      - name
+      - namespace
+      - previous
+      - reason
+      - restart_policy
+      - started_at
+      - status
+      - uid
+    PodRuntimeSummary:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        namespace:
+          type: string
+          readOnly: true
+        uid:
+          type: string
+          readOnly: true
+        controller_uid:
+          type: string
+          readOnly: true
+          nullable: true
+        controller_kind:
+          type: string
+          readOnly: true
+          nullable: true
+        labels:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        annotations:
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+        conditions:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Condition'
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        status:
+          readOnly: true
+          $ref: '#/components/schemas/PodStatus'
+        init_container_summaries:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ContainerRuntimeSummary'
+        container_summaries:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ContainerRuntimeSummary'
+        node_name:
+          type: string
+          readOnly: true
+          nullable: true
+        completed_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        reason:
+          type: string
+          enum:
+          - Evicted
+          - OOMKilled
+          - null
+          readOnly: true
+          nullable: true
+      required:
+      - annotations
+      - completed_at
+      - conditions
+      - container_summaries
+      - controller_kind
+      - controller_uid
+      - deleted_at
+      - init_container_summaries
+      - labels
+      - name
+      - namespace
+      - node_name
+      - reason
+      - started_at
+      - status
+      - uid
+    PodRuntimeSummaryList:
+      type: object
+      properties:
+        pod_summaries:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PodRuntimeSummary'
+        prev_key:
+          type: string
+          readOnly: true
+        next_key:
+          type: string
+          readOnly: true
+      required:
+      - pod_summaries
     ResourceType:
       type: string
       enum:
@@ -9532,40 +9903,6 @@ components:
             $ref: '#/components/schemas/PodHistory'
       required:
       - pods
-    Condition:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        status:
-          type: string
-          readOnly: true
-        reason:
-          type: string
-          readOnly: true
-          nullable: true
-        message:
-          type: string
-          readOnly: true
-          nullable: true
-        last_transition_time:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_probe_time:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-      required:
-      - last_probe_time
-      - last_transition_time
-      - message
-      - reason
-      - status
-      - type
     DeploymentStatus:
       type: string
       enum:
@@ -9574,221 +9911,6 @@ components:
       - stopping
       - stopped
       - error
-    PodStatus:
-      type: string
-      enum:
-      - pending
-      - running
-      - error
-      - stopping
-      - stopped
-      - completed
-      - unknown
-    ContainerStatus:
-      type: string
-      enum:
-      - running
-      - pending
-      - waiting
-      - completed
-      - error
-    RestartPolicy:
-      type: string
-      enum:
-      - Always
-      - Never
-      - OnFailure
-    ContainerRuntimeSummary:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        namespace:
-          type: string
-          readOnly: true
-        uid:
-          type: string
-          readOnly: true
-        controller_uid:
-          type: string
-          readOnly: true
-          nullable: true
-        controller_kind:
-          type: string
-          readOnly: true
-          nullable: true
-        labels:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        annotations:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        conditions:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Condition'
-        started_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        deleted_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        status:
-          readOnly: true
-          $ref: '#/components/schemas/ContainerStatus'
-        finished_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        restart_policy:
-          readOnly: true
-          $ref: '#/components/schemas/RestartPolicy'
-        image_pulled:
-          type: boolean
-          readOnly: true
-        exit_code:
-          type: integer
-          readOnly: true
-          nullable: true
-        logs:
-          type: string
-          readOnly: true
-          nullable: true
-        reason:
-          type: string
-          enum:
-          - Evicted
-          - OOMKilled
-          - null
-          readOnly: true
-          nullable: true
-        previous:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/ContainerRuntimeSummary'
-          nullable: true
-      required:
-      - annotations
-      - conditions
-      - controller_kind
-      - controller_uid
-      - deleted_at
-      - exit_code
-      - finished_at
-      - image_pulled
-      - labels
-      - logs
-      - name
-      - namespace
-      - previous
-      - reason
-      - restart_policy
-      - started_at
-      - status
-      - uid
-    PodRuntimeSummary:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        namespace:
-          type: string
-          readOnly: true
-        uid:
-          type: string
-          readOnly: true
-        controller_uid:
-          type: string
-          readOnly: true
-          nullable: true
-        controller_kind:
-          type: string
-          readOnly: true
-          nullable: true
-        labels:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        annotations:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        conditions:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Condition'
-        started_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        deleted_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        status:
-          readOnly: true
-          $ref: '#/components/schemas/PodStatus'
-        init_container_summaries:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/ContainerRuntimeSummary'
-        container_summaries:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/ContainerRuntimeSummary'
-        node_name:
-          type: string
-          readOnly: true
-          nullable: true
-        completed_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        reason:
-          type: string
-          enum:
-          - Evicted
-          - OOMKilled
-          - null
-          readOnly: true
-          nullable: true
-      required:
-      - annotations
-      - completed_at
-      - conditions
-      - container_summaries
-      - controller_kind
-      - controller_uid
-      - deleted_at
-      - init_container_summaries
-      - labels
-      - name
-      - namespace
-      - node_name
-      - reason
-      - started_at
-      - status
-      - uid
     DeploymentRuntimeSummary:
       type: object
       properties:
@@ -9846,11 +9968,6 @@ components:
         active_count:
           type: integer
           readOnly: true
-        pod_summaries:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/PodRuntimeSummary'
       required:
       - active_count
       - annotations
@@ -9861,7 +9978,6 @@ components:
       - labels
       - name
       - namespace
-      - pod_summaries
       - running_count
       - scale
       - started_at
@@ -10001,6 +10117,26 @@ components:
           items:
             $ref: '#/components/schemas/MetricSeries'
           nullable: true
+    DaskWorkerSummary:
+      type: object
+      properties:
+        count:
+          type: integer
+          readOnly: true
+        pending_count:
+          type: integer
+          readOnly: true
+        running_count:
+          type: integer
+          readOnly: true
+        error_count:
+          type: integer
+          readOnly: true
+      required:
+      - count
+      - error_count
+      - pending_count
+      - running_count
     DaskClusterRuntimeSummary:
       type: object
       properties:
@@ -10057,14 +10193,10 @@ components:
           readOnly: true
           allOf:
           - $ref: '#/components/schemas/PodRuntimeSummary'
-        worker_summaries:
-          type: array
+        worker_summary:
           readOnly: true
-          items:
-            $ref: '#/components/schemas/PodRuntimeSummary'
-        worker_count:
-          type: integer
-          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/DaskWorkerSummary'
         errors:
           type: array
           readOnly: true
@@ -10085,8 +10217,7 @@ components:
       - started_at
       - status
       - uid
-      - worker_count
-      - worker_summaries
+      - worker_summary
     DaskClusterScale:
       type: object
       properties:
@@ -10114,28 +10245,21 @@ components:
           nullable: true
       required:
       - scope
-    PaginationOffsetMeta:
-      type: object
-      properties:
-        next:
-          type: string
-          format: url
-        prev:
-          type: string
-          format: url
-        total_count:
-          type: integer
-    DaskWorkersRuntimeSummaryPage:
+    DaskWorkerRuntimeSummaryList:
       type: object
       properties:
         workers:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/PodRuntimeSummary'
-        pagination:
-          $ref: '#/components/schemas/PaginationOffsetMeta'
+        prev_key:
+          type: string
+          readOnly: true
+        next_key:
+          type: string
+          readOnly: true
       required:
-      - pagination
       - workers
     HardwareType:
       type: string
@@ -11578,11 +11702,6 @@ components:
           format: date-time
           readOnly: true
           nullable: true
-        pod_summaries:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/PodRuntimeSummary'
       required:
       - active_count
       - annotations
@@ -11594,7 +11713,6 @@ components:
       - labels
       - name
       - namespace
-      - pod_summaries
       - running_count
       - scale
       - started_at
@@ -11657,6 +11775,8 @@ components:
       properties:
         cloud_provider:
           type: string
+        is_multicluster:
+          type: boolean
         allow_deployment_public_access:
           type: boolean
         is_enterprise:
@@ -11702,6 +11822,7 @@ components:
       - hide_invitations
       - hotjar_user_tracking
       - is_enterprise
+      - is_multicluster
       - network_filesystem_enabled
       - populate_examples
       - stripe_public_key
@@ -11989,86 +12110,25 @@ components:
       properties:
         debug_mode:
           type: boolean
-    JobCollectionRuntimeSummary:
+    JobRuntimeSummaryList:
       type: object
       properties:
-        name:
-          type: string
-          readOnly: true
-        namespace:
-          type: string
-          readOnly: true
-        uid:
-          type: string
-          readOnly: true
-        controller_uid:
-          type: string
-          readOnly: true
-          nullable: true
-        controller_kind:
-          type: string
-          readOnly: true
-          nullable: true
-        labels:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        annotations:
-          type: object
-          readOnly: true
-          additionalProperties:
-            type: string
-        conditions:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Condition'
-        started_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        deleted_at:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        status:
-          readOnly: true
-          $ref: '#/components/schemas/JobStatus'
-        scale:
-          type: integer
-          readOnly: true
-        scheduled:
-          type: boolean
-          readOnly: true
         job_summaries:
           type: array
           readOnly: true
           items:
             $ref: '#/components/schemas/JobRuntimeSummary'
+        prev_key:
+          type: string
+          readOnly: true
+        next_key:
+          type: string
+          readOnly: true
       required:
-      - annotations
-      - conditions
-      - controller_kind
-      - controller_uid
-      - deleted_at
       - job_summaries
-      - labels
-      - name
-      - namespace
-      - scale
-      - scheduled
-      - started_at
-      - status
-      - uid
     JobStart:
       type: object
       properties:
-        allow_active:
-          type: boolean
-          default: true
         debug_mode:
           type: boolean
     JobServerOptions:
@@ -14192,11 +14252,6 @@ components:
         active_count:
           type: integer
           readOnly: true
-        pod_summaries:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/PodRuntimeSummary'
         disk_space:
           type: string
           readOnly: true
@@ -14211,7 +14266,6 @@ components:
       - labels
       - name
       - namespace
-      - pod_summaries
       - running_count
       - scale
       - started_at

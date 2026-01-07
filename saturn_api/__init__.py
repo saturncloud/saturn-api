@@ -18,7 +18,7 @@ __version__ = "1.0.0"
 
 # Define package exports
 __all__ = [
-    "ActiveResourcesApi",
+    "ActiveApi",
     "ApiStatusApi",
     "ApiTokensApi",
     "AuthorizationApi",
@@ -56,6 +56,7 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "ActiveLogs",
     "ActiveResourceList",
     "AggregatedUsage",
     "ApiStatus",
@@ -93,7 +94,8 @@ __all__ = [
     "DaskClusterServerOptions",
     "DaskClusterUpdate",
     "DaskComponents",
-    "DaskWorkersRuntimeSummaryPage",
+    "DaskWorkerRuntimeSummaryList",
+    "DaskWorkerSummary",
     "DataPoint",
     "DefaultImages",
     "DefaultSizes",
@@ -166,12 +168,12 @@ __all__ = [
     "InvitationStatus",
     "InvitationUpdate",
     "Job",
-    "JobCollectionRuntimeSummary",
     "JobCreate",
     "JobList",
     "JobRecipe",
     "JobRestart",
     "JobRuntimeSummary",
+    "JobRuntimeSummaryList",
     "JobServerOptions",
     "JobSpec",
     "JobStart",
@@ -230,9 +232,9 @@ __all__ = [
     "OwnerReference",
     "OwnerUsage",
     "OwnerUsageList",
-    "PaginationOffsetMeta",
     "PodHistory",
     "PodRuntimeSummary",
+    "PodRuntimeSummaryList",
     "PodStatus",
     "Recipe",
     "RecipeList",
@@ -323,6 +325,7 @@ __all__ = [
     "ViewerList",
     "ViewerRecipe",
     "WhiteLabelConfiguration",
+    "WorkloadType",
     "Workspace",
     "WorkspaceCreate",
     "WorkspaceIdeDefaultImages",
@@ -338,7 +341,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
-from saturn_api.api.active_resources_api import ActiveResourcesApi as ActiveResourcesApi
+from saturn_api.api.active_api import ActiveApi as ActiveApi
 from saturn_api.api.api_status_api import ApiStatusApi as ApiStatusApi
 from saturn_api.api.api_tokens_api import ApiTokensApi as ApiTokensApi
 from saturn_api.api.authorization_api import AuthorizationApi as AuthorizationApi
@@ -380,6 +383,7 @@ from saturn_api.exceptions import ApiAttributeError as ApiAttributeError
 from saturn_api.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from saturn_api.models.active_logs import ActiveLogs as ActiveLogs
 from saturn_api.models.active_resource_list import ActiveResourceList as ActiveResourceList
 from saturn_api.models.aggregated_usage import AggregatedUsage as AggregatedUsage
 from saturn_api.models.api_status import ApiStatus as ApiStatus
@@ -417,7 +421,8 @@ from saturn_api.models.dask_cluster_scale import DaskClusterScale as DaskCluster
 from saturn_api.models.dask_cluster_server_options import DaskClusterServerOptions as DaskClusterServerOptions
 from saturn_api.models.dask_cluster_update import DaskClusterUpdate as DaskClusterUpdate
 from saturn_api.models.dask_components import DaskComponents as DaskComponents
-from saturn_api.models.dask_workers_runtime_summary_page import DaskWorkersRuntimeSummaryPage as DaskWorkersRuntimeSummaryPage
+from saturn_api.models.dask_worker_runtime_summary_list import DaskWorkerRuntimeSummaryList as DaskWorkerRuntimeSummaryList
+from saturn_api.models.dask_worker_summary import DaskWorkerSummary as DaskWorkerSummary
 from saturn_api.models.data_point import DataPoint as DataPoint
 from saturn_api.models.default_images import DefaultImages as DefaultImages
 from saturn_api.models.default_sizes import DefaultSizes as DefaultSizes
@@ -490,12 +495,12 @@ from saturn_api.models.invitation_list import InvitationList as InvitationList
 from saturn_api.models.invitation_status import InvitationStatus as InvitationStatus
 from saturn_api.models.invitation_update import InvitationUpdate as InvitationUpdate
 from saturn_api.models.job import Job as Job
-from saturn_api.models.job_collection_runtime_summary import JobCollectionRuntimeSummary as JobCollectionRuntimeSummary
 from saturn_api.models.job_create import JobCreate as JobCreate
 from saturn_api.models.job_list import JobList as JobList
 from saturn_api.models.job_recipe import JobRecipe as JobRecipe
 from saturn_api.models.job_restart import JobRestart as JobRestart
 from saturn_api.models.job_runtime_summary import JobRuntimeSummary as JobRuntimeSummary
+from saturn_api.models.job_runtime_summary_list import JobRuntimeSummaryList as JobRuntimeSummaryList
 from saturn_api.models.job_server_options import JobServerOptions as JobServerOptions
 from saturn_api.models.job_spec import JobSpec as JobSpec
 from saturn_api.models.job_start import JobStart as JobStart
@@ -554,9 +559,9 @@ from saturn_api.models.owner_name import OwnerName as OwnerName
 from saturn_api.models.owner_reference import OwnerReference as OwnerReference
 from saturn_api.models.owner_usage import OwnerUsage as OwnerUsage
 from saturn_api.models.owner_usage_list import OwnerUsageList as OwnerUsageList
-from saturn_api.models.pagination_offset_meta import PaginationOffsetMeta as PaginationOffsetMeta
 from saturn_api.models.pod_history import PodHistory as PodHistory
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary as PodRuntimeSummary
+from saturn_api.models.pod_runtime_summary_list import PodRuntimeSummaryList as PodRuntimeSummaryList
 from saturn_api.models.pod_status import PodStatus as PodStatus
 from saturn_api.models.recipe import Recipe as Recipe
 from saturn_api.models.recipe_list import RecipeList as RecipeList
@@ -647,6 +652,7 @@ from saturn_api.models.viewer_create import ViewerCreate as ViewerCreate
 from saturn_api.models.viewer_list import ViewerList as ViewerList
 from saturn_api.models.viewer_recipe import ViewerRecipe as ViewerRecipe
 from saturn_api.models.white_label_configuration import WhiteLabelConfiguration as WhiteLabelConfiguration
+from saturn_api.models.workload_type import WorkloadType as WorkloadType
 from saturn_api.models.workspace import Workspace as Workspace
 from saturn_api.models.workspace_create import WorkspaceCreate as WorkspaceCreate
 from saturn_api.models.workspace_ide_default_images import WorkspaceIdeDefaultImages as WorkspaceIdeDefaultImages
