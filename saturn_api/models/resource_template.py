@@ -37,8 +37,9 @@ class ResourceTemplate(BaseModel):
     weight: Optional[StrictInt]
     recipe: Dict[str, Any]
     access: ResourceTemplateAccessLevel
+    in_gallery: Optional[StrictBool] = None
     editable: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "name", "owner", "description", "created_at", "thumbnail_image_url", "weight", "recipe", "access", "editable"]
+    __properties: ClassVar[List[str]] = ["id", "name", "owner", "description", "created_at", "thumbnail_image_url", "weight", "recipe", "access", "in_gallery", "editable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -131,6 +132,7 @@ class ResourceTemplate(BaseModel):
             "weight": obj.get("weight"),
             "recipe": obj.get("recipe"),
             "access": obj.get("access"),
+            "in_gallery": obj.get("in_gallery"),
             "editable": obj.get("editable")
         })
         return _obj

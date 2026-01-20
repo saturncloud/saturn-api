@@ -45,8 +45,9 @@ class AppInfo(BaseModel):
     hide_invitations: StrictBool
     populate_examples: StrictBool
     whitelabel: WhiteLabelConfiguration
+    hide_resource_creation_bar: StrictBool
     user_tracking: StrictBool
-    __properties: ClassVar[List[str]] = ["cloud_provider", "is_multicluster", "allow_deployment_public_access", "is_enterprise", "customer_name", "stripe_public_key", "hotjar_user_tracking", "version", "auth0", "network_filesystem_enabled", "git_repo_clone_dir", "app_serving_domain", "dind_enabled", "apply_requires_confirm", "hide_invitations", "populate_examples", "whitelabel", "user_tracking"]
+    __properties: ClassVar[List[str]] = ["cloud_provider", "is_multicluster", "allow_deployment_public_access", "is_enterprise", "customer_name", "stripe_public_key", "hotjar_user_tracking", "version", "auth0", "network_filesystem_enabled", "git_repo_clone_dir", "app_serving_domain", "dind_enabled", "apply_requires_confirm", "hide_invitations", "populate_examples", "whitelabel", "hide_resource_creation_bar", "user_tracking"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -127,6 +128,7 @@ class AppInfo(BaseModel):
             "hide_invitations": obj.get("hide_invitations"),
             "populate_examples": obj.get("populate_examples"),
             "whitelabel": WhiteLabelConfiguration.from_dict(obj["whitelabel"]) if obj.get("whitelabel") is not None else None,
+            "hide_resource_creation_bar": obj.get("hide_resource_creation_bar"),
             "user_tracking": obj.get("user_tracking")
         })
         return _obj

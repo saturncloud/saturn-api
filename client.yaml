@@ -10806,6 +10806,8 @@ components:
         access:
           readOnly: true
           $ref: '#/components/schemas/ResourceTemplateAccessLevel'
+        in_gallery:
+          type: boolean
         editable:
           type: boolean
           readOnly: true
@@ -11808,6 +11810,8 @@ components:
           type: boolean
         whitelabel:
           $ref: '#/components/schemas/WhiteLabelConfiguration'
+        hide_resource_creation_bar:
+          type: boolean
         user_tracking:
           type: boolean
       required:
@@ -11820,6 +11824,7 @@ components:
       - dind_enabled
       - git_repo_clone_dir
       - hide_invitations
+      - hide_resource_creation_bar
       - hotjar_user_tracking
       - is_enterprise
       - is_multicluster

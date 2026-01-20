@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **weight** | **int** |  | [readonly] 
 **recipe** | **Dict[str, object]** |  | [readonly] 
 **access** | [**ResourceTemplateAccessLevel**](ResourceTemplateAccessLevel.md) |  | 
+**in_gallery** | **bool** |  | [optional] 
 **editable** | **bool** |  | [readonly] 
 
 ## Example

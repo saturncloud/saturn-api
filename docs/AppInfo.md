@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **hide_invitations** | **bool** |  | 
 **populate_examples** | **bool** |  | 
 **whitelabel** | [**WhiteLabelConfiguration**](WhiteLabelConfiguration.md) |  | 
+**hide_resource_creation_bar** | **bool** |  | 
 **user_tracking** | **bool** |  | 
 
 ## Example
