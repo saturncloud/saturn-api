@@ -79,12 +79,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
     pod_name = 'pod_name_example' # str | 
     container_name = 'container_name_example' # str |  (optional)
     previous = False # bool |  (optional) (default to False)
-    count = 1000 # int |  (optional) (default to 1000)
     cluster = 'cluster_example' # str |  (optional)
+    page_size = 1000 # int |  (optional) (default to 1000)
 
     try:
         # Get pod logs
-        api_response = await api_instance.get_logs(pod_name, container_name=container_name, previous=previous, count=count, cluster=cluster)
+        api_response = await api_instance.get_logs(pod_name, container_name=container_name, previous=previous, cluster=cluster, page_size=page_size)
         print("The response of ActiveApi->get_logs:\n")
         pprint(api_response)
     except ApiException as e:

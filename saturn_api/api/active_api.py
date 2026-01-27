@@ -49,8 +49,8 @@ class ActiveApi:
         pod_name: StrictStr,
         container_name: Optional[StrictStr] = None,
         previous: Optional[StrictBool] = None,
-        count: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
         cluster: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -73,10 +73,10 @@ class ActiveApi:
         :type container_name: str
         :param previous:
         :type previous: bool
-        :param count:
-        :type count: int
         :param cluster:
         :type cluster: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -103,8 +103,8 @@ class ActiveApi:
             pod_name=pod_name,
             container_name=container_name,
             previous=previous,
-            count=count,
             cluster=cluster,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -131,8 +131,8 @@ class ActiveApi:
         pod_name: StrictStr,
         container_name: Optional[StrictStr] = None,
         previous: Optional[StrictBool] = None,
-        count: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
         cluster: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -155,10 +155,10 @@ class ActiveApi:
         :type container_name: str
         :param previous:
         :type previous: bool
-        :param count:
-        :type count: int
         :param cluster:
         :type cluster: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -185,8 +185,8 @@ class ActiveApi:
             pod_name=pod_name,
             container_name=container_name,
             previous=previous,
-            count=count,
             cluster=cluster,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -213,8 +213,8 @@ class ActiveApi:
         pod_name: StrictStr,
         container_name: Optional[StrictStr] = None,
         previous: Optional[StrictBool] = None,
-        count: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
         cluster: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -237,10 +237,10 @@ class ActiveApi:
         :type container_name: str
         :param previous:
         :type previous: bool
-        :param count:
-        :type count: int
         :param cluster:
         :type cluster: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -267,8 +267,8 @@ class ActiveApi:
             pod_name=pod_name,
             container_name=container_name,
             previous=previous,
-            count=count,
             cluster=cluster,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -290,8 +290,8 @@ class ActiveApi:
         pod_name,
         container_name,
         previous,
-        count,
         cluster,
+        page_size,
         _request_auth,
         _content_type,
         _headers,
@@ -326,13 +326,13 @@ class ActiveApi:
             
             _query_params.append(('previous', previous))
             
-        if count is not None:
-            
-            _query_params.append(('count', count))
-            
         if cluster is not None:
             
             _query_params.append(('cluster', cluster))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
             
         # process the header parameters
         # process the form parameters
