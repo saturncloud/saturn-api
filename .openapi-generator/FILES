@@ -3,7 +3,6 @@
 .travis.yml
 README.md
 docs/ActiveApi.md
-docs/ActiveLogs.md
 docs/ActiveResourceList.md
 docs/AggregatedUsage.md
 docs/ApiStatus.md
@@ -198,6 +197,7 @@ docs/OwnerReference.md
 docs/OwnerUsage.md
 docs/OwnerUsageList.md
 docs/PodHistory.md
+docs/PodLogs.md
 docs/PodRuntimeSummary.md
 docs/PodRuntimeSummaryList.md
 docs/PodStatus.md
@@ -352,7 +352,6 @@ saturn_api/api_response.py
 saturn_api/configuration.py
 saturn_api/exceptions.py
 saturn_api/models/__init__.py
-saturn_api/models/active_logs.py
 saturn_api/models/active_resource_list.py
 saturn_api/models/aggregated_usage.py
 saturn_api/models/api_status.py
@@ -529,6 +528,7 @@ saturn_api/models/owner_reference.py
 saturn_api/models/owner_usage.py
 saturn_api/models/owner_usage_list.py
 saturn_api/models/pod_history.py
+saturn_api/models/pod_logs.py
 saturn_api/models/pod_runtime_summary.py
 saturn_api/models/pod_runtime_summary_list.py
 saturn_api/models/pod_status.py

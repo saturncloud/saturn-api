@@ -56,7 +56,6 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
-    "ActiveLogs",
     "ActiveResourceList",
     "AggregatedUsage",
     "ApiStatus",
@@ -233,6 +232,7 @@ __all__ = [
     "OwnerUsage",
     "OwnerUsageList",
     "PodHistory",
+    "PodLogs",
     "PodRuntimeSummary",
     "PodRuntimeSummaryList",
     "PodStatus",
@@ -383,7 +383,6 @@ from saturn_api.exceptions import ApiAttributeError as ApiAttributeError
 from saturn_api.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from saturn_api.models.active_logs import ActiveLogs as ActiveLogs
 from saturn_api.models.active_resource_list import ActiveResourceList as ActiveResourceList
 from saturn_api.models.aggregated_usage import AggregatedUsage as AggregatedUsage
 from saturn_api.models.api_status import ApiStatus as ApiStatus
@@ -560,6 +559,7 @@ from saturn_api.models.owner_reference import OwnerReference as OwnerReference
 from saturn_api.models.owner_usage import OwnerUsage as OwnerUsage
 from saturn_api.models.owner_usage_list import OwnerUsageList as OwnerUsageList
 from saturn_api.models.pod_history import PodHistory as PodHistory
+from saturn_api.models.pod_logs import PodLogs as PodLogs
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary as PodRuntimeSummary
 from saturn_api.models.pod_runtime_summary_list import PodRuntimeSummaryList as PodRuntimeSummaryList
 from saturn_api.models.pod_status import PodStatus as PodStatus

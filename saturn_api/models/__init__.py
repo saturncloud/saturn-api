@@ -13,7 +13,6 @@
 """  # noqa: E501
 
 # import models into model package
-from saturn_api.models.active_logs import ActiveLogs
 from saturn_api.models.active_resource_list import ActiveResourceList
 from saturn_api.models.aggregated_usage import AggregatedUsage
 from saturn_api.models.api_status import ApiStatus
@@ -190,6 +189,7 @@ from saturn_api.models.owner_reference import OwnerReference
 from saturn_api.models.owner_usage import OwnerUsage
 from saturn_api.models.owner_usage_list import OwnerUsageList
 from saturn_api.models.pod_history import PodHistory
+from saturn_api.models.pod_logs import PodLogs
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from saturn_api.models.pod_runtime_summary_list import PodRuntimeSummaryList
 from saturn_api.models.pod_status import PodStatus

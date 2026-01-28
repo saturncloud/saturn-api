@@ -6,53 +6,10 @@ servers: []
 security:
 - bearerAuth: []
 paths:
-  /api/active/logs:
-    get:
-      summary: Get pod logs
-      operationId: active_getLogs
-      tags:
-      - active
-      parameters:
-      - in: query
-        name: pod_name
-        schema:
-          type: string
-        required: true
-      - in: query
-        name: container_name
-        schema:
-          type: string
-        required: false
-      - in: query
-        name: previous
-        schema:
-          type: boolean
-          default: false
-        required: false
-      - in: query
-        name: cluster
-        schema:
-          type: string
-        required: false
-      - in: query
-        name: page_size
-        schema:
-          type: integer
-          default: 1000
-          minimum: 1
-          maximum: 5000
-        required: false
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ActiveLogs'
-          description: Ok
-  /api/active/pod_summaries:
+  /api/active/pods:
     get:
       summary: List pod runtime summaries
-      operationId: active_listPodSummaries
+      operationId: active_listPods
       tags:
       - active
       parameters:
@@ -95,6 +52,73 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PodRuntimeSummaryList'
+          description: Ok
+  /api/active/pods/{name}:
+    get:
+      summary: Get pod runtime summary
+      operationId: active_getPod
+      tags:
+      - active
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: cluster
+        schema:
+          type: string
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PodRuntimeSummary'
+          description: Ok
+  /api/active/pods/{name}/logs:
+    get:
+      summary: Get pod logs
+      operationId: active_getPodLogs
+      tags:
+      - active
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: container_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: previous
+        schema:
+          type: boolean
+          default: false
+        required: false
+      - in: query
+        name: cluster
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 1000
+          minimum: 1
+          maximum: 5000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PodLogs'
           description: Ok
   /api/active/resources:
     get:
@@ -9411,14 +9435,6 @@ components:
       required:
       - grant_type
       - refresh_token
-    ActiveLogs:
-      type: object
-      properties:
-        logs:
-          type: string
-          readOnly: true
-      required:
-      - logs
     WorkloadType:
       type: string
       enum:
@@ -9687,6 +9703,14 @@ components:
           readOnly: true
       required:
       - pod_summaries
+    PodLogs:
+      type: object
+      properties:
+        logs:
+          type: string
+          readOnly: true
+      required:
+      - logs
     ResourceType:
       type: string
       enum:

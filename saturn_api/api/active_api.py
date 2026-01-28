@@ -19,8 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from saturn_api.models.active_logs import ActiveLogs
 from saturn_api.models.active_resource_list import ActiveResourceList
+from saturn_api.models.pod_logs import PodLogs
+from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
 from saturn_api.models.pod_runtime_summary_list import PodRuntimeSummaryList
 from saturn_api.models.resource_type import ResourceType
 from saturn_api.models.workload_type import WorkloadType
@@ -44,13 +45,10 @@ class ActiveApi:
 
 
     @validate_call
-    async def get_logs(
+    async def get_pod(
         self,
-        pod_name: StrictStr,
-        container_name: Optional[StrictStr] = None,
-        previous: Optional[StrictBool] = None,
+        name: StrictStr,
         cluster: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,20 +61,14 @@ class ActiveApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ActiveLogs:
-        """Get pod logs
+    ) -> PodRuntimeSummary:
+        """Get pod runtime summary
 
 
-        :param pod_name: (required)
-        :type pod_name: str
-        :param container_name:
-        :type container_name: str
-        :param previous:
-        :type previous: bool
+        :param name: (required)
+        :type name: str
         :param cluster:
         :type cluster: str
-        :param page_size:
-        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -99,12 +91,9 @@ class ActiveApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_logs_serialize(
-            pod_name=pod_name,
-            container_name=container_name,
-            previous=previous,
+        _param = self._get_pod_serialize(
+            name=name,
             cluster=cluster,
-            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,7 +101,7 @@ class ActiveApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ActiveLogs",
+            '200': "PodRuntimeSummary",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -126,9 +115,214 @@ class ActiveApi:
 
 
     @validate_call
-    async def get_logs_with_http_info(
+    async def get_pod_with_http_info(
         self,
-        pod_name: StrictStr,
+        name: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PodRuntimeSummary]:
+        """Get pod runtime summary
+
+
+        :param name: (required)
+        :type name: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_serialize(
+            name=name,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PodRuntimeSummary",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_pod_without_preload_content(
+        self,
+        name: StrictStr,
+        cluster: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get pod runtime summary
+
+
+        :param name: (required)
+        :type name: str
+        :param cluster:
+        :type cluster: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_serialize(
+            name=name,
+            cluster=cluster,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PodRuntimeSummary",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_pod_serialize(
+        self,
+        name,
+        cluster,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if name is not None:
+            _path_params['name'] = name
+        # process the query parameters
+        if cluster is not None:
+            
+            _query_params.append(('cluster', cluster))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/active/pods/{name}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_pod_logs(
+        self,
+        name: StrictStr,
         container_name: Optional[StrictStr] = None,
         previous: Optional[StrictBool] = None,
         cluster: Optional[StrictStr] = None,
@@ -145,12 +339,12 @@ class ActiveApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ActiveLogs]:
+    ) -> PodLogs:
         """Get pod logs
 
 
-        :param pod_name: (required)
-        :type pod_name: str
+        :param name: (required)
+        :type name: str
         :param container_name:
         :type container_name: str
         :param previous:
@@ -181,8 +375,8 @@ class ActiveApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_logs_serialize(
-            pod_name=pod_name,
+        _param = self._get_pod_logs_serialize(
+            name=name,
             container_name=container_name,
             previous=previous,
             cluster=cluster,
@@ -194,7 +388,89 @@ class ActiveApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ActiveLogs",
+            '200': "PodLogs",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_pod_logs_with_http_info(
+        self,
+        name: StrictStr,
+        container_name: Optional[StrictStr] = None,
+        previous: Optional[StrictBool] = None,
+        cluster: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PodLogs]:
+        """Get pod logs
+
+
+        :param name: (required)
+        :type name: str
+        :param container_name:
+        :type container_name: str
+        :param previous:
+        :type previous: bool
+        :param cluster:
+        :type cluster: str
+        :param page_size:
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_pod_logs_serialize(
+            name=name,
+            container_name=container_name,
+            previous=previous,
+            cluster=cluster,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PodLogs",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -208,9 +484,9 @@ class ActiveApi:
 
 
     @validate_call
-    async def get_logs_without_preload_content(
+    async def get_pod_logs_without_preload_content(
         self,
-        pod_name: StrictStr,
+        name: StrictStr,
         container_name: Optional[StrictStr] = None,
         previous: Optional[StrictBool] = None,
         cluster: Optional[StrictStr] = None,
@@ -231,8 +507,8 @@ class ActiveApi:
         """Get pod logs
 
 
-        :param pod_name: (required)
-        :type pod_name: str
+        :param name: (required)
+        :type name: str
         :param container_name:
         :type container_name: str
         :param previous:
@@ -263,8 +539,8 @@ class ActiveApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_logs_serialize(
-            pod_name=pod_name,
+        _param = self._get_pod_logs_serialize(
+            name=name,
             container_name=container_name,
             previous=previous,
             cluster=cluster,
@@ -276,7 +552,7 @@ class ActiveApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ActiveLogs",
+            '200': "PodLogs",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -285,9 +561,9 @@ class ActiveApi:
         return response_data.response
 
 
-    def _get_logs_serialize(
+    def _get_pod_logs_serialize(
         self,
-        pod_name,
+        name,
         container_name,
         previous,
         cluster,
@@ -313,11 +589,9 @@ class ActiveApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if name is not None:
+            _path_params['name'] = name
         # process the query parameters
-        if pod_name is not None:
-            
-            _query_params.append(('pod_name', pod_name))
-            
         if container_name is not None:
             
             _query_params.append(('container_name', container_name))
@@ -355,7 +629,7 @@ class ActiveApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/api/active/logs',
+            resource_path='/api/active/pods/{name}/logs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -372,7 +646,7 @@ class ActiveApi:
 
 
     @validate_call
-    async def list_pod_summaries(
+    async def list_pods(
         self,
         workload_type: WorkloadType,
         workload_id: StrictStr,
@@ -430,7 +704,7 @@ class ActiveApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_pod_summaries_serialize(
+        _param = self._list_pods_serialize(
             workload_type=workload_type,
             workload_id=workload_id,
             cluster=cluster,
@@ -458,7 +732,7 @@ class ActiveApi:
 
 
     @validate_call
-    async def list_pod_summaries_with_http_info(
+    async def list_pods_with_http_info(
         self,
         workload_type: WorkloadType,
         workload_id: StrictStr,
@@ -516,7 +790,7 @@ class ActiveApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_pod_summaries_serialize(
+        _param = self._list_pods_serialize(
             workload_type=workload_type,
             workload_id=workload_id,
             cluster=cluster,
@@ -544,7 +818,7 @@ class ActiveApi:
 
 
     @validate_call
-    async def list_pod_summaries_without_preload_content(
+    async def list_pods_without_preload_content(
         self,
         workload_type: WorkloadType,
         workload_id: StrictStr,
@@ -602,7 +876,7 @@ class ActiveApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_pod_summaries_serialize(
+        _param = self._list_pods_serialize(
             workload_type=workload_type,
             workload_id=workload_id,
             cluster=cluster,
@@ -625,7 +899,7 @@ class ActiveApi:
         return response_data.response
 
 
-    def _list_pod_summaries_serialize(
+    def _list_pods_serialize(
         self,
         workload_type,
         workload_id,
@@ -700,7 +974,7 @@ class ActiveApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/api/active/pod_summaries',
+            resource_path='/api/active/pods',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

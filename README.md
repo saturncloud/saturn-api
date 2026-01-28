@@ -76,19 +76,16 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ActiveApi(api_client)
-    pod_name = 'pod_name_example' # str | 
-    container_name = 'container_name_example' # str |  (optional)
-    previous = False # bool |  (optional) (default to False)
+    name = 'name_example' # str | 
     cluster = 'cluster_example' # str |  (optional)
-    page_size = 1000 # int |  (optional) (default to 1000)
 
     try:
-        # Get pod logs
-        api_response = await api_instance.get_logs(pod_name, container_name=container_name, previous=previous, cluster=cluster, page_size=page_size)
-        print("The response of ActiveApi->get_logs:\n")
+        # Get pod runtime summary
+        api_response = await api_instance.get_pod(name, cluster=cluster)
+        print("The response of ActiveApi->get_pod:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ActiveApi->get_logs: %s\n" % e)
+        print("Exception when calling ActiveApi->get_pod: %s\n" % e)
 
 ```
 
@@ -98,8 +95,9 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ActiveApi* | [**get_logs**](docs/ActiveApi.md#get_logs) | **GET** /api/active/logs | Get pod logs
-*ActiveApi* | [**list_pod_summaries**](docs/ActiveApi.md#list_pod_summaries) | **GET** /api/active/pod_summaries | List pod runtime summaries
+*ActiveApi* | [**get_pod**](docs/ActiveApi.md#get_pod) | **GET** /api/active/pods/{name} | Get pod runtime summary
+*ActiveApi* | [**get_pod_logs**](docs/ActiveApi.md#get_pod_logs) | **GET** /api/active/pods/{name}/logs | Get pod logs
+*ActiveApi* | [**list_pods**](docs/ActiveApi.md#list_pods) | **GET** /api/active/pods | List pod runtime summaries
 *ActiveApi* | [**list_resources**](docs/ActiveApi.md#list_resources) | **GET** /api/active/resources | List active resources
 *ApiStatusApi* | [**get**](docs/ApiStatusApi.md#get) | **GET** /api/status | Get API status
 *ApiTokensApi* | [**create**](docs/ApiTokensApi.md#create) | **POST** /api/tokens | Create api token
@@ -376,7 +374,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [ActiveLogs](docs/ActiveLogs.md)
  - [ActiveResourceList](docs/ActiveResourceList.md)
  - [AggregatedUsage](docs/AggregatedUsage.md)
  - [ApiStatus](docs/ApiStatus.md)
@@ -553,6 +550,7 @@ Class | Method | HTTP request | Description
  - [OwnerUsage](docs/OwnerUsage.md)
  - [OwnerUsageList](docs/OwnerUsageList.md)
  - [PodHistory](docs/PodHistory.md)
+ - [PodLogs](docs/PodLogs.md)
  - [PodRuntimeSummary](docs/PodRuntimeSummary.md)
  - [PodRuntimeSummaryList](docs/PodRuntimeSummaryList.md)
  - [PodStatus](docs/PodStatus.md)
