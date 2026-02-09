@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **healthcheck** | **str** |  | [optional] [readonly] 
 **subdomain** | **str** |  | [readonly] 
 **start_dind** | **bool** |  | [readonly] 
-**image_tag** | [**ResourceImageTag**](ResourceImageTag.md) |  | [readonly] 
+**image_tag** | [**ImageTag**](ImageTag.md) |  | [readonly] 
 **last_deploy** | **str** |  | [readonly] 
 **k8s_name** | **str** |  | [readonly] 
 **created_at** | **str** |  | [readonly] 

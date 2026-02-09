@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **owner** | [**Owner**](Owner.md) |  | [readonly] 
 **command** | **str** |  | [readonly] 
 **description** | **str** |  | [readonly] 
-**image_tag** | [**ResourceImageTag**](ResourceImageTag.md) |  | [readonly] 
+**image_tag** | [**ImageTag**](ImageTag.md) |  | [readonly] 
 **instance_size** | **str** |  | [readonly] 
 **size_display** | **str** |  | [readonly] 
 **extra_packages** | [**ExtraPackages**](ExtraPackages.md) |  | [readonly] 

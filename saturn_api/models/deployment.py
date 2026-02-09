@@ -21,8 +21,8 @@ from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, fi
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
+from saturn_api.models.image_tag import ImageTag
 from saturn_api.models.owner import Owner
-from saturn_api.models.resource_image_tag import ResourceImageTag
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -47,7 +47,7 @@ class Deployment(BaseModel):
     healthcheck: Optional[StrictStr] = None
     subdomain: StrictStr
     start_dind: StrictBool
-    image_tag: ResourceImageTag
+    image_tag: ImageTag
     last_deploy: StrictStr
     k8s_name: StrictStr
     created_at: StrictStr
@@ -225,7 +225,7 @@ class Deployment(BaseModel):
             "healthcheck": obj.get("healthcheck"),
             "subdomain": obj.get("subdomain"),
             "start_dind": obj.get("start_dind"),
-            "image_tag": ResourceImageTag.from_dict(obj["image_tag"]) if obj.get("image_tag") is not None else None,
+            "image_tag": ImageTag.from_dict(obj["image_tag"]) if obj.get("image_tag") is not None else None,
             "last_deploy": obj.get("last_deploy"),
             "k8s_name": obj.get("k8s_name"),
             "created_at": obj.get("created_at"),

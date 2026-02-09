@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **is_external** | **bool** |  | [readonly] 
 **status** | **str** |  | [readonly] 
 **saturn_env** | **str** |  | [optional] [readonly] 
-**editable** | **bool** |  | [readonly] 
 
 ## Example
 

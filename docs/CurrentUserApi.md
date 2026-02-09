@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**get**](CurrentUserApi.md#get) | **GET** /api/user | Get current user
 [**get_aggregated_usage**](CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | Get aggregated usage
 [**get_preferences**](CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | Get current user preferences
-[**list_org_memberships**](CurrentUserApi.md#list_org_memberships) | **GET** /api/user/org_memberships | List current user org memberships
+[**list_owners**](CurrentUserApi.md#list_owners) | **GET** /api/user/owners | List current user owners across orgs
 [**update**](CurrentUserApi.md#update) | **PATCH** /api/user | Update current user
 [**update_preferences**](CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | Update current user preferences
 
@@ -237,10 +237,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_org_memberships**
-> OrgMembershipList list_org_memberships(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+# **list_owners**
+> CurrentUserOwnerList list_owners(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
-List current user org memberships
+List current user owners across orgs
 
 ### Example
 
@@ -248,7 +248,7 @@ List current user org memberships
 
 ```python
 import saturn_api
-from saturn_api.models.org_membership_list import OrgMembershipList
+from saturn_api.models.current_user_owner_list import CurrentUserOwnerList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -278,12 +278,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
     descending = False # bool |  (optional) (default to False)
 
     try:
-        # List current user org memberships
-        api_response = await api_instance.list_org_memberships(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
-        print("The response of CurrentUserApi->list_org_memberships:\n")
+        # List current user owners across orgs
+        api_response = await api_instance.list_owners(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        print("The response of CurrentUserApi->list_owners:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CurrentUserApi->list_org_memberships: %s\n" % e)
+        print("Exception when calling CurrentUserApi->list_owners: %s\n" % e)
 ```
 
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrgMembershipList**](OrgMembershipList.md)
+[**CurrentUserOwnerList**](CurrentUserOwnerList.md)
 
 ### Authorization
 

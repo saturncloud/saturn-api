@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_member**
-> OrgMemberDetailed create_member(org_id, org_member_create)
+> OwnerUserDetailed create_member(org_id, org_member_create)
 
 Create org member
 
@@ -276,7 +276,7 @@ Add a user to the org.
 ```python
 import saturn_api
 from saturn_api.models.org_member_create import OrgMemberCreate
-from saturn_api.models.org_member_detailed import OrgMemberDetailed
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrgMemberDetailed**](OrgMemberDetailed.md)
+[**OwnerUserDetailed**](OwnerUserDetailed.md)
 
 ### Authorization
 
@@ -1046,7 +1046,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_member**
-> OrgMemberDetailed get_member(org_id, user_id)
+> OwnerUserDetailed get_member(org_id, user_id)
 
 Get org member
 
@@ -1056,7 +1056,7 @@ Get org member
 
 ```python
 import saturn_api
-from saturn_api.models.org_member_detailed import OrgMemberDetailed
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -1104,7 +1104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrgMemberDetailed**](OrgMemberDetailed.md)
+[**OwnerUserDetailed**](OwnerUserDetailed.md)
 
 ### Authorization
 
@@ -1720,7 +1720,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_member**
-> OrgMemberDetailed update_member(org_id, user_id, org_member_update)
+> OwnerUserDetailed update_member(org_id, user_id, org_member_update)
 
 Update org member
 
@@ -1730,8 +1730,8 @@ Update org member
 
 ```python
 import saturn_api
-from saturn_api.models.org_member_detailed import OrgMemberDetailed
 from saturn_api.models.org_member_update import OrgMemberUpdate
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -1781,7 +1781,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrgMemberDetailed**](OrgMemberDetailed.md)
+[**OwnerUserDetailed**](OwnerUserDetailed.md)
 
 ### Authorization
 

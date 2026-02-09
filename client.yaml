@@ -341,7 +341,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: prev_key
@@ -967,7 +967,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -2042,7 +2042,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: remote_url
@@ -2459,7 +2459,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -3096,7 +3096,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -4218,7 +4218,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: prefix
@@ -4370,7 +4370,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: last_key
@@ -4434,7 +4434,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: prefix
@@ -4593,7 +4593,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       responses:
         '200':
@@ -4927,7 +4927,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrgMemberDetailed'
+                $ref: '#/components/schemas/OwnerUserDetailed'
           description: Added
   /api/orgs/{org_id}/members/{user_id}:
     delete:
@@ -4970,7 +4970,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrgMemberDetailed'
+                $ref: '#/components/schemas/OwnerUserDetailed'
           description: Ok
     patch:
       summary: Update org member
@@ -4999,7 +4999,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrgMemberDetailed'
+                $ref: '#/components/schemas/OwnerUserDetailed'
           description: Updated
   /api/orgs/{org_id}/members/{user_id}/usage/daily:
     get:
@@ -5285,7 +5285,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: type
@@ -5427,7 +5427,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: as_template
@@ -5485,7 +5485,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -5629,7 +5629,7 @@ paths:
         name: identity
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -6020,7 +6020,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -6164,7 +6164,7 @@ paths:
         name: identity
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -6308,7 +6308,7 @@ paths:
         name: identity
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -6460,7 +6460,7 @@ paths:
         name: identity
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: prev_key
@@ -6605,10 +6605,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserDetailed'
           description: Updated
-  /api/user/org_memberships:
+  /api/user/owners:
     get:
-      summary: List current user org memberships
-      operationId: currentuser_listOrgMemberships
+      summary: List current user owners across orgs
+      operationId: currentuser_listOwners
       tags:
       - current_user
       parameters:
@@ -6641,7 +6641,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrgMembershipList'
+                $ref: '#/components/schemas/CurrentUserOwnerList'
           description: Ok
   /api/user/preferences:
     get:
@@ -6883,7 +6883,7 @@ paths:
         name: owner
         schema:
           type: string
-          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+          pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
         required: false
       - in: query
         name: name
@@ -7893,7 +7893,7 @@ components:
           nullable: true
     OwnerByPath:
       type: string
-      pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+      pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
     OwnerReference:
       oneOf:
       - $ref: '#/components/schemas/OwnerByName'
@@ -8648,30 +8648,19 @@ components:
         identity_type:
           readOnly: true
           $ref: '#/components/schemas/IdentityType'
-        limits_id:
-          type: string
-          readOnly: true
-          nullable: true
         avatar_url:
           type: string
-          readOnly: true
-        is_multiple_ssh_keys:
-          type: boolean
           readOnly: true
       required:
       - avatar_url
       - created_at
-      - group_id
       - id
       - identity_name
       - identity_type
-      - is_multiple_ssh_keys
-      - limits_id
       - name
       - org_admin
       - org_id
       - org_name
-      - user_id
     DaskCluster:
       type: object
       properties:
@@ -8811,21 +8800,19 @@ components:
         use_mamba:
           type: boolean
           default: false
-    OwnerName:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        identity_name:
-          type: string
-          readOnly: true
-        avatar_url:
-          type: string
-          readOnly: true
-      required:
-      - avatar_url
-    ResourceImage:
+    HardwareType:
+      type: string
+      enum:
+      - CPU
+      - NVIDIA
+      - AMD
+    ImageAccessLevel:
+      type: string
+      enum:
+      - account
+      - org
+      - owner
+    Image:
       type: object
       properties:
         id:
@@ -8837,31 +8824,144 @@ components:
         owner:
           readOnly: true
           allOf:
-          - $ref: '#/components/schemas/OwnerName'
+          - $ref: '#/components/schemas/Owner'
+        description:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        hardware_type:
+          readOnly: true
+          $ref: '#/components/schemas/HardwareType'
+        supports:
+          type: array
+          readOnly: true
+          items:
+            type: string
+        access:
+          readOnly: true
+          $ref: '#/components/schemas/ImageAccessLevel'
+        is_base:
+          type: boolean
+          readOnly: true
+        is_gpu:
+          type: boolean
+          readOnly: true
+        trusted:
+          type: boolean
+          readOnly: true
       required:
+      - access
+      - created_at
+      - description
+      - hardware_type
       - id
+      - is_base
+      - is_gpu
       - name
       - owner
-    ResourceImageTag:
+      - supports
+      - trusted
+    BuildData:
+      type: object
+      properties:
+        base_image:
+          type: string
+          default: null
+          nullable: true
+        environment_yml:
+          type: string
+          default: null
+          nullable: true
+        requirements_txt:
+          type: string
+          default: null
+          nullable: true
+        cran_packages:
+          type: string
+          default: null
+          nullable: true
+        bioconductor_packages:
+          type: string
+          default: null
+          nullable: true
+        remotes_packages:
+          type: string
+          default: null
+          nullable: true
+        apt_txt:
+          type: string
+          default: null
+          nullable: true
+        post_build:
+          type: string
+          default: null
+          nullable: true
+        use_mamba:
+          type: boolean
+          default: false
+        adapt_image:
+          type: boolean
+          default: false
+        register_ipython_kernel:
+          type: boolean
+        rstudio_version:
+          type: string
+          default: null
+          nullable: true
+        install_r:
+          type: boolean
+    ImageTag:
       type: object
       properties:
         id:
           type: string
           readOnly: true
-        version:
+        created_at:
           type: string
-          readOnly: true
-        image_uri:
-          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
           readOnly: true
         image:
           readOnly: true
           allOf:
-          - $ref: '#/components/schemas/ResourceImage'
+          - $ref: '#/components/schemas/Image'
+        image_uri:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        version:
+          type: string
+          readOnly: true
+          minLength: 1
+        build_data:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/BuildData'
+        archived:
+          type: boolean
+          readOnly: true
+        is_external:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        saturn_env:
+          type: string
+          readOnly: true
       required:
+      - archived
+      - created_at
+      - description
       - id
       - image
       - image_uri
+      - is_external
+      - status
       - version
     DaskClusterNested:
       type: object
@@ -9020,7 +9120,7 @@ components:
         image_tag:
           readOnly: true
           allOf:
-          - $ref: '#/components/schemas/ResourceImageTag'
+          - $ref: '#/components/schemas/ImageTag'
         last_deploy:
           type: string
           format: '%Y-%m-%dT%H:%M:%S+00:00'
@@ -9136,7 +9236,7 @@ components:
         image_tag:
           readOnly: true
           allOf:
-          - $ref: '#/components/schemas/ResourceImageTag'
+          - $ref: '#/components/schemas/ImageTag'
         instance_size:
           type: string
           readOnly: true
@@ -9253,7 +9353,7 @@ components:
         image_tag:
           readOnly: true
           allOf:
-          - $ref: '#/components/schemas/ResourceImageTag'
+          - $ref: '#/components/schemas/ImageTag'
         extra_packages:
           readOnly: true
           allOf:
@@ -9290,6 +9390,13 @@ components:
           readOnly: true
         auto_shutoff:
           type: string
+          enum:
+          - 1 hour
+          - 6 hours
+          - 24 hours
+          - 3 days
+          - 7 days
+          - Never
           readOnly: true
         start_ssh:
           type: boolean
@@ -10285,12 +10392,6 @@ components:
           readOnly: true
       required:
       - workers
-    HardwareType:
-      type: string
-      enum:
-      - CPU
-      - NVIDIA
-      - AMD
     InstanceSize:
       type: object
       properties:
@@ -10866,15 +10967,11 @@ components:
         identity_type:
           readOnly: true
           $ref: '#/components/schemas/IdentityType'
-        is_multiple_ssh_keys:
-          type: boolean
-          readOnly: true
       required:
       - avatar_url
       - created_at
       - id
       - identity_type
-      - is_multiple_ssh_keys
       - name
     Viewer:
       type: object
@@ -10936,7 +11033,7 @@ components:
       - group_id
     IdentityByPath:
       type: string
-      pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})$
+      pattern: ^(?:(?P<org>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})\/)?(?P<identity>[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38})?$
     IdentityReference:
       oneOf:
       - $ref: '#/components/schemas/IdentityByUserId'
@@ -10953,171 +11050,6 @@ components:
           nullable: true
       required:
       - identity
-    ImageAccessLevel:
-      type: string
-      enum:
-      - account
-      - org
-      - owner
-    Image:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        owner:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/Owner'
-        description:
-          type: string
-          readOnly: true
-        created_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        hardware_type:
-          readOnly: true
-          $ref: '#/components/schemas/HardwareType'
-        supports:
-          type: array
-          readOnly: true
-          items:
-            type: string
-        access:
-          readOnly: true
-          $ref: '#/components/schemas/ImageAccessLevel'
-        is_base:
-          type: boolean
-          readOnly: true
-        is_gpu:
-          type: boolean
-          readOnly: true
-        editable:
-          type: boolean
-          readOnly: true
-        trusted:
-          type: boolean
-          readOnly: true
-      required:
-      - access
-      - created_at
-      - description
-      - editable
-      - hardware_type
-      - id
-      - is_base
-      - is_gpu
-      - name
-      - owner
-      - supports
-      - trusted
-    BuildData:
-      type: object
-      properties:
-        base_image:
-          type: string
-          default: null
-          nullable: true
-        environment_yml:
-          type: string
-          default: null
-          nullable: true
-        requirements_txt:
-          type: string
-          default: null
-          nullable: true
-        cran_packages:
-          type: string
-          default: null
-          nullable: true
-        bioconductor_packages:
-          type: string
-          default: null
-          nullable: true
-        remotes_packages:
-          type: string
-          default: null
-          nullable: true
-        apt_txt:
-          type: string
-          default: null
-          nullable: true
-        post_build:
-          type: string
-          default: null
-          nullable: true
-        use_mamba:
-          type: boolean
-          default: false
-        adapt_image:
-          type: boolean
-          default: false
-        register_ipython_kernel:
-          type: boolean
-        rstudio_version:
-          type: string
-          default: null
-          nullable: true
-        install_r:
-          type: boolean
-    ImageTag:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        created_at:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-        image:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/Image'
-        image_uri:
-          type: string
-          readOnly: true
-        description:
-          type: string
-          readOnly: true
-        version:
-          type: string
-          readOnly: true
-          minLength: 1
-        build_data:
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/BuildData'
-        archived:
-          type: boolean
-          readOnly: true
-        is_external:
-          type: boolean
-          readOnly: true
-        status:
-          type: string
-          readOnly: true
-        saturn_env:
-          type: string
-          readOnly: true
-        editable:
-          type: boolean
-          readOnly: true
-      required:
-      - archived
-      - created_at
-      - description
-      - editable
-      - id
-      - image
-      - image_uri
-      - is_external
-      - status
-      - version
     DefaultImages:
       type: object
       properties:
@@ -13128,7 +13060,7 @@ components:
       - locked
       - locked_reason
       - username
-    OrgMemberDetailed:
+    OwnerUserDetailed:
       type: object
       properties:
         id:
@@ -13156,16 +13088,16 @@ components:
         user_id:
           type: string
           readOnly: true
+        identity_type:
+          readOnly: true
+          $ref: '#/components/schemas/IdentityType'
+        avatar_url:
+          type: string
+          readOnly: true
         limits_id:
           type: string
           readOnly: true
           nullable: true
-        avatar_url:
-          type: string
-          readOnly: true
-        is_multiple_ssh_keys:
-          type: boolean
-          readOnly: true
         org:
           readOnly: true
           allOf:
@@ -13184,9 +13116,7 @@ components:
       - created_at
       - id
       - identity_name
-      - is_multiple_ssh_keys
-      - limits
-      - limits_id
+      - identity_type
       - name
       - org
       - org_admin
@@ -13255,16 +13185,13 @@ components:
         identity_type:
           readOnly: true
           $ref: '#/components/schemas/IdentityType'
+        avatar_url:
+          type: string
+          readOnly: true
         limits_id:
           type: string
           readOnly: true
           nullable: true
-        avatar_url:
-          type: string
-          readOnly: true
-        is_multiple_ssh_keys:
-          type: boolean
-          readOnly: true
         org:
           readOnly: true
           allOf:
@@ -13287,21 +13214,14 @@ components:
       required:
       - avatar_url
       - created_at
-      - group
-      - group_id
       - id
       - identity_name
       - identity_type
-      - is_multiple_ssh_keys
-      - limits
-      - limits_id
       - name
       - org
       - org_admin
       - org_id
       - org_name
-      - user
-      - user_id
     OwnerDetailedList:
       type: object
       properties:
@@ -13959,14 +13879,14 @@ components:
           type: string
           default: null
           nullable: true
-    OrgMembershipList:
+    CurrentUserOwnerList:
       type: object
       properties:
-        memberships:
+        owners:
           type: array
           readOnly: true
           items:
-            $ref: '#/components/schemas/OrgMemberDetailed'
+            $ref: '#/components/schemas/OwnerUserDetailed'
         prev_key:
           type: string
           readOnly: true
@@ -13974,7 +13894,7 @@ components:
           type: string
           readOnly: true
       required:
-      - memberships
+      - owners
     UserPreferences:
       type: object
       properties:
@@ -13984,7 +13904,7 @@ components:
         default_owner:
           readOnly: true
           allOf:
-          - $ref: '#/components/schemas/OrgMemberDetailed'
+          - $ref: '#/components/schemas/OwnerUserDetailed'
       required:
       - default_org_id
       - default_owner
@@ -14308,6 +14228,13 @@ components:
           readOnly: true
           items:
             type: string
+            enum:
+            - 1 hour
+            - 6 hours
+            - 24 hours
+            - 3 days
+            - 7 days
+            - Never
         disk_space:
           type: array
           readOnly: true

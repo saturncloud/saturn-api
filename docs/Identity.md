@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **created_at** | **str** |  | [readonly] 
 **name** | **str** |  | [readonly] 
 **identity_type** | [**IdentityType**](IdentityType.md) |  | 
-**is_multiple_ssh_keys** | **bool** |  | [readonly] 
 
 ## Example
 

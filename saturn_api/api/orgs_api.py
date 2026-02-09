@@ -32,12 +32,12 @@ from saturn_api.models.org_invitation_list import OrgInvitationList
 from saturn_api.models.org_invitation_update import OrgInvitationUpdate
 from saturn_api.models.org_list import OrgList
 from saturn_api.models.org_member_create import OrgMemberCreate
-from saturn_api.models.org_member_detailed import OrgMemberDetailed
 from saturn_api.models.org_member_update import OrgMemberUpdate
 from saturn_api.models.org_update import OrgUpdate
 from saturn_api.models.orgs_list_owners200_response import OrgsListOwners200Response
 from saturn_api.models.owner_detailed import OwnerDetailed
 from saturn_api.models.owner_usage_list import OwnerUsageList
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 from saturn_api.models.usage_limits import UsageLimits
 
 from saturn_api.api_client import ApiClient, RequestSerialized
@@ -893,7 +893,7 @@ class OrgsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrgMemberDetailed:
+    ) -> OwnerUserDetailed:
         """Create org member
 
         Add a user to the org.
@@ -934,7 +934,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "OrgMemberDetailed",
+            '201': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -964,7 +964,7 @@ class OrgsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrgMemberDetailed]:
+    ) -> ApiResponse[OwnerUserDetailed]:
         """Create org member
 
         Add a user to the org.
@@ -1005,7 +1005,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "OrgMemberDetailed",
+            '201': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1076,7 +1076,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "OrgMemberDetailed",
+            '201': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3707,7 +3707,7 @@ class OrgsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrgMemberDetailed:
+    ) -> OwnerUserDetailed:
         """Get org member
 
 
@@ -3747,7 +3747,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMemberDetailed",
+            '200': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3777,7 +3777,7 @@ class OrgsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrgMemberDetailed]:
+    ) -> ApiResponse[OwnerUserDetailed]:
         """Get org member
 
 
@@ -3817,7 +3817,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMemberDetailed",
+            '200': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3887,7 +3887,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMemberDetailed",
+            '200': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6281,7 +6281,7 @@ class OrgsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrgMemberDetailed:
+    ) -> OwnerUserDetailed:
         """Update org member
 
 
@@ -6324,7 +6324,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMemberDetailed",
+            '200': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6355,7 +6355,7 @@ class OrgsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrgMemberDetailed]:
+    ) -> ApiResponse[OwnerUserDetailed]:
         """Update org member
 
 
@@ -6398,7 +6398,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMemberDetailed",
+            '200': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6472,7 +6472,7 @@ class OrgsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMemberDetailed",
+            '200': "OwnerUserDetailed",
         }
         response_data = await self.api_client.call_api(
             *_param,

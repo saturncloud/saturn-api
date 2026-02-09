@@ -12,12 +12,10 @@ Name | Type | Description | Notes
 **created_at** | **str** |  | [readonly] 
 **org_admin** | **bool** |  | [readonly] 
 **org_id** | **str** |  | [readonly] 
-**user_id** | **str** |  | [readonly] 
-**group_id** | **str** |  | [readonly] 
+**user_id** | **str** |  | [optional] [readonly] 
+**group_id** | **str** |  | [optional] [readonly] 
 **identity_type** | [**IdentityType**](IdentityType.md) |  | 
-**limits_id** | **str** |  | [readonly] 
 **avatar_url** | **str** |  | [readonly] 
-**is_multiple_ssh_keys** | **bool** |  | [readonly] 
 
 ## Example
 

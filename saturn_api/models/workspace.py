@@ -21,8 +21,8 @@ from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validat
 from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
+from saturn_api.models.image_tag import ImageTag
 from saturn_api.models.owner import Owner
-from saturn_api.models.resource_image_tag import ResourceImageTag
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +33,7 @@ class Workspace(BaseModel):
     id: StrictStr
     name: StrictStr
     owner: Owner
-    image_tag: ResourceImageTag
+    image_tag: ImageTag
     extra_packages: Optional[ExtraPackages]
     ide: StrictStr
     start_script: Optional[StrictStr]
@@ -43,7 +43,7 @@ class Workspace(BaseModel):
     tags: Optional[Dict[str, StrictStr]] = None
     disk_space: StrictStr
     instance_size: StrictStr
-    auto_shutoff: StrictStr
+    auto_shutoff: Literal['1 hour', '6 hours', '24 hours', '3 days', '7 days', 'Never']
     start_ssh: StrictBool
     is_spot: StrictBool
     subdomain: StrictStr
@@ -62,6 +62,13 @@ class Workspace(BaseModel):
     url: StrictStr
     ssh_url: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "name", "owner", "image_tag", "extra_packages", "ide", "start_script", "environment_variables", "working_dir", "description", "tags", "disk_space", "instance_size", "auto_shutoff", "start_ssh", "is_spot", "subdomain", "start_dind", "resource_type", "size_display", "k8s_name", "require_restart", "created_at", "updated_at", "started_at", "self_destruct", "dask_cluster", "status", "debug_mode", "url", "ssh_url"]
+
+    @field_validator('auto_shutoff')
+    def auto_shutoff_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['1 hour', '6 hours', '24 hours', '3 days', '7 days', 'Never']):
+            raise ValueError("must be one of enum values ('1 hour', '6 hours', '24 hours', '3 days', '7 days', 'Never')")
+        return value
 
     @field_validator('resource_type')
     def resource_type_validate_enum(cls, value):
@@ -221,7 +228,7 @@ class Workspace(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "owner": Owner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
-            "image_tag": ResourceImageTag.from_dict(obj["image_tag"]) if obj.get("image_tag") is not None else None,
+            "image_tag": ImageTag.from_dict(obj["image_tag"]) if obj.get("image_tag") is not None else None,
             "extra_packages": ExtraPackages.from_dict(obj["extra_packages"]) if obj.get("extra_packages") is not None else None,
             "ide": obj.get("ide"),
             "start_script": obj.get("start_script"),

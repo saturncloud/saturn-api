@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **default_org_id** | **str** |  | [readonly] 
-**default_owner** | [**OrgMemberDetailed**](OrgMemberDetailed.md) |  | [readonly] 
+**default_owner** | [**OwnerUserDetailed**](OwnerUserDetailed.md) |  | [readonly] 
 
 ## Example
 

@@ -29,6 +29,7 @@ docs/CronSchedule.md
 docs/CronScheduleCreate.md
 docs/CronScheduleUpdate.md
 docs/CurrentUserApi.md
+docs/CurrentUserOwnerList.md
 docs/DailyUsage.md
 docs/DailyUsageList.md
 docs/DaskCluster.md
@@ -179,9 +180,7 @@ docs/OrgInvitationList.md
 docs/OrgInvitationUpdate.md
 docs/OrgList.md
 docs/OrgMemberCreate.md
-docs/OrgMemberDetailed.md
 docs/OrgMemberUpdate.md
-docs/OrgMembershipList.md
 docs/OrgUpdate.md
 docs/OrgsApi.md
 docs/OrgsListOwners200Response.md
@@ -192,10 +191,10 @@ docs/OwnerByName.md
 docs/OwnerDetailed.md
 docs/OwnerDetailedList.md
 docs/OwnerList.md
-docs/OwnerName.md
 docs/OwnerReference.md
 docs/OwnerUsage.md
 docs/OwnerUsageList.md
+docs/OwnerUserDetailed.md
 docs/PodHistory.md
 docs/PodLogs.md
 docs/PodRuntimeSummary.md
@@ -210,8 +209,6 @@ docs/ResourceByJobId.md
 docs/ResourceByWorkspaceId.md
 docs/ResourceClusters.md
 docs/ResourceHistory.md
-docs/ResourceImage.md
-docs/ResourceImageTag.md
 docs/ResourceRecipe.md
 docs/ResourceReference.md
 docs/ResourceState.md
@@ -374,6 +371,7 @@ saturn_api/models/container_status.py
 saturn_api/models/cron_schedule.py
 saturn_api/models/cron_schedule_create.py
 saturn_api/models/cron_schedule_update.py
+saturn_api/models/current_user_owner_list.py
 saturn_api/models/daily_usage.py
 saturn_api/models/daily_usage_list.py
 saturn_api/models/dask_cluster.py
@@ -511,9 +509,7 @@ saturn_api/models/org_invitation_list.py
 saturn_api/models/org_invitation_update.py
 saturn_api/models/org_list.py
 saturn_api/models/org_member_create.py
-saturn_api/models/org_member_detailed.py
 saturn_api/models/org_member_update.py
-saturn_api/models/org_membership_list.py
 saturn_api/models/org_update.py
 saturn_api/models/orgs_list_owners200_response.py
 saturn_api/models/owner.py
@@ -523,10 +519,10 @@ saturn_api/models/owner_by_name.py
 saturn_api/models/owner_detailed.py
 saturn_api/models/owner_detailed_list.py
 saturn_api/models/owner_list.py
-saturn_api/models/owner_name.py
 saturn_api/models/owner_reference.py
 saturn_api/models/owner_usage.py
 saturn_api/models/owner_usage_list.py
+saturn_api/models/owner_user_detailed.py
 saturn_api/models/pod_history.py
 saturn_api/models/pod_logs.py
 saturn_api/models/pod_runtime_summary.py
@@ -540,8 +536,6 @@ saturn_api/models/resource_by_job_id.py
 saturn_api/models/resource_by_workspace_id.py
 saturn_api/models/resource_clusters.py
 saturn_api/models/resource_history.py
-saturn_api/models/resource_image.py
-saturn_api/models/resource_image_tag.py
 saturn_api/models/resource_recipe.py
 saturn_api/models/resource_reference.py
 saturn_api/models/resource_state.py

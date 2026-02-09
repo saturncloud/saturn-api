@@ -20,7 +20,7 @@ from datetime import datetime
 from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from saturn_api.models.org_membership_list import OrgMembershipList
+from saturn_api.models.current_user_owner_list import CurrentUserOwnerList
 from saturn_api.models.usage_limits import UsageLimits
 from saturn_api.models.user_detailed import UserDetailed
 from saturn_api.models.user_preferences import UserPreferences
@@ -833,7 +833,7 @@ class CurrentUserApi:
 
 
     @validate_call
-    async def list_org_memberships(
+    async def list_owners(
         self,
         prev_key: Optional[StrictStr] = None,
         next_key: Optional[StrictStr] = None,
@@ -851,8 +851,8 @@ class CurrentUserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrgMembershipList:
-        """List current user org memberships
+    ) -> CurrentUserOwnerList:
+        """List current user owners across orgs
 
 
         :param prev_key:
@@ -885,7 +885,7 @@ class CurrentUserApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_org_memberships_serialize(
+        _param = self._list_owners_serialize(
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -897,7 +897,7 @@ class CurrentUserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMembershipList",
+            '200': "CurrentUserOwnerList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -911,7 +911,7 @@ class CurrentUserApi:
 
 
     @validate_call
-    async def list_org_memberships_with_http_info(
+    async def list_owners_with_http_info(
         self,
         prev_key: Optional[StrictStr] = None,
         next_key: Optional[StrictStr] = None,
@@ -929,8 +929,8 @@ class CurrentUserApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrgMembershipList]:
-        """List current user org memberships
+    ) -> ApiResponse[CurrentUserOwnerList]:
+        """List current user owners across orgs
 
 
         :param prev_key:
@@ -963,7 +963,7 @@ class CurrentUserApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_org_memberships_serialize(
+        _param = self._list_owners_serialize(
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -975,7 +975,7 @@ class CurrentUserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMembershipList",
+            '200': "CurrentUserOwnerList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -989,7 +989,7 @@ class CurrentUserApi:
 
 
     @validate_call
-    async def list_org_memberships_without_preload_content(
+    async def list_owners_without_preload_content(
         self,
         prev_key: Optional[StrictStr] = None,
         next_key: Optional[StrictStr] = None,
@@ -1008,7 +1008,7 @@ class CurrentUserApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List current user org memberships
+        """List current user owners across orgs
 
 
         :param prev_key:
@@ -1041,7 +1041,7 @@ class CurrentUserApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_org_memberships_serialize(
+        _param = self._list_owners_serialize(
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -1053,7 +1053,7 @@ class CurrentUserApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrgMembershipList",
+            '200': "CurrentUserOwnerList",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1062,7 +1062,7 @@ class CurrentUserApi:
         return response_data.response
 
 
-    def _list_org_memberships_serialize(
+    def _list_owners_serialize(
         self,
         prev_key,
         next_key,
@@ -1127,7 +1127,7 @@ class CurrentUserApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/api/user/org_memberships',
+            resource_path='/api/user/owners',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

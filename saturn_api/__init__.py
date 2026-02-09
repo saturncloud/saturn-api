@@ -78,6 +78,7 @@ __all__ = [
     "CronSchedule",
     "CronScheduleCreate",
     "CronScheduleUpdate",
+    "CurrentUserOwnerList",
     "DailyUsage",
     "DailyUsageList",
     "DaskCluster",
@@ -215,9 +216,7 @@ __all__ = [
     "OrgInvitationUpdate",
     "OrgList",
     "OrgMemberCreate",
-    "OrgMemberDetailed",
     "OrgMemberUpdate",
-    "OrgMembershipList",
     "OrgUpdate",
     "OrgsListOwners200Response",
     "Owner",
@@ -227,10 +226,10 @@ __all__ = [
     "OwnerDetailed",
     "OwnerDetailedList",
     "OwnerList",
-    "OwnerName",
     "OwnerReference",
     "OwnerUsage",
     "OwnerUsageList",
+    "OwnerUserDetailed",
     "PodHistory",
     "PodLogs",
     "PodRuntimeSummary",
@@ -244,8 +243,6 @@ __all__ = [
     "ResourceByWorkspaceId",
     "ResourceClusters",
     "ResourceHistory",
-    "ResourceImage",
-    "ResourceImageTag",
     "ResourceRecipe",
     "ResourceReference",
     "ResourceState",
@@ -405,6 +402,7 @@ from saturn_api.models.container_status import ContainerStatus as ContainerStatu
 from saturn_api.models.cron_schedule import CronSchedule as CronSchedule
 from saturn_api.models.cron_schedule_create import CronScheduleCreate as CronScheduleCreate
 from saturn_api.models.cron_schedule_update import CronScheduleUpdate as CronScheduleUpdate
+from saturn_api.models.current_user_owner_list import CurrentUserOwnerList as CurrentUserOwnerList
 from saturn_api.models.daily_usage import DailyUsage as DailyUsage
 from saturn_api.models.daily_usage_list import DailyUsageList as DailyUsageList
 from saturn_api.models.dask_cluster import DaskCluster as DaskCluster
@@ -542,9 +540,7 @@ from saturn_api.models.org_invitation_list import OrgInvitationList as OrgInvita
 from saturn_api.models.org_invitation_update import OrgInvitationUpdate as OrgInvitationUpdate
 from saturn_api.models.org_list import OrgList as OrgList
 from saturn_api.models.org_member_create import OrgMemberCreate as OrgMemberCreate
-from saturn_api.models.org_member_detailed import OrgMemberDetailed as OrgMemberDetailed
 from saturn_api.models.org_member_update import OrgMemberUpdate as OrgMemberUpdate
-from saturn_api.models.org_membership_list import OrgMembershipList as OrgMembershipList
 from saturn_api.models.org_update import OrgUpdate as OrgUpdate
 from saturn_api.models.orgs_list_owners200_response import OrgsListOwners200Response as OrgsListOwners200Response
 from saturn_api.models.owner import Owner as Owner
@@ -554,10 +550,10 @@ from saturn_api.models.owner_by_name import OwnerByName as OwnerByName
 from saturn_api.models.owner_detailed import OwnerDetailed as OwnerDetailed
 from saturn_api.models.owner_detailed_list import OwnerDetailedList as OwnerDetailedList
 from saturn_api.models.owner_list import OwnerList as OwnerList
-from saturn_api.models.owner_name import OwnerName as OwnerName
 from saturn_api.models.owner_reference import OwnerReference as OwnerReference
 from saturn_api.models.owner_usage import OwnerUsage as OwnerUsage
 from saturn_api.models.owner_usage_list import OwnerUsageList as OwnerUsageList
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed as OwnerUserDetailed
 from saturn_api.models.pod_history import PodHistory as PodHistory
 from saturn_api.models.pod_logs import PodLogs as PodLogs
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary as PodRuntimeSummary
@@ -571,8 +567,6 @@ from saturn_api.models.resource_by_job_id import ResourceByJobId as ResourceByJo
 from saturn_api.models.resource_by_workspace_id import ResourceByWorkspaceId as ResourceByWorkspaceId
 from saturn_api.models.resource_clusters import ResourceClusters as ResourceClusters
 from saturn_api.models.resource_history import ResourceHistory as ResourceHistory
-from saturn_api.models.resource_image import ResourceImage as ResourceImage
-from saturn_api.models.resource_image_tag import ResourceImageTag as ResourceImageTag
 from saturn_api.models.resource_recipe import ResourceRecipe as ResourceRecipe
 from saturn_api.models.resource_reference import ResourceReference as ResourceReference
 from saturn_api.models.resource_state import ResourceState as ResourceState

@@ -112,7 +112,7 @@ Class | Method | HTTP request | Description
 *CurrentUserApi* | [**get**](docs/CurrentUserApi.md#get) | **GET** /api/user | Get current user
 *CurrentUserApi* | [**get_aggregated_usage**](docs/CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | Get aggregated usage
 *CurrentUserApi* | [**get_preferences**](docs/CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | Get current user preferences
-*CurrentUserApi* | [**list_org_memberships**](docs/CurrentUserApi.md#list_org_memberships) | **GET** /api/user/org_memberships | List current user org memberships
+*CurrentUserApi* | [**list_owners**](docs/CurrentUserApi.md#list_owners) | **GET** /api/user/owners | List current user owners across orgs
 *CurrentUserApi* | [**update**](docs/CurrentUserApi.md#update) | **PATCH** /api/user | Update current user
 *CurrentUserApi* | [**update_preferences**](docs/CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | Update current user preferences
 *DaskClustersApi* | [**adapt**](docs/DaskClustersApi.md#adapt) | **POST** /api/dask_clusters/{dask_cluster_id}/adapt | Set dask cluster adaptive scaling
@@ -396,6 +396,7 @@ Class | Method | HTTP request | Description
  - [CronSchedule](docs/CronSchedule.md)
  - [CronScheduleCreate](docs/CronScheduleCreate.md)
  - [CronScheduleUpdate](docs/CronScheduleUpdate.md)
+ - [CurrentUserOwnerList](docs/CurrentUserOwnerList.md)
  - [DailyUsage](docs/DailyUsage.md)
  - [DailyUsageList](docs/DailyUsageList.md)
  - [DaskCluster](docs/DaskCluster.md)
@@ -533,9 +534,7 @@ Class | Method | HTTP request | Description
  - [OrgInvitationUpdate](docs/OrgInvitationUpdate.md)
  - [OrgList](docs/OrgList.md)
  - [OrgMemberCreate](docs/OrgMemberCreate.md)
- - [OrgMemberDetailed](docs/OrgMemberDetailed.md)
  - [OrgMemberUpdate](docs/OrgMemberUpdate.md)
- - [OrgMembershipList](docs/OrgMembershipList.md)
  - [OrgUpdate](docs/OrgUpdate.md)
  - [OrgsListOwners200Response](docs/OrgsListOwners200Response.md)
  - [Owner](docs/Owner.md)
@@ -545,10 +544,10 @@ Class | Method | HTTP request | Description
  - [OwnerDetailed](docs/OwnerDetailed.md)
  - [OwnerDetailedList](docs/OwnerDetailedList.md)
  - [OwnerList](docs/OwnerList.md)
- - [OwnerName](docs/OwnerName.md)
  - [OwnerReference](docs/OwnerReference.md)
  - [OwnerUsage](docs/OwnerUsage.md)
  - [OwnerUsageList](docs/OwnerUsageList.md)
+ - [OwnerUserDetailed](docs/OwnerUserDetailed.md)
  - [PodHistory](docs/PodHistory.md)
  - [PodLogs](docs/PodLogs.md)
  - [PodRuntimeSummary](docs/PodRuntimeSummary.md)
@@ -562,8 +561,6 @@ Class | Method | HTTP request | Description
  - [ResourceByWorkspaceId](docs/ResourceByWorkspaceId.md)
  - [ResourceClusters](docs/ResourceClusters.md)
  - [ResourceHistory](docs/ResourceHistory.md)
- - [ResourceImage](docs/ResourceImage.md)
- - [ResourceImageTag](docs/ResourceImageTag.md)
  - [ResourceRecipe](docs/ResourceRecipe.md)
  - [ResourceReference](docs/ResourceReference.md)
  - [ResourceState](docs/ResourceState.md)

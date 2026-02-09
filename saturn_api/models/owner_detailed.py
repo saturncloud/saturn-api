@@ -38,17 +38,16 @@ class OwnerDetailed(BaseModel):
     created_at: StrictStr
     org_admin: StrictBool
     org_id: StrictStr
-    user_id: Optional[StrictStr]
-    group_id: Optional[StrictStr]
+    user_id: Optional[StrictStr] = None
+    group_id: Optional[StrictStr] = None
     identity_type: IdentityType
-    limits_id: Optional[StrictStr]
     avatar_url: StrictStr
-    is_multiple_ssh_keys: StrictBool
+    limits_id: Optional[StrictStr] = None
     org: Org
-    user: Optional[UserDetailed]
-    group: Optional[Group]
-    limits: Optional[UsageLimits]
-    __properties: ClassVar[List[str]] = ["id", "name", "identity_name", "org_name", "created_at", "org_admin", "org_id", "user_id", "group_id", "identity_type", "limits_id", "avatar_url", "is_multiple_ssh_keys", "org", "user", "group", "limits"]
+    user: Optional[UserDetailed] = None
+    group: Optional[Group] = None
+    limits: Optional[UsageLimits] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "identity_name", "org_name", "created_at", "org_admin", "org_id", "user_id", "group_id", "identity_type", "avatar_url", "limits_id", "org", "user", "group", "limits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,7 +94,6 @@ class OwnerDetailed(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -107,9 +105,8 @@ class OwnerDetailed(BaseModel):
             "org_id",
             "user_id",
             "group_id",
-            "limits_id",
             "avatar_url",
-            "is_multiple_ssh_keys",
+            "limits_id",
             "org",
             "user",
             "group",
@@ -185,9 +182,8 @@ class OwnerDetailed(BaseModel):
             "user_id": obj.get("user_id"),
             "group_id": obj.get("group_id"),
             "identity_type": obj.get("identity_type"),
-            "limits_id": obj.get("limits_id"),
             "avatar_url": obj.get("avatar_url"),
-            "is_multiple_ssh_keys": obj.get("is_multiple_ssh_keys"),
+            "limits_id": obj.get("limits_id"),
             "org": Org.from_dict(obj["org"]) if obj.get("org") is not None else None,
             "user": UserDetailed.from_dict(obj["user"]) if obj.get("user") is not None else None,
             "group": Group.from_dict(obj["group"]) if obj.get("group") is not None else None,

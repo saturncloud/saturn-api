@@ -19,15 +19,16 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from saturn_api.models.identity_type import IdentityType
 from saturn_api.models.org import Org
 from saturn_api.models.usage_limits import UsageLimits
 from saturn_api.models.user_detailed import UserDetailed
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
-class OrgMemberDetailed(BaseModel):
+class OwnerUserDetailed(BaseModel):
     """
-    OrgMemberDetailed
+    OwnerUserDetailed
     """ # noqa: E501
     id: StrictStr
     name: StrictStr
@@ -37,13 +38,13 @@ class OrgMemberDetailed(BaseModel):
     org_admin: StrictBool
     org_id: StrictStr
     user_id: StrictStr
-    limits_id: Optional[StrictStr]
+    identity_type: IdentityType
     avatar_url: StrictStr
-    is_multiple_ssh_keys: StrictBool
+    limits_id: Optional[StrictStr] = None
     org: Org
     user: UserDetailed
-    limits: Optional[UsageLimits]
-    __properties: ClassVar[List[str]] = ["id", "name", "identity_name", "org_name", "created_at", "org_admin", "org_id", "user_id", "limits_id", "avatar_url", "is_multiple_ssh_keys", "org", "user", "limits"]
+    limits: Optional[UsageLimits] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "identity_name", "org_name", "created_at", "org_admin", "org_id", "user_id", "identity_type", "avatar_url", "limits_id", "org", "user", "limits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -63,7 +64,7 @@ class OrgMemberDetailed(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of OrgMemberDetailed from a JSON string"""
+        """Create an instance of OwnerUserDetailed from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -88,7 +89,6 @@ class OrgMemberDetailed(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -99,9 +99,8 @@ class OrgMemberDetailed(BaseModel):
             "org_admin",
             "org_id",
             "user_id",
-            "limits_id",
             "avatar_url",
-            "is_multiple_ssh_keys",
+            "limits_id",
             "org",
             "user",
             "limits",
@@ -135,7 +134,7 @@ class OrgMemberDetailed(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of OrgMemberDetailed from a dict"""
+        """Create an instance of OwnerUserDetailed from a dict"""
         if obj is None:
             return None
 
@@ -151,9 +150,9 @@ class OrgMemberDetailed(BaseModel):
             "org_admin": obj.get("org_admin"),
             "org_id": obj.get("org_id"),
             "user_id": obj.get("user_id"),
-            "limits_id": obj.get("limits_id"),
+            "identity_type": obj.get("identity_type"),
             "avatar_url": obj.get("avatar_url"),
-            "is_multiple_ssh_keys": obj.get("is_multiple_ssh_keys"),
+            "limits_id": obj.get("limits_id"),
             "org": Org.from_dict(obj["org"]) if obj.get("org") is not None else None,
             "user": UserDetailed.from_dict(obj["user"]) if obj.get("user") is not None else None,
             "limits": UsageLimits.from_dict(obj["limits"]) if obj.get("limits") is not None else None

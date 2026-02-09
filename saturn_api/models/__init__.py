@@ -35,6 +35,7 @@ from saturn_api.models.container_status import ContainerStatus
 from saturn_api.models.cron_schedule import CronSchedule
 from saturn_api.models.cron_schedule_create import CronScheduleCreate
 from saturn_api.models.cron_schedule_update import CronScheduleUpdate
+from saturn_api.models.current_user_owner_list import CurrentUserOwnerList
 from saturn_api.models.daily_usage import DailyUsage
 from saturn_api.models.daily_usage_list import DailyUsageList
 from saturn_api.models.dask_cluster import DaskCluster
@@ -172,9 +173,7 @@ from saturn_api.models.org_invitation_list import OrgInvitationList
 from saturn_api.models.org_invitation_update import OrgInvitationUpdate
 from saturn_api.models.org_list import OrgList
 from saturn_api.models.org_member_create import OrgMemberCreate
-from saturn_api.models.org_member_detailed import OrgMemberDetailed
 from saturn_api.models.org_member_update import OrgMemberUpdate
-from saturn_api.models.org_membership_list import OrgMembershipList
 from saturn_api.models.org_update import OrgUpdate
 from saturn_api.models.orgs_list_owners200_response import OrgsListOwners200Response
 from saturn_api.models.owner import Owner
@@ -184,10 +183,10 @@ from saturn_api.models.owner_by_name import OwnerByName
 from saturn_api.models.owner_detailed import OwnerDetailed
 from saturn_api.models.owner_detailed_list import OwnerDetailedList
 from saturn_api.models.owner_list import OwnerList
-from saturn_api.models.owner_name import OwnerName
 from saturn_api.models.owner_reference import OwnerReference
 from saturn_api.models.owner_usage import OwnerUsage
 from saturn_api.models.owner_usage_list import OwnerUsageList
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 from saturn_api.models.pod_history import PodHistory
 from saturn_api.models.pod_logs import PodLogs
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
@@ -201,8 +200,6 @@ from saturn_api.models.resource_by_job_id import ResourceByJobId
 from saturn_api.models.resource_by_workspace_id import ResourceByWorkspaceId
 from saturn_api.models.resource_clusters import ResourceClusters
 from saturn_api.models.resource_history import ResourceHistory
-from saturn_api.models.resource_image import ResourceImage
-from saturn_api.models.resource_image_tag import ResourceImageTag
 from saturn_api.models.resource_recipe import ResourceRecipe
 from saturn_api.models.resource_reference import ResourceReference
 from saturn_api.models.resource_state import ResourceState

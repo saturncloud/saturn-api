@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List
-from saturn_api.models.org_member_detailed import OrgMemberDetailed
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class UserPreferences(BaseModel):
     UserPreferences
     """ # noqa: E501
     default_org_id: StrictStr
-    default_owner: OrgMemberDetailed
+    default_owner: OwnerUserDetailed
     __properties: ClassVar[List[str]] = ["default_org_id", "default_owner"]
 
     model_config = ConfigDict(
@@ -90,7 +90,7 @@ class UserPreferences(BaseModel):
 
         _obj = cls.model_validate({
             "default_org_id": obj.get("default_org_id"),
-            "default_owner": OrgMemberDetailed.from_dict(obj["default_owner"]) if obj.get("default_owner") is not None else None
+            "default_owner": OwnerUserDetailed.from_dict(obj["default_owner"]) if obj.get("default_owner") is not None else None
         })
         return _obj
 

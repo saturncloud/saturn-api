@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **is_spot** | **bool** |  | [readonly] 
 **healthcheck** | **str** |  | [optional] [readonly] 
 **start_dind** | **bool** |  | [readonly] 
-**image_tag** | [**ResourceImageTag**](ResourceImageTag.md) |  | [readonly] 
+**image_tag** | [**ImageTag**](ImageTag.md) |  | [readonly] 
 **last_deploy** | **str** |  | [readonly] 
 **k8s_name** | **str** |  | [readonly] 
 **updated_at** | **str** |  | [readonly] 

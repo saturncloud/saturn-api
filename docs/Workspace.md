@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [readonly] 
 **name** | **str** |  | [readonly] 
 **owner** | [**Owner**](Owner.md) |  | [readonly] 
-**image_tag** | [**ResourceImageTag**](ResourceImageTag.md) |  | [readonly] 
+**image_tag** | [**ImageTag**](ImageTag.md) |  | [readonly] 
 **extra_packages** | [**ExtraPackages**](ExtraPackages.md) |  | [readonly] 
 **ide** | **str** |  | [readonly] 
 **start_script** | **str** |  | [readonly] 

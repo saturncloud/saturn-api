@@ -40,8 +40,7 @@ class ImageTag(BaseModel):
     is_external: StrictBool
     status: StrictStr
     saturn_env: Optional[StrictStr] = None
-    editable: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "created_at", "image", "image_uri", "description", "version", "build_data", "archived", "is_external", "status", "saturn_env", "editable"]
+    __properties: ClassVar[List[str]] = ["id", "created_at", "image", "image_uri", "description", "version", "build_data", "archived", "is_external", "status", "saturn_env"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,7 +83,6 @@ class ImageTag(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -98,7 +96,6 @@ class ImageTag(BaseModel):
             "is_external",
             "status",
             "saturn_env",
-            "editable",
         ])
 
         _dict = self.model_dump(
@@ -134,8 +131,7 @@ class ImageTag(BaseModel):
             "archived": obj.get("archived"),
             "is_external": obj.get("is_external"),
             "status": obj.get("status"),
-            "saturn_env": obj.get("saturn_env"),
-            "editable": obj.get("editable")
+            "saturn_env": obj.get("saturn_env")
         })
         return _obj
 

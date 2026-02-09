@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List
 from saturn_api.models.identity_type import IdentityType
 from typing import Literal, Optional, Set
@@ -32,8 +32,7 @@ class Identity(BaseModel):
     created_at: StrictStr
     name: StrictStr
     identity_type: IdentityType
-    is_multiple_ssh_keys: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "avatar_url", "created_at", "name", "identity_type", "is_multiple_ssh_keys"]
+    __properties: ClassVar[List[str]] = ["id", "avatar_url", "created_at", "name", "identity_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,14 +68,12 @@ class Identity(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "avatar_url",
             "created_at",
             "name",
-            "is_multiple_ssh_keys",
         ])
 
         _dict = self.model_dump(
@@ -100,8 +97,7 @@ class Identity(BaseModel):
             "avatar_url": obj.get("avatar_url"),
             "created_at": obj.get("created_at"),
             "name": obj.get("name"),
-            "identity_type": obj.get("identity_type"),
-            "is_multiple_ssh_keys": obj.get("is_multiple_ssh_keys")
+            "identity_type": obj.get("identity_type")
         })
         return _obj
 

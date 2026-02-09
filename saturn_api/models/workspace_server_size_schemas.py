@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
 from saturn_api.models.instance_size import InstanceSize
 from typing import Literal, Optional, Set
@@ -27,10 +27,18 @@ class WorkspaceServerSizeSchemas(BaseModel):
     """
     WorkspaceServerSizeSchemas
     """ # noqa: E501
-    auto_shutoff: List[StrictStr]
+    auto_shutoff: Literal['1 hour', '6 hours', '24 hours', '3 days', '7 days', 'Never']
     disk_space: List[StrictStr]
     size: List[InstanceSize]
     __properties: ClassVar[List[str]] = ["auto_shutoff", "disk_space", "size"]
+
+    @field_validator('auto_shutoff')
+    def auto_shutoff_validate_enum(cls, value):
+        """Validates the enum"""
+        for i in value:
+            if i not in set(['1 hour', '6 hours', '24 hours', '3 days', '7 days', 'Never']):
+                raise ValueError("each list item must be one of ('1 hour', '6 hours', '24 hours', '3 days', '7 days', 'Never')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

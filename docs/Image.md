@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **access** | [**ImageAccessLevel**](ImageAccessLevel.md) |  | 
 **is_base** | **bool** |  | [readonly] 
 **is_gpu** | **bool** |  | [readonly] 
-**editable** | **bool** |  | [readonly] 
 **trusted** | **bool** |  | [readonly] 
 
 ## Example

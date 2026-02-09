@@ -22,8 +22,8 @@ from typing import Any, ClassVar, Dict, List, Optional
 from saturn_api.models.cron_schedule import CronSchedule
 from saturn_api.models.dask_cluster_nested import DaskClusterNested
 from saturn_api.models.extra_packages import ExtraPackages
+from saturn_api.models.image_tag import ImageTag
 from saturn_api.models.owner import Owner
-from saturn_api.models.resource_image_tag import ResourceImageTag
 from typing import Literal, Optional, Set
 from typing_extensions import Self
 
@@ -36,7 +36,7 @@ class Job(BaseModel):
     owner: Owner
     command: StrictStr
     description: StrictStr
-    image_tag: ResourceImageTag
+    image_tag: ImageTag
     instance_size: StrictStr
     size_display: StrictStr
     extra_packages: Optional[ExtraPackages]
@@ -202,7 +202,7 @@ class Job(BaseModel):
             "owner": Owner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "command": obj.get("command"),
             "description": obj.get("description"),
-            "image_tag": ResourceImageTag.from_dict(obj["image_tag"]) if obj.get("image_tag") is not None else None,
+            "image_tag": ImageTag.from_dict(obj["image_tag"]) if obj.get("image_tag") is not None else None,
             "instance_size": obj.get("instance_size"),
             "size_display": obj.get("size_display"),
             "extra_packages": ExtraPackages.from_dict(obj["extra_packages"]) if obj.get("extra_packages") is not None else None,

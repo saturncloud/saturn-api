@@ -39,9 +39,8 @@ class Image(BaseModel):
     access: ImageAccessLevel
     is_base: StrictBool
     is_gpu: StrictBool
-    editable: StrictBool
     trusted: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "name", "owner", "description", "created_at", "hardware_type", "supports", "access", "is_base", "is_gpu", "editable", "trusted"]
+    __properties: ClassVar[List[str]] = ["id", "name", "owner", "description", "created_at", "hardware_type", "supports", "access", "is_base", "is_gpu", "trusted"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,7 +81,6 @@ class Image(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -93,7 +91,6 @@ class Image(BaseModel):
             "supports",
             "is_base",
             "is_gpu",
-            "editable",
             "trusted",
         ])
 
@@ -127,7 +124,6 @@ class Image(BaseModel):
             "access": obj.get("access"),
             "is_base": obj.get("is_base"),
             "is_gpu": obj.get("is_gpu"),
-            "editable": obj.get("editable"),
             "trusted": obj.get("trusted")
         })
         return _obj
