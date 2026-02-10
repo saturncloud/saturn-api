@@ -311,7 +311,6 @@ docs/WorkspaceStart.md
 docs/WorkspaceUpdate.md
 docs/WorkspacesApi.md
 git_push.sh
-pyproject.toml
 requirements.txt
 saturn_api/__init__.py
 saturn_api/api/__init__.py

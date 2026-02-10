@@ -5,11 +5,23 @@ SHELL=/bin/bash -O globstar
 CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate
 
 .PHONY: update
-update: copy-client-yaml generate
+update: copy-client-yaml generate format
 
 .PHONY: generate
 generate:
 	openapi-generator-cli generate -g python -i client.yaml -c openapi-generator-config.yaml --remove-operation-id-prefix -t templates/python
+
+.PHONY: format
+format:
+	@black .
+	@isort .
+	@autoflake --in-place --recursive .
+
+.PHONY: lint
+lint:
+	@black --check --diff .
+	@isort --check .
+	@autoflake --check --recursive .
 
 .PHONY: templates
 templates:

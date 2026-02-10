@@ -27,3 +27,6 @@
 
 # Ignore test stubs
 test/
+
+# Don't override pyproject settings
+pyproject.toml

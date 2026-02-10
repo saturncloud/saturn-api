@@ -94,3 +94,13 @@ disallow_incomplete_defs = true
 disallow_untyped_defs = true
 no_implicit_reexport = true
 warn_return_any = true
+
+# Custom Saturn API formatting
+[tool.black]
+line-length = 100
+exclude = '/(\.vscode|\.git)/'
+
+[tool.isort]
+profile = "black"
+src_paths = ["saturn_api"]
+auto_identify_namespace_packages = false

@@ -22,7 +22,9 @@ from saturn_api.api.object_storage_api import ObjectStorageApi
 from saturn_api.api.orgs_api import OrgsApi
 from saturn_api.api.recipes_api import RecipesApi
 from saturn_api.api.secrets_api import SecretsApi
-from saturn_api.api.service_account_entitlements_api import ServiceAccountEntitlementsApi
+from saturn_api.api.service_account_entitlements_api import (
+    ServiceAccountEntitlementsApi,
+)
 from saturn_api.api.service_accounts_api import ServiceAccountsApi
 from saturn_api.api.shared_folder_attachments_api import SharedFolderAttachmentsApi
 from saturn_api.api.shared_folders_api import SharedFoldersApi
@@ -30,4 +32,3 @@ from saturn_api.api.ssh_private_keys_api import SshPrivateKeysApi
 from saturn_api.api.ssh_public_keys_api import SshPublicKeysApi
 from saturn_api.api.users_api import UsersApi
 from saturn_api.api.workspaces_api import WorkspacesApi
-
