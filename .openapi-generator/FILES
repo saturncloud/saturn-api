@@ -1,6 +1,4 @@
 .github/workflows/python.yml
-.gitlab-ci.yml
-.travis.yml
 README.md
 docs/ActiveApi.md
 docs/ActiveResourceList.md
@@ -312,7 +310,6 @@ docs/WorkspaceSpec.md
 docs/WorkspaceStart.md
 docs/WorkspaceUpdate.md
 docs/WorkspacesApi.md
-git_push.sh
 requirements.txt
 saturn_api/__init__.py
 saturn_api/api/__init__.py
