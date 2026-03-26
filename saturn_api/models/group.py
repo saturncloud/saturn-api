@@ -34,6 +34,7 @@ class Group(BaseModel):
     avatar_url: StrictStr
     is_multiple_ssh_keys: StrictBool
     org_id: StrictStr
+    org_name: StrictStr
     org_admin: StrictBool
     __properties: ClassVar[List[str]] = [
         "id",
@@ -43,6 +44,7 @@ class Group(BaseModel):
         "avatar_url",
         "is_multiple_ssh_keys",
         "org_id",
+        "org_name",
         "org_admin",
     ]
 
@@ -83,6 +85,7 @@ class Group(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -93,6 +96,7 @@ class Group(BaseModel):
                 "avatar_url",
                 "is_multiple_ssh_keys",
                 "org_id",
+                "org_name",
                 "org_admin",
             ]
         )
@@ -122,6 +126,7 @@ class Group(BaseModel):
                 "avatar_url": obj.get("avatar_url"),
                 "is_multiple_ssh_keys": obj.get("is_multiple_ssh_keys"),
                 "org_id": obj.get("org_id"),
+                "org_name": obj.get("org_name"),
                 "org_admin": obj.get("org_admin"),
             }
         )

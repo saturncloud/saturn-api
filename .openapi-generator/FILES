@@ -29,7 +29,6 @@ docs/CronSchedule.md
 docs/CronScheduleCreate.md
 docs/CronScheduleUpdate.md
 docs/CurrentUserApi.md
-docs/CurrentUserOwnerList.md
 docs/DailyUsage.md
 docs/DailyUsageList.md
 docs/DaskCluster.md
@@ -141,6 +140,7 @@ docs/JobStatus.md
 docs/JobUpdate.md
 docs/JobsApi.md
 docs/LimitsApi.md
+docs/Login.md
 docs/MetricSeries.md
 docs/Metrics.md
 docs/Notification.md
@@ -222,6 +222,7 @@ docs/Route.md
 docs/RouteByContainerPort.md
 docs/RouteById.md
 docs/RouteBySubdomain.md
+docs/RouteCreate.md
 docs/RouteList.md
 docs/RouteReference.md
 docs/RouteUpdate.md
@@ -285,6 +286,7 @@ docs/UserAdminCreate.md
 docs/UserDetailed.md
 docs/UserDetailedList.md
 docs/UserList.md
+docs/UserOwnerList.md
 docs/UserPreferences.md
 docs/UserPreferencesUpdate.md
 docs/UserUpdate.md
@@ -370,7 +372,6 @@ saturn_api/models/container_status.py
 saturn_api/models/cron_schedule.py
 saturn_api/models/cron_schedule_create.py
 saturn_api/models/cron_schedule_update.py
-saturn_api/models/current_user_owner_list.py
 saturn_api/models/daily_usage.py
 saturn_api/models/daily_usage_list.py
 saturn_api/models/dask_cluster.py
@@ -471,6 +472,7 @@ saturn_api/models/job_spec.py
 saturn_api/models/job_start.py
 saturn_api/models/job_status.py
 saturn_api/models/job_update.py
+saturn_api/models/login.py
 saturn_api/models/metric_series.py
 saturn_api/models/metrics.py
 saturn_api/models/notification.py
@@ -548,6 +550,7 @@ saturn_api/models/route.py
 saturn_api/models/route_by_container_port.py
 saturn_api/models/route_by_id.py
 saturn_api/models/route_by_subdomain.py
+saturn_api/models/route_create.py
 saturn_api/models/route_list.py
 saturn_api/models/route_reference.py
 saturn_api/models/route_update.py
@@ -604,6 +607,7 @@ saturn_api/models/user_admin_create.py
 saturn_api/models/user_detailed.py
 saturn_api/models/user_detailed_list.py
 saturn_api/models/user_list.py
+saturn_api/models/user_owner_list.py
 saturn_api/models/user_preferences.py
 saturn_api/models/user_preferences_update.py
 saturn_api/models/user_update.py

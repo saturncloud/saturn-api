@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **on_restart** | **str** |  | [optional] 
 **reference** | **str** |  | [optional] 
 **reference_type** | **str** |  | [optional] [default to 'branch']
+**public** | **bool** |  | [optional] [default to False]
 
 ## Example
 

@@ -27,6 +27,7 @@ from saturn_api.api_client import ApiClient, RequestSerialized
 from saturn_api.api_response import ApiResponse
 from saturn_api.models.authorization_grant import AuthorizationGrant
 from saturn_api.models.authorization_token_response import AuthorizationTokenResponse
+from saturn_api.models.login import Login
 from saturn_api.rest import RESTResponseType
 
 
@@ -588,8 +589,7 @@ class AuthorizationApi:
     @validate_call
     async def login(
         self,
-        username: StrictStr,
-        password: StrictStr,
+        login: Optional[Login] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -604,10 +604,8 @@ class AuthorizationApi:
 
         Create a new browser session.
 
-        :param username: (required)
-        :type username: str
-        :param password: (required)
-        :type password: str
+        :param login:
+        :type login: Login
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -631,8 +629,7 @@ class AuthorizationApi:
         """  # noqa: E501
 
         _param = self._login_serialize(
-            username=username,
-            password=password,
+            login=login,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -652,8 +649,7 @@ class AuthorizationApi:
     @validate_call
     async def login_with_http_info(
         self,
-        username: StrictStr,
-        password: StrictStr,
+        login: Optional[Login] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -668,10 +664,8 @@ class AuthorizationApi:
 
         Create a new browser session.
 
-        :param username: (required)
-        :type username: str
-        :param password: (required)
-        :type password: str
+        :param login:
+        :type login: Login
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -695,8 +689,7 @@ class AuthorizationApi:
         """  # noqa: E501
 
         _param = self._login_serialize(
-            username=username,
-            password=password,
+            login=login,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -716,8 +709,7 @@ class AuthorizationApi:
     @validate_call
     async def login_without_preload_content(
         self,
-        username: StrictStr,
-        password: StrictStr,
+        login: Optional[Login] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -732,10 +724,8 @@ class AuthorizationApi:
 
         Create a new browser session.
 
-        :param username: (required)
-        :type username: str
-        :param password: (required)
-        :type password: str
+        :param login:
+        :type login: Login
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -759,8 +749,7 @@ class AuthorizationApi:
         """  # noqa: E501
 
         _param = self._login_serialize(
-            username=username,
-            password=password,
+            login=login,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -775,8 +764,7 @@ class AuthorizationApi:
 
     def _login_serialize(
         self,
-        username,
-        password,
+        login,
         _request_auth,
         _content_type,
         _headers,
@@ -796,17 +784,19 @@ class AuthorizationApi:
 
         # process the path parameters
         # process the query parameters
-        if username is not None:
-
-            _query_params.append(("username", username))
-
-        if password is not None:
-
-            _query_params.append(("password", password))
-
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if login is not None:
+            _body_params = login
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(["application/json"])
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = ["bearerAuth"]
@@ -829,8 +819,6 @@ class AuthorizationApi:
     @validate_call
     async def logout(
         self,
-        username: StrictStr,
-        password: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -845,10 +833,6 @@ class AuthorizationApi:
 
         End the current browser session.
 
-        :param username: (required)
-        :type username: str
-        :param password: (required)
-        :type password: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -872,8 +856,6 @@ class AuthorizationApi:
         """  # noqa: E501
 
         _param = self._logout_serialize(
-            username=username,
-            password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -893,8 +875,6 @@ class AuthorizationApi:
     @validate_call
     async def logout_with_http_info(
         self,
-        username: StrictStr,
-        password: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -909,10 +889,6 @@ class AuthorizationApi:
 
         End the current browser session.
 
-        :param username: (required)
-        :type username: str
-        :param password: (required)
-        :type password: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -936,8 +912,6 @@ class AuthorizationApi:
         """  # noqa: E501
 
         _param = self._logout_serialize(
-            username=username,
-            password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -957,8 +931,6 @@ class AuthorizationApi:
     @validate_call
     async def logout_without_preload_content(
         self,
-        username: StrictStr,
-        password: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -973,10 +945,6 @@ class AuthorizationApi:
 
         End the current browser session.
 
-        :param username: (required)
-        :type username: str
-        :param password: (required)
-        :type password: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1000,8 +968,6 @@ class AuthorizationApi:
         """  # noqa: E501
 
         _param = self._logout_serialize(
-            username=username,
-            password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1016,8 +982,6 @@ class AuthorizationApi:
 
     def _logout_serialize(
         self,
-        username,
-        password,
         _request_auth,
         _content_type,
         _headers,
@@ -1037,14 +1001,6 @@ class AuthorizationApi:
 
         # process the path parameters
         # process the query parameters
-        if username is not None:
-
-            _query_params.append(("username", username))
-
-        if password is not None:
-
-            _query_params.append(("password", password))
-
         # process the header parameters
         # process the form parameters
         # process the body parameter

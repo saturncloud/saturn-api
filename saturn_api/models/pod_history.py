@@ -31,14 +31,12 @@ class PodHistory(BaseModel):
     status: StrictStr
     last_seen: StrictStr
     start_time: Optional[StrictStr]
-    end_time: Optional[StrictStr]
     label_job_name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "pod_name",
         "status",
         "last_seen",
         "start_time",
-        "end_time",
         "label_job_name",
     ]
 
@@ -76,7 +74,6 @@ class PodHistory(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -84,7 +81,6 @@ class PodHistory(BaseModel):
                 "status",
                 "last_seen",
                 "start_time",
-                "end_time",
                 "label_job_name",
             ]
         )
@@ -98,11 +94,6 @@ class PodHistory(BaseModel):
         # and model_fields_set contains the field
         if self.start_time is None and "start_time" in self.model_fields_set:
             _dict["start_time"] = None
-
-        # set to None if end_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.end_time is None and "end_time" in self.model_fields_set:
-            _dict["end_time"] = None
 
         # set to None if label_job_name (nullable) is None
         # and model_fields_set contains the field
@@ -126,7 +117,6 @@ class PodHistory(BaseModel):
                 "status": obj.get("status"),
                 "last_seen": obj.get("last_seen"),
                 "start_time": obj.get("start_time"),
-                "end_time": obj.get("end_time"),
                 "label_job_name": obj.get("label_job_name"),
             }
         )

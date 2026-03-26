@@ -41,6 +41,7 @@ from saturn_api.models.resource_clusters import ResourceClusters
 from saturn_api.models.resource_history import ResourceHistory
 from saturn_api.models.resource_template import ResourceTemplate
 from saturn_api.models.route import Route
+from saturn_api.models.route_create import RouteCreate
 from saturn_api.models.route_list import RouteList
 from saturn_api.models.route_update import RouteUpdate
 from saturn_api.models.secret_attachment import SecretAttachment
@@ -531,7 +532,7 @@ class DeploymentsApi:
     async def create_route(
         self,
         deployment_id: StrictStr,
-        secret_attachment_create: SecretAttachmentCreate,
+        route_create: RouteCreate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -541,15 +542,15 @@ class DeploymentsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SecretAttachment:
+    ) -> Route:
         """Create deployment route
 
         Add a new ingress route to the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param secret_attachment_create: (required)
-        :type secret_attachment_create: SecretAttachmentCreate
+        :param route_create: (required)
+        :type route_create: RouteCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -574,7 +575,7 @@ class DeploymentsApi:
 
         _param = self._create_route_serialize(
             deployment_id=deployment_id,
-            secret_attachment_create=secret_attachment_create,
+            route_create=route_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -582,7 +583,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "201": "SecretAttachment",
+            "201": "Route",
         }
         response_data = await self.api_client.call_api(*_param, _request_timeout=_request_timeout)
         await response_data.read()
@@ -595,7 +596,7 @@ class DeploymentsApi:
     async def create_route_with_http_info(
         self,
         deployment_id: StrictStr,
-        secret_attachment_create: SecretAttachmentCreate,
+        route_create: RouteCreate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -605,15 +606,15 @@ class DeploymentsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SecretAttachment]:
+    ) -> ApiResponse[Route]:
         """Create deployment route
 
         Add a new ingress route to the deployment.
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param secret_attachment_create: (required)
-        :type secret_attachment_create: SecretAttachmentCreate
+        :param route_create: (required)
+        :type route_create: RouteCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -638,7 +639,7 @@ class DeploymentsApi:
 
         _param = self._create_route_serialize(
             deployment_id=deployment_id,
-            secret_attachment_create=secret_attachment_create,
+            route_create=route_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -646,7 +647,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "201": "SecretAttachment",
+            "201": "Route",
         }
         response_data = await self.api_client.call_api(*_param, _request_timeout=_request_timeout)
         await response_data.read()
@@ -659,7 +660,7 @@ class DeploymentsApi:
     async def create_route_without_preload_content(
         self,
         deployment_id: StrictStr,
-        secret_attachment_create: SecretAttachmentCreate,
+        route_create: RouteCreate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -676,8 +677,8 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param secret_attachment_create: (required)
-        :type secret_attachment_create: SecretAttachmentCreate
+        :param route_create: (required)
+        :type route_create: RouteCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -702,7 +703,7 @@ class DeploymentsApi:
 
         _param = self._create_route_serialize(
             deployment_id=deployment_id,
-            secret_attachment_create=secret_attachment_create,
+            route_create=route_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -710,7 +711,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "201": "SecretAttachment",
+            "201": "Route",
         }
         response_data = await self.api_client.call_api(*_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -718,7 +719,7 @@ class DeploymentsApi:
     def _create_route_serialize(
         self,
         deployment_id,
-        secret_attachment_create,
+        route_create,
         _request_auth,
         _content_type,
         _headers,
@@ -743,8 +744,8 @@ class DeploymentsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if secret_attachment_create is not None:
-            _body_params = secret_attachment_create
+        if route_create is not None:
+            _body_params = route_create
 
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:

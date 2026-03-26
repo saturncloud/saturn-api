@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> UsersList200Response list(username=username, details=details, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+> UsersList200Response list(username=username, email=email, details=details, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List users
 
@@ -283,6 +283,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsersApi(api_client)
     username = 'username_example' # str |  (optional)
+    email = 'email_example' # str |  (optional)
     details = False # bool |  (optional) (default to False)
     prev_key = 'prev_key_example' # str |  (optional)
     next_key = 'next_key_example' # str |  (optional)
@@ -291,7 +292,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
     try:
         # List users
-        api_response = await api_instance.list(username=username, details=details, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        api_response = await api_instance.list(username=username, email=email, details=details, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of UsersApi->list:\n")
         pprint(api_response)
     except Exception as e:
@@ -306,6 +307,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**|  | [optional] 
+ **email** | **str**|  | [optional] 
  **details** | **bool**|  | [optional] [default to False]
  **prev_key** | **str**|  | [optional] 
  **next_key** | **str**|  | [optional] 

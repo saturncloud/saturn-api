@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **users** | [**List[User]**](User.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**prev_key** | **str** |  | [optional] 
+**next_key** | **str** |  | [optional] 
 
 ## Example
 

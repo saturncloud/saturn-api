@@ -1,4 +1,4 @@
-# CurrentUserOwnerList
+# UserOwnerList
 
 
 ## Properties
@@ -12,19 +12,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from saturn_api.models.current_user_owner_list import CurrentUserOwnerList
+from saturn_api.models.user_owner_list import UserOwnerList
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of CurrentUserOwnerList from a JSON string
-current_user_owner_list_instance = CurrentUserOwnerList.from_json(json)
+# create an instance of UserOwnerList from a JSON string
+user_owner_list_instance = UserOwnerList.from_json(json)
 # print the JSON string representation of the object
-print(CurrentUserOwnerList.to_json())
+print(UserOwnerList.to_json())
 
 # convert the object into a dict
-current_user_owner_list_dict = current_user_owner_list_instance.to_dict()
-# create an instance of CurrentUserOwnerList from a dict
-current_user_owner_list_from_dict = CurrentUserOwnerList.from_dict(current_user_owner_list_dict)
+user_owner_list_dict = user_owner_list_instance.to_dict()
+# create an instance of UserOwnerList from a dict
+user_owner_list_from_dict = UserOwnerList.from_dict(user_owner_list_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

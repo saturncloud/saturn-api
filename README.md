@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *CurrentUserApi* | [**get_aggregated_usage**](docs/CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | Get aggregated usage
 *CurrentUserApi* | [**get_preferences**](docs/CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | Get current user preferences
 *CurrentUserApi* | [**list_owners**](docs/CurrentUserApi.md#list_owners) | **GET** /api/user/owners | List current user owners across orgs
+*CurrentUserApi* | [**list_owners_0**](docs/CurrentUserApi.md#list_owners_0) | **GET** /api/users/{user_id}/owners | List user owners across orgs
 *CurrentUserApi* | [**update**](docs/CurrentUserApi.md#update) | **PATCH** /api/user | Update current user
 *CurrentUserApi* | [**update_preferences**](docs/CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | Update current user preferences
 *DaskClustersApi* | [**adapt**](docs/DaskClustersApi.md#adapt) | **POST** /api/dask_clusters/{dask_cluster_id}/adapt | Set dask cluster adaptive scaling
@@ -396,7 +397,6 @@ Class | Method | HTTP request | Description
  - [CronSchedule](docs/CronSchedule.md)
  - [CronScheduleCreate](docs/CronScheduleCreate.md)
  - [CronScheduleUpdate](docs/CronScheduleUpdate.md)
- - [CurrentUserOwnerList](docs/CurrentUserOwnerList.md)
  - [DailyUsage](docs/DailyUsage.md)
  - [DailyUsageList](docs/DailyUsageList.md)
  - [DaskCluster](docs/DaskCluster.md)
@@ -497,6 +497,7 @@ Class | Method | HTTP request | Description
  - [JobStart](docs/JobStart.md)
  - [JobStatus](docs/JobStatus.md)
  - [JobUpdate](docs/JobUpdate.md)
+ - [Login](docs/Login.md)
  - [MetricSeries](docs/MetricSeries.md)
  - [Metrics](docs/Metrics.md)
  - [Notification](docs/Notification.md)
@@ -574,6 +575,7 @@ Class | Method | HTTP request | Description
  - [RouteByContainerPort](docs/RouteByContainerPort.md)
  - [RouteById](docs/RouteById.md)
  - [RouteBySubdomain](docs/RouteBySubdomain.md)
+ - [RouteCreate](docs/RouteCreate.md)
  - [RouteList](docs/RouteList.md)
  - [RouteReference](docs/RouteReference.md)
  - [RouteUpdate](docs/RouteUpdate.md)
@@ -630,6 +632,7 @@ Class | Method | HTTP request | Description
  - [UserDetailed](docs/UserDetailed.md)
  - [UserDetailedList](docs/UserDetailedList.md)
  - [UserList](docs/UserList.md)
+ - [UserOwnerList](docs/UserOwnerList.md)
  - [UserPreferences](docs/UserPreferences.md)
  - [UserPreferencesUpdate](docs/UserPreferencesUpdate.md)
  - [UserUpdate](docs/UserUpdate.md)

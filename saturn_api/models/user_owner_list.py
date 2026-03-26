@@ -21,18 +21,18 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing_extensions import Self
 
-from saturn_api.models.user import User
+from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 
 
-class UserList(BaseModel):
+class UserOwnerList(BaseModel):
     """
-    UserList
+    UserOwnerList
     """  # noqa: E501
 
-    users: List[User]
+    owners: List[OwnerUserDetailed]
     prev_key: Optional[StrictStr] = None
     next_key: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["users", "prev_key", "next_key"]
+    __properties: ClassVar[List[str]] = ["owners", "prev_key", "next_key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +51,7 @@ class UserList(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UserList from a JSON string"""
+        """Create an instance of UserOwnerList from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -64,10 +64,14 @@ class UserList(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
-                "users",
+                "owners",
+                "prev_key",
+                "next_key",
             ]
         )
 
@@ -76,18 +80,18 @@ class UserList(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in users (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in owners (list)
         _items = []
-        if self.users:
-            for _item_users in self.users:
-                if _item_users:
-                    _items.append(_item_users.to_dict())
-            _dict["users"] = _items
+        if self.owners:
+            for _item_owners in self.owners:
+                if _item_owners:
+                    _items.append(_item_owners.to_dict())
+            _dict["owners"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UserList from a dict"""
+        """Create an instance of UserOwnerList from a dict"""
         if obj is None:
             return None
 
@@ -96,9 +100,9 @@ class UserList(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "users": (
-                    [User.from_dict(_item) for _item in obj["users"]]
-                    if obj.get("users") is not None
+                "owners": (
+                    [OwnerUserDetailed.from_dict(_item) for _item in obj["owners"]]
+                    if obj.get("owners") is not None
                     else None
                 ),
                 "prev_key": obj.get("prev_key"),

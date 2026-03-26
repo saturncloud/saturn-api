@@ -741,6 +741,7 @@ class UsersApi:
     async def list(
         self,
         username: Optional[StrictStr] = None,
+        email: Optional[StrictStr] = None,
         details: Optional[StrictBool] = None,
         prev_key: Optional[StrictStr] = None,
         next_key: Optional[StrictStr] = None,
@@ -762,6 +763,8 @@ class UsersApi:
 
         :param username:
         :type username: str
+        :param email:
+        :type email: str
         :param details:
         :type details: bool
         :param prev_key:
@@ -796,6 +799,7 @@ class UsersApi:
 
         _param = self._list_serialize(
             username=username,
+            email=email,
             details=details,
             prev_key=prev_key,
             next_key=next_key,
@@ -821,6 +825,7 @@ class UsersApi:
     async def list_with_http_info(
         self,
         username: Optional[StrictStr] = None,
+        email: Optional[StrictStr] = None,
         details: Optional[StrictBool] = None,
         prev_key: Optional[StrictStr] = None,
         next_key: Optional[StrictStr] = None,
@@ -842,6 +847,8 @@ class UsersApi:
 
         :param username:
         :type username: str
+        :param email:
+        :type email: str
         :param details:
         :type details: bool
         :param prev_key:
@@ -876,6 +883,7 @@ class UsersApi:
 
         _param = self._list_serialize(
             username=username,
+            email=email,
             details=details,
             prev_key=prev_key,
             next_key=next_key,
@@ -901,6 +909,7 @@ class UsersApi:
     async def list_without_preload_content(
         self,
         username: Optional[StrictStr] = None,
+        email: Optional[StrictStr] = None,
         details: Optional[StrictBool] = None,
         prev_key: Optional[StrictStr] = None,
         next_key: Optional[StrictStr] = None,
@@ -922,6 +931,8 @@ class UsersApi:
 
         :param username:
         :type username: str
+        :param email:
+        :type email: str
         :param details:
         :type details: bool
         :param prev_key:
@@ -956,6 +967,7 @@ class UsersApi:
 
         _param = self._list_serialize(
             username=username,
+            email=email,
             details=details,
             prev_key=prev_key,
             next_key=next_key,
@@ -976,6 +988,7 @@ class UsersApi:
     def _list_serialize(
         self,
         username,
+        email,
         details,
         prev_key,
         next_key,
@@ -1003,6 +1016,10 @@ class UsersApi:
         if username is not None:
 
             _query_params.append(("username", username))
+
+        if email is not None:
+
+            _query_params.append(("email", email))
 
         if details is not None:
 

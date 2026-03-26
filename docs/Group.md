@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **avatar_url** | **str** |  | [readonly] 
 **is_multiple_ssh_keys** | **bool** |  | [readonly] 
 **org_id** | **str** |  | [readonly] 
+**org_name** | **str** |  | [readonly] 
 **org_admin** | **bool** |  | [readonly] 
 
 ## Example

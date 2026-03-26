@@ -195,17 +195,11 @@ paths:
       operationId: authorization_login
       tags:
       - authorization
-      parameters:
-      - in: query
-        name: username
-        schema:
-          type: string
-        required: true
-      - in: query
-        name: password
-        schema:
-          type: string
-        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
       responses:
         '204':
           description: Ok
@@ -216,17 +210,6 @@ paths:
       operationId: authorization_logout
       tags:
       - authorization
-      parameters:
-      - in: query
-        name: username
-        schema:
-          type: string
-        required: true
-      - in: query
-        name: password
-        schema:
-          type: string
-        required: true
       responses:
         '302':
           description: Redirect
@@ -1347,14 +1330,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SecretAttachmentCreate'
+              $ref: '#/components/schemas/RouteCreate'
         required: true
       responses:
         '201':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretAttachment'
+                $ref: '#/components/schemas/Route'
           description: Created
   /api/deployments/{deployment_id}/routes/{route_id}:
     delete:
@@ -6641,7 +6624,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CurrentUserOwnerList'
+                $ref: '#/components/schemas/UserOwnerList'
           description: Ok
   /api/user/preferences:
     get:
@@ -6711,6 +6694,11 @@ paths:
       parameters:
       - in: query
         name: username
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: email
         schema:
           type: string
         required: false
@@ -6840,6 +6828,49 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserDetailed'
           description: Updated
+  /api/users/{user_id}/owners:
+    get:
+      summary: List user owners across orgs
+      operationId: users_listOwners
+      tags:
+      - current_user
+      parameters:
+      - name: user_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: prev_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: descending
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOwnerList'
+          description: Ok
   /api/workspaces:
     get:
       summary: List workspaces
@@ -7263,14 +7294,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SecretAttachmentCreate'
+              $ref: '#/components/schemas/RouteCreate'
         required: true
       responses:
         '201':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretAttachment'
+                $ref: '#/components/schemas/Route'
           description: Created
   /api/workspaces/{workspace_id}/routes/{route_id}:
     delete:
@@ -8048,6 +8079,9 @@ components:
           - branch
           - commit
           - tag
+        public:
+          type: boolean
+          default: false
       required:
       - url
     SecretAttachmentType:
@@ -9841,6 +9875,16 @@ components:
           readOnly: true
       required:
       - resources
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+      - password
+      - username
     AuthorizationTokenResponse:
       type: object
       properties:
@@ -10009,17 +10053,11 @@ components:
           format: '%Y-%m-%dT%H:%M:%S+00:00'
           readOnly: true
           nullable: true
-        end_time:
-          type: string
-          format: '%Y-%m-%dT%H:%M:%S+00:00'
-          readOnly: true
-          nullable: true
         label_job_name:
           type: string
           readOnly: true
           nullable: true
       required:
-      - end_time
       - last_seen
       - pod_name
       - start_time
@@ -10696,47 +10734,46 @@ components:
           readOnly: true
       required:
       - routes
+    RouteCreate:
+      type: object
+      properties:
+        subdomain:
+          type: string
+        container_port:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+        visibility:
+          type: string
+          enum:
+          - unauthenticated
+          - account
+          - org
+          - owner
+      required:
+      - container_port
+      - subdomain
+    RouteUpdate:
+      type: object
+      properties:
+        subdomain:
+          type: string
+        container_port:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+        visibility:
+          type: string
+          enum:
+          - unauthenticated
+          - account
+          - org
+          - owner
     SecretAccessLevel:
       type: string
       enum:
       - org
       - owner
-    SecretCreate:
-      type: object
-      properties:
-        name:
-          type: string
-        owner:
-          $ref: '#/components/schemas/OwnerReference'
-        access:
-          default: owner
-          $ref: '#/components/schemas/SecretAccessLevel'
-        value:
-          type: string
-      required:
-      - name
-      - value
-    SecretAttachmentCreate:
-      type: object
-      properties:
-        attachment_type:
-          default: environment_variable
-          $ref: '#/components/schemas/SecretAttachmentType'
-        location:
-          type: string
-        description:
-          type: string
-          default: ''
-          maxLength: 2048
-        secret:
-          default: null
-          allOf:
-          - $ref: '#/components/schemas/SecretCreate'
-          nullable: true
-        secret_id:
-          type: string
-          default: null
-          nullable: true
     Secret:
       type: object
       properties:
@@ -10797,22 +10834,6 @@ components:
       - id
       - location
       - secret
-    RouteUpdate:
-      type: object
-      properties:
-        subdomain:
-          type: string
-        container_port:
-          type: integer
-          minimum: 1024
-          maximum: 65535
-        visibility:
-          type: string
-          enum:
-          - unauthenticated
-          - account
-          - org
-          - owner
     SecretAttachmentList:
       type: object
       properties:
@@ -10829,6 +10850,42 @@ components:
           readOnly: true
       required:
       - secret_attachments
+    SecretCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        owner:
+          $ref: '#/components/schemas/OwnerReference'
+        access:
+          default: owner
+          $ref: '#/components/schemas/SecretAccessLevel'
+        value:
+          type: string
+      required:
+      - name
+      - value
+    SecretAttachmentCreate:
+      type: object
+      properties:
+        attachment_type:
+          default: environment_variable
+          $ref: '#/components/schemas/SecretAttachmentType'
+        location:
+          type: string
+        description:
+          type: string
+          default: ''
+          maxLength: 2048
+        secret:
+          default: null
+          allOf:
+          - $ref: '#/components/schemas/SecretCreate'
+          nullable: true
+        secret_id:
+          type: string
+          default: null
+          nullable: true
     SecretAttachmentUpdate:
       type: object
       properties:
@@ -11322,6 +11379,9 @@ components:
         org_id:
           type: string
           readOnly: true
+        org_name:
+          type: string
+          readOnly: true
         org_admin:
           type: boolean
           readOnly: true
@@ -11334,6 +11394,7 @@ components:
       - is_multiple_ssh_keys
       - org_admin
       - org_id
+      - org_name
     GroupList:
       type: object
       properties:
@@ -11742,7 +11803,7 @@ components:
         customer_name:
           type: string
         stripe_public_key:
-          type: boolean
+          type: string
           nullable: true
         hotjar_user_tracking:
           type: boolean
@@ -13879,7 +13940,7 @@ components:
           type: string
           default: null
           nullable: true
-    CurrentUserOwnerList:
+    UserOwnerList:
       type: object
       properties:
         owners:
@@ -13925,10 +13986,8 @@ components:
             $ref: '#/components/schemas/User'
         prev_key:
           type: string
-          readOnly: true
         next_key:
           type: string
-          readOnly: true
       required:
       - users
     UserDetailedList:

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**get_aggregated_usage**](CurrentUserApi.md#get_aggregated_usage) | **GET** /api/user/usage/aggregated | Get aggregated usage
 [**get_preferences**](CurrentUserApi.md#get_preferences) | **GET** /api/user/preferences | Get current user preferences
 [**list_owners**](CurrentUserApi.md#list_owners) | **GET** /api/user/owners | List current user owners across orgs
+[**list_owners_0**](CurrentUserApi.md#list_owners_0) | **GET** /api/users/{user_id}/owners | List user owners across orgs
 [**update**](CurrentUserApi.md#update) | **PATCH** /api/user | Update current user
 [**update_preferences**](CurrentUserApi.md#update_preferences) | **PATCH** /api/user/preferences | Update current user preferences
 
@@ -238,7 +239,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_owners**
-> CurrentUserOwnerList list_owners(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+> UserOwnerList list_owners(prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List current user owners across orgs
 
@@ -248,7 +249,7 @@ List current user owners across orgs
 
 ```python
 import saturn_api
-from saturn_api.models.current_user_owner_list import CurrentUserOwnerList
+from saturn_api.models.user_owner_list import UserOwnerList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -300,7 +301,91 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CurrentUserOwnerList**](CurrentUserOwnerList.md)
+[**UserOwnerList**](UserOwnerList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_owners_0**
+> UserOwnerList list_owners_0(user_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+
+List user owners across orgs
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.user_owner_list import UserOwnerList
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.CurrentUserApi(api_client)
+    user_id = 'user_id_example' # str | 
+    prev_key = 'prev_key_example' # str |  (optional)
+    next_key = 'next_key_example' # str |  (optional)
+    page_size = 100 # int |  (optional) (default to 100)
+    descending = False # bool |  (optional) (default to False)
+
+    try:
+        # List user owners across orgs
+        api_response = await api_instance.list_owners_0(user_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        print("The response of CurrentUserApi->list_owners_0:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CurrentUserApi->list_owners_0: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**|  | 
+ **prev_key** | **str**|  | [optional] 
+ **next_key** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 100]
+ **descending** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**UserOwnerList**](UserOwnerList.md)
 
 ### Authorization
 

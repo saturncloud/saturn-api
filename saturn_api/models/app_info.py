@@ -35,7 +35,7 @@ class AppInfo(BaseModel):
     allow_deployment_public_access: StrictBool
     is_enterprise: StrictBool
     customer_name: StrictStr
-    stripe_public_key: Optional[StrictBool]
+    stripe_public_key: Optional[StrictStr]
     hotjar_user_tracking: StrictBool
     version: StrictStr
     auth0: Auth0Info

@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **status** | **str** |  | [readonly] 
 **last_seen** | **str** |  | [readonly] 
 **start_time** | **str** |  | [readonly] 
-**end_time** | **str** |  | [readonly] 
 **label_job_name** | **str** |  | [optional] [readonly] 
 
 ## Example

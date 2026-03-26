@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_route**
-> SecretAttachment create_route(workspace_id, secret_attachment_create)
+> Route create_route(workspace_id, route_create)
 
 Create workspace route
 
@@ -211,8 +211,8 @@ Add a new ingress route to the workspace.
 
 ```python
 import saturn_api
-from saturn_api.models.secret_attachment import SecretAttachment
-from saturn_api.models.secret_attachment_create import SecretAttachmentCreate
+from saturn_api.models.route import Route
+from saturn_api.models.route_create import RouteCreate
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -237,11 +237,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.WorkspacesApi(api_client)
     workspace_id = 'workspace_id_example' # str | 
-    secret_attachment_create = saturn_api.SecretAttachmentCreate() # SecretAttachmentCreate | 
+    route_create = saturn_api.RouteCreate() # RouteCreate | 
 
     try:
         # Create workspace route
-        api_response = await api_instance.create_route(workspace_id, secret_attachment_create)
+        api_response = await api_instance.create_route(workspace_id, route_create)
         print("The response of WorkspacesApi->create_route:\n")
         pprint(api_response)
     except Exception as e:
@@ -256,11 +256,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_id** | **str**|  | 
- **secret_attachment_create** | [**SecretAttachmentCreate**](SecretAttachmentCreate.md)|  | 
+ **route_create** | [**RouteCreate**](RouteCreate.md)|  | 
 
 ### Return type
 
-[**SecretAttachment**](SecretAttachment.md)
+[**Route**](Route.md)
 
 ### Authorization
 

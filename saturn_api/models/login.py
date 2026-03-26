@@ -21,18 +21,15 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing_extensions import Self
 
-from saturn_api.models.owner_user_detailed import OwnerUserDetailed
 
-
-class CurrentUserOwnerList(BaseModel):
+class Login(BaseModel):
     """
-    CurrentUserOwnerList
+    Login
     """  # noqa: E501
 
-    owners: List[OwnerUserDetailed]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["owners", "prev_key", "next_key"]
+    username: StrictStr
+    password: StrictStr
+    __properties: ClassVar[List[str]] = ["username", "password"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +48,7 @@ class CurrentUserOwnerList(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CurrentUserOwnerList from a JSON string"""
+        """Create an instance of Login from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -63,35 +60,19 @@ class CurrentUserOwnerList(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set(
-            [
-                "owners",
-                "prev_key",
-                "next_key",
-            ]
-        )
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in owners (list)
-        _items = []
-        if self.owners:
-            for _item_owners in self.owners:
-                if _item_owners:
-                    _items.append(_item_owners.to_dict())
-            _dict["owners"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CurrentUserOwnerList from a dict"""
+        """Create an instance of Login from a dict"""
         if obj is None:
             return None
 
@@ -99,14 +80,6 @@ class CurrentUserOwnerList(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {
-                "owners": (
-                    [OwnerUserDetailed.from_dict(_item) for _item in obj["owners"]]
-                    if obj.get("owners") is not None
-                    else None
-                ),
-                "prev_key": obj.get("prev_key"),
-                "next_key": obj.get("next_key"),
-            }
+            {"username": obj.get("username"), "password": obj.get("password")}
         )
         return _obj

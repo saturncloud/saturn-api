@@ -77,7 +77,6 @@ __all__ = [
     "CronSchedule",
     "CronScheduleCreate",
     "CronScheduleUpdate",
-    "CurrentUserOwnerList",
     "DailyUsage",
     "DailyUsageList",
     "DaskCluster",
@@ -178,6 +177,7 @@ __all__ = [
     "JobStart",
     "JobStatus",
     "JobUpdate",
+    "Login",
     "MetricSeries",
     "Metrics",
     "Notification",
@@ -255,6 +255,7 @@ __all__ = [
     "RouteByContainerPort",
     "RouteById",
     "RouteBySubdomain",
+    "RouteCreate",
     "RouteList",
     "RouteReference",
     "RouteUpdate",
@@ -311,6 +312,7 @@ __all__ = [
     "UserDetailed",
     "UserDetailedList",
     "UserList",
+    "UserOwnerList",
     "UserPreferences",
     "UserPreferencesUpdate",
     "UserUpdate",
@@ -422,9 +424,6 @@ from saturn_api.models.cron_schedule_create import (
 )
 from saturn_api.models.cron_schedule_update import (
     CronScheduleUpdate as CronScheduleUpdate,
-)
-from saturn_api.models.current_user_owner_list import (
-    CurrentUserOwnerList as CurrentUserOwnerList,
 )
 from saturn_api.models.daily_usage import DailyUsage as DailyUsage
 from saturn_api.models.daily_usage_list import DailyUsageList as DailyUsageList
@@ -576,6 +575,7 @@ from saturn_api.models.job_spec import JobSpec as JobSpec
 from saturn_api.models.job_start import JobStart as JobStart
 from saturn_api.models.job_status import JobStatus as JobStatus
 from saturn_api.models.job_update import JobUpdate as JobUpdate
+from saturn_api.models.login import Login as Login
 from saturn_api.models.metric_series import MetricSeries as MetricSeries
 from saturn_api.models.metrics import Metrics as Metrics
 from saturn_api.models.notification import Notification as Notification
@@ -721,6 +721,7 @@ from saturn_api.models.route_by_container_port import (
 )
 from saturn_api.models.route_by_id import RouteById as RouteById
 from saturn_api.models.route_by_subdomain import RouteBySubdomain as RouteBySubdomain
+from saturn_api.models.route_create import RouteCreate as RouteCreate
 from saturn_api.models.route_list import RouteList as RouteList
 from saturn_api.models.route_reference import RouteReference as RouteReference
 from saturn_api.models.route_update import RouteUpdate as RouteUpdate
@@ -831,6 +832,7 @@ from saturn_api.models.user_admin_create import UserAdminCreate as UserAdminCrea
 from saturn_api.models.user_detailed import UserDetailed as UserDetailed
 from saturn_api.models.user_detailed_list import UserDetailedList as UserDetailedList
 from saturn_api.models.user_list import UserList as UserList
+from saturn_api.models.user_owner_list import UserOwnerList as UserOwnerList
 from saturn_api.models.user_preferences import UserPreferences as UserPreferences
 from saturn_api.models.user_preferences_update import (
     UserPreferencesUpdate as UserPreferencesUpdate,

@@ -16,23 +16,33 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Any, ClassVar, Dict, List, Optional, Set
+from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing_extensions import Self
-
-from saturn_api.models.user import User
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing_extensions import Annotated, Self
 
 
-class UserList(BaseModel):
+class RouteCreate(BaseModel):
     """
-    UserList
+    RouteCreate
     """  # noqa: E501
 
-    users: List[User]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["users", "prev_key", "next_key"]
+    subdomain: StrictStr
+    container_port: Annotated[int, Field(le=65535, strict=True, ge=1024)]
+    visibility: Literal["unauthenticated", "account", "org", "owner"] | None = None
+    __properties: ClassVar[List[str]] = ["subdomain", "container_port", "visibility"]
+
+    @field_validator("visibility")
+    def visibility_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["unauthenticated", "account", "org", "owner"]):
+            raise ValueError(
+                "must be one of enum values ('unauthenticated', 'account', 'org', 'owner')"
+            )
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +61,7 @@ class UserList(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UserList from a JSON string"""
+        """Create an instance of RouteCreate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -63,31 +73,19 @@ class UserList(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set(
-            [
-                "users",
-            ]
-        )
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in users (list)
-        _items = []
-        if self.users:
-            for _item_users in self.users:
-                if _item_users:
-                    _items.append(_item_users.to_dict())
-            _dict["users"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UserList from a dict"""
+        """Create an instance of RouteCreate from a dict"""
         if obj is None:
             return None
 
@@ -96,13 +94,9 @@ class UserList(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "users": (
-                    [User.from_dict(_item) for _item in obj["users"]]
-                    if obj.get("users") is not None
-                    else None
-                ),
-                "prev_key": obj.get("prev_key"),
-                "next_key": obj.get("next_key"),
+                "subdomain": obj.get("subdomain"),
+                "container_port": obj.get("container_port"),
+                "visibility": obj.get("visibility"),
             }
         )
         return _obj

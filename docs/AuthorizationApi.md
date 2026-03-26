@@ -175,7 +175,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **login**
-> login(username, password)
+> login(login=login)
 
 Login
 
@@ -187,6 +187,7 @@ Create a new browser session.
 
 ```python
 import saturn_api
+from saturn_api.models.login import Login
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -210,12 +211,11 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.AuthorizationApi(api_client)
-    username = 'username_example' # str | 
-    password = 'password_example' # str | 
+    login = saturn_api.Login() # Login |  (optional)
 
     try:
         # Login
-        await api_instance.login(username, password)
+        await api_instance.login(login=login)
     except Exception as e:
         print("Exception when calling AuthorizationApi->login: %s\n" % e)
 ```
@@ -227,8 +227,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**|  | 
- **password** | **str**|  | 
+ **login** | [**Login**](Login.md)|  | [optional] 
 
 ### Return type
 
@@ -240,7 +239,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 ### HTTP response details
@@ -252,7 +251,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logout**
-> logout(username, password)
+> logout()
 
 Logout
 
@@ -287,12 +286,10 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.AuthorizationApi(api_client)
-    username = 'username_example' # str | 
-    password = 'password_example' # str | 
 
     try:
         # Logout
-        await api_instance.logout(username, password)
+        await api_instance.logout()
     except Exception as e:
         print("Exception when calling AuthorizationApi->logout: %s\n" % e)
 ```
@@ -301,11 +298,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **str**|  | 
- **password** | **str**|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 

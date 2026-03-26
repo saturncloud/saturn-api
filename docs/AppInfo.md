@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **allow_deployment_public_access** | **bool** |  | 
 **is_enterprise** | **bool** |  | 
 **customer_name** | **str** |  | 
-**stripe_public_key** | **bool** |  | 
+**stripe_public_key** | **str** |  | 
 **hotjar_user_tracking** | **bool** |  | 
 **version** | **str** |  | 
 **auth0** | [**Auth0Info**](Auth0Info.md) |  | 

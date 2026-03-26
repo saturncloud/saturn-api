@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
 from typing_extensions import Self
 
 
@@ -32,7 +32,15 @@ class ExternalRepoAttachmentRecipe(BaseModel):
     on_restart: Literal["preserve changes", "reclone"] | None = None
     reference: Optional[StrictStr] = None
     reference_type: Literal["branch", "commit", "tag"] = "branch"
-    __properties: ClassVar[List[str]] = ["url", "path", "on_restart", "reference", "reference_type"]
+    public: Optional[StrictBool] = False
+    __properties: ClassVar[List[str]] = [
+        "url",
+        "path",
+        "on_restart",
+        "reference",
+        "reference_type",
+        "public",
+    ]
 
     @field_validator("on_restart")
     def on_restart_validate_enum(cls, value):
@@ -116,6 +124,7 @@ class ExternalRepoAttachmentRecipe(BaseModel):
                 "reference_type": (
                     obj.get("reference_type") if obj.get("reference_type") is not None else "branch"
                 ),
+                "public": obj.get("public") if obj.get("public") is not None else False,
             }
         )
         return _obj
