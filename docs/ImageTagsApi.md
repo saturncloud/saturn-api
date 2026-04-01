@@ -292,11 +292,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.ImageTagsApi(api_client)
     image_id = 'image_id_example' # str | 
     image_tag_id = 'image_tag_id_example' # str | 
-    pod_name = 'pod_name_example' # str |  (optional)
-    cluster = 'cluster_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
+    pod_name = 'pod_name_example' # str | Name of the pod to retrieve logs from. (optional)
+    cluster = 'cluster_example' # str | Name of the cluster the pod lives in. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Maximum number of results per page. (optional) (default to 100)
 
     try:
         # Get image tag historical logs
@@ -316,11 +316,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_id** | **str**|  | 
  **image_tag_id** | **str**|  | 
- **pod_name** | **str**|  | [optional] 
- **cluster** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
+ **pod_name** | **str**| Name of the pod to retrieve logs from. | [optional] 
+ **cluster** | **str**| Name of the cluster the pod lives in. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Maximum number of results per page. | [optional] [default to 100]
 
 ### Return type
 
@@ -540,15 +540,15 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ImageTagsApi(api_client)
     image_id = 'image_id_example' # str | 
-    version = 'version_example' # str |  (optional)
-    image_uri = 'image_uri_example' # str |  (optional)
-    is_external = True # bool |  (optional)
-    archived = True # bool |  (optional)
-    status = saturn_api.ImageBuildStatus() # ImageBuildStatus |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    version = 'version_example' # str | Prefix matched search string on image tag version. (optional)
+    image_uri = 'image_uri_example' # str | Prefix matched search string on image tag URI. (optional)
+    is_external = True # bool | Filter image tags by is_external. (optional)
+    archived = True # bool | Filter images tags by archived. (optional)
+    status = saturn_api.ImageBuildStatus() # ImageBuildStatus | Filter image tags by build status. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List image tags
@@ -567,15 +567,15 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_id** | **str**|  | 
- **version** | **str**|  | [optional] 
- **image_uri** | **str**|  | [optional] 
- **is_external** | **bool**|  | [optional] 
- **archived** | **bool**|  | [optional] 
- **status** | [**ImageBuildStatus**](.md)|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **version** | **str**| Prefix matched search string on image tag version. | [optional] 
+ **image_uri** | **str**| Prefix matched search string on image tag URI. | [optional] 
+ **is_external** | **bool**| Filter image tags by is_external. | [optional] 
+ **archived** | **bool**| Filter images tags by archived. | [optional] 
+ **status** | [**ImageBuildStatus**](.md)| Filter image tags by build status. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

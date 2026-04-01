@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**identity_type** | **str** |  | 
-**user_id** | **str** |  | [optional] [readonly] 
-**group_id** | **str** |  | [optional] [readonly] 
+**name** | **str** | Name of the identity of the usage record. | [optional] 
+**identity_type** | **str** | Type of the identity of the usage record. | 
+**user_id** | **str** | User ID of the usage record | [optional] [readonly] 
+**group_id** | **str** | Group ID of the usage record. | [optional] [readonly] 
 
 ## Example
 

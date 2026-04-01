@@ -21,6 +21,7 @@ from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 from pydantic import (
     BaseModel,
     ConfigDict,
+    Field,
     StrictBool,
     StrictInt,
     StrictStr,
@@ -39,37 +40,53 @@ class Deployment(BaseModel):
     Deployment
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    command: StrictStr
-    description: StrictStr
-    tags: Optional[Dict[str, StrictStr]] = None
-    instance_size: StrictStr
-    extra_packages: Optional[ExtraPackages]
-    scale: StrictInt
-    start_script: Optional[StrictStr] = None
-    environment_variables: Dict[str, StrictStr]
-    working_dir: StrictStr
-    start_ssh: StrictBool
-    is_spot: StrictBool
-    healthcheck: Optional[StrictStr] = None
-    subdomain: StrictStr
-    start_dind: StrictBool
-    image_tag: ImageTag
-    last_deploy: StrictStr
-    k8s_name: StrictStr
-    created_at: StrictStr
-    updated_at: StrictStr
-    require_restart: StrictBool
+    id: StrictStr = Field(description="ID of the deployment.")
+    name: StrictStr = Field(description="Name of the deployment.")
+    owner: Owner = Field(description="Owner of the deployment.")
+    command: StrictStr = Field(description="Command that runs on start.")
+    description: StrictStr = Field(description="Description of the deployment.")
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the deployment."
+    )
+    instance_size: StrictStr = Field(description="Instance size of the deployment.")
+    image_tag: ImageTag = Field(description="Image tag that is attached to the deployment.")
+    extra_packages: Optional[ExtraPackages] = Field(
+        description="Addtitional packages to install on start."
+    )
+    scale: StrictInt = Field(description="Number of pod replicas.")
+    start_script: Optional[StrictStr] = Field(
+        default=None, description="Shell script that runs on start before the primary command."
+    )
+    environment_variables: Dict[str, StrictStr] = Field(
+        description="Mapping of environment variable keys to values."
+    )
+    working_dir: StrictStr = Field(description="Initial working directory.")
+    start_ssh: StrictBool = Field(description="Enable SSH access on the deployment.")
+    is_spot: StrictBool = Field(description="Enables running on spot instance sizes.")
+    healthcheck: Optional[StrictStr] = Field(
+        default=None, description="Healthcheck path on the deployment's primary port."
+    )
+    subdomain: StrictStr = Field(description="Subdomain for the deployment URL.")
+    start_dind: StrictBool = Field(description="Enables docker-in-docker.")
+    last_deploy: StrictStr = Field(description="Last started timestamp.")
+    k8s_name: StrictStr = Field(description="Unique name for associated kubernetes objects.")
+    created_at: StrictStr = Field(description="Creation timestamp")
+    updated_at: StrictStr = Field(description="Update timestamp.")
+    require_restart: StrictBool = Field(
+        description="True if an update was applied that requires restart to take effect."
+    )
     resource_type: Literal["deployment"]
-    size_display: StrictStr
-    dask_cluster: Optional[DaskClusterNested] = None
-    status: StrictStr
-    running_count: StrictInt
-    debug_mode: StrictBool
-    url: StrictStr
-    ssh_url: Optional[StrictStr] = None
+    size_display: StrictStr = Field(description="Description of the instance size.")
+    dask_cluster: Optional[DaskClusterNested] = Field(
+        default=None, description="Dask cluster attached to the deployment."
+    )
+    status: StrictStr = Field(description="Current status of the deployment.")
+    running_count: StrictInt = Field(description="Number of running pods.")
+    debug_mode: StrictBool = Field(description="True if deployment is running in debug mode.")
+    url: StrictStr = Field(description="External URL for the deployment.")
+    ssh_url: Optional[StrictStr] = Field(
+        default=None, description="External SSH URL for the deployment."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
@@ -78,6 +95,7 @@ class Deployment(BaseModel):
         "description",
         "tags",
         "instance_size",
+        "image_tag",
         "extra_packages",
         "scale",
         "start_script",
@@ -88,7 +106,6 @@ class Deployment(BaseModel):
         "healthcheck",
         "subdomain",
         "start_dind",
-        "image_tag",
         "last_deploy",
         "k8s_name",
         "created_at",
@@ -179,6 +196,7 @@ class Deployment(BaseModel):
                 "command",
                 "description",
                 "instance_size",
+                "image_tag",
                 "extra_packages",
                 "scale",
                 "start_script",
@@ -189,7 +207,6 @@ class Deployment(BaseModel):
                 "healthcheck",
                 "subdomain",
                 "start_dind",
-                "image_tag",
                 "last_deploy",
                 "k8s_name",
                 "created_at",
@@ -214,12 +231,12 @@ class Deployment(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict["owner"] = self.owner.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of extra_packages
-        if self.extra_packages:
-            _dict["extra_packages"] = self.extra_packages.to_dict()
         # override the default output from pydantic by calling `to_dict()` of image_tag
         if self.image_tag:
             _dict["image_tag"] = self.image_tag.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of extra_packages
+        if self.extra_packages:
+            _dict["extra_packages"] = self.extra_packages.to_dict()
         # override the default output from pydantic by calling `to_dict()` of dask_cluster
         if self.dask_cluster:
             _dict["dask_cluster"] = self.dask_cluster.to_dict()
@@ -258,6 +275,11 @@ class Deployment(BaseModel):
                 "description": obj.get("description"),
                 "tags": obj.get("tags"),
                 "instance_size": obj.get("instance_size"),
+                "image_tag": (
+                    ImageTag.from_dict(obj["image_tag"])
+                    if obj.get("image_tag") is not None
+                    else None
+                ),
                 "extra_packages": (
                     ExtraPackages.from_dict(obj["extra_packages"])
                     if obj.get("extra_packages") is not None
@@ -272,11 +294,6 @@ class Deployment(BaseModel):
                 "healthcheck": obj.get("healthcheck"),
                 "subdomain": obj.get("subdomain"),
                 "start_dind": obj.get("start_dind"),
-                "image_tag": (
-                    ImageTag.from_dict(obj["image_tag"])
-                    if obj.get("image_tag") is not None
-                    else None
-                ),
                 "last_deploy": obj.get("last_deploy"),
                 "k8s_name": obj.get("k8s_name"),
                 "created_at": obj.get("created_at"),

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**files** | [**List[ObjectStoragePresignedDownload]**](ObjectStoragePresignedDownload.md) |  | [readonly] 
+**files** | [**List[ObjectStoragePresignedDownload]**](ObjectStoragePresignedDownload.md) | List of presigned downloads. | [readonly] 
 
 ## Example
 

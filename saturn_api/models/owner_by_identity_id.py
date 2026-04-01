@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,9 @@ class OwnerByIdentityId(BaseModel):
     OwnerByIdentityId
     """  # noqa: E501
 
-    user_id: Optional[StrictStr] = None
-    group_id: Optional[StrictStr] = None
-    org_id: Optional[StrictStr] = None
+    user_id: Optional[StrictStr] = Field(default=None, description="Reference owner by user ID.")
+    group_id: Optional[StrictStr] = Field(default=None, description="Reference owner by group ID.")
+    org_id: Optional[StrictStr] = Field(default=None, description="Reference owner by org ID.")
     __properties: ClassVar[List[str]] = ["user_id", "group_id", "org_id"]
 
     model_config = ConfigDict(

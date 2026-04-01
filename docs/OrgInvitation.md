@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**email** | **str** |  | [readonly] 
-**invitee_name** | **str** |  | [readonly] 
-**invitor** | [**User**](User.md) |  | [readonly] 
-**invitor_name** | **str** |  | [readonly] 
-**org_id** | **str** |  | [readonly] 
-**org_name** | **str** |  | [readonly] 
+**id** | **str** | ID of the org invitation. | [readonly] 
+**email** | **str** | Email that the org invitation is sent to. | [readonly] 
+**invitee_name** | **str** | Name of the person being invited. | [readonly] 
+**invitor** | [**User**](User.md) | User that sent the invite. | [readonly] 
+**invitor_name** | **str** | Name of the person sending the invite. | [readonly] 
+**org_id** | **str** | Org ID that the user is being invited to. | [readonly] 
+**org_name** | **str** | Org name that the user is being invited to. | [readonly] 
 **status** | [**InvitationStatus**](InvitationStatus.md) |  | 
-**expiration** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
+**expiration** | **str** | Invitation expiration timestamp. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
 
 ## Example
 

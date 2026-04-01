@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**org_admin** | **bool** |  | [optional] 
-**limits_id** | **str** |  | [optional] 
+**org_admin** | **bool** | Enable user to take privileged actions on the org. | [optional] 
+**limits_id** | **str** | Usage limits ID applied to this org member. (Admin only) | [optional] 
 
 ## Example
 

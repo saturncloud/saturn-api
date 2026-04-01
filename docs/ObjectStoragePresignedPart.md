@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**url** | **str** |  | [readonly] 
-**part_number** | **int** |  | [readonly] 
-**size** | **int** |  | [readonly] 
-**headers** | **Dict[str, str]** |  | [readonly] 
+**url** | **str** | Presigned part upload URL. | [readonly] 
+**part_number** | **int** | Part number. | [readonly] 
+**size** | **int** | Size of the part. | [readonly] 
+**headers** | **Dict[str, str]** | Headers for the upload request. | [readonly] 
 
 ## Example
 

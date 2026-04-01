@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set, Union
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing_extensions import Self
 
 
@@ -27,10 +27,10 @@ class Stats(BaseModel):
     Stats
     """  # noqa: E501
 
-    avg: Union[StrictFloat, StrictInt]
-    min: Union[StrictFloat, StrictInt]
-    max: Union[StrictFloat, StrictInt]
-    last: Union[StrictFloat, StrictInt]
+    avg: Union[StrictFloat, StrictInt] = Field(description="Average value over the query range.")
+    min: Union[StrictFloat, StrictInt] = Field(description="Minimum value over the query range.")
+    max: Union[StrictFloat, StrictInt] = Field(description="Maximum value over the query range.")
+    last: Union[StrictFloat, StrictInt] = Field(description="Last seen value in the query range.")
     __properties: ClassVar[List[str]] = ["avg", "min", "max", "last"]
 
     model_config = ConfigDict(

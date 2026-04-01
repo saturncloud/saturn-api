@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**notification_ids** | **List[str]** |  | 
-**acknowledged** | **bool** |  | [optional] [default to True]
+**notification_ids** | **List[str]** | List of notification IDs to acknowledge. | 
+**acknowledged** | **bool** | Mark notifications as acknowledged or unacknowledged. | [optional] [default to True]
 
 ## Example
 

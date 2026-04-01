@@ -29,11 +29,19 @@ class ApiTokenCreate(BaseModel):
     ApiTokenCreate
     """  # noqa: E501
 
-    identity: Optional[IdentityReference] = None
-    description: Optional[Annotated[str, Field(strict=True, max_length=255)]] = ""
-    expires_in: Optional[StrictInt] = None
-    refresh_expires_in: Optional[StrictInt] = None
-    scope: Optional[StrictStr] = None
+    identity: Optional[IdentityReference] = Field(
+        default=None, description="Reference to a user or group."
+    )
+    description: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(
+        default="", description="Description of what the API token is used for."
+    )
+    expires_in: Optional[StrictInt] = Field(
+        default=None, description="Expiration of the token in seconds."
+    )
+    refresh_expires_in: Optional[StrictInt] = Field(
+        default=None, description="Expiration of the refresh token in seconds."
+    )
+    scope: Optional[StrictStr] = Field(default=None, description="Permission scope of the token.")
     __properties: ClassVar[List[str]] = [
         "identity",
         "description",

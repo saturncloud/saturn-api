@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_path** | **str** |  | [readonly] 
-**owner_name** | **str** |  | [readonly] 
+**file_path** | **str** | File path of the source in object storage. | [readonly] 
+**owner_name** | **str** | Name of the owner of the source. | [readonly] 
 
 ## Example
 

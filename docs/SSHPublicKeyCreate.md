@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**identity** | [**IdentityReference**](IdentityReference.md) |  | [optional] 
-**value** | **str** |  | 
+**name** | **str** | Name of the SSH public key. | 
+**identity** | [**IdentityReference**](IdentityReference.md) | Refence to the identity that owns the SSH public key. | [optional] 
+**value** | **str** | Value of the SSH public key. | 
 
 ## Example
 

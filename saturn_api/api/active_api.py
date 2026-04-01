@@ -291,10 +291,25 @@ class ActiveApi:
     async def get_pod_logs(
         self,
         name: StrictStr,
-        container_name: Optional[StrictStr] = None,
-        previous: Optional[StrictBool] = None,
-        cluster: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
+        container_name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Name of the container to retrieve logs for. Defaults to first container in the pod."
+            ),
+        ] = None,
+        previous: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Retrieve logs for the previous instance of a container, if it exists."
+            ),
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster where the pod is running.")
+        ] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]],
+            Field(description="Number of log lines to retrieve."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -310,13 +325,13 @@ class ActiveApi:
 
         :param name: (required)
         :type name: str
-        :param container_name:
+        :param container_name: Name of the container to retrieve logs for. Defaults to first container in the pod.
         :type container_name: str
-        :param previous:
+        :param previous: Retrieve logs for the previous instance of a container, if it exists.
         :type previous: bool
-        :param cluster:
+        :param cluster: Name of the cluster where the pod is running.
         :type cluster: str
-        :param page_size:
+        :param page_size: Number of log lines to retrieve.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -366,10 +381,25 @@ class ActiveApi:
     async def get_pod_logs_with_http_info(
         self,
         name: StrictStr,
-        container_name: Optional[StrictStr] = None,
-        previous: Optional[StrictBool] = None,
-        cluster: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
+        container_name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Name of the container to retrieve logs for. Defaults to first container in the pod."
+            ),
+        ] = None,
+        previous: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Retrieve logs for the previous instance of a container, if it exists."
+            ),
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster where the pod is running.")
+        ] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]],
+            Field(description="Number of log lines to retrieve."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -385,13 +415,13 @@ class ActiveApi:
 
         :param name: (required)
         :type name: str
-        :param container_name:
+        :param container_name: Name of the container to retrieve logs for. Defaults to first container in the pod.
         :type container_name: str
-        :param previous:
+        :param previous: Retrieve logs for the previous instance of a container, if it exists.
         :type previous: bool
-        :param cluster:
+        :param cluster: Name of the cluster where the pod is running.
         :type cluster: str
-        :param page_size:
+        :param page_size: Number of log lines to retrieve.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -441,10 +471,25 @@ class ActiveApi:
     async def get_pod_logs_without_preload_content(
         self,
         name: StrictStr,
-        container_name: Optional[StrictStr] = None,
-        previous: Optional[StrictBool] = None,
-        cluster: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]] = None,
+        container_name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Name of the container to retrieve logs for. Defaults to first container in the pod."
+            ),
+        ] = None,
+        previous: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Retrieve logs for the previous instance of a container, if it exists."
+            ),
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster where the pod is running.")
+        ] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=5000, strict=True, ge=1)]],
+            Field(description="Number of log lines to retrieve."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -460,13 +505,13 @@ class ActiveApi:
 
         :param name: (required)
         :type name: str
-        :param container_name:
+        :param container_name: Name of the container to retrieve logs for. Defaults to first container in the pod.
         :type container_name: str
-        :param previous:
+        :param previous: Retrieve logs for the previous instance of a container, if it exists.
         :type previous: bool
-        :param cluster:
+        :param cluster: Name of the cluster where the pod is running.
         :type cluster: str
-        :param page_size:
+        :param page_size: Number of log lines to retrieve.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -581,12 +626,17 @@ class ActiveApi:
     @validate_call
     async def list_pods(
         self,
-        workload_type: WorkloadType,
-        workload_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        workload_type: Annotated[WorkloadType, Field(description="Type of pods to query.")],
+        workload_id: Annotated[StrictStr, Field(description="ID of the workload.")],
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster to query.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -600,17 +650,17 @@ class ActiveApi:
         """List pod runtime summaries
 
 
-        :param workload_type: (required)
+        :param workload_type: Type of pods to query. (required)
         :type workload_type: WorkloadType
-        :param workload_id: (required)
+        :param workload_id: ID of the workload. (required)
         :type workload_id: str
-        :param cluster:
+        :param cluster: Name of the cluster to query.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -660,12 +710,17 @@ class ActiveApi:
     @validate_call
     async def list_pods_with_http_info(
         self,
-        workload_type: WorkloadType,
-        workload_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        workload_type: Annotated[WorkloadType, Field(description="Type of pods to query.")],
+        workload_id: Annotated[StrictStr, Field(description="ID of the workload.")],
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster to query.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -679,17 +734,17 @@ class ActiveApi:
         """List pod runtime summaries
 
 
-        :param workload_type: (required)
+        :param workload_type: Type of pods to query. (required)
         :type workload_type: WorkloadType
-        :param workload_id: (required)
+        :param workload_id: ID of the workload. (required)
         :type workload_id: str
-        :param cluster:
+        :param cluster: Name of the cluster to query.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -739,12 +794,17 @@ class ActiveApi:
     @validate_call
     async def list_pods_without_preload_content(
         self,
-        workload_type: WorkloadType,
-        workload_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        workload_type: Annotated[WorkloadType, Field(description="Type of pods to query.")],
+        workload_id: Annotated[StrictStr, Field(description="ID of the workload.")],
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster to query.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -758,17 +818,17 @@ class ActiveApi:
         """List pod runtime summaries
 
 
-        :param workload_type: (required)
+        :param workload_type: Type of pods to query. (required)
         :type workload_type: WorkloadType
-        :param workload_id: (required)
+        :param workload_id: ID of the workload. (required)
         :type workload_id: str
-        :param cluster:
+        :param cluster: Name of the cluster to query.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -891,14 +951,30 @@ class ActiveApi:
     @validate_call
     async def list_resources(
         self,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        resource_type: Optional[ResourceType] = None,
-        list_by: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        resource_type: Annotated[
+            Optional[ResourceType], Field(description="Filter the type of returned resources.")
+        ] = None,
+        list_by: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="List active resources at the owner, org, or account level. Org and Account require elevated permissions."
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -912,21 +988,21 @@ class ActiveApi:
         """List active resources
 
 
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param resource_type:
+        :param resource_type: Filter the type of returned resources.
         :type resource_type: ResourceType
-        :param list_by:
+        :param list_by: List active resources at the owner, org, or account level. Org and Account require elevated permissions.
         :type list_by: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -978,14 +1054,30 @@ class ActiveApi:
     @validate_call
     async def list_resources_with_http_info(
         self,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        resource_type: Optional[ResourceType] = None,
-        list_by: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        resource_type: Annotated[
+            Optional[ResourceType], Field(description="Filter the type of returned resources.")
+        ] = None,
+        list_by: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="List active resources at the owner, org, or account level. Org and Account require elevated permissions."
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -999,21 +1091,21 @@ class ActiveApi:
         """List active resources
 
 
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param resource_type:
+        :param resource_type: Filter the type of returned resources.
         :type resource_type: ResourceType
-        :param list_by:
+        :param list_by: List active resources at the owner, org, or account level. Org and Account require elevated permissions.
         :type list_by: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1065,14 +1157,30 @@ class ActiveApi:
     @validate_call
     async def list_resources_without_preload_content(
         self,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        resource_type: Optional[ResourceType] = None,
-        list_by: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        resource_type: Annotated[
+            Optional[ResourceType], Field(description="Filter the type of returned resources.")
+        ] = None,
+        list_by: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="List active resources at the owner, org, or account level. Org and Account require elevated permissions."
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1086,21 +1194,21 @@ class ActiveApi:
         """List active resources
 
 
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param resource_type:
+        :param resource_type: Filter the type of returned resources.
         :type resource_type: ResourceType
-        :param list_by:
+        :param list_by: List active resources at the owner, org, or account level. Org and Account require elevated permissions.
         :type list_by: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

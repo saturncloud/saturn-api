@@ -5,20 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**org_id** | **str** |  | [optional] 
-**is_default** | **bool** |  | [optional] [default to False]
-**instance_sizes** | **List[str]** |  | [optional] 
-**resource_types** | **List[str]** |  | [optional] 
-**num_instances** | **int** |  | [optional] 
-**auto_shutoff** | **int** |  | [optional] 
-**storage_in_gb** | **int** |  | [optional] 
-**num_shared_folders** | **int** |  | [optional] 
-**object_storage_bytes** | **int** |  | [optional] 
-**object_storage_count** | **int** |  | [optional] 
-**hours_per_day** | **int** |  | [optional] 
-**hours_per_month** | **int** |  | [optional] 
-**hours_forever** | **int** |  | [optional] 
+**name** | **str** | Name of the usage limit. | 
+**org_id** | **str** | Org ID that the usage limit belongs to. | [optional] 
+**is_default** | **bool** | Default usage limit for the org. | [optional] [default to False]
+**instance_sizes** | **List[str]** | Allowed instance sizes. Null if no limits. | [optional] 
+**resource_types** | **List[str]** | Allowed resource types. Null if no limits. | [optional] 
+**num_instances** | **int** | Maximum number of active instances. Null if no limits. | [optional] 
+**auto_shutoff** | **int** | Maximum allowed auto-shutoff. Null if no limits. | [optional] 
+**storage_in_gb** | **int** | Total allowed storage in GiB. Null if no limits. | [optional] 
+**num_shared_folders** | **int** | Maximum number of shared folders. Null if no limits. | [optional] 
+**object_storage_bytes** | **int** | Maximum allowed object storage bytes. Null if no limits. | [optional] 
+**object_storage_count** | **int** | Maximum number of object storage files. Null if no limits. | [optional] 
+**hours_per_day** | **int** | Free compute hours per day. | [optional] 
+**hours_per_month** | **int** | Free compute hours per month. | [optional] 
+**hours_forever** | **int** | Free compute hours forever (one-time grant). | [optional] 
 
 ## Example
 

@@ -203,7 +203,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsersApi(api_client)
     user_id = 'user_id_example' # str | 
-    details = False # bool |  (optional) (default to False)
+    details = False # bool | Retrive detailed user data. (optional) (default to False)
 
     try:
         # Get user
@@ -222,7 +222,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**|  | 
- **details** | **bool**|  | [optional] [default to False]
+ **details** | **bool**| Retrive detailed user data. | [optional] [default to False]
 
 ### Return type
 
@@ -282,13 +282,13 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsersApi(api_client)
-    username = 'username_example' # str |  (optional)
-    email = 'email_example' # str |  (optional)
-    details = False # bool |  (optional) (default to False)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    username = 'username_example' # str | Prefix matched search string on user name. (optional)
+    email = 'email_example' # str | Prefix matched search string on user email. (optional)
+    details = False # bool | Retrieve detailed user data. (Admin only) (optional) (default to False)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List users
@@ -306,13 +306,13 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**|  | [optional] 
- **email** | **str**|  | [optional] 
- **details** | **bool**|  | [optional] [default to False]
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **username** | **str**| Prefix matched search string on user name. | [optional] 
+ **email** | **str**| Prefix matched search string on user email. | [optional] 
+ **details** | **bool**| Retrieve detailed user data. (Admin only) | [optional] [default to False]
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

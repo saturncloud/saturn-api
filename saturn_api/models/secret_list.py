@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.secret import Secret
@@ -29,9 +29,9 @@ class SecretList(BaseModel):
     SecretList
     """  # noqa: E501
 
-    secrets: List[Secret]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    secrets: List[Secret] = Field(description="List of secrets.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["secrets", "prev_key", "next_key"]
 
     model_config = ConfigDict(

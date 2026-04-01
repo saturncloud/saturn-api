@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | 
+**user_id** | **str** | User ID to add to the group. | 
 
 ## Example
 

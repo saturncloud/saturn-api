@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.group import Group
@@ -29,9 +29,9 @@ class GroupList(BaseModel):
     GroupList
     """  # noqa: E501
 
-    groups: List[Group]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    groups: List[Group] = Field(description="List of groups.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["groups", "prev_key", "next_key"]
 
     model_config = ConfigDict(

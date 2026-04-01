@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,15 +27,23 @@ class ExtraPackages(BaseModel):
     ExtraPackages
     """  # noqa: E501
 
-    pip: Optional[StrictStr] = None
-    as_requirements_txt: Optional[StrictBool] = False
-    conda: Optional[StrictStr] = None
-    as_environment_yml: Optional[StrictBool] = False
-    apt: Optional[StrictStr] = None
-    cran: Optional[StrictStr] = None
-    remotes: Optional[StrictStr] = None
-    bioconductor: Optional[StrictStr] = None
-    use_mamba: Optional[StrictBool] = False
+    pip: Optional[StrictStr] = Field(default=None, description="Pip packages to install.")
+    as_requirements_txt: Optional[StrictBool] = Field(
+        default=False, description="True if pip field is formatted as requirements.txt"
+    )
+    conda: Optional[StrictStr] = Field(default=None, description="Conda packages to install")
+    as_environment_yml: Optional[StrictBool] = Field(
+        default=False, description="True if conda field is formatted as environment.yaml"
+    )
+    apt: Optional[StrictStr] = Field(default=None, description="Apt packages to install.")
+    cran: Optional[StrictStr] = Field(default=None, description="Cran packages to install.")
+    remotes: Optional[StrictStr] = Field(default=None, description="Remotes packages to install.")
+    bioconductor: Optional[StrictStr] = Field(
+        default=None, description="Bioconductor packages to install."
+    )
+    use_mamba: Optional[StrictBool] = Field(
+        default=False, description="Enable installing conda packages with mamba."
+    )
     __properties: ClassVar[List[str]] = [
         "pip",
         "as_requirements_txt",

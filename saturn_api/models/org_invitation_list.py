@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.org_invitation import OrgInvitation
@@ -29,9 +29,9 @@ class OrgInvitationList(BaseModel):
     OrgInvitationList
     """  # noqa: E501
 
-    invitations: List[OrgInvitation]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    invitations: List[OrgInvitation] = Field(description="List of org invitations.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["invitations", "prev_key", "next_key"]
 
     model_config = ConfigDict(

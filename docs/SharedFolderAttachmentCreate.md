@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**shared_folder_id** | **str** |  | 
-**resource** | [**ResourceReference**](ResourceReference.md) |  | 
-**path** | **str** |  | [optional] 
+**shared_folder_id** | **str** | Shared folder ID to attach to the resource. | 
+**resource** | [**ResourceReference**](ResourceReference.md) | Reference to a resource. | 
+**path** | **str** | Mount path of the shared folder in the resource. | [optional] 
 
 ## Example
 

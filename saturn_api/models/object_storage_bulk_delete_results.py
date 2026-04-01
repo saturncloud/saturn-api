@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,9 @@ class ObjectStorageBulkDeleteResults(BaseModel):
     ObjectStorageBulkDeleteResults
     """  # noqa: E501
 
-    failed_file_paths: List[StrictStr]
+    failed_file_paths: List[StrictStr] = Field(
+        description="List of file paths that failed to delete."
+    )
     __properties: ClassVar[List[str]] = ["failed_file_paths"]
 
     model_config = ConfigDict(

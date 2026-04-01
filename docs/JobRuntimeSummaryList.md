@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**job_summaries** | [**List[JobRuntimeSummary]**](JobRuntimeSummary.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**job_summaries** | [**List[JobRuntimeSummary]**](JobRuntimeSummary.md) | List of job runtime summaries. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] [readonly] 
+**next_key** | **str** | Next page key. | [optional] [readonly] 
 
 ## Example
 

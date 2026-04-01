@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.group import Group
@@ -33,22 +33,28 @@ class OwnerDetailed(BaseModel):
     OwnerDetailed
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    identity_name: StrictStr
-    org_name: StrictStr
-    created_at: StrictStr
-    org_admin: StrictBool
-    org_id: StrictStr
-    user_id: Optional[StrictStr] = None
-    group_id: Optional[StrictStr] = None
+    id: StrictStr = Field(description="ID of the owner")
+    name: StrictStr = Field(description="Name of the owner (format: '<org>/<identity>')")
+    identity_name: StrictStr = Field(description="Name of the owner's identity")
+    org_name: StrictStr = Field(description="Name of the org the owner belongs to.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    org_admin: StrictBool = Field(
+        description="Enable the owner to take privileged actions on its org."
+    )
+    org_id: StrictStr = Field(description="Org ID the owner belongs to.")
+    user_id: Optional[StrictStr] = Field(default=None, description="User ID of the owner.")
+    group_id: Optional[StrictStr] = Field(default=None, description="Group ID of the owner.")
     identity_type: IdentityType
-    avatar_url: StrictStr
-    limits_id: Optional[StrictStr] = None
-    org: Org
-    user: Optional[UserDetailed] = None
-    group: Optional[Group] = None
-    limits: Optional[UsageLimits] = None
+    avatar_url: StrictStr = Field(description="Avatar URL of the owner's identity.")
+    limits_id: Optional[StrictStr] = Field(
+        default=None, description="Usage limits ID applied to the owner."
+    )
+    org: Org = Field(description="Org that the owner belongs to.")
+    user: Optional[UserDetailed] = Field(default=None, description="User identity of the owner.")
+    group: Optional[Group] = Field(default=None, description="Group identity of the owner.")
+    limits: Optional[UsageLimits] = Field(
+        default=None, description="Usage limits applied to the owner."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",

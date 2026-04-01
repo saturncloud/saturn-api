@@ -27,8 +27,12 @@ class DaskClusterAdapt(BaseModel):
     DaskClusterAdapt
     """  # noqa: E501
 
-    minimum: Annotated[int, Field(strict=True, ge=0)]
-    maximum: Annotated[int, Field(strict=True, ge=0)]
+    minimum: Annotated[int, Field(strict=True, ge=0)] = Field(
+        description="Minimum number of dask workers for adaptive scaling."
+    )
+    maximum: Annotated[int, Field(strict=True, ge=0)] = Field(
+        description="Maximum number of dask workers for adaptive scaling."
+    )
     __properties: ClassVar[List[str]] = ["minimum", "maximum"]
 
     model_config = ConfigDict(

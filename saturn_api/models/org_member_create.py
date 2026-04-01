@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,13 @@ class OrgMemberCreate(BaseModel):
     OrgMemberCreate
     """  # noqa: E501
 
-    user_id: StrictStr
-    org_admin: Optional[StrictBool] = False
-    limits_id: Optional[StrictStr] = None
+    user_id: StrictStr = Field(description="User ID to add to the org.")
+    org_admin: Optional[StrictBool] = Field(
+        default=False, description="Enable user to take privileged actions on the org."
+    )
+    limits_id: Optional[StrictStr] = Field(
+        default=None, description="Usage limits ID applied to this org member."
+    )
     __properties: ClassVar[List[str]] = ["user_id", "org_admin", "limits_id"]
 
     model_config = ConfigDict(

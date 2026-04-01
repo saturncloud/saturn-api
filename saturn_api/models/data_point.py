@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set, Union
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class DataPoint(BaseModel):
     DataPoint
     """  # noqa: E501
 
-    datetime: StrictStr
-    value: Union[StrictFloat, StrictInt]
+    datetime: StrictStr = Field(description="Metric timestamp.")
+    value: Union[StrictFloat, StrictInt] = Field(description="Value of the data point.")
     __properties: ClassVar[List[str]] = ["datetime", "value"]
 
     model_config = ConfigDict(

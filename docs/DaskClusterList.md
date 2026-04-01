@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dask_clusters** | [**List[DaskCluster]**](DaskCluster.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**dask_clusters** | [**List[DaskCluster]**](DaskCluster.md) | List of dask clusters. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] [readonly] 
+**next_key** | **str** | Next page key. | [optional] [readonly] 
 
 ## Example
 

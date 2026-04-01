@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**viewers** | [**List[Viewer]**](Viewer.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**viewers** | [**List[Viewer]**](Viewer.md) | List of viewers. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] [readonly] 
+**next_key** | **str** | Next page key. | [optional] [readonly] 
 
 ## Example
 

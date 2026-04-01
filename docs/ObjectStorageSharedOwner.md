@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**count** | **int** |  | [readonly] 
+**id** | **str** | ID of the owner. | [readonly] 
+**name** | **str** | Name of the owner. | [readonly] 
+**count** | **int** | Count of files shared by the owner. | [readonly] 
 
 ## Example
 

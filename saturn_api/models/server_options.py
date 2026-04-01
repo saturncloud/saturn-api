@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.instance_size import InstanceSize
@@ -29,9 +29,13 @@ class ServerOptions(BaseModel):
     ServerOptions
     """  # noqa: E501
 
-    auto_shutoff: List[StrictStr]
-    disk_space: List[StrictStr]
-    sizes: Dict[str, InstanceSize]
+    auto_shutoff: List[StrictStr] = Field(
+        description="List of available auto-shutoff settings for workspaces."
+    )
+    disk_space: List[StrictStr] = Field(description="List of available disk sizes for workspaces.")
+    sizes: Dict[str, InstanceSize] = Field(
+        description="Mapping of instance size names to their configurations."
+    )
     __properties: ClassVar[List[str]] = ["auto_shutoff", "disk_space", "sizes"]
 
     model_config = ConfigDict(

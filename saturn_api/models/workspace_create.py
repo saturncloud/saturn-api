@@ -40,27 +40,55 @@ class WorkspaceCreate(BaseModel):
     WorkspaceCreate
     """  # noqa: E501
 
-    name: StrictStr
-    owner: Optional[OwnerReference] = None
-    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = ""
-    tags: Optional[Dict[str, StrictStr]] = None
-    instance_size: Optional[StrictStr] = None
-    image_uri: Optional[StrictStr] = None
-    image_tag_id: Optional[StrictStr] = None
-    image_enforce_trusted: Optional[StrictBool] = True
-    environment_variables: Optional[Dict[str, StrictStr]] = None
-    external_repo_attachments: Optional[List[ExternalRepoAttachmentNested]] = None
-    extra_packages: Optional[ExtraPackages] = None
-    start_script: Optional[StrictStr] = None
-    working_dir: Optional[StrictStr] = "/home/jovyan/workspace"
-    is_spot: Optional[StrictBool] = False
-    start_dind: Optional[StrictBool] = False
-    disk_space: Optional[StrictStr] = None
-    subdomain: Optional[StrictStr] = None
+    name: StrictStr = Field(description="Name of the workspace.")
+    owner: Optional[OwnerReference] = Field(default=None, description="Owner of the workspace.")
+    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(
+        default="", description="Description of the workspace."
+    )
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the workspace."
+    )
+    instance_size: Optional[StrictStr] = Field(
+        default=None, description="Instance size of the workspace."
+    )
+    image_uri: Optional[StrictStr] = Field(default=None, description="URI of the image to attach.")
+    image_tag_id: Optional[StrictStr] = Field(default=None, description="Image tag ID to attach.")
+    image_enforce_trusted: Optional[StrictBool] = Field(
+        default=True, description="Enable image trust validation before attaching."
+    )
+    environment_variables: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Mapping of environment variable keys to values."
+    )
+    external_repo_attachments: Optional[List[ExternalRepoAttachmentNested]] = Field(
+        default=None, description="List of external repo attachments for the workspace."
+    )
+    extra_packages: Optional[ExtraPackages] = Field(
+        default=None, description="Addtitional packages to install on start."
+    )
+    start_script: Optional[StrictStr] = Field(
+        default=None, description="Shell script to run on start before the primary command."
+    )
+    working_dir: Optional[StrictStr] = Field(
+        default="/home/jovyan/workspace", description="Initial working directory for the workspace."
+    )
+    is_spot: Optional[StrictBool] = Field(
+        default=False, description="Enables running on spot instance sizes."
+    )
+    start_dind: Optional[StrictBool] = Field(default=False, description="Enables docker-in-docker.")
+    disk_space: Optional[StrictStr] = Field(
+        default=None, description="Size of the persistent volume attached to the workspace."
+    )
+    subdomain: Optional[StrictStr] = Field(
+        default=None, description="Subdomain of the workspace URL."
+    )
     auto_shutoff: Literal["1 hour", "6 hours", "24 hours", "3 days", "7 days", "Never"] = "1 hour"
-    start_ssh: Optional[StrictBool] = False
+    start_ssh: Optional[StrictBool] = Field(
+        default=False, description="Enable SSH access on the deployment."
+    )
     ide: Literal["jupyter", "rstudio"] = "jupyter"
-    self_destruct: Optional[StrictBool] = False
+    self_destruct: Optional[StrictBool] = Field(
+        default=False, description="Auto delete the workspace on stop."
+    )
     __properties: ClassVar[List[str]] = [
         "name",
         "owner",

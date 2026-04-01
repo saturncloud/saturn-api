@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_account_id** | **str** |  | 
-**identity** | [**IdentityReference**](IdentityReference.md) |  | [optional] 
+**service_account_id** | **str** | ID of the service account to entitle the identity to. | 
+**identity** | [**IdentityReference**](IdentityReference.md) | Reference to an identity. | [optional] 
 
 ## Example
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**size** | [**List[InstanceSize]**](InstanceSize.md) |  | [readonly] 
+**size** | [**List[InstanceSize]**](InstanceSize.md) | List of available instance sizes. | [readonly] 
 
 ## Example
 

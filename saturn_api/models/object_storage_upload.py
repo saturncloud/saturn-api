@@ -19,7 +19,7 @@ import re  # noqa: F401
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.object_storage_copy_source import ObjectStorageCopySource
@@ -30,12 +30,14 @@ class ObjectStorageUpload(BaseModel):
     ObjectStorageUpload
     """  # noqa: E501
 
-    id: StrictStr
-    file_path: StrictStr
-    size: Optional[StrictInt]
-    part_size: StrictInt
-    expires_at: datetime
-    copy_source: Optional[ObjectStorageCopySource] = None
+    id: StrictStr = Field(description="ID of the object storage upload.")
+    file_path: StrictStr = Field(description="File path of the upload in object storage.")
+    size: Optional[StrictInt] = Field(description="Size of the file.")
+    part_size: StrictInt = Field(description="Multipart upload size.")
+    expires_at: datetime = Field(description="Expiration timestamp for the upload.")
+    copy_source: Optional[ObjectStorageCopySource] = Field(
+        default=None, description="Object storage copy source."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "file_path",

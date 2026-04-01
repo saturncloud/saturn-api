@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,10 +27,10 @@ class GroupMember(BaseModel):
     GroupMember
     """  # noqa: E501
 
-    id: StrictStr
-    created_at: StrictStr
-    user_id: StrictStr
-    group_id: StrictStr
+    id: StrictStr = Field(description="ID of the group member")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    user_id: StrictStr = Field(description="User ID of the group member.")
+    group_id: StrictStr = Field(description="Group ID of the group member.")
     __properties: ClassVar[List[str]] = ["id", "created_at", "user_id", "group_id"]
 
     model_config = ConfigDict(

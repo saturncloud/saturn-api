@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owners** | [**List[OwnerDetailed]**](OwnerDetailed.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**owners** | [**List[OwnerDetailed]**](OwnerDetailed.md) | List of detailed owners. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] [readonly] 
+**next_key** | **str** | Next page key. | [optional] [readonly] 
 
 ## Example
 

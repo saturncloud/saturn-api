@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**secret_attachments** | [**List[SecretAttachment]**](SecretAttachment.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**secret_attachments** | [**List[SecretAttachment]**](SecretAttachment.md) | List of secret attachments. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] [readonly] 
+**next_key** | **str** | Next page key. | [optional] [readonly] 
 
 ## Example
 

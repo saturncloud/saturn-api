@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,9 @@ class User(BaseModel):
     User
     """  # noqa: E501
 
-    id: StrictStr
-    avatar_url: StrictStr
-    username: StrictStr
+    id: StrictStr = Field(description="ID of the user.")
+    avatar_url: StrictStr = Field(description="Avatar URL of the user.")
+    username: StrictStr = Field(description="Name of the user.")
     __properties: ClassVar[List[str]] = ["id", "avatar_url", "username"]
 
     model_config = ConfigDict(

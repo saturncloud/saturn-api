@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,12 +27,14 @@ class OrgCreate(BaseModel):
     OrgCreate
     """  # noqa: E501
 
-    name: StrictStr
-    email: StrictStr
-    description: Optional[StrictStr] = ""
-    website_url: Optional[StrictStr] = None
-    logo_image_url: Optional[StrictStr] = None
-    limits_id: Optional[StrictStr] = None
+    name: StrictStr = Field(description="Name of the org.")
+    email: StrictStr = Field(description="Email of the org.")
+    description: Optional[StrictStr] = Field(default="", description="Description of the org.")
+    website_url: Optional[StrictStr] = Field(default=None, description="Website URL of the org.")
+    logo_image_url: Optional[StrictStr] = Field(default=None, description="Logo of the org.")
+    limits_id: Optional[StrictStr] = Field(
+        default=None, description="Usage limits ID applied to the entire org. (Admin only)"
+    )
     __properties: ClassVar[List[str]] = [
         "name",
         "email",

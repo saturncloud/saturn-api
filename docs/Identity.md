@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**avatar_url** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
+**id** | **str** | ID of the user or group. | [readonly] 
+**avatar_url** | **str** | Avatar URL for the user or group. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**name** | **str** | Name of the user or group. | [readonly] 
 **identity_type** | [**IdentityType**](IdentityType.md) |  | 
 
 ## Example

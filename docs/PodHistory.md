@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pod_name** | **str** |  | [readonly] 
-**status** | **str** |  | [readonly] 
-**last_seen** | **str** |  | [readonly] 
-**start_time** | **str** |  | [readonly] 
-**label_job_name** | **str** |  | [optional] [readonly] 
+**pod_name** | **str** | Name of the pod. | [readonly] 
+**status** | **str** | Last known status of the pod. | [readonly] 
+**last_seen** | **str** | Last seen timestamp of the pod. | [readonly] 
+**start_time** | **str** | Start time of the pod. | [readonly] 
+**label_job_name** | **str** | Job label, if applicable. | [optional] [readonly] 
 
 ## Example
 

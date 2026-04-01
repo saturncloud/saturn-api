@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**grant_type** | **str** |  | 
-**refresh_token** | **str** |  | 
+**grant_type** | **str** | Oauth grant type. | 
+**refresh_token** | **str** | Refresh token for retrieving a new token pair. | 
 
 ## Example
 

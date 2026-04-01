@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** |  | 
-**connections** | **Dict[str, str]** |  | 
-**disable_native_login** | **bool** |  | 
+**enabled** | **bool** | True if auth0 authentication is enabled. | 
+**connections** | **Dict[str, str]** | Enabled auth providers. | 
+**disable_native_login** | **bool** | True if native username/password login is disabled. | 
 
 ## Example
 

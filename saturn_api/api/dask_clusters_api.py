@@ -541,7 +541,10 @@ class DaskClustersApi:
     async def delete(
         self,
         dask_cluster_id: StrictStr,
-        allow_active: Optional[StrictBool] = None,
+        allow_active: Annotated[
+            Optional[StrictBool],
+            Field(description="Force delete dask cluster that is currently active."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -558,7 +561,7 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param allow_active:
+        :param allow_active: Force delete dask cluster that is currently active.
         :type allow_active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -605,7 +608,10 @@ class DaskClustersApi:
     async def delete_with_http_info(
         self,
         dask_cluster_id: StrictStr,
-        allow_active: Optional[StrictBool] = None,
+        allow_active: Annotated[
+            Optional[StrictBool],
+            Field(description="Force delete dask cluster that is currently active."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -622,7 +628,7 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param allow_active:
+        :param allow_active: Force delete dask cluster that is currently active.
         :type allow_active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -669,7 +675,10 @@ class DaskClustersApi:
     async def delete_without_preload_content(
         self,
         dask_cluster_id: StrictStr,
-        allow_active: Optional[StrictBool] = None,
+        allow_active: Annotated[
+            Optional[StrictBool],
+            Field(description="Force delete dask cluster that is currently active."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -686,7 +695,7 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param allow_active:
+        :param allow_active: Force delete dask cluster that is currently active.
         :type allow_active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1455,12 +1464,21 @@ class DaskClustersApi:
     async def get_logs(
         self,
         dask_cluster_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        component: Optional[DaskComponents] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1477,17 +1495,17 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1539,12 +1557,21 @@ class DaskClustersApi:
     async def get_logs_with_http_info(
         self,
         dask_cluster_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        component: Optional[DaskComponents] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1561,17 +1588,17 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1623,12 +1650,21 @@ class DaskClustersApi:
     async def get_logs_without_preload_content(
         self,
         dask_cluster_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        component: Optional[DaskComponents] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1645,17 +1681,17 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1783,12 +1819,24 @@ class DaskClustersApi:
     async def get_metrics(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[DaskComponents] = None,
-        type: Optional[StrictStr] = None,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        resolution: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
+        type: Annotated[
+            Optional[StrictStr], Field(description="Filter metric series by type.")
+        ] = None,
+        start: Annotated[
+            Optional[datetime], Field(description="Start timestamp of the metrics query.")
+        ] = None,
+        end: Annotated[
+            Optional[datetime], Field(description="End timestamp of the metrics query.")
+        ] = None,
+        resolution: Annotated[
+            Optional[StrictStr], Field(description="Sampling resolution of metrics points.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1805,17 +1853,17 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
-        :param type:
+        :param type: Filter metric series by type.
         :type type: str
-        :param start:
+        :param start: Start timestamp of the metrics query.
         :type start: datetime
-        :param end:
+        :param end: End timestamp of the metrics query.
         :type end: datetime
-        :param resolution:
+        :param resolution: Sampling resolution of metrics points.
         :type resolution: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1867,12 +1915,24 @@ class DaskClustersApi:
     async def get_metrics_with_http_info(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[DaskComponents] = None,
-        type: Optional[StrictStr] = None,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        resolution: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
+        type: Annotated[
+            Optional[StrictStr], Field(description="Filter metric series by type.")
+        ] = None,
+        start: Annotated[
+            Optional[datetime], Field(description="Start timestamp of the metrics query.")
+        ] = None,
+        end: Annotated[
+            Optional[datetime], Field(description="End timestamp of the metrics query.")
+        ] = None,
+        resolution: Annotated[
+            Optional[StrictStr], Field(description="Sampling resolution of metrics points.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1889,17 +1949,17 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
-        :param type:
+        :param type: Filter metric series by type.
         :type type: str
-        :param start:
+        :param start: Start timestamp of the metrics query.
         :type start: datetime
-        :param end:
+        :param end: End timestamp of the metrics query.
         :type end: datetime
-        :param resolution:
+        :param resolution: Sampling resolution of metrics points.
         :type resolution: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1951,12 +2011,24 @@ class DaskClustersApi:
     async def get_metrics_without_preload_content(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[DaskComponents] = None,
-        type: Optional[StrictStr] = None,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        resolution: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
+        type: Annotated[
+            Optional[StrictStr], Field(description="Filter metric series by type.")
+        ] = None,
+        start: Annotated[
+            Optional[datetime], Field(description="Start timestamp of the metrics query.")
+        ] = None,
+        end: Annotated[
+            Optional[datetime], Field(description="End timestamp of the metrics query.")
+        ] = None,
+        resolution: Annotated[
+            Optional[StrictStr], Field(description="Sampling resolution of metrics points.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1973,17 +2045,17 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
-        :param type:
+        :param type: Filter metric series by type.
         :type type: str
-        :param start:
+        :param start: Start timestamp of the metrics query.
         :type start: datetime
-        :param end:
+        :param end: End timestamp of the metrics query.
         :type end: datetime
-        :param resolution:
+        :param resolution: Sampling resolution of metrics points.
         :type resolution: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2119,7 +2191,9 @@ class DaskClustersApi:
     async def get_pod_history(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[DaskComponents] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2136,7 +2210,7 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2183,7 +2257,9 @@ class DaskClustersApi:
     async def get_pod_history_with_http_info(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[DaskComponents] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2200,7 +2276,7 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2247,7 +2323,9 @@ class DaskClustersApi:
     async def get_pod_history_without_preload_content(
         self,
         dask_cluster_id: StrictStr,
-        component: Optional[DaskComponents] = None,
+        component: Annotated[
+            Optional[DaskComponents], Field(description="Dask component to query.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2264,7 +2342,7 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param component:
+        :param component: Dask component to query.
         :type component: DaskComponents
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3690,16 +3768,34 @@ class DaskClustersApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3714,25 +3810,25 @@ class DaskClustersApi:
 
         Paginated list of dask clusters.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3786,16 +3882,34 @@ class DaskClustersApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3810,25 +3924,25 @@ class DaskClustersApi:
 
         Paginated list of dask clusters.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3882,16 +3996,34 @@ class DaskClustersApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3906,25 +4038,25 @@ class DaskClustersApi:
 
         Paginated list of dask clusters.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4072,9 +4204,12 @@ class DaskClustersApi:
     async def list_worker_runtime_summaries(
         self,
         dask_cluster_id: StrictStr,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4090,11 +4225,11 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4143,9 +4278,12 @@ class DaskClustersApi:
     async def list_worker_runtime_summaries_with_http_info(
         self,
         dask_cluster_id: StrictStr,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4161,11 +4299,11 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4214,9 +4352,12 @@ class DaskClustersApi:
     async def list_worker_runtime_summaries_without_preload_content(
         self,
         dask_cluster_id: StrictStr,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4232,11 +4373,11 @@ class DaskClustersApi:
 
         :param dask_cluster_id: (required)
         :type dask_cluster_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

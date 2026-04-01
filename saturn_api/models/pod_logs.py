@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,7 @@ class PodLogs(BaseModel):
     PodLogs
     """  # noqa: E501
 
-    logs: StrictStr
+    logs: StrictStr = Field(description="Log lines from the active pod.")
     __properties: ClassVar[List[str]] = ["logs"]
 
     model_config = ConfigDict(

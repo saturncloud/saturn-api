@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing_extensions import Self
 
 
@@ -27,13 +27,17 @@ class ObjectStorageUsageStats(BaseModel):
     ObjectStorageUsageStats
     """  # noqa: E501
 
-    used_bytes: StrictInt
-    reserved_bytes: StrictInt
-    file_count: StrictInt
-    active_uploads: StrictInt
-    max_bytes: Optional[StrictInt]
-    max_files: Optional[StrictInt]
-    max_uploads: StrictInt
+    used_bytes: StrictInt = Field(description="Total used bytes in object storage.")
+    reserved_bytes: StrictInt = Field(description="Total reserved bytes for active uploads.")
+    file_count: StrictInt = Field(description="Number of files in object storage.")
+    active_uploads: StrictInt = Field(description="Number of active uploads in object storage.")
+    max_bytes: Optional[StrictInt] = Field(
+        description="Maximum number of allowed object storage bytes."
+    )
+    max_files: Optional[StrictInt] = Field(
+        description="Maximum number of allowed object storage files."
+    )
+    max_uploads: StrictInt = Field(description="Maximum number of allowed concurrent uploads.")
     __properties: ClassVar[List[str]] = [
         "used_bytes",
         "reserved_bytes",

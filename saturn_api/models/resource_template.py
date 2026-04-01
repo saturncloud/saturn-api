@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner import Owner
@@ -30,17 +30,24 @@ class ResourceTemplate(BaseModel):
     ResourceTemplate
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    description: StrictStr
-    created_at: StrictStr
-    thumbnail_image_url: Optional[StrictStr]
-    weight: Optional[StrictInt]
-    recipe: Dict[str, Any]
+    id: StrictStr = Field(description="ID of the resource template.")
+    name: StrictStr = Field(description="Name of the resource template.")
+    owner: Owner = Field(description="Owner of the resource template.")
+    description: StrictStr = Field(description="Description of the resource template.")
+    created_at: StrictStr = Field(description="Creation timestamp")
+    thumbnail_image_url: Optional[StrictStr] = Field(
+        description="Thumbnail image URL to display with the resource template."
+    )
+    weight: Optional[StrictInt] = Field(description="Gallery ordering weight.")
+    recipe: Dict[str, Any] = Field(description="Resource recipe to apply.")
     access: ResourceTemplateAccessLevel
-    in_gallery: Optional[StrictBool] = None
-    editable: StrictBool
+    in_gallery: Optional[StrictBool] = Field(
+        default=None,
+        description="Enable displaying the resource template in the dashboard gallery.",
+    )
+    editable: StrictBool = Field(
+        description="True if the resource template is editable by the authenticated user/group."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",

@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**user_id** | **str** |  | [readonly] 
-**created_at** | **datetime** |  | [readonly] 
-**topic** | **str** |  | [readonly] 
-**message** | **str** |  | [readonly] 
-**data** | **Dict[str, object]** |  | [readonly] 
-**acknowledged** | **bool** |  | [readonly] 
+**id** | **str** | ID of the notification. | [readonly] 
+**user_id** | **str** | User ID that is notified. | [readonly] 
+**created_at** | **datetime** | Creation timestamp. | [readonly] 
+**topic** | **str** | Topic of the notification. | [readonly] 
+**message** | **str** | Message content of the notification. | [readonly] 
+**data** | **Dict[str, object]** | Additional data associated with the notification. | [readonly] 
+**acknowledged** | **bool** | Acknowledged by user. | [readonly] 
 
 ## Example
 

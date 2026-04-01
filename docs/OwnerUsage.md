@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hours** | **float** |  | 
-**dollars** | **float** |  | 
-**owner** | [**UsageOwner**](UsageOwner.md) |  | [optional] 
+**hours** | **float** | Compute hours used. | 
+**dollars** | **float** | Dollars spent. | 
+**owner** | [**UsageOwner**](UsageOwner.md) | Usage record owner identity. | [optional] 
 
 ## Example
 

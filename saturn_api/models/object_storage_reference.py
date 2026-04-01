@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner_reference import OwnerReference
@@ -29,8 +29,8 @@ class ObjectStorageReference(BaseModel):
     ObjectStorageReference
     """  # noqa: E501
 
-    file_path: StrictStr
-    owner: Optional[OwnerReference] = None
+    file_path: StrictStr = Field(description="File path in object storage.")
+    owner: Optional[OwnerReference] = Field(default=None, description="Owner of the file.")
     __properties: ClassVar[List[str]] = ["file_path", "owner"]
 
     model_config = ConfigDict(

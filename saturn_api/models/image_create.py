@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.hardware_type import HardwareType
@@ -31,11 +31,11 @@ class ImageCreate(BaseModel):
     ImageCreate
     """  # noqa: E501
 
-    name: StrictStr
-    owner: Optional[OwnerReference] = None
-    description: Optional[StrictStr] = ""
+    name: StrictStr = Field(description="Name of the image.")
+    owner: Optional[OwnerReference] = Field(default=None, description="Owner of the image.")
+    description: Optional[StrictStr] = Field(default="", description="Description of the image.")
     hardware_type: Optional[HardwareType] = None
-    supports: Optional[List[StrictStr]] = None
+    supports: Optional[List[StrictStr]] = Field(default=None, description="Supported features.")
     access: Optional[ImageAccessLevel] = None
     __properties: ClassVar[List[str]] = [
         "name",

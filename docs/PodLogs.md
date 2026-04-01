@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**logs** | **str** |  | [readonly] 
+**logs** | **str** | Log lines from the active pod. | [readonly] 
 
 ## Example
 

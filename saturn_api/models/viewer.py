@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.identity import Identity
@@ -29,11 +29,13 @@ class Viewer(BaseModel):
     Viewer
     """  # noqa: E501
 
-    id: StrictStr
-    created_at: StrictStr
-    identity: Identity
-    route_id: Optional[StrictStr]
-    subdomain: Optional[StrictStr]
+    id: StrictStr = Field(description="ID of the viewer.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    identity: Identity = Field(description="Identity of the viewer.")
+    route_id: Optional[StrictStr] = Field(
+        description="Route ID to allow view access to. If null, all routes are granted."
+    )
+    subdomain: Optional[StrictStr] = Field(description="Subdomain of the route.")
     __properties: ClassVar[List[str]] = ["id", "created_at", "identity", "route_id", "subdomain"]
 
     model_config = ConfigDict(

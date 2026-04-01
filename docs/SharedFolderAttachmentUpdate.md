@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**path** | **str** |  | [optional] 
+**path** | **str** | Mount path of the shared folder in the resource. | [optional] 
 
 ## Example
 

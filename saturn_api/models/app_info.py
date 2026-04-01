@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.auth0_info import Auth0Info
@@ -30,25 +30,41 @@ class AppInfo(BaseModel):
     AppInfo
     """  # noqa: E501
 
-    cloud_provider: StrictStr
-    is_multicluster: StrictBool
-    allow_deployment_public_access: StrictBool
-    is_enterprise: StrictBool
-    customer_name: StrictStr
-    stripe_public_key: Optional[StrictStr]
-    hotjar_user_tracking: StrictBool
-    version: StrictStr
-    auth0: Auth0Info
-    network_filesystem_enabled: StrictBool
-    git_repo_clone_dir: StrictStr
-    app_serving_domain: StrictStr
-    dind_enabled: StrictBool
-    apply_requires_confirm: StrictBool
-    hide_invitations: StrictBool
-    populate_examples: StrictBool
-    whitelabel: WhiteLabelConfiguration
-    hide_resource_creation_bar: StrictBool
-    user_tracking: StrictBool
+    cloud_provider: StrictStr = Field(description="Name of the primary cloud provider.")
+    is_multicluster: StrictBool = Field(description="True if installation spans multiple clusters.")
+    allow_deployment_public_access: StrictBool = Field(
+        description="True if unauthenticated deployment access is allowed."
+    )
+    is_enterprise: StrictBool = Field(description="True if installation is Enterprise.")
+    customer_name: StrictStr = Field(description="Name of the customer installation.")
+    stripe_public_key: Optional[StrictStr] = Field(
+        description="Public key for billing in non-enterprise installations."
+    )
+    hotjar_user_tracking: StrictBool = Field(description="True if hotjar is enabled.")
+    version: StrictStr = Field(description="Version of the API.")
+    auth0: Auth0Info = Field(description="Configuration for auth0 authentication.")
+    network_filesystem_enabled: StrictBool = Field(
+        description="True if NFS shared folders are enabled."
+    )
+    git_repo_clone_dir: StrictStr = Field(
+        description="Default directory to clone git repositories into."
+    )
+    app_serving_domain: StrictStr = Field(
+        description="Root domain for deployment and workspace URLs."
+    )
+    dind_enabled: StrictBool = Field(description="True if docker-in-docker is enabled.")
+    apply_requires_confirm: StrictBool = Field(
+        description="True if recipe apply should be confirmed."
+    )
+    hide_invitations: StrictBool = Field(description="True if invitations are hidden in frontend.")
+    populate_examples: StrictBool = Field(description="True if saturn examples are included.")
+    whitelabel: WhiteLabelConfiguration = Field(
+        description="Configuration for whitelabeled installations."
+    )
+    hide_resource_creation_bar: StrictBool = Field(
+        description="True if resource creation bar should be hidden."
+    )
+    user_tracking: StrictBool = Field(description="True if intercomm tracking is enabled.")
     __properties: ClassVar[List[str]] = [
         "cloud_provider",
         "is_multicluster",

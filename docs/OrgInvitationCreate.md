@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** |  | 
+**email** | **str** | Email that the org invitation is sent to. | 
 **invitee_name** | **str** |  | [optional] 
-**invitor_name** | **str** |  | [optional] 
+**invitor_name** | **str** | Name of the person sending the invite. | [optional] 
 
 ## Example
 

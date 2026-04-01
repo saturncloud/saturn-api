@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.resource_reference import ResourceReference
@@ -29,15 +29,27 @@ class DaskClusterCreate(BaseModel):
     DaskClusterCreate
     """  # noqa: E501
 
-    resource: ResourceReference
-    tags: Optional[Dict[str, StrictStr]] = None
-    worker_size: Optional[StrictStr] = None
-    worker_is_spot: Optional[StrictBool] = False
-    scheduler_size: Optional[StrictStr] = None
-    n_workers: Optional[StrictInt] = 1
-    nthreads: Optional[StrictInt] = 2
-    nprocs: Optional[StrictInt] = None
-    subdomain: Optional[StrictStr] = None
+    resource: ResourceReference = Field(
+        description="Reference to the resource to attach the dask cluster to."
+    )
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the dask cluster."
+    )
+    worker_size: Optional[StrictStr] = Field(
+        default=None, description="Instance size of the dask workers."
+    )
+    worker_is_spot: Optional[StrictBool] = Field(
+        default=False, description="Enables spot instances for the dask workers."
+    )
+    scheduler_size: Optional[StrictStr] = Field(
+        default=None, description="Instance size of the dask scheduler."
+    )
+    n_workers: Optional[StrictInt] = Field(default=1, description="Number of dask workers.")
+    nprocs: Optional[StrictInt] = Field(default=None, description="Number of processes per worker.")
+    nthreads: Optional[StrictInt] = Field(default=2, description="Number of threads per process.")
+    subdomain: Optional[StrictStr] = Field(
+        default=None, description="Subdomain for the dask dashboard."
+    )
     __properties: ClassVar[List[str]] = [
         "resource",
         "tags",
@@ -45,8 +57,8 @@ class DaskClusterCreate(BaseModel):
         "worker_is_spot",
         "scheduler_size",
         "n_workers",
-        "nthreads",
         "nprocs",
+        "nthreads",
         "subdomain",
     ]
 
@@ -125,8 +137,8 @@ class DaskClusterCreate(BaseModel):
                 ),
                 "scheduler_size": obj.get("scheduler_size"),
                 "n_workers": obj.get("n_workers") if obj.get("n_workers") is not None else 1,
-                "nthreads": obj.get("nthreads") if obj.get("nthreads") is not None else 2,
                 "nprocs": obj.get("nprocs"),
+                "nthreads": obj.get("nthreads") if obj.get("nthreads") is not None else 2,
                 "subdomain": obj.get("subdomain"),
             }
         )

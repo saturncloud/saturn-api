@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.data_point import DataPoint
@@ -30,10 +30,10 @@ class MetricSeries(BaseModel):
     MetricSeries
     """  # noqa: E501
 
-    pod_name: StrictStr
-    labels: Dict[str, StrictStr]
-    stats: Stats
-    data: List[DataPoint]
+    pod_name: StrictStr = Field(description="Name of the pod.")
+    labels: Dict[str, StrictStr] = Field(description="Labels associated with the pod.")
+    stats: Stats = Field(description="Stats computed over the data range.")
+    data: List[DataPoint] = Field(description="List of metrics data points.")
     __properties: ClassVar[List[str]] = ["pod_name", "labels", "stats", "data"]
 
     model_config = ConfigDict(

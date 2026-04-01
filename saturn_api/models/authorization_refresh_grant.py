@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing_extensions import Self
 
 
@@ -28,7 +28,7 @@ class AuthorizationRefreshGrant(BaseModel):
     """  # noqa: E501
 
     grant_type: Literal["refresh_token"]
-    refresh_token: StrictStr
+    refresh_token: StrictStr = Field(description="Refresh token for retrieving a new token pair.")
     __properties: ClassVar[List[str]] = ["grant_type", "refresh_token"]
 
     @field_validator("grant_type")

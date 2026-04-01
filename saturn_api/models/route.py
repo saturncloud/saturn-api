@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -27,20 +27,26 @@ class Route(BaseModel):
     Route
     """  # noqa: E501
 
-    subdomain: StrictStr
-    container_port: StrictInt
-    visibility: StrictStr
     id: StrictStr
-    url: StrictStr
-    required: StrictBool
-    daskcluster_id: Optional[StrictStr] = None
-    deployment_id: Optional[StrictStr] = None
-    workspace_id: Optional[StrictStr] = None
+    subdomain: StrictStr = Field(description="Subdomain of the route.")
+    container_port: StrictInt = Field(description="Exposed port in the container.")
+    visibility: StrictStr = Field(description="Describes who is allowed to access the route.")
+    url: StrictStr = Field(description="Full URL of the route.")
+    required: StrictBool = Field(description="True if the route is required for the resource.")
+    daskcluster_id: Optional[StrictStr] = Field(
+        default=None, description="Dask cluster ID the route is attached to."
+    )
+    deployment_id: Optional[StrictStr] = Field(
+        default=None, description="Deployment ID the route is attached to."
+    )
+    workspace_id: Optional[StrictStr] = Field(
+        default=None, description="Workspace ID the route is attached to."
+    )
     __properties: ClassVar[List[str]] = [
+        "id",
         "subdomain",
         "container_port",
         "visibility",
-        "id",
         "url",
         "required",
         "daskcluster_id",
@@ -89,10 +95,10 @@ class Route(BaseModel):
         """
         excluded_fields: Set[str] = set(
             [
+                "id",
                 "subdomain",
                 "container_port",
                 "visibility",
-                "id",
                 "url",
                 "required",
                 "daskcluster_id",
@@ -119,10 +125,10 @@ class Route(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "id": obj.get("id"),
                 "subdomain": obj.get("subdomain"),
                 "container_port": obj.get("container_port"),
                 "visibility": obj.get("visibility"),
-                "id": obj.get("id"),
                 "url": obj.get("url"),
                 "required": obj.get("required"),
                 "daskcluster_id": obj.get("daskcluster_id"),

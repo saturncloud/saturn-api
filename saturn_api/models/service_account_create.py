@@ -27,9 +27,16 @@ class ServiceAccountCreate(BaseModel):
     ServiceAccountCreate
     """  # noqa: E501
 
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=253)]
-    cloud_role: Optional[StrictStr] = None
-    auto_associate: Optional[StrictBool] = False
+    name: Annotated[str, Field(min_length=1, strict=True, max_length=253)] = Field(
+        description="Name of the service account."
+    )
+    cloud_role: Optional[StrictStr] = Field(
+        default=None, description="Cloud role attached to the service account."
+    )
+    auto_associate: Optional[StrictBool] = Field(
+        default=False,
+        description="Automatically grant access to the service account for new users and groups.",
+    )
     __properties: ClassVar[List[str]] = ["name", "cloud_role", "auto_associate"]
 
     model_config = ConfigDict(

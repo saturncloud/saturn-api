@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.instance_size import InstanceSize
@@ -29,7 +29,7 @@ class ServerOptionsSize(BaseModel):
     ServerOptionsSize
     """  # noqa: E501
 
-    size: List[InstanceSize]
+    size: List[InstanceSize] = Field(description="List of available instance sizes.")
     __properties: ClassVar[List[str]] = ["size"]
 
     model_config = ConfigDict(

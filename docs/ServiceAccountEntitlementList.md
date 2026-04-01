@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_account_entitlements** | [**List[ServiceAccountEntitlement]**](ServiceAccountEntitlement.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**service_account_entitlements** | [**List[ServiceAccountEntitlement]**](ServiceAccountEntitlement.md) | List of service account entitlements. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] [readonly] 
+**next_key** | **str** | Next page key. | [optional] [readonly] 
 
 ## Example
 

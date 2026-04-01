@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**grant_type** | **str** |  | 
-**code** | **str** |  | 
-**code_verifier** | **str** |  | 
-**redirect_uri** | **str** |  | 
+**grant_type** | **str** | OAuth grant type. | 
+**code** | **str** | OAuth response code. | 
+**code_verifier** | **str** | OAuth code verifier for the PKCE request. | 
+**redirect_uri** | **str** | OAuth redirect URI. | 
 
 ## Example
 

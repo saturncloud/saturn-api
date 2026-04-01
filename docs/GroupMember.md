@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**user_id** | **str** |  | [readonly] 
-**group_id** | **str** |  | [readonly] 
+**id** | **str** | ID of the group member | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**user_id** | **str** | User ID of the group member. | [readonly] 
+**group_id** | **str** | Group ID of the group member. | [readonly] 
 
 ## Example
 

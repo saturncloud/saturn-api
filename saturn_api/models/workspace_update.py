@@ -39,26 +39,50 @@ class WorkspaceUpdate(BaseModel):
     WorkspaceUpdate
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = None
-    tags: Optional[Dict[str, StrictStr]] = None
-    image_uri: Optional[StrictStr] = None
-    image_tag_id: Optional[StrictStr] = None
-    image_enforce_trusted: Optional[StrictBool] = True
-    environment_variables: Optional[Dict[str, StrictStr]] = None
-    external_repo_attachments: Optional[List[ExternalRepoAttachmentNested]] = None
-    extra_packages: Optional[ExtraPackages] = None
-    start_script: Optional[StrictStr] = None
-    working_dir: Optional[StrictStr] = None
-    instance_size: Optional[StrictStr] = None
-    is_spot: Optional[StrictBool] = None
-    start_dind: Optional[StrictBool] = None
-    disk_space: Optional[StrictStr] = None
-    subdomain: Optional[StrictStr] = None
+    name: Optional[StrictStr] = Field(default=None, description="Name of the workspace.")
+    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(
+        default=None, description="Description of the workspace."
+    )
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the workspace."
+    )
+    image_uri: Optional[StrictStr] = Field(default=None, description="URI of the image to attach.")
+    image_tag_id: Optional[StrictStr] = Field(default=None, description="Image tag ID to attach.")
+    image_enforce_trusted: Optional[StrictBool] = Field(
+        default=True, description="Enable image trust validation before attaching."
+    )
+    environment_variables: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Mapping of environment variable keys to values."
+    )
+    external_repo_attachments: Optional[List[ExternalRepoAttachmentNested]] = Field(
+        default=None, description="List of external repo attachments."
+    )
+    extra_packages: Optional[ExtraPackages] = Field(
+        default=None, description="Addtitional packages to install on start."
+    )
+    start_script: Optional[StrictStr] = Field(
+        default=None, description="Shell script that runs on start before the primary command."
+    )
+    working_dir: Optional[StrictStr] = Field(default=None, description="Initial working directory.")
+    instance_size: Optional[StrictStr] = Field(
+        default=None, description="Instance size of the workspace."
+    )
+    is_spot: Optional[StrictBool] = Field(
+        default=None, description="Enables running on spot instance sizes."
+    )
+    start_dind: Optional[StrictBool] = Field(default=None, description="Enables docker-in-docker.")
+    disk_space: Optional[StrictStr] = Field(
+        default=None, description="Size of the persistent volume attached to the workspace."
+    )
+    subdomain: Optional[StrictStr] = Field(
+        default=None, description="Subdomain of the workspace URL."
+    )
     auto_shutoff: Literal["1 hour", "6 hours", "24 hours", "3 days", "7 days", "Never"] | None = (
         None
     )
-    start_ssh: Optional[StrictBool] = None
+    start_ssh: Optional[StrictBool] = Field(
+        default=None, description="Enable SSH access on the deployment."
+    )
     __properties: ClassVar[List[str]] = [
         "name",
         "description",

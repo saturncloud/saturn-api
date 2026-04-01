@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class Login(BaseModel):
     Login
     """  # noqa: E501
 
-    username: StrictStr
-    password: StrictStr
+    username: StrictStr = Field(description="The user's login username.")
+    password: StrictStr = Field(description="The user's password.")
     __properties: ClassVar[List[str]] = ["username", "password"]
 
     model_config = ConfigDict(

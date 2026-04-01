@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**identity** | [**Identity**](Identity.md) |  | [readonly] 
-**route_id** | **str** |  | [readonly] 
-**subdomain** | **str** |  | [readonly] 
+**id** | **str** | ID of the viewer. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**identity** | [**Identity**](Identity.md) | Identity of the viewer. | [readonly] 
+**route_id** | **str** | Route ID to allow view access to. If null, all routes are granted. | [readonly] 
+**subdomain** | **str** | Subdomain of the route. | [readonly] 
 
 ## Example
 

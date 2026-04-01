@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.object_storage_presigned_download import (
@@ -31,7 +31,7 @@ class ObjectStorageBulkDownload(BaseModel):
     ObjectStorageBulkDownload
     """  # noqa: E501
 
-    files: List[ObjectStoragePresignedDownload]
+    files: List[ObjectStoragePresignedDownload] = Field(description="List of presigned downloads.")
     __properties: ClassVar[List[str]] = ["files"]
 
     model_config = ConfigDict(

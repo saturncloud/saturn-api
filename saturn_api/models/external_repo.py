@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner import Owner
@@ -30,13 +30,17 @@ class ExternalRepo(BaseModel):
     ExternalRepo
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    created_at: StrictStr
-    remote_url: StrictStr
-    ssh_privatekey_id: Optional[StrictStr] = None
-    ssh_privatekey: Optional[SSHPrivateKeyPartial] = None
+    id: StrictStr = Field(description="ID of the repository.")
+    name: StrictStr = Field(description="Name of the repository.")
+    owner: Owner = Field(description="Owner of the repository")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    remote_url: StrictStr = Field(description="Repository URL.")
+    ssh_privatekey_id: Optional[StrictStr] = Field(
+        default=None, description="ID of an SSH Private Key with permission to pull the repository."
+    )
+    ssh_privatekey: Optional[SSHPrivateKeyPartial] = Field(
+        default=None, description="SSH Private Key information."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",

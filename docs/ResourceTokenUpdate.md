@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scope** | **str** |  | 
+**scope** | **str** | Permission scope of the token. | 
 
 ## Example
 

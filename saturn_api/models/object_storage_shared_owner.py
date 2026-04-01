@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,9 @@ class ObjectStorageSharedOwner(BaseModel):
     ObjectStorageSharedOwner
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    count: StrictInt
+    id: StrictStr = Field(description="ID of the owner.")
+    name: StrictStr = Field(description="Name of the owner.")
+    count: StrictInt = Field(description="Count of files shared by the owner.")
     __properties: ClassVar[List[str]] = ["id", "name", "count"]
 
     model_config = ConfigDict(

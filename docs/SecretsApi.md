@@ -281,18 +281,18 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.SecretsApi(api_client)
-    owner_name = 'owner_name_example' # str |  (optional)
-    owner_id = 'owner_id_example' # str |  (optional)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    owner = 'owner_example' # str |  (optional)
-    name = 'name_example' # str |  (optional)
-    access = saturn_api.SecretAccessLevel() # SecretAccessLevel |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    owner_name = 'owner_name_example' # str | Reference owner by name. (optional)
+    owner_id = 'owner_id_example' # str | Reference owner by ID. (optional)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    owner = 'owner_example' # str | Reference owner by name. (optional)
+    name = 'name_example' # str | Prefix matched search string on secret name. (optional)
+    access = saturn_api.SecretAccessLevel() # SecretAccessLevel | Filter secrets by access level. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List secrets
@@ -310,18 +310,18 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_name** | **str**|  | [optional] 
- **owner_id** | **str**|  | [optional] 
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **owner** | **str**|  | [optional] 
- **name** | **str**|  | [optional] 
- **access** | [**SecretAccessLevel**](.md)|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **owner_name** | **str**| Reference owner by name. | [optional] 
+ **owner_id** | **str**| Reference owner by ID. | [optional] 
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **owner** | **str**| Reference owner by name. | [optional] 
+ **name** | **str**| Prefix matched search string on secret name. | [optional] 
+ **access** | [**SecretAccessLevel**](.md)| Filter secrets by access level. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

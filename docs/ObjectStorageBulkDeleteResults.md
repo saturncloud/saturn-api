@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**failed_file_paths** | **List[str]** |  | [readonly] 
+**failed_file_paths** | **List[str]** | List of file paths that failed to delete. | [readonly] 
 
 ## Example
 

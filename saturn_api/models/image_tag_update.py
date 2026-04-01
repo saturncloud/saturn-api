@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,14 @@ class ImageTagUpdate(BaseModel):
     ImageTagUpdate
     """  # noqa: E501
 
-    description: Optional[StrictStr] = None
-    version: Optional[StrictStr] = None
-    archived: Optional[StrictBool] = None
+    description: Optional[StrictStr] = Field(
+        default=None, description="Description of the image tag."
+    )
+    version: Optional[StrictStr] = Field(default=None, description="Version of the image tag.")
+    archived: Optional[StrictBool] = Field(
+        default=None,
+        description="Archive the image tag. Archived tags are not attachable to new resources, but will continue to work on existing resources.",
+    )
     __properties: ClassVar[List[str]] = ["description", "version", "archived"]
 
     model_config = ConfigDict(

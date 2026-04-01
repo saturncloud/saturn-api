@@ -27,7 +27,9 @@ class NotificationDelete(BaseModel):
     NotificationDelete
     """  # noqa: E501
 
-    notification_ids: Annotated[List[StrictStr], Field(max_length=1000)]
+    notification_ids: Annotated[List[StrictStr], Field(max_length=1000)] = Field(
+        description="List of notification IDs to delete."
+    )
     __properties: ClassVar[List[str]] = ["notification_ids"]
 
     model_config = ConfigDict(

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.dask_cluster import DaskCluster
@@ -29,9 +29,9 @@ class DaskClusterList(BaseModel):
     DaskClusterList
     """  # noqa: E501
 
-    dask_clusters: List[DaskCluster]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    dask_clusters: List[DaskCluster] = Field(description="List of dask clusters.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["dask_clusters", "prev_key", "next_key"]
 
     model_config = ConfigDict(

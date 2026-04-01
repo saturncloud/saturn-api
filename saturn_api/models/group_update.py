@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,10 +27,14 @@ class GroupUpdate(BaseModel):
     GroupUpdate
     """  # noqa: E501
 
-    groupname: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    is_multiple_ssh_keys: Optional[StrictBool] = None
-    org_admin: Optional[StrictBool] = None
+    groupname: Optional[StrictStr] = Field(default=None, description="Name of the group.")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the group.")
+    is_multiple_ssh_keys: Optional[StrictBool] = Field(
+        default=None, description="Enable multiple SSH keys."
+    )
+    org_admin: Optional[StrictBool] = Field(
+        default=None, description="Enable group to take privileged actions on its org."
+    )
     __properties: ClassVar[List[str]] = [
         "groupname",
         "description",

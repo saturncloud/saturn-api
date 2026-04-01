@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jupyter** | [**DefaultImages**](DefaultImages.md) |  | [readonly] 
-**rstudio** | [**DefaultImages**](DefaultImages.md) |  | [readonly] 
+**jupyter** | [**DefaultImages**](DefaultImages.md) | Default images for jupyter workspaces. | [readonly] 
+**rstudio** | [**DefaultImages**](DefaultImages.md) | Default images for rstudio workspaces. | [readonly] 
 
 ## Example
 

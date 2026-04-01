@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.secret_access_level import SecretAccessLevel
@@ -29,9 +29,9 @@ class SecretUpdate(BaseModel):
     SecretUpdate
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
+    name: Optional[StrictStr] = Field(default=None, description="Name of the secret.")
     access: Optional[SecretAccessLevel] = None
-    value: Optional[StrictStr] = None
+    value: Optional[StrictStr] = Field(default=None, description="Value of the secret.")
     __properties: ClassVar[List[str]] = ["name", "access", "value"]
 
     model_config = ConfigDict(

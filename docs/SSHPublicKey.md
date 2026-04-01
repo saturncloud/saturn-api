@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**identity** | [**Identity**](Identity.md) |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
+**id** | **str** | ID of the SSH public key. | [readonly] 
+**name** | **str** | Name of the SSH public key. | [readonly] 
+**identity** | [**Identity**](Identity.md) | Identity that owns the SSH public key. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
 
 ## Example
 

@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**description** | **str** |  | [readonly] 
-**created_at** | **datetime** |  | [readonly] 
-**expires_at** | **datetime** |  | [readonly] 
-**refresh_expires_at** | **datetime** |  | [readonly] 
-**scope** | **str** |  | [readonly] 
-**user_id** | **str** |  | [readonly] 
-**group_id** | **str** |  | [readonly] 
-**access_token** | **str** |  | [readonly] 
-**refresh_token** | **str** |  | [optional] [readonly] 
+**id** | **str** | ID of the token. | [readonly] 
+**description** | **str** | Description of what the API token is used for. | [readonly] 
+**created_at** | **datetime** | Timestamp from when the token was created. | [readonly] 
+**expires_at** | **datetime** | Token expiration timestamp. | [readonly] 
+**refresh_expires_at** | **datetime** | Refresh token expiration timestamp. | [readonly] 
+**scope** | **str** | Permission scope of the token. | [readonly] 
+**user_id** | **str** | User ID associated with the token. | [readonly] 
+**group_id** | **str** | Group ID associated with the token. | [readonly] 
+**access_token** | **str** | API access token. | [readonly] 
+**refresh_token** | **str** | API refresh token. | [optional] [readonly] 
 
 ## Example
 

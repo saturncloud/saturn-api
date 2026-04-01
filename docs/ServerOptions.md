@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auto_shutoff** | **List[str]** |  | [readonly] 
-**disk_space** | **List[str]** |  | [readonly] 
-**sizes** | [**Dict[str, InstanceSize]**](InstanceSize.md) |  | [readonly] 
+**auto_shutoff** | **List[str]** | List of available auto-shutoff settings for workspaces. | [readonly] 
+**disk_space** | **List[str]** | List of available disk sizes for workspaces. | [readonly] 
+**sizes** | [**Dict[str, InstanceSize]**](InstanceSize.md) | Mapping of instance size names to their configurations. | [readonly] 
 
 ## Example
 

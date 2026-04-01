@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class ObjectStorageCopySource(BaseModel):
     ObjectStorageCopySource
     """  # noqa: E501
 
-    file_path: StrictStr
-    owner_name: StrictStr
+    file_path: StrictStr = Field(description="File path of the source in object storage.")
+    owner_name: StrictStr = Field(description="Name of the owner of the source.")
     __properties: ClassVar[List[str]] = ["file_path", "owner_name"]
 
     model_config = ConfigDict(

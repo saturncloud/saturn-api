@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**website_url** | **str** |  | [optional] 
-**logo_image_url** | **str** |  | [optional] 
-**limits_id** | **str** |  | [optional] 
-**locked** | **bool** |  | [optional] 
+**email** | **str** | Email of the org. | [optional] 
+**description** | **str** | Description of the org. | [optional] 
+**website_url** | **str** | Website URL of the org. | [optional] 
+**logo_image_url** | **str** | Logo of the org. | [optional] 
+**limits_id** | **str** | Usage limits ID applied to the entire org. (Admin only) | [optional] 
+**locked** | **bool** | Lock the org. (Admin only) | [optional] 
 
 ## Example
 

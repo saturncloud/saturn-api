@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**path** | **str** |  | [optional] 
-**on_restart** | **str** |  | [optional] 
-**ref** | **str** |  | [optional] 
-**ref_type** | **str** |  | [optional] 
+**path** | **str** | Path of the repository in the resource it is attached to. | [optional] 
+**on_restart** | **str** | Repository clone behavior on restart. Preserve only applies when path is in a persistent volume. | [optional] 
+**ref** | **str** | Git version reference on the repository. | [optional] 
+**ref_type** | **str** | Type of the git ref. | [optional] 
 
 ## Example
 

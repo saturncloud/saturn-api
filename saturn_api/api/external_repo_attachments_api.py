@@ -726,13 +726,22 @@ class ExternalRepoAttachmentsApi:
     @validate_call
     async def list(
         self,
-        job_id: Optional[StrictStr] = None,
-        deployment_id: Optional[StrictStr] = None,
-        workspace_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        job_id: Annotated[Optional[StrictStr], Field(description="Reference by job ID.")] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="Reference by deployment ID.")
+        ] = None,
+        workspace_id: Annotated[
+            Optional[StrictStr], Field(description="Reference by workspace ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -747,19 +756,19 @@ class ExternalRepoAttachmentsApi:
 
         Paginated list of external repo attachments.
 
-        :param job_id:
+        :param job_id: Reference by job ID.
         :type job_id: str
-        :param deployment_id:
+        :param deployment_id: Reference by deployment ID.
         :type deployment_id: str
-        :param workspace_id:
+        :param workspace_id: Reference by workspace ID.
         :type workspace_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -810,13 +819,22 @@ class ExternalRepoAttachmentsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        job_id: Optional[StrictStr] = None,
-        deployment_id: Optional[StrictStr] = None,
-        workspace_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        job_id: Annotated[Optional[StrictStr], Field(description="Reference by job ID.")] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="Reference by deployment ID.")
+        ] = None,
+        workspace_id: Annotated[
+            Optional[StrictStr], Field(description="Reference by workspace ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -831,19 +849,19 @@ class ExternalRepoAttachmentsApi:
 
         Paginated list of external repo attachments.
 
-        :param job_id:
+        :param job_id: Reference by job ID.
         :type job_id: str
-        :param deployment_id:
+        :param deployment_id: Reference by deployment ID.
         :type deployment_id: str
-        :param workspace_id:
+        :param workspace_id: Reference by workspace ID.
         :type workspace_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -894,13 +912,22 @@ class ExternalRepoAttachmentsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        job_id: Optional[StrictStr] = None,
-        deployment_id: Optional[StrictStr] = None,
-        workspace_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        job_id: Annotated[Optional[StrictStr], Field(description="Reference by job ID.")] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="Reference by deployment ID.")
+        ] = None,
+        workspace_id: Annotated[
+            Optional[StrictStr], Field(description="Reference by workspace ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -915,19 +942,19 @@ class ExternalRepoAttachmentsApi:
 
         Paginated list of external repo attachments.
 
-        :param job_id:
+        :param job_id: Reference by job ID.
         :type job_id: str
-        :param deployment_id:
+        :param deployment_id: Reference by deployment ID.
         :type deployment_id: str
-        :param workspace_id:
+        :param workspace_id: Reference by workspace ID.
         :type workspace_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

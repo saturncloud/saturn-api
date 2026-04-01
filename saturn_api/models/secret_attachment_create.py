@@ -31,10 +31,19 @@ class SecretAttachmentCreate(BaseModel):
     """  # noqa: E501
 
     attachment_type: Optional[SecretAttachmentType] = None
-    location: Optional[StrictStr] = None
-    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = ""
-    secret: Optional[SecretCreate] = None
-    secret_id: Optional[StrictStr] = None
+    location: Optional[StrictStr] = Field(
+        default=None,
+        description="Location of the attachment on the resource. Format depends on attachment type.",
+    )
+    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(
+        default="", description="Description of the secret attachment."
+    )
+    secret: Optional[SecretCreate] = Field(
+        default=None, description="New secret to create and attach to the resource."
+    )
+    secret_id: Optional[StrictStr] = Field(
+        default=None, description="Secret ID attached to the resource."
+    )
     __properties: ClassVar[List[str]] = [
         "attachment_type",
         "location",

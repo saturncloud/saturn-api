@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity** | [**IdentityReference**](IdentityReference.md) |  | [optional] 
-**description** | **str** |  | [optional] [default to '']
-**expires_in** | **int** |  | [optional] 
-**refresh_expires_in** | **int** |  | [optional] 
-**scope** | **str** |  | [optional] 
+**identity** | [**IdentityReference**](IdentityReference.md) | Reference to a user or group. | [optional] 
+**description** | **str** | Description of what the API token is used for. | [optional] [default to '']
+**expires_in** | **int** | Expiration of the token in seconds. | [optional] 
+**refresh_expires_in** | **int** | Expiration of the refresh token in seconds. | [optional] 
+**scope** | **str** | Permission scope of the token. | [optional] 
 
 ## Example
 

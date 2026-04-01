@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**groupname** | **str** |  | 
-**org_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**is_multiple_ssh_keys** | **bool** |  | [optional] [default to False]
-**org_admin** | **bool** |  | [optional] [default to False]
+**groupname** | **str** | Name of the group. | 
+**org_id** | **str** | Org ID that the group belongs to. Defaults to the default org for the authenticated user. | [optional] 
+**description** | **str** | Description of the group. | [optional] 
+**is_multiple_ssh_keys** | **bool** | Enable multiple SSH keys. | [optional] [default to False]
+**org_admin** | **bool** | Enable group to take privileged actions on its org. | [optional] [default to False]
 
 ## Example
 

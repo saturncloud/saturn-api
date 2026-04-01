@@ -30,17 +30,25 @@ class ImageTag(BaseModel):
     ImageTag
     """  # noqa: E501
 
-    id: StrictStr
-    created_at: StrictStr
-    image: Image
-    image_uri: StrictStr
-    description: StrictStr
-    version: Annotated[str, Field(min_length=1, strict=True)]
-    build_data: Optional[BuildData] = None
-    archived: StrictBool
-    is_external: StrictBool
-    status: StrictStr
-    saturn_env: Optional[StrictStr] = None
+    id: StrictStr = Field(description="ID of the image tag.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    image: Image = Field(description="Image that the tag belongs to.")
+    image_uri: StrictStr = Field(description="Image URI for the tag.")
+    description: StrictStr = Field(description="Description of the image tag")
+    version: Annotated[str, Field(min_length=1, strict=True)] = Field(
+        description="Version of the image tag."
+    )
+    build_data: Optional[BuildData] = Field(
+        default=None, description="Build data for the image tag."
+    )
+    archived: StrictBool = Field(
+        description="True if the image tag is archived. Archived tags are not attachable to new resources, but will continue to work on existing resources."
+    )
+    is_external: StrictBool = Field(
+        description="True if the image tag was imported from an external source."
+    )
+    status: StrictStr = Field(description="Status of the image tag build.")
+    saturn_env: Optional[StrictStr] = Field(default=None, description="Dump of the build env.")
     __properties: ClassVar[List[str]] = [
         "id",
         "created_at",

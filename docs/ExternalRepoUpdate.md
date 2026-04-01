@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**remote_url** | **str** |  | [optional] 
-**ssh_privatekey_id** | **str** |  | [optional] 
+**remote_url** | **str** | Repository URL. | [optional] 
+**ssh_privatekey_id** | **str** | ID of an SSH Private Key with permission to pull the repository. | [optional] 
 
 ## Example
 

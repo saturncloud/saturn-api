@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **str** |  | [default to '']
-**description** | **str** |  | [optional] [default to '']
-**build_data** | [**BuildData**](BuildData.md) |  | [optional] 
-**image_uri** | **str** |  | 
+**version** | **str** | Version of the image tag. | [default to '']
+**description** | **str** | Description of the image tag. | [optional] [default to '']
+**build_data** | [**BuildData**](BuildData.md) | Build data for the image tag. | [optional] 
+**image_uri** | **str** | External image URI | 
 
 ## Example
 

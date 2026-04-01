@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**id** | **str** |  | 
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**org_id** | **str** |  | [optional] 
+**name** | **str** | Reference owner by name. | 
+**id** | **str** | Reference owner by ID. | 
+**user_id** | **str** | Reference owner by user ID. | [optional] 
+**group_id** | **str** | Reference owner by group ID. | [optional] 
+**org_id** | **str** | Reference owner by org ID. | [optional] 
 
 ## Example
 

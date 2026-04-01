@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -27,10 +27,10 @@ class ObjectStoragePresignedPart(BaseModel):
     ObjectStoragePresignedPart
     """  # noqa: E501
 
-    url: StrictStr
-    part_number: StrictInt
-    size: StrictInt
-    headers: Dict[str, StrictStr]
+    url: StrictStr = Field(description="Presigned part upload URL.")
+    part_number: StrictInt = Field(description="Part number.")
+    size: StrictInt = Field(description="Size of the part.")
+    headers: Dict[str, StrictStr] = Field(description="Headers for the upload request.")
     __properties: ClassVar[List[str]] = ["url", "part_number", "size", "headers"]
 
     model_config = ConfigDict(

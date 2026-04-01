@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
+**name** | **str** | Name of the secret. | 
+**owner** | [**OwnerReference**](OwnerReference.md) | Owner of the secret. | [optional] 
 **access** | [**SecretAccessLevel**](SecretAccessLevel.md) |  | [optional] 
-**value** | **str** |  | 
+**value** | **str** | Value of the secret. | 
 
 ## Example
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**debug_mode** | **bool** |  | [optional] 
+**debug_mode** | **bool** | Enable debug mode. Workspace will continue to run on error, and SSH will be enabled. | [optional] 
 
 ## Example
 

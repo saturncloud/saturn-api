@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.notification_subscription import NotificationSubscription
@@ -29,9 +29,11 @@ class NotificationSubscriptionList(BaseModel):
     NotificationSubscriptionList
     """  # noqa: E501
 
-    subscriptions: List[NotificationSubscription]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    subscriptions: List[NotificationSubscription] = Field(
+        description="List of notification subscriptions."
+    )
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["subscriptions", "prev_key", "next_key"]
 
     model_config = ConfigDict(

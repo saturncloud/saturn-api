@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deployment_id** | **str** |  | 
+**deployment_id** | **str** | Reference by deployment ID. | 
 
 ## Example
 

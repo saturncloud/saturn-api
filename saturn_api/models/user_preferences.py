@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner_user_detailed import OwnerUserDetailed
@@ -29,8 +29,8 @@ class UserPreferences(BaseModel):
     UserPreferences
     """  # noqa: E501
 
-    default_org_id: StrictStr
-    default_owner: OwnerUserDetailed
+    default_org_id: StrictStr = Field(description="Default org ID for the user.")
+    default_owner: OwnerUserDetailed = Field(description="Default owner for the user.")
     __properties: ClassVar[List[str]] = ["default_org_id", "default_owner"]
 
     model_config = ConfigDict(

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | [**List[User]**](User.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] 
-**next_key** | **str** |  | [optional] 
+**users** | [**List[User]**](User.md) | List of users. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] 
+**next_key** | **str** | Next page key. | [optional] 
 
 ## Example
 

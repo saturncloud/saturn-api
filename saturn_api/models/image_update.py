@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.hardware_type import HardwareType
@@ -30,10 +30,10 @@ class ImageUpdate(BaseModel):
     ImageUpdate
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
+    name: Optional[StrictStr] = Field(default=None, description="Name of the image.")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the image.")
     hardware_type: Optional[HardwareType] = None
-    supports: Optional[List[StrictStr]] = None
+    supports: Optional[List[StrictStr]] = Field(default=None, description="Supported features.")
     access: Optional[ImageAccessLevel] = None
     __properties: ClassVar[List[str]] = [
         "name",

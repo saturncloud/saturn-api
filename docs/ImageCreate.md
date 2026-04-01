@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
-**description** | **str** |  | [optional] [default to '']
+**name** | **str** | Name of the image. | 
+**owner** | [**OwnerReference**](OwnerReference.md) | Owner of the image. | [optional] 
+**description** | **str** | Description of the image. | [optional] [default to '']
 **hardware_type** | [**HardwareType**](HardwareType.md) |  | [optional] 
-**supports** | **List[str]** |  | [optional] 
+**supports** | **List[str]** | Supported features. | [optional] 
 **access** | [**ImageAccessLevel**](ImageAccessLevel.md) |  | [optional] 
 
 ## Example

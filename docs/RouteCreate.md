@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subdomain** | **str** |  | 
-**container_port** | **int** |  | 
-**visibility** | **str** |  | [optional] 
+**subdomain** | **str** | Subdomain of the route. | 
+**container_port** | **int** | Exposed port in the container. | 
+**visibility** | **str** | Describes who is allowed to access the route. | [optional] 
 
 ## Example
 

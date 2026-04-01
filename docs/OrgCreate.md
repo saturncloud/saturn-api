@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**email** | **str** |  | 
-**description** | **str** |  | [optional] [default to '']
-**website_url** | **str** |  | [optional] 
-**logo_image_url** | **str** |  | [optional] 
-**limits_id** | **str** |  | [optional] 
+**name** | **str** | Name of the org. | 
+**email** | **str** | Email of the org. | 
+**description** | **str** | Description of the org. | [optional] [default to '']
+**website_url** | **str** | Website URL of the org. | [optional] 
+**logo_image_url** | **str** | Logo of the org. | [optional] 
+**limits_id** | **str** | Usage limits ID applied to the entire org. (Admin only) | [optional] 
 
 ## Example
 

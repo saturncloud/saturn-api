@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,10 +27,15 @@ class SSHPrivateKeyUpdate(BaseModel):
     SSHPrivateKeyUpdate
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    value: Optional[StrictStr] = None
-    location: Optional[StrictStr] = None
-    is_default: Optional[StrictBool] = None
+    name: Optional[StrictStr] = Field(default=None, description="Name of the SSH private key.")
+    value: Optional[StrictStr] = Field(default=None, description="Value of the SSH private key.")
+    location: Optional[StrictStr] = Field(
+        default=None, description="Path to the SSH private key in resources."
+    )
+    is_default: Optional[StrictBool] = Field(
+        default=None,
+        description="Enable SSH private key to be used for any external repositories that do not specify a key.",
+    )
     __properties: ClassVar[List[str]] = ["name", "value", "location", "is_default"]
 
     model_config = ConfigDict(

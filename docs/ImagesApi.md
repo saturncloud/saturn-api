@@ -282,21 +282,21 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ImagesApi(api_client)
-    owner_name = 'owner_name_example' # str |  (optional)
-    owner_id = 'owner_id_example' # str |  (optional)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    owner = 'owner_example' # str |  (optional)
-    name = 'name_example' # str |  (optional)
-    access = saturn_api.ImageAccessLevel() # ImageAccessLevel |  (optional)
-    supports = 'supports_example' # str |  (optional)
-    hardware_type = saturn_api.HardwareType() # HardwareType |  (optional)
-    is_base = False # bool |  (optional) (default to False)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    owner_name = 'owner_name_example' # str | Reference owner by name. (optional)
+    owner_id = 'owner_id_example' # str | Reference owner by ID. (optional)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    owner = 'owner_example' # str | Reference owner by name. (optional)
+    name = 'name_example' # str | Prefix matched search string on image name. (optional)
+    access = saturn_api.ImageAccessLevel() # ImageAccessLevel | Filter images by access level. (optional)
+    supports = 'supports_example' # str | Filter images by supported features. (optional)
+    hardware_type = saturn_api.HardwareType() # HardwareType | Filter images by hardware type. (optional)
+    is_base = False # bool | Filter for images that are or are not base images. (optional) (default to False)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List images
@@ -314,21 +314,21 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_name** | **str**|  | [optional] 
- **owner_id** | **str**|  | [optional] 
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **owner** | **str**|  | [optional] 
- **name** | **str**|  | [optional] 
- **access** | [**ImageAccessLevel**](.md)|  | [optional] 
- **supports** | **str**|  | [optional] 
- **hardware_type** | [**HardwareType**](.md)|  | [optional] 
- **is_base** | **bool**|  | [optional] [default to False]
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **owner_name** | **str**| Reference owner by name. | [optional] 
+ **owner_id** | **str**| Reference owner by ID. | [optional] 
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **owner** | **str**| Reference owner by name. | [optional] 
+ **name** | **str**| Prefix matched search string on image name. | [optional] 
+ **access** | [**ImageAccessLevel**](.md)| Filter images by access level. | [optional] 
+ **supports** | **str**| Filter images by supported features. | [optional] 
+ **hardware_type** | [**HardwareType**](.md)| Filter images by hardware type. | [optional] 
+ **is_base** | **bool**| Filter for images that are or are not base images. | [optional] [default to False]
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

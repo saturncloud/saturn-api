@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | 
+**user_id** | **str** | Identity reference by user ID | 
 
 ## Example
 

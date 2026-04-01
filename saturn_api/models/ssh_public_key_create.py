@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.identity_reference import IdentityReference
@@ -29,9 +29,11 @@ class SSHPublicKeyCreate(BaseModel):
     SSHPublicKeyCreate
     """  # noqa: E501
 
-    name: StrictStr
-    identity: Optional[IdentityReference] = None
-    value: StrictStr
+    name: StrictStr = Field(description="Name of the SSH public key.")
+    identity: Optional[IdentityReference] = Field(
+        default=None, description="Refence to the identity that owns the SSH public key."
+    )
+    value: StrictStr = Field(description="Value of the SSH public key.")
     __properties: ClassVar[List[str]] = ["name", "identity", "value"]
 
     model_config = ConfigDict(

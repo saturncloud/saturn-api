@@ -19,7 +19,7 @@ import re  # noqa: F401
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -28,13 +28,13 @@ class Notification(BaseModel):
     Notification
     """  # noqa: E501
 
-    id: StrictStr
-    user_id: StrictStr
-    created_at: datetime
-    topic: StrictStr
-    message: StrictStr
-    data: Dict[str, Any]
-    acknowledged: StrictBool
+    id: StrictStr = Field(description="ID of the notification.")
+    user_id: StrictStr = Field(description="User ID that is notified.")
+    created_at: datetime = Field(description="Creation timestamp.")
+    topic: StrictStr = Field(description="Topic of the notification.")
+    message: StrictStr = Field(description="Message content of the notification.")
+    data: Dict[str, Any] = Field(description="Additional data associated with the notification.")
+    acknowledged: StrictBool = Field(description="Acknowledged by user.")
     __properties: ClassVar[List[str]] = [
         "id",
         "user_id",

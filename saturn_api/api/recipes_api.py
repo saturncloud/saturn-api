@@ -513,12 +513,25 @@ class RecipesApi:
         self,
         recipe_type: StrictStr,
         name: StrictStr,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         as_template: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -537,17 +550,17 @@ class RecipesApi:
         :type recipe_type: str
         :param name: (required)
         :type name: str
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param as_template:
         :type as_template: bool
@@ -604,12 +617,25 @@ class RecipesApi:
         self,
         recipe_type: StrictStr,
         name: StrictStr,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         as_template: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -628,17 +654,17 @@ class RecipesApi:
         :type recipe_type: str
         :param name: (required)
         :type name: str
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param as_template:
         :type as_template: bool
@@ -695,12 +721,25 @@ class RecipesApi:
         self,
         recipe_type: StrictStr,
         name: StrictStr,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         as_template: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -719,17 +758,17 @@ class RecipesApi:
         :type recipe_type: str
         :param name: (required)
         :type name: str
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param as_template:
         :type as_template: bool
@@ -868,19 +907,37 @@ class RecipesApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         type: Optional[StrictStr] = None,
         name: Optional[StrictStr] = None,
         as_template: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -895,17 +952,17 @@ class RecipesApi:
 
         Paginated list of recipes.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param type:
         :type type: str
@@ -913,13 +970,13 @@ class RecipesApi:
         :type name: str
         :param as_template:
         :type as_template: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -976,19 +1033,37 @@ class RecipesApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         type: Optional[StrictStr] = None,
         name: Optional[StrictStr] = None,
         as_template: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1003,17 +1078,17 @@ class RecipesApi:
 
         Paginated list of recipes.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param type:
         :type type: str
@@ -1021,13 +1096,13 @@ class RecipesApi:
         :type name: str
         :param as_template:
         :type as_template: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1084,19 +1159,37 @@ class RecipesApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         type: Optional[StrictStr] = None,
         name: Optional[StrictStr] = None,
         as_template: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1111,17 +1204,17 @@ class RecipesApi:
 
         Paginated list of recipes.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param type:
         :type type: str
@@ -1129,13 +1222,13 @@ class RecipesApi:
         :type name: str
         :param as_template:
         :type as_template: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

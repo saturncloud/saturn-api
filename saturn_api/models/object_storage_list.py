@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.object_storage_dir_details import ObjectStorageDirDetails
@@ -30,9 +30,9 @@ class ObjectStorageList(BaseModel):
     ObjectStorageList
     """  # noqa: E501
 
-    dirs: List[ObjectStorageDirDetails]
-    files: List[ObjectStorageFileDetails]
-    next_last_key: Optional[StrictStr]
+    dirs: List[ObjectStorageDirDetails] = Field(description="List of directories.")
+    files: List[ObjectStorageFileDetails] = Field(description="List of files.")
+    next_last_key: Optional[StrictStr] = Field(description="Next pagination key.")
     __properties: ClassVar[List[str]] = ["dirs", "files", "next_last_key"]
 
     model_config = ConfigDict(

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,7 @@ class GroupMemberCreate(BaseModel):
     GroupMemberCreate
     """  # noqa: E501
 
-    user_id: StrictStr
+    user_id: StrictStr = Field(description="User ID to add to the group.")
     __properties: ClassVar[List[str]] = ["user_id"]
 
     model_config = ConfigDict(

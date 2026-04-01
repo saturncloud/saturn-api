@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.default_images import DefaultImages
@@ -26,14 +26,14 @@ from saturn_api.models.default_sizes import DefaultSizes
 from saturn_api.models.server_options_size import ServerOptionsSize
 
 
-class JobServerOptions(BaseModel):
+class DeploymentServerInfo(BaseModel):
     """
-    JobServerOptions
+    DeploymentServerInfo
     """  # noqa: E501
 
-    server_options: ServerOptionsSize
-    default_images: DefaultImages
-    default_sizes: DefaultSizes
+    server_options: ServerOptionsSize = Field(description="Configuration options for deployments.")
+    default_images: DefaultImages = Field(description="Default images for deployments.")
+    default_sizes: DefaultSizes = Field(description="Default instance sizes for deployments.")
     __properties: ClassVar[List[str]] = ["server_options", "default_images", "default_sizes"]
 
     model_config = ConfigDict(
@@ -53,7 +53,7 @@ class JobServerOptions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of JobServerOptions from a JSON string"""
+        """Create an instance of DeploymentServerInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class JobServerOptions(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of JobServerOptions from a dict"""
+        """Create an instance of DeploymentServerInfo from a dict"""
         if obj is None:
             return None
 

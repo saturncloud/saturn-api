@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,11 +27,18 @@ class GroupCreate(BaseModel):
     GroupCreate
     """  # noqa: E501
 
-    groupname: StrictStr
-    org_id: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    is_multiple_ssh_keys: Optional[StrictBool] = False
-    org_admin: Optional[StrictBool] = False
+    groupname: StrictStr = Field(description="Name of the group.")
+    org_id: Optional[StrictStr] = Field(
+        default=None,
+        description="Org ID that the group belongs to. Defaults to the default org for the authenticated user.",
+    )
+    description: Optional[StrictStr] = Field(default=None, description="Description of the group.")
+    is_multiple_ssh_keys: Optional[StrictBool] = Field(
+        default=False, description="Enable multiple SSH keys."
+    )
+    org_admin: Optional[StrictBool] = Field(
+        default=False, description="Enable group to take privileged actions on its org."
+    )
     __properties: ClassVar[List[str]] = [
         "groupname",
         "org_id",

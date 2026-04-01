@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**etag** | **str** |  | 
-**part_number** | **int** |  | 
+**etag** | **str** | Etag of the completed part. | 
+**part_number** | **int** | Part number. | 
 
 ## Example
 

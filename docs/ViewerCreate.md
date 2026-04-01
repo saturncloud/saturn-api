@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity** | [**IdentityReference**](IdentityReference.md) |  | 
-**route_id** | **str** |  | [optional] 
+**identity** | [**IdentityReference**](IdentityReference.md) | Reference to an identity. | 
+**route_id** | **str** | Route ID to allow view access to. If null, all routes are granted. | [optional] 
 
 ## Example
 

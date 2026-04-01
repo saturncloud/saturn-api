@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,15 +27,25 @@ class BuildData(BaseModel):
     BuildData
     """  # noqa: E501
 
-    base_image: Optional[StrictStr] = None
-    environment_yml: Optional[StrictStr] = None
-    requirements_txt: Optional[StrictStr] = None
-    cran_packages: Optional[StrictStr] = None
-    bioconductor_packages: Optional[StrictStr] = None
-    remotes_packages: Optional[StrictStr] = None
-    apt_txt: Optional[StrictStr] = None
-    post_build: Optional[StrictStr] = None
-    use_mamba: Optional[StrictBool] = False
+    base_image: Optional[StrictStr] = Field(default=None, description="Base image to build from.")
+    environment_yml: Optional[StrictStr] = Field(
+        default=None, description="Conda environment to install."
+    )
+    requirements_txt: Optional[StrictStr] = Field(
+        default=None, description="Pip requirements to install."
+    )
+    cran_packages: Optional[StrictStr] = Field(default=None, description="Cran packages to install")
+    bioconductor_packages: Optional[StrictStr] = Field(
+        default=None, description="Bioconductor packages to install."
+    )
+    remotes_packages: Optional[StrictStr] = Field(
+        default=None, description="Remotes packages to install."
+    )
+    apt_txt: Optional[StrictStr] = Field(default=None, description="Apt packages to install.")
+    post_build: Optional[StrictStr] = Field(default=None, description="Post-build script to run.")
+    use_mamba: Optional[StrictBool] = Field(
+        default=False, description="Enable installing conda packages with mamba"
+    )
     adapt_image: Optional[StrictBool] = False
     register_ipython_kernel: Optional[StrictBool] = None
     rstudio_version: Optional[StrictStr] = None

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,11 +27,13 @@ class PodHistory(BaseModel):
     PodHistory
     """  # noqa: E501
 
-    pod_name: StrictStr
-    status: StrictStr
-    last_seen: StrictStr
-    start_time: Optional[StrictStr]
-    label_job_name: Optional[StrictStr] = None
+    pod_name: StrictStr = Field(description="Name of the pod.")
+    status: StrictStr = Field(description="Last known status of the pod.")
+    last_seen: StrictStr = Field(description="Last seen timestamp of the pod.")
+    start_time: Optional[StrictStr] = Field(description="Start time of the pod.")
+    label_job_name: Optional[StrictStr] = Field(
+        default=None, description="Job label, if applicable."
+    )
     __properties: ClassVar[List[str]] = [
         "pod_name",
         "status",

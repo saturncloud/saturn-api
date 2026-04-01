@@ -21,6 +21,7 @@ from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 from pydantic import (
     BaseModel,
     ConfigDict,
+    Field,
     StrictBool,
     StrictInt,
     StrictStr,
@@ -40,42 +41,57 @@ class Job(BaseModel):
     Job
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    command: StrictStr
-    description: StrictStr
-    image_tag: ImageTag
-    instance_size: StrictStr
-    size_display: StrictStr
-    extra_packages: Optional[ExtraPackages]
-    cron_schedule_options: Optional[CronSchedule] = None
-    start_script: Optional[StrictStr] = None
-    environment_variables: Dict[str, StrictStr]
-    working_dir: StrictStr
-    is_spot: StrictBool
-    start_dind: StrictBool
-    scale: StrictInt
-    k8s_name: StrictStr
-    require_restart: StrictBool
+    id: StrictStr = Field(description="ID of the job.")
+    name: StrictStr = Field(description="Name of the job.")
+    owner: Owner = Field(description="Owner of the job.")
+    command: StrictStr = Field(description="Command that runs on start.")
+    description: StrictStr = Field(description="Description of the job.")
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the job."
+    )
+    instance_size: StrictStr = Field(description="Instance size of the job.")
+    image_tag: ImageTag = Field(description="Image tag that is attached to the job.")
+    extra_packages: Optional[ExtraPackages] = Field(
+        description="Addtitional packages to install on start."
+    )
+    cron_schedule_options: Optional[CronSchedule] = Field(
+        default=None, description="Cron schedule configuration for scheduled jobs."
+    )
+    start_script: Optional[StrictStr] = Field(
+        default=None, description="Shell script that runs on start before the primary command."
+    )
+    environment_variables: Dict[str, StrictStr] = Field(
+        description="Mapping of environment variable keys to values."
+    )
+    working_dir: StrictStr = Field(description="Initial working directory.")
+    is_spot: StrictBool = Field(description="Enables running on spot instance sizes.")
+    start_dind: StrictBool = Field(description="Enables docker-in-docker.")
+    scale: StrictInt = Field(description="Number of pod replicas.")
+    k8s_name: StrictStr = Field(description="Unique name for associated kubernetes objects.")
+    require_restart: StrictBool = Field(
+        description="True if an update was applied that requires restart to take effect."
+    )
     resource_type: Literal["job"]
-    created_at: StrictStr
-    updated_at: StrictStr
-    last_deploy: StrictStr
-    dask_cluster: Optional[DaskClusterNested] = None
-    status: StrictStr
-    running_count: StrictInt
-    debug_mode: StrictBool
-    scheduled: StrictBool
+    size_display: StrictStr = Field(description="Description of the instance size.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    updated_at: StrictStr = Field(description="Update timestamp.")
+    last_deploy: StrictStr = Field(description="Last started timestamp.")
+    dask_cluster: Optional[DaskClusterNested] = Field(
+        default=None, description="Dask cluster attached to the job."
+    )
+    status: StrictStr = Field(description="Current status of the job.")
+    running_count: StrictInt = Field(description="Number of running pods.")
+    debug_mode: StrictBool = Field(description="True if job is running in debug mode.")
+    scheduled: StrictBool = Field(description="True if job is currently scheduled.")
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
         "owner",
         "command",
         "description",
-        "image_tag",
+        "tags",
         "instance_size",
-        "size_display",
+        "image_tag",
         "extra_packages",
         "cron_schedule_options",
         "start_script",
@@ -87,6 +103,7 @@ class Job(BaseModel):
         "k8s_name",
         "require_restart",
         "resource_type",
+        "size_display",
         "created_at",
         "updated_at",
         "last_deploy",
@@ -168,9 +185,8 @@ class Job(BaseModel):
                 "owner",
                 "command",
                 "description",
-                "image_tag",
                 "instance_size",
-                "size_display",
+                "image_tag",
                 "extra_packages",
                 "cron_schedule_options",
                 "start_script",
@@ -182,6 +198,7 @@ class Job(BaseModel):
                 "k8s_name",
                 "require_restart",
                 "resource_type",
+                "size_display",
                 "created_at",
                 "updated_at",
                 "last_deploy",
@@ -213,6 +230,11 @@ class Job(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of dask_cluster
         if self.dask_cluster:
             _dict["dask_cluster"] = self.dask_cluster.to_dict()
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict["tags"] = None
+
         # set to None if extra_packages (nullable) is None
         # and model_fields_set contains the field
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
@@ -241,13 +263,13 @@ class Job(BaseModel):
                 "owner": Owner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
                 "command": obj.get("command"),
                 "description": obj.get("description"),
+                "tags": obj.get("tags"),
+                "instance_size": obj.get("instance_size"),
                 "image_tag": (
                     ImageTag.from_dict(obj["image_tag"])
                     if obj.get("image_tag") is not None
                     else None
                 ),
-                "instance_size": obj.get("instance_size"),
-                "size_display": obj.get("size_display"),
                 "extra_packages": (
                     ExtraPackages.from_dict(obj["extra_packages"])
                     if obj.get("extra_packages") is not None
@@ -267,6 +289,7 @@ class Job(BaseModel):
                 "k8s_name": obj.get("k8s_name"),
                 "require_restart": obj.get("require_restart"),
                 "resource_type": obj.get("resource_type"),
+                "size_display": obj.get("size_display"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
                 "last_deploy": obj.get("last_deploy"),

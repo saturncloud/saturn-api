@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,11 @@ class InvitationCreate(BaseModel):
     InvitationCreate
     """  # noqa: E501
 
-    email: StrictStr
+    email: StrictStr = Field(description="Email that the invitation is sent to.")
     invitee_name: Optional[StrictStr] = None
-    invitor_name: Optional[StrictStr] = None
+    invitor_name: Optional[StrictStr] = Field(
+        default=None, description="Name of the person sending the invite."
+    )
     __properties: ClassVar[List[str]] = ["email", "invitee_name", "invitor_name"]
 
     model_config = ConfigDict(

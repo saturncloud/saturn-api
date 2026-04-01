@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.service_account import ServiceAccount
@@ -29,11 +29,11 @@ class ServiceAccountEntitlement(BaseModel):
     ServiceAccountEntitlement
     """  # noqa: E501
 
-    id: StrictStr
-    created_at: StrictStr
-    service_account: ServiceAccount
-    user_id: Optional[StrictStr]
-    group_id: Optional[StrictStr]
+    id: StrictStr = Field(description="ID of the service account entitlement.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    service_account: ServiceAccount = Field(description="Entitled service account.")
+    user_id: Optional[StrictStr] = Field(description="User ID that is entitled.")
+    group_id: Optional[StrictStr] = Field(description="Group ID that is entitled.")
     __properties: ClassVar[List[str]] = [
         "id",
         "created_at",

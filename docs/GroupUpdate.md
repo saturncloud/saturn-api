@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**groupname** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**is_multiple_ssh_keys** | **bool** |  | [optional] 
-**org_admin** | **bool** |  | [optional] 
+**groupname** | **str** | Name of the group. | [optional] 
+**description** | **str** | Description of the group. | [optional] 
+**is_multiple_ssh_keys** | **bool** | Enable multiple SSH keys. | [optional] 
+**org_admin** | **bool** | Enable group to take privileged actions on its org. | [optional] 
 
 ## Example
 

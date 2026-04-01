@@ -27,8 +27,12 @@ class NotificationAcknowledged(BaseModel):
     NotificationAcknowledged
     """  # noqa: E501
 
-    notification_ids: Annotated[List[StrictStr], Field(max_length=1000)]
-    acknowledged: Optional[StrictBool] = True
+    notification_ids: Annotated[List[StrictStr], Field(max_length=1000)] = Field(
+        description="List of notification IDs to acknowledge."
+    )
+    acknowledged: Optional[StrictBool] = Field(
+        default=True, description="Mark notifications as acknowledged or unacknowledged."
+    )
     __properties: ClassVar[List[str]] = ["notification_ids", "acknowledged"]
 
     model_config = ConfigDict(

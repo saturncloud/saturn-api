@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **str** |  | [optional] 
-**full_name** | **str** |  | [optional] 
-**email** | **str** |  | [optional] 
-**is_multiple_ssh_keys** | **bool** |  | [optional] 
-**active** | **bool** |  | [optional] 
-**admin** | **bool** |  | [optional] 
-**locked** | **bool** |  | [optional] 
-**limits_id** | **str** |  | [optional] 
+**username** | **str** | Name of the user. | [optional] 
+**full_name** | **str** | Full name of the user. | [optional] 
+**email** | **str** | Email of the user. | [optional] 
+**is_multiple_ssh_keys** | **bool** | Enable multiple SSH keys. | [optional] 
+**active** | **bool** | True if user is active. | [optional] 
+**admin** | **bool** | Enable user to take privileged actions in the API. (Admin only) | [optional] 
+**locked** | **bool** | Lock the user. (Admin only) | [optional] 
+**limits_id** | **str** | Usage limits ID applied to the user in the primary org. (Admin only) | [optional] 
 
 ## Example
 

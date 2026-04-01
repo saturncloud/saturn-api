@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,7 @@ class ResourceByWorkspaceId(BaseModel):
     ResourceByWorkspaceId
     """  # noqa: E501
 
-    workspace_id: StrictStr
+    workspace_id: StrictStr = Field(description="Reference by workspace ID.")
     __properties: ClassVar[List[str]] = ["workspace_id"]
 
     model_config = ConfigDict(

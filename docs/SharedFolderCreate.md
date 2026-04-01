@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
+**name** | **str** | Name of the shared folder. | 
+**owner** | [**OwnerReference**](OwnerReference.md) | Owner of the shared folder. | [optional] 
 **access** | [**SharedFolderAccessLevel**](SharedFolderAccessLevel.md) |  | [optional] 
 **access_mode** | [**SharedAccessMode**](SharedAccessMode.md) |  | [optional] 
-**is_external** | **bool** |  | [optional] [default to False]
+**is_external** | **bool** | True if the shared folder is externally managed. | [optional] [default to False]
 
 ## Example
 

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,18 +27,18 @@ class Org(BaseModel):
     Org
     """  # noqa: E501
 
-    id: StrictStr
-    created_at: StrictStr
-    avatar_url: StrictStr
-    name: StrictStr
-    email: StrictStr
-    description: StrictStr
-    website_url: Optional[StrictStr]
-    logo_image_url: StrictStr
-    limits_id: Optional[StrictStr]
-    is_primary: StrictBool
-    locked: StrictBool
-    locked_reason: StrictStr
+    id: StrictStr = Field(description="ID of the org.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    avatar_url: StrictStr = Field(description="Avatar URL for the org.")
+    name: StrictStr = Field(description="Name of the org.")
+    email: StrictStr = Field(description="Email of the org.")
+    description: StrictStr = Field(description="Description of the org.")
+    website_url: Optional[StrictStr] = Field(description="Website URL of the org.")
+    logo_image_url: StrictStr = Field(description="Logo of the org.")
+    limits_id: Optional[StrictStr] = Field(description="Usage limits ID applied to the entire org.")
+    is_primary: StrictBool = Field(description="Primary org for the account.")
+    locked: StrictBool = Field(description="Locked orgs have restricted access to the API.")
+    locked_reason: StrictStr = Field(description="Reason for the org being locked.")
     __properties: ClassVar[List[str]] = [
         "id",
         "created_at",

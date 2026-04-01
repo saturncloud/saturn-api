@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
+**name** | **str** | Name of the image. | [optional] 
+**description** | **str** | Description of the image. | [optional] 
 **hardware_type** | [**HardwareType**](HardwareType.md) |  | [optional] 
-**supports** | **List[str]** |  | [optional] 
+**supports** | **List[str]** | Supported features. | [optional] 
 **access** | [**ImageAccessLevel**](ImageAccessLevel.md) |  | [optional] 
 
 ## Example

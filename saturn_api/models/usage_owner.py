@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,10 +27,12 @@ class UsageOwner(BaseModel):
     UsageOwner
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    identity_type: StrictStr
-    user_id: Optional[StrictStr] = None
-    group_id: Optional[StrictStr] = None
+    name: Optional[StrictStr] = Field(
+        default=None, description="Name of the identity of the usage record."
+    )
+    identity_type: StrictStr = Field(description="Type of the identity of the usage record.")
+    user_id: Optional[StrictStr] = Field(default=None, description="User ID of the usage record")
+    group_id: Optional[StrictStr] = Field(default=None, description="Group ID of the usage record.")
     __properties: ClassVar[List[str]] = ["name", "identity_type", "user_id", "group_id"]
 
     model_config = ConfigDict(

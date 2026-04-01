@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,16 +27,18 @@ class WhiteLabelConfiguration(BaseModel):
     WhiteLabelConfiguration
     """  # noqa: E501
 
-    enabled: StrictBool
-    brand_name: StrictStr
-    brand_short_name: Optional[StrictStr] = None
-    logo_icon_url: StrictStr
-    logo_full_url: StrictStr
-    favicon_url: Optional[StrictStr] = None
-    primary_color: StrictStr
-    support_email: StrictStr
-    website_url: StrictStr
-    docs_url: Optional[StrictStr] = None
+    enabled: StrictBool = Field(description="Enable whitelabel configuration.")
+    brand_name: StrictStr = Field(description="Whitelabeled brand name.")
+    brand_short_name: Optional[StrictStr] = Field(
+        default=None, description="Short version of the brand name."
+    )
+    logo_icon_url: StrictStr = Field(description="Brand icon URL.")
+    logo_full_url: StrictStr = Field(description="Brand full icon URL.")
+    favicon_url: Optional[StrictStr] = Field(default=None, description="Favicon URL.")
+    primary_color: StrictStr = Field(description="Primary frontend color.")
+    support_email: StrictStr = Field(description="Support contact email.")
+    website_url: StrictStr = Field(description="Website URL.")
+    docs_url: Optional[StrictStr] = Field(default=None, description="Documentation URL.")
     __properties: ClassVar[List[str]] = [
         "enabled",
         "brand_name",

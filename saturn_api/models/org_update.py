@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,12 +27,14 @@ class OrgUpdate(BaseModel):
     OrgUpdate
     """  # noqa: E501
 
-    email: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    website_url: Optional[StrictStr] = None
-    logo_image_url: Optional[StrictStr] = None
-    limits_id: Optional[StrictStr] = None
-    locked: Optional[StrictBool] = None
+    email: Optional[StrictStr] = Field(default=None, description="Email of the org.")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the org.")
+    website_url: Optional[StrictStr] = Field(default=None, description="Website URL of the org.")
+    logo_image_url: Optional[StrictStr] = Field(default=None, description="Logo of the org.")
+    limits_id: Optional[StrictStr] = Field(
+        default=None, description="Usage limits ID applied to the entire org. (Admin only)"
+    )
+    locked: Optional[StrictBool] = Field(default=None, description="Lock the org. (Admin only)")
     __properties: ClassVar[List[str]] = [
         "email",
         "description",

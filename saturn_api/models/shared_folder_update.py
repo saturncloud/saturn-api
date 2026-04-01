@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.shared_folder_access_level import SharedFolderAccessLevel
@@ -29,7 +29,7 @@ class SharedFolderUpdate(BaseModel):
     SharedFolderUpdate
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
+    name: Optional[StrictStr] = Field(default=None, description="Name of the shared folder.")
     access: Optional[SharedFolderAccessLevel] = None
     __properties: ClassVar[List[str]] = ["name", "access"]
 

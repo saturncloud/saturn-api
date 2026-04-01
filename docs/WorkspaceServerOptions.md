@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**server_options** | [**WorkspaceServerSizeSchemas**](WorkspaceServerSizeSchemas.md) |  | [readonly] 
-**default_images** | [**WorkspaceIdeDefaultImages**](WorkspaceIdeDefaultImages.md) |  | [readonly] 
-**default_sizes** | [**DefaultSizes**](DefaultSizes.md) |  | [readonly] 
+**auto_shutoff** | **List[str]** | List of available auto-shutoff settings. | [readonly] 
+**disk_space** | **List[str]** | List of available disk space sizes. | [readonly] 
+**size** | [**List[InstanceSize]**](InstanceSize.md) | List of available instance sizes. | [readonly] 
 
 ## Example
 

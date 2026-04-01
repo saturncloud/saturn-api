@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cpu** | [**InstanceSize**](InstanceSize.md) |  | [optional] 
-**nvidia** | [**InstanceSize**](InstanceSize.md) |  | [optional] 
-**amd** | [**InstanceSize**](InstanceSize.md) |  | [optional] 
+**cpu** | [**InstanceSize**](InstanceSize.md) | Default CPU instance size. | [optional] 
+**nvidia** | [**InstanceSize**](InstanceSize.md) | Default NVIDIA GPU instance size. | [optional] 
+**amd** | [**InstanceSize**](InstanceSize.md) | Default AMD GPU instance size. | [optional] 
 
 ## Example
 

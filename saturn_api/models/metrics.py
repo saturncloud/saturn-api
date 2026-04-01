@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.metric_series import MetricSeries
@@ -29,12 +29,24 @@ class Metrics(BaseModel):
     Metrics
     """  # noqa: E501
 
-    cpu: Optional[List[MetricSeries]] = None
-    memory: Optional[List[MetricSeries]] = None
-    network_in: Optional[List[MetricSeries]] = None
-    network_out: Optional[List[MetricSeries]] = None
-    gpu: Optional[List[MetricSeries]] = None
-    gpu_memory: Optional[List[MetricSeries]] = None
+    cpu: Optional[List[MetricSeries]] = Field(
+        default=None, description="CPU usage metric. Values expressed in millicores."
+    )
+    memory: Optional[List[MetricSeries]] = Field(
+        default=None, description="Memory usage metric. Values expressed in bytes."
+    )
+    network_in: Optional[List[MetricSeries]] = Field(
+        default=None, description="Network inbound usage metric. Values expressed in bytes."
+    )
+    network_out: Optional[List[MetricSeries]] = Field(
+        default=None, description="Network outbound usage metric. Values expressed in bytes."
+    )
+    gpu: Optional[List[MetricSeries]] = Field(
+        default=None, description="GPU usage metric. Values expressed in millicores."
+    )
+    gpu_memory: Optional[List[MetricSeries]] = Field(
+        default=None, description="GPU memory usage metric. Values expressed in bytes."
+    )
     __properties: ClassVar[List[str]] = [
         "cpu",
         "memory",

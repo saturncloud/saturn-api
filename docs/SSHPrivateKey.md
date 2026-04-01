@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**identity** | [**Identity**](Identity.md) |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**public_key** | **str** |  | [readonly] 
-**location** | **str** |  | [readonly] 
-**is_default** | **bool** |  | [readonly] 
+**id** | **str** | ID of the SSH private key. | [readonly] 
+**name** | **str** | Name of the SSH private key. | [readonly] 
+**identity** | [**Identity**](Identity.md) | Identity that owns the SSH private key. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**public_key** | **str** | SSH public key associated with the private key. | [readonly] 
+**location** | **str** | Path to the SSH private key in resources. | [readonly] 
+**is_default** | **bool** | Enable SSH private key to be used for any external repositories that do not specify a key. | [readonly] 
 
 ## Example
 

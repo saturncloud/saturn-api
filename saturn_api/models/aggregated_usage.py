@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set, Union
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class AggregatedUsage(BaseModel):
     AggregatedUsage
     """  # noqa: E501
 
-    hours: Union[StrictFloat, StrictInt]
-    dollars: Union[StrictFloat, StrictInt]
+    hours: Union[StrictFloat, StrictInt] = Field(description="Compute hours used.")
+    dollars: Union[StrictFloat, StrictInt] = Field(description="Dollars spent.")
     __properties: ClassVar[List[str]] = ["hours", "dollars"]
 
     model_config = ConfigDict(

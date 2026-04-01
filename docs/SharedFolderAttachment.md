@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**shared_folder** | [**SharedFolder**](SharedFolder.md) |  | [readonly] 
-**workspace_id** | **str** |  | [readonly] 
-**deployment_id** | **str** |  | [readonly] 
-**path** | **str** |  | [readonly] 
+**id** | **str** | ID of the shared folder attachment | [readonly] 
+**shared_folder** | [**SharedFolder**](SharedFolder.md) | Shared folder that is attached to the resource. | [readonly] 
+**workspace_id** | **str** | Workspace ID of the shared folder attachment. | [readonly] 
+**deployment_id** | **str** | Deployment ID of the shared folder attachment. | [readonly] 
+**path** | **str** | Mount path of the shared folder in the resource. | [readonly] 
 
 ## Example
 

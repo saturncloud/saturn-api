@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_uri** | **str** |  | 
-**version** | **str** |  | [optional] [default to '']
-**description** | **str** |  | [optional] [default to '']
+**image_uri** | **str** | External image URI | 
+**version** | **str** | Version of the image tag. | [optional] [default to '']
+**description** | **str** | Description of the image tag. | [optional] [default to '']
 
 ## Example
 

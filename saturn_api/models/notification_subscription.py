@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,10 +27,12 @@ class NotificationSubscription(BaseModel):
     NotificationSubscription
     """  # noqa: E501
 
-    id: StrictStr
-    user_id: StrictStr
-    topic: StrictStr
-    options: Optional[Dict[str, Any]] = None
+    id: StrictStr = Field(description="ID of the notification subscription.")
+    user_id: StrictStr = Field(description="User ID to be notified.")
+    topic: StrictStr = Field(description="Topic of the subscription.")
+    options: Optional[Dict[str, Any]] = Field(
+        default=None, description="Options data for the topic."
+    )
     __properties: ClassVar[List[str]] = ["id", "user_id", "topic", "options"]
 
     model_config = ConfigDict(

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**job_id** | **str** |  | 
+**job_id** | **str** | Reference by job ID. | 
 
 ## Example
 

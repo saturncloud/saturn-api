@@ -511,12 +511,12 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ObjectStorageApi(api_client)
-    owner_name = 'owner_name_example' # str |  (optional)
-    owner_id = 'owner_id_example' # str |  (optional)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    owner = 'owner_example' # str |  (optional)
+    owner_name = 'owner_name_example' # str | Reference owner by name. (optional)
+    owner_id = 'owner_id_example' # str | Reference owner by ID. (optional)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    owner = 'owner_example' # str | Reference owner by name. (optional)
 
     try:
         # Get object storage usage stats
@@ -534,12 +534,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_name** | **str**|  | [optional] 
- **owner_id** | **str**|  | [optional] 
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **owner** | **str**|  | [optional] 
+ **owner_name** | **str**| Reference owner by name. | [optional] 
+ **owner_id** | **str**| Reference owner by ID. | [optional] 
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **owner** | **str**| Reference owner by name. | [optional] 
 
 ### Return type
 
@@ -599,16 +599,16 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ObjectStorageApi(api_client)
-    owner_name = 'owner_name_example' # str |  (optional)
-    owner_id = 'owner_id_example' # str |  (optional)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    owner = 'owner_example' # str |  (optional)
-    prefix = '' # str |  (optional) (default to '')
-    last_key = 'last_key_example' # str |  (optional)
-    max_keys = 1000 # int |  (optional) (default to 1000)
-    delimited = True # bool |  (optional) (default to True)
+    owner_name = 'owner_name_example' # str | Reference owner by name. (optional)
+    owner_id = 'owner_id_example' # str | Reference owner by ID. (optional)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    owner = 'owner_example' # str | Reference owner by name. (optional)
+    prefix = '' # str | Prefix matched search string on object storage file path. (optional) (default to '')
+    last_key = 'last_key_example' # str | Last seen key for pagination. (optional)
+    max_keys = 1000 # int | Page size. (optional) (default to 1000)
+    delimited = True # bool | Delimit results by directory. (optional) (default to True)
 
     try:
         # List object storage
@@ -626,16 +626,16 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_name** | **str**|  | [optional] 
- **owner_id** | **str**|  | [optional] 
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **owner** | **str**|  | [optional] 
- **prefix** | **str**|  | [optional] [default to &#39;&#39;]
- **last_key** | **str**|  | [optional] 
- **max_keys** | **int**|  | [optional] [default to 1000]
- **delimited** | **bool**|  | [optional] [default to True]
+ **owner_name** | **str**| Reference owner by name. | [optional] 
+ **owner_id** | **str**| Reference owner by ID. | [optional] 
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **owner** | **str**| Reference owner by name. | [optional] 
+ **prefix** | **str**| Prefix matched search string on object storage file path. | [optional] [default to &#39;&#39;]
+ **last_key** | **str**| Last seen key for pagination. | [optional] 
+ **max_keys** | **int**| Page size. | [optional] [default to 1000]
+ **delimited** | **bool**| Delimit results by directory. | [optional] [default to True]
 
 ### Return type
 
@@ -695,14 +695,14 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ObjectStorageApi(api_client)
-    owner_name = 'owner_name_example' # str |  (optional)
-    owner_id = 'owner_id_example' # str |  (optional)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    owner = 'owner_example' # str |  (optional)
-    last_key = 'last_key_example' # str |  (optional)
-    max_keys = 1000 # int |  (optional) (default to 1000)
+    owner_name = 'owner_name_example' # str | Reference owner by name. (optional)
+    owner_id = 'owner_id_example' # str | Reference owner by ID. (optional)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    owner = 'owner_example' # str | Reference owner by name. (optional)
+    last_key = 'last_key_example' # str | Last seen key for pagination. (optional)
+    max_keys = 1000 # int | Page size. (optional) (default to 1000)
 
     try:
         # List shared object storage
@@ -720,14 +720,14 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_name** | **str**|  | [optional] 
- **owner_id** | **str**|  | [optional] 
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **owner** | **str**|  | [optional] 
- **last_key** | **str**|  | [optional] 
- **max_keys** | **int**|  | [optional] [default to 1000]
+ **owner_name** | **str**| Reference owner by name. | [optional] 
+ **owner_id** | **str**| Reference owner by ID. | [optional] 
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **owner** | **str**| Reference owner by name. | [optional] 
+ **last_key** | **str**| Last seen key for pagination. | [optional] 
+ **max_keys** | **int**| Page size. | [optional] [default to 1000]
 
 ### Return type
 
@@ -785,14 +785,14 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ObjectStorageApi(api_client)
-    owner_name = 'owner_name_example' # str |  (optional)
-    owner_id = 'owner_id_example' # str |  (optional)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    owner = 'owner_example' # str |  (optional)
-    prefix = '' # str |  (optional) (default to '')
-    is_copy = True # bool |  (optional)
+    owner_name = 'owner_name_example' # str | Reference owner by name. (optional)
+    owner_id = 'owner_id_example' # str | Reference owner by ID. (optional)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    owner = 'owner_example' # str | Reference owner by name. (optional)
+    prefix = '' # str | Prefix matched search string on object storage upload file path (optional) (default to '')
+    is_copy = True # bool | Filter object storage uploads that are or aren't copy operations. (optional)
 
     try:
         # List object storage uploads
@@ -810,14 +810,14 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_name** | **str**|  | [optional] 
- **owner_id** | **str**|  | [optional] 
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **owner** | **str**|  | [optional] 
- **prefix** | **str**|  | [optional] [default to &#39;&#39;]
- **is_copy** | **bool**|  | [optional] 
+ **owner_name** | **str**| Reference owner by name. | [optional] 
+ **owner_id** | **str**| Reference owner by ID. | [optional] 
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **owner** | **str**| Reference owner by name. | [optional] 
+ **prefix** | **str**| Prefix matched search string on object storage upload file path | [optional] [default to &#39;&#39;]
+ **is_copy** | **bool**| Filter object storage uploads that are or aren&#39;t copy operations. | [optional] 
 
 ### Return type
 
@@ -876,9 +876,9 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ObjectStorageApi(api_client)
     object_storage_upload_id = 'object_storage_upload_id_example' # str | 
-    first_part = 1 # int |  (optional) (default to 1)
-    last_part = 56 # int |  (optional)
-    last_part_size = 56 # int |  (optional)
+    first_part = 1 # int | Index of the first part to retrieve presigned upload URLs for. (optional) (default to 1)
+    last_part = 56 # int | Index of the last part to retrieve presigned upload URLs for. (optional)
+    last_part_size = 56 # int | Final part size for uploads with unspecified total size. (optional)
 
     try:
         # Resume object storage upload
@@ -897,9 +897,9 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_storage_upload_id** | **str**|  | 
- **first_part** | **int**|  | [optional] [default to 1]
- **last_part** | **int**|  | [optional] 
- **last_part_size** | **int**|  | [optional] 
+ **first_part** | **int**| Index of the first part to retrieve presigned upload URLs for. | [optional] [default to 1]
+ **last_part** | **int**| Index of the last part to retrieve presigned upload URLs for. | [optional] 
+ **last_part_size** | **int**| Final part size for uploads with unspecified total size. | [optional] 
 
 ### Return type
 

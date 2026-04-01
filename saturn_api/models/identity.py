@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.identity_type import IdentityType
@@ -29,10 +29,10 @@ class Identity(BaseModel):
     Identity
     """  # noqa: E501
 
-    id: StrictStr
-    avatar_url: StrictStr
-    created_at: StrictStr
-    name: StrictStr
+    id: StrictStr = Field(description="ID of the user or group.")
+    avatar_url: StrictStr = Field(description="Avatar URL for the user or group.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    name: StrictStr = Field(description="Name of the user or group.")
     identity_type: IdentityType
     __properties: ClassVar[List[str]] = ["id", "avatar_url", "created_at", "name", "identity_type"]
 

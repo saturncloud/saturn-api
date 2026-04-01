@@ -748,7 +748,7 @@ class GroupsApi:
     async def delete_member(
         self,
         group_id: StrictStr,
-        user_id: StrictStr,
+        user_id: Annotated[StrictStr, Field(description="User ID to remove from the group.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -764,7 +764,7 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param user_id: (required)
+        :param user_id: User ID to remove from the group. (required)
         :type user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -811,7 +811,7 @@ class GroupsApi:
     async def delete_member_with_http_info(
         self,
         group_id: StrictStr,
-        user_id: StrictStr,
+        user_id: Annotated[StrictStr, Field(description="User ID to remove from the group.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -827,7 +827,7 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param user_id: (required)
+        :param user_id: User ID to remove from the group. (required)
         :type user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -874,7 +874,7 @@ class GroupsApi:
     async def delete_member_without_preload_content(
         self,
         group_id: StrictStr,
-        user_id: StrictStr,
+        user_id: Annotated[StrictStr, Field(description="User ID to remove from the group.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -890,7 +890,7 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param user_id: (required)
+        :param user_id: User ID to remove from the group. (required)
         :type user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1477,13 +1477,30 @@ class GroupsApi:
     @validate_call
     async def list(
         self,
-        name: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        all_groups: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on group name.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Org ID to query for groups. Defaults to the default org for the authenticated user."
+            ),
+        ] = None,
+        all_groups: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Search for all groups in the org, instead of only groups the authenticated user is a member of."
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1498,19 +1515,19 @@ class GroupsApi:
 
         Paginated list of groups.
 
-        :param name:
+        :param name: Prefix matched search string on group name.
         :type name: str
-        :param org_id:
+        :param org_id: Org ID to query for groups. Defaults to the default org for the authenticated user.
         :type org_id: str
-        :param all_groups:
+        :param all_groups: Search for all groups in the org, instead of only groups the authenticated user is a member of.
         :type all_groups: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1561,13 +1578,30 @@ class GroupsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        name: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        all_groups: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on group name.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Org ID to query for groups. Defaults to the default org for the authenticated user."
+            ),
+        ] = None,
+        all_groups: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Search for all groups in the org, instead of only groups the authenticated user is a member of."
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1582,19 +1616,19 @@ class GroupsApi:
 
         Paginated list of groups.
 
-        :param name:
+        :param name: Prefix matched search string on group name.
         :type name: str
-        :param org_id:
+        :param org_id: Org ID to query for groups. Defaults to the default org for the authenticated user.
         :type org_id: str
-        :param all_groups:
+        :param all_groups: Search for all groups in the org, instead of only groups the authenticated user is a member of.
         :type all_groups: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1645,13 +1679,30 @@ class GroupsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        name: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        all_groups: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on group name.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Org ID to query for groups. Defaults to the default org for the authenticated user."
+            ),
+        ] = None,
+        all_groups: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Search for all groups in the org, instead of only groups the authenticated user is a member of."
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1666,19 +1717,19 @@ class GroupsApi:
 
         Paginated list of groups.
 
-        :param name:
+        :param name: Prefix matched search string on group name.
         :type name: str
-        :param org_id:
+        :param org_id: Org ID to query for groups. Defaults to the default org for the authenticated user.
         :type org_id: str
-        :param all_groups:
+        :param all_groups: Search for all groups in the org, instead of only groups the authenticated user is a member of.
         :type all_groups: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1808,11 +1859,19 @@ class GroupsApi:
     async def list_members(
         self,
         group_id: StrictStr,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on group member username."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1828,15 +1887,15 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param name:
+        :param name: Prefix matched search string on group member username.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1887,11 +1946,19 @@ class GroupsApi:
     async def list_members_with_http_info(
         self,
         group_id: StrictStr,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on group member username."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1907,15 +1974,15 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param name:
+        :param name: Prefix matched search string on group member username.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1966,11 +2033,19 @@ class GroupsApi:
     async def list_members_without_preload_content(
         self,
         group_id: StrictStr,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on group member username."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1986,15 +2061,15 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param name:
+        :param name: Prefix matched search string on group member username.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

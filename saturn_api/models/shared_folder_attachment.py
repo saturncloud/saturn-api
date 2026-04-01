@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.shared_folder import SharedFolder
@@ -29,11 +29,13 @@ class SharedFolderAttachment(BaseModel):
     SharedFolderAttachment
     """  # noqa: E501
 
-    id: StrictStr
-    shared_folder: SharedFolder
-    workspace_id: StrictStr
-    deployment_id: StrictStr
-    path: StrictStr
+    id: StrictStr = Field(description="ID of the shared folder attachment")
+    shared_folder: SharedFolder = Field(
+        description="Shared folder that is attached to the resource."
+    )
+    workspace_id: StrictStr = Field(description="Workspace ID of the shared folder attachment.")
+    deployment_id: StrictStr = Field(description="Deployment ID of the shared folder attachment.")
+    path: StrictStr = Field(description="Mount path of the shared folder in the resource.")
     __properties: ClassVar[List[str]] = [
         "id",
         "shared_folder",

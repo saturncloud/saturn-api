@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**owner** | [**Owner**](Owner.md) |  | [readonly] 
-**description** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
+**id** | **str** | ID of the image. | [readonly] 
+**name** | **str** | Name of the image. | [readonly] 
+**owner** | [**Owner**](Owner.md) | Owner of the image. | [readonly] 
+**description** | **str** | Description of the image. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
 **hardware_type** | [**HardwareType**](HardwareType.md) |  | 
-**supports** | **List[str]** |  | [readonly] 
+**supports** | **List[str]** | Supported features. | [readonly] 
 **access** | [**ImageAccessLevel**](ImageAccessLevel.md) |  | 
-**is_base** | **bool** |  | [readonly] 
-**is_gpu** | **bool** |  | [readonly] 
-**trusted** | **bool** |  | [readonly] 
+**is_base** | **bool** | True if the image is a base image for builds. | [readonly] 
+**is_gpu** | **bool** | True if the image support GPU hardware. | [readonly] 
+**trusted** | **bool** | True if the image belongs to a trusted source. | [readonly] 
 
 ## Example
 

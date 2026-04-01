@@ -722,11 +722,19 @@ class ServiceAccountsApi:
     @validate_call
     async def list(
         self,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on service account name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -741,15 +749,15 @@ class ServiceAccountsApi:
 
         Paginated list of service accounts.
 
-        :param name:
+        :param name: Prefix matched search string on service account name.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -798,11 +806,19 @@ class ServiceAccountsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on service account name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -817,15 +833,15 @@ class ServiceAccountsApi:
 
         Paginated list of service accounts.
 
-        :param name:
+        :param name: Prefix matched search string on service account name.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -874,11 +890,19 @@ class ServiceAccountsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on service account name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -893,15 +917,15 @@ class ServiceAccountsApi:
 
         Paginated list of service accounts.
 
-        :param name:
+        :param name: Prefix matched search string on service account name.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

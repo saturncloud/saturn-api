@@ -16,14 +16,12 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Any, ClassVar, Dict, List, Optional, Set
+from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing_extensions import Self
 
-from saturn_api.models.default_sizes import DefaultSizes
-from saturn_api.models.workspace_ide_default_images import WorkspaceIdeDefaultImages
-from saturn_api.models.workspace_server_size_schemas import WorkspaceServerSizeSchemas
+from saturn_api.models.instance_size import InstanceSize
 
 
 class WorkspaceServerOptions(BaseModel):
@@ -31,10 +29,20 @@ class WorkspaceServerOptions(BaseModel):
     WorkspaceServerOptions
     """  # noqa: E501
 
-    server_options: WorkspaceServerSizeSchemas
-    default_images: WorkspaceIdeDefaultImages
-    default_sizes: DefaultSizes
-    __properties: ClassVar[List[str]] = ["server_options", "default_images", "default_sizes"]
+    auto_shutoff: Literal["1 hour", "6 hours", "24 hours", "3 days", "7 days", "Never"]
+    disk_space: List[StrictStr] = Field(description="List of available disk space sizes.")
+    size: List[InstanceSize] = Field(description="List of available instance sizes.")
+    __properties: ClassVar[List[str]] = ["auto_shutoff", "disk_space", "size"]
+
+    @field_validator("auto_shutoff")
+    def auto_shutoff_validate_enum(cls, value):
+        """Validates the enum"""
+        for i in value:
+            if i not in set(["1 hour", "6 hours", "24 hours", "3 days", "7 days", "Never"]):
+                raise ValueError(
+                    "each list item must be one of ('1 hour', '6 hours', '24 hours', '3 days', '7 days', 'Never')"
+                )
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,9 +79,9 @@ class WorkspaceServerOptions(BaseModel):
         """
         excluded_fields: Set[str] = set(
             [
-                "server_options",
-                "default_images",
-                "default_sizes",
+                "auto_shutoff",
+                "disk_space",
+                "size",
             ]
         )
 
@@ -82,15 +90,13 @@ class WorkspaceServerOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of server_options
-        if self.server_options:
-            _dict["server_options"] = self.server_options.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of default_images
-        if self.default_images:
-            _dict["default_images"] = self.default_images.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of default_sizes
-        if self.default_sizes:
-            _dict["default_sizes"] = self.default_sizes.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in size (list)
+        _items = []
+        if self.size:
+            for _item_size in self.size:
+                if _item_size:
+                    _items.append(_item_size.to_dict())
+            _dict["size"] = _items
         return _dict
 
     @classmethod
@@ -104,19 +110,11 @@ class WorkspaceServerOptions(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "server_options": (
-                    WorkspaceServerSizeSchemas.from_dict(obj["server_options"])
-                    if obj.get("server_options") is not None
-                    else None
-                ),
-                "default_images": (
-                    WorkspaceIdeDefaultImages.from_dict(obj["default_images"])
-                    if obj.get("default_images") is not None
-                    else None
-                ),
-                "default_sizes": (
-                    DefaultSizes.from_dict(obj["default_sizes"])
-                    if obj.get("default_sizes") is not None
+                "auto_shutoff": obj.get("auto_shutoff"),
+                "disk_space": obj.get("disk_space"),
+                "size": (
+                    [InstanceSize.from_dict(_item) for _item in obj["size"]]
+                    if obj.get("size") is not None
                     else None
                 ),
             }

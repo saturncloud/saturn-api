@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group_id** | **str** |  | 
+**group_id** | **str** | Identity reference by group ID | 
 
 ## Example
 

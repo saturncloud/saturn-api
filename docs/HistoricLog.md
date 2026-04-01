@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timestamp** | **str** |  | [readonly] 
-**content** | **str** |  | [readonly] 
-**pod_name** | **str** |  | [readonly] 
-**container_name** | **str** |  | [readonly] 
+**timestamp** | **str** | Log timestamp. | [readonly] 
+**content** | **str** | Content of the log. | [readonly] 
+**pod_name** | **str** | Name of the pod the log came from. | [readonly] 
+**container_name** | **str** | Name of the container the log came from. | [readonly] 
 
 ## Example
 

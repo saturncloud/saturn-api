@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.daily_usage import DailyUsage
@@ -29,7 +29,7 @@ class DailyUsageList(BaseModel):
     DailyUsageList
     """  # noqa: E501
 
-    usage: List[DailyUsage]
+    usage: List[DailyUsage] = Field(description="List of daily usage records.")
     __properties: ClassVar[List[str]] = ["usage"]
 
     model_config = ConfigDict(

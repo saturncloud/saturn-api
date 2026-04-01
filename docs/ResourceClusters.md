@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**clusters** | **List[Optional[str]]** |  | [readonly] 
+**clusters** | **List[Optional[str]]** | List of clusters the resource has run on. | [readonly] 
 
 ## Example
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subscriptions** | [**List[NotificationSubscription]**](NotificationSubscription.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] 
-**next_key** | **str** |  | [optional] 
+**subscriptions** | [**List[NotificationSubscription]**](NotificationSubscription.md) | List of notification subscriptions. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] 
+**next_key** | **str** | Next page key. | [optional] 
 
 ## Example
 

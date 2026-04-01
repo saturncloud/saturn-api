@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**datetime** | **str** |  | [readonly] 
-**value** | **float** |  | [readonly] 
+**datetime** | **str** | Metric timestamp. | [readonly] 
+**value** | **float** | Value of the data point. | [readonly] 
 
 ## Example
 

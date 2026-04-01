@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.viewer import Viewer
@@ -29,9 +29,9 @@ class ViewerList(BaseModel):
     ViewerList
     """  # noqa: E501
 
-    viewers: List[Viewer]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    viewers: List[Viewer] = Field(description="List of viewers.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["viewers", "prev_key", "next_key"]
 
     model_config = ConfigDict(

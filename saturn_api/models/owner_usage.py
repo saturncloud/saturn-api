@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set, Union
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing_extensions import Self
 
 from saturn_api.models.usage_owner import UsageOwner
@@ -29,9 +29,9 @@ class OwnerUsage(BaseModel):
     OwnerUsage
     """  # noqa: E501
 
-    hours: Union[StrictFloat, StrictInt]
-    dollars: Union[StrictFloat, StrictInt]
-    owner: Optional[UsageOwner] = None
+    hours: Union[StrictFloat, StrictInt] = Field(description="Compute hours used.")
+    dollars: Union[StrictFloat, StrictInt] = Field(description="Dollars spent.")
+    owner: Optional[UsageOwner] = Field(default=None, description="Usage record owner identity.")
     __properties: ClassVar[List[str]] = ["hours", "dollars", "owner"]
 
     model_config = ConfigDict(

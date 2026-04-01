@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**avatar_url** | **str** |  | [readonly] 
-**username** | **str** |  | [readonly] 
+**id** | **str** | ID of the user. | [readonly] 
+**avatar_url** | **str** | Avatar URL of the user. | [readonly] 
+**username** | **str** | Name of the user. | [readonly] 
 
 ## Example
 

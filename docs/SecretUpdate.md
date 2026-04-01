@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
+**name** | **str** | Name of the secret. | [optional] 
 **access** | [**SecretAccessLevel**](SecretAccessLevel.md) |  | [optional] 
-**value** | **str** |  | [optional] 
+**value** | **str** | Value of the secret. | [optional] 
 
 ## Example
 

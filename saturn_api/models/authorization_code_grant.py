@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing_extensions import Self
 
 
@@ -28,9 +28,9 @@ class AuthorizationCodeGrant(BaseModel):
     """  # noqa: E501
 
     grant_type: Literal["authorization_code"]
-    code: StrictStr
-    code_verifier: StrictStr
-    redirect_uri: StrictStr
+    code: StrictStr = Field(description="OAuth response code.")
+    code_verifier: StrictStr = Field(description="OAuth code verifier for the PKCE request.")
+    redirect_uri: StrictStr = Field(description="OAuth redirect URI.")
     __properties: ClassVar[List[str]] = ["grant_type", "code", "code_verifier", "redirect_uri"]
 
     @field_validator("grant_type")

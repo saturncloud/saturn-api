@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hours** | **float** |  | 
-**dollars** | **float** |  | 
+**hours** | **float** | Compute hours used. | 
+**dollars** | **float** | Dollars spent. | 
 
 ## Example
 

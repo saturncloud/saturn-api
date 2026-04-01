@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing_extensions import Self
 
 from saturn_api.models.resource_reference import ResourceReference
@@ -29,11 +29,15 @@ class ExternalRepoAttachmentCreate(BaseModel):
     ExternalRepoAttachmentCreate
     """  # noqa: E501
 
-    external_repo_id: StrictStr
-    resource: ResourceReference
-    path: Optional[StrictStr] = None
+    external_repo_id: StrictStr = Field(description="ID of the external repository to attach.")
+    resource: ResourceReference = Field(description="Reference to a resource to attach to.")
+    path: Optional[StrictStr] = Field(
+        default=None, description="Path of the repository in the resource it is attached to."
+    )
     on_restart: Literal["preserve changes", "reclone"] = "preserve changes"
-    ref: Optional[StrictStr] = None
+    ref: Optional[StrictStr] = Field(
+        default=None, description="Git version reference on the repository."
+    )
     ref_type: Literal["branch", "commit", "tag"] = "branch"
     __properties: ClassVar[List[str]] = [
         "external_repo_id",

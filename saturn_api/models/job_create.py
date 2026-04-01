@@ -34,24 +34,50 @@ class JobCreate(BaseModel):
     JobCreate
     """  # noqa: E501
 
-    name: StrictStr
-    owner: Optional[OwnerReference] = None
-    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = ""
-    tags: Optional[Dict[str, StrictStr]] = None
-    instance_size: Optional[StrictStr] = None
-    image_uri: Optional[StrictStr] = None
-    image_tag_id: Optional[StrictStr] = None
-    image_enforce_trusted: Optional[StrictBool] = True
-    environment_variables: Optional[Dict[str, StrictStr]] = None
-    external_repo_attachments: Optional[List[ExternalRepoAttachmentNested]] = None
-    extra_packages: Optional[ExtraPackages] = None
-    start_script: Optional[StrictStr] = None
-    working_dir: Optional[StrictStr] = "/home/jovyan/workspace"
-    is_spot: Optional[StrictBool] = False
-    start_dind: Optional[StrictBool] = False
-    command: Annotated[str, Field(min_length=1, strict=True)]
-    scale: Optional[Annotated[int, Field(strict=True, ge=1)]] = 1
-    cron_schedule_options: Optional[CronScheduleCreate] = None
+    name: StrictStr = Field(description="Name of the job.")
+    owner: Optional[OwnerReference] = Field(default=None, description="Owner of the job.")
+    description: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(
+        default="", description="Description of the job."
+    )
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the job."
+    )
+    instance_size: Optional[StrictStr] = Field(
+        default=None, description="Instance size of the job."
+    )
+    image_uri: Optional[StrictStr] = Field(default=None, description="URI of the image to attach.")
+    image_tag_id: Optional[StrictStr] = Field(default=None, description="Image tag ID to attach.")
+    image_enforce_trusted: Optional[StrictBool] = Field(
+        default=True, description="Enable image trust validation before attaching."
+    )
+    environment_variables: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Mapping of environment variable keys to values."
+    )
+    external_repo_attachments: Optional[List[ExternalRepoAttachmentNested]] = Field(
+        default=None, description="List of external repo attachments for the job."
+    )
+    extra_packages: Optional[ExtraPackages] = Field(
+        default=None, description="Addtitional packages to install on start."
+    )
+    start_script: Optional[StrictStr] = Field(
+        default=None, description="Shell script to run on start before the primary command."
+    )
+    working_dir: Optional[StrictStr] = Field(
+        default="/home/jovyan/workspace", description="Initial working directory for the job."
+    )
+    is_spot: Optional[StrictBool] = Field(
+        default=False, description="Enables running on spot instance sizes."
+    )
+    start_dind: Optional[StrictBool] = Field(default=False, description="Enables docker-in-docker.")
+    command: Annotated[str, Field(min_length=1, strict=True)] = Field(
+        description="Command that runs on start."
+    )
+    scale: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(
+        default=1, description="Number of pod replicas."
+    )
+    cron_schedule_options: Optional[CronScheduleCreate] = Field(
+        default=None, description="Cron schedule configuration for scheduled jobs."
+    )
     __properties: ClassVar[List[str]] = [
         "name",
         "owner",

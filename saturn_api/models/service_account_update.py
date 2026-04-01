@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,13 @@ class ServiceAccountUpdate(BaseModel):
     ServiceAccountUpdate
     """  # noqa: E501
 
-    cloud_role: Optional[StrictStr] = None
-    auto_associate: Optional[StrictBool] = None
+    cloud_role: Optional[StrictStr] = Field(
+        default=None, description="Cloud role attached to the service account."
+    )
+    auto_associate: Optional[StrictBool] = Field(
+        default=None,
+        description="Automatically grant access to the service account for new users and groups.",
+    )
     __properties: ClassVar[List[str]] = ["cloud_role", "auto_associate"]
 
     model_config = ConfigDict(

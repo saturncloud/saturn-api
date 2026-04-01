@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**schedule** | **str** |  | [readonly] 
-**concurrency_policy** | **str** |  | [readonly] 
-**backoff_limit** | **int** |  | [readonly] 
+**schedule** | **str** | Cron schedule for triggering the job. | [readonly] 
+**concurrency_policy** | **str** | Specifies how to treat concurrent executions of a job&#39;s cron schedule. | [readonly] 
+**backoff_limit** | **int** | Maximum number of retries for a failed job. | [readonly] 
 
 ## Example
 

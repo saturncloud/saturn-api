@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usage** | [**List[OwnerUsage]**](OwnerUsage.md) |  | [optional] 
+**usage** | [**List[OwnerUsage]**](OwnerUsage.md) | List of owner usage records | [optional] 
 
 ## Example
 

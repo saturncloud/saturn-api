@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **str** |  | 
-**description** | **str** |  | [optional] [default to '']
-**build_data** | [**BuildData**](BuildData.md) |  | [optional] 
+**version** | **str** | Version of the image tag. | 
+**description** | **str** | Description of the image tag. | [optional] [default to '']
+**build_data** | [**BuildData**](BuildData.md) | Build data for the image tag. | [optional] 
 
 ## Example
 

@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tags** | **Dict[str, str]** |  | [optional] 
-**worker_size** | **str** |  | [optional] 
-**worker_is_spot** | **bool** |  | [optional] 
-**scheduler_size** | **str** |  | [optional] 
-**n_workers** | **int** |  | [optional] 
-**nprocs** | **int** |  | [optional] 
-**nthreads** | **int** |  | [optional] 
-**subdomain** | **str** |  | [optional] 
+**tags** | **Dict[str, str]** | Descriptive tags for the dask cluster. | [optional] 
+**worker_size** | **str** | Instance size of the dask workers. | [optional] 
+**worker_is_spot** | **bool** | Enables spot instances for the dask workers. | [optional] 
+**scheduler_size** | **str** | Instance size of the dask scheduler. | [optional] 
+**n_workers** | **int** | Number of dask workers. | [optional] 
+**nprocs** | **int** | Number of processes per worker. | [optional] 
+**nthreads** | **int** | Number of threads per process. | [optional] 
+**subdomain** | **str** | Subdomain for the dask dashboard. | [optional] 
 
 ## Example
 

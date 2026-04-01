@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**cloud_role** | **str** |  | [optional] 
-**auto_associate** | **bool** |  | [optional] [default to False]
+**name** | **str** | Name of the service account. | 
+**cloud_role** | **str** | Cloud role attached to the service account. | [optional] 
+**auto_associate** | **bool** | Automatically grant access to the service account for new users and groups. | [optional] [default to False]
 
 ## Example
 

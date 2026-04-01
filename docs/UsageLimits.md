@@ -5,22 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**org_id** | **str** |  | [readonly] 
-**created_at** | **datetime** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**is_default** | **bool** |  | [readonly] 
-**instance_sizes** | **List[str]** |  | [readonly] 
-**resource_types** | **List[str]** |  | [readonly] 
-**num_instances** | **int** |  | [readonly] 
-**auto_shutoff** | **int** |  | [readonly] 
-**storage_in_gb** | **int** |  | [readonly] 
-**num_shared_folders** | **int** |  | [readonly] 
-**object_storage_bytes** | **int** |  | [readonly] 
-**object_storage_count** | **int** |  | [readonly] 
-**hours_per_day** | **int** |  | [readonly] 
-**hours_per_month** | **int** |  | [readonly] 
-**hours_forever** | **int** |  | [readonly] 
+**id** | **str** | ID of the usage limit. | [readonly] 
+**org_id** | **str** | Org ID that the usage limit belongs to. | [readonly] 
+**created_at** | **datetime** | Creation timestamp. | [readonly] 
+**name** | **str** | Name of the usage limit. | [readonly] 
+**is_default** | **bool** | Default usage limit for the org. | [readonly] 
+**instance_sizes** | **List[str]** | Allowed instance sizes. Null if no limits. | [readonly] 
+**resource_types** | **List[str]** | Allowed resource types. Null if no limits. | [readonly] 
+**num_instances** | **int** | Maximum number of active instances. Null if no limits. | [readonly] 
+**auto_shutoff** | **int** | Maximum allowed auto-shutoff. Null if no limits. | [readonly] 
+**storage_in_gb** | **int** | Total allowed storage in GiB. Null if no limits. | [readonly] 
+**num_shared_folders** | **int** | Maximum number of shared folders. Null if no limits. | [readonly] 
+**object_storage_bytes** | **int** | Maximum allowed object storage bytes. Null if no limits. | [readonly] 
+**object_storage_count** | **int** | Maximum number of object storage files. Null if no limits. | [readonly] 
+**hours_per_day** | **int** | Free compute hours per day. | [readonly] 
+**hours_per_month** | **int** | Free compute hours per month. | [readonly] 
+**hours_forever** | **int** | Free compute hours forever (one-time grant). | [readonly] 
 
 ## Example
 

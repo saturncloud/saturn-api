@@ -28,11 +28,11 @@ class DailyUsage(BaseModel):
     DailyUsage
     """  # noqa: E501
 
-    hours: Union[StrictFloat, StrictInt]
-    dollars: Union[StrictFloat, StrictInt]
-    var_date: date = Field(alias="date")
-    instance_type: StrictStr
-    resource_type: StrictStr
+    hours: Union[StrictFloat, StrictInt] = Field(description="Compute hours used.")
+    dollars: Union[StrictFloat, StrictInt] = Field(description="Dollars spent.")
+    var_date: date = Field(description="Date of the usage record.", alias="date")
+    instance_type: StrictStr = Field(description="Instance type used.")
+    resource_type: StrictStr = Field(description="Resource type used.")
     __properties: ClassVar[List[str]] = [
         "hours",
         "dollars",

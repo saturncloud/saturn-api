@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**owner** | [**Owner**](Owner.md) |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
+**id** | **str** | ID of the secret. | [readonly] 
+**name** | **str** | Name of the secret. | [readonly] 
+**owner** | [**Owner**](Owner.md) | Owner of the secret. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
 **access** | [**SecretAccessLevel**](SecretAccessLevel.md) |  | 
-**editable** | **bool** |  | [optional] [readonly] 
+**editable** | **bool** | True if the secret is editable by the authenticated user/group. | [optional] [readonly] 
 
 ## Example
 

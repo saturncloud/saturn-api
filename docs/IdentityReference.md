@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | 
-**group_id** | **str** |  | 
+**user_id** | **str** | Identity reference by user ID | 
+**group_id** | **str** | Identity reference by group ID | 
 
 ## Example
 

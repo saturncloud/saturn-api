@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.default_images import DefaultImages
@@ -29,8 +29,8 @@ class WorkspaceIdeDefaultImages(BaseModel):
     WorkspaceIdeDefaultImages
     """  # noqa: E501
 
-    jupyter: DefaultImages
-    rstudio: DefaultImages
+    jupyter: DefaultImages = Field(description="Default images for jupyter workspaces.")
+    rstudio: DefaultImages = Field(description="Default images for rstudio workspaces.")
     __properties: ClassVar[List[str]] = ["jupyter", "rstudio"]
 
     model_config = ConfigDict(

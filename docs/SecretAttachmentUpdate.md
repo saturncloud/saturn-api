@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attachment_type** | [**SecretAttachmentType**](SecretAttachmentType.md) |  | [optional] 
-**location** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**secret** | [**SecretCreate**](SecretCreate.md) |  | [optional] 
-**secret_id** | **str** |  | [optional] 
+**location** | **str** | Location of the attachment on the resource. Format depends on attachment type. | [optional] 
+**description** | **str** | Description of the secret attachment. | [optional] 
+**secret** | [**SecretCreate**](SecretCreate.md) | New secret to create and attach to the resource. | [optional] 
+**secret_id** | **str** | Secret ID attached to the resource. | [optional] 
 
 ## Example
 

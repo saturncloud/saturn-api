@@ -280,13 +280,13 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.SharedFolderAttachmentsApi(api_client)
-    job_id = 'job_id_example' # str |  (optional)
-    deployment_id = 'deployment_id_example' # str |  (optional)
-    workspace_id = 'workspace_id_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    job_id = 'job_id_example' # str | Reference by job ID. (optional)
+    deployment_id = 'deployment_id_example' # str | Reference by deployment ID. (optional)
+    workspace_id = 'workspace_id_example' # str | Reference by workspace ID. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List shared folder attachments
@@ -304,13 +304,13 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **str**|  | [optional] 
- **deployment_id** | **str**|  | [optional] 
- **workspace_id** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **job_id** | **str**| Reference by job ID. | [optional] 
+ **deployment_id** | **str**| Reference by deployment ID. | [optional] 
+ **workspace_id** | **str**| Reference by workspace ID. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

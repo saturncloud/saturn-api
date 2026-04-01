@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_account** | [**ServiceAccount**](ServiceAccount.md) |  | [readonly] 
+**service_account** | [**ServiceAccount**](ServiceAccount.md) | Service account that is attached to the resource. | [readonly] 
 
 ## Example
 

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.shared_folder import SharedFolder
@@ -29,9 +29,9 @@ class SharedFolderList(BaseModel):
     SharedFolderList
     """  # noqa: E501
 
-    shared_folders: List[SharedFolder]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    shared_folders: List[SharedFolder] = Field(description="List of shared folders.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["shared_folders", "prev_key", "next_key"]
 
     model_config = ConfigDict(

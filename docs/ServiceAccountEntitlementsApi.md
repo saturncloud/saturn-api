@@ -279,14 +279,14 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ServiceAccountEntitlementsApi(api_client)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    identity = 'identity_example' # str |  (optional)
-    name = 'name_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    user_id = 'user_id_example' # str | Identity reference by user ID (optional)
+    group_id = 'group_id_example' # str | Identity reference by group ID (optional)
+    identity = 'identity_example' # str | Identity reference by name (optional)
+    name = 'name_example' # str | Prefix matched search string on entitled service account name. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List service account entitlements
@@ -304,14 +304,14 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **identity** | **str**|  | [optional] 
- **name** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **user_id** | **str**| Identity reference by user ID | [optional] 
+ **group_id** | **str**| Identity reference by group ID | [optional] 
+ **identity** | **str**| Identity reference by name | [optional] 
+ **name** | **str**| Prefix matched search string on entitled service account name. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

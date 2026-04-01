@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | 
+**description** | **str** | Description of what the API token is used for. | 
 
 ## Example
 

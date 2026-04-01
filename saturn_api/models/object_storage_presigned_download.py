@@ -19,7 +19,7 @@ import re  # noqa: F401
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -28,10 +28,10 @@ class ObjectStoragePresignedDownload(BaseModel):
     ObjectStoragePresignedDownload
     """  # noqa: E501
 
-    file_path: StrictStr
-    size: StrictInt
-    updated_at: datetime
-    url: StrictStr
+    file_path: StrictStr = Field(description="File path in object storage.")
+    size: StrictInt = Field(description="Size of the file.")
+    updated_at: datetime = Field(description="File updated timestamp.")
+    url: StrictStr = Field(description="Presigned download URL for the file.")
     __properties: ClassVar[List[str]] = ["file_path", "size", "updated_at", "url"]
 
     model_config = ConfigDict(

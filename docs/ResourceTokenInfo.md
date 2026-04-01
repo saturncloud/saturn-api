@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**scope** | **str** |  | 
+**id** | **str** | ID of the token. | 
+**scope** | **str** | Permission scope of the token. | 
 
 ## Example
 

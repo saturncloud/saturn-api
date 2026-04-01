@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**file_path** | **str** |  | [readonly] 
-**size** | **int** |  | [readonly] 
-**part_size** | **int** |  | [readonly] 
-**expires_at** | **datetime** |  | [readonly] 
-**copy_source** | [**ObjectStorageCopySource**](ObjectStorageCopySource.md) |  | [optional] [readonly] 
+**id** | **str** | ID of the object storage upload. | [readonly] 
+**file_path** | **str** | File path of the upload in object storage. | [readonly] 
+**size** | **int** | Size of the file. | [readonly] 
+**part_size** | **int** | Multipart upload size. | [readonly] 
+**expires_at** | **datetime** | Expiration timestamp for the upload. | [readonly] 
+**copy_source** | [**ObjectStorageCopySource**](ObjectStorageCopySource.md) | Object storage copy source. | [optional] [readonly] 
 
 ## Example
 

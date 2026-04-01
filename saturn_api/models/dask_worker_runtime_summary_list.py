@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.pod_runtime_summary import PodRuntimeSummary
@@ -29,9 +29,9 @@ class DaskWorkerRuntimeSummaryList(BaseModel):
     DaskWorkerRuntimeSummaryList
     """  # noqa: E501
 
-    workers: List[PodRuntimeSummary]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    workers: List[PodRuntimeSummary] = Field(description="List of worker pod runtime summaries.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["workers", "prev_key", "next_key"]
 
     model_config = ConfigDict(

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.object_storage_presigned_part import ObjectStoragePresignedPart
@@ -29,9 +29,9 @@ class ObjectStoragePresignedUpload(BaseModel):
     ObjectStoragePresignedUpload
     """  # noqa: E501
 
-    object_storage_upload_id: StrictStr
-    is_copy: StrictBool
-    parts: List[ObjectStoragePresignedPart]
+    object_storage_upload_id: StrictStr = Field(description="ID of the object storage upload.")
+    is_copy: StrictBool = Field(description="True if upload is a copy operation.")
+    parts: List[ObjectStoragePresignedPart] = Field(description="List of presigned upload parts.")
     __properties: ClassVar[List[str]] = ["object_storage_upload_id", "is_copy", "parts"]
 
     model_config = ConfigDict(

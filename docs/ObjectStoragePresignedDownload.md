@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_path** | **str** |  | [readonly] 
-**size** | **int** |  | [readonly] 
-**updated_at** | **datetime** |  | [readonly] 
-**url** | **str** |  | [readonly] 
+**file_path** | **str** | File path in object storage. | [readonly] 
+**size** | **int** | Size of the file. | [readonly] 
+**updated_at** | **datetime** | File updated timestamp. | [readonly] 
+**url** | **str** | Presigned download URL for the file. | [readonly] 
 
 ## Example
 

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,11 @@ class Auth0Info(BaseModel):
     Auth0Info
     """  # noqa: E501
 
-    enabled: StrictBool
-    connections: Dict[str, StrictStr]
-    disable_native_login: StrictBool
+    enabled: StrictBool = Field(description="True if auth0 authentication is enabled.")
+    connections: Dict[str, StrictStr] = Field(description="Enabled auth providers.")
+    disable_native_login: StrictBool = Field(
+        description="True if native username/password login is disabled."
+    )
     __properties: ClassVar[List[str]] = ["enabled", "connections", "disable_native_login"]
 
     model_config = ConfigDict(

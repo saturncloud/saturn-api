@@ -18,22 +18,24 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
-from saturn_api.models.default_images import DefaultImages
 from saturn_api.models.default_sizes import DefaultSizes
-from saturn_api.models.server_options_size import ServerOptionsSize
+from saturn_api.models.workspace_ide_default_images import WorkspaceIdeDefaultImages
+from saturn_api.models.workspace_server_options import WorkspaceServerOptions
 
 
-class DeploymentServerOptions(BaseModel):
+class WorkspaceServerInfo(BaseModel):
     """
-    DeploymentServerOptions
+    WorkspaceServerInfo
     """  # noqa: E501
 
-    server_options: ServerOptionsSize
-    default_images: DefaultImages
-    default_sizes: DefaultSizes
+    server_options: WorkspaceServerOptions = Field(
+        description="Configuration options for workspaces."
+    )
+    default_images: WorkspaceIdeDefaultImages = Field(description="Default images for workspaces.")
+    default_sizes: DefaultSizes = Field(description="Default instance sizes for workspaces.")
     __properties: ClassVar[List[str]] = ["server_options", "default_images", "default_sizes"]
 
     model_config = ConfigDict(
@@ -53,7 +55,7 @@ class DeploymentServerOptions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DeploymentServerOptions from a JSON string"""
+        """Create an instance of WorkspaceServerInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -65,8 +67,17 @@ class DeploymentServerOptions(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([])
+        excluded_fields: Set[str] = set(
+            [
+                "server_options",
+                "default_images",
+                "default_sizes",
+            ]
+        )
 
         _dict = self.model_dump(
             by_alias=True,
@@ -86,7 +97,7 @@ class DeploymentServerOptions(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DeploymentServerOptions from a dict"""
+        """Create an instance of WorkspaceServerInfo from a dict"""
         if obj is None:
             return None
 
@@ -96,12 +107,12 @@ class DeploymentServerOptions(BaseModel):
         _obj = cls.model_validate(
             {
                 "server_options": (
-                    ServerOptionsSize.from_dict(obj["server_options"])
+                    WorkspaceServerOptions.from_dict(obj["server_options"])
                     if obj.get("server_options") is not None
                     else None
                 ),
                 "default_images": (
-                    DefaultImages.from_dict(obj["default_images"])
+                    WorkspaceIdeDefaultImages.from_dict(obj["default_images"])
                     if obj.get("default_images") is not None
                     else None
                 ),

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**topic** | **str** |  | 
-**user_id** | **str** |  | [optional] 
-**options** | **Dict[str, object]** |  | [optional] 
+**topic** | **str** | Topic of the subscription. | 
+**user_id** | **str** | User ID to be subscribed. | [optional] 
+**options** | **Dict[str, object]** | Options data for the topic. | [optional] 
 
 ## Example
 

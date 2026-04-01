@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**topic** | **str** |  | 
-**user_id** | **str** |  | [optional] 
+**topic** | **str** | Topic of the subscription. | 
+**user_id** | **str** | User ID to be unsubscribed. | [optional] 
 
 ## Example
 

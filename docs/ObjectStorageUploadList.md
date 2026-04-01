@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uploads** | [**List[ObjectStorageUpload]**](ObjectStorageUpload.md) |  | [readonly] 
+**uploads** | [**List[ObjectStorageUpload]**](ObjectStorageUpload.md) | List of object storage uploads. | [readonly] 
 
 ## Example
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**minimum** | **int** |  | 
-**maximum** | **int** |  | 
+**minimum** | **int** | Minimum number of dask workers for adaptive scaling. | 
+**maximum** | **int** | Maximum number of dask workers for adaptive scaling. | 
 
 ## Example
 

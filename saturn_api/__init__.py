@@ -103,7 +103,7 @@ __all__ = [
     "DeploymentRecipe",
     "DeploymentRouteRecipe",
     "DeploymentRuntimeSummary",
-    "DeploymentServerOptions",
+    "DeploymentServerInfo",
     "DeploymentSpec",
     "DeploymentStart",
     "DeploymentStatus",
@@ -172,7 +172,7 @@ __all__ = [
     "JobRestart",
     "JobRuntimeSummary",
     "JobRuntimeSummaryList",
-    "JobServerOptions",
+    "JobServerInfo",
     "JobSpec",
     "JobStart",
     "JobStatus",
@@ -331,8 +331,8 @@ __all__ = [
     "WorkspaceRecipe",
     "WorkspaceRouteRecipe",
     "WorkspaceRuntimeSummary",
+    "WorkspaceServerInfo",
     "WorkspaceServerOptions",
-    "WorkspaceServerSizeSchemas",
     "WorkspaceSpec",
     "WorkspaceStart",
     "WorkspaceUpdate",
@@ -467,8 +467,8 @@ from saturn_api.models.deployment_route_recipe import (
 from saturn_api.models.deployment_runtime_summary import (
     DeploymentRuntimeSummary as DeploymentRuntimeSummary,
 )
-from saturn_api.models.deployment_server_options import (
-    DeploymentServerOptions as DeploymentServerOptions,
+from saturn_api.models.deployment_server_info import (
+    DeploymentServerInfo as DeploymentServerInfo,
 )
 from saturn_api.models.deployment_spec import DeploymentSpec as DeploymentSpec
 from saturn_api.models.deployment_start import DeploymentStart as DeploymentStart
@@ -570,7 +570,7 @@ from saturn_api.models.job_runtime_summary import JobRuntimeSummary as JobRuntim
 from saturn_api.models.job_runtime_summary_list import (
     JobRuntimeSummaryList as JobRuntimeSummaryList,
 )
-from saturn_api.models.job_server_options import JobServerOptions as JobServerOptions
+from saturn_api.models.job_server_info import JobServerInfo as JobServerInfo
 from saturn_api.models.job_spec import JobSpec as JobSpec
 from saturn_api.models.job_start import JobStart as JobStart
 from saturn_api.models.job_status import JobStatus as JobStatus
@@ -865,11 +865,11 @@ from saturn_api.models.workspace_route_recipe import (
 from saturn_api.models.workspace_runtime_summary import (
     WorkspaceRuntimeSummary as WorkspaceRuntimeSummary,
 )
+from saturn_api.models.workspace_server_info import (
+    WorkspaceServerInfo as WorkspaceServerInfo,
+)
 from saturn_api.models.workspace_server_options import (
     WorkspaceServerOptions as WorkspaceServerOptions,
-)
-from saturn_api.models.workspace_server_size_schemas import (
-    WorkspaceServerSizeSchemas as WorkspaceServerSizeSchemas,
 )
 from saturn_api.models.workspace_spec import WorkspaceSpec as WorkspaceSpec
 from saturn_api.models.workspace_start import WorkspaceStart as WorkspaceStart

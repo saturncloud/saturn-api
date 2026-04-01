@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,14 +27,21 @@ class UserUpdate(BaseModel):
     UserUpdate
     """  # noqa: E501
 
-    username: Optional[StrictStr] = None
-    full_name: Optional[StrictStr] = None
-    email: Optional[StrictStr] = None
-    is_multiple_ssh_keys: Optional[StrictBool] = None
-    active: Optional[StrictBool] = None
-    admin: Optional[StrictBool] = None
-    locked: Optional[StrictBool] = None
-    limits_id: Optional[StrictStr] = None
+    username: Optional[StrictStr] = Field(default=None, description="Name of the user.")
+    full_name: Optional[StrictStr] = Field(default=None, description="Full name of the user.")
+    email: Optional[StrictStr] = Field(default=None, description="Email of the user.")
+    is_multiple_ssh_keys: Optional[StrictBool] = Field(
+        default=None, description="Enable multiple SSH keys."
+    )
+    active: Optional[StrictBool] = Field(default=None, description="True if user is active.")
+    admin: Optional[StrictBool] = Field(
+        default=None, description="Enable user to take privileged actions in the API. (Admin only)"
+    )
+    locked: Optional[StrictBool] = Field(default=None, description="Lock the user. (Admin only)")
+    limits_id: Optional[StrictStr] = Field(
+        default=None,
+        description="Usage limits ID applied to the user in the primary org. (Admin only)",
+    )
     __properties: ClassVar[List[str]] = [
         "username",
         "full_name",

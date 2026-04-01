@@ -124,10 +124,10 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ActiveApi(api_client)
     name = 'name_example' # str | 
-    container_name = 'container_name_example' # str |  (optional)
-    previous = False # bool |  (optional) (default to False)
-    cluster = 'cluster_example' # str |  (optional)
-    page_size = 1000 # int |  (optional) (default to 1000)
+    container_name = 'container_name_example' # str | Name of the container to retrieve logs for. Defaults to first container in the pod. (optional)
+    previous = False # bool | Retrieve logs for the previous instance of a container, if it exists. (optional) (default to False)
+    cluster = 'cluster_example' # str | Name of the cluster where the pod is running. (optional)
+    page_size = 1000 # int | Number of log lines to retrieve. (optional) (default to 1000)
 
     try:
         # Get pod logs
@@ -146,10 +146,10 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**|  | 
- **container_name** | **str**|  | [optional] 
- **previous** | **bool**|  | [optional] [default to False]
- **cluster** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 1000]
+ **container_name** | **str**| Name of the container to retrieve logs for. Defaults to first container in the pod. | [optional] 
+ **previous** | **bool**| Retrieve logs for the previous instance of a container, if it exists. | [optional] [default to False]
+ **cluster** | **str**| Name of the cluster where the pod is running. | [optional] 
+ **page_size** | **int**| Number of log lines to retrieve. | [optional] [default to 1000]
 
 ### Return type
 
@@ -208,12 +208,12 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ActiveApi(api_client)
-    workload_type = saturn_api.WorkloadType() # WorkloadType | 
-    workload_id = 'workload_id_example' # str | 
-    cluster = 'cluster_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
+    workload_type = saturn_api.WorkloadType() # WorkloadType | Type of pods to query.
+    workload_id = 'workload_id_example' # str | ID of the workload.
+    cluster = 'cluster_example' # str | Name of the cluster to query. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Maximum number of results per page. (optional) (default to 100)
 
     try:
         # List pod runtime summaries
@@ -231,12 +231,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workload_type** | [**WorkloadType**](.md)|  | 
- **workload_id** | **str**|  | 
- **cluster** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
+ **workload_type** | [**WorkloadType**](.md)| Type of pods to query. | 
+ **workload_id** | **str**| ID of the workload. | 
+ **cluster** | **str**| Name of the cluster to query. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Maximum number of results per page. | [optional] [default to 100]
 
 ### Return type
 
@@ -295,14 +295,14 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ActiveApi(api_client)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    resource_type = saturn_api.ResourceType() # ResourceType |  (optional)
-    list_by = owner # str |  (optional) (default to owner)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    resource_type = saturn_api.ResourceType() # ResourceType | Filter the type of returned resources. (optional)
+    list_by = owner # str | List active resources at the owner, org, or account level. Org and Account require elevated permissions. (optional) (default to owner)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Maximum number of results per page. (optional) (default to 100)
 
     try:
         # List active resources
@@ -320,14 +320,14 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **resource_type** | [**ResourceType**](.md)|  | [optional] 
- **list_by** | **str**|  | [optional] [default to owner]
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **resource_type** | [**ResourceType**](.md)| Filter the type of returned resources. | [optional] 
+ **list_by** | **str**| List active resources at the owner, org, or account level. Org and Account require elevated permissions. | [optional] [default to owner]
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Maximum number of results per page. | [optional] [default to 100]
 
 ### Return type
 

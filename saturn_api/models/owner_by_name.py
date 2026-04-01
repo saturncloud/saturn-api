@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,7 @@ class OwnerByName(BaseModel):
     OwnerByName
     """  # noqa: E501
 
-    name: StrictStr
+    name: StrictStr = Field(description="Reference owner by name.")
     __properties: ClassVar[List[str]] = ["name"]
 
     model_config = ConfigDict(

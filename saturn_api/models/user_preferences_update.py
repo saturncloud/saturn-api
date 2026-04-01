@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,7 @@ class UserPreferencesUpdate(BaseModel):
     UserPreferencesUpdate
     """  # noqa: E501
 
-    default_org_id: StrictStr
+    default_org_id: StrictStr = Field(description="Default org ID for the user.")
     __properties: ClassVar[List[str]] = ["default_org_id"]
 
     model_config = ConfigDict(

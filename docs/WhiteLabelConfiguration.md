@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** |  | 
-**brand_name** | **str** |  | 
-**brand_short_name** | **str** |  | [optional] 
-**logo_icon_url** | **str** |  | 
-**logo_full_url** | **str** |  | 
-**favicon_url** | **str** |  | [optional] 
-**primary_color** | **str** |  | 
-**support_email** | **str** |  | 
-**website_url** | **str** |  | 
-**docs_url** | **str** |  | [optional] 
+**enabled** | **bool** | Enable whitelabel configuration. | 
+**brand_name** | **str** | Whitelabeled brand name. | 
+**brand_short_name** | **str** | Short version of the brand name. | [optional] 
+**logo_icon_url** | **str** | Brand icon URL. | 
+**logo_full_url** | **str** | Brand full icon URL. | 
+**favicon_url** | **str** | Favicon URL. | [optional] 
+**primary_color** | **str** | Primary frontend color. | 
+**support_email** | **str** | Support contact email. | 
+**website_url** | **str** | Website URL. | 
+**docs_url** | **str** | Documentation URL. | [optional] 
 
 ## Example
 

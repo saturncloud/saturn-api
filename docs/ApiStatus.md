@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **str** |  | [readonly] 
-**version** | **str** |  | [readonly] 
+**status** | **str** | API availability. | [readonly] 
+**version** | **str** | API version. | [readonly] 
 
 ## Example
 

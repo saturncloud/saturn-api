@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,17 +27,27 @@ class ExternalRepoAttachment(BaseModel):
     ExternalRepoAttachment
     """  # noqa: E501
 
-    id: StrictStr
-    has_sshkey: StrictBool
-    path: StrictStr
-    created_at: StrictStr
-    external_repo_id: StrictStr
-    remote_url: StrictStr
-    deployment_id: Optional[StrictStr] = None
-    workspace_id: Optional[StrictStr] = None
-    on_restart: StrictStr
-    ref: Optional[StrictStr] = None
-    ref_type: Optional[StrictStr] = None
+    id: StrictStr = Field(description="ID of the external repository attachment.")
+    has_sshkey: StrictBool = Field(
+        description="True if the repository has an attached SSH Private Key"
+    )
+    path: StrictStr = Field(description="Path of the repository in the resource it is attached to.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    external_repo_id: StrictStr = Field(description="ID of the external repository to attach.")
+    remote_url: StrictStr = Field(description="Repository URL")
+    deployment_id: Optional[StrictStr] = Field(
+        default=None, description="Deployment ID the repository is attached to."
+    )
+    workspace_id: Optional[StrictStr] = Field(
+        default=None, description="Workspace ID the repository is attached to."
+    )
+    on_restart: StrictStr = Field(
+        description="Repository clone behavior on restart. Preserve only applies when path is in a persistent volume."
+    )
+    ref: Optional[StrictStr] = Field(
+        default=None, description="Git version reference on the repository."
+    )
+    ref_type: Optional[StrictStr] = Field(default=None, description="Type of the git ref.")
     __properties: ClassVar[List[str]] = [
         "id",
         "has_sshkey",

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_account_id** | **str** |  | 
+**service_account_id** | **str** | Service account ID to attach to the resource. | 
 
 ## Example
 

@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**avatar_url** | **str** |  | [readonly] 
-**username** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**full_name** | **str** |  | [readonly] 
-**email** | **str** |  | [readonly] 
-**admin** | **bool** |  | [readonly] 
-**locked** | **bool** |  | [readonly] 
-**locked_reason** | **str** |  | [readonly] 
-**is_multiple_ssh_keys** | **bool** |  | [readonly] 
-**active** | **bool** |  | [readonly] 
+**id** | **str** | ID of the user. | [readonly] 
+**avatar_url** | **str** | Avatar URL of the user. | [readonly] 
+**username** | **str** | Name of the user. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**full_name** | **str** | Full name of the user. | [readonly] 
+**email** | **str** | Email of the user. | [readonly] 
+**admin** | **bool** | Enable user to take privileged actions in the API. | [readonly] 
+**locked** | **bool** | Lock the user. | [readonly] 
+**locked_reason** | **str** | Reason the user is locked. | [readonly] 
+**is_multiple_ssh_keys** | **bool** | Enable multiple SSH keys. | [readonly] 
+**active** | **bool** | True if user is active. | [readonly] 
 
 ## Example
 

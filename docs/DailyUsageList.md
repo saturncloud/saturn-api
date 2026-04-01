@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usage** | [**List[DailyUsage]**](DailyUsage.md) |  | 
+**usage** | [**List[DailyUsage]**](DailyUsage.md) | List of daily usage records. | 
 
 ## Example
 

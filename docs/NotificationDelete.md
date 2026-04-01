@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**notification_ids** | **List[str]** |  | 
+**notification_ids** | **List[str]** | List of notification IDs to delete. | 
 
 ## Example
 

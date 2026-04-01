@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subdomain** | **str** |  | [readonly] 
-**container_port** | **int** |  | [readonly] 
-**visibility** | **str** |  | [readonly] 
 **id** | **str** |  | [readonly] 
-**url** | **str** |  | [readonly] 
-**required** | **bool** |  | [readonly] 
-**daskcluster_id** | **str** |  | [optional] [readonly] 
-**deployment_id** | **str** |  | [optional] [readonly] 
-**workspace_id** | **str** |  | [optional] [readonly] 
+**subdomain** | **str** | Subdomain of the route. | [readonly] 
+**container_port** | **int** | Exposed port in the container. | [readonly] 
+**visibility** | **str** | Describes who is allowed to access the route. | [readonly] 
+**url** | **str** | Full URL of the route. | [readonly] 
+**required** | **bool** | True if the route is required for the resource. | [readonly] 
+**daskcluster_id** | **str** | Dask cluster ID the route is attached to. | [optional] [readonly] 
+**deployment_id** | **str** | Deployment ID the route is attached to. | [optional] [readonly] 
+**workspace_id** | **str** | Workspace ID the route is attached to. | [optional] [readonly] 
 
 ## Example
 

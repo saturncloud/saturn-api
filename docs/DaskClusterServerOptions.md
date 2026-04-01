@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**server_options** | [**ServerOptionsSize**](ServerOptionsSize.md) |  | 
+**server_options** | [**ServerOptionsSize**](ServerOptionsSize.md) | Configuration options for dask clusters. | 
 
 ## Example
 

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.secret import Secret
@@ -30,12 +30,14 @@ class SecretAttachment(BaseModel):
     SecretAttachment
     """  # noqa: E501
 
-    id: StrictStr
-    created_at: StrictStr
+    id: StrictStr = Field(description="ID of the secret attachment.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
     attachment_type: SecretAttachmentType
-    location: StrictStr
-    description: StrictStr
-    secret: Optional[Secret]
+    location: StrictStr = Field(
+        description="Location of the attachment on the resource. Format depends on attachment type."
+    )
+    description: StrictStr = Field(description="Description of the secret attachment.")
+    secret: Optional[Secret] = Field(description="Secret attached to the resource.")
     __properties: ClassVar[List[str]] = [
         "id",
         "created_at",

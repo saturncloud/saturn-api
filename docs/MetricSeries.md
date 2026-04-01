@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pod_name** | **str** |  | [readonly] 
-**labels** | **Dict[str, str]** |  | [readonly] 
-**stats** | [**Stats**](Stats.md) |  | [readonly] 
-**data** | [**List[DataPoint]**](DataPoint.md) |  | [readonly] 
+**pod_name** | **str** | Name of the pod. | [readonly] 
+**labels** | **Dict[str, str]** | Labels associated with the pod. | [readonly] 
+**stats** | [**Stats**](Stats.md) | Stats computed over the data range. | [readonly] 
+**data** | [**List[DataPoint]**](DataPoint.md) | List of metrics data points. | [readonly] 
 
 ## Example
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**remote_url** | **str** |  | 
-**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
-**ssh_privatekey_id** | **str** |  | [optional] 
+**remote_url** | **str** | Repo URL. | 
+**owner** | [**OwnerReference**](OwnerReference.md) | Owner of the repository. | [optional] 
+**ssh_privatekey_id** | **str** | ID of an SSH Private Key with permission to pull the repository. | [optional] 
 
 ## Example
 

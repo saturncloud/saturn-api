@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**image** | [**Image**](Image.md) |  | [readonly] 
-**image_uri** | **str** |  | [readonly] 
-**description** | **str** |  | [readonly] 
-**version** | **str** |  | [readonly] 
-**build_data** | [**BuildData**](BuildData.md) |  | [optional] [readonly] 
-**archived** | **bool** |  | [readonly] 
-**is_external** | **bool** |  | [readonly] 
-**status** | **str** |  | [readonly] 
-**saturn_env** | **str** |  | [optional] [readonly] 
+**id** | **str** | ID of the image tag. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**image** | [**Image**](Image.md) | Image that the tag belongs to. | [readonly] 
+**image_uri** | **str** | Image URI for the tag. | [readonly] 
+**description** | **str** | Description of the image tag | [readonly] 
+**version** | **str** | Version of the image tag. | [readonly] 
+**build_data** | [**BuildData**](BuildData.md) | Build data for the image tag. | [optional] [readonly] 
+**archived** | **bool** | True if the image tag is archived. Archived tags are not attachable to new resources, but will continue to work on existing resources. | [readonly] 
+**is_external** | **bool** | True if the image tag was imported from an external source. | [readonly] 
+**status** | **str** | Status of the image tag build. | [readonly] 
+**saturn_env** | **str** | Dump of the build env. | [optional] [readonly] 
 
 ## Example
 

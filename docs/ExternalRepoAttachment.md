@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**has_sshkey** | **bool** |  | [readonly] 
-**path** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**external_repo_id** | **str** |  | [readonly] 
-**remote_url** | **str** |  | [readonly] 
-**deployment_id** | **str** |  | [optional] [readonly] 
-**workspace_id** | **str** |  | [optional] [readonly] 
-**on_restart** | **str** |  | [readonly] 
-**ref** | **str** |  | [optional] [readonly] 
-**ref_type** | **str** |  | [optional] [readonly] 
+**id** | **str** | ID of the external repository attachment. | [readonly] 
+**has_sshkey** | **bool** | True if the repository has an attached SSH Private Key | [readonly] 
+**path** | **str** | Path of the repository in the resource it is attached to. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**external_repo_id** | **str** | ID of the external repository to attach. | [readonly] 
+**remote_url** | **str** | Repository URL | [readonly] 
+**deployment_id** | **str** | Deployment ID the repository is attached to. | [optional] [readonly] 
+**workspace_id** | **str** | Workspace ID the repository is attached to. | [optional] [readonly] 
+**on_restart** | **str** | Repository clone behavior on restart. Preserve only applies when path is in a persistent volume. | [readonly] 
+**ref** | **str** | Git version reference on the repository. | [optional] [readonly] 
+**ref_type** | **str** | Type of the git ref. | [optional] [readonly] 
 
 ## Example
 

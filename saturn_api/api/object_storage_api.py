@@ -1453,12 +1453,25 @@ class ObjectStorageApi:
     @validate_call
     async def get_usage(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1472,17 +1485,17 @@ class ObjectStorageApi:
         """Get object storage usage stats
 
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1532,12 +1545,25 @@ class ObjectStorageApi:
     @validate_call
     async def get_usage_with_http_info(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1551,17 +1577,17 @@ class ObjectStorageApi:
         """Get object storage usage stats
 
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1611,12 +1637,25 @@ class ObjectStorageApi:
     @validate_call
     async def get_usage_without_preload_content(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1630,17 +1669,17 @@ class ObjectStorageApi:
         """Get object storage usage stats
 
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1763,16 +1802,39 @@ class ObjectStorageApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prefix: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
-        max_keys: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        delimited: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prefix: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on object storage file path."),
+        ] = None,
+        last_key: Annotated[
+            Optional[StrictStr], Field(description="Last seen key for pagination.")
+        ] = None,
+        max_keys: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        delimited: Annotated[
+            Optional[StrictBool], Field(description="Delimit results by directory.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1787,25 +1849,25 @@ class ObjectStorageApi:
 
         Paginated list of object storage.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prefix:
+        :param prefix: Prefix matched search string on object storage file path.
         :type prefix: str
-        :param last_key:
+        :param last_key: Last seen key for pagination.
         :type last_key: str
-        :param max_keys:
+        :param max_keys: Page size.
         :type max_keys: int
-        :param delimited:
+        :param delimited: Delimit results by directory.
         :type delimited: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1859,16 +1921,39 @@ class ObjectStorageApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prefix: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
-        max_keys: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        delimited: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prefix: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on object storage file path."),
+        ] = None,
+        last_key: Annotated[
+            Optional[StrictStr], Field(description="Last seen key for pagination.")
+        ] = None,
+        max_keys: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        delimited: Annotated[
+            Optional[StrictBool], Field(description="Delimit results by directory.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1883,25 +1968,25 @@ class ObjectStorageApi:
 
         Paginated list of object storage.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prefix:
+        :param prefix: Prefix matched search string on object storage file path.
         :type prefix: str
-        :param last_key:
+        :param last_key: Last seen key for pagination.
         :type last_key: str
-        :param max_keys:
+        :param max_keys: Page size.
         :type max_keys: int
-        :param delimited:
+        :param delimited: Delimit results by directory.
         :type delimited: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1955,16 +2040,39 @@ class ObjectStorageApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prefix: Optional[StrictStr] = None,
-        last_key: Optional[StrictStr] = None,
-        max_keys: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        delimited: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prefix: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on object storage file path."),
+        ] = None,
+        last_key: Annotated[
+            Optional[StrictStr], Field(description="Last seen key for pagination.")
+        ] = None,
+        max_keys: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        delimited: Annotated[
+            Optional[StrictBool], Field(description="Delimit results by directory.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1979,25 +2087,25 @@ class ObjectStorageApi:
 
         Paginated list of object storage.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prefix:
+        :param prefix: Prefix matched search string on object storage file path.
         :type prefix: str
-        :param last_key:
+        :param last_key: Last seen key for pagination.
         :type last_key: str
-        :param max_keys:
+        :param max_keys: Page size.
         :type max_keys: int
-        :param delimited:
+        :param delimited: Delimit results by directory.
         :type delimited: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2144,14 +2252,32 @@ class ObjectStorageApi:
     @validate_call
     async def list_shared(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        last_key: Optional[StrictStr] = None,
-        max_keys: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        last_key: Annotated[
+            Optional[StrictStr], Field(description="Last seen key for pagination.")
+        ] = None,
+        max_keys: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2166,21 +2292,21 @@ class ObjectStorageApi:
 
         List owners that have shared object storage accessible to the given owner.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param last_key:
+        :param last_key: Last seen key for pagination.
         :type last_key: str
-        :param max_keys:
+        :param max_keys: Page size.
         :type max_keys: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2232,14 +2358,32 @@ class ObjectStorageApi:
     @validate_call
     async def list_shared_with_http_info(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        last_key: Optional[StrictStr] = None,
-        max_keys: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        last_key: Annotated[
+            Optional[StrictStr], Field(description="Last seen key for pagination.")
+        ] = None,
+        max_keys: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2254,21 +2398,21 @@ class ObjectStorageApi:
 
         List owners that have shared object storage accessible to the given owner.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param last_key:
+        :param last_key: Last seen key for pagination.
         :type last_key: str
-        :param max_keys:
+        :param max_keys: Page size.
         :type max_keys: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2320,14 +2464,32 @@ class ObjectStorageApi:
     @validate_call
     async def list_shared_without_preload_content(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        last_key: Optional[StrictStr] = None,
-        max_keys: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        last_key: Annotated[
+            Optional[StrictStr], Field(description="Last seen key for pagination.")
+        ] = None,
+        max_keys: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2342,21 +2504,21 @@ class ObjectStorageApi:
 
         List owners that have shared object storage accessible to the given owner.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param last_key:
+        :param last_key: Last seen key for pagination.
         :type last_key: str
-        :param max_keys:
+        :param max_keys: Page size.
         :type max_keys: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2491,14 +2653,33 @@ class ObjectStorageApi:
     @validate_call
     async def list_uploads(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prefix: Optional[StrictStr] = None,
-        is_copy: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prefix: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on object storage upload file path"),
+        ] = None,
+        is_copy: Annotated[
+            Optional[StrictBool],
+            Field(description="Filter object storage uploads that are or aren't copy operations."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2512,21 +2693,21 @@ class ObjectStorageApi:
         """List object storage uploads
 
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prefix:
+        :param prefix: Prefix matched search string on object storage upload file path
         :type prefix: str
-        :param is_copy:
+        :param is_copy: Filter object storage uploads that are or aren't copy operations.
         :type is_copy: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2578,14 +2759,33 @@ class ObjectStorageApi:
     @validate_call
     async def list_uploads_with_http_info(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prefix: Optional[StrictStr] = None,
-        is_copy: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prefix: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on object storage upload file path"),
+        ] = None,
+        is_copy: Annotated[
+            Optional[StrictBool],
+            Field(description="Filter object storage uploads that are or aren't copy operations."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2599,21 +2799,21 @@ class ObjectStorageApi:
         """List object storage uploads
 
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prefix:
+        :param prefix: Prefix matched search string on object storage upload file path
         :type prefix: str
-        :param is_copy:
+        :param is_copy: Filter object storage uploads that are or aren't copy operations.
         :type is_copy: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2665,14 +2865,33 @@ class ObjectStorageApi:
     @validate_call
     async def list_uploads_without_preload_content(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        prefix: Optional[StrictStr] = None,
-        is_copy: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        prefix: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on object storage upload file path"),
+        ] = None,
+        is_copy: Annotated[
+            Optional[StrictBool],
+            Field(description="Filter object storage uploads that are or aren't copy operations."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2686,21 +2905,21 @@ class ObjectStorageApi:
         """List object storage uploads
 
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param prefix:
+        :param prefix: Prefix matched search string on object storage upload file path
         :type prefix: str
-        :param is_copy:
+        :param is_copy: Filter object storage uploads that are or aren't copy operations.
         :type is_copy: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2836,9 +3055,18 @@ class ObjectStorageApi:
     async def resume_upload(
         self,
         object_storage_upload_id: StrictStr,
-        first_part: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
-        last_part: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
-        last_part_size: Optional[Annotated[int, Field(le=5368709120, strict=True, ge=0)]] = None,
+        first_part: Annotated[
+            Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]],
+            Field(description="Index of the first part to retrieve presigned upload URLs for."),
+        ] = None,
+        last_part: Annotated[
+            Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]],
+            Field(description="Index of the last part to retrieve presigned upload URLs for."),
+        ] = None,
+        last_part_size: Annotated[
+            Optional[Annotated[int, Field(le=5368709120, strict=True, ge=0)]],
+            Field(description="Final part size for uploads with unspecified total size."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2854,11 +3082,11 @@ class ObjectStorageApi:
 
         :param object_storage_upload_id: (required)
         :type object_storage_upload_id: str
-        :param first_part:
+        :param first_part: Index of the first part to retrieve presigned upload URLs for.
         :type first_part: int
-        :param last_part:
+        :param last_part: Index of the last part to retrieve presigned upload URLs for.
         :type last_part: int
-        :param last_part_size:
+        :param last_part_size: Final part size for uploads with unspecified total size.
         :type last_part_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2907,9 +3135,18 @@ class ObjectStorageApi:
     async def resume_upload_with_http_info(
         self,
         object_storage_upload_id: StrictStr,
-        first_part: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
-        last_part: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
-        last_part_size: Optional[Annotated[int, Field(le=5368709120, strict=True, ge=0)]] = None,
+        first_part: Annotated[
+            Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]],
+            Field(description="Index of the first part to retrieve presigned upload URLs for."),
+        ] = None,
+        last_part: Annotated[
+            Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]],
+            Field(description="Index of the last part to retrieve presigned upload URLs for."),
+        ] = None,
+        last_part_size: Annotated[
+            Optional[Annotated[int, Field(le=5368709120, strict=True, ge=0)]],
+            Field(description="Final part size for uploads with unspecified total size."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2925,11 +3162,11 @@ class ObjectStorageApi:
 
         :param object_storage_upload_id: (required)
         :type object_storage_upload_id: str
-        :param first_part:
+        :param first_part: Index of the first part to retrieve presigned upload URLs for.
         :type first_part: int
-        :param last_part:
+        :param last_part: Index of the last part to retrieve presigned upload URLs for.
         :type last_part: int
-        :param last_part_size:
+        :param last_part_size: Final part size for uploads with unspecified total size.
         :type last_part_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2978,9 +3215,18 @@ class ObjectStorageApi:
     async def resume_upload_without_preload_content(
         self,
         object_storage_upload_id: StrictStr,
-        first_part: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
-        last_part: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
-        last_part_size: Optional[Annotated[int, Field(le=5368709120, strict=True, ge=0)]] = None,
+        first_part: Annotated[
+            Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]],
+            Field(description="Index of the first part to retrieve presigned upload URLs for."),
+        ] = None,
+        last_part: Annotated[
+            Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]],
+            Field(description="Index of the last part to retrieve presigned upload URLs for."),
+        ] = None,
+        last_part_size: Annotated[
+            Optional[Annotated[int, Field(le=5368709120, strict=True, ge=0)]],
+            Field(description="Final part size for uploads with unspecified total size."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2996,11 +3242,11 @@ class ObjectStorageApi:
 
         :param object_storage_upload_id: (required)
         :type object_storage_upload_id: str
-        :param first_part:
+        :param first_part: Index of the first part to retrieve presigned upload URLs for.
         :type first_part: int
-        :param last_part:
+        :param last_part: Index of the last part to retrieve presigned upload URLs for.
         :type last_part: int
-        :param last_part_size:
+        :param last_part_size: Final part size for uploads with unspecified total size.
         :type last_part_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

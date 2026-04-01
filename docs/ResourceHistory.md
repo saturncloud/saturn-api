@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pods** | [**List[PodHistory]**](PodHistory.md) |  | [readonly] 
+**pods** | [**List[PodHistory]**](PodHistory.md) | List of pod history. | [readonly] 
 
 ## Example
 

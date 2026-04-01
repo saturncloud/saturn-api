@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**prefix** | **str** |  | [readonly] 
+**prefix** | **str** | Directory path. | [readonly] 
 
 ## Example
 

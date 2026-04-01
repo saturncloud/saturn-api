@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner import Owner
@@ -30,12 +30,14 @@ class Secret(BaseModel):
     Secret
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    created_at: StrictStr
+    id: StrictStr = Field(description="ID of the secret.")
+    name: StrictStr = Field(description="Name of the secret.")
+    owner: Owner = Field(description="Owner of the secret.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
     access: SecretAccessLevel
-    editable: Optional[StrictBool] = None
+    editable: Optional[StrictBool] = Field(
+        default=None, description="True if the secret is editable by the authenticated user/group."
+    )
     __properties: ClassVar[List[str]] = ["id", "name", "owner", "created_at", "access", "editable"]
 
     model_config = ConfigDict(

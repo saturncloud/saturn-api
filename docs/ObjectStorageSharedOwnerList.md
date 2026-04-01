@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owners** | [**List[ObjectStorageSharedOwner]**](ObjectStorageSharedOwner.md) |  | [readonly] 
-**next_last_key** | **str** |  | [readonly] 
+**owners** | [**List[ObjectStorageSharedOwner]**](ObjectStorageSharedOwner.md) | List of owners with shared object storage. | [readonly] 
+**next_last_key** | **str** | Next pagination key. | [readonly] 
 
 ## Example
 

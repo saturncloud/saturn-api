@@ -3929,12 +3929,24 @@ class OrgsApi:
     @validate_call
     async def list(
         self,
-        name: Optional[StrictStr] = None,
-        all_orgs: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on org name.")
+        ] = None,
+        all_orgs: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="List all orgs, instead of only orgs the user is a member of. (Admin only)"
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3949,17 +3961,17 @@ class OrgsApi:
 
         Paginated list of orgs.
 
-        :param name:
+        :param name: Prefix matched search string on org name.
         :type name: str
-        :param all_orgs:
+        :param all_orgs: List all orgs, instead of only orgs the user is a member of. (Admin only)
         :type all_orgs: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4009,12 +4021,24 @@ class OrgsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        name: Optional[StrictStr] = None,
-        all_orgs: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on org name.")
+        ] = None,
+        all_orgs: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="List all orgs, instead of only orgs the user is a member of. (Admin only)"
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4029,17 +4053,17 @@ class OrgsApi:
 
         Paginated list of orgs.
 
-        :param name:
+        :param name: Prefix matched search string on org name.
         :type name: str
-        :param all_orgs:
+        :param all_orgs: List all orgs, instead of only orgs the user is a member of. (Admin only)
         :type all_orgs: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4089,12 +4113,24 @@ class OrgsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        name: Optional[StrictStr] = None,
-        all_orgs: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on org name.")
+        ] = None,
+        all_orgs: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="List all orgs, instead of only orgs the user is a member of. (Admin only)"
+            ),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4109,17 +4145,17 @@ class OrgsApi:
 
         Paginated list of orgs.
 
-        :param name:
+        :param name: Prefix matched search string on org name.
         :type name: str
-        :param all_orgs:
+        :param all_orgs: List all orgs, instead of only orgs the user is a member of. (Admin only)
         :type all_orgs: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4243,13 +4279,24 @@ class OrgsApi:
     async def list_invitations(
         self,
         org_id: StrictStr,
-        status: Optional[InvitationStatus] = None,
-        email: Optional[StrictStr] = None,
-        invitor_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        status: Annotated[
+            Optional[InvitationStatus], Field(description="Filter org invitations by status.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+        ] = None,
+        invitor_id: Annotated[
+            Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4265,19 +4312,19 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param status:
+        :param status: Filter org invitations by status.
         :type status: InvitationStatus
-        :param email:
+        :param email: Prefix matched search string on email.
         :type email: str
-        :param invitor_id:
+        :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4330,13 +4377,24 @@ class OrgsApi:
     async def list_invitations_with_http_info(
         self,
         org_id: StrictStr,
-        status: Optional[InvitationStatus] = None,
-        email: Optional[StrictStr] = None,
-        invitor_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        status: Annotated[
+            Optional[InvitationStatus], Field(description="Filter org invitations by status.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+        ] = None,
+        invitor_id: Annotated[
+            Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4352,19 +4410,19 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param status:
+        :param status: Filter org invitations by status.
         :type status: InvitationStatus
-        :param email:
+        :param email: Prefix matched search string on email.
         :type email: str
-        :param invitor_id:
+        :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4417,13 +4475,24 @@ class OrgsApi:
     async def list_invitations_without_preload_content(
         self,
         org_id: StrictStr,
-        status: Optional[InvitationStatus] = None,
-        email: Optional[StrictStr] = None,
-        invitor_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        status: Annotated[
+            Optional[InvitationStatus], Field(description="Filter org invitations by status.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+        ] = None,
+        invitor_id: Annotated[
+            Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4439,19 +4508,19 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param status:
+        :param status: Filter org invitations by status.
         :type status: InvitationStatus
-        :param email:
+        :param email: Prefix matched search string on email.
         :type email: str
-        :param invitor_id:
+        :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4585,15 +4654,35 @@ class OrgsApi:
     async def list_owners(
         self,
         org_id: StrictStr,
-        name: Optional[StrictStr] = None,
-        identity_type: Optional[IdentityType] = None,
-        all_users: Optional[StrictBool] = None,
-        all_groups: Optional[StrictBool] = None,
-        details: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string by owner identity name."),
+        ] = None,
+        identity_type: Annotated[
+            Optional[IdentityType], Field(description="Filter owners by identity type.")
+        ] = None,
+        all_users: Annotated[
+            Optional[StrictBool],
+            Field(description="List all user owners, instead of just the authenticated user."),
+        ] = None,
+        all_groups: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="List all group owners, instead of just groups the authenticated user is a member of."
+            ),
+        ] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrieve detailed owner response.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4610,23 +4699,23 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param name:
+        :param name: Prefix matched search string by owner identity name.
         :type name: str
-        :param identity_type:
+        :param identity_type: Filter owners by identity type.
         :type identity_type: IdentityType
-        :param all_users:
+        :param all_users: List all user owners, instead of just the authenticated user.
         :type all_users: bool
-        :param all_groups:
+        :param all_groups: List all group owners, instead of just groups the authenticated user is a member of.
         :type all_groups: bool
-        :param details:
+        :param details: Retrieve detailed owner response.
         :type details: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4681,15 +4770,35 @@ class OrgsApi:
     async def list_owners_with_http_info(
         self,
         org_id: StrictStr,
-        name: Optional[StrictStr] = None,
-        identity_type: Optional[IdentityType] = None,
-        all_users: Optional[StrictBool] = None,
-        all_groups: Optional[StrictBool] = None,
-        details: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string by owner identity name."),
+        ] = None,
+        identity_type: Annotated[
+            Optional[IdentityType], Field(description="Filter owners by identity type.")
+        ] = None,
+        all_users: Annotated[
+            Optional[StrictBool],
+            Field(description="List all user owners, instead of just the authenticated user."),
+        ] = None,
+        all_groups: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="List all group owners, instead of just groups the authenticated user is a member of."
+            ),
+        ] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrieve detailed owner response.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4706,23 +4815,23 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param name:
+        :param name: Prefix matched search string by owner identity name.
         :type name: str
-        :param identity_type:
+        :param identity_type: Filter owners by identity type.
         :type identity_type: IdentityType
-        :param all_users:
+        :param all_users: List all user owners, instead of just the authenticated user.
         :type all_users: bool
-        :param all_groups:
+        :param all_groups: List all group owners, instead of just groups the authenticated user is a member of.
         :type all_groups: bool
-        :param details:
+        :param details: Retrieve detailed owner response.
         :type details: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4777,15 +4886,35 @@ class OrgsApi:
     async def list_owners_without_preload_content(
         self,
         org_id: StrictStr,
-        name: Optional[StrictStr] = None,
-        identity_type: Optional[IdentityType] = None,
-        all_users: Optional[StrictBool] = None,
-        all_groups: Optional[StrictBool] = None,
-        details: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string by owner identity name."),
+        ] = None,
+        identity_type: Annotated[
+            Optional[IdentityType], Field(description="Filter owners by identity type.")
+        ] = None,
+        all_users: Annotated[
+            Optional[StrictBool],
+            Field(description="List all user owners, instead of just the authenticated user."),
+        ] = None,
+        all_groups: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="List all group owners, instead of just groups the authenticated user is a member of."
+            ),
+        ] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrieve detailed owner response.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4802,23 +4931,23 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param name:
+        :param name: Prefix matched search string by owner identity name.
         :type name: str
-        :param identity_type:
+        :param identity_type: Filter owners by identity type.
         :type identity_type: IdentityType
-        :param all_users:
+        :param all_users: List all user owners, instead of just the authenticated user.
         :type all_users: bool
-        :param all_groups:
+        :param all_groups: List all group owners, instead of just groups the authenticated user is a member of.
         :type all_groups: bool
-        :param details:
+        :param details: Retrieve detailed owner response.
         :type details: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

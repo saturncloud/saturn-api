@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**resource** | [**ResourceReference**](ResourceReference.md) |  | 
-**tags** | **Dict[str, str]** |  | [optional] 
-**worker_size** | **str** |  | [optional] 
-**worker_is_spot** | **bool** |  | [optional] [default to False]
-**scheduler_size** | **str** |  | [optional] 
-**n_workers** | **int** |  | [optional] [default to 1]
-**nthreads** | **int** |  | [optional] [default to 2]
-**nprocs** | **int** |  | [optional] 
-**subdomain** | **str** |  | [optional] 
+**resource** | [**ResourceReference**](ResourceReference.md) | Reference to the resource to attach the dask cluster to. | 
+**tags** | **Dict[str, str]** | Descriptive tags for the dask cluster. | [optional] 
+**worker_size** | **str** | Instance size of the dask workers. | [optional] 
+**worker_is_spot** | **bool** | Enables spot instances for the dask workers. | [optional] [default to False]
+**scheduler_size** | **str** | Instance size of the dask scheduler. | [optional] 
+**n_workers** | **int** | Number of dask workers. | [optional] [default to 1]
+**nprocs** | **int** | Number of processes per worker. | [optional] 
+**nthreads** | **int** | Number of threads per process. | [optional] [default to 2]
+**subdomain** | **str** | Subdomain for the dask dashboard. | [optional] 
 
 ## Example
 

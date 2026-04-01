@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**value** | **str** |  | [optional] 
-**location** | **str** |  | [optional] 
-**is_default** | **bool** |  | [optional] 
+**name** | **str** | Name of the SSH private key. | [optional] 
+**value** | **str** | Value of the SSH private key. | [optional] 
+**location** | **str** | Path to the SSH private key in resources. | [optional] 
+**is_default** | **bool** | Enable SSH private key to be used for any external repositories that do not specify a key. | [optional] 
 
 ## Example
 

@@ -29,9 +29,15 @@ class DefaultImages(BaseModel):
     DefaultImages
     """  # noqa: E501
 
-    cpu: Optional[ImageTag] = Field(default=None, alias="CPU")
-    nvidia: Optional[ImageTag] = Field(default=None, alias="NVIDIA")
-    amd: Optional[ImageTag] = Field(default=None, alias="AMD")
+    cpu: Optional[ImageTag] = Field(
+        default=None, description="Default image tag for CPU instances.", alias="CPU"
+    )
+    nvidia: Optional[ImageTag] = Field(
+        default=None, description="Default image tag for NVIDIA GPU instances.", alias="NVIDIA"
+    )
+    amd: Optional[ImageTag] = Field(
+        default=None, description="Default image tag for AMD GPU instances.", alias="AMD"
+    )
     __properties: ClassVar[List[str]] = ["CPU", "NVIDIA", "AMD"]
 
     model_config = ConfigDict(

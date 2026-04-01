@@ -27,8 +27,10 @@ class RouteCreate(BaseModel):
     RouteCreate
     """  # noqa: E501
 
-    subdomain: StrictStr
-    container_port: Annotated[int, Field(le=65535, strict=True, ge=1024)]
+    subdomain: StrictStr = Field(description="Subdomain of the route.")
+    container_port: Annotated[int, Field(le=65535, strict=True, ge=1024)] = Field(
+        description="Exposed port in the container."
+    )
     visibility: Literal["unauthenticated", "account", "org", "owner"] | None = None
     __properties: ClassVar[List[str]] = ["subdomain", "container_port", "visibility"]
 

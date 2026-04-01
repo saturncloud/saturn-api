@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.resource_reference import ResourceReference
@@ -29,9 +29,11 @@ class SharedFolderAttachmentCreate(BaseModel):
     SharedFolderAttachmentCreate
     """  # noqa: E501
 
-    shared_folder_id: StrictStr
-    resource: ResourceReference
-    path: Optional[StrictStr] = None
+    shared_folder_id: StrictStr = Field(description="Shared folder ID to attach to the resource.")
+    resource: ResourceReference = Field(description="Reference to a resource.")
+    path: Optional[StrictStr] = Field(
+        default=None, description="Mount path of the shared folder in the resource."
+    )
     __properties: ClassVar[List[str]] = ["shared_folder_id", "resource", "path"]
 
     model_config = ConfigDict(

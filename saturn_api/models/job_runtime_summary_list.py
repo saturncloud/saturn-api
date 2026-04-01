@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.job_runtime_summary import JobRuntimeSummary
@@ -29,9 +29,9 @@ class JobRuntimeSummaryList(BaseModel):
     JobRuntimeSummaryList
     """  # noqa: E501
 
-    job_summaries: List[JobRuntimeSummary]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    job_summaries: List[JobRuntimeSummary] = Field(description="List of job runtime summaries.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["job_summaries", "prev_key", "next_key"]
 
     model_config = ConfigDict(

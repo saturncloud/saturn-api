@@ -552,7 +552,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
     deployment_id = 'deployment_id_example' # str | 
-    allow_active = False # bool |  (optional) (default to False)
+    allow_active = False # bool | Force delete deployment that is currently active. (optional) (default to False)
 
     try:
         # Delete deployment
@@ -569,7 +569,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**|  | 
- **allow_active** | **bool**|  | [optional] [default to False]
+ **allow_active** | **bool**| Force delete deployment that is currently active. | [optional] [default to False]
 
 ### Return type
 
@@ -1088,11 +1088,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
     deployment_id = 'deployment_id_example' # str | 
-    pod_name = 'pod_name_example' # str |  (optional)
-    cluster = 'cluster_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
+    pod_name = 'pod_name_example' # str | Name of the pod to retrieve logs from. (optional)
+    cluster = 'cluster_example' # str | Name of the cluster the pod lives in. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Maximum number of results per page. (optional) (default to 100)
 
     try:
         # Get deployment historical logs
@@ -1111,11 +1111,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**|  | 
- **pod_name** | **str**|  | [optional] 
- **cluster** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
+ **pod_name** | **str**| Name of the pod to retrieve logs from. | [optional] 
+ **cluster** | **str**| Name of the cluster the pod lives in. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Maximum number of results per page. | [optional] [default to 100]
 
 ### Return type
 
@@ -1176,11 +1176,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
     deployment_id = 'deployment_id_example' # str | 
-    type = 'type_example' # str |  (optional)
-    start = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    end = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    resolution = 'resolution_example' # str |  (optional)
-    cluster = 'cluster_example' # str |  (optional)
+    type = 'type_example' # str | Filter metric series by type. (optional)
+    start = '2013-10-20T19:20:30+01:00' # datetime | Start timestamp of the metrics query. (optional)
+    end = '2013-10-20T19:20:30+01:00' # datetime | End timestamp of the metrics query. (optional)
+    resolution = 'resolution_example' # str | Sampling resolution of metrics points. (optional)
+    cluster = 'cluster_example' # str | Cluster to query for metrics. (optional)
 
     try:
         # Get deployment metrics
@@ -1199,11 +1199,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**|  | 
- **type** | **str**|  | [optional] 
- **start** | **datetime**|  | [optional] 
- **end** | **datetime**|  | [optional] 
- **resolution** | **str**|  | [optional] 
- **cluster** | **str**|  | [optional] 
+ **type** | **str**| Filter metric series by type. | [optional] 
+ **start** | **datetime**| Start timestamp of the metrics query. | [optional] 
+ **end** | **datetime**| End timestamp of the metrics query. | [optional] 
+ **resolution** | **str**| Sampling resolution of metrics points. | [optional] 
+ **cluster** | **str**| Cluster to query for metrics. | [optional] 
 
 ### Return type
 
@@ -1264,7 +1264,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
     deployment_id = 'deployment_id_example' # str | 
-    cluster = 'cluster_example' # str |  (optional)
+    cluster = 'cluster_example' # str | Cluster to query for metrics. (optional)
 
     try:
         # Get deployment pod history
@@ -1283,7 +1283,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**|  | 
- **cluster** | **str**|  | [optional] 
+ **cluster** | **str**| Cluster to query for metrics. | [optional] 
 
 ### Return type
 
@@ -1697,7 +1697,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_server_options**
-> DeploymentServerOptions get_server_options()
+> DeploymentServerInfo get_server_options()
 
 Get deployment server options
 
@@ -1707,7 +1707,7 @@ Get deployment server options
 
 ```python
 import saturn_api
-from saturn_api.models.deployment_server_options import DeploymentServerOptions
+from saturn_api.models.deployment_server_info import DeploymentServerInfo
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -1749,7 +1749,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**DeploymentServerOptions**](DeploymentServerOptions.md)
+[**DeploymentServerInfo**](DeploymentServerInfo.md)
 
 ### Authorization
 
@@ -1881,17 +1881,17 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
-    owner_name = 'owner_name_example' # str |  (optional)
-    owner_id = 'owner_id_example' # str |  (optional)
-    user_id = 'user_id_example' # str |  (optional)
-    group_id = 'group_id_example' # str |  (optional)
-    org_id = 'org_id_example' # str |  (optional)
-    owner = 'owner_example' # str |  (optional)
-    name = 'name_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    owner_name = 'owner_name_example' # str | Reference owner by name. (optional)
+    owner_id = 'owner_id_example' # str | Reference owner by ID. (optional)
+    user_id = 'user_id_example' # str | Reference owner by user ID. (optional)
+    group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
+    org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
+    owner = 'owner_example' # str | Reference owner by name. (optional)
+    name = 'name_example' # str | Prefix matched search string on deployment name. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List deployments
@@ -1909,17 +1909,17 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_name** | **str**|  | [optional] 
- **owner_id** | **str**|  | [optional] 
- **user_id** | **str**|  | [optional] 
- **group_id** | **str**|  | [optional] 
- **org_id** | **str**|  | [optional] 
- **owner** | **str**|  | [optional] 
- **name** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **owner_name** | **str**| Reference owner by name. | [optional] 
+ **owner_id** | **str**| Reference owner by ID. | [optional] 
+ **user_id** | **str**| Reference owner by user ID. | [optional] 
+ **group_id** | **str**| Reference owner by group ID. | [optional] 
+ **org_id** | **str**| Reference owner by org ID. | [optional] 
+ **owner** | **str**| Reference owner by name. | [optional] 
+ **name** | **str**| Prefix matched search string on deployment name. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 
@@ -1980,11 +1980,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
     deployment_id = 'deployment_id_example' # str | 
-    subdomain = 'subdomain_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    subdomain = 'subdomain_example' # str | Prefix matched search string on route subdomain. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List deployment routes
@@ -2003,11 +2003,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**|  | 
- **subdomain** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **subdomain** | **str**| Prefix matched search string on route subdomain. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 
@@ -2031,7 +2031,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_secret_attachments**
-> SecretAttachmentList list_secret_attachments(deployment_id, attachment_type=attachment_type, location=location, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+> SecretAttachmentList list_secret_attachments(deployment_id, location=location, attachment_type=attachment_type, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List deployment secret attachments
 
@@ -2067,16 +2067,16 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
     deployment_id = 'deployment_id_example' # str | 
-    attachment_type = saturn_api.SecretAttachmentType() # SecretAttachmentType |  (optional)
-    location = 'location_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    location = 'location_example' # str | Prefix matched search string on secret attachment location. (optional)
+    attachment_type = saturn_api.SecretAttachmentType() # SecretAttachmentType | Filter secret attachments by type. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List deployment secret attachments
-        api_response = await api_instance.list_secret_attachments(deployment_id, attachment_type=attachment_type, location=location, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        api_response = await api_instance.list_secret_attachments(deployment_id, location=location, attachment_type=attachment_type, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of DeploymentsApi->list_secret_attachments:\n")
         pprint(api_response)
     except Exception as e:
@@ -2091,12 +2091,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**|  | 
- **attachment_type** | [**SecretAttachmentType**](.md)|  | [optional] 
- **location** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **location** | **str**| Prefix matched search string on secret attachment location. | [optional] 
+ **attachment_type** | [**SecretAttachmentType**](.md)| Filter secret attachments by type. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 
@@ -2157,11 +2157,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.DeploymentsApi(api_client)
     deployment_id = 'deployment_id_example' # str | 
-    route_id = 'route_id_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    route_id = 'route_id_example' # str | Filter viewers by route ID. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List deployment viewers
@@ -2180,11 +2180,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**|  | 
- **route_id** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **route_id** | **str**| Filter viewers by route ID. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

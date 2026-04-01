@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**shared_folder_attachments** | [**List[SharedFolderAttachment]**](SharedFolderAttachment.md) |  | [readonly] 
-**prev_key** | **str** |  | [optional] [readonly] 
-**next_key** | **str** |  | [optional] [readonly] 
+**shared_folder_attachments** | [**List[SharedFolderAttachment]**](SharedFolderAttachment.md) | List of shared folder attachments. | [readonly] 
+**prev_key** | **str** | Previous page key. | [optional] [readonly] 
+**next_key** | **str** | Next page key. | [optional] [readonly] 
 
 ## Example
 

@@ -27,7 +27,9 @@ class DaskClusterScale(BaseModel):
     DaskClusterScale
     """  # noqa: E501
 
-    n: Annotated[int, Field(strict=True, ge=0)]
+    n: Annotated[int, Field(strict=True, ge=0)] = Field(
+        description="Number of dask workers to scale to."
+    )
     __properties: ClassVar[List[str]] = ["n"]
 
     model_config = ConfigDict(

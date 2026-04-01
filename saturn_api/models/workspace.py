@@ -18,7 +18,14 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictStr,
+    field_validator,
+)
 from typing_extensions import Self
 
 from saturn_api.models.dask_cluster_nested import DaskClusterNested
@@ -32,49 +39,65 @@ class Workspace(BaseModel):
     Workspace
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    image_tag: ImageTag
-    extra_packages: Optional[ExtraPackages]
-    ide: StrictStr
-    start_script: Optional[StrictStr]
-    environment_variables: Dict[str, StrictStr]
-    working_dir: StrictStr
-    description: StrictStr
-    tags: Optional[Dict[str, StrictStr]] = None
-    disk_space: StrictStr
-    instance_size: StrictStr
+    id: StrictStr = Field(description="ID of the workspace")
+    name: StrictStr = Field(description="Name of the workspace.")
+    owner: Owner = Field(description="Owner of the workspace.")
+    description: StrictStr = Field(description="Description of the workspace.")
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the workspace."
+    )
+    image_tag: ImageTag = Field(description="Image tag that is attached to the workspace.")
+    extra_packages: Optional[ExtraPackages] = Field(
+        description="Addtitional packages to install on start."
+    )
+    ide: StrictStr = Field(description="IDE of the workspace")
+    start_script: Optional[StrictStr] = Field(
+        description="Shell script that runs on start before the primary command."
+    )
+    environment_variables: Dict[str, StrictStr] = Field(
+        description="Mapping of environment variable keys to values."
+    )
+    working_dir: StrictStr = Field(description="Initial working directory.")
+    disk_space: StrictStr = Field(
+        description="Size of the persistent volume attached to the workspace."
+    )
+    instance_size: StrictStr = Field(description="Instance size of the workspace.")
     auto_shutoff: Literal["1 hour", "6 hours", "24 hours", "3 days", "7 days", "Never"]
-    start_ssh: StrictBool
-    is_spot: StrictBool
-    subdomain: StrictStr
-    start_dind: StrictBool
+    start_ssh: StrictBool = Field(description="Enable SSH access on the workspace.")
+    is_spot: StrictBool = Field(description="Enables running on spot instance sizes.")
+    subdomain: StrictStr = Field(description="Subdomain for the workspace URL.")
+    start_dind: StrictBool = Field(description="Enables docker-in-docker.")
     resource_type: Literal["workspace"]
-    size_display: StrictStr
-    k8s_name: StrictStr
-    require_restart: StrictBool
-    created_at: StrictStr
-    updated_at: StrictStr
-    started_at: Optional[StrictStr]
-    self_destruct: Optional[StrictBool] = None
-    dask_cluster: Optional[DaskClusterNested] = None
-    status: StrictStr
-    debug_mode: StrictBool
-    url: StrictStr
-    ssh_url: Optional[StrictStr]
+    size_display: StrictStr = Field(description="Description of the instance size.")
+    k8s_name: StrictStr = Field(description="Unique name for associated kubernetes objects.")
+    require_restart: StrictBool = Field(
+        description="True if an update was applied that requires restart to take effect"
+    )
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    updated_at: StrictStr = Field(description="Updated timestamp.")
+    started_at: Optional[StrictStr] = Field(description="Last started timestamp.")
+    self_destruct: Optional[StrictBool] = Field(
+        default=None, description="Auto delete the workspace on stop."
+    )
+    dask_cluster: Optional[DaskClusterNested] = Field(
+        default=None, description="Dask cluster attached to the  workspace."
+    )
+    status: StrictStr = Field(description="Current status of the workspace.")
+    debug_mode: StrictBool = Field(description="True if workspace is running in debug mode.")
+    url: StrictStr = Field(description="External URL for the workspace.")
+    ssh_url: Optional[StrictStr] = Field(description="External SSH URL for the workspace.")
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
         "owner",
+        "description",
+        "tags",
         "image_tag",
         "extra_packages",
         "ide",
         "start_script",
         "environment_variables",
         "working_dir",
-        "description",
-        "tags",
         "disk_space",
         "instance_size",
         "auto_shutoff",
@@ -178,13 +201,13 @@ class Workspace(BaseModel):
                 "id",
                 "name",
                 "owner",
+                "description",
                 "image_tag",
                 "extra_packages",
                 "ide",
                 "start_script",
                 "environment_variables",
                 "working_dir",
-                "description",
                 "disk_space",
                 "instance_size",
                 "auto_shutoff",
@@ -225,6 +248,11 @@ class Workspace(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of dask_cluster
         if self.dask_cluster:
             _dict["dask_cluster"] = self.dask_cluster.to_dict()
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict["tags"] = None
+
         # set to None if extra_packages (nullable) is None
         # and model_fields_set contains the field
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
@@ -234,11 +262,6 @@ class Workspace(BaseModel):
         # and model_fields_set contains the field
         if self.start_script is None and "start_script" in self.model_fields_set:
             _dict["start_script"] = None
-
-        # set to None if tags (nullable) is None
-        # and model_fields_set contains the field
-        if self.tags is None and "tags" in self.model_fields_set:
-            _dict["tags"] = None
 
         # set to None if started_at (nullable) is None
         # and model_fields_set contains the field
@@ -266,6 +289,8 @@ class Workspace(BaseModel):
                 "id": obj.get("id"),
                 "name": obj.get("name"),
                 "owner": Owner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+                "description": obj.get("description"),
+                "tags": obj.get("tags"),
                 "image_tag": (
                     ImageTag.from_dict(obj["image_tag"])
                     if obj.get("image_tag") is not None
@@ -280,8 +305,6 @@ class Workspace(BaseModel):
                 "start_script": obj.get("start_script"),
                 "environment_variables": obj.get("environment_variables"),
                 "working_dir": obj.get("working_dir"),
-                "description": obj.get("description"),
-                "tags": obj.get("tags"),
                 "disk_space": obj.get("disk_space"),
                 "instance_size": obj.get("instance_size"),
                 "auto_shutoff": obj.get("auto_shutoff"),

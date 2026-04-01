@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace_id** | **str** |  | 
+**workspace_id** | **str** | Reference by workspace ID. | 
 
 ## Example
 

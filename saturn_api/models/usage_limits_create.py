@@ -27,20 +27,46 @@ class UsageLimitsCreate(BaseModel):
     UsageLimitsCreate
     """  # noqa: E501
 
-    name: StrictStr
-    org_id: Optional[StrictStr] = None
-    is_default: Optional[StrictBool] = False
-    instance_sizes: Optional[List[StrictStr]] = None
-    resource_types: Optional[List[StrictStr]] = None
-    num_instances: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    auto_shutoff: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    storage_in_gb: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    num_shared_folders: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    object_storage_bytes: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    object_storage_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    hours_per_day: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    hours_per_month: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    hours_forever: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    name: StrictStr = Field(description="Name of the usage limit.")
+    org_id: Optional[StrictStr] = Field(
+        default=None, description="Org ID that the usage limit belongs to."
+    )
+    is_default: Optional[StrictBool] = Field(
+        default=False, description="Default usage limit for the org."
+    )
+    instance_sizes: Optional[List[StrictStr]] = Field(
+        default=None, description="Allowed instance sizes. Null if no limits."
+    )
+    resource_types: Optional[List[StrictStr]] = Field(
+        default=None, description="Allowed resource types. Null if no limits."
+    )
+    num_instances: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Maximum number of active instances. Null if no limits."
+    )
+    auto_shutoff: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Maximum allowed auto-shutoff. Null if no limits."
+    )
+    storage_in_gb: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Total allowed storage in GiB. Null if no limits."
+    )
+    num_shared_folders: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Maximum number of shared folders. Null if no limits."
+    )
+    object_storage_bytes: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Maximum allowed object storage bytes. Null if no limits."
+    )
+    object_storage_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Maximum number of object storage files. Null if no limits."
+    )
+    hours_per_day: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Free compute hours per day."
+    )
+    hours_per_month: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Free compute hours per month."
+    )
+    hours_forever: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Free compute hours forever (one-time grant)."
+    )
     __properties: ClassVar[List[str]] = [
         "name",
         "org_id",

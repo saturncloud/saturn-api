@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | 
-**org_admin** | **bool** |  | [optional] [default to False]
-**limits_id** | **str** |  | [optional] 
+**user_id** | **str** | User ID to add to the org. | 
+**org_admin** | **bool** | Enable user to take privileged actions on the org. | [optional] [default to False]
+**limits_id** | **str** | Usage limits ID applied to this org member. | [optional] 
 
 ## Example
 

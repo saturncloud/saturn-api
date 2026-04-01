@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,9 @@ class ServiceAccountCreateAttachment(BaseModel):
     ServiceAccountCreateAttachment
     """  # noqa: E501
 
-    service_account_id: StrictStr
+    service_account_id: StrictStr = Field(
+        description="Service account ID to attach to the resource."
+    )
     __properties: ClassVar[List[str]] = ["service_account_id"]
 
     model_config = ConfigDict(

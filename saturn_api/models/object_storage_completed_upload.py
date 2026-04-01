@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.object_storage_complete_part import ObjectStorageCompletePart
@@ -29,7 +29,7 @@ class ObjectStorageCompletedUpload(BaseModel):
     ObjectStorageCompletedUpload
     """  # noqa: E501
 
-    parts: List[ObjectStorageCompletePart]
+    parts: List[ObjectStorageCompletePart] = Field(description="List of completed upload parts.")
     __properties: ClassVar[List[str]] = ["parts"]
 
     model_config = ConfigDict(

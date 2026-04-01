@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object_storage_upload_id** | **str** |  | [readonly] 
-**is_copy** | **bool** |  | [readonly] 
-**parts** | [**List[ObjectStoragePresignedPart]**](ObjectStoragePresignedPart.md) |  | [readonly] 
+**object_storage_upload_id** | **str** | ID of the object storage upload. | [readonly] 
+**is_copy** | **bool** | True if upload is a copy operation. | [readonly] 
+**parts** | [**List[ObjectStoragePresignedPart]**](ObjectStoragePresignedPart.md) | List of presigned upload parts. | [readonly] 
 
 ## Example
 

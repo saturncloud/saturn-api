@@ -21,6 +21,7 @@ from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 from pydantic import (
     BaseModel,
     ConfigDict,
+    Field,
     StrictBool,
     StrictInt,
     StrictStr,
@@ -34,26 +35,38 @@ class DaskClusterNested(BaseModel):
     DaskClusterNested
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
+    id: StrictStr = Field(description="ID of the dask cluster.")
+    name: StrictStr = Field(description="Name of the resource the dask cluster is attached to.")
     resource_type: Literal["dask"]
-    tags: Optional[Dict[str, StrictStr]]
-    worker_size: StrictStr
-    worker_size_display: StrictStr
-    worker_is_spot: StrictBool
-    scheduler_size: StrictStr
-    scheduler_size_display: StrictStr
-    n_workers: StrictInt
-    nprocs: StrictInt
-    nthreads: StrictInt
-    scheduler_url: StrictStr
-    subdomain: StrictStr
-    image: StrictStr
-    created_at: StrictStr
-    status: StrictStr
-    warnings: Optional[List[StrictStr]] = None
-    errors: Optional[List[StrictStr]] = None
-    url: StrictStr
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        description="Descriptive tags for the dask cluster."
+    )
+    worker_size: StrictStr = Field(description="Instance size of the dask workers.")
+    worker_size_display: StrictStr = Field(
+        description="Description of the instance size for the workers."
+    )
+    worker_is_spot: StrictBool = Field(description="Enables spot instances for the dask workers.")
+    scheduler_size: StrictStr = Field(description="Instance size of the dask scheduler.")
+    scheduler_size_display: StrictStr = Field(
+        description="Description of the instance size for the scheduler."
+    )
+    n_workers: StrictInt = Field(description="Number of dask workers.")
+    nprocs: StrictInt = Field(description="Number of processes per worker.")
+    nthreads: StrictInt = Field(description="Number of threads per process.")
+    scheduler_url: StrictStr = Field(description="Internal address for the dask scheduler")
+    subdomain: StrictStr = Field(description="Subdomain for the dask dashboard.")
+    image: StrictStr = Field(
+        description="Image for the dask cluster and resource it is attached to."
+    )
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    status: StrictStr = Field(description="Current status of the dask cluster.")
+    warnings: Optional[List[StrictStr]] = Field(
+        default=None, description="Messages with warnings about the state of the dask cluster."
+    )
+    errors: Optional[List[StrictStr]] = Field(
+        default=None, description="Messages with errors about the state of the dask cluster."
+    )
+    url: StrictStr = Field(description="External URL for the dask dashboard.")
     __properties: ClassVar[List[str]] = [
         "id",
         "name",

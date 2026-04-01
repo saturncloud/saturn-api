@@ -30,11 +30,17 @@ class ObjectStorageUploadCreate(BaseModel):
     ObjectStorageUploadCreate
     """  # noqa: E501
 
-    file_path: StrictStr
-    owner: Optional[OwnerReference] = None
-    size: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    part_size: Optional[StrictInt] = None
-    copy_source: Optional[ObjectStorageReference] = None
+    file_path: StrictStr = Field(description="File path in object storage.")
+    owner: Optional[OwnerReference] = Field(
+        default=None, description="Owner of the file. Defaults to authenticated user/group."
+    )
+    size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Size of the file."
+    )
+    part_size: Optional[StrictInt] = Field(default=None, description="Multipart upload size.")
+    copy_source: Optional[ObjectStorageReference] = Field(
+        default=None, description="Object storage reference to copy."
+    )
     __properties: ClassVar[List[str]] = ["file_path", "owner", "size", "part_size", "copy_source"]
 
     model_config = ConfigDict(

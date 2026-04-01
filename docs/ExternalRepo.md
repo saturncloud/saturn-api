@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**owner** | [**Owner**](Owner.md) |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**remote_url** | **str** |  | [readonly] 
-**ssh_privatekey_id** | **str** |  | [optional] [readonly] 
-**ssh_privatekey** | [**SSHPrivateKeyPartial**](SSHPrivateKeyPartial.md) |  | [optional] [readonly] 
+**id** | **str** | ID of the repository. | [readonly] 
+**name** | **str** | Name of the repository. | [readonly] 
+**owner** | [**Owner**](Owner.md) | Owner of the repository | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**remote_url** | **str** | Repository URL. | [readonly] 
+**ssh_privatekey_id** | **str** | ID of an SSH Private Key with permission to pull the repository. | [optional] [readonly] 
+**ssh_privatekey** | [**SSHPrivateKeyPartial**](SSHPrivateKeyPartial.md) | SSH Private Key information. | [optional] [readonly] 
 
 ## Example
 

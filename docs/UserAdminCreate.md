@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **str** |  | 
-**email** | **str** |  | 
-**full_name** | **str** |  | [optional] 
-**admin** | **bool** |  | [optional] [default to False]
-**limits_id** | **str** |  | [optional] 
-**send_reset_email** | **bool** |  | [optional] [default to True]
-**locked** | **bool** |  | [optional] [default to False]
-**prevent_duplicate_emails** | **bool** |  | [optional] [default to False]
+**username** | **str** | Name of the user. | 
+**email** | **str** | Email of the user. | 
+**full_name** | **str** | Full name of the user. | [optional] 
+**admin** | **bool** | Enable user to take privileged actions in the API. | [optional] [default to False]
+**limits_id** | **str** | Usage limits ID applied to the user in the primary org. | [optional] 
+**send_reset_email** | **bool** | Send password reset to the user&#39;s email on create. | [optional] [default to True]
+**locked** | **bool** | Lock the user. | [optional] [default to False]
+**prevent_duplicate_emails** | **bool** | Prevent creating user with duplicate email. | [optional] [default to False]
 
 ## Example
 

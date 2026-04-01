@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
+**name** | **str** | Name of the shared folder. | [optional] 
 **access** | [**SharedFolderAccessLevel**](SharedFolderAccessLevel.md) |  | [optional] 
 
 ## Example

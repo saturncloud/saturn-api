@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner_reference import OwnerReference
@@ -30,10 +30,10 @@ class SecretCreate(BaseModel):
     SecretCreate
     """  # noqa: E501
 
-    name: StrictStr
-    owner: Optional[OwnerReference] = None
+    name: StrictStr = Field(description="Name of the secret.")
+    owner: Optional[OwnerReference] = Field(default=None, description="Owner of the secret.")
     access: Optional[SecretAccessLevel] = None
-    value: StrictStr
+    value: StrictStr = Field(description="Value of the secret.")
     __properties: ClassVar[List[str]] = ["name", "owner", "access", "value"]
 
     model_config = ConfigDict(

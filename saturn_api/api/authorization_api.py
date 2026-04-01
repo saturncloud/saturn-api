@@ -280,12 +280,20 @@ class AuthorizationApi:
     @validate_call
     async def get_oauth_init(
         self,
-        response_type: StrictStr,
-        client_id: StrictStr,
-        code_challenge: StrictStr,
-        redirect_uri: StrictStr,
-        code_challenge_method: Optional[StrictStr] = None,
-        state: Optional[StrictStr] = None,
+        response_type: Annotated[
+            StrictStr, Field(description="OAuth response type. Only 'code' is supported.")
+        ],
+        client_id: Annotated[StrictStr, Field(description="Saturn OAuth client ID")],
+        code_challenge: Annotated[StrictStr, Field(description="OAuth code challenge.")],
+        redirect_uri: Annotated[
+            StrictStr, Field(description="URI for redirect with code challenge response.")
+        ],
+        code_challenge_method: Annotated[
+            Optional[StrictStr], Field(description="OAuth code challenge method.")
+        ] = None,
+        state: Annotated[
+            Optional[StrictStr], Field(description="OAuth code challenge state.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -300,17 +308,17 @@ class AuthorizationApi:
 
         Begin an OAuth code grant flow.
 
-        :param response_type: (required)
+        :param response_type: OAuth response type. Only 'code' is supported. (required)
         :type response_type: str
-        :param client_id: (required)
+        :param client_id: Saturn OAuth client ID (required)
         :type client_id: str
-        :param code_challenge: (required)
+        :param code_challenge: OAuth code challenge. (required)
         :type code_challenge: str
-        :param redirect_uri: (required)
+        :param redirect_uri: URI for redirect with code challenge response. (required)
         :type redirect_uri: str
-        :param code_challenge_method:
+        :param code_challenge_method: OAuth code challenge method.
         :type code_challenge_method: str
-        :param state:
+        :param state: OAuth code challenge state.
         :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -360,12 +368,20 @@ class AuthorizationApi:
     @validate_call
     async def get_oauth_init_with_http_info(
         self,
-        response_type: StrictStr,
-        client_id: StrictStr,
-        code_challenge: StrictStr,
-        redirect_uri: StrictStr,
-        code_challenge_method: Optional[StrictStr] = None,
-        state: Optional[StrictStr] = None,
+        response_type: Annotated[
+            StrictStr, Field(description="OAuth response type. Only 'code' is supported.")
+        ],
+        client_id: Annotated[StrictStr, Field(description="Saturn OAuth client ID")],
+        code_challenge: Annotated[StrictStr, Field(description="OAuth code challenge.")],
+        redirect_uri: Annotated[
+            StrictStr, Field(description="URI for redirect with code challenge response.")
+        ],
+        code_challenge_method: Annotated[
+            Optional[StrictStr], Field(description="OAuth code challenge method.")
+        ] = None,
+        state: Annotated[
+            Optional[StrictStr], Field(description="OAuth code challenge state.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -380,17 +396,17 @@ class AuthorizationApi:
 
         Begin an OAuth code grant flow.
 
-        :param response_type: (required)
+        :param response_type: OAuth response type. Only 'code' is supported. (required)
         :type response_type: str
-        :param client_id: (required)
+        :param client_id: Saturn OAuth client ID (required)
         :type client_id: str
-        :param code_challenge: (required)
+        :param code_challenge: OAuth code challenge. (required)
         :type code_challenge: str
-        :param redirect_uri: (required)
+        :param redirect_uri: URI for redirect with code challenge response. (required)
         :type redirect_uri: str
-        :param code_challenge_method:
+        :param code_challenge_method: OAuth code challenge method.
         :type code_challenge_method: str
-        :param state:
+        :param state: OAuth code challenge state.
         :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -440,12 +456,20 @@ class AuthorizationApi:
     @validate_call
     async def get_oauth_init_without_preload_content(
         self,
-        response_type: StrictStr,
-        client_id: StrictStr,
-        code_challenge: StrictStr,
-        redirect_uri: StrictStr,
-        code_challenge_method: Optional[StrictStr] = None,
-        state: Optional[StrictStr] = None,
+        response_type: Annotated[
+            StrictStr, Field(description="OAuth response type. Only 'code' is supported.")
+        ],
+        client_id: Annotated[StrictStr, Field(description="Saturn OAuth client ID")],
+        code_challenge: Annotated[StrictStr, Field(description="OAuth code challenge.")],
+        redirect_uri: Annotated[
+            StrictStr, Field(description="URI for redirect with code challenge response.")
+        ],
+        code_challenge_method: Annotated[
+            Optional[StrictStr], Field(description="OAuth code challenge method.")
+        ] = None,
+        state: Annotated[
+            Optional[StrictStr], Field(description="OAuth code challenge state.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -460,17 +484,17 @@ class AuthorizationApi:
 
         Begin an OAuth code grant flow.
 
-        :param response_type: (required)
+        :param response_type: OAuth response type. Only 'code' is supported. (required)
         :type response_type: str
-        :param client_id: (required)
+        :param client_id: Saturn OAuth client ID (required)
         :type client_id: str
-        :param code_challenge: (required)
+        :param code_challenge: OAuth code challenge. (required)
         :type code_challenge: str
-        :param redirect_uri: (required)
+        :param redirect_uri: URI for redirect with code challenge response. (required)
         :type redirect_uri: str
-        :param code_challenge_method:
+        :param code_challenge_method: OAuth code challenge method.
         :type code_challenge_method: str
-        :param state:
+        :param state: OAuth code challenge state.
         :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

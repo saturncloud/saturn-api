@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default_org_id** | **str** |  | [readonly] 
-**default_owner** | [**OwnerUserDetailed**](OwnerUserDetailed.md) |  | [readonly] 
+**default_org_id** | **str** | Default org ID for the user. | [readonly] 
+**default_owner** | [**OwnerUserDetailed**](OwnerUserDetailed.md) | Default owner for the user. | [readonly] 
 
 ## Example
 

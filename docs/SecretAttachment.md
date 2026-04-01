@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
+**id** | **str** | ID of the secret attachment. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
 **attachment_type** | [**SecretAttachmentType**](SecretAttachmentType.md) |  | 
-**location** | **str** |  | [readonly] 
-**description** | **str** |  | [readonly] 
-**secret** | [**Secret**](Secret.md) |  | [readonly] 
+**location** | **str** | Location of the attachment on the resource. Format depends on attachment type. | [readonly] 
+**description** | **str** | Description of the secret attachment. | [readonly] 
+**secret** | [**Secret**](Secret.md) | Secret attached to the resource. | [readonly] 
 
 ## Example
 

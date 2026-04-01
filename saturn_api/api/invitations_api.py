@@ -723,13 +723,24 @@ class InvitationsApi:
     @validate_call
     async def list(
         self,
-        status: Optional[InvitationStatus] = None,
-        email: Optional[StrictStr] = None,
-        invitor_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        status: Annotated[
+            Optional[InvitationStatus], Field(description="Filter invitations by status.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+        ] = None,
+        invitor_id: Annotated[
+            Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -744,19 +755,19 @@ class InvitationsApi:
 
         Paginated list of invitations.
 
-        :param status:
+        :param status: Filter invitations by status.
         :type status: InvitationStatus
-        :param email:
+        :param email: Prefix matched search string on email.
         :type email: str
-        :param invitor_id:
+        :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -807,13 +818,24 @@ class InvitationsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        status: Optional[InvitationStatus] = None,
-        email: Optional[StrictStr] = None,
-        invitor_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        status: Annotated[
+            Optional[InvitationStatus], Field(description="Filter invitations by status.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+        ] = None,
+        invitor_id: Annotated[
+            Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -828,19 +850,19 @@ class InvitationsApi:
 
         Paginated list of invitations.
 
-        :param status:
+        :param status: Filter invitations by status.
         :type status: InvitationStatus
-        :param email:
+        :param email: Prefix matched search string on email.
         :type email: str
-        :param invitor_id:
+        :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -891,13 +913,24 @@ class InvitationsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        status: Optional[InvitationStatus] = None,
-        email: Optional[StrictStr] = None,
-        invitor_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        status: Annotated[
+            Optional[InvitationStatus], Field(description="Filter invitations by status.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+        ] = None,
+        invitor_id: Annotated[
+            Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -912,19 +945,19 @@ class InvitationsApi:
 
         Paginated list of invitations.
 
-        :param status:
+        :param status: Filter invitations by status.
         :type status: InvitationStatus
-        :param email:
+        :param email: Prefix matched search string on email.
         :type email: str
-        :param invitor_id:
+        :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

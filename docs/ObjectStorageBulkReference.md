@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_paths** | **List[str]** |  | 
-**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
+**file_paths** | **List[str]** | List of file paths in object storage. | 
+**owner** | [**OwnerReference**](OwnerReference.md) | Owner of the files. | [optional] 
 
 ## Example
 

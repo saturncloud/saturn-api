@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**org_id** | **str** |  | [optional] 
+**user_id** | **str** | Reference owner by user ID. | [optional] 
+**group_id** | **str** | Reference owner by group ID. | [optional] 
+**org_id** | **str** | Reference owner by org ID. | [optional] 
 
 ## Example
 

@@ -29,9 +29,15 @@ class ImageTagCreateBuild(BaseModel):
     ImageTagCreateBuild
     """  # noqa: E501
 
-    version: Annotated[str, Field(min_length=1, strict=True)]
-    description: Optional[StrictStr] = ""
-    build_data: Optional[BuildData] = None
+    version: Annotated[str, Field(min_length=1, strict=True)] = Field(
+        description="Version of the image tag."
+    )
+    description: Optional[StrictStr] = Field(
+        default="", description="Description of the image tag."
+    )
+    build_data: Optional[BuildData] = Field(
+        default=None, description="Build data for the image tag."
+    )
     __properties: ClassVar[List[str]] = ["version", "description", "build_data"]
 
     model_config = ConfigDict(

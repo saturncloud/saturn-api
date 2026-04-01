@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -27,14 +27,26 @@ class DaskClusterUpdate(BaseModel):
     DaskClusterUpdate
     """  # noqa: E501
 
-    tags: Optional[Dict[str, StrictStr]] = None
-    worker_size: Optional[StrictStr] = None
-    worker_is_spot: Optional[StrictBool] = None
-    scheduler_size: Optional[StrictStr] = None
-    n_workers: Optional[StrictInt] = None
-    nprocs: Optional[StrictInt] = None
-    nthreads: Optional[StrictInt] = None
-    subdomain: Optional[StrictStr] = None
+    tags: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Descriptive tags for the dask cluster."
+    )
+    worker_size: Optional[StrictStr] = Field(
+        default=None, description="Instance size of the dask workers."
+    )
+    worker_is_spot: Optional[StrictBool] = Field(
+        default=None, description="Enables spot instances for the dask workers."
+    )
+    scheduler_size: Optional[StrictStr] = Field(
+        default=None, description="Instance size of the dask scheduler."
+    )
+    n_workers: Optional[StrictInt] = Field(default=None, description="Number of dask workers.")
+    nprocs: Optional[StrictInt] = Field(default=None, description="Number of processes per worker.")
+    nthreads: Optional[StrictInt] = Field(
+        default=None, description="Number of threads per process."
+    )
+    subdomain: Optional[StrictStr] = Field(
+        default=None, description="Subdomain for the dask dashboard."
+    )
     __properties: ClassVar[List[str]] = [
         "tags",
         "worker_size",

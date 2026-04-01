@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**used_bytes** | **int** |  | [readonly] 
-**reserved_bytes** | **int** |  | [readonly] 
-**file_count** | **int** |  | [readonly] 
-**active_uploads** | **int** |  | [readonly] 
-**max_bytes** | **int** |  | [readonly] 
-**max_files** | **int** |  | [readonly] 
-**max_uploads** | **int** |  | [readonly] 
+**used_bytes** | **int** | Total used bytes in object storage. | [readonly] 
+**reserved_bytes** | **int** | Total reserved bytes for active uploads. | [readonly] 
+**file_count** | **int** | Number of files in object storage. | [readonly] 
+**active_uploads** | **int** | Number of active uploads in object storage. | [readonly] 
+**max_bytes** | **int** | Maximum number of allowed object storage bytes. | [readonly] 
+**max_files** | **int** | Maximum number of allowed object storage files. | [readonly] 
+**max_uploads** | **int** | Maximum number of allowed concurrent uploads. | [readonly] 
 
 ## Example
 

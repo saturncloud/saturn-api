@@ -5,25 +5,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cloud_provider** | **str** |  | 
-**is_multicluster** | **bool** |  | 
-**allow_deployment_public_access** | **bool** |  | 
-**is_enterprise** | **bool** |  | 
-**customer_name** | **str** |  | 
-**stripe_public_key** | **str** |  | 
-**hotjar_user_tracking** | **bool** |  | 
-**version** | **str** |  | 
-**auth0** | [**Auth0Info**](Auth0Info.md) |  | 
-**network_filesystem_enabled** | **bool** |  | 
-**git_repo_clone_dir** | **str** |  | 
-**app_serving_domain** | **str** |  | 
-**dind_enabled** | **bool** |  | 
-**apply_requires_confirm** | **bool** |  | 
-**hide_invitations** | **bool** |  | 
-**populate_examples** | **bool** |  | 
-**whitelabel** | [**WhiteLabelConfiguration**](WhiteLabelConfiguration.md) |  | 
-**hide_resource_creation_bar** | **bool** |  | 
-**user_tracking** | **bool** |  | 
+**cloud_provider** | **str** | Name of the primary cloud provider. | 
+**is_multicluster** | **bool** | True if installation spans multiple clusters. | 
+**allow_deployment_public_access** | **bool** | True if unauthenticated deployment access is allowed. | 
+**is_enterprise** | **bool** | True if installation is Enterprise. | 
+**customer_name** | **str** | Name of the customer installation. | 
+**stripe_public_key** | **str** | Public key for billing in non-enterprise installations. | 
+**hotjar_user_tracking** | **bool** | True if hotjar is enabled. | 
+**version** | **str** | Version of the API. | 
+**auth0** | [**Auth0Info**](Auth0Info.md) | Configuration for auth0 authentication. | 
+**network_filesystem_enabled** | **bool** | True if NFS shared folders are enabled. | 
+**git_repo_clone_dir** | **str** | Default directory to clone git repositories into. | 
+**app_serving_domain** | **str** | Root domain for deployment and workspace URLs. | 
+**dind_enabled** | **bool** | True if docker-in-docker is enabled. | 
+**apply_requires_confirm** | **bool** | True if recipe apply should be confirmed. | 
+**hide_invitations** | **bool** | True if invitations are hidden in frontend. | 
+**populate_examples** | **bool** | True if saturn examples are included. | 
+**whitelabel** | [**WhiteLabelConfiguration**](WhiteLabelConfiguration.md) | Configuration for whitelabeled installations. | 
+**hide_resource_creation_bar** | **bool** | True if resource creation bar should be hidden. | 
+**user_tracking** | **bool** | True if intercomm tracking is enabled. | 
 
 ## Example
 

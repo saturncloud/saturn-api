@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,7 @@ class IdentityByGroupId(BaseModel):
     IdentityByGroupId
     """  # noqa: E501
 
-    group_id: StrictStr
+    group_id: StrictStr = Field(description="Identity reference by group ID")
     __properties: ClassVar[List[str]] = ["group_id"]
 
     model_config = ConfigDict(

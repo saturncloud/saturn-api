@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.object_storage_shared_owner import ObjectStorageSharedOwner
@@ -29,8 +29,10 @@ class ObjectStorageSharedOwnerList(BaseModel):
     ObjectStorageSharedOwnerList
     """  # noqa: E501
 
-    owners: List[ObjectStorageSharedOwner]
-    next_last_key: Optional[StrictStr]
+    owners: List[ObjectStorageSharedOwner] = Field(
+        description="List of owners with shared object storage."
+    )
+    next_last_key: Optional[StrictStr] = Field(description="Next pagination key.")
     __properties: ClassVar[List[str]] = ["owners", "next_last_key"]
 
     model_config = ConfigDict(

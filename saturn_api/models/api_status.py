@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class ApiStatus(BaseModel):
     ApiStatus
     """  # noqa: E501
 
-    status: StrictStr
-    version: StrictStr
+    status: StrictStr = Field(description="API availability.")
+    version: StrictStr = Field(description="API version.")
     __properties: ClassVar[List[str]] = ["status", "version"]
 
     model_config = ConfigDict(

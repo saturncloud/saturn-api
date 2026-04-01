@@ -19,7 +19,7 @@ import re  # noqa: F401
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -28,13 +28,17 @@ class AuthorizationTokenResponse(BaseModel):
     AuthorizationTokenResponse
     """  # noqa: E501
 
-    access_token: StrictStr
-    refresh_token: StrictStr
-    token_type: StrictStr
-    expires_at: Optional[datetime]
-    refresh_expires_at: Optional[datetime]
-    expires_in: Optional[StrictInt]
-    refresh_expires_in: Optional[StrictInt]
+    access_token: StrictStr = Field(description="API access token.")
+    refresh_token: StrictStr = Field(description="API refresh token.")
+    token_type: StrictStr = Field(description="Type of the token. Only 'Bearer' is supported.")
+    expires_at: Optional[datetime] = Field(description="Token expiration timestamp.")
+    refresh_expires_at: Optional[datetime] = Field(
+        description="Refresh token expiration timestamp."
+    )
+    expires_in: Optional[StrictInt] = Field(description="Lifetime of the token in seconds.")
+    refresh_expires_in: Optional[StrictInt] = Field(
+        description="Lifetime of the refresh token in seconds."
+    )
     __properties: ClassVar[List[str]] = [
         "access_token",
         "refresh_token",

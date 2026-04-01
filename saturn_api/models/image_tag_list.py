@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.image_tag import ImageTag
@@ -29,9 +29,9 @@ class ImageTagList(BaseModel):
     ImageTagList
     """  # noqa: E501
 
-    image_tags: List[ImageTag]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    image_tags: List[ImageTag] = Field(description="List of image tags.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["image_tags", "prev_key", "next_key"]
 
     model_config = ConfigDict(

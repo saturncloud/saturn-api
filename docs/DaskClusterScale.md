@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**n** | **int** |  | 
+**n** | **int** | Number of dask workers to scale to. | 
 
 ## Example
 

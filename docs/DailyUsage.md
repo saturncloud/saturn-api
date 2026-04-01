@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hours** | **float** |  | 
-**dollars** | **float** |  | 
-**var_date** | **date** |  | 
-**instance_type** | **str** |  | 
-**resource_type** | **str** |  | 
+**hours** | **float** | Compute hours used. | 
+**dollars** | **float** | Dollars spent. | 
+**var_date** | **date** | Date of the usage record. | 
+**instance_type** | **str** | Instance type used. | 
+**resource_type** | **str** | Resource type used. | 
 
 ## Example
 

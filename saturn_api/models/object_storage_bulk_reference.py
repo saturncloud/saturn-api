@@ -29,8 +29,10 @@ class ObjectStorageBulkReference(BaseModel):
     ObjectStorageBulkReference
     """  # noqa: E501
 
-    file_paths: Annotated[List[StrictStr], Field(min_length=1, max_length=1000)]
-    owner: Optional[OwnerReference] = None
+    file_paths: Annotated[List[StrictStr], Field(min_length=1, max_length=1000)] = Field(
+        description="List of file paths in object storage."
+    )
+    owner: Optional[OwnerReference] = Field(default=None, description="Owner of the files.")
     __properties: ClassVar[List[str]] = ["file_paths", "owner"]
 
     model_config = ConfigDict(

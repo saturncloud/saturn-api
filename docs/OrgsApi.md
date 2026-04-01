@@ -1318,12 +1318,12 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.OrgsApi(api_client)
-    name = 'name_example' # str |  (optional)
-    all_orgs = True # bool |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    name = 'name_example' # str | Prefix matched search string on org name. (optional)
+    all_orgs = True # bool | List all orgs, instead of only orgs the user is a member of. (Admin only) (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List orgs
@@ -1341,12 +1341,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | [optional] 
- **all_orgs** | **bool**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **name** | **str**| Prefix matched search string on org name. | [optional] 
+ **all_orgs** | **bool**| List all orgs, instead of only orgs the user is a member of. (Admin only) | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 
@@ -1406,13 +1406,13 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.OrgsApi(api_client)
     org_id = 'org_id_example' # str | 
-    status = saturn_api.InvitationStatus() # InvitationStatus |  (optional)
-    email = 'email_example' # str |  (optional)
-    invitor_id = 'invitor_id_example' # str |  (optional)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    status = saturn_api.InvitationStatus() # InvitationStatus | Filter org invitations by status. (optional)
+    email = 'email_example' # str | Prefix matched search string on email. (optional)
+    invitor_id = 'invitor_id_example' # str | Filter invitations by invitor user ID. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List org invitations
@@ -1431,13 +1431,13 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
- **status** | [**InvitationStatus**](.md)|  | [optional] 
- **email** | **str**|  | [optional] 
- **invitor_id** | **str**|  | [optional] 
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **status** | [**InvitationStatus**](.md)| Filter org invitations by status. | [optional] 
+ **email** | **str**| Prefix matched search string on email. | [optional] 
+ **invitor_id** | **str**| Filter invitations by invitor user ID. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 
@@ -1499,15 +1499,15 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.OrgsApi(api_client)
     org_id = 'org_id_example' # str | 
-    name = 'name_example' # str |  (optional)
-    identity_type = saturn_api.IdentityType() # IdentityType |  (optional)
-    all_users = False # bool |  (optional) (default to False)
-    all_groups = False # bool |  (optional) (default to False)
-    details = False # bool |  (optional) (default to False)
-    prev_key = 'prev_key_example' # str |  (optional)
-    next_key = 'next_key_example' # str |  (optional)
-    page_size = 100 # int |  (optional) (default to 100)
-    descending = False # bool |  (optional) (default to False)
+    name = 'name_example' # str | Prefix matched search string by owner identity name. (optional)
+    identity_type = saturn_api.IdentityType() # IdentityType | Filter owners by identity type. (optional)
+    all_users = False # bool | List all user owners, instead of just the authenticated user. (optional) (default to False)
+    all_groups = False # bool | List all group owners, instead of just groups the authenticated user is a member of. (optional) (default to False)
+    details = False # bool | Retrieve detailed owner response. (optional) (default to False)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Page size. (optional) (default to 100)
+    descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
         # List org owners
@@ -1526,15 +1526,15 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
- **name** | **str**|  | [optional] 
- **identity_type** | [**IdentityType**](.md)|  | [optional] 
- **all_users** | **bool**|  | [optional] [default to False]
- **all_groups** | **bool**|  | [optional] [default to False]
- **details** | **bool**|  | [optional] [default to False]
- **prev_key** | **str**|  | [optional] 
- **next_key** | **str**|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 100]
- **descending** | **bool**|  | [optional] [default to False]
+ **name** | **str**| Prefix matched search string by owner identity name. | [optional] 
+ **identity_type** | [**IdentityType**](.md)| Filter owners by identity type. | [optional] 
+ **all_users** | **bool**| List all user owners, instead of just the authenticated user. | [optional] [default to False]
+ **all_groups** | **bool**| List all group owners, instead of just groups the authenticated user is a member of. | [optional] [default to False]
+ **details** | **bool**| Retrieve detailed owner response. | [optional] [default to False]
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Page size. | [optional] [default to 100]
+ **descending** | **bool**| List results in descending order. | [optional] [default to False]
 
 ### Return type
 

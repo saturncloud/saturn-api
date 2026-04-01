@@ -29,9 +29,13 @@ class CronScheduleUpdate(BaseModel):
     CronScheduleUpdate
     """  # noqa: E501
 
-    schedule: Optional[StrictStr] = None
+    schedule: Optional[StrictStr] = Field(
+        default=None, description="Cron schedule for triggering the job."
+    )
     concurrency_policy: Optional[ConcurrencyPolicy] = None
-    backoff_limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    backoff_limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=None, description="Maximum number of retries for a failed job."
+    )
     __properties: ClassVar[List[str]] = ["schedule", "concurrency_policy", "backoff_limit"]
 
     model_config = ConfigDict(

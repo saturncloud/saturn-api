@@ -27,7 +27,9 @@ class ApiTokenUpdate(BaseModel):
     ApiTokenUpdate
     """  # noqa: E501
 
-    description: Annotated[str, Field(strict=True, max_length=255)]
+    description: Annotated[str, Field(strict=True, max_length=255)] = Field(
+        description="Description of what the API token is used for."
+    )
     __properties: ClassVar[List[str]] = ["description"]
 
     model_config = ConfigDict(

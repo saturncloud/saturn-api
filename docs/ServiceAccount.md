@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**cloud_role** | **str** |  | [readonly] 
-**auto_associate** | **bool** |  | [readonly] 
+**id** | **str** | ID of the service account. | [readonly] 
+**created_at** | **str** | Creation timestamp | [readonly] 
+**name** | **str** | Name of the service account. | [readonly] 
+**cloud_role** | **str** | Cloud role attached to the service account. | [readonly] 
+**auto_associate** | **bool** | Automatically entitle access to the service account for new users and groups. | [readonly] 
 
 ## Example
 

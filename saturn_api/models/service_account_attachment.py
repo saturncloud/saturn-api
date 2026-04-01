@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.service_account import ServiceAccount
@@ -29,7 +29,9 @@ class ServiceAccountAttachment(BaseModel):
     ServiceAccountAttachment
     """  # noqa: E501
 
-    service_account: ServiceAccount
+    service_account: ServiceAccount = Field(
+        description="Service account that is attached to the resource."
+    )
     __properties: ClassVar[List[str]] = ["service_account"]
 
     model_config = ConfigDict(

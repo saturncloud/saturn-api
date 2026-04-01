@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner import Owner
@@ -31,14 +31,16 @@ class SharedFolder(BaseModel):
     SharedFolder
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    created_at: StrictStr
+    id: StrictStr = Field(description="ID of the shared folder.")
+    name: StrictStr = Field(description="Name of the shared folder.")
+    owner: Owner = Field(description="Owner of the shared folder.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
     access: SharedFolderAccessLevel
     access_mode: SharedAccessMode
-    is_external: StrictBool
-    editable: StrictBool
+    is_external: StrictBool = Field(description="True if the shared folder is externally managed.")
+    editable: StrictBool = Field(
+        description="True if the shard folder is editable by the authenticated user/group."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",

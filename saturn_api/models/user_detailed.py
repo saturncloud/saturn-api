@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,17 +27,17 @@ class UserDetailed(BaseModel):
     UserDetailed
     """  # noqa: E501
 
-    id: StrictStr
-    avatar_url: StrictStr
-    username: StrictStr
-    created_at: StrictStr
-    full_name: StrictStr
-    email: StrictStr
-    admin: StrictBool
-    locked: StrictBool
-    locked_reason: StrictStr
-    is_multiple_ssh_keys: StrictBool
-    active: StrictBool
+    id: StrictStr = Field(description="ID of the user.")
+    avatar_url: StrictStr = Field(description="Avatar URL of the user.")
+    username: StrictStr = Field(description="Name of the user.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    full_name: StrictStr = Field(description="Full name of the user.")
+    email: StrictStr = Field(description="Email of the user.")
+    admin: StrictBool = Field(description="Enable user to take privileged actions in the API.")
+    locked: StrictBool = Field(description="Lock the user.")
+    locked_reason: StrictStr = Field(description="Reason the user is locked.")
+    is_multiple_ssh_keys: StrictBool = Field(description="Enable multiple SSH keys.")
+    active: StrictBool = Field(description="True if user is active.")
     __properties: ClassVar[List[str]] = [
         "id",
         "avatar_url",

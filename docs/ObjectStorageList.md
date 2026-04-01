@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dirs** | [**List[ObjectStorageDirDetails]**](ObjectStorageDirDetails.md) |  | [readonly] 
-**files** | [**List[ObjectStorageFileDetails]**](ObjectStorageFileDetails.md) |  | [readonly] 
-**next_last_key** | **str** |  | [readonly] 
+**dirs** | [**List[ObjectStorageDirDetails]**](ObjectStorageDirDetails.md) | List of directories. | [readonly] 
+**files** | [**List[ObjectStorageFileDetails]**](ObjectStorageFileDetails.md) | List of files. | [readonly] 
+**next_last_key** | **str** | Next pagination key. | [readonly] 
 
 ## Example
 

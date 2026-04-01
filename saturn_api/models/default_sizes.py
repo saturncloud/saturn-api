@@ -29,9 +29,15 @@ class DefaultSizes(BaseModel):
     DefaultSizes
     """  # noqa: E501
 
-    cpu: Optional[InstanceSize] = Field(default=None, alias="CPU")
-    nvidia: Optional[InstanceSize] = Field(default=None, alias="NVIDIA")
-    amd: Optional[InstanceSize] = Field(default=None, alias="AMD")
+    cpu: Optional[InstanceSize] = Field(
+        default=None, description="Default CPU instance size.", alias="CPU"
+    )
+    nvidia: Optional[InstanceSize] = Field(
+        default=None, description="Default NVIDIA GPU instance size.", alias="NVIDIA"
+    )
+    amd: Optional[InstanceSize] = Field(
+        default=None, description="Default AMD GPU instance size.", alias="AMD"
+    )
     __properties: ClassVar[List[str]] = ["CPU", "NVIDIA", "AMD"]
 
     model_config = ConfigDict(

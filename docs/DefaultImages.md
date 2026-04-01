@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cpu** | [**ImageTag**](ImageTag.md) |  | [optional] 
-**nvidia** | [**ImageTag**](ImageTag.md) |  | [optional] 
-**amd** | [**ImageTag**](ImageTag.md) |  | [optional] 
+**cpu** | [**ImageTag**](ImageTag.md) | Default image tag for CPU instances. | [optional] 
+**nvidia** | [**ImageTag**](ImageTag.md) | Default image tag for NVIDIA GPU instances. | [optional] 
+**amd** | [**ImageTag**](ImageTag.md) | Default image tag for AMD GPU instances. | [optional] 
 
 ## Example
 

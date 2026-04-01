@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.external_repo_attachment import ExternalRepoAttachment
@@ -29,9 +29,11 @@ class ExternalRepoAttachmentList(BaseModel):
     ExternalRepoAttachmentList
     """  # noqa: E501
 
-    external_repo_attachments: List[ExternalRepoAttachment]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    external_repo_attachments: List[ExternalRepoAttachment] = Field(
+        description="List of external repository attachments."
+    )
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["external_repo_attachments", "prev_key", "next_key"]
 
     model_config = ConfigDict(

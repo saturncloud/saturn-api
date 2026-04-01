@@ -773,11 +773,18 @@ class ImageTagsApi:
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -796,15 +803,15 @@ class ImageTagsApi:
         :type image_id: str
         :param image_tag_id: (required)
         :type image_tag_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -857,11 +864,18 @@ class ImageTagsApi:
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -880,15 +894,15 @@ class ImageTagsApi:
         :type image_id: str
         :param image_tag_id: (required)
         :type image_tag_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -941,11 +955,18 @@ class ImageTagsApi:
         self,
         image_id: StrictStr,
         image_tag_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -964,15 +985,15 @@ class ImageTagsApi:
         :type image_id: str
         :param image_tag_id: (required)
         :type image_tag_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1577,15 +1598,31 @@ class ImageTagsApi:
     async def list(
         self,
         image_id: StrictStr,
-        version: Optional[StrictStr] = None,
-        image_uri: Optional[StrictStr] = None,
-        is_external: Optional[StrictBool] = None,
-        archived: Optional[StrictBool] = None,
-        status: Optional[ImageBuildStatus] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        version: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on image tag version."),
+        ] = None,
+        image_uri: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on image tag URI.")
+        ] = None,
+        is_external: Annotated[
+            Optional[StrictBool], Field(description="Filter image tags by is_external.")
+        ] = None,
+        archived: Annotated[
+            Optional[StrictBool], Field(description="Filter images tags by archived.")
+        ] = None,
+        status: Annotated[
+            Optional[ImageBuildStatus], Field(description="Filter image tags by build status.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1602,23 +1639,23 @@ class ImageTagsApi:
 
         :param image_id: (required)
         :type image_id: str
-        :param version:
+        :param version: Prefix matched search string on image tag version.
         :type version: str
-        :param image_uri:
+        :param image_uri: Prefix matched search string on image tag URI.
         :type image_uri: str
-        :param is_external:
+        :param is_external: Filter image tags by is_external.
         :type is_external: bool
-        :param archived:
+        :param archived: Filter images tags by archived.
         :type archived: bool
-        :param status:
+        :param status: Filter image tags by build status.
         :type status: ImageBuildStatus
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1673,15 +1710,31 @@ class ImageTagsApi:
     async def list_with_http_info(
         self,
         image_id: StrictStr,
-        version: Optional[StrictStr] = None,
-        image_uri: Optional[StrictStr] = None,
-        is_external: Optional[StrictBool] = None,
-        archived: Optional[StrictBool] = None,
-        status: Optional[ImageBuildStatus] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        version: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on image tag version."),
+        ] = None,
+        image_uri: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on image tag URI.")
+        ] = None,
+        is_external: Annotated[
+            Optional[StrictBool], Field(description="Filter image tags by is_external.")
+        ] = None,
+        archived: Annotated[
+            Optional[StrictBool], Field(description="Filter images tags by archived.")
+        ] = None,
+        status: Annotated[
+            Optional[ImageBuildStatus], Field(description="Filter image tags by build status.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1698,23 +1751,23 @@ class ImageTagsApi:
 
         :param image_id: (required)
         :type image_id: str
-        :param version:
+        :param version: Prefix matched search string on image tag version.
         :type version: str
-        :param image_uri:
+        :param image_uri: Prefix matched search string on image tag URI.
         :type image_uri: str
-        :param is_external:
+        :param is_external: Filter image tags by is_external.
         :type is_external: bool
-        :param archived:
+        :param archived: Filter images tags by archived.
         :type archived: bool
-        :param status:
+        :param status: Filter image tags by build status.
         :type status: ImageBuildStatus
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1769,15 +1822,31 @@ class ImageTagsApi:
     async def list_without_preload_content(
         self,
         image_id: StrictStr,
-        version: Optional[StrictStr] = None,
-        image_uri: Optional[StrictStr] = None,
-        is_external: Optional[StrictBool] = None,
-        archived: Optional[StrictBool] = None,
-        status: Optional[ImageBuildStatus] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        version: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on image tag version."),
+        ] = None,
+        image_uri: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on image tag URI.")
+        ] = None,
+        is_external: Annotated[
+            Optional[StrictBool], Field(description="Filter image tags by is_external.")
+        ] = None,
+        archived: Annotated[
+            Optional[StrictBool], Field(description="Filter images tags by archived.")
+        ] = None,
+        status: Annotated[
+            Optional[ImageBuildStatus], Field(description="Filter image tags by build status.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1794,23 +1863,23 @@ class ImageTagsApi:
 
         :param image_id: (required)
         :type image_id: str
-        :param version:
+        :param version: Prefix matched search string on image tag version.
         :type version: str
-        :param image_uri:
+        :param image_uri: Prefix matched search string on image tag URI.
         :type image_uri: str
-        :param is_external:
+        :param is_external: Filter image tags by is_external.
         :type is_external: bool
-        :param archived:
+        :param archived: Filter images tags by archived.
         :type archived: bool
-        :param status:
+        :param status: Filter image tags by build status.
         :type status: ImageBuildStatus
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

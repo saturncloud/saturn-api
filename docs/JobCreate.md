@@ -5,24 +5,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
-**description** | **str** |  | [optional] [default to '']
-**tags** | **Dict[str, str]** |  | [optional] 
-**instance_size** | **str** |  | [optional] 
-**image_uri** | **str** |  | [optional] 
-**image_tag_id** | **str** |  | [optional] 
-**image_enforce_trusted** | **bool** |  | [optional] [default to True]
-**environment_variables** | **Dict[str, str]** |  | [optional] 
-**external_repo_attachments** | [**List[ExternalRepoAttachmentNested]**](ExternalRepoAttachmentNested.md) |  | [optional] 
-**extra_packages** | [**ExtraPackages**](ExtraPackages.md) |  | [optional] 
-**start_script** | **str** |  | [optional] 
-**working_dir** | **str** |  | [optional] [default to '/home/jovyan/workspace']
-**is_spot** | **bool** |  | [optional] [default to False]
-**start_dind** | **bool** |  | [optional] [default to False]
-**command** | **str** |  | 
-**scale** | **int** |  | [optional] [default to 1]
-**cron_schedule_options** | [**CronScheduleCreate**](CronScheduleCreate.md) |  | [optional] 
+**name** | **str** | Name of the job. | 
+**owner** | [**OwnerReference**](OwnerReference.md) | Owner of the job. | [optional] 
+**description** | **str** | Description of the job. | [optional] [default to '']
+**tags** | **Dict[str, str]** | Descriptive tags for the job. | [optional] 
+**instance_size** | **str** | Instance size of the job. | [optional] 
+**image_uri** | **str** | URI of the image to attach. | [optional] 
+**image_tag_id** | **str** | Image tag ID to attach. | [optional] 
+**image_enforce_trusted** | **bool** | Enable image trust validation before attaching. | [optional] [default to True]
+**environment_variables** | **Dict[str, str]** | Mapping of environment variable keys to values. | [optional] 
+**external_repo_attachments** | [**List[ExternalRepoAttachmentNested]**](ExternalRepoAttachmentNested.md) | List of external repo attachments for the job. | [optional] 
+**extra_packages** | [**ExtraPackages**](ExtraPackages.md) | Addtitional packages to install on start. | [optional] 
+**start_script** | **str** | Shell script to run on start before the primary command. | [optional] 
+**working_dir** | **str** | Initial working directory for the job. | [optional] [default to '/home/jovyan/workspace']
+**is_spot** | **bool** | Enables running on spot instance sizes. | [optional] [default to False]
+**start_dind** | **bool** | Enables docker-in-docker. | [optional] [default to False]
+**command** | **str** | Command that runs on start. | 
+**scale** | **int** | Number of pod replicas. | [optional] [default to 1]
+**cron_schedule_options** | [**CronScheduleCreate**](CronScheduleCreate.md) | Cron schedule configuration for scheduled jobs. | [optional] 
 
 ## Example
 

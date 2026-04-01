@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,11 +27,15 @@ class ServiceAccount(BaseModel):
     ServiceAccount
     """  # noqa: E501
 
-    id: StrictStr
-    created_at: StrictStr
-    name: StrictStr
-    cloud_role: Optional[StrictStr]
-    auto_associate: StrictBool
+    id: StrictStr = Field(description="ID of the service account.")
+    created_at: StrictStr = Field(description="Creation timestamp")
+    name: StrictStr = Field(description="Name of the service account.")
+    cloud_role: Optional[StrictStr] = Field(
+        description="Cloud role attached to the service account."
+    )
+    auto_associate: StrictBool = Field(
+        description="Automatically entitle access to the service account for new users and groups."
+    )
     __properties: ClassVar[List[str]] = ["id", "created_at", "name", "cloud_role", "auto_associate"]
 
     model_config = ConfigDict(

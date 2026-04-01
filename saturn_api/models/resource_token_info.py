@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class ResourceTokenInfo(BaseModel):
     ResourceTokenInfo
     """  # noqa: E501
 
-    id: StrictStr
-    scope: Optional[StrictStr]
+    id: StrictStr = Field(description="ID of the token.")
+    scope: Optional[StrictStr] = Field(description="Permission scope of the token.")
     __properties: ClassVar[List[str]] = ["id", "scope"]
 
     model_config = ConfigDict(

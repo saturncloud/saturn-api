@@ -125,12 +125,12 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.AuthorizationApi(api_client)
-    response_type = 'response_type_example' # str | 
-    client_id = 'client_id_example' # str | 
-    code_challenge = 'code_challenge_example' # str | 
-    redirect_uri = 'redirect_uri_example' # str | 
-    code_challenge_method = plain # str |  (optional) (default to plain)
-    state = 'state_example' # str |  (optional)
+    response_type = 'response_type_example' # str | OAuth response type. Only 'code' is supported.
+    client_id = 'client_id_example' # str | Saturn OAuth client ID
+    code_challenge = 'code_challenge_example' # str | OAuth code challenge.
+    redirect_uri = 'redirect_uri_example' # str | URI for redirect with code challenge response.
+    code_challenge_method = plain # str | OAuth code challenge method. (optional) (default to plain)
+    state = 'state_example' # str | OAuth code challenge state. (optional)
 
     try:
         # Initialize oauth
@@ -146,12 +146,12 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **response_type** | **str**|  | 
- **client_id** | **str**|  | 
- **code_challenge** | **str**|  | 
- **redirect_uri** | **str**|  | 
- **code_challenge_method** | **str**|  | [optional] [default to plain]
- **state** | **str**|  | [optional] 
+ **response_type** | **str**| OAuth response type. Only &#39;code&#39; is supported. | 
+ **client_id** | **str**| Saturn OAuth client ID | 
+ **code_challenge** | **str**| OAuth code challenge. | 
+ **redirect_uri** | **str**| URI for redirect with code challenge response. | 
+ **code_challenge_method** | **str**| OAuth code challenge method. | [optional] [default to plain]
+ **state** | **str**| OAuth code challenge state. | [optional] 
 
 ### Return type
 

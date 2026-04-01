@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.owner_detailed import OwnerDetailed
@@ -29,9 +29,9 @@ class OwnerDetailedList(BaseModel):
     OwnerDetailedList
     """  # noqa: E501
 
-    owners: List[OwnerDetailed]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    owners: List[OwnerDetailed] = Field(description="List of detailed owners.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["owners", "prev_key", "next_key"]
 
     model_config = ConfigDict(

@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**groupname** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**description** | **str** |  | [readonly] 
-**avatar_url** | **str** |  | [readonly] 
-**is_multiple_ssh_keys** | **bool** |  | [readonly] 
-**org_id** | **str** |  | [readonly] 
-**org_name** | **str** |  | [readonly] 
-**org_admin** | **bool** |  | [readonly] 
+**id** | **str** | ID of the group. | [readonly] 
+**groupname** | **str** | Name of the group. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**description** | **str** | Description of the group. | [readonly] 
+**avatar_url** | **str** | Avatar URL for the group. | [readonly] 
+**is_multiple_ssh_keys** | **bool** | Enable multiple SSH keys. | [readonly] 
+**org_id** | **str** | Org ID that the group belongs to. | [readonly] 
+**org_name** | **str** | Org name that the group belongs to. | [readonly] 
+**org_admin** | **bool** | Enable group to take privileged actions on its org. | [readonly] 
 
 ## Example
 

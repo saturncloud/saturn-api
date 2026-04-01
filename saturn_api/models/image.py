@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.hardware_type import HardwareType
@@ -31,17 +31,17 @@ class Image(BaseModel):
     Image
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    owner: Owner
-    description: StrictStr
-    created_at: StrictStr
+    id: StrictStr = Field(description="ID of the image.")
+    name: StrictStr = Field(description="Name of the image.")
+    owner: Owner = Field(description="Owner of the image.")
+    description: StrictStr = Field(description="Description of the image.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
     hardware_type: HardwareType
-    supports: List[StrictStr]
+    supports: List[StrictStr] = Field(description="Supported features.")
     access: ImageAccessLevel
-    is_base: StrictBool
-    is_gpu: StrictBool
-    trusted: StrictBool
+    is_base: StrictBool = Field(description="True if the image is a base image for builds.")
+    is_gpu: StrictBool = Field(description="True if the image support GPU hardware.")
+    trusted: StrictBool = Field(description="True if the image belongs to a trusted source.")
     __properties: ClassVar[List[str]] = [
         "id",
         "name",

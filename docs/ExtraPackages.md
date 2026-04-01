@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pip** | **str** |  | [optional] 
-**as_requirements_txt** | **bool** |  | [optional] [default to False]
-**conda** | **str** |  | [optional] 
-**as_environment_yml** | **bool** |  | [optional] [default to False]
-**apt** | **str** |  | [optional] 
-**cran** | **str** |  | [optional] 
-**remotes** | **str** |  | [optional] 
-**bioconductor** | **str** |  | [optional] 
-**use_mamba** | **bool** |  | [optional] [default to False]
+**pip** | **str** | Pip packages to install. | [optional] 
+**as_requirements_txt** | **bool** | True if pip field is formatted as requirements.txt | [optional] [default to False]
+**conda** | **str** | Conda packages to install | [optional] 
+**as_environment_yml** | **bool** | True if conda field is formatted as environment.yaml | [optional] [default to False]
+**apt** | **str** | Apt packages to install. | [optional] 
+**cran** | **str** | Cran packages to install. | [optional] 
+**remotes** | **str** | Remotes packages to install. | [optional] 
+**bioconductor** | **str** | Bioconductor packages to install. | [optional] 
+**use_mamba** | **bool** | Enable installing conda packages with mamba. | [optional] [default to False]
 
 ## Example
 

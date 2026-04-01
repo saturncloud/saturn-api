@@ -27,8 +27,10 @@ class RouteUpdate(BaseModel):
     RouteUpdate
     """  # noqa: E501
 
-    subdomain: Optional[StrictStr] = None
-    container_port: Optional[Annotated[int, Field(le=65535, strict=True, ge=1024)]] = None
+    subdomain: Optional[StrictStr] = Field(default=None, description="Subdomain of the route.")
+    container_port: Optional[Annotated[int, Field(le=65535, strict=True, ge=1024)]] = Field(
+        default=None, description="Exposed port in the container."
+    )
     visibility: Literal["unauthenticated", "account", "org", "owner"] | None = None
     __properties: ClassVar[List[str]] = ["subdomain", "container_port", "visibility"]
 

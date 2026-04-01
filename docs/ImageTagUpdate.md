@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**version** | **str** |  | [optional] 
-**archived** | **bool** |  | [optional] 
+**description** | **str** | Description of the image tag. | [optional] 
+**version** | **str** | Version of the image tag. | [optional] 
+**archived** | **bool** | Archive the image tag. Archived tags are not attachable to new resources, but will continue to work on existing resources. | [optional] 
 
 ## Example
 

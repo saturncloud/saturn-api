@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.ssh_public_key import SSHPublicKey
@@ -29,9 +29,9 @@ class SSHPublicKeyList(BaseModel):
     SSHPublicKeyList
     """  # noqa: E501
 
-    ssh_public_keys: List[SSHPublicKey]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    ssh_public_keys: List[SSHPublicKey] = Field(description="List of SSH public keys.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["ssh_public_keys", "prev_key", "next_key"]
 
     model_config = ConfigDict(

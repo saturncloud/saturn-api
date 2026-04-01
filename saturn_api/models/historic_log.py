@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,10 +27,10 @@ class HistoricLog(BaseModel):
     HistoricLog
     """  # noqa: E501
 
-    timestamp: StrictStr
-    content: StrictStr
-    pod_name: StrictStr
-    container_name: StrictStr
+    timestamp: StrictStr = Field(description="Log timestamp.")
+    content: StrictStr = Field(description="Content of the log.")
+    pod_name: StrictStr = Field(description="Name of the pod the log came from.")
+    container_name: StrictStr = Field(description="Name of the container the log came from.")
     __properties: ClassVar[List[str]] = ["timestamp", "content", "pod_name", "container_name"]
 
     model_config = ConfigDict(

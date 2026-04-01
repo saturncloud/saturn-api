@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class NotificationUnsubscribe(BaseModel):
     NotificationUnsubscribe
     """  # noqa: E501
 
-    topic: StrictStr
-    user_id: Optional[StrictStr] = None
+    topic: StrictStr = Field(description="Topic of the subscription.")
+    user_id: Optional[StrictStr] = Field(default=None, description="User ID to be unsubscribed.")
     __properties: ClassVar[List[str]] = ["topic", "user_id"]
 
     model_config = ConfigDict(

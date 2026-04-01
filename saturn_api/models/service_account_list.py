@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.service_account import ServiceAccount
@@ -29,9 +29,9 @@ class ServiceAccountList(BaseModel):
     ServiceAccountList
     """  # noqa: E501
 
-    service_accounts: List[ServiceAccount]
-    prev_key: Optional[StrictStr] = None
-    next_key: Optional[StrictStr] = None
+    service_accounts: List[ServiceAccount] = Field(description="List of service accounts.")
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
     __properties: ClassVar[List[str]] = ["service_accounts", "prev_key", "next_key"]
 
     model_config = ConfigDict(

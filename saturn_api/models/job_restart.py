@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing_extensions import Self
 
 
@@ -27,7 +27,10 @@ class JobRestart(BaseModel):
     JobRestart
     """  # noqa: E501
 
-    debug_mode: Optional[StrictBool] = None
+    debug_mode: Optional[StrictBool] = Field(
+        default=None,
+        description="Enable debug mode. Job will continue to run on error, and SSH will be enabled.",
+    )
     __properties: ClassVar[List[str]] = ["debug_mode"]
 
     model_config = ConfigDict(

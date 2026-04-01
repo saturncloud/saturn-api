@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,7 +27,9 @@ class ResourceClusters(BaseModel):
     ResourceClusters
     """  # noqa: E501
 
-    clusters: List[Optional[StrictStr]]
+    clusters: List[Optional[StrictStr]] = Field(
+        description="List of clusters the resource has run on."
+    )
     __properties: ClassVar[List[str]] = ["clusters"]
 
     model_config = ConfigDict(

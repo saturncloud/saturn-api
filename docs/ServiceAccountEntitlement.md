@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
-**service_account** | [**ServiceAccount**](ServiceAccount.md) |  | [readonly] 
-**user_id** | **str** |  | [readonly] 
-**group_id** | **str** |  | [readonly] 
+**id** | **str** | ID of the service account entitlement. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
+**service_account** | [**ServiceAccount**](ServiceAccount.md) | Entitled service account. | [readonly] 
+**user_id** | **str** | User ID that is entitled. | [readonly] 
+**group_id** | **str** | Group ID that is entitled. | [readonly] 
 
 ## Example
 

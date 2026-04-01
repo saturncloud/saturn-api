@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,8 +27,8 @@ class SSHPublicKeyUpdate(BaseModel):
     SSHPublicKeyUpdate
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    value: Optional[StrictStr] = None
+    name: Optional[StrictStr] = Field(default=None, description="Name of the SSH public key.")
+    value: Optional[StrictStr] = Field(default=None, description="Value of the SSH public key.")
     __properties: ClassVar[List[str]] = ["name", "value"]
 
     model_config = ConfigDict(

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**job_id** | **str** |  | 
-**deployment_id** | **str** |  | 
-**workspace_id** | **str** |  | 
+**job_id** | **str** | Reference by job ID. | 
+**deployment_id** | **str** | Reference by deployment ID. | 
+**workspace_id** | **str** | Reference by workspace ID. | 
 
 ## Example
 

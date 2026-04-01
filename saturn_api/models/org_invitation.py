@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.invitation_status import InvitationStatus
@@ -30,16 +30,16 @@ class OrgInvitation(BaseModel):
     OrgInvitation
     """  # noqa: E501
 
-    id: StrictStr
-    email: StrictStr
-    invitee_name: Optional[StrictStr]
-    invitor: Optional[User]
-    invitor_name: Optional[StrictStr]
-    org_id: StrictStr
-    org_name: StrictStr
+    id: StrictStr = Field(description="ID of the org invitation.")
+    email: StrictStr = Field(description="Email that the org invitation is sent to.")
+    invitee_name: Optional[StrictStr] = Field(description="Name of the person being invited.")
+    invitor: Optional[User] = Field(description="User that sent the invite.")
+    invitor_name: Optional[StrictStr] = Field(description="Name of the person sending the invite.")
+    org_id: StrictStr = Field(description="Org ID that the user is being invited to.")
+    org_name: StrictStr = Field(description="Org name that the user is being invited to.")
     status: InvitationStatus
-    expiration: Optional[StrictStr]
-    created_at: StrictStr
+    expiration: Optional[StrictStr] = Field(description="Invitation expiration timestamp.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
     __properties: ClassVar[List[str]] = [
         "id",
         "email",

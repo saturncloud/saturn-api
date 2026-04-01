@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.pod_history import PodHistory
@@ -29,7 +29,7 @@ class ResourceHistory(BaseModel):
     ResourceHistory
     """  # noqa: E501
 
-    pods: List[PodHistory]
+    pods: List[PodHistory] = Field(description="List of pod history.")
     __properties: ClassVar[List[str]] = ["pods"]
 
     model_config = ConfigDict(

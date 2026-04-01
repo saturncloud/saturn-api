@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_token** | **str** |  | 
-**refresh_token** | **str** |  | 
-**token_type** | **str** |  | 
-**expires_at** | **datetime** |  | 
-**refresh_expires_at** | **datetime** |  | 
-**expires_in** | **int** |  | 
-**refresh_expires_in** | **int** |  | 
+**access_token** | **str** | API access token. | 
+**refresh_token** | **str** | API refresh token. | 
+**token_type** | **str** | Type of the token. Only &#39;Bearer&#39; is supported. | 
+**expires_at** | **datetime** | Token expiration timestamp. | 
+**refresh_expires_at** | **datetime** | Refresh token expiration timestamp. | 
+**expires_in** | **int** | Lifetime of the token in seconds. | 
+**refresh_expires_in** | **int** | Lifetime of the refresh token in seconds. | 
 
 ## Example
 

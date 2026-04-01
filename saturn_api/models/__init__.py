@@ -65,7 +65,7 @@ from saturn_api.models.deployment_list import DeploymentList
 from saturn_api.models.deployment_recipe import DeploymentRecipe
 from saturn_api.models.deployment_route_recipe import DeploymentRouteRecipe
 from saturn_api.models.deployment_runtime_summary import DeploymentRuntimeSummary
-from saturn_api.models.deployment_server_options import DeploymentServerOptions
+from saturn_api.models.deployment_server_info import DeploymentServerInfo
 from saturn_api.models.deployment_spec import DeploymentSpec
 from saturn_api.models.deployment_start import DeploymentStart
 from saturn_api.models.deployment_status import DeploymentStatus
@@ -142,7 +142,7 @@ from saturn_api.models.job_recipe import JobRecipe
 from saturn_api.models.job_restart import JobRestart
 from saturn_api.models.job_runtime_summary import JobRuntimeSummary
 from saturn_api.models.job_runtime_summary_list import JobRuntimeSummaryList
-from saturn_api.models.job_server_options import JobServerOptions
+from saturn_api.models.job_server_info import JobServerInfo
 from saturn_api.models.job_spec import JobSpec
 from saturn_api.models.job_start import JobStart
 from saturn_api.models.job_status import JobStatus
@@ -325,8 +325,8 @@ from saturn_api.models.workspace_list import WorkspaceList
 from saturn_api.models.workspace_recipe import WorkspaceRecipe
 from saturn_api.models.workspace_route_recipe import WorkspaceRouteRecipe
 from saturn_api.models.workspace_runtime_summary import WorkspaceRuntimeSummary
+from saturn_api.models.workspace_server_info import WorkspaceServerInfo
 from saturn_api.models.workspace_server_options import WorkspaceServerOptions
-from saturn_api.models.workspace_server_size_schemas import WorkspaceServerSizeSchemas
 from saturn_api.models.workspace_spec import WorkspaceSpec
 from saturn_api.models.workspace_start import WorkspaceStart
 from saturn_api.models.workspace_update import WorkspaceUpdate

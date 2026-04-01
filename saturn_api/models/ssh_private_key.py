@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.identity import Identity
@@ -29,13 +29,17 @@ class SSHPrivateKey(BaseModel):
     SSHPrivateKey
     """  # noqa: E501
 
-    id: StrictStr
-    name: StrictStr
-    identity: Identity
-    created_at: StrictStr
-    public_key: Optional[StrictStr]
-    location: StrictStr
-    is_default: StrictBool
+    id: StrictStr = Field(description="ID of the SSH private key.")
+    name: StrictStr = Field(description="Name of the SSH private key.")
+    identity: Identity = Field(description="Identity that owns the SSH private key.")
+    created_at: StrictStr = Field(description="Creation timestamp.")
+    public_key: Optional[StrictStr] = Field(
+        description="SSH public key associated with the private key."
+    )
+    location: StrictStr = Field(description="Path to the SSH private key in resources.")
+    is_default: StrictBool = Field(
+        description="Enable SSH private key to be used for any external repositories that do not specify a key."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",

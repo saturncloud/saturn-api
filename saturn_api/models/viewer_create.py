@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.identity_reference import IdentityReference
@@ -29,8 +29,11 @@ class ViewerCreate(BaseModel):
     ViewerCreate
     """  # noqa: E501
 
-    identity: IdentityReference
-    route_id: Optional[StrictStr] = None
+    identity: IdentityReference = Field(description="Reference to an identity.")
+    route_id: Optional[StrictStr] = Field(
+        default=None,
+        description="Route ID to allow view access to. If null, all routes are granted.",
+    )
     __properties: ClassVar[List[str]] = ["identity", "route_id"]
 
     model_config = ConfigDict(

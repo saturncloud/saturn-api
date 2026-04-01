@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 from saturn_api.models.identity_reference import IdentityReference
@@ -29,8 +29,12 @@ class ServiceAccountEntitlementCreate(BaseModel):
     ServiceAccountEntitlementCreate
     """  # noqa: E501
 
-    service_account_id: StrictStr
-    identity: Optional[IdentityReference] = None
+    service_account_id: StrictStr = Field(
+        description="ID of the service account to entitle the identity to."
+    )
+    identity: Optional[IdentityReference] = Field(
+        default=None, description="Reference to an identity."
+    )
     __properties: ClassVar[List[str]] = ["service_account_id", "identity"]
 
     model_config = ConfigDict(

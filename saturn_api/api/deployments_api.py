@@ -32,7 +32,7 @@ from saturn_api.models.deployment_create import DeploymentCreate
 from saturn_api.models.deployment_list import DeploymentList
 from saturn_api.models.deployment_recipe import DeploymentRecipe
 from saturn_api.models.deployment_runtime_summary import DeploymentRuntimeSummary
-from saturn_api.models.deployment_server_options import DeploymentServerOptions
+from saturn_api.models.deployment_server_info import DeploymentServerInfo
 from saturn_api.models.deployment_start import DeploymentStart
 from saturn_api.models.deployment_update import DeploymentUpdate
 from saturn_api.models.historic_log_list import HistoricLogList
@@ -1522,7 +1522,10 @@ class DeploymentsApi:
     async def delete(
         self,
         deployment_id: StrictStr,
-        allow_active: Optional[StrictBool] = None,
+        allow_active: Annotated[
+            Optional[StrictBool],
+            Field(description="Force delete deployment that is currently active."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1539,7 +1542,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param allow_active:
+        :param allow_active: Force delete deployment that is currently active.
         :type allow_active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1586,7 +1589,10 @@ class DeploymentsApi:
     async def delete_with_http_info(
         self,
         deployment_id: StrictStr,
-        allow_active: Optional[StrictBool] = None,
+        allow_active: Annotated[
+            Optional[StrictBool],
+            Field(description="Force delete deployment that is currently active."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1603,7 +1609,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param allow_active:
+        :param allow_active: Force delete deployment that is currently active.
         :type allow_active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1650,7 +1656,10 @@ class DeploymentsApi:
     async def delete_without_preload_content(
         self,
         deployment_id: StrictStr,
-        allow_active: Optional[StrictBool] = None,
+        allow_active: Annotated[
+            Optional[StrictBool],
+            Field(description="Force delete deployment that is currently active."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1667,7 +1676,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param allow_active:
+        :param allow_active: Force delete deployment that is currently active.
         :type allow_active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3140,11 +3149,18 @@ class DeploymentsApi:
     async def get_logs(
         self,
         deployment_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3161,15 +3177,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3220,11 +3236,18 @@ class DeploymentsApi:
     async def get_logs_with_http_info(
         self,
         deployment_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3241,15 +3264,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3300,11 +3323,18 @@ class DeploymentsApi:
     async def get_logs_without_preload_content(
         self,
         deployment_id: StrictStr,
-        pod_name: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
+        pod_name: Annotated[
+            Optional[StrictStr], Field(description="Name of the pod to retrieve logs from.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Name of the cluster the pod lives in.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Maximum number of results per page."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3321,15 +3351,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param pod_name:
+        :param pod_name: Name of the pod to retrieve logs from.
         :type pod_name: str
-        :param cluster:
+        :param cluster: Name of the cluster the pod lives in.
         :type cluster: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Maximum number of results per page.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3451,11 +3481,21 @@ class DeploymentsApi:
     async def get_metrics(
         self,
         deployment_id: StrictStr,
-        type: Optional[StrictStr] = None,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        resolution: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
+        type: Annotated[
+            Optional[StrictStr], Field(description="Filter metric series by type.")
+        ] = None,
+        start: Annotated[
+            Optional[datetime], Field(description="Start timestamp of the metrics query.")
+        ] = None,
+        end: Annotated[
+            Optional[datetime], Field(description="End timestamp of the metrics query.")
+        ] = None,
+        resolution: Annotated[
+            Optional[StrictStr], Field(description="Sampling resolution of metrics points.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3472,15 +3512,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param type:
+        :param type: Filter metric series by type.
         :type type: str
-        :param start:
+        :param start: Start timestamp of the metrics query.
         :type start: datetime
-        :param end:
+        :param end: End timestamp of the metrics query.
         :type end: datetime
-        :param resolution:
+        :param resolution: Sampling resolution of metrics points.
         :type resolution: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3531,11 +3571,21 @@ class DeploymentsApi:
     async def get_metrics_with_http_info(
         self,
         deployment_id: StrictStr,
-        type: Optional[StrictStr] = None,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        resolution: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
+        type: Annotated[
+            Optional[StrictStr], Field(description="Filter metric series by type.")
+        ] = None,
+        start: Annotated[
+            Optional[datetime], Field(description="Start timestamp of the metrics query.")
+        ] = None,
+        end: Annotated[
+            Optional[datetime], Field(description="End timestamp of the metrics query.")
+        ] = None,
+        resolution: Annotated[
+            Optional[StrictStr], Field(description="Sampling resolution of metrics points.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3552,15 +3602,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param type:
+        :param type: Filter metric series by type.
         :type type: str
-        :param start:
+        :param start: Start timestamp of the metrics query.
         :type start: datetime
-        :param end:
+        :param end: End timestamp of the metrics query.
         :type end: datetime
-        :param resolution:
+        :param resolution: Sampling resolution of metrics points.
         :type resolution: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3611,11 +3661,21 @@ class DeploymentsApi:
     async def get_metrics_without_preload_content(
         self,
         deployment_id: StrictStr,
-        type: Optional[StrictStr] = None,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        resolution: Optional[StrictStr] = None,
-        cluster: Optional[StrictStr] = None,
+        type: Annotated[
+            Optional[StrictStr], Field(description="Filter metric series by type.")
+        ] = None,
+        start: Annotated[
+            Optional[datetime], Field(description="Start timestamp of the metrics query.")
+        ] = None,
+        end: Annotated[
+            Optional[datetime], Field(description="End timestamp of the metrics query.")
+        ] = None,
+        resolution: Annotated[
+            Optional[StrictStr], Field(description="Sampling resolution of metrics points.")
+        ] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3632,15 +3692,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param type:
+        :param type: Filter metric series by type.
         :type type: str
-        :param start:
+        :param start: Start timestamp of the metrics query.
         :type start: datetime
-        :param end:
+        :param end: End timestamp of the metrics query.
         :type end: datetime
-        :param resolution:
+        :param resolution: Sampling resolution of metrics points.
         :type resolution: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3770,7 +3830,9 @@ class DeploymentsApi:
     async def get_pod_history(
         self,
         deployment_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3787,7 +3849,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3834,7 +3896,9 @@ class DeploymentsApi:
     async def get_pod_history_with_http_info(
         self,
         deployment_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3851,7 +3915,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3898,7 +3962,9 @@ class DeploymentsApi:
     async def get_pod_history_without_preload_content(
         self,
         deployment_id: StrictStr,
-        cluster: Optional[StrictStr] = None,
+        cluster: Annotated[
+            Optional[StrictStr], Field(description="Cluster to query for metrics.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3915,7 +3981,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param cluster:
+        :param cluster: Cluster to query for metrics.
         :type cluster: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5189,7 +5255,7 @@ class DeploymentsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DeploymentServerOptions:
+    ) -> DeploymentServerInfo:
         """Get deployment server options
 
 
@@ -5223,7 +5289,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "DeploymentServerOptions",
+            "200": "DeploymentServerInfo",
         }
         response_data = await self.api_client.call_api(*_param, _request_timeout=_request_timeout)
         await response_data.read()
@@ -5244,7 +5310,7 @@ class DeploymentsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DeploymentServerOptions]:
+    ) -> ApiResponse[DeploymentServerInfo]:
         """Get deployment server options
 
 
@@ -5278,7 +5344,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "DeploymentServerOptions",
+            "200": "DeploymentServerInfo",
         }
         response_data = await self.api_client.call_api(*_param, _request_timeout=_request_timeout)
         await response_data.read()
@@ -5333,7 +5399,7 @@ class DeploymentsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "DeploymentServerOptions",
+            "200": "DeploymentServerInfo",
         }
         response_data = await self.api_client.call_api(*_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -5611,17 +5677,38 @@ class DeploymentsApi:
     @validate_call
     async def list(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on deployment name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5636,27 +5723,27 @@ class DeploymentsApi:
 
         Paginated list of deployments.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param name:
+        :param name: Prefix matched search string on deployment name.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5711,17 +5798,38 @@ class DeploymentsApi:
     @validate_call
     async def list_with_http_info(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on deployment name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5736,27 +5844,27 @@ class DeploymentsApi:
 
         Paginated list of deployments.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param name:
+        :param name: Prefix matched search string on deployment name.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5811,17 +5919,38 @@ class DeploymentsApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        owner_name: Optional[StrictStr] = None,
-        owner_id: Optional[StrictStr] = None,
-        user_id: Optional[StrictStr] = None,
-        group_id: Optional[StrictStr] = None,
-        org_id: Optional[StrictStr] = None,
-        owner: Optional[Annotated[str, Field(strict=True)]] = None,
-        name: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        owner_name: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by name.")
+        ] = None,
+        owner_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by ID.")
+        ] = None,
+        user_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by user ID.")
+        ] = None,
+        group_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by group ID.")
+        ] = None,
+        org_id: Annotated[
+            Optional[StrictStr], Field(description="Reference owner by org ID.")
+        ] = None,
+        owner: Annotated[
+            Optional[Annotated[str, Field(strict=True)]],
+            Field(description="Reference owner by name."),
+        ] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on deployment name."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5836,27 +5965,27 @@ class DeploymentsApi:
 
         Paginated list of deployments.
 
-        :param owner_name:
+        :param owner_name: Reference owner by name.
         :type owner_name: str
-        :param owner_id:
+        :param owner_id: Reference owner by ID.
         :type owner_id: str
-        :param user_id:
+        :param user_id: Reference owner by user ID.
         :type user_id: str
-        :param group_id:
+        :param group_id: Reference owner by group ID.
         :type group_id: str
-        :param org_id:
+        :param org_id: Reference owner by org ID.
         :type org_id: str
-        :param owner:
+        :param owner: Reference owner by name.
         :type owner: str
-        :param name:
+        :param name: Prefix matched search string on deployment name.
         :type name: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6010,11 +6139,19 @@ class DeploymentsApi:
     async def list_routes(
         self,
         deployment_id: StrictStr,
-        subdomain: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        subdomain: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on route subdomain."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6031,15 +6168,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param subdomain:
+        :param subdomain: Prefix matched search string on route subdomain.
         :type subdomain: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6090,11 +6227,19 @@ class DeploymentsApi:
     async def list_routes_with_http_info(
         self,
         deployment_id: StrictStr,
-        subdomain: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        subdomain: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on route subdomain."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6111,15 +6256,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param subdomain:
+        :param subdomain: Prefix matched search string on route subdomain.
         :type subdomain: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6170,11 +6315,19 @@ class DeploymentsApi:
     async def list_routes_without_preload_content(
         self,
         deployment_id: StrictStr,
-        subdomain: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        subdomain: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on route subdomain."),
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6191,15 +6344,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param subdomain:
+        :param subdomain: Prefix matched search string on route subdomain.
         :type subdomain: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6321,12 +6474,22 @@ class DeploymentsApi:
     async def list_secret_attachments(
         self,
         deployment_id: StrictStr,
-        attachment_type: Optional[SecretAttachmentType] = None,
-        location: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        location: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on secret attachment location."),
+        ] = None,
+        attachment_type: Annotated[
+            Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6342,17 +6505,17 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param attachment_type:
-        :type attachment_type: SecretAttachmentType
-        :param location:
+        :param location: Prefix matched search string on secret attachment location.
         :type location: str
-        :param prev_key:
+        :param attachment_type: Filter secret attachments by type.
+        :type attachment_type: SecretAttachmentType
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6378,8 +6541,8 @@ class DeploymentsApi:
 
         _param = self._list_secret_attachments_serialize(
             deployment_id=deployment_id,
-            attachment_type=attachment_type,
             location=location,
+            attachment_type=attachment_type,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -6404,12 +6567,22 @@ class DeploymentsApi:
     async def list_secret_attachments_with_http_info(
         self,
         deployment_id: StrictStr,
-        attachment_type: Optional[SecretAttachmentType] = None,
-        location: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        location: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on secret attachment location."),
+        ] = None,
+        attachment_type: Annotated[
+            Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6425,17 +6598,17 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param attachment_type:
-        :type attachment_type: SecretAttachmentType
-        :param location:
+        :param location: Prefix matched search string on secret attachment location.
         :type location: str
-        :param prev_key:
+        :param attachment_type: Filter secret attachments by type.
+        :type attachment_type: SecretAttachmentType
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6461,8 +6634,8 @@ class DeploymentsApi:
 
         _param = self._list_secret_attachments_serialize(
             deployment_id=deployment_id,
-            attachment_type=attachment_type,
             location=location,
+            attachment_type=attachment_type,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -6487,12 +6660,22 @@ class DeploymentsApi:
     async def list_secret_attachments_without_preload_content(
         self,
         deployment_id: StrictStr,
-        attachment_type: Optional[SecretAttachmentType] = None,
-        location: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        location: Annotated[
+            Optional[StrictStr],
+            Field(description="Prefix matched search string on secret attachment location."),
+        ] = None,
+        attachment_type: Annotated[
+            Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6508,17 +6691,17 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param attachment_type:
-        :type attachment_type: SecretAttachmentType
-        :param location:
+        :param location: Prefix matched search string on secret attachment location.
         :type location: str
-        :param prev_key:
+        :param attachment_type: Filter secret attachments by type.
+        :type attachment_type: SecretAttachmentType
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6544,8 +6727,8 @@ class DeploymentsApi:
 
         _param = self._list_secret_attachments_serialize(
             deployment_id=deployment_id,
-            attachment_type=attachment_type,
             location=location,
+            attachment_type=attachment_type,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -6565,8 +6748,8 @@ class DeploymentsApi:
     def _list_secret_attachments_serialize(
         self,
         deployment_id,
-        attachment_type,
         location,
+        attachment_type,
         prev_key,
         next_key,
         page_size,
@@ -6592,13 +6775,13 @@ class DeploymentsApi:
         if deployment_id is not None:
             _path_params["deployment_id"] = deployment_id
         # process the query parameters
-        if attachment_type is not None:
-
-            _query_params.append(("attachment_type", attachment_type.value))
-
         if location is not None:
 
             _query_params.append(("location", location))
+
+        if attachment_type is not None:
+
+            _query_params.append(("attachment_type", attachment_type.value))
 
         if prev_key is not None:
 
@@ -6646,11 +6829,18 @@ class DeploymentsApi:
     async def list_viewers(
         self,
         deployment_id: StrictStr,
-        route_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        route_id: Annotated[
+            Optional[StrictStr], Field(description="Filter viewers by route ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6667,15 +6857,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param route_id:
+        :param route_id: Filter viewers by route ID.
         :type route_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6726,11 +6916,18 @@ class DeploymentsApi:
     async def list_viewers_with_http_info(
         self,
         deployment_id: StrictStr,
-        route_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        route_id: Annotated[
+            Optional[StrictStr], Field(description="Filter viewers by route ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6747,15 +6944,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param route_id:
+        :param route_id: Filter viewers by route ID.
         :type route_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6806,11 +7003,18 @@ class DeploymentsApi:
     async def list_viewers_without_preload_content(
         self,
         deployment_id: StrictStr,
-        route_id: Optional[StrictStr] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        route_id: Annotated[
+            Optional[StrictStr], Field(description="Filter viewers by route ID.")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6827,15 +7031,15 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param route_id:
+        :param route_id: Filter viewers by route ID.
         :type route_id: str
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

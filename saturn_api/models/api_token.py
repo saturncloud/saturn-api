@@ -19,7 +19,7 @@ import re  # noqa: F401
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -28,16 +28,18 @@ class ApiToken(BaseModel):
     ApiToken
     """  # noqa: E501
 
-    id: StrictStr
-    description: StrictStr
-    created_at: datetime
-    expires_at: Optional[datetime]
-    refresh_expires_at: Optional[datetime]
-    scope: Optional[StrictStr]
-    user_id: Optional[StrictStr]
-    group_id: Optional[StrictStr]
-    access_token: StrictStr
-    refresh_token: Optional[StrictStr] = None
+    id: StrictStr = Field(description="ID of the token.")
+    description: StrictStr = Field(description="Description of what the API token is used for.")
+    created_at: datetime = Field(description="Timestamp from when the token was created.")
+    expires_at: Optional[datetime] = Field(description="Token expiration timestamp.")
+    refresh_expires_at: Optional[datetime] = Field(
+        description="Refresh token expiration timestamp."
+    )
+    scope: Optional[StrictStr] = Field(description="Permission scope of the token.")
+    user_id: Optional[StrictStr] = Field(description="User ID associated with the token.")
+    group_id: Optional[StrictStr] = Field(description="Group ID associated with the token.")
+    access_token: StrictStr = Field(description="API access token.")
+    refresh_token: Optional[StrictStr] = Field(default=None, description="API refresh token.")
     __properties: ClassVar[List[str]] = [
         "id",
         "description",

@@ -27,9 +27,11 @@ class CronSchedule(BaseModel):
     CronSchedule
     """  # noqa: E501
 
-    schedule: StrictStr
+    schedule: StrictStr = Field(description="Cron schedule for triggering the job.")
     concurrency_policy: Literal["Allow", "Forbid", "Replace"]
-    backoff_limit: Annotated[int, Field(strict=True, ge=0)]
+    backoff_limit: Annotated[int, Field(strict=True, ge=0)] = Field(
+        description="Maximum number of retries for a failed job."
+    )
     __properties: ClassVar[List[str]] = ["schedule", "concurrency_policy", "backoff_limit"]
 
     @field_validator("concurrency_policy")

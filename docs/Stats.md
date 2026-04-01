@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**avg** | **float** |  | [readonly] 
-**min** | **float** |  | [readonly] 
-**max** | **float** |  | [readonly] 
-**last** | **float** |  | [readonly] 
+**avg** | **float** | Average value over the query range. | [readonly] 
+**min** | **float** | Minimum value over the query range. | [readonly] 
+**max** | **float** | Maximum value over the query range. | [readonly] 
+**last** | **float** | Last seen value in the query range. | [readonly] 
 
 ## Example
 

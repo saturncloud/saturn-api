@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**name** | **str** |  | [readonly] 
-**owner** | [**Owner**](Owner.md) |  | [readonly] 
-**created_at** | **str** |  | [readonly] 
+**id** | **str** | ID of the shared folder. | [readonly] 
+**name** | **str** | Name of the shared folder. | [readonly] 
+**owner** | [**Owner**](Owner.md) | Owner of the shared folder. | [readonly] 
+**created_at** | **str** | Creation timestamp. | [readonly] 
 **access** | [**SharedFolderAccessLevel**](SharedFolderAccessLevel.md) |  | 
 **access_mode** | [**SharedAccessMode**](SharedAccessMode.md) |  | 
-**is_external** | **bool** |  | [readonly] 
-**editable** | **bool** |  | [readonly] 
+**is_external** | **bool** | True if the shared folder is externally managed. | [readonly] 
+**editable** | **bool** | True if the shard folder is editable by the authenticated user/group. | [readonly] 
 
 ## Example
 

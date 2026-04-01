@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**parts** | [**List[ObjectStorageCompletePart]**](ObjectStorageCompletePart.md) |  | 
+**parts** | [**List[ObjectStorageCompletePart]**](ObjectStorageCompletePart.md) | List of completed upload parts. | 
 
 ## Example
 

@@ -19,7 +19,7 @@ import re  # noqa: F401
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -28,22 +28,40 @@ class UsageLimits(BaseModel):
     UsageLimits
     """  # noqa: E501
 
-    id: StrictStr
-    org_id: StrictStr
-    created_at: datetime
-    name: StrictStr
-    is_default: StrictBool
-    instance_sizes: Optional[List[StrictStr]]
-    resource_types: Optional[List[StrictStr]]
-    num_instances: Optional[StrictInt]
-    auto_shutoff: Optional[StrictInt]
-    storage_in_gb: Optional[StrictInt]
-    num_shared_folders: Optional[StrictInt]
-    object_storage_bytes: Optional[StrictInt]
-    object_storage_count: Optional[StrictInt]
-    hours_per_day: Optional[StrictInt]
-    hours_per_month: Optional[StrictInt]
-    hours_forever: Optional[StrictInt]
+    id: StrictStr = Field(description="ID of the usage limit.")
+    org_id: StrictStr = Field(description="Org ID that the usage limit belongs to.")
+    created_at: datetime = Field(description="Creation timestamp.")
+    name: StrictStr = Field(description="Name of the usage limit.")
+    is_default: StrictBool = Field(description="Default usage limit for the org.")
+    instance_sizes: Optional[List[StrictStr]] = Field(
+        description="Allowed instance sizes. Null if no limits."
+    )
+    resource_types: Optional[List[StrictStr]] = Field(
+        description="Allowed resource types. Null if no limits."
+    )
+    num_instances: Optional[StrictInt] = Field(
+        description="Maximum number of active instances. Null if no limits."
+    )
+    auto_shutoff: Optional[StrictInt] = Field(
+        description="Maximum allowed auto-shutoff. Null if no limits."
+    )
+    storage_in_gb: Optional[StrictInt] = Field(
+        description="Total allowed storage in GiB. Null if no limits."
+    )
+    num_shared_folders: Optional[StrictInt] = Field(
+        description="Maximum number of shared folders. Null if no limits."
+    )
+    object_storage_bytes: Optional[StrictInt] = Field(
+        description="Maximum allowed object storage bytes. Null if no limits."
+    )
+    object_storage_count: Optional[StrictInt] = Field(
+        description="Maximum number of object storage files. Null if no limits."
+    )
+    hours_per_day: Optional[StrictInt] = Field(description="Free compute hours per day.")
+    hours_per_month: Optional[StrictInt] = Field(description="Free compute hours per month.")
+    hours_forever: Optional[StrictInt] = Field(
+        description="Free compute hours forever (one-time grant)."
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "org_id",

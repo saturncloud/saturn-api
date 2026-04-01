@@ -54,7 +54,7 @@ docs/DeploymentList.md
 docs/DeploymentRecipe.md
 docs/DeploymentRouteRecipe.md
 docs/DeploymentRuntimeSummary.md
-docs/DeploymentServerOptions.md
+docs/DeploymentServerInfo.md
 docs/DeploymentSpec.md
 docs/DeploymentStart.md
 docs/DeploymentStatus.md
@@ -131,7 +131,7 @@ docs/JobRecipe.md
 docs/JobRestart.md
 docs/JobRuntimeSummary.md
 docs/JobRuntimeSummaryList.md
-docs/JobServerOptions.md
+docs/JobServerInfo.md
 docs/JobSpec.md
 docs/JobStart.md
 docs/JobStatus.md
@@ -304,8 +304,8 @@ docs/WorkspaceList.md
 docs/WorkspaceRecipe.md
 docs/WorkspaceRouteRecipe.md
 docs/WorkspaceRuntimeSummary.md
+docs/WorkspaceServerInfo.md
 docs/WorkspaceServerOptions.md
-docs/WorkspaceServerSizeSchemas.md
 docs/WorkspaceSpec.md
 docs/WorkspaceStart.md
 docs/WorkspaceUpdate.md
@@ -395,7 +395,7 @@ saturn_api/models/deployment_list.py
 saturn_api/models/deployment_recipe.py
 saturn_api/models/deployment_route_recipe.py
 saturn_api/models/deployment_runtime_summary.py
-saturn_api/models/deployment_server_options.py
+saturn_api/models/deployment_server_info.py
 saturn_api/models/deployment_spec.py
 saturn_api/models/deployment_start.py
 saturn_api/models/deployment_status.py
@@ -464,7 +464,7 @@ saturn_api/models/job_recipe.py
 saturn_api/models/job_restart.py
 saturn_api/models/job_runtime_summary.py
 saturn_api/models/job_runtime_summary_list.py
-saturn_api/models/job_server_options.py
+saturn_api/models/job_server_info.py
 saturn_api/models/job_spec.py
 saturn_api/models/job_start.py
 saturn_api/models/job_status.py
@@ -623,8 +623,8 @@ saturn_api/models/workspace_list.py
 saturn_api/models/workspace_recipe.py
 saturn_api/models/workspace_route_recipe.py
 saturn_api/models/workspace_runtime_summary.py
+saturn_api/models/workspace_server_info.py
 saturn_api/models/workspace_server_options.py
-saturn_api/models/workspace_server_size_schemas.py
 saturn_api/models/workspace_spec.py
 saturn_api/models/workspace_start.py
 saturn_api/models/workspace_update.py

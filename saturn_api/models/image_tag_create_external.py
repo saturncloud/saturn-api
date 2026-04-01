@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
 
@@ -27,9 +27,11 @@ class ImageTagCreateExternal(BaseModel):
     ImageTagCreateExternal
     """  # noqa: E501
 
-    image_uri: StrictStr
-    version: Optional[StrictStr] = ""
-    description: Optional[StrictStr] = ""
+    image_uri: StrictStr = Field(description="External image URI")
+    version: Optional[StrictStr] = Field(default="", description="Version of the image tag.")
+    description: Optional[StrictStr] = Field(
+        default="", description="Description of the image tag."
+    )
     __properties: ClassVar[List[str]] = ["image_uri", "version", "description"]
 
     model_config = ConfigDict(

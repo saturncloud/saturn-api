@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [readonly] 
-**user_id** | **str** |  | [readonly] 
-**topic** | **str** |  | [readonly] 
-**options** | **Dict[str, object]** |  | [optional] [readonly] 
+**id** | **str** | ID of the notification subscription. | [readonly] 
+**user_id** | **str** | User ID to be notified. | [readonly] 
+**topic** | **str** | Topic of the subscription. | [readonly] 
+**options** | **Dict[str, object]** | Options data for the topic. | [optional] [readonly] 
 
 ## Example
 

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
 
@@ -27,14 +27,22 @@ class UserAdminCreate(BaseModel):
     UserAdminCreate
     """  # noqa: E501
 
-    username: StrictStr
-    email: StrictStr
-    full_name: Optional[StrictStr] = None
-    admin: Optional[StrictBool] = False
-    limits_id: Optional[StrictStr] = None
-    send_reset_email: Optional[StrictBool] = True
-    locked: Optional[StrictBool] = False
-    prevent_duplicate_emails: Optional[StrictBool] = False
+    username: StrictStr = Field(description="Name of the user.")
+    email: StrictStr = Field(description="Email of the user.")
+    full_name: Optional[StrictStr] = Field(default=None, description="Full name of the user.")
+    admin: Optional[StrictBool] = Field(
+        default=False, description="Enable user to take privileged actions in the API."
+    )
+    limits_id: Optional[StrictStr] = Field(
+        default=None, description="Usage limits ID applied to the user in the primary org."
+    )
+    send_reset_email: Optional[StrictBool] = Field(
+        default=True, description="Send password reset to the user's email on create."
+    )
+    locked: Optional[StrictBool] = Field(default=False, description="Lock the user.")
+    prevent_duplicate_emails: Optional[StrictBool] = Field(
+        default=False, description="Prevent creating user with duplicate email."
+    )
     __properties: ClassVar[List[str]] = [
         "username",
         "email",

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_path** | **str** |  | [readonly] 
-**size** | **int** |  | [readonly] 
-**created_at** | **datetime** |  | [readonly] 
-**updated_at** | **datetime** |  | [readonly] 
+**file_path** | **str** | File path in object storage. | [readonly] 
+**size** | **int** | Size of the file. | [readonly] 
+**created_at** | **datetime** | Creation timestamp. | [readonly] 
+**updated_at** | **datetime** | Update timestamp. | [readonly] 
 
 ## Example
 

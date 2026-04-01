@@ -19,7 +19,7 @@ import re  # noqa: F401
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing_extensions import Self
 
 
@@ -28,10 +28,10 @@ class ObjectStorageFileDetails(BaseModel):
     ObjectStorageFileDetails
     """  # noqa: E501
 
-    file_path: StrictStr
-    size: StrictInt
-    created_at: datetime
-    updated_at: datetime
+    file_path: StrictStr = Field(description="File path in object storage.")
+    size: StrictInt = Field(description="Size of the file.")
+    created_at: datetime = Field(description="Creation timestamp.")
+    updated_at: datetime = Field(description="Update timestamp.")
     __properties: ClassVar[List[str]] = ["file_path", "size", "created_at", "updated_at"]
 
     model_config = ConfigDict(

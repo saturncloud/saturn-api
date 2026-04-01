@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Self
 
 from saturn_api.models.server_options_size import ServerOptionsSize
@@ -29,7 +29,9 @@ class DaskClusterServerOptions(BaseModel):
     DaskClusterServerOptions
     """  # noqa: E501
 
-    server_options: ServerOptionsSize
+    server_options: ServerOptionsSize = Field(
+        description="Configuration options for dask clusters."
+    )
     __properties: ClassVar[List[str]] = ["server_options"]
 
     model_config = ConfigDict(

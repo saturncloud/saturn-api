@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_path** | **str** |  | 
-**owner** | [**OwnerReference**](OwnerReference.md) |  | [optional] 
-**size** | **int** |  | [optional] 
-**part_size** | **int** |  | [optional] 
-**copy_source** | [**ObjectStorageReference**](ObjectStorageReference.md) |  | [optional] 
+**file_path** | **str** | File path in object storage. | 
+**owner** | [**OwnerReference**](OwnerReference.md) | Owner of the file. Defaults to authenticated user/group. | [optional] 
+**size** | **int** | Size of the file. | [optional] 
+**part_size** | **int** | Multipart upload size. | [optional] 
+**copy_source** | [**ObjectStorageReference**](ObjectStorageReference.md) | Object storage reference to copy. | [optional] 
 
 ## Example
 

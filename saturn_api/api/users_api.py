@@ -498,7 +498,9 @@ class UsersApi:
     async def get(
         self,
         user_id: StrictStr,
-        details: Optional[StrictBool] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrive detailed user data.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -515,7 +517,7 @@ class UsersApi:
 
         :param user_id: (required)
         :type user_id: str
-        :param details:
+        :param details: Retrive detailed user data.
         :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -562,7 +564,9 @@ class UsersApi:
     async def get_with_http_info(
         self,
         user_id: StrictStr,
-        details: Optional[StrictBool] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrive detailed user data.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -579,7 +583,7 @@ class UsersApi:
 
         :param user_id: (required)
         :type user_id: str
-        :param details:
+        :param details: Retrive detailed user data.
         :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -626,7 +630,9 @@ class UsersApi:
     async def get_without_preload_content(
         self,
         user_id: StrictStr,
-        details: Optional[StrictBool] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrive detailed user data.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -643,7 +649,7 @@ class UsersApi:
 
         :param user_id: (required)
         :type user_id: str
-        :param details:
+        :param details: Retrive detailed user data.
         :type details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -740,13 +746,24 @@ class UsersApi:
     @validate_call
     async def list(
         self,
-        username: Optional[StrictStr] = None,
-        email: Optional[StrictStr] = None,
-        details: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        username: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on user name.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on user email.")
+        ] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrieve detailed user data. (Admin only)")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -761,19 +778,19 @@ class UsersApi:
 
         Paginated list of users.
 
-        :param username:
+        :param username: Prefix matched search string on user name.
         :type username: str
-        :param email:
+        :param email: Prefix matched search string on user email.
         :type email: str
-        :param details:
+        :param details: Retrieve detailed user data. (Admin only)
         :type details: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -824,13 +841,24 @@ class UsersApi:
     @validate_call
     async def list_with_http_info(
         self,
-        username: Optional[StrictStr] = None,
-        email: Optional[StrictStr] = None,
-        details: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        username: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on user name.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on user email.")
+        ] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrieve detailed user data. (Admin only)")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -845,19 +873,19 @@ class UsersApi:
 
         Paginated list of users.
 
-        :param username:
+        :param username: Prefix matched search string on user name.
         :type username: str
-        :param email:
+        :param email: Prefix matched search string on user email.
         :type email: str
-        :param details:
+        :param details: Retrieve detailed user data. (Admin only)
         :type details: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -908,13 +936,24 @@ class UsersApi:
     @validate_call
     async def list_without_preload_content(
         self,
-        username: Optional[StrictStr] = None,
-        email: Optional[StrictStr] = None,
-        details: Optional[StrictBool] = None,
-        prev_key: Optional[StrictStr] = None,
-        next_key: Optional[StrictStr] = None,
-        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
-        descending: Optional[StrictBool] = None,
+        username: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on user name.")
+        ] = None,
+        email: Annotated[
+            Optional[StrictStr], Field(description="Prefix matched search string on user email.")
+        ] = None,
+        details: Annotated[
+            Optional[StrictBool], Field(description="Retrieve detailed user data. (Admin only)")
+        ] = None,
+        prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
+        next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
+        page_size: Annotated[
+            Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]],
+            Field(description="Page size."),
+        ] = None,
+        descending: Annotated[
+            Optional[StrictBool], Field(description="List results in descending order.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -929,19 +968,19 @@ class UsersApi:
 
         Paginated list of users.
 
-        :param username:
+        :param username: Prefix matched search string on user name.
         :type username: str
-        :param email:
+        :param email: Prefix matched search string on user email.
         :type email: str
-        :param details:
+        :param details: Retrieve detailed user data. (Admin only)
         :type details: bool
-        :param prev_key:
+        :param prev_key: Previous page key.
         :type prev_key: str
-        :param next_key:
+        :param next_key: Next page key.
         :type next_key: str
-        :param page_size:
+        :param page_size: Page size.
         :type page_size: int
-        :param descending:
+        :param descending: List results in descending order.
         :type descending: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
