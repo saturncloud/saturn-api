@@ -36,7 +36,7 @@ setup(
     description="Saturn Cloud",
     author="OpenAPI Generator community",
     author_email="team@openapitools.org",
-    url="github.com/saturncloud/saturn-api",
+    url="https://github.com/saturncloud/saturn-api",
     keywords=["OpenAPI", "OpenAPI-Generator", "Saturn Cloud"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
