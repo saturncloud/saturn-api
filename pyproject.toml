@@ -1,6 +1,6 @@
 [project]
 name = "saturn_api"
-version = "1.0.0"
+dynamic = ["version"]
 description = "Saturn Cloud"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
@@ -34,8 +34,10 @@ mypy = ">= 1.5"
 
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=61", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
 
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
