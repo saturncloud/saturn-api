@@ -8,6 +8,10 @@ Name | Type | Description | Notes
 **id** | **str** |  | [readonly] 
 **action** | **str** |  | [optional] [readonly] 
 **status** | **str** |  | [readonly] 
+**url** | **str** | External URL for the primary route, if applicable. | [optional] [readonly] 
+**ssh_url** | **str** | External SSH URL for the resource when SSH is enabled. | [optional] [readonly] 
+**ssh_user** | **str** | SSH username for the resource when SSH is enabled. | [optional] [readonly] 
+**routes** | [**List[RouteState]**](RouteState.md) | External URL for each route exposed by the resource. | [optional] [readonly] 
 
 ## Example
 

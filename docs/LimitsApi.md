@@ -280,7 +280,7 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.LimitsApi(api_client)
-    name = 'name_example' # str | Prefix matched search string on usage limit name. (optional)
+    name = 'name_example' # str | Substring matched search string on usage limit name. (optional)
     org_id = 'org_id_example' # str | Filter usage limits by org. Defaults to the default org for the current user/group. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -303,7 +303,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Prefix matched search string on usage limit name. | [optional] 
+ **name** | **str**| Substring matched search string on usage limit name. | [optional] 
  **org_id** | **str**| Filter usage limits by org. Defaults to the default org for the current user/group. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 

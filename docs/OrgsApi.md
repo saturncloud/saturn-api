@@ -1318,7 +1318,7 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.OrgsApi(api_client)
-    name = 'name_example' # str | Prefix matched search string on org name. (optional)
+    name = 'name_example' # str | Substring matched search string on org name. (optional)
     all_orgs = True # bool | List all orgs, instead of only orgs the user is a member of. (Admin only) (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -1341,7 +1341,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Prefix matched search string on org name. | [optional] 
+ **name** | **str**| Substring matched search string on org name. | [optional] 
  **all_orgs** | **bool**| List all orgs, instead of only orgs the user is a member of. (Admin only) | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
@@ -1407,7 +1407,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     api_instance = saturn_api.OrgsApi(api_client)
     org_id = 'org_id_example' # str | 
     status = saturn_api.InvitationStatus() # InvitationStatus | Filter org invitations by status. (optional)
-    email = 'email_example' # str | Prefix matched search string on email. (optional)
+    email = 'email_example' # str | Substring matched search string on email. (optional)
     invitor_id = 'invitor_id_example' # str | Filter invitations by invitor user ID. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -1432,7 +1432,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
  **status** | [**InvitationStatus**](.md)| Filter org invitations by status. | [optional] 
- **email** | **str**| Prefix matched search string on email. | [optional] 
+ **email** | **str**| Substring matched search string on email. | [optional] 
  **invitor_id** | **str**| Filter invitations by invitor user ID. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
@@ -1499,7 +1499,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.OrgsApi(api_client)
     org_id = 'org_id_example' # str | 
-    name = 'name_example' # str | Prefix matched search string by owner identity name. (optional)
+    name = 'name_example' # str | Substring matched search string by owner identity name. (optional)
     identity_type = saturn_api.IdentityType() # IdentityType | Filter owners by identity type. (optional)
     all_users = False # bool | List all user owners, instead of just the authenticated user. (optional) (default to False)
     all_groups = False # bool | List all group owners, instead of just groups the authenticated user is a member of. (optional) (default to False)
@@ -1526,7 +1526,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
- **name** | **str**| Prefix matched search string by owner identity name. | [optional] 
+ **name** | **str**| Substring matched search string by owner identity name. | [optional] 
  **identity_type** | [**IdentityType**](.md)| Filter owners by identity type. | [optional] 
  **all_users** | **bool**| List all user owners, instead of just the authenticated user. | [optional] [default to False]
  **all_groups** | **bool**| List all group owners, instead of just groups the authenticated user is a member of. | [optional] [default to False]

@@ -52,6 +52,7 @@ Name | Type | Description | Notes
 **debug_mode** | **bool** | True if workspace is running in debug mode. | [readonly] 
 **ssh_url** | **str** | External SSH URL for the workspace. | [readonly] 
 **cron_schedule_options** | [**CronSchedule**](CronSchedule.md) | Cron schedule configuration for scheduled jobs. | [optional] [readonly] 
+**retries** | **int** | Maximum number of retries for a failed job. | [readonly] 
 **scheduled** | **bool** | True if job is currently scheduled. | [readonly] 
 **ide** | **str** | IDE of the workspace | [readonly] 
 **disk_space** | **str** | Size of the persistent volume attached to the workspace. | [readonly] 

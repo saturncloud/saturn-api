@@ -308,6 +308,140 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizationTokenResponse'
           description: Created
+  /api/clusters:
+    get:
+      summary: List clusters
+      description: Paginated list of clusters.
+      operationId: clusters_list
+      tags:
+      - clusters
+      parameters:
+      - in: query
+        name: org_id
+        description: Filter clusters by org ID.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: name
+        description: Substring search on cluster name.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: prev_key
+        description: Previous page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        description: Next page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        description: Page size.
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: descending
+        description: List results in descending order.
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterList'
+          description: Ok
+    post:
+      summary: Create cluster
+      description: Create a new cluster.
+      operationId: clusters_create
+      tags:
+      - clusters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+          description: Created
+  /api/clusters/{cluster_id}:
+    delete:
+      summary: Delete cluster
+      description: Delete a cluster.
+      operationId: clusters_delete
+      tags:
+      - clusters
+      parameters:
+      - name: cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      summary: Get cluster
+      description: Get a cluster.
+      operationId: clusters_get
+      tags:
+      - clusters
+      parameters:
+      - name: cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+          description: Ok
+    patch:
+      summary: Update cluster
+      description: Update a cluster.
+      operationId: clusters_update
+      tags:
+      - clusters
+      parameters:
+      - name: cluster_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+          description: Updated
   /api/dask_clusters:
     get:
       summary: List dask clusters
@@ -1014,7 +1148,14 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on deployment name.
+        description: Substring matched search string on deployment name.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: tags
+        description: Filter to deployments whose tags contain the given 'key:value'
+          pair, e.g. 'saturn.io/kind:finetune'.
         schema:
           type: string
         required: false
@@ -1357,7 +1498,7 @@ paths:
         required: true
       - in: query
         name: subdomain
-        description: Prefix matched search string on route subdomain.
+        description: Substring matched search string on route subdomain.
         schema:
           type: string
         required: false
@@ -1530,7 +1671,7 @@ paths:
         required: true
       - in: query
         name: location
-        description: Prefix matched search string on secret attachment location.
+        description: Substring matched search string on secret attachment location.
         schema:
           type: string
         required: false
@@ -2135,7 +2276,7 @@ paths:
         required: false
       - in: query
         name: remote_url
-        description: Prefix matched search string on repository remote URL.
+        description: Substring matched search string on repository remote URL.
         schema:
           type: string
         required: false
@@ -2263,7 +2404,7 @@ paths:
       parameters:
       - in: query
         name: name
-        description: Prefix matched search string on group name.
+        description: Substring matched search string on group name.
         schema:
           type: string
         required: false
@@ -2430,7 +2571,7 @@ paths:
         required: true
       - in: query
         name: name
-        description: Prefix matched search string on group member username.
+        description: Substring matched search string on group member username.
         schema:
           type: string
         required: false
@@ -2578,7 +2719,7 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on image name.
+        description: Substring matched search string on image name.
         schema:
           type: string
         required: false
@@ -2736,13 +2877,13 @@ paths:
         required: true
       - in: query
         name: version
-        description: Prefix matched search string on image tag version.
+        description: Substring matched search string on image tag version.
         schema:
           type: string
         required: false
       - in: query
         name: image_uri
-        description: Prefix matched search string on image tag URI.
+        description: Substring matched search string on image tag URI.
         schema:
           type: string
         required: false
@@ -3074,7 +3215,7 @@ paths:
         required: false
       - in: query
         name: email
-        description: Prefix matched search string on email.
+        description: Substring matched search string on email.
         schema:
           type: string
         required: false
@@ -3251,7 +3392,14 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on job name.
+        description: Substring matched search string on job name.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: tags
+        description: Filter to jobs whose tags contain the given 'key:value' pair,
+          e.g. 'saturn.io/kind:finetune'.
         schema:
           type: string
         required: false
@@ -3659,7 +3807,7 @@ paths:
         required: true
       - in: query
         name: location
-        description: Prefix matched search string on secret attachment location.
+        description: Substring matched search string on secret attachment location.
         schema:
           type: string
         required: false
@@ -4087,7 +4235,7 @@ paths:
       parameters:
       - in: query
         name: name
-        description: Prefix matched search string on usage limit name.
+        description: Substring matched search string on usage limit name.
         schema:
           type: string
         required: false
@@ -4842,7 +4990,7 @@ paths:
       parameters:
       - in: query
         name: name
-        description: Prefix matched search string on org name.
+        description: Substring matched search string on org name.
         schema:
           type: string
         required: false
@@ -4987,7 +5135,7 @@ paths:
         required: false
       - in: query
         name: email
-        description: Prefix matched search string on email.
+        description: Substring matched search string on email.
         schema:
           type: string
         required: false
@@ -5297,7 +5445,7 @@ paths:
         required: true
       - in: query
         name: name
-        description: Prefix matched search string by owner identity name.
+        description: Substring matched search string by owner identity name.
         schema:
           type: string
         required: false
@@ -5765,7 +5913,7 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on secret name.
+        description: Substring matched search string on secret name.
         schema:
           type: string
         required: false
@@ -5918,7 +6066,7 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on entitled service account name.
+        description: Substring matched search string on entitled service account name.
         schema:
           type: string
         required: false
@@ -6021,7 +6169,7 @@ paths:
       parameters:
       - in: query
         name: name
-        description: Prefix matched search string on service account name.
+        description: Substring matched search string on service account name.
         schema:
           type: string
         required: false
@@ -6332,7 +6480,7 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on shared folder name.
+        description: Substring matched search string on shared folder name.
         schema:
           type: string
         required: false
@@ -6485,7 +6633,7 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on SSH private key name.
+        description: Substring matched search string on SSH private key name.
         schema:
           type: string
         required: false
@@ -6638,7 +6786,7 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on SSH public key name.
+        description: Substring matched search string on SSH public key name.
         schema:
           type: string
         required: false
@@ -6911,6 +7059,14 @@ paths:
                 $ref: '#/components/schemas/ApiTokenInfo'
           description: Updated
   /api/user:
+    delete:
+      summary: Delete current user
+      operationId: currentuser_delete
+      tags:
+      - current_user
+      responses:
+        '204':
+          description: Deleted
     get:
       summary: Get current user
       operationId: currentuser_get
@@ -7053,13 +7209,13 @@ paths:
       parameters:
       - in: query
         name: username
-        description: Prefix matched search string on user name.
+        description: Substring matched search string on user name.
         schema:
           type: string
         required: false
       - in: query
         name: email
-        description: Prefix matched search string on user email.
+        description: Substring matched search string on user email.
         schema:
           type: string
         required: false
@@ -7295,7 +7451,7 @@ paths:
         required: false
       - in: query
         name: name
-        description: Prefix matched search string on workspace name.
+        description: Substring matched search string on workspace name.
         schema:
           type: string
         required: false
@@ -7638,7 +7794,7 @@ paths:
         required: true
       - in: query
         name: subdomain
-        description: Prefix matched search string on route subdomain.
+        description: Substring matched search string on route subdomain.
         schema:
           type: string
         required: false
@@ -7811,7 +7967,7 @@ paths:
         required: true
       - in: query
         name: location
-        description: Prefix matched search string on secret attachment location.
+        description: Substring matched search string on secret attachment location.
         schema:
           type: string
         required: false
@@ -8676,6 +8832,22 @@ components:
       - image
       - instance_type
       - name
+    RouteState:
+      type: object
+      properties:
+        subdomain:
+          type: string
+          readOnly: true
+        container_port:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+      required:
+      - container_port
+      - subdomain
+      - url
     ResourceState:
       type: object
       properties:
@@ -8688,6 +8860,27 @@ components:
         status:
           type: string
           readOnly: true
+        url:
+          type: string
+          readOnly: true
+          description: External URL for the primary route, if applicable.
+          nullable: true
+        ssh_url:
+          type: string
+          readOnly: true
+          description: External SSH URL for the resource when SSH is enabled.
+          nullable: true
+        ssh_user:
+          type: string
+          readOnly: true
+          description: SSH username for the resource when SSH is enabled.
+          nullable: true
+        routes:
+          type: array
+          readOnly: true
+          description: External URL for each route exposed by the resource.
+          items:
+            $ref: '#/components/schemas/RouteState'
       required:
       - id
       - status
@@ -9787,13 +9980,7 @@ components:
           readOnly: true
           description: Specifies how to treat concurrent executions of a job's cron
             schedule.
-        backoff_limit:
-          type: integer
-          readOnly: true
-          minimum: 0
-          description: Maximum number of retries for a failed job.
       required:
-      - backoff_limit
       - concurrency_policy
       - schedule
     Job:
@@ -9873,6 +10060,10 @@ components:
           type: integer
           readOnly: true
           description: Number of pod replicas.
+        retries:
+          type: integer
+          readOnly: true
+          description: Maximum number of retries for a failed job.
         k8s_name:
           type: string
           readOnly: true
@@ -9945,6 +10136,7 @@ components:
       - owner
       - require_restart
       - resource_type
+      - retries
       - running_count
       - scale
       - scheduled
@@ -10554,6 +10746,145 @@ components:
       - refresh_expires_in
       - refresh_token
       - token_type
+    ClusterConnectionType:
+      type: string
+      enum:
+      - incluster
+      - token
+    Cluster:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Cluster ID.
+        name:
+          type: string
+          readOnly: true
+          description: Cluster name.
+        org_id:
+          type: string
+          readOnly: true
+          description: Owning org ID.
+        connection_type:
+          readOnly: true
+          description: Connection method.
+          $ref: '#/components/schemas/ClusterConnectionType'
+        server_url:
+          type: string
+          readOnly: true
+          description: K8s API server URL.
+          nullable: true
+        utilities:
+          type: object
+          readOnly: true
+          description: ClusterUtilities metadata.
+          nullable: true
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          description: Creation timestamp.
+        updated_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          description: Last update timestamp.
+      required:
+      - connection_type
+      - created_at
+      - id
+      - name
+      - org_id
+      - updated_at
+    ClusterList:
+      type: object
+      properties:
+        clusters:
+          type: array
+          readOnly: true
+          description: List of clusters.
+          items:
+            $ref: '#/components/schemas/Cluster'
+        prev_key:
+          type: string
+          readOnly: true
+          description: Previous page key.
+        next_key:
+          type: string
+          readOnly: true
+          description: Next page key.
+      required:
+      - clusters
+    ClusterCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name of the cluster.
+        org_id:
+          type: string
+          description: ID of the org that owns the cluster.
+        connection_type:
+          description: 'How Atlas should connect to the cluster: ''incluster'' uses
+            the pod''s service account; ''token'' uses stored server_url + ca_bundle
+            + token.'
+          $ref: '#/components/schemas/ClusterConnectionType'
+        server_url:
+          type: string
+          default: null
+          description: K8s API server URL. Required when connection_type is 'token'.
+          nullable: true
+        ca_bundle:
+          type: string
+          default: null
+          description: Base64-encoded CA bundle. Required when connection_type is
+            'token'.
+          nullable: true
+        token:
+          type: string
+          default: null
+          description: Bearer token for k8s API. Required when connection_type is
+            'token'.
+          nullable: true
+        utilities:
+          type: object
+          default: null
+          description: ClusterUtilities metadata (service endpoints).
+          nullable: true
+          additionalProperties: {}
+      required:
+      - connection_type
+      - name
+      - org_id
+    ClusterUpdate:
+      type: object
+      properties:
+        connection_type:
+          description: Connection type.
+          $ref: '#/components/schemas/ClusterConnectionType'
+        server_url:
+          type: string
+          default: null
+          description: K8s API server URL.
+          nullable: true
+        ca_bundle:
+          type: string
+          default: null
+          description: Base64-encoded CA bundle.
+          nullable: true
+        token:
+          type: string
+          default: null
+          description: Bearer token.
+          nullable: true
+        utilities:
+          type: object
+          default: null
+          description: ClusterUtilities metadata.
+          nullable: true
+          additionalProperties: {}
     DaskClusterList:
       type: object
       properties:
@@ -11158,6 +11489,12 @@ components:
           default: null
           nullable: true
         description:
+          type: string
+          default: ''
+        disabled:
+          type: boolean
+          default: false
+        disabled_message:
           type: string
           default: ''
       required:
@@ -12748,6 +13085,10 @@ components:
           default: null
           description: Short version of the brand name.
           nullable: true
+        logo_mode:
+          type: string
+          default: icon_and_text
+          description: 'Logo display mode: ''icon_and_text'' or ''logo_only''.'
         logo_icon_url:
           type: string
           description: Brand icon URL.
@@ -12762,6 +13103,21 @@ components:
         primary_color:
           type: string
           description: Primary frontend color.
+        cloud_display_names:
+          type: object
+          default: null
+          description: 'Map of cloud provider IDs to display names (e.g. {''nebius'':
+            ''My Cloud''}).'
+          additionalProperties:
+            type: string
+          nullable: true
+        cloud_icon_urls:
+          type: object
+          default: null
+          description: Map of cloud provider IDs to icon URLs.
+          additionalProperties:
+            type: string
+          nullable: true
         support_email:
           type: string
           description: Support contact email.
@@ -13018,11 +13374,6 @@ components:
           description: Specifies how to treat concurrent executions of a job's cron
             schedule.
           $ref: '#/components/schemas/ConcurrencyPolicy'
-        backoff_limit:
-          type: integer
-          default: 0
-          minimum: 0
-          description: Maximum number of retries for a failed job.
       required:
       - schedule
     JobCreate:
@@ -13106,6 +13457,11 @@ components:
           default: 1
           minimum: 1
           description: Number of pod replicas.
+        retries:
+          type: integer
+          default: 0
+          minimum: 0
+          description: Maximum number of retries for a failed job.
         cron_schedule_options:
           default: null
           description: Cron schedule configuration for scheduled jobs.
@@ -13125,10 +13481,6 @@ components:
           description: Specifies how to treat concurrent executions of a job's cron
             schedule.
           $ref: '#/components/schemas/ConcurrencyPolicy'
-        backoff_limit:
-          type: integer
-          minimum: 0
-          description: Maximum number of retries for a failed job.
     JobUpdate:
       type: object
       properties:
@@ -13197,6 +13549,10 @@ components:
           type: integer
           minimum: 1
           description: Number of pod replicas.
+        retries:
+          type: integer
+          minimum: 0
+          description: Maximum number of retries for a failed job.
         cron_schedule_options:
           default: null
           description: Cron schedule configuration for scheduled jobs.
@@ -14102,6 +14458,12 @@ components:
           type: string
           readOnly: true
           description: Usage limits ID applied to the entire org.
+          nullable: true
+        limits:
+          readOnly: true
+          description: Usage limits applied to the entire org, if set.
+          allOf:
+          - $ref: '#/components/schemas/UsageLimits'
           nullable: true
         is_primary:
           type: boolean

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **start_dind** | **bool** | Enables docker-in-docker. | [optional] 
 **command** | **str** | Command that runs on start. | [optional] 
 **scale** | **int** | Number of pod replicas. | [optional] 
+**retries** | **int** | Maximum number of retries for a failed job. | [optional] 
 **cron_schedule_options** | [**CronScheduleUpdate**](CronScheduleUpdate.md) | Cron schedule configuration for scheduled jobs. | [optional] 
 
 ## Example

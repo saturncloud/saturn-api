@@ -1445,7 +1445,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> JobList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+> JobList list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, tags=tags, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
 List jobs
 
@@ -1487,7 +1487,8 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
     org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
     owner = 'owner_example' # str | Reference owner by name. (optional)
-    name = 'name_example' # str | Prefix matched search string on job name. (optional)
+    name = 'name_example' # str | Substring matched search string on job name. (optional)
+    tags = 'tags_example' # str | Filter to jobs whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
     page_size = 100 # int | Page size. (optional) (default to 100)
@@ -1495,7 +1496,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
     try:
         # List jobs
-        api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        api_response = await api_instance.list(owner_name=owner_name, owner_id=owner_id, user_id=user_id, group_id=group_id, org_id=org_id, owner=owner, name=name, tags=tags, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
         print("The response of JobsApi->list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1515,7 +1516,8 @@ Name | Type | Description  | Notes
  **group_id** | **str**| Reference owner by group ID. | [optional] 
  **org_id** | **str**| Reference owner by org ID. | [optional] 
  **owner** | **str**| Reference owner by name. | [optional] 
- **name** | **str**| Prefix matched search string on job name. | [optional] 
+ **name** | **str**| Substring matched search string on job name. | [optional] 
+ **tags** | **str**| Filter to jobs whose tags contain the given &#39;key:value&#39; pair, e.g. &#39;saturn.io/kind:finetune&#39;. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
  **page_size** | **int**| Page size. | [optional] [default to 100]
@@ -1663,7 +1665,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.JobsApi(api_client)
     job_id = 'job_id_example' # str | 
-    location = 'location_example' # str | Prefix matched search string on secret attachment location. (optional)
+    location = 'location_example' # str | Substring matched search string on secret attachment location. (optional)
     attachment_type = saturn_api.SecretAttachmentType() # SecretAttachmentType | Filter secret attachments by type. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -1687,7 +1689,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **str**|  | 
- **location** | **str**| Prefix matched search string on secret attachment location. | [optional] 
+ **location** | **str**| Substring matched search string on secret attachment location. | [optional] 
  **attachment_type** | [**SecretAttachmentType**](.md)| Filter secret attachments by type. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 

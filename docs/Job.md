@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **is_spot** | **bool** | Enables running on spot instance sizes. | [readonly] 
 **start_dind** | **bool** | Enables docker-in-docker. | [readonly] 
 **scale** | **int** | Number of pod replicas. | [readonly] 
+**retries** | **int** | Maximum number of retries for a failed job. | [readonly] 
 **k8s_name** | **str** | Unique name for associated kubernetes objects. | [readonly] 
 **require_restart** | **bool** | True if an update was applied that requires restart to take effect. | [readonly] 
 **resource_type** | **str** | Resource type of the job. | [readonly] 

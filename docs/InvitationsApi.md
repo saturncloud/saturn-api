@@ -282,7 +282,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.InvitationsApi(api_client)
     status = saturn_api.InvitationStatus() # InvitationStatus | Filter invitations by status. (optional)
-    email = 'email_example' # str | Prefix matched search string on email. (optional)
+    email = 'email_example' # str | Substring matched search string on email. (optional)
     invitor_id = 'invitor_id_example' # str | Filter invitations by invitor user ID. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -306,7 +306,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | [**InvitationStatus**](.md)| Filter invitations by status. | [optional] 
- **email** | **str**| Prefix matched search string on email. | [optional] 
+ **email** | **str**| Substring matched search string on email. | [optional] 
  **invitor_id** | **str**| Filter invitations by invitor user ID. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 

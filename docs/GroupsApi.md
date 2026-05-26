@@ -520,7 +520,7 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.GroupsApi(api_client)
-    name = 'name_example' # str | Prefix matched search string on group name. (optional)
+    name = 'name_example' # str | Substring matched search string on group name. (optional)
     org_id = 'org_id_example' # str | Org ID to query for groups. Defaults to the default org for the authenticated user. (optional)
     all_groups = False # bool | Search for all groups in the org, instead of only groups the authenticated user is a member of. (optional) (default to False)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
@@ -544,7 +544,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Prefix matched search string on group name. | [optional] 
+ **name** | **str**| Substring matched search string on group name. | [optional] 
  **org_id** | **str**| Org ID to query for groups. Defaults to the default org for the authenticated user. | [optional] 
  **all_groups** | **bool**| Search for all groups in the org, instead of only groups the authenticated user is a member of. | [optional] [default to False]
  **prev_key** | **str**| Previous page key. | [optional] 
@@ -609,7 +609,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.GroupsApi(api_client)
     group_id = 'group_id_example' # str | 
-    name = 'name_example' # str | Prefix matched search string on group member username. (optional)
+    name = 'name_example' # str | Substring matched search string on group member username. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
     page_size = 100 # int | Page size. (optional) (default to 100)
@@ -632,7 +632,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_id** | **str**|  | 
- **name** | **str**| Prefix matched search string on group member username. | [optional] 
+ **name** | **str**| Substring matched search string on group member username. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
  **page_size** | **int**| Page size. | [optional] [default to 100]
