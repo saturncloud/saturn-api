@@ -5115,6 +5115,160 @@ paths:
               schema:
                 $ref: '#/components/schemas/Org'
           description: Updated
+  /api/orgs/{org_id}/artifacts:
+    get:
+      summary: List artifacts
+      description: Paginated list of artifacts.
+      operationId: artifacts_list
+      tags:
+      - artifacts
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: kind
+        description: Filter artifacts by kind.
+        schema:
+          $ref: '#/components/schemas/ArtifactKind'
+        required: false
+      - in: query
+        name: prev_key
+        description: Previous page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        description: Next page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        description: Page size.
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: descending
+        description: List results in descending order.
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtifactList'
+          description: Ok
+    post:
+      summary: Create artifact
+      description: Create a new artifact.
+      operationId: artifacts_create
+      tags:
+      - artifacts
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtifactCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+          description: Created
+  /api/orgs/{org_id}/artifacts/{artifact_id}:
+    delete:
+      summary: Delete artifact
+      description: Delete an artifact.
+      operationId: artifacts_delete
+      tags:
+      - artifacts
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: artifact_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      summary: Get artifact
+      description: Get an artifact.
+      operationId: artifacts_get
+      tags:
+      - artifacts
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: artifact_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+          description: Ok
+    patch:
+      summary: Update artifact
+      description: Update an artifact.
+      operationId: artifacts_update
+      tags:
+      - artifacts
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: artifact_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtifactUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+          description: Updated
   /api/orgs/{org_id}/invitations:
     get:
       summary: List org invitations
@@ -5514,6 +5668,278 @@ paths:
                 - $ref: '#/components/schemas/OwnerList'
                 - $ref: '#/components/schemas/OwnerDetailedList'
           description: Ok
+  /api/orgs/{org_id}/token-factory/datasets:
+    get:
+      summary: List datasets
+      description: Paginated list of datasets.
+      operationId: datasets_list
+      tags:
+      - datasets
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: status
+        description: Filter datasets by status.
+        schema:
+          $ref: '#/components/schemas/ArtifactStatus'
+        required: false
+      - in: query
+        name: prev_key
+        description: Previous page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        description: Next page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        description: Page size.
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: descending
+        description: List results in descending order.
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetList'
+          description: Ok
+    post:
+      summary: Create dataset
+      description: Create a new dataset.
+      operationId: datasets_create
+      tags:
+      - datasets
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Created
+  /api/orgs/{org_id}/token-factory/datasets/{dataset_id}:
+    delete:
+      summary: Delete dataset
+      description: Delete a dataset.
+      operationId: datasets_delete
+      tags:
+      - datasets
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: dataset_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      summary: Get dataset
+      description: Get a dataset.
+      operationId: datasets_get
+      tags:
+      - datasets
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: dataset_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Ok
+  /api/orgs/{org_id}/token-factory/datasets/{dataset_id}/seal:
+    post:
+      summary: Seal dataset
+      description: Transition a dataset from `assembling` to `ready`, making it immutable.
+      operationId: datasets_seal
+      tags:
+      - datasets
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: dataset_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Sealed
+  /api/orgs/{org_id}/token-factory/fine-tuning/jobs:
+    get:
+      summary: List fine-tuning jobs
+      description: Paginated list of fine-tuning jobs.
+      operationId: fine-tuningjobs_list
+      tags:
+      - fine_tuning_jobs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: prev_key
+        description: Previous page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        description: Next page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        description: Page size.
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: descending
+        description: List results in descending order.
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuneJobList'
+          description: Ok
+    post:
+      summary: Create fine-tuning job
+      description: Create a new fine-tuning job.
+      operationId: fine-tuningjobs_create
+      tags:
+      - fine_tuning_jobs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FineTuneJobCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuneJobView'
+          description: Created
+  /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}:
+    get:
+      summary: Get fine-tuning job
+      description: Get a fine-tuning job.
+      operationId: fine-tuningjobs_get
+      tags:
+      - fine_tuning_jobs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: job_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuneJobView'
+          description: Ok
+  /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}/cancel:
+    post:
+      summary: Cancel fine-tuning job
+      description: Stop the underlying intermittent deployment.
+      operationId: finetune_jobs_cancel
+      tags:
+      - fine-tuning jobs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: job_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuneJobView'
+          description: Cancelled
   /api/orgs/{org_id}/usage/aggregated:
     get:
       summary: Get org usage
@@ -8591,6 +9017,18 @@ components:
           properties:
             install:
               type: string
+    ConfigFileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Content of the config file.
+        mode:
+          type: string
+          default: '0644'
+          description: File mode as a 4-character octal string, e.g. '0644'.
+      required:
+      - content
     DaskClusterAttachment:
       type: object
       properties:
@@ -8776,6 +9214,11 @@ components:
           type: string
         extra_packages:
           $ref: '#/components/schemas/ExtraPackagesRecipe'
+        config_files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
+          nullable: true
         start_script:
           type: string
           nullable: true
@@ -8930,6 +9373,11 @@ components:
           type: string
         extra_packages:
           $ref: '#/components/schemas/ExtraPackagesRecipe'
+        config_files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
+          nullable: true
         start_script:
           type: string
           nullable: true
@@ -9050,6 +9498,11 @@ components:
           type: string
         extra_packages:
           $ref: '#/components/schemas/ExtraPackagesRecipe'
+        config_files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
+          nullable: true
         start_script:
           type: string
           nullable: true
@@ -9839,6 +10292,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
           nullable: true
+        config_files:
+          type: object
+          readOnly: true
+          description: User-defined config files written to $HOME at pod startup.
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+          nullable: true
         scale:
           type: integer
           readOnly: true
@@ -10028,6 +10490,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
           nullable: true
+        config_files:
+          type: object
+          readOnly: true
+          description: User-defined config files written to $HOME at pod startup.
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+          nullable: true
         cron_schedule_options:
           readOnly: true
           description: Cron schedule configuration for scheduled jobs.
@@ -10181,6 +10652,15 @@ components:
           description: Addtitional packages to install on start.
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
+          nullable: true
+        config_files:
+          type: object
+          readOnly: true
+          description: User-defined config files written to $HOME at pod startup.
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
           nullable: true
         ide:
           type: string
@@ -11629,6 +12109,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
           nullable: true
+        config_files:
+          type: object
+          default: null
+          description: User-defined config files written to $HOME at pod startup.
+            Keys are relative paths; values contain content and mode.
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
+          nullable: true
         start_script:
           type: string
           default: null
@@ -11712,6 +12200,14 @@ components:
           description: Addtitional packages to install on start.
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
+          nullable: true
+        config_files:
+          type: object
+          default: null
+          description: User-defined config files written to $HOME at pod startup.
+            Keys are relative paths; values contain content and mode.
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
           nullable: true
         start_script:
           type: string
@@ -13431,6 +13927,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
           nullable: true
+        config_files:
+          type: object
+          default: null
+          description: User-defined config files written to $HOME at pod startup.
+            Keys are relative paths; values contain content and mode.
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
+          nullable: true
         start_script:
           type: string
           default: null
@@ -13523,6 +14027,14 @@ components:
           description: Addtitional packages to install on start.
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
+          nullable: true
+        config_files:
+          type: object
+          default: null
+          description: User-defined config files written to $HOME at pod startup.
+            Keys are relative paths; values contain content and mode.
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
           nullable: true
         start_script:
           type: string
@@ -14571,6 +15083,144 @@ components:
         locked:
           type: boolean
           description: Lock the org. (Admin only)
+    ArtifactKind:
+      type: string
+      enum:
+      - dataset
+      - checkpoint
+      - model-weights
+    ArtifactStatus:
+      type: string
+      enum:
+      - assembling
+      - pending
+      - ready
+      - error
+      - deleted
+    Artifact:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Artifact identifier.
+        org_id:
+          type: string
+          readOnly: true
+          description: Owning organisation ID.
+        name:
+          type: string
+          readOnly: true
+          description: Human-readable artifact name.
+        kind:
+          readOnly: true
+          description: 'Artifact kind: dataset, checkpoint, or model-weights.'
+          $ref: '#/components/schemas/ArtifactKind'
+        location:
+          type: string
+          readOnly: true
+          description: Storage location (NFS path or object storage URI).
+        producer:
+          type: object
+          readOnly: true
+          description: 'JSONB snapshot of the producer resource: {id, kind, name}.
+            Null if artifact was uploaded directly.'
+          nullable: true
+          additionalProperties: {}
+        metadata:
+          type: object
+          readOnly: true
+          description: Arbitrary metadata blob.
+          nullable: true
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          description: Creation timestamp (UTC).
+        status:
+          readOnly: true
+          description: 'Artifact status: pending, ready, or error.'
+          $ref: '#/components/schemas/ArtifactStatus'
+      required:
+      - created_at
+      - id
+      - kind
+      - location
+      - metadata
+      - name
+      - org_id
+      - producer
+      - status
+    ArtifactList:
+      type: object
+      properties:
+        artifacts:
+          type: array
+          readOnly: true
+          description: List of artifacts.
+          items:
+            $ref: '#/components/schemas/Artifact'
+        prev_key:
+          type: string
+          readOnly: true
+          description: Previous page key.
+        next_key:
+          type: string
+          readOnly: true
+          description: Next page key.
+      required:
+      - artifacts
+    ArtifactCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name for the artifact.
+        kind:
+          description: 'Artifact type: dataset, checkpoint, or model-weights.'
+          $ref: '#/components/schemas/ArtifactKind'
+        location:
+          type: string
+          minLength: 1
+          description: Storage location (NFS path or object storage URI).
+        status:
+          description: "Initial artifact status. Defaults to 'pending'. Producers\
+            \ that finish their work before calling create (e.g. a training job registering\
+            \ a finished checkpoint) may set this to 'ready' or 'error' directly,\
+            \ avoiding a separate PATCH. 'deleted' is rejected \u2014 soft-delete\
+            \ goes through DELETE."
+          $ref: '#/components/schemas/ArtifactStatus'
+        producer:
+          type: object
+          default: null
+          description: 'JSONB snapshot of the Saturn resource that produced this artifact.
+            Shape: {id, kind, name}. Null if uploaded directly.'
+          nullable: true
+          additionalProperties: {}
+        metadata:
+          type: object
+          default: null
+          description: 'Arbitrary metadata blob: schema_type, row_count, base_model,
+            epoch, metrics, etc.'
+          nullable: true
+          additionalProperties: {}
+      required:
+      - location
+      - name
+    ArtifactUpdate:
+      type: object
+      properties:
+        status:
+          description: New artifact status.
+          $ref: '#/components/schemas/ArtifactStatus'
+        metadata:
+          type: object
+          default: null
+          description: Updated metadata blob.
+          nullable: true
+          additionalProperties: {}
     OrgInvitation:
       type: object
       properties:
@@ -14973,6 +15623,273 @@ components:
           description: Next page key.
       required:
       - owners
+    Dataset:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Dataset identifier.
+        org_id:
+          type: string
+          readOnly: true
+          description: Owning organisation ID.
+        name:
+          type: string
+          readOnly: true
+          description: Human-readable dataset name.
+        kind:
+          readOnly: true
+          description: Artifact kind (always 'dataset' for this endpoint).
+          $ref: '#/components/schemas/ArtifactKind'
+        status:
+          readOnly: true
+          description: 'Dataset status: assembling, ready, or deleted.'
+          $ref: '#/components/schemas/ArtifactStatus'
+        location:
+          type: string
+          readOnly: true
+          description: Storage location URI (sf:<folder_id>/<path>).
+        metadata:
+          type: object
+          readOnly: true
+          description: Arbitrary metadata blob (schema_type, row_count, etc.).
+          nullable: true
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          description: Creation timestamp (UTC).
+      required:
+      - created_at
+      - id
+      - kind
+      - location
+      - metadata
+      - name
+      - org_id
+      - status
+    DatasetList:
+      type: object
+      properties:
+        datasets:
+          type: array
+          readOnly: true
+          description: List of datasets.
+          items:
+            $ref: '#/components/schemas/Dataset'
+        prev_key:
+          type: string
+          readOnly: true
+          description: Previous page key.
+        next_key:
+          type: string
+          readOnly: true
+          description: Next page key.
+      required:
+      - datasets
+    DatasetCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name for the dataset.
+        metadata:
+          type: object
+          default: null
+          description: "Optional metadata blob: schema_type, description, row_count,\
+            \ format hints, etc. Platform treats dataset bytes as opaque \u2014 format\
+            \ details live here."
+          nullable: true
+          additionalProperties: {}
+      required:
+      - name
+    Hyperparameters:
+      type: object
+      properties:
+        learning_rate:
+          type: number
+          readOnly: true
+        epochs:
+          type: integer
+          readOnly: true
+        effective_batch_size:
+          type: integer
+          readOnly: true
+        max_seq_length:
+          type: integer
+          readOnly: true
+        lora_rank:
+          type: integer
+          readOnly: true
+        lora_alpha:
+          type: integer
+          readOnly: true
+      required:
+      - effective_batch_size
+      - epochs
+      - learning_rate
+      - lora_alpha
+      - lora_rank
+      - max_seq_length
+    FineTuneJobView:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Fine-tune job ID (same as the underlying deployment ID).
+        name:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+          description: "Underlying Saturn job status: pending, running, stopping,\
+            \ stopped, completed, or error. Same vocabulary as the rest of the platform\
+            \ \u2014 TF intentionally does not translate to a product-specific set."
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        started_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          nullable: true
+        finished_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          nullable: true
+        base_model:
+          type: string
+          readOnly: true
+        hyperparameters:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Hyperparameters'
+        dataset_id:
+          type: string
+          readOnly: true
+        output_location:
+          type: string
+          readOnly: true
+          description: 'Structured location of the job''s RW output folder: sf:<tf-jobs-folder-id>/jobs/<job-id>/.'
+        checkpoint:
+          readOnly: true
+          description: Resolved checkpoint artifact (kind=checkpoint). Populated by
+            the future checkpoint-registration PR; null until then.
+          nullable: true
+      required:
+      - base_model
+      - checkpoint
+      - created_at
+      - dataset_id
+      - finished_at
+      - hyperparameters
+      - id
+      - name
+      - output_location
+      - started_at
+      - status
+    FineTuneJobList:
+      type: object
+      properties:
+        jobs:
+          type: array
+          readOnly: true
+          description: List of fine-tuning jobs (FineTuneJobView projections).
+          items:
+            $ref: '#/components/schemas/FineTuneJobView'
+        prev_key:
+          type: string
+          readOnly: true
+          description: Previous page key.
+        next_key:
+          type: string
+          readOnly: true
+          description: Next page key.
+      required:
+      - jobs
+    Hyperparameters1:
+      type: object
+      properties:
+        learning_rate:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+          description: Learning rate. Must be in (0, 1).
+        epochs:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: Number of training epochs. Must be in [1, 10].
+        effective_batch_size:
+          type: integer
+          minimum: 1
+          maximum: 128
+          description: "Effective batch size \u2014 the number of samples whose gradients\
+            \ are averaged per optimizer step. The platform translates this to axolotl's\
+            \ ``gradient_accumulation_steps \xD7 micro_batch_size``; ``micro_batch_size``\
+            \ is auto-found at runtime to fit GPU memory."
+        max_seq_length:
+          type: integer
+          minimum: 128
+          maximum: 16384
+          description: Maximum sequence length (tokens) per training sample. Longer
+            sequences use proportionally more GPU memory. Must be in [128, 16384].
+        lora_rank:
+          type: integer
+          minimum: 1
+          maximum: 128
+          description: LoRA adapter rank. Must be in [1, 128].
+        lora_alpha:
+          type: integer
+          minimum: 1
+          maximum: 256
+          description: LoRA alpha scaling factor. Must be in [1, 256].
+      required:
+      - effective_batch_size
+      - epochs
+      - learning_rate
+      - lora_alpha
+      - lora_rank
+      - max_seq_length
+    FineTuneJobCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name for the fine-tuning job.
+        base_model:
+          type: string
+          minLength: 1
+          description: Base model to fine-tune. Must be one of the platform's supported
+            models (see SUPPORTED_MODELS allow-list).
+        dataset_id:
+          type: string
+          minLength: 1
+          description: Identifier of a token-factory dataset artifact. The dataset
+            must have status=READY and belong to the same org as the requester.
+        hyperparameters:
+          description: Training hyperparameters.
+          allOf:
+          - $ref: '#/components/schemas/Hyperparameters1'
+        instance_size:
+          type: string
+          minLength: 1
+          description: Saturn instance size to run the training pod on. Must be a
+            GPU-equipped size (gpu > 0).
+      required:
+      - base_model
+      - dataset_id
+      - hyperparameters
+      - instance_size
+      - name
     AggregatedUsage:
       type: object
       properties:
@@ -15950,6 +16867,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
           nullable: true
+        config_files:
+          type: object
+          default: null
+          description: User-defined config files written to $HOME at pod startup.
+            Keys are relative paths; values contain content and mode.
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
+          nullable: true
         start_script:
           type: string
           default: null
@@ -16043,6 +16968,14 @@ components:
           description: Addtitional packages to install on start.
           allOf:
           - $ref: '#/components/schemas/ExtraPackages'
+          nullable: true
+        config_files:
+          type: object
+          default: null
+          description: User-defined config files written to $HOME at pod startup.
+            Keys are relative paths; values contain content and mode.
+          additionalProperties:
+            $ref: '#/components/schemas/ConfigFileEntry'
           nullable: true
         start_script:
           type: string

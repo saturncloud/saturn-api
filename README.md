@@ -105,6 +105,11 @@ Class | Method | HTTP request | Description
 *ApiTokensApi* | [**get**](docs/ApiTokensApi.md#get) | **GET** /api/tokens/{api_token_id} | Get api token
 *ApiTokensApi* | [**list**](docs/ApiTokensApi.md#list) | **GET** /api/tokens | List api tokens
 *ApiTokensApi* | [**update**](docs/ApiTokensApi.md#update) | **PATCH** /api/tokens/{api_token_id} | Update api token
+*ArtifactsApi* | [**create**](docs/ArtifactsApi.md#create) | **POST** /api/orgs/{org_id}/artifacts | Create artifact
+*ArtifactsApi* | [**delete**](docs/ArtifactsApi.md#delete) | **DELETE** /api/orgs/{org_id}/artifacts/{artifact_id} | Delete artifact
+*ArtifactsApi* | [**get**](docs/ArtifactsApi.md#get) | **GET** /api/orgs/{org_id}/artifacts/{artifact_id} | Get artifact
+*ArtifactsApi* | [**list**](docs/ArtifactsApi.md#list) | **GET** /api/orgs/{org_id}/artifacts | List artifacts
+*ArtifactsApi* | [**update**](docs/ArtifactsApi.md#update) | **PATCH** /api/orgs/{org_id}/artifacts/{artifact_id} | Update artifact
 *AuthorizationApi* | [**create_oauth_token**](docs/AuthorizationApi.md#create_oauth_token) | **POST** /api/auth/token | Create OAuth token
 *AuthorizationApi* | [**get_oauth_init**](docs/AuthorizationApi.md#get_oauth_init) | **GET** /api/auth/token | Initialize oauth
 *AuthorizationApi* | [**login**](docs/AuthorizationApi.md#login) | **POST** /api/auth/login | Login
@@ -146,6 +151,11 @@ Class | Method | HTTP request | Description
 *DaskClustersApi* | [**stop**](docs/DaskClustersApi.md#stop) | **POST** /api/dask_clusters/{dask_cluster_id}/stop | Stop dask cluster
 *DaskClustersApi* | [**update**](docs/DaskClustersApi.md#update) | **PATCH** /api/dask_clusters/{dask_cluster_id} | Update dask cluster
 *DaskClustersApi* | [**update_token**](docs/DaskClustersApi.md#update_token) | **PATCH** /api/dask_clusters/{dask_cluster_id}/token | Update dask cluster API token
+*DatasetsApi* | [**create**](docs/DatasetsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/datasets | Create dataset
+*DatasetsApi* | [**delete**](docs/DatasetsApi.md#delete) | **DELETE** /api/orgs/{org_id}/token-factory/datasets/{dataset_id} | Delete dataset
+*DatasetsApi* | [**get**](docs/DatasetsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/datasets/{dataset_id} | Get dataset
+*DatasetsApi* | [**list**](docs/DatasetsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/datasets | List datasets
+*DatasetsApi* | [**seal**](docs/DatasetsApi.md#seal) | **POST** /api/orgs/{org_id}/token-factory/datasets/{dataset_id}/seal | Seal dataset
 *DeploymentsApi* | [**create**](docs/DeploymentsApi.md#create) | **POST** /api/deployments | Create deployment
 *DeploymentsApi* | [**create_resource_template**](docs/DeploymentsApi.md#create_resource_template) | **POST** /api/deployments/{deployment_id}/template | Create deployment resource template
 *DeploymentsApi* | [**create_route**](docs/DeploymentsApi.md#create_route) | **POST** /api/deployments/{deployment_id}/routes | Create deployment route
@@ -190,6 +200,10 @@ Class | Method | HTTP request | Description
 *ExternalReposApi* | [**get**](docs/ExternalReposApi.md#get) | **GET** /api/external_repos/{external_repo_id} | Get external repo
 *ExternalReposApi* | [**list**](docs/ExternalReposApi.md#list) | **GET** /api/external_repos | List external repos
 *ExternalReposApi* | [**update**](docs/ExternalReposApi.md#update) | **PATCH** /api/external_repos/{external_repo_id} | Update external repo
+*FineTuningJobsApi* | [**create**](docs/FineTuningJobsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/fine-tuning/jobs | Create fine-tuning job
+*FineTuningJobsApi* | [**get**](docs/FineTuningJobsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id} | Get fine-tuning job
+*FineTuningJobsApi* | [**jobs_cancel**](docs/FineTuningJobsApi.md#jobs_cancel) | **POST** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}/cancel | Cancel fine-tuning job
+*FineTuningJobsApi* | [**list**](docs/FineTuningJobsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs | List fine-tuning jobs
 *GroupsApi* | [**create**](docs/GroupsApi.md#create) | **POST** /api/groups | Create group
 *GroupsApi* | [**create_member**](docs/GroupsApi.md#create_member) | **POST** /api/groups/{group_id}/members | Create group member
 *GroupsApi* | [**delete**](docs/GroupsApi.md#delete) | **DELETE** /api/groups/{group_id} | Delete group
@@ -390,6 +404,12 @@ Class | Method | HTTP request | Description
  - [ApiTokenList](docs/ApiTokenList.md)
  - [ApiTokenUpdate](docs/ApiTokenUpdate.md)
  - [AppInfo](docs/AppInfo.md)
+ - [Artifact](docs/Artifact.md)
+ - [ArtifactCreate](docs/ArtifactCreate.md)
+ - [ArtifactKind](docs/ArtifactKind.md)
+ - [ArtifactList](docs/ArtifactList.md)
+ - [ArtifactStatus](docs/ArtifactStatus.md)
+ - [ArtifactUpdate](docs/ArtifactUpdate.md)
  - [Auth0Info](docs/Auth0Info.md)
  - [AuthorizationCodeGrant](docs/AuthorizationCodeGrant.md)
  - [AuthorizationGrant](docs/AuthorizationGrant.md)
@@ -403,6 +423,7 @@ Class | Method | HTTP request | Description
  - [ClusterUpdate](docs/ClusterUpdate.md)
  - [ConcurrencyPolicy](docs/ConcurrencyPolicy.md)
  - [Condition](docs/Condition.md)
+ - [ConfigFileEntry](docs/ConfigFileEntry.md)
  - [ContainerRuntimeSummary](docs/ContainerRuntimeSummary.md)
  - [ContainerStatus](docs/ContainerStatus.md)
  - [CronSchedule](docs/CronSchedule.md)
@@ -426,6 +447,9 @@ Class | Method | HTTP request | Description
  - [DaskWorkerRuntimeSummaryList](docs/DaskWorkerRuntimeSummaryList.md)
  - [DaskWorkerSummary](docs/DaskWorkerSummary.md)
  - [DataPoint](docs/DataPoint.md)
+ - [Dataset](docs/Dataset.md)
+ - [DatasetCreate](docs/DatasetCreate.md)
+ - [DatasetList](docs/DatasetList.md)
  - [DefaultImages](docs/DefaultImages.md)
  - [DefaultSizes](docs/DefaultSizes.md)
  - [Deployment](docs/Deployment.md)
@@ -454,6 +478,9 @@ Class | Method | HTTP request | Description
  - [ExtraPackagesRecipeApt](docs/ExtraPackagesRecipeApt.md)
  - [ExtraPackagesRecipeConda](docs/ExtraPackagesRecipeConda.md)
  - [ExtraPackagesRecipePip](docs/ExtraPackagesRecipePip.md)
+ - [FineTuneJobCreate](docs/FineTuneJobCreate.md)
+ - [FineTuneJobList](docs/FineTuneJobList.md)
+ - [FineTuneJobView](docs/FineTuneJobView.md)
  - [Group](docs/Group.md)
  - [GroupCreate](docs/GroupCreate.md)
  - [GroupList](docs/GroupList.md)
@@ -464,6 +491,8 @@ Class | Method | HTTP request | Description
  - [HardwareType](docs/HardwareType.md)
  - [HistoricLog](docs/HistoricLog.md)
  - [HistoricLogList](docs/HistoricLogList.md)
+ - [Hyperparameters](docs/Hyperparameters.md)
+ - [Hyperparameters1](docs/Hyperparameters1.md)
  - [Identity](docs/Identity.md)
  - [IdentityByGroupId](docs/IdentityByGroupId.md)
  - [IdentityByUserId](docs/IdentityByUserId.md)

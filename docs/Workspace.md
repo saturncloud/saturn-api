@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **tags** | **Dict[str, str]** | Descriptive tags for the workspace. | [optional] 
 **image_tag** | [**ImageTag**](ImageTag.md) | Image tag that is attached to the workspace. | [readonly] 
 **extra_packages** | [**ExtraPackages**](ExtraPackages.md) | Addtitional packages to install on start. | [readonly] 
+**config_files** | **Dict[str, Dict[str, str]]** | User-defined config files written to $HOME at pod startup. | [optional] [readonly] 
 **ide** | **str** | IDE of the workspace | [readonly] 
 **start_script** | **str** | Shell script that runs on start before the primary command. | [readonly] 
 **environment_variables** | **Dict[str, str]** | Mapping of environment variable keys to values. | [readonly] 
