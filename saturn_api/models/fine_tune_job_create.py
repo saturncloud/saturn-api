@@ -32,9 +32,6 @@ class FineTuneJobCreate(BaseModel):
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(
         description="Human-readable name for the fine-tuning job."
     )
-    base_model: Annotated[str, Field(min_length=1, strict=True)] = Field(
-        description="Base model to fine-tune. Must be one of the platform's supported models (see SUPPORTED_MODELS allow-list)."
-    )
     dataset_id: Annotated[str, Field(min_length=1, strict=True)] = Field(
         description="Identifier of a token-factory dataset artifact. The dataset must have status=READY and belong to the same org as the requester."
     )
@@ -42,12 +39,23 @@ class FineTuneJobCreate(BaseModel):
     instance_size: Annotated[str, Field(min_length=1, strict=True)] = Field(
         description="Saturn instance size to run the training pod on. Must be a GPU-equipped size (gpu > 0)."
     )
+    base_model: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(
+        default=None,
+        description="Base model to fine-tune a fresh adapter from. Must be one of the platform's supported models (see SUPPORTED_MODELS allow-list). Provide EITHER this OR ``source_checkpoint_artifact_id`` (exactly one). Omit when continuing from a checkpoint — the base_model is then derived from the checkpoint's metadata.",
+    )
+    source_checkpoint_artifact_id: Optional[Annotated[str, Field(min_length=1, strict=True)]] = (
+        Field(
+            default=None,
+            description="Artifact id of an existing checkpoint to continue-train. Must be a ``kind=checkpoint`` Artifact with ``status=ready`` belonging to the same org as the requester. When set, training continues the SAME LoRA adapter on the new dataset (weight-init continuation), and ``base_model`` is derived from the checkpoint's metadata. Provide EITHER this OR ``base_model`` (exactly one).",
+        )
+    )
     __properties: ClassVar[List[str]] = [
         "name",
-        "base_model",
         "dataset_id",
         "hyperparameters",
         "instance_size",
+        "base_model",
+        "source_checkpoint_artifact_id",
     ]
 
     model_config = ConfigDict(
@@ -90,6 +98,19 @@ class FineTuneJobCreate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of hyperparameters
         if self.hyperparameters:
             _dict["hyperparameters"] = self.hyperparameters.to_dict()
+        # set to None if base_model (nullable) is None
+        # and model_fields_set contains the field
+        if self.base_model is None and "base_model" in self.model_fields_set:
+            _dict["base_model"] = None
+
+        # set to None if source_checkpoint_artifact_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.source_checkpoint_artifact_id is None
+            and "source_checkpoint_artifact_id" in self.model_fields_set
+        ):
+            _dict["source_checkpoint_artifact_id"] = None
+
         return _dict
 
     @classmethod
@@ -104,7 +125,6 @@ class FineTuneJobCreate(BaseModel):
         _obj = cls.model_validate(
             {
                 "name": obj.get("name"),
-                "base_model": obj.get("base_model"),
                 "dataset_id": obj.get("dataset_id"),
                 "hyperparameters": (
                     Hyperparameters1.from_dict(obj["hyperparameters"])
@@ -112,6 +132,8 @@ class FineTuneJobCreate(BaseModel):
                     else None
                 ),
                 "instance_size": obj.get("instance_size"),
+                "base_model": obj.get("base_model"),
+                "source_checkpoint_artifact_id": obj.get("source_checkpoint_artifact_id"),
             }
         )
         return _obj

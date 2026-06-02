@@ -21,23 +21,17 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
-from saturn_api.models.disk_space_option import DiskSpaceOption
-from saturn_api.models.instance_size import InstanceSize
 
-
-class ServerOptions(BaseModel):
+class DiskSpaceOption(BaseModel):
     """
-    ServerOptions
+    DiskSpaceOption
     """  # noqa: E501
 
-    auto_shutoff: List[StrictStr] = Field(
-        description="List of available auto-shutoff settings for workspaces."
+    value: StrictStr = Field(
+        description="Kubernetes-style disk size (e.g. '100Gi') submitted when creating a resource."
     )
-    disk_space: List[DiskSpaceOption] = Field(description="Available disk sizes for workspaces.")
-    sizes: Dict[str, InstanceSize] = Field(
-        description="Mapping of instance size names to their configurations."
-    )
-    __properties: ClassVar[List[str]] = ["auto_shutoff", "disk_space", "sizes"]
+    display_str: StrictStr = Field(description="Human-readable label shown in the picker.")
+    __properties: ClassVar[List[str]] = ["value", "display_str"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +50,7 @@ class ServerOptions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ServerOptions from a JSON string"""
+        """Create an instance of DiskSpaceOption from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,13 +64,11 @@ class ServerOptions(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
-                "auto_shutoff",
-                "disk_space",
-                "sizes",
+                "value",
+                "display_str",
             ]
         )
 
@@ -85,25 +77,11 @@ class ServerOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in disk_space (list)
-        _items = []
-        if self.disk_space:
-            for _item_disk_space in self.disk_space:
-                if _item_disk_space:
-                    _items.append(_item_disk_space.to_dict())
-            _dict["disk_space"] = _items
-        # override the default output from pydantic by calling `to_dict()` of each value in sizes (dict)
-        _field_dict = {}
-        if self.sizes:
-            for _key_sizes in self.sizes:
-                if self.sizes[_key_sizes]:
-                    _field_dict[_key_sizes] = self.sizes[_key_sizes].to_dict()
-            _dict["sizes"] = _field_dict
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ServerOptions from a dict"""
+        """Create an instance of DiskSpaceOption from a dict"""
         if obj is None:
             return None
 
@@ -111,18 +89,6 @@ class ServerOptions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {
-                "auto_shutoff": obj.get("auto_shutoff"),
-                "disk_space": (
-                    [DiskSpaceOption.from_dict(_item) for _item in obj["disk_space"]]
-                    if obj.get("disk_space") is not None
-                    else None
-                ),
-                "sizes": (
-                    dict((_k, InstanceSize.from_dict(_v)) for _k, _v in obj["sizes"].items())
-                    if obj.get("sizes") is not None
-                    else None
-                ),
-            }
+            {"value": obj.get("value"), "display_str": obj.get("display_str")}
         )
         return _obj

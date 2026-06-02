@@ -21,23 +21,20 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
-from saturn_api.models.disk_space_option import DiskSpaceOption
-from saturn_api.models.instance_size import InstanceSize
+from saturn_api.models.inference_endpoint_summary import InferenceEndpointSummary
 
 
-class ServerOptions(BaseModel):
+class InferenceEndpointList(BaseModel):
     """
-    ServerOptions
+    InferenceEndpointList
     """  # noqa: E501
 
-    auto_shutoff: List[StrictStr] = Field(
-        description="List of available auto-shutoff settings for workspaces."
+    endpoints: List[InferenceEndpointSummary] = Field(
+        description="List of inference endpoints (``InferenceEndpointSummary`` projections — without ``checkpoint``; fetch the by-id endpoint for that)."
     )
-    disk_space: List[DiskSpaceOption] = Field(description="Available disk sizes for workspaces.")
-    sizes: Dict[str, InstanceSize] = Field(
-        description="Mapping of instance size names to their configurations."
-    )
-    __properties: ClassVar[List[str]] = ["auto_shutoff", "disk_space", "sizes"]
+    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
+    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
+    __properties: ClassVar[List[str]] = ["endpoints", "prev_key", "next_key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +53,7 @@ class ServerOptions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ServerOptions from a JSON string"""
+        """Create an instance of InferenceEndpointList from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,9 +71,9 @@ class ServerOptions(BaseModel):
         """
         excluded_fields: Set[str] = set(
             [
-                "auto_shutoff",
-                "disk_space",
-                "sizes",
+                "endpoints",
+                "prev_key",
+                "next_key",
             ]
         )
 
@@ -85,25 +82,18 @@ class ServerOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in disk_space (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in endpoints (list)
         _items = []
-        if self.disk_space:
-            for _item_disk_space in self.disk_space:
-                if _item_disk_space:
-                    _items.append(_item_disk_space.to_dict())
-            _dict["disk_space"] = _items
-        # override the default output from pydantic by calling `to_dict()` of each value in sizes (dict)
-        _field_dict = {}
-        if self.sizes:
-            for _key_sizes in self.sizes:
-                if self.sizes[_key_sizes]:
-                    _field_dict[_key_sizes] = self.sizes[_key_sizes].to_dict()
-            _dict["sizes"] = _field_dict
+        if self.endpoints:
+            for _item_endpoints in self.endpoints:
+                if _item_endpoints:
+                    _items.append(_item_endpoints.to_dict())
+            _dict["endpoints"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ServerOptions from a dict"""
+        """Create an instance of InferenceEndpointList from a dict"""
         if obj is None:
             return None
 
@@ -112,17 +102,13 @@ class ServerOptions(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "auto_shutoff": obj.get("auto_shutoff"),
-                "disk_space": (
-                    [DiskSpaceOption.from_dict(_item) for _item in obj["disk_space"]]
-                    if obj.get("disk_space") is not None
+                "endpoints": (
+                    [InferenceEndpointSummary.from_dict(_item) for _item in obj["endpoints"]]
+                    if obj.get("endpoints") is not None
                     else None
                 ),
-                "sizes": (
-                    dict((_k, InstanceSize.from_dict(_v)) for _k, _v in obj["sizes"].items())
-                    if obj.get("sizes") is not None
-                    else None
-                ),
+                "prev_key": obj.get("prev_key"),
+                "next_key": obj.get("next_key"),
             }
         )
         return _obj

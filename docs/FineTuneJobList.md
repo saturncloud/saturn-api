@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**List[FineTuneJobView]**](FineTuneJobView.md) | List of fine-tuning jobs (FineTuneJobView projections). | [readonly] 
+**jobs** | [**List[FineTuneJobSummary]**](FineTuneJobSummary.md) | List of fine-tuning jobs (&#x60;&#x60;FineTuneJobSummary&#x60;&#x60; projections — without &#x60;&#x60;latest_checkpoint&#x60;&#x60;; fetch the by-id endpoint for that). | [readonly] 
 **prev_key** | **str** | Previous page key. | [optional] [readonly] 
 **next_key** | **str** | Next page key. | [optional] [readonly] 
 

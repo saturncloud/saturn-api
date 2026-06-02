@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **base_model** | **str** |  | [readonly] 
 **hyperparameters** | [**Hyperparameters**](Hyperparameters.md) |  | [readonly] 
 **dataset_id** | **str** |  | [readonly] 
-**output_location** | **str** | Structured location of the job&#39;s RW output folder: sf:&lt;tf-jobs-folder-id&gt;/jobs/&lt;job-id&gt;/. | [readonly] 
-**checkpoint** | **object** | Resolved checkpoint artifact (kind&#x3D;checkpoint). Populated by the future checkpoint-registration PR; null until then. | [readonly] 
+**output_location** | **str** | Structured location of the job&#39;s RW output folder: sf:&lt;tf-jobs-folder-id&gt;/&lt;job-id&gt;/. | [readonly] 
+**latest_checkpoint** | [**Artifact**](Artifact.md) | Most recently-registered usable (&#x60;&#x60;status&#x3D;ready&#x60;&#x60;) checkpoint artifact (kind&#x3D;checkpoint) whose &#x60;&#x60;producer.id&#x60;&#x60; matches this job&#39;s deployment id. Null if no ready checkpoint exists — the job may still be running, may have failed, or may have registered an error artifact (&#x60;&#x60;status&#x3D;error&#x60;&#x60;) which is deliberately NOT surfaced here. To diagnose failures, read the job&#39;s training logs; the shim tees axolotl output to &#x60;&#x60;&lt;output_dir&gt;/training.log&#x60;&#x60;. Named &#x60;&#x60;latest_checkpoint&#x60;&#x60; rather than &#x60;&#x60;checkpoint&#x60;&#x60; to leave room for future API surface exposing intermediate per-epoch checkpoints (axolotl writes &#x60;&#x60;checkpoint-N/&#x60;&#x60; subdirs to NFS during training, but those are not registered as separate Artifact rows today). Only returned by the single-GET endpoint; list responses use &#x60;&#x60;FineTuneJobSummary&#x60;&#x60; which omits this field. | [readonly] 
 
 ## Example
 

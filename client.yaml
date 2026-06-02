@@ -5817,6 +5817,67 @@ paths:
               schema:
                 $ref: '#/components/schemas/Dataset'
           description: Sealed
+  /api/orgs/{org_id}/token-factory/datasets/import:
+    post:
+      summary: Import dataset
+      description: 'Create a dataset in `assembling` state and launch a CPU job that
+        downloads the given Hugging Face dataset, auto-detects its shape, normalises
+        it to the canonical conversational format, and writes it into the org''s tf-datasets
+        folder. The job marks the dataset `ready` on success or `error` if the source
+        format is not recognised.
+
+        '
+      operationId: datasets_import
+      tags:
+      - datasets
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetImportCreate'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Import started
+  /api/orgs/{org_id}/token-factory/datasets/lock:
+    post:
+      summary: Lock shared folder as dataset
+      description: 'Register an existing SharedFolder (that already holds dataset
+        bytes) as a dataset, zero-copy, by locking it to ReadOnlyMany. No job runs
+        and nothing is copied; the dataset is immediately `ready` and its location
+        points at the existing folder. The folder becomes read-only.
+
+        '
+      operationId: datasets_lock
+      tags:
+      - datasets
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetLockCreate'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Locked and registered
   /api/orgs/{org_id}/token-factory/fine-tuning/jobs:
     get:
       summary: List fine-tuning jobs
@@ -5940,6 +6001,290 @@ paths:
               schema:
                 $ref: '#/components/schemas/FineTuneJobView'
           description: Cancelled
+  /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}/logs:
+    get:
+      summary: Get fine-tuning job historical logs
+      description: Historical record of logs from the resource.
+      operationId: fine-tuningjobs_getLogs
+      tags:
+      - fine_tuning_jobs
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: job_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: pod_name
+        description: Name of the pod to retrieve logs from.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: cluster
+        description: Name of the cluster the pod lives in.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: prev_key
+        description: Previous page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        description: Next page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        description: Maximum number of results per page.
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricLogList'
+          description: Ok
+  /api/orgs/{org_id}/token-factory/inference-endpoints:
+    get:
+      summary: List inference endpoints
+      description: Paginated list of inference endpoints.
+      operationId: inferenceendpoints_list
+      tags:
+      - inference_endpoints
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: prev_key
+        description: Previous page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        description: Next page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        description: Page size.
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      - in: query
+        name: descending
+        description: List results in descending order.
+        schema:
+          type: boolean
+          default: false
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InferenceEndpointList'
+          description: Ok
+    post:
+      summary: Create inference endpoint
+      description: Create a new inference endpoint.
+      operationId: inferenceendpoints_create
+      tags:
+      - inference_endpoints
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InferenceEndpointCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InferenceEndpointView'
+          description: Created
+  /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}:
+    delete:
+      summary: Delete inference endpoint
+      description: Delete an inference endpoint.
+      operationId: inferenceendpoints_delete
+      tags:
+      - inference_endpoints
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: endpoint_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted
+    get:
+      summary: Get inference endpoint
+      description: Get an inference endpoint.
+      operationId: inferenceendpoints_get
+      tags:
+      - inference_endpoints
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: endpoint_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InferenceEndpointView'
+          description: Ok
+  /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/logs:
+    get:
+      summary: Get inference endpoint historical logs
+      description: Historical record of logs from the resource.
+      operationId: inferenceendpoints_getLogs
+      tags:
+      - inference_endpoints
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: endpoint_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: pod_name
+        description: Name of the pod to retrieve logs from.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: cluster
+        description: Name of the cluster the pod lives in.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: prev_key
+        description: Previous page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: next_key
+        description: Next page key.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: page_size
+        description: Maximum number of results per page.
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricLogList'
+          description: Ok
+  /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/start:
+    post:
+      summary: Start inference endpoint
+      description: Bring up the underlying persistent deployment.
+      operationId: inference_endpoints_start
+      tags:
+      - inference endpoints
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: endpoint_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InferenceEndpointView'
+          description: Started
+  /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/stop:
+    post:
+      summary: Stop inference endpoint
+      description: Tear down the pod but keep the DB row.
+      operationId: inference_endpoints_stop
+      tags:
+      - inference endpoints
+      parameters:
+      - name: org_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: endpoint_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InferenceEndpointView'
+          description: Stopped
   /api/orgs/{org_id}/usage/aggregated:
     get:
       summary: Get org usage
@@ -13677,6 +14022,11 @@ components:
         dind_enabled:
           type: boolean
           description: True if docker-in-docker is enabled.
+        token_factory_enabled_global:
+          type: boolean
+          description: Install-wide Token Factory switch (the global Settings flag).
+            Per-org enablement is narrowed client-side against the active owner's
+            usage-limit flag.
         apply_requires_confirm:
           type: boolean
           description: True if recipe apply should be confirmed.
@@ -13713,9 +14063,25 @@ components:
       - network_filesystem_enabled
       - populate_examples
       - stripe_public_key
+      - token_factory_enabled_global
       - user_tracking
       - version
       - whitelabel
+    DiskSpaceOption:
+      type: object
+      properties:
+        value:
+          type: string
+          readOnly: true
+          description: Kubernetes-style disk size (e.g. '100Gi') submitted when creating
+            a resource.
+        display_str:
+          type: string
+          readOnly: true
+          description: Human-readable label shown in the picker.
+      required:
+      - display_str
+      - value
     ServerOptions:
       type: object
       properties:
@@ -13728,9 +14094,9 @@ components:
         disk_space:
           type: array
           readOnly: true
-          description: List of available disk sizes for workspaces.
+          description: Available disk sizes for workspaces.
           items:
-            type: string
+            $ref: '#/components/schemas/DiskSpaceOption'
         sizes:
           type: object
           readOnly: true
@@ -14161,6 +14527,12 @@ components:
           items:
             type: string
           nullable: true
+        token_factory_enabled:
+          type: boolean
+          readOnly: true
+          description: Whether Token Factory is available under this limit. Null inherits
+            the global setting; False hard-disables it.
+          nullable: true
         num_instances:
           type: integer
           readOnly: true
@@ -14223,6 +14595,7 @@ components:
       - org_id
       - resource_types
       - storage_in_gb
+      - token_factory_enabled
     UsageLimitsList:
       type: object
       properties:
@@ -14268,6 +14641,12 @@ components:
           description: Allowed resource types. Null if no limits.
           items:
             type: string
+          nullable: true
+        token_factory_enabled:
+          type: boolean
+          default: null
+          description: Whether Token Factory is available under this limit. Null inherits
+            the global setting; False hard-disables it.
           nullable: true
         num_instances:
           type: integer
@@ -14347,6 +14726,12 @@ components:
           description: Allowed resource types. Null if no limits.
           items:
             type: string
+          nullable: true
+        token_factory_enabled:
+          type: boolean
+          default: null
+          description: Whether Token Factory is available under this limit. Null inherits
+            the global setting; False hard-disables it.
           nullable: true
         num_instances:
           type: integer
@@ -15706,6 +16091,56 @@ components:
           additionalProperties: {}
       required:
       - name
+    DatasetImportCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name for the dataset.
+        hf_dataset_id:
+          type: string
+          minLength: 1
+          description: Hugging Face dataset identifier, e.g. ``databricks/databricks-dolly-15k``.
+        split:
+          type: string
+          default: train
+          minLength: 1
+          description: 'Hugging Face split to import (default: ``train``).'
+        config_name:
+          type: string
+          default: null
+          description: Optional Hugging Face config/subset name.
+          nullable: true
+      required:
+      - hf_dataset_id
+      - name
+    DatasetLockCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name for the dataset.
+        shared_folder_id:
+          type: string
+          minLength: 1
+          description: ID of the existing SharedFolder to lock and register as a dataset.
+        subpath:
+          type: string
+          default: null
+          description: Optional subpath within the folder where the dataset bytes
+            live (e.g. ``data.jsonl`` or ``subdir/``). Defaults to the folder root.
+          nullable: true
+        metadata:
+          type: object
+          default: null
+          description: Optional metadata blob (schema_type, row_count, etc.).
+          nullable: true
+          additionalProperties: {}
+      required:
+      - name
+      - shared_folder_id
     Hyperparameters:
       type: object
       properties:
@@ -15734,7 +16169,7 @@ components:
       - lora_alpha
       - lora_rank
       - max_seq_length
-    FineTuneJobView:
+    FineTuneJobSummary:
       type: object
       properties:
         id:
@@ -15771,28 +16206,13 @@ components:
           readOnly: true
           allOf:
           - $ref: '#/components/schemas/Hyperparameters'
-        dataset_id:
-          type: string
-          readOnly: true
-        output_location:
-          type: string
-          readOnly: true
-          description: 'Structured location of the job''s RW output folder: sf:<tf-jobs-folder-id>/jobs/<job-id>/.'
-        checkpoint:
-          readOnly: true
-          description: Resolved checkpoint artifact (kind=checkpoint). Populated by
-            the future checkpoint-registration PR; null until then.
-          nullable: true
       required:
       - base_model
-      - checkpoint
       - created_at
-      - dataset_id
       - finished_at
       - hyperparameters
       - id
       - name
-      - output_location
       - started_at
       - status
     FineTuneJobList:
@@ -15801,9 +16221,10 @@ components:
         jobs:
           type: array
           readOnly: true
-          description: List of fine-tuning jobs (FineTuneJobView projections).
+          description: "List of fine-tuning jobs (``FineTuneJobSummary`` projections\
+            \ \u2014 without ``latest_checkpoint``; fetch the by-id endpoint for that)."
           items:
-            $ref: '#/components/schemas/FineTuneJobView'
+            $ref: '#/components/schemas/FineTuneJobSummary'
         prev_key:
           type: string
           readOnly: true
@@ -15865,11 +16286,6 @@ components:
           type: string
           minLength: 1
           description: Human-readable name for the fine-tuning job.
-        base_model:
-          type: string
-          minLength: 1
-          description: Base model to fine-tune. Must be one of the platform's supported
-            models (see SUPPORTED_MODELS allow-list).
         dataset_id:
           type: string
           minLength: 1
@@ -15884,12 +16300,279 @@ components:
           minLength: 1
           description: Saturn instance size to run the training pod on. Must be a
             GPU-equipped size (gpu > 0).
+        base_model:
+          type: string
+          default: null
+          minLength: 1
+          description: "Base model to fine-tune a fresh adapter from. Must be one\
+            \ of the platform's supported models (see SUPPORTED_MODELS allow-list).\
+            \ Provide EITHER this OR ``source_checkpoint_artifact_id`` (exactly one).\
+            \ Omit when continuing from a checkpoint \u2014 the base_model is then\
+            \ derived from the checkpoint's metadata."
+          nullable: true
+        source_checkpoint_artifact_id:
+          type: string
+          default: null
+          minLength: 1
+          description: Artifact id of an existing checkpoint to continue-train. Must
+            be a ``kind=checkpoint`` Artifact with ``status=ready`` belonging to the
+            same org as the requester. When set, training continues the SAME LoRA
+            adapter on the new dataset (weight-init continuation), and ``base_model``
+            is derived from the checkpoint's metadata. Provide EITHER this OR ``base_model``
+            (exactly one).
+          nullable: true
       required:
-      - base_model
       - dataset_id
       - hyperparameters
       - instance_size
       - name
+    FineTuneJobView:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Fine-tune job ID (same as the underlying deployment ID).
+        name:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+          description: "Underlying Saturn job status: pending, running, stopping,\
+            \ stopped, completed, or error. Same vocabulary as the rest of the platform\
+            \ \u2014 TF intentionally does not translate to a product-specific set."
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        started_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          nullable: true
+        finished_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+          nullable: true
+        base_model:
+          type: string
+          readOnly: true
+        hyperparameters:
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Hyperparameters'
+        dataset_id:
+          type: string
+          readOnly: true
+        output_location:
+          type: string
+          readOnly: true
+          description: 'Structured location of the job''s RW output folder: sf:<tf-jobs-folder-id>/<job-id>/.'
+        latest_checkpoint:
+          readOnly: true
+          description: "Most recently-registered usable (``status=ready``) checkpoint\
+            \ artifact (kind=checkpoint) whose ``producer.id`` matches this job's\
+            \ deployment id. Null if no ready checkpoint exists \u2014 the job may\
+            \ still be running, may have failed, or may have registered an error artifact\
+            \ (``status=error``) which is deliberately NOT surfaced here. To diagnose\
+            \ failures, read the job's training logs; the shim tees axolotl output\
+            \ to ``<output_dir>/training.log``. Named ``latest_checkpoint`` rather\
+            \ than ``checkpoint`` to leave room for future API surface exposing intermediate\
+            \ per-epoch checkpoints (axolotl writes ``checkpoint-N/`` subdirs to NFS\
+            \ during training, but those are not registered as separate Artifact rows\
+            \ today). Only returned by the single-GET endpoint; list responses use\
+            \ ``FineTuneJobSummary`` which omits this field."
+          allOf:
+          - $ref: '#/components/schemas/Artifact'
+          nullable: true
+      required:
+      - base_model
+      - created_at
+      - dataset_id
+      - finished_at
+      - hyperparameters
+      - id
+      - latest_checkpoint
+      - name
+      - output_location
+      - started_at
+      - status
+    InferenceEndpointSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Inference endpoint ID (same as the underlying deployment ID).
+        name:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+          description: 'Underlying Saturn deployment status: pending, running, stopping,
+            stopped, or error.'
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        base_model:
+          type: string
+          readOnly: true
+          description: HuggingFace base model id derived from the checkpoint Artifact's
+            ``metadata.base_model`` at create time.
+        checkpoint_artifact_id:
+          type: string
+          readOnly: true
+          description: Artifact id of the checkpoint this endpoint is serving.
+        instance_size:
+          type: string
+          readOnly: true
+        endpoint_url:
+          type: string
+          readOnly: true
+          description: "Public URL clients POST OpenAI-compatible inference requests\
+            \ to. Uses the deployment's auto-generated subdomain. Returns the URL\
+            \ regardless of running state \u2014 clients can stash it; calls fail\
+            \ while the endpoint is stopped."
+      required:
+      - base_model
+      - checkpoint_artifact_id
+      - created_at
+      - endpoint_url
+      - id
+      - instance_size
+      - name
+      - status
+    InferenceEndpointList:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          readOnly: true
+          description: "List of inference endpoints (``InferenceEndpointSummary``\
+            \ projections \u2014 without ``checkpoint``; fetch the by-id endpoint\
+            \ for that)."
+          items:
+            $ref: '#/components/schemas/InferenceEndpointSummary'
+        prev_key:
+          type: string
+          readOnly: true
+          description: Previous page key.
+        next_key:
+          type: string
+          readOnly: true
+          description: Next page key.
+      required:
+      - endpoints
+    InferenceEndpointCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name for the inference endpoint.
+        checkpoint_artifact_id:
+          type: string
+          minLength: 1
+          description: Artifact id of the checkpoint to serve. Must be a ``kind=checkpoint``
+            Artifact with ``status=ready`` belonging to the same org as the requester.
+        instance_size:
+          type: string
+          minLength: 1
+          description: Saturn instance size to run the inference pod on. Must be a
+            GPU-equipped size (gpu > 0).
+        quantization:
+          type: string
+          default: null
+          enum:
+          - fp8
+          - int8
+          - null
+          description: "Optional vLLM quantization method. Restricted to calibration-free\
+            \ methods (``fp8``, ``int8``) \u2014 these quantize on the fly with no\
+            \ calibration dataset. Calibration-requiring methods (gptq, awq) are rejected.\
+            \ Omit (the default) to serve in the checkpoint's native precision (BF16)."
+          nullable: true
+        visibility:
+          type: string
+          default: org
+          enum:
+          - org
+          - owner
+          description: 'Route visibility enforced by ForwardAuth: ``org`` (any member
+            of the endpoint''s org may call it) or ``owner`` (only the owning identity
+            and explicit ``viewers``). Defaults to ``org``.'
+        viewers:
+          type: array
+          description: Optional list of identity names (usernames or group names in
+            the endpoint's org) granted access to the endpoint route in addition to
+            the owner. Honored by ForwardAuth exactly like a normal deployment's viewers.
+          items:
+            type: string
+            minLength: 1
+      required:
+      - checkpoint_artifact_id
+      - instance_size
+      - name
+    InferenceEndpointView:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Inference endpoint ID (same as the underlying deployment ID).
+        name:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+          description: 'Underlying Saturn deployment status: pending, running, stopping,
+            stopped, or error.'
+        created_at:
+          type: string
+          format: '%Y-%m-%dT%H:%M:%S+00:00'
+          readOnly: true
+        base_model:
+          type: string
+          readOnly: true
+          description: HuggingFace base model id derived from the checkpoint Artifact's
+            ``metadata.base_model`` at create time.
+        checkpoint_artifact_id:
+          type: string
+          readOnly: true
+          description: Artifact id of the checkpoint this endpoint is serving.
+        instance_size:
+          type: string
+          readOnly: true
+        endpoint_url:
+          type: string
+          readOnly: true
+          description: "Public URL clients POST OpenAI-compatible inference requests\
+            \ to. Uses the deployment's auto-generated subdomain. Returns the URL\
+            \ regardless of running state \u2014 clients can stash it; calls fail\
+            \ while the endpoint is stopped."
+        checkpoint:
+          readOnly: true
+          description: Resolved checkpoint Artifact. Null only if the artifact was
+            deleted out from under the endpoint (we block that path; the field is
+            nullable defensively).
+          allOf:
+          - $ref: '#/components/schemas/Artifact'
+          nullable: true
+      required:
+      - base_model
+      - checkpoint
+      - checkpoint_artifact_id
+      - created_at
+      - endpoint_url
+      - id
+      - instance_size
+      - name
+      - status
     AggregatedUsage:
       type: object
       properties:
@@ -17117,9 +17800,9 @@ components:
         disk_space:
           type: array
           readOnly: true
-          description: List of available disk space sizes.
+          description: Available disk space sizes.
           items:
-            type: string
+            $ref: '#/components/schemas/DiskSpaceOption'
         size:
           type: array
           readOnly: true

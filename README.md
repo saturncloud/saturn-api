@@ -151,10 +151,12 @@ Class | Method | HTTP request | Description
 *DaskClustersApi* | [**stop**](docs/DaskClustersApi.md#stop) | **POST** /api/dask_clusters/{dask_cluster_id}/stop | Stop dask cluster
 *DaskClustersApi* | [**update**](docs/DaskClustersApi.md#update) | **PATCH** /api/dask_clusters/{dask_cluster_id} | Update dask cluster
 *DaskClustersApi* | [**update_token**](docs/DaskClustersApi.md#update_token) | **PATCH** /api/dask_clusters/{dask_cluster_id}/token | Update dask cluster API token
+*DatasetsApi* | [**call_import**](docs/DatasetsApi.md#call_import) | **POST** /api/orgs/{org_id}/token-factory/datasets/import | Import dataset
 *DatasetsApi* | [**create**](docs/DatasetsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/datasets | Create dataset
 *DatasetsApi* | [**delete**](docs/DatasetsApi.md#delete) | **DELETE** /api/orgs/{org_id}/token-factory/datasets/{dataset_id} | Delete dataset
 *DatasetsApi* | [**get**](docs/DatasetsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/datasets/{dataset_id} | Get dataset
 *DatasetsApi* | [**list**](docs/DatasetsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/datasets | List datasets
+*DatasetsApi* | [**lock**](docs/DatasetsApi.md#lock) | **POST** /api/orgs/{org_id}/token-factory/datasets/lock | Lock shared folder as dataset
 *DatasetsApi* | [**seal**](docs/DatasetsApi.md#seal) | **POST** /api/orgs/{org_id}/token-factory/datasets/{dataset_id}/seal | Seal dataset
 *DeploymentsApi* | [**create**](docs/DeploymentsApi.md#create) | **POST** /api/deployments | Create deployment
 *DeploymentsApi* | [**create_resource_template**](docs/DeploymentsApi.md#create_resource_template) | **POST** /api/deployments/{deployment_id}/template | Create deployment resource template
@@ -202,6 +204,7 @@ Class | Method | HTTP request | Description
 *ExternalReposApi* | [**update**](docs/ExternalReposApi.md#update) | **PATCH** /api/external_repos/{external_repo_id} | Update external repo
 *FineTuningJobsApi* | [**create**](docs/FineTuningJobsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/fine-tuning/jobs | Create fine-tuning job
 *FineTuningJobsApi* | [**get**](docs/FineTuningJobsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id} | Get fine-tuning job
+*FineTuningJobsApi* | [**get_logs**](docs/FineTuningJobsApi.md#get_logs) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}/logs | Get fine-tuning job historical logs
 *FineTuningJobsApi* | [**jobs_cancel**](docs/FineTuningJobsApi.md#jobs_cancel) | **POST** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}/cancel | Cancel fine-tuning job
 *FineTuningJobsApi* | [**list**](docs/FineTuningJobsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs | List fine-tuning jobs
 *GroupsApi* | [**create**](docs/GroupsApi.md#create) | **POST** /api/groups | Create group
@@ -227,6 +230,13 @@ Class | Method | HTTP request | Description
 *ImagesApi* | [**get**](docs/ImagesApi.md#get) | **GET** /api/images/{image_id} | Get image
 *ImagesApi* | [**list**](docs/ImagesApi.md#list) | **GET** /api/images | List images
 *ImagesApi* | [**update**](docs/ImagesApi.md#update) | **PATCH** /api/images/{image_id} | Update image
+*InferenceEndpointsApi* | [**create**](docs/InferenceEndpointsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/inference-endpoints | Create inference endpoint
+*InferenceEndpointsApi* | [**delete**](docs/InferenceEndpointsApi.md#delete) | **DELETE** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id} | Delete inference endpoint
+*InferenceEndpointsApi* | [**endpoints_start**](docs/InferenceEndpointsApi.md#endpoints_start) | **POST** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/start | Start inference endpoint
+*InferenceEndpointsApi* | [**endpoints_stop**](docs/InferenceEndpointsApi.md#endpoints_stop) | **POST** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/stop | Stop inference endpoint
+*InferenceEndpointsApi* | [**get**](docs/InferenceEndpointsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id} | Get inference endpoint
+*InferenceEndpointsApi* | [**get_logs**](docs/InferenceEndpointsApi.md#get_logs) | **GET** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/logs | Get inference endpoint historical logs
+*InferenceEndpointsApi* | [**list**](docs/InferenceEndpointsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/inference-endpoints | List inference endpoints
 *InfoApi* | [**get**](docs/InfoApi.md#get) | **GET** /api/info | Get app info
 *InfoApi* | [**get_server_options**](docs/InfoApi.md#get_server_options) | **GET** /api/info/servers | Get server options
 *InvitationsApi* | [**create**](docs/InvitationsApi.md#create) | **POST** /api/invitations | Create invitation
@@ -449,7 +459,9 @@ Class | Method | HTTP request | Description
  - [DataPoint](docs/DataPoint.md)
  - [Dataset](docs/Dataset.md)
  - [DatasetCreate](docs/DatasetCreate.md)
+ - [DatasetImportCreate](docs/DatasetImportCreate.md)
  - [DatasetList](docs/DatasetList.md)
+ - [DatasetLockCreate](docs/DatasetLockCreate.md)
  - [DefaultImages](docs/DefaultImages.md)
  - [DefaultSizes](docs/DefaultSizes.md)
  - [Deployment](docs/Deployment.md)
@@ -463,6 +475,7 @@ Class | Method | HTTP request | Description
  - [DeploymentStart](docs/DeploymentStart.md)
  - [DeploymentStatus](docs/DeploymentStatus.md)
  - [DeploymentUpdate](docs/DeploymentUpdate.md)
+ - [DiskSpaceOption](docs/DiskSpaceOption.md)
  - [ExternalRepo](docs/ExternalRepo.md)
  - [ExternalRepoAttachment](docs/ExternalRepoAttachment.md)
  - [ExternalRepoAttachmentCreate](docs/ExternalRepoAttachmentCreate.md)
@@ -480,6 +493,7 @@ Class | Method | HTTP request | Description
  - [ExtraPackagesRecipePip](docs/ExtraPackagesRecipePip.md)
  - [FineTuneJobCreate](docs/FineTuneJobCreate.md)
  - [FineTuneJobList](docs/FineTuneJobList.md)
+ - [FineTuneJobSummary](docs/FineTuneJobSummary.md)
  - [FineTuneJobView](docs/FineTuneJobView.md)
  - [Group](docs/Group.md)
  - [GroupCreate](docs/GroupCreate.md)
@@ -519,6 +533,10 @@ Class | Method | HTTP request | Description
  - [ImageTagState](docs/ImageTagState.md)
  - [ImageTagUpdate](docs/ImageTagUpdate.md)
  - [ImageUpdate](docs/ImageUpdate.md)
+ - [InferenceEndpointCreate](docs/InferenceEndpointCreate.md)
+ - [InferenceEndpointList](docs/InferenceEndpointList.md)
+ - [InferenceEndpointSummary](docs/InferenceEndpointSummary.md)
+ - [InferenceEndpointView](docs/InferenceEndpointView.md)
  - [InstanceSize](docs/InstanceSize.md)
  - [Invitation](docs/Invitation.md)
  - [InvitationCreate](docs/InvitationCreate.md)

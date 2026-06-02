@@ -1,106 +1,24 @@
-# saturn_api.DatasetsApi
+# saturn_api.InferenceEndpointsApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**call_import**](DatasetsApi.md#call_import) | **POST** /api/orgs/{org_id}/token-factory/datasets/import | Import dataset
-[**create**](DatasetsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/datasets | Create dataset
-[**delete**](DatasetsApi.md#delete) | **DELETE** /api/orgs/{org_id}/token-factory/datasets/{dataset_id} | Delete dataset
-[**get**](DatasetsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/datasets/{dataset_id} | Get dataset
-[**list**](DatasetsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/datasets | List datasets
-[**lock**](DatasetsApi.md#lock) | **POST** /api/orgs/{org_id}/token-factory/datasets/lock | Lock shared folder as dataset
-[**seal**](DatasetsApi.md#seal) | **POST** /api/orgs/{org_id}/token-factory/datasets/{dataset_id}/seal | Seal dataset
+[**create**](InferenceEndpointsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/inference-endpoints | Create inference endpoint
+[**delete**](InferenceEndpointsApi.md#delete) | **DELETE** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id} | Delete inference endpoint
+[**endpoints_start**](InferenceEndpointsApi.md#endpoints_start) | **POST** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/start | Start inference endpoint
+[**endpoints_stop**](InferenceEndpointsApi.md#endpoints_stop) | **POST** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/stop | Stop inference endpoint
+[**get**](InferenceEndpointsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id} | Get inference endpoint
+[**get_logs**](InferenceEndpointsApi.md#get_logs) | **GET** /api/orgs/{org_id}/token-factory/inference-endpoints/{endpoint_id}/logs | Get inference endpoint historical logs
+[**list**](InferenceEndpointsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/inference-endpoints | List inference endpoints
 
-
-# **call_import**
-> Dataset call_import(org_id, dataset_import_create=dataset_import_create)
-
-Import dataset
-
-Create a dataset in `assembling` state and launch a CPU job that downloads the given Hugging Face dataset, auto-detects its shape, normalises it to the canonical conversational format, and writes it into the org's tf-datasets folder. The job marks the dataset `ready` on success or `error` if the source format is not recognised.
-
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.dataset import Dataset
-from saturn_api.models.dataset_import_create import DatasetImportCreate
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = os.getenv("SATURN_BASE_URL", "http://localhost")
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
-configuration = saturn_api.Configuration(
-    access_token = os.environ["SATURN_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.DatasetsApi(api_client)
-    org_id = 'org_id_example' # str | 
-    dataset_import_create = saturn_api.DatasetImportCreate() # DatasetImportCreate |  (optional)
-
-    try:
-        # Import dataset
-        api_response = await api_instance.call_import(org_id, dataset_import_create=dataset_import_create)
-        print("The response of DatasetsApi->call_import:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DatasetsApi->call_import: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **dataset_import_create** | [**DatasetImportCreate**](DatasetImportCreate.md)|  | [optional] 
-
-### Return type
-
-[**Dataset**](Dataset.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Import started |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> Dataset create(org_id, dataset_create)
+> InferenceEndpointView create(org_id, inference_endpoint_create)
 
-Create dataset
+Create inference endpoint
 
-Create a new dataset.
+Create a new inference endpoint.
 
 ### Example
 
@@ -108,8 +26,8 @@ Create a new dataset.
 
 ```python
 import saturn_api
-from saturn_api.models.dataset import Dataset
-from saturn_api.models.dataset_create import DatasetCreate
+from saturn_api.models.inference_endpoint_create import InferenceEndpointCreate
+from saturn_api.models.inference_endpoint_view import InferenceEndpointView
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -132,17 +50,17 @@ configuration = saturn_api.Configuration(
 # Enter a context with an instance of the API client
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = saturn_api.DatasetsApi(api_client)
+    api_instance = saturn_api.InferenceEndpointsApi(api_client)
     org_id = 'org_id_example' # str | 
-    dataset_create = saturn_api.DatasetCreate() # DatasetCreate | 
+    inference_endpoint_create = saturn_api.InferenceEndpointCreate() # InferenceEndpointCreate | 
 
     try:
-        # Create dataset
-        api_response = await api_instance.create(org_id, dataset_create)
-        print("The response of DatasetsApi->create:\n")
+        # Create inference endpoint
+        api_response = await api_instance.create(org_id, inference_endpoint_create)
+        print("The response of InferenceEndpointsApi->create:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DatasetsApi->create: %s\n" % e)
+        print("Exception when calling InferenceEndpointsApi->create: %s\n" % e)
 ```
 
 
@@ -153,11 +71,11 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
- **dataset_create** | [**DatasetCreate**](DatasetCreate.md)|  | 
+ **inference_endpoint_create** | [**InferenceEndpointCreate**](InferenceEndpointCreate.md)|  | 
 
 ### Return type
 
-[**Dataset**](Dataset.md)
+[**InferenceEndpointView**](InferenceEndpointView.md)
 
 ### Authorization
 
@@ -177,11 +95,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> delete(org_id, dataset_id)
+> delete(org_id, endpoint_id)
 
-Delete dataset
+Delete inference endpoint
 
-Delete a dataset.
+Delete an inference endpoint.
 
 ### Example
 
@@ -211,15 +129,15 @@ configuration = saturn_api.Configuration(
 # Enter a context with an instance of the API client
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = saturn_api.DatasetsApi(api_client)
+    api_instance = saturn_api.InferenceEndpointsApi(api_client)
     org_id = 'org_id_example' # str | 
-    dataset_id = 'dataset_id_example' # str | 
+    endpoint_id = 'endpoint_id_example' # str | 
 
     try:
-        # Delete dataset
-        await api_instance.delete(org_id, dataset_id)
+        # Delete inference endpoint
+        await api_instance.delete(org_id, endpoint_id)
     except Exception as e:
-        print("Exception when calling DatasetsApi->delete: %s\n" % e)
+        print("Exception when calling InferenceEndpointsApi->delete: %s\n" % e)
 ```
 
 
@@ -230,7 +148,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
- **dataset_id** | **str**|  | 
+ **endpoint_id** | **str**|  | 
 
 ### Return type
 
@@ -253,12 +171,12 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get**
-> Dataset get(org_id, dataset_id)
+# **endpoints_start**
+> InferenceEndpointView endpoints_start(org_id, endpoint_id)
 
-Get dataset
+Start inference endpoint
 
-Get a dataset.
+Bring up the underlying persistent deployment.
 
 ### Example
 
@@ -266,7 +184,7 @@ Get a dataset.
 
 ```python
 import saturn_api
-from saturn_api.models.dataset import Dataset
+from saturn_api.models.inference_endpoint_view import InferenceEndpointView
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -289,17 +207,17 @@ configuration = saturn_api.Configuration(
 # Enter a context with an instance of the API client
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = saturn_api.DatasetsApi(api_client)
+    api_instance = saturn_api.InferenceEndpointsApi(api_client)
     org_id = 'org_id_example' # str | 
-    dataset_id = 'dataset_id_example' # str | 
+    endpoint_id = 'endpoint_id_example' # str | 
 
     try:
-        # Get dataset
-        api_response = await api_instance.get(org_id, dataset_id)
-        print("The response of DatasetsApi->get:\n")
+        # Start inference endpoint
+        api_response = await api_instance.endpoints_start(org_id, endpoint_id)
+        print("The response of InferenceEndpointsApi->endpoints_start:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DatasetsApi->get: %s\n" % e)
+        print("Exception when calling InferenceEndpointsApi->endpoints_start: %s\n" % e)
 ```
 
 
@@ -310,11 +228,261 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
- **dataset_id** | **str**|  | 
+ **endpoint_id** | **str**|  | 
 
 ### Return type
 
-[**Dataset**](Dataset.md)
+[**InferenceEndpointView**](InferenceEndpointView.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Started |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **endpoints_stop**
+> InferenceEndpointView endpoints_stop(org_id, endpoint_id)
+
+Stop inference endpoint
+
+Tear down the pod but keep the DB row.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.inference_endpoint_view import InferenceEndpointView
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.InferenceEndpointsApi(api_client)
+    org_id = 'org_id_example' # str | 
+    endpoint_id = 'endpoint_id_example' # str | 
+
+    try:
+        # Stop inference endpoint
+        api_response = await api_instance.endpoints_stop(org_id, endpoint_id)
+        print("The response of InferenceEndpointsApi->endpoints_stop:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InferenceEndpointsApi->endpoints_stop: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  | 
+ **endpoint_id** | **str**|  | 
+
+### Return type
+
+[**InferenceEndpointView**](InferenceEndpointView.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Stopped |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get**
+> InferenceEndpointView get(org_id, endpoint_id)
+
+Get inference endpoint
+
+Get an inference endpoint.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.inference_endpoint_view import InferenceEndpointView
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.InferenceEndpointsApi(api_client)
+    org_id = 'org_id_example' # str | 
+    endpoint_id = 'endpoint_id_example' # str | 
+
+    try:
+        # Get inference endpoint
+        api_response = await api_instance.get(org_id, endpoint_id)
+        print("The response of InferenceEndpointsApi->get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InferenceEndpointsApi->get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  | 
+ **endpoint_id** | **str**|  | 
+
+### Return type
+
+[**InferenceEndpointView**](InferenceEndpointView.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_logs**
+> HistoricLogList get_logs(org_id, endpoint_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
+
+Get inference endpoint historical logs
+
+Historical record of logs from the resource.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.historic_log_list import HistoricLogList
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.InferenceEndpointsApi(api_client)
+    org_id = 'org_id_example' # str | 
+    endpoint_id = 'endpoint_id_example' # str | 
+    pod_name = 'pod_name_example' # str | Name of the pod to retrieve logs from. (optional)
+    cluster = 'cluster_example' # str | Name of the cluster the pod lives in. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Maximum number of results per page. (optional) (default to 100)
+
+    try:
+        # Get inference endpoint historical logs
+        api_response = await api_instance.get_logs(org_id, endpoint_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of InferenceEndpointsApi->get_logs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InferenceEndpointsApi->get_logs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  | 
+ **endpoint_id** | **str**|  | 
+ **pod_name** | **str**| Name of the pod to retrieve logs from. | [optional] 
+ **cluster** | **str**| Name of the cluster the pod lives in. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Maximum number of results per page. | [optional] [default to 100]
+
+### Return type
+
+[**HistoricLogList**](HistoricLogList.md)
 
 ### Authorization
 
@@ -334,11 +502,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> DatasetList list(org_id, status=status, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+> InferenceEndpointList list(org_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
 
-List datasets
+List inference endpoints
 
-Paginated list of datasets.
+Paginated list of inference endpoints.
 
 ### Example
 
@@ -346,8 +514,7 @@ Paginated list of datasets.
 
 ```python
 import saturn_api
-from saturn_api.models.artifact_status import ArtifactStatus
-from saturn_api.models.dataset_list import DatasetList
+from saturn_api.models.inference_endpoint_list import InferenceEndpointList
 from saturn_api.rest import ApiException
 from pprint import pprint
 
@@ -370,21 +537,20 @@ configuration = saturn_api.Configuration(
 # Enter a context with an instance of the API client
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = saturn_api.DatasetsApi(api_client)
+    api_instance = saturn_api.InferenceEndpointsApi(api_client)
     org_id = 'org_id_example' # str | 
-    status = saturn_api.ArtifactStatus() # ArtifactStatus | Filter datasets by status. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
     page_size = 100 # int | Page size. (optional) (default to 100)
     descending = False # bool | List results in descending order. (optional) (default to False)
 
     try:
-        # List datasets
-        api_response = await api_instance.list(org_id, status=status, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
-        print("The response of DatasetsApi->list:\n")
+        # List inference endpoints
+        api_response = await api_instance.list(org_id, prev_key=prev_key, next_key=next_key, page_size=page_size, descending=descending)
+        print("The response of InferenceEndpointsApi->list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DatasetsApi->list: %s\n" % e)
+        print("Exception when calling InferenceEndpointsApi->list: %s\n" % e)
 ```
 
 
@@ -395,7 +561,6 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  | 
- **status** | [**ArtifactStatus**](.md)| Filter datasets by status. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
  **page_size** | **int**| Page size. | [optional] [default to 100]
@@ -403,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DatasetList**](DatasetList.md)
+[**InferenceEndpointList**](InferenceEndpointList.md)
 
 ### Authorization
 
@@ -419,168 +584,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **lock**
-> Dataset lock(org_id, dataset_lock_create=dataset_lock_create)
-
-Lock shared folder as dataset
-
-Register an existing SharedFolder (that already holds dataset bytes) as a dataset, zero-copy, by locking it to ReadOnlyMany. No job runs and nothing is copied; the dataset is immediately `ready` and its location points at the existing folder. The folder becomes read-only.
-
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.dataset import Dataset
-from saturn_api.models.dataset_lock_create import DatasetLockCreate
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = os.getenv("SATURN_BASE_URL", "http://localhost")
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
-configuration = saturn_api.Configuration(
-    access_token = os.environ["SATURN_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.DatasetsApi(api_client)
-    org_id = 'org_id_example' # str | 
-    dataset_lock_create = saturn_api.DatasetLockCreate() # DatasetLockCreate |  (optional)
-
-    try:
-        # Lock shared folder as dataset
-        api_response = await api_instance.lock(org_id, dataset_lock_create=dataset_lock_create)
-        print("The response of DatasetsApi->lock:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DatasetsApi->lock: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **dataset_lock_create** | [**DatasetLockCreate**](DatasetLockCreate.md)|  | [optional] 
-
-### Return type
-
-[**Dataset**](Dataset.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Locked and registered |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **seal**
-> Dataset seal(org_id, dataset_id)
-
-Seal dataset
-
-Transition a dataset from `assembling` to `ready`, making it immutable.
-
-### Example
-
-* Bearer Authentication (bearerAuth):
-
-```python
-import saturn_api
-from saturn_api.models.dataset import Dataset
-from saturn_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = saturn_api.Configuration(
-    host = os.getenv("SATURN_BASE_URL", "http://localhost")
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
-configuration = saturn_api.Configuration(
-    access_token = os.environ["SATURN_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-async with saturn_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = saturn_api.DatasetsApi(api_client)
-    org_id = 'org_id_example' # str | 
-    dataset_id = 'dataset_id_example' # str | 
-
-    try:
-        # Seal dataset
-        api_response = await api_instance.seal(org_id, dataset_id)
-        print("The response of DatasetsApi->seal:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DatasetsApi->seal: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **dataset_id** | **str**|  | 
-
-### Return type
-
-[**Dataset**](Dataset.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Sealed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

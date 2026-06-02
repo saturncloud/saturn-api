@@ -17,6 +17,7 @@ from saturn_api.api.fine_tuning_jobs_api import FineTuningJobsApi
 from saturn_api.api.groups_api import GroupsApi
 from saturn_api.api.image_tags_api import ImageTagsApi
 from saturn_api.api.images_api import ImagesApi
+from saturn_api.api.inference_endpoints_api import InferenceEndpointsApi
 from saturn_api.api.info_api import InfoApi
 from saturn_api.api.invitations_api import InvitationsApi
 from saturn_api.api.jobs_api import JobsApi

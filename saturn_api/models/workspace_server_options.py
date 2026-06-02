@@ -21,6 +21,7 @@ from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing_extensions import Self
 
+from saturn_api.models.disk_space_option import DiskSpaceOption
 from saturn_api.models.instance_size import InstanceSize
 
 
@@ -30,7 +31,7 @@ class WorkspaceServerOptions(BaseModel):
     """  # noqa: E501
 
     auto_shutoff: Literal["1 hour", "6 hours", "24 hours", "3 days", "7 days", "Never"]
-    disk_space: List[StrictStr] = Field(description="List of available disk space sizes.")
+    disk_space: List[DiskSpaceOption] = Field(description="Available disk space sizes.")
     size: List[InstanceSize] = Field(description="List of available instance sizes.")
     __properties: ClassVar[List[str]] = ["auto_shutoff", "disk_space", "size"]
 
@@ -90,6 +91,13 @@ class WorkspaceServerOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in disk_space (list)
+        _items = []
+        if self.disk_space:
+            for _item_disk_space in self.disk_space:
+                if _item_disk_space:
+                    _items.append(_item_disk_space.to_dict())
+            _dict["disk_space"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in size (list)
         _items = []
         if self.size:
@@ -111,7 +119,11 @@ class WorkspaceServerOptions(BaseModel):
         _obj = cls.model_validate(
             {
                 "auto_shutoff": obj.get("auto_shutoff"),
-                "disk_space": obj.get("disk_space"),
+                "disk_space": (
+                    [DiskSpaceOption.from_dict(_item) for _item in obj["disk_space"]]
+                    if obj.get("disk_space") is not None
+                    else None
+                ),
                 "size": (
                     [InstanceSize.from_dict(_item) for _item in obj["size"]]
                     if obj.get("size") is not None

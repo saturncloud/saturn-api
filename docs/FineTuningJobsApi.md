@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create**](FineTuningJobsApi.md#create) | **POST** /api/orgs/{org_id}/token-factory/fine-tuning/jobs | Create fine-tuning job
 [**get**](FineTuningJobsApi.md#get) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id} | Get fine-tuning job
+[**get_logs**](FineTuningJobsApi.md#get_logs) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}/logs | Get fine-tuning job historical logs
 [**jobs_cancel**](FineTuningJobsApi.md#jobs_cancel) | **POST** /api/orgs/{org_id}/token-factory/fine-tuning/jobs/{job_id}/cancel | Cancel fine-tuning job
 [**list**](FineTuningJobsApi.md#list) | **GET** /api/orgs/{org_id}/token-factory/fine-tuning/jobs | List fine-tuning jobs
 
@@ -153,6 +154,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FineTuneJobView**](FineTuneJobView.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_logs**
+> HistoricLogList get_logs(org_id, job_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
+
+Get fine-tuning job historical logs
+
+Historical record of logs from the resource.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import saturn_api
+from saturn_api.models.historic_log_list import HistoricLogList
+from saturn_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to the SATURN_BASE_URL env or http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saturn_api.Configuration(
+    host = os.getenv("SATURN_BASE_URL", "http://localhost")
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth, defaults to the SATURN_TOKEN env
+configuration = saturn_api.Configuration(
+    access_token = os.environ["SATURN_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with saturn_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saturn_api.FineTuningJobsApi(api_client)
+    org_id = 'org_id_example' # str | 
+    job_id = 'job_id_example' # str | 
+    pod_name = 'pod_name_example' # str | Name of the pod to retrieve logs from. (optional)
+    cluster = 'cluster_example' # str | Name of the cluster the pod lives in. (optional)
+    prev_key = 'prev_key_example' # str | Previous page key. (optional)
+    next_key = 'next_key_example' # str | Next page key. (optional)
+    page_size = 100 # int | Maximum number of results per page. (optional) (default to 100)
+
+    try:
+        # Get fine-tuning job historical logs
+        api_response = await api_instance.get_logs(org_id, job_id, pod_name=pod_name, cluster=cluster, prev_key=prev_key, next_key=next_key, page_size=page_size)
+        print("The response of FineTuningJobsApi->get_logs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FineTuningJobsApi->get_logs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  | 
+ **job_id** | **str**|  | 
+ **pod_name** | **str**| Name of the pod to retrieve logs from. | [optional] 
+ **cluster** | **str**| Name of the cluster the pod lives in. | [optional] 
+ **prev_key** | **str**| Previous page key. | [optional] 
+ **next_key** | **str**| Next page key. | [optional] 
+ **page_size** | **int**| Maximum number of results per page. | [optional] [default to 100]
+
+### Return type
+
+[**HistoricLogList**](HistoricLogList.md)
 
 ### Authorization
 

@@ -39,6 +39,9 @@ class UsageLimits(BaseModel):
     resource_types: Optional[List[StrictStr]] = Field(
         description="Allowed resource types. Null if no limits."
     )
+    token_factory_enabled: Optional[StrictBool] = Field(
+        description="Whether Token Factory is available under this limit. Null inherits the global setting; False hard-disables it."
+    )
     num_instances: Optional[StrictInt] = Field(
         description="Maximum number of active instances. Null if no limits."
     )
@@ -70,6 +73,7 @@ class UsageLimits(BaseModel):
         "is_default",
         "instance_sizes",
         "resource_types",
+        "token_factory_enabled",
         "num_instances",
         "auto_shutoff",
         "storage_in_gb",
@@ -126,6 +130,7 @@ class UsageLimits(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -136,6 +141,7 @@ class UsageLimits(BaseModel):
                 "is_default",
                 "instance_sizes",
                 "resource_types",
+                "token_factory_enabled",
                 "num_instances",
                 "auto_shutoff",
                 "storage_in_gb",
@@ -162,6 +168,11 @@ class UsageLimits(BaseModel):
         # and model_fields_set contains the field
         if self.resource_types is None and "resource_types" in self.model_fields_set:
             _dict["resource_types"] = None
+
+        # set to None if token_factory_enabled (nullable) is None
+        # and model_fields_set contains the field
+        if self.token_factory_enabled is None and "token_factory_enabled" in self.model_fields_set:
+            _dict["token_factory_enabled"] = None
 
         # set to None if num_instances (nullable) is None
         # and model_fields_set contains the field
@@ -228,6 +239,7 @@ class UsageLimits(BaseModel):
                 "is_default": obj.get("is_default"),
                 "instance_sizes": obj.get("instance_sizes"),
                 "resource_types": obj.get("resource_types"),
+                "token_factory_enabled": obj.get("token_factory_enabled"),
                 "num_instances": obj.get("num_instances"),
                 "auto_shutoff": obj.get("auto_shutoff"),
                 "storage_in_gb": obj.get("storage_in_gb"),

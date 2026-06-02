@@ -33,6 +33,7 @@ __all__ = [
     "GroupsApi",
     "ImageTagsApi",
     "ImagesApi",
+    "InferenceEndpointsApi",
     "InfoApi",
     "InvitationsApi",
     "JobsApi",
@@ -113,7 +114,9 @@ __all__ = [
     "DataPoint",
     "Dataset",
     "DatasetCreate",
+    "DatasetImportCreate",
     "DatasetList",
+    "DatasetLockCreate",
     "DefaultImages",
     "DefaultSizes",
     "Deployment",
@@ -127,6 +130,7 @@ __all__ = [
     "DeploymentStart",
     "DeploymentStatus",
     "DeploymentUpdate",
+    "DiskSpaceOption",
     "ExternalRepo",
     "ExternalRepoAttachment",
     "ExternalRepoAttachmentCreate",
@@ -144,6 +148,7 @@ __all__ = [
     "ExtraPackagesRecipePip",
     "FineTuneJobCreate",
     "FineTuneJobList",
+    "FineTuneJobSummary",
     "FineTuneJobView",
     "Group",
     "GroupCreate",
@@ -183,6 +188,10 @@ __all__ = [
     "ImageTagState",
     "ImageTagUpdate",
     "ImageUpdate",
+    "InferenceEndpointCreate",
+    "InferenceEndpointList",
+    "InferenceEndpointSummary",
+    "InferenceEndpointView",
     "InstanceSize",
     "Invitation",
     "InvitationCreate",
@@ -382,6 +391,9 @@ from saturn_api.api.fine_tuning_jobs_api import FineTuningJobsApi as FineTuningJ
 from saturn_api.api.groups_api import GroupsApi as GroupsApi
 from saturn_api.api.image_tags_api import ImageTagsApi as ImageTagsApi
 from saturn_api.api.images_api import ImagesApi as ImagesApi
+from saturn_api.api.inference_endpoints_api import (
+    InferenceEndpointsApi as InferenceEndpointsApi,
+)
 from saturn_api.api.info_api import InfoApi as InfoApi
 from saturn_api.api.invitations_api import InvitationsApi as InvitationsApi
 from saturn_api.api.jobs_api import JobsApi as JobsApi
@@ -500,7 +512,11 @@ from saturn_api.models.dask_worker_summary import DaskWorkerSummary as DaskWorke
 from saturn_api.models.data_point import DataPoint as DataPoint
 from saturn_api.models.dataset import Dataset as Dataset
 from saturn_api.models.dataset_create import DatasetCreate as DatasetCreate
+from saturn_api.models.dataset_import_create import (
+    DatasetImportCreate as DatasetImportCreate,
+)
 from saturn_api.models.dataset_list import DatasetList as DatasetList
+from saturn_api.models.dataset_lock_create import DatasetLockCreate as DatasetLockCreate
 from saturn_api.models.default_images import DefaultImages as DefaultImages
 from saturn_api.models.default_sizes import DefaultSizes as DefaultSizes
 from saturn_api.models.deployment import Deployment as Deployment
@@ -520,6 +536,7 @@ from saturn_api.models.deployment_spec import DeploymentSpec as DeploymentSpec
 from saturn_api.models.deployment_start import DeploymentStart as DeploymentStart
 from saturn_api.models.deployment_status import DeploymentStatus as DeploymentStatus
 from saturn_api.models.deployment_update import DeploymentUpdate as DeploymentUpdate
+from saturn_api.models.disk_space_option import DiskSpaceOption as DiskSpaceOption
 from saturn_api.models.external_repo import ExternalRepo as ExternalRepo
 from saturn_api.models.external_repo_attachment import (
     ExternalRepoAttachment as ExternalRepoAttachment,
@@ -563,6 +580,9 @@ from saturn_api.models.fine_tune_job_create import (
     FineTuneJobCreate as FineTuneJobCreate,
 )
 from saturn_api.models.fine_tune_job_list import FineTuneJobList as FineTuneJobList
+from saturn_api.models.fine_tune_job_summary import (
+    FineTuneJobSummary as FineTuneJobSummary,
+)
 from saturn_api.models.fine_tune_job_view import FineTuneJobView as FineTuneJobView
 from saturn_api.models.group import Group as Group
 from saturn_api.models.group_create import GroupCreate as GroupCreate
@@ -608,6 +628,18 @@ from saturn_api.models.image_tag_reference import ImageTagReference as ImageTagR
 from saturn_api.models.image_tag_state import ImageTagState as ImageTagState
 from saturn_api.models.image_tag_update import ImageTagUpdate as ImageTagUpdate
 from saturn_api.models.image_update import ImageUpdate as ImageUpdate
+from saturn_api.models.inference_endpoint_create import (
+    InferenceEndpointCreate as InferenceEndpointCreate,
+)
+from saturn_api.models.inference_endpoint_list import (
+    InferenceEndpointList as InferenceEndpointList,
+)
+from saturn_api.models.inference_endpoint_summary import (
+    InferenceEndpointSummary as InferenceEndpointSummary,
+)
+from saturn_api.models.inference_endpoint_view import (
+    InferenceEndpointView as InferenceEndpointView,
+)
 from saturn_api.models.instance_size import InstanceSize as InstanceSize
 from saturn_api.models.invitation import Invitation as Invitation
 from saturn_api.models.invitation_create import InvitationCreate as InvitationCreate

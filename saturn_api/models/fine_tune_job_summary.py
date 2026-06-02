@@ -21,13 +21,12 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
-from saturn_api.models.artifact import Artifact
 from saturn_api.models.hyperparameters import Hyperparameters
 
 
-class FineTuneJobView(BaseModel):
+class FineTuneJobSummary(BaseModel):
     """
-    FineTuneJobView
+    FineTuneJobSummary
     """  # noqa: E501
 
     id: StrictStr = Field(description="Fine-tune job ID (same as the underlying deployment ID).")
@@ -40,13 +39,6 @@ class FineTuneJobView(BaseModel):
     finished_at: Optional[StrictStr]
     base_model: StrictStr
     hyperparameters: Hyperparameters
-    dataset_id: StrictStr
-    output_location: StrictStr = Field(
-        description="Structured location of the job's RW output folder: sf:<tf-jobs-folder-id>/<job-id>/."
-    )
-    latest_checkpoint: Optional[Artifact] = Field(
-        description="Most recently-registered usable (``status=ready``) checkpoint artifact (kind=checkpoint) whose ``producer.id`` matches this job's deployment id. Null if no ready checkpoint exists — the job may still be running, may have failed, or may have registered an error artifact (``status=error``) which is deliberately NOT surfaced here. To diagnose failures, read the job's training logs; the shim tees axolotl output to ``<output_dir>/training.log``. Named ``latest_checkpoint`` rather than ``checkpoint`` to leave room for future API surface exposing intermediate per-epoch checkpoints (axolotl writes ``checkpoint-N/`` subdirs to NFS during training, but those are not registered as separate Artifact rows today). Only returned by the single-GET endpoint; list responses use ``FineTuneJobSummary`` which omits this field."
-    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
@@ -56,9 +48,6 @@ class FineTuneJobView(BaseModel):
         "finished_at",
         "base_model",
         "hyperparameters",
-        "dataset_id",
-        "output_location",
-        "latest_checkpoint",
     ]
 
     model_config = ConfigDict(
@@ -78,7 +67,7 @@ class FineTuneJobView(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FineTuneJobView from a JSON string"""
+        """Create an instance of FineTuneJobSummary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -98,9 +87,6 @@ class FineTuneJobView(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -112,9 +98,6 @@ class FineTuneJobView(BaseModel):
                 "finished_at",
                 "base_model",
                 "hyperparameters",
-                "dataset_id",
-                "output_location",
-                "latest_checkpoint",
             ]
         )
 
@@ -126,9 +109,6 @@ class FineTuneJobView(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of hyperparameters
         if self.hyperparameters:
             _dict["hyperparameters"] = self.hyperparameters.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of latest_checkpoint
-        if self.latest_checkpoint:
-            _dict["latest_checkpoint"] = self.latest_checkpoint.to_dict()
         # set to None if started_at (nullable) is None
         # and model_fields_set contains the field
         if self.started_at is None and "started_at" in self.model_fields_set:
@@ -139,16 +119,11 @@ class FineTuneJobView(BaseModel):
         if self.finished_at is None and "finished_at" in self.model_fields_set:
             _dict["finished_at"] = None
 
-        # set to None if latest_checkpoint (nullable) is None
-        # and model_fields_set contains the field
-        if self.latest_checkpoint is None and "latest_checkpoint" in self.model_fields_set:
-            _dict["latest_checkpoint"] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FineTuneJobView from a dict"""
+        """Create an instance of FineTuneJobSummary from a dict"""
         if obj is None:
             return None
 
@@ -167,13 +142,6 @@ class FineTuneJobView(BaseModel):
                 "hyperparameters": (
                     Hyperparameters.from_dict(obj["hyperparameters"])
                     if obj.get("hyperparameters") is not None
-                    else None
-                ),
-                "dataset_id": obj.get("dataset_id"),
-                "output_location": obj.get("output_location"),
-                "latest_checkpoint": (
-                    Artifact.from_dict(obj["latest_checkpoint"])
-                    if obj.get("latest_checkpoint") is not None
                     else None
                 ),
             }

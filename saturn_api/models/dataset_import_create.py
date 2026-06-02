@@ -19,22 +19,27 @@ import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing_extensions import Self
-
-from saturn_api.models.fine_tune_job_summary import FineTuneJobSummary
+from typing_extensions import Annotated, Self
 
 
-class FineTuneJobList(BaseModel):
+class DatasetImportCreate(BaseModel):
     """
-    FineTuneJobList
+    DatasetImportCreate
     """  # noqa: E501
 
-    jobs: List[FineTuneJobSummary] = Field(
-        description="List of fine-tuning jobs (``FineTuneJobSummary`` projections — without ``latest_checkpoint``; fetch the by-id endpoint for that)."
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(
+        description="Human-readable name for the dataset."
     )
-    prev_key: Optional[StrictStr] = Field(default=None, description="Previous page key.")
-    next_key: Optional[StrictStr] = Field(default=None, description="Next page key.")
-    __properties: ClassVar[List[str]] = ["jobs", "prev_key", "next_key"]
+    hf_dataset_id: Annotated[str, Field(min_length=1, strict=True)] = Field(
+        description="Hugging Face dataset identifier, e.g. ``databricks/databricks-dolly-15k``."
+    )
+    split: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(
+        default="train", description="Hugging Face split to import (default: ``train``)."
+    )
+    config_name: Optional[StrictStr] = Field(
+        default=None, description="Optional Hugging Face config/subset name."
+    )
+    __properties: ClassVar[List[str]] = ["name", "hf_dataset_id", "split", "config_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +58,7 @@ class FineTuneJobList(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FineTuneJobList from a JSON string"""
+        """Create an instance of DatasetImportCreate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -65,35 +70,24 @@ class FineTuneJobList(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set(
-            [
-                "jobs",
-                "prev_key",
-                "next_key",
-            ]
-        )
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in jobs (list)
-        _items = []
-        if self.jobs:
-            for _item_jobs in self.jobs:
-                if _item_jobs:
-                    _items.append(_item_jobs.to_dict())
-            _dict["jobs"] = _items
+        # set to None if config_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.config_name is None and "config_name" in self.model_fields_set:
+            _dict["config_name"] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FineTuneJobList from a dict"""
+        """Create an instance of DatasetImportCreate from a dict"""
         if obj is None:
             return None
 
@@ -102,13 +96,10 @@ class FineTuneJobList(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "jobs": (
-                    [FineTuneJobSummary.from_dict(_item) for _item in obj["jobs"]]
-                    if obj.get("jobs") is not None
-                    else None
-                ),
-                "prev_key": obj.get("prev_key"),
-                "next_key": obj.get("next_key"),
+                "name": obj.get("name"),
+                "hf_dataset_id": obj.get("hf_dataset_id"),
+                "split": obj.get("split") if obj.get("split") is not None else "train",
+                "config_name": obj.get("config_name"),
             }
         )
         return _obj
