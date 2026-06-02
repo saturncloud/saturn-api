@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schedule** | **str** | Cron schedule for triggering the job. | 
 **concurrency_policy** | [**ConcurrencyPolicy**](ConcurrencyPolicy.md) |  | [optional] 
-**backoff_limit** | **int** | Maximum number of retries for a failed job. | [optional] [default to 0]
 
 ## Example
 

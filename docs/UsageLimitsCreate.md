@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **is_default** | **bool** | Default usage limit for the org. | [optional] [default to False]
 **instance_sizes** | **List[str]** | Allowed instance sizes. Null if no limits. | [optional] 
 **resource_types** | **List[str]** | Allowed resource types. Null if no limits. | [optional] 
+**token_factory_enabled** | **bool** | Whether Token Factory is available under this limit. Null inherits the global setting; False hard-disables it. | [optional] 
 **num_instances** | **int** | Maximum number of active instances. Null if no limits. | [optional] 
 **auto_shutoff** | **int** | Maximum allowed auto-shutoff. Null if no limits. | [optional] 
 **storage_in_gb** | **int** | Total allowed storage in GiB. Null if no limits. | [optional] 

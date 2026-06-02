@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auto_shutoff** | **List[str]** | List of available auto-shutoff settings. | [readonly] 
-**disk_space** | **List[str]** | List of available disk space sizes. | [readonly] 
+**disk_space** | [**List[DiskSpaceOption]**](DiskSpaceOption.md) | Available disk space sizes. | [readonly] 
 **size** | [**List[InstanceSize]**](InstanceSize.md) | List of available instance sizes. | [readonly] 
 
 ## Example

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -724,7 +722,7 @@ class LimitsApi:
         self,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on usage limit name."),
+            Field(description="Substring matched search string on usage limit name."),
         ] = None,
         org_id: Annotated[
             Optional[StrictStr],
@@ -755,7 +753,7 @@ class LimitsApi:
 
         Paginated list of limits.
 
-        :param name: Prefix matched search string on usage limit name.
+        :param name: Substring matched search string on usage limit name.
         :type name: str
         :param org_id: Filter usage limits by org. Defaults to the default org for the current user/group.
         :type org_id: str
@@ -817,7 +815,7 @@ class LimitsApi:
         self,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on usage limit name."),
+            Field(description="Substring matched search string on usage limit name."),
         ] = None,
         org_id: Annotated[
             Optional[StrictStr],
@@ -848,7 +846,7 @@ class LimitsApi:
 
         Paginated list of limits.
 
-        :param name: Prefix matched search string on usage limit name.
+        :param name: Substring matched search string on usage limit name.
         :type name: str
         :param org_id: Filter usage limits by org. Defaults to the default org for the current user/group.
         :type org_id: str
@@ -910,7 +908,7 @@ class LimitsApi:
         self,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on usage limit name."),
+            Field(description="Substring matched search string on usage limit name."),
         ] = None,
         org_id: Annotated[
             Optional[StrictStr],
@@ -941,7 +939,7 @@ class LimitsApi:
 
         Paginated list of limits.
 
-        :param name: Prefix matched search string on usage limit name.
+        :param name: Substring matched search string on usage limit name.
         :type name: str
         :param org_id: Filter usage limits by org. Defaults to the default org for the current user/group.
         :type org_id: str

@@ -288,7 +288,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
     org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
     owner = 'owner_example' # str | Reference owner by name. (optional)
-    name = 'name_example' # str | Prefix matched search string on image name. (optional)
+    name = 'name_example' # str | Substring matched search string on image name. (optional)
     access = saturn_api.ImageAccessLevel() # ImageAccessLevel | Filter images by access level. (optional)
     supports = 'supports_example' # str | Filter images by supported features. (optional)
     hardware_type = saturn_api.HardwareType() # HardwareType | Filter images by hardware type. (optional)
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
  **group_id** | **str**| Reference owner by group ID. | [optional] 
  **org_id** | **str**| Reference owner by org ID. | [optional] 
  **owner** | **str**| Reference owner by name. | [optional] 
- **name** | **str**| Prefix matched search string on image name. | [optional] 
+ **name** | **str**| Substring matched search string on image name. | [optional] 
  **access** | [**ImageAccessLevel**](.md)| Filter images by access level. | [optional] 
  **supports** | **str**| Filter images by supported features. | [optional] 
  **hardware_type** | [**HardwareType**](.md)| Filter images by hardware type. | [optional] 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **environment_variables** | **Dict[str, str]** | Mapping of environment variable keys to values. | [optional] 
 **external_repo_attachments** | [**List[ExternalRepoAttachmentNested]**](ExternalRepoAttachmentNested.md) | List of external repo attachments. | [optional] 
 **extra_packages** | [**ExtraPackages**](ExtraPackages.md) | Addtitional packages to install on start. | [optional] 
+**config_files** | [**Dict[str, ConfigFileEntry]**](ConfigFileEntry.md) | User-defined config files written to $HOME at pod startup. Keys are relative paths; values contain content and mode. | [optional] 
 **start_script** | **str** | Shell script that runs on start before the primary command. | [optional] 
 **working_dir** | **str** | Initial working directory. | [optional] 
 **instance_size** | **str** | Instance size of the job. | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **start_dind** | **bool** | Enables docker-in-docker. | [optional] 
 **command** | **str** | Command that runs on start. | [optional] 
 **scale** | **int** | Number of pod replicas. | [optional] 
+**retries** | **int** | Maximum number of retries for a failed job. | [optional] 
 **cron_schedule_options** | [**CronScheduleUpdate**](CronScheduleUpdate.md) | Cron schedule configuration for scheduled jobs. | [optional] 
 
 ## Example

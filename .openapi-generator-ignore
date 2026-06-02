@@ -33,3 +33,6 @@ test/
 git_push.sh
 .travis.yml
 .gitlab-ci.yml
+
+# Hand-maintained CI (pytest passes with no tests); don't let regen clobber it
+.github/workflows/python.yml

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -727,7 +725,7 @@ class InvitationsApi:
             Optional[InvitationStatus], Field(description="Filter invitations by status.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+            Optional[StrictStr], Field(description="Substring matched search string on email.")
         ] = None,
         invitor_id: Annotated[
             Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
@@ -757,7 +755,7 @@ class InvitationsApi:
 
         :param status: Filter invitations by status.
         :type status: InvitationStatus
-        :param email: Prefix matched search string on email.
+        :param email: Substring matched search string on email.
         :type email: str
         :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
@@ -822,7 +820,7 @@ class InvitationsApi:
             Optional[InvitationStatus], Field(description="Filter invitations by status.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+            Optional[StrictStr], Field(description="Substring matched search string on email.")
         ] = None,
         invitor_id: Annotated[
             Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
@@ -852,7 +850,7 @@ class InvitationsApi:
 
         :param status: Filter invitations by status.
         :type status: InvitationStatus
-        :param email: Prefix matched search string on email.
+        :param email: Substring matched search string on email.
         :type email: str
         :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
@@ -917,7 +915,7 @@ class InvitationsApi:
             Optional[InvitationStatus], Field(description="Filter invitations by status.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+            Optional[StrictStr], Field(description="Substring matched search string on email.")
         ] = None,
         invitor_id: Annotated[
             Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
@@ -947,7 +945,7 @@ class InvitationsApi:
 
         :param status: Filter invitations by status.
         :type status: InvitationStatus
-        :param email: Prefix matched search string on email.
+        :param email: Substring matched search string on email.
         :type email: str
         :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str

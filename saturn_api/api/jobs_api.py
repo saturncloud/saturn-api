@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -4475,7 +4473,13 @@ class JobsApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on job name.")
+            Optional[StrictStr], Field(description="Substring matched search string on job name.")
+        ] = None,
+        tags: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter to jobs whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'."
+            ),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -4512,8 +4516,10 @@ class JobsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on job name.
+        :param name: Substring matched search string on job name.
         :type name: str
+        :param tags: Filter to jobs whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'.
+        :type tags: str
         :param prev_key: Previous page key.
         :type prev_key: str
         :param next_key: Next page key.
@@ -4552,6 +4558,7 @@ class JobsApi:
             org_id=org_id,
             owner=owner,
             name=name,
+            tags=tags,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -4595,7 +4602,13 @@ class JobsApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on job name.")
+            Optional[StrictStr], Field(description="Substring matched search string on job name.")
+        ] = None,
+        tags: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter to jobs whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'."
+            ),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -4632,8 +4645,10 @@ class JobsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on job name.
+        :param name: Substring matched search string on job name.
         :type name: str
+        :param tags: Filter to jobs whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'.
+        :type tags: str
         :param prev_key: Previous page key.
         :type prev_key: str
         :param next_key: Next page key.
@@ -4672,6 +4687,7 @@ class JobsApi:
             org_id=org_id,
             owner=owner,
             name=name,
+            tags=tags,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -4715,7 +4731,13 @@ class JobsApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on job name.")
+            Optional[StrictStr], Field(description="Substring matched search string on job name.")
+        ] = None,
+        tags: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter to jobs whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'."
+            ),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -4752,8 +4774,10 @@ class JobsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on job name.
+        :param name: Substring matched search string on job name.
         :type name: str
+        :param tags: Filter to jobs whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'.
+        :type tags: str
         :param prev_key: Previous page key.
         :type prev_key: str
         :param next_key: Next page key.
@@ -4792,6 +4816,7 @@ class JobsApi:
             org_id=org_id,
             owner=owner,
             name=name,
+            tags=tags,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -4817,6 +4842,7 @@ class JobsApi:
         org_id,
         owner,
         name,
+        tags,
         prev_key,
         next_key,
         page_size,
@@ -4867,6 +4893,10 @@ class JobsApi:
         if name is not None:
 
             _query_params.append(("name", name))
+
+        if tags is not None:
+
+            _query_params.append(("tags", tags))
 
         if prev_key is not None:
 
@@ -5202,7 +5232,7 @@ class JobsApi:
         job_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -5231,7 +5261,7 @@ class JobsApi:
 
         :param job_id: (required)
         :type job_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType
@@ -5295,7 +5325,7 @@ class JobsApi:
         job_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -5324,7 +5354,7 @@ class JobsApi:
 
         :param job_id: (required)
         :type job_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType
@@ -5388,7 +5418,7 @@ class JobsApi:
         job_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -5417,7 +5447,7 @@ class JobsApi:
 
         :param job_id: (required)
         :type job_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType

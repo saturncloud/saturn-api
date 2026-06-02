@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -745,7 +743,7 @@ class ServiceAccountEntitlementsApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on entitled service account name."),
+            Field(description="Substring matched search string on entitled service account name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -776,7 +774,7 @@ class ServiceAccountEntitlementsApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on entitled service account name.
+        :param name: Substring matched search string on entitled service account name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -848,7 +846,7 @@ class ServiceAccountEntitlementsApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on entitled service account name."),
+            Field(description="Substring matched search string on entitled service account name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -879,7 +877,7 @@ class ServiceAccountEntitlementsApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on entitled service account name.
+        :param name: Substring matched search string on entitled service account name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -951,7 +949,7 @@ class ServiceAccountEntitlementsApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on entitled service account name."),
+            Field(description="Substring matched search string on entitled service account name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -982,7 +980,7 @@ class ServiceAccountEntitlementsApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on entitled service account name.
+        :param name: Substring matched search string on entitled service account name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str

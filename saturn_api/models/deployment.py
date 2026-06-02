@@ -53,6 +53,9 @@ class Deployment(BaseModel):
     extra_packages: Optional[ExtraPackages] = Field(
         description="Addtitional packages to install on start."
     )
+    config_files: Optional[Dict[str, Dict[str, StrictStr]]] = Field(
+        default=None, description="User-defined config files written to $HOME at pod startup."
+    )
     scale: StrictInt = Field(description="Number of pod replicas.")
     start_script: Optional[StrictStr] = Field(
         default=None, description="Shell script that runs on start before the primary command."
@@ -97,6 +100,7 @@ class Deployment(BaseModel):
         "instance_size",
         "image_tag",
         "extra_packages",
+        "config_files",
         "scale",
         "start_script",
         "environment_variables",
@@ -187,6 +191,7 @@ class Deployment(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -198,6 +203,7 @@ class Deployment(BaseModel):
                 "instance_size",
                 "image_tag",
                 "extra_packages",
+                "config_files",
                 "scale",
                 "start_script",
                 "environment_variables",
@@ -250,6 +256,11 @@ class Deployment(BaseModel):
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
             _dict["extra_packages"] = None
 
+        # set to None if config_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.config_files is None and "config_files" in self.model_fields_set:
+            _dict["config_files"] = None
+
         # set to None if start_script (nullable) is None
         # and model_fields_set contains the field
         if self.start_script is None and "start_script" in self.model_fields_set:
@@ -285,6 +296,7 @@ class Deployment(BaseModel):
                     if obj.get("extra_packages") is not None
                     else None
                 ),
+                "config_files": obj.get("config_files"),
                 "scale": obj.get("scale"),
                 "start_script": obj.get("start_script"),
                 "environment_variables": obj.get("environment_variables"),

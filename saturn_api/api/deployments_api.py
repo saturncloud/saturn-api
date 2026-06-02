@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -5698,7 +5696,13 @@ class DeploymentsApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on deployment name."),
+            Field(description="Substring matched search string on deployment name."),
+        ] = None,
+        tags: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter to deployments whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'."
+            ),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -5735,8 +5739,10 @@ class DeploymentsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on deployment name.
+        :param name: Substring matched search string on deployment name.
         :type name: str
+        :param tags: Filter to deployments whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'.
+        :type tags: str
         :param prev_key: Previous page key.
         :type prev_key: str
         :param next_key: Next page key.
@@ -5775,6 +5781,7 @@ class DeploymentsApi:
             org_id=org_id,
             owner=owner,
             name=name,
+            tags=tags,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -5819,7 +5826,13 @@ class DeploymentsApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on deployment name."),
+            Field(description="Substring matched search string on deployment name."),
+        ] = None,
+        tags: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter to deployments whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'."
+            ),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -5856,8 +5869,10 @@ class DeploymentsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on deployment name.
+        :param name: Substring matched search string on deployment name.
         :type name: str
+        :param tags: Filter to deployments whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'.
+        :type tags: str
         :param prev_key: Previous page key.
         :type prev_key: str
         :param next_key: Next page key.
@@ -5896,6 +5911,7 @@ class DeploymentsApi:
             org_id=org_id,
             owner=owner,
             name=name,
+            tags=tags,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -5940,7 +5956,13 @@ class DeploymentsApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on deployment name."),
+            Field(description="Substring matched search string on deployment name."),
+        ] = None,
+        tags: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter to deployments whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'."
+            ),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -5977,8 +5999,10 @@ class DeploymentsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on deployment name.
+        :param name: Substring matched search string on deployment name.
         :type name: str
+        :param tags: Filter to deployments whose tags contain the given 'key:value' pair, e.g. 'saturn.io/kind:finetune'.
+        :type tags: str
         :param prev_key: Previous page key.
         :type prev_key: str
         :param next_key: Next page key.
@@ -6017,6 +6041,7 @@ class DeploymentsApi:
             org_id=org_id,
             owner=owner,
             name=name,
+            tags=tags,
             prev_key=prev_key,
             next_key=next_key,
             page_size=page_size,
@@ -6042,6 +6067,7 @@ class DeploymentsApi:
         org_id,
         owner,
         name,
+        tags,
         prev_key,
         next_key,
         page_size,
@@ -6093,6 +6119,10 @@ class DeploymentsApi:
 
             _query_params.append(("name", name))
 
+        if tags is not None:
+
+            _query_params.append(("tags", tags))
+
         if prev_key is not None:
 
             _query_params.append(("prev_key", prev_key))
@@ -6141,7 +6171,7 @@ class DeploymentsApi:
         deployment_id: StrictStr,
         subdomain: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on route subdomain."),
+            Field(description="Substring matched search string on route subdomain."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6168,7 +6198,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param subdomain: Prefix matched search string on route subdomain.
+        :param subdomain: Substring matched search string on route subdomain.
         :type subdomain: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6229,7 +6259,7 @@ class DeploymentsApi:
         deployment_id: StrictStr,
         subdomain: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on route subdomain."),
+            Field(description="Substring matched search string on route subdomain."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6256,7 +6286,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param subdomain: Prefix matched search string on route subdomain.
+        :param subdomain: Substring matched search string on route subdomain.
         :type subdomain: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6317,7 +6347,7 @@ class DeploymentsApi:
         deployment_id: StrictStr,
         subdomain: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on route subdomain."),
+            Field(description="Substring matched search string on route subdomain."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6344,7 +6374,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param subdomain: Prefix matched search string on route subdomain.
+        :param subdomain: Substring matched search string on route subdomain.
         :type subdomain: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6476,7 +6506,7 @@ class DeploymentsApi:
         deployment_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -6505,7 +6535,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType
@@ -6569,7 +6599,7 @@ class DeploymentsApi:
         deployment_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -6598,7 +6628,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType
@@ -6662,7 +6692,7 @@ class DeploymentsApi:
         deployment_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -6691,7 +6721,7 @@ class DeploymentsApi:
 
         :param deployment_id: (required)
         :type deployment_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType

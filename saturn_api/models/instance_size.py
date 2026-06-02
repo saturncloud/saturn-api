@@ -18,7 +18,14 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set, Union
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    StrictBool,
+    StrictFloat,
+    StrictInt,
+    StrictStr,
+)
 from typing_extensions import Self
 
 from saturn_api.models.hardware_type import HardwareType
@@ -40,6 +47,8 @@ class InstanceSize(BaseModel):
     display_name: StrictStr
     price_per_hour: Optional[Union[StrictFloat, StrictInt]] = None
     description: Optional[StrictStr] = ""
+    disabled: Optional[StrictBool] = False
+    disabled_message: Optional[StrictStr] = ""
     __properties: ClassVar[List[str]] = [
         "name",
         "cores",
@@ -52,6 +61,8 @@ class InstanceSize(BaseModel):
         "display_name",
         "price_per_hour",
         "description",
+        "disabled",
+        "disabled_message",
     ]
 
     model_config = ConfigDict(
@@ -130,6 +141,10 @@ class InstanceSize(BaseModel):
                 "display_name": obj.get("display_name"),
                 "price_per_hour": obj.get("price_per_hour"),
                 "description": obj.get("description") if obj.get("description") is not None else "",
+                "disabled": obj.get("disabled") if obj.get("disabled") is not None else False,
+                "disabled_message": (
+                    obj.get("disabled_message") if obj.get("disabled_message") is not None else ""
+                ),
             }
         )
         return _obj

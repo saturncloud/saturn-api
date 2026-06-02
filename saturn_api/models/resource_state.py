@@ -18,8 +18,10 @@ import pprint
 import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
+
+from saturn_api.models.route_state import RouteState
 
 
 class ResourceState(BaseModel):
@@ -30,7 +32,27 @@ class ResourceState(BaseModel):
     id: StrictStr
     action: Optional[StrictStr] = None
     status: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "action", "status"]
+    url: Optional[StrictStr] = Field(
+        default=None, description="External URL for the primary route, if applicable."
+    )
+    ssh_url: Optional[StrictStr] = Field(
+        default=None, description="External SSH URL for the resource when SSH is enabled."
+    )
+    ssh_user: Optional[StrictStr] = Field(
+        default=None, description="SSH username for the resource when SSH is enabled."
+    )
+    routes: Optional[List[RouteState]] = Field(
+        default=None, description="External URL for each route exposed by the resource."
+    )
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "action",
+        "status",
+        "url",
+        "ssh_url",
+        "ssh_user",
+        "routes",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -64,12 +86,20 @@ class ResourceState(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
                 "id",
                 "action",
                 "status",
+                "url",
+                "ssh_url",
+                "ssh_user",
+                "routes",
             ]
         )
 
@@ -78,6 +108,28 @@ class ResourceState(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in routes (list)
+        _items = []
+        if self.routes:
+            for _item_routes in self.routes:
+                if _item_routes:
+                    _items.append(_item_routes.to_dict())
+            _dict["routes"] = _items
+        # set to None if url (nullable) is None
+        # and model_fields_set contains the field
+        if self.url is None and "url" in self.model_fields_set:
+            _dict["url"] = None
+
+        # set to None if ssh_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.ssh_url is None and "ssh_url" in self.model_fields_set:
+            _dict["ssh_url"] = None
+
+        # set to None if ssh_user (nullable) is None
+        # and model_fields_set contains the field
+        if self.ssh_user is None and "ssh_user" in self.model_fields_set:
+            _dict["ssh_user"] = None
+
         return _dict
 
     @classmethod
@@ -90,6 +142,18 @@ class ResourceState(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {"id": obj.get("id"), "action": obj.get("action"), "status": obj.get("status")}
+            {
+                "id": obj.get("id"),
+                "action": obj.get("action"),
+                "status": obj.get("status"),
+                "url": obj.get("url"),
+                "ssh_url": obj.get("ssh_url"),
+                "ssh_user": obj.get("ssh_user"),
+                "routes": (
+                    [RouteState.from_dict(_item) for _item in obj["routes"]]
+                    if obj.get("routes") is not None
+                    else None
+                ),
+            }
         )
         return _obj

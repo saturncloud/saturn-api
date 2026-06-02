@@ -21,6 +21,7 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Annotated, Self
 
+from saturn_api.models.config_file_entry import ConfigFileEntry
 from saturn_api.models.cron_schedule_create import CronScheduleCreate
 from saturn_api.models.external_repo_attachment_nested import (
     ExternalRepoAttachmentNested,
@@ -59,6 +60,10 @@ class JobCreate(BaseModel):
     extra_packages: Optional[ExtraPackages] = Field(
         default=None, description="Addtitional packages to install on start."
     )
+    config_files: Optional[Dict[str, ConfigFileEntry]] = Field(
+        default=None,
+        description="User-defined config files written to $HOME at pod startup. Keys are relative paths; values contain content and mode.",
+    )
     start_script: Optional[StrictStr] = Field(
         default=None, description="Shell script to run on start before the primary command."
     )
@@ -75,6 +80,9 @@ class JobCreate(BaseModel):
     scale: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(
         default=1, description="Number of pod replicas."
     )
+    retries: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+        default=0, description="Maximum number of retries for a failed job."
+    )
     cron_schedule_options: Optional[CronScheduleCreate] = Field(
         default=None, description="Cron schedule configuration for scheduled jobs."
     )
@@ -90,12 +98,14 @@ class JobCreate(BaseModel):
         "environment_variables",
         "external_repo_attachments",
         "extra_packages",
+        "config_files",
         "start_script",
         "working_dir",
         "is_spot",
         "start_dind",
         "command",
         "scale",
+        "retries",
         "cron_schedule_options",
     ]
 
@@ -149,6 +159,13 @@ class JobCreate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of extra_packages
         if self.extra_packages:
             _dict["extra_packages"] = self.extra_packages.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each value in config_files (dict)
+        _field_dict = {}
+        if self.config_files:
+            for _key_config_files in self.config_files:
+                if self.config_files[_key_config_files]:
+                    _field_dict[_key_config_files] = self.config_files[_key_config_files].to_dict()
+            _dict["config_files"] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of cron_schedule_options
         if self.cron_schedule_options:
             _dict["cron_schedule_options"] = self.cron_schedule_options.to_dict()
@@ -174,6 +191,11 @@ class JobCreate(BaseModel):
         # and model_fields_set contains the field
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
             _dict["extra_packages"] = None
+
+        # set to None if config_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.config_files is None and "config_files" in self.model_fields_set:
+            _dict["config_files"] = None
 
         # set to None if start_script (nullable) is None
         # and model_fields_set contains the field
@@ -226,6 +248,14 @@ class JobCreate(BaseModel):
                     if obj.get("extra_packages") is not None
                     else None
                 ),
+                "config_files": (
+                    dict(
+                        (_k, ConfigFileEntry.from_dict(_v))
+                        for _k, _v in obj["config_files"].items()
+                    )
+                    if obj.get("config_files") is not None
+                    else None
+                ),
                 "start_script": obj.get("start_script"),
                 "working_dir": (
                     obj.get("working_dir")
@@ -236,6 +266,7 @@ class JobCreate(BaseModel):
                 "start_dind": obj.get("start_dind") if obj.get("start_dind") is not None else False,
                 "command": obj.get("command"),
                 "scale": obj.get("scale") if obj.get("scale") is not None else 1,
+                "retries": obj.get("retries") if obj.get("retries") is not None else 0,
                 "cron_schedule_options": (
                     CronScheduleCreate.from_dict(obj["cron_schedule_options"])
                     if obj.get("cron_schedule_options") is not None

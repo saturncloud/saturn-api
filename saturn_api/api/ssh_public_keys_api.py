@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -742,7 +740,7 @@ class SshPublicKeysApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on SSH public key name."),
+            Field(description="Substring matched search string on SSH public key name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -773,7 +771,7 @@ class SshPublicKeysApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on SSH public key name.
+        :param name: Substring matched search string on SSH public key name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -845,7 +843,7 @@ class SshPublicKeysApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on SSH public key name."),
+            Field(description="Substring matched search string on SSH public key name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -876,7 +874,7 @@ class SshPublicKeysApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on SSH public key name.
+        :param name: Substring matched search string on SSH public key name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -948,7 +946,7 @@ class SshPublicKeysApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on SSH public key name."),
+            Field(description="Substring matched search string on SSH public key name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -979,7 +977,7 @@ class SshPublicKeysApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on SSH public key name.
+        :param name: Substring matched search string on SSH public key name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str

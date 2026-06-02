@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -724,7 +722,7 @@ class ServiceAccountsApi:
         self,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on service account name."),
+            Field(description="Substring matched search string on service account name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -749,7 +747,7 @@ class ServiceAccountsApi:
 
         Paginated list of service accounts.
 
-        :param name: Prefix matched search string on service account name.
+        :param name: Substring matched search string on service account name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -808,7 +806,7 @@ class ServiceAccountsApi:
         self,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on service account name."),
+            Field(description="Substring matched search string on service account name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -833,7 +831,7 @@ class ServiceAccountsApi:
 
         Paginated list of service accounts.
 
-        :param name: Prefix matched search string on service account name.
+        :param name: Substring matched search string on service account name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -892,7 +890,7 @@ class ServiceAccountsApi:
         self,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on service account name."),
+            Field(description="Substring matched search string on service account name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -917,7 +915,7 @@ class ServiceAccountsApi:
 
         Paginated list of service accounts.
 
-        :param name: Prefix matched search string on service account name.
+        :param name: Substring matched search string on service account name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str

@@ -286,7 +286,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
     org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
     owner = 'owner_example' # str | Reference owner by name. (optional)
-    remote_url = 'remote_url_example' # str | Prefix matched search string on repository remote URL. (optional)
+    remote_url = 'remote_url_example' # str | Substring matched search string on repository remote URL. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
     page_size = 100 # int | Page size. (optional) (default to 100)
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
  **group_id** | **str**| Reference owner by group ID. | [optional] 
  **org_id** | **str**| Reference owner by org ID. | [optional] 
  **owner** | **str**| Reference owner by name. | [optional] 
- **remote_url** | **str**| Prefix matched search string on repository remote URL. | [optional] 
+ **remote_url** | **str**| Substring matched search string on repository remote URL. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
  **page_size** | **int**| Page size. | [optional] [default to 100]

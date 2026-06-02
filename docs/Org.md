@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **website_url** | **str** | Website URL of the org. | [readonly] 
 **logo_image_url** | **str** | Logo of the org. | [readonly] 
 **limits_id** | **str** | Usage limits ID applied to the entire org. | [readonly] 
+**limits** | [**UsageLimits**](UsageLimits.md) | Usage limits applied to the entire org, if set. | [optional] [readonly] 
 **is_primary** | **bool** | Primary org for the account. | [readonly] 
 **locked** | **bool** | Locked orgs have restricted access to the API. | [readonly] 
 **locked_reason** | **str** | Reason for the org being locked. | [readonly] 

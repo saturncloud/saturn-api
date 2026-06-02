@@ -282,8 +282,8 @@ configuration = saturn_api.Configuration(
 async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.UsersApi(api_client)
-    username = 'username_example' # str | Prefix matched search string on user name. (optional)
-    email = 'email_example' # str | Prefix matched search string on user email. (optional)
+    username = 'username_example' # str | Substring matched search string on user name. (optional)
+    email = 'email_example' # str | Substring matched search string on user email. (optional)
     details = False # bool | Retrieve detailed user data. (Admin only) (optional) (default to False)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -306,8 +306,8 @@ async with saturn_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| Prefix matched search string on user name. | [optional] 
- **email** | **str**| Prefix matched search string on user email. | [optional] 
+ **username** | **str**| Substring matched search string on user name. | [optional] 
+ **email** | **str**| Substring matched search string on user email. | [optional] 
  **details** | **bool**| Retrieve detailed user data. (Admin only) | [optional] [default to False]
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 

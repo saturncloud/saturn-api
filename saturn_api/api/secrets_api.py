@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -751,7 +749,8 @@ class SecretsApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on secret name.")
+            Optional[StrictStr],
+            Field(description="Substring matched search string on secret name."),
         ] = None,
         access: Annotated[
             Optional[SecretAccessLevel], Field(description="Filter secrets by access level.")
@@ -791,7 +790,7 @@ class SecretsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on secret name.
+        :param name: Substring matched search string on secret name.
         :type name: str
         :param access: Filter secrets by access level.
         :type access: SecretAccessLevel
@@ -877,7 +876,8 @@ class SecretsApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on secret name.")
+            Optional[StrictStr],
+            Field(description="Substring matched search string on secret name."),
         ] = None,
         access: Annotated[
             Optional[SecretAccessLevel], Field(description="Filter secrets by access level.")
@@ -917,7 +917,7 @@ class SecretsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on secret name.
+        :param name: Substring matched search string on secret name.
         :type name: str
         :param access: Filter secrets by access level.
         :type access: SecretAccessLevel
@@ -1003,7 +1003,8 @@ class SecretsApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on secret name.")
+            Optional[StrictStr],
+            Field(description="Substring matched search string on secret name."),
         ] = None,
         access: Annotated[
             Optional[SecretAccessLevel], Field(description="Filter secrets by access level.")
@@ -1043,7 +1044,7 @@ class SecretsApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on secret name.
+        :param name: Substring matched search string on secret name.
         :type name: str
         :param access: Filter secrets by access level.
         :type access: SecretAccessLevel

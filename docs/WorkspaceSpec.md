@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **environment_variables** | **Dict[str, str]** |  | [optional] 
 **working_directory** | **str** |  | [optional] 
 **extra_packages** | [**ExtraPackagesRecipe**](ExtraPackagesRecipe.md) |  | [optional] 
+**config_files** | [**Dict[str, ConfigFileEntry]**](ConfigFileEntry.md) |  | [optional] 
 **start_script** | **str** |  | [optional] 
 **token_scope** | **str** |  | [optional] 
 **dask_cluster** | [**DaskClusterAttachment**](DaskClusterAttachment.md) |  | [optional] 

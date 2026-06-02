@@ -28,6 +28,7 @@ from pydantic import (
 )
 from typing_extensions import Annotated, Self
 
+from saturn_api.models.config_file_entry import ConfigFileEntry
 from saturn_api.models.dask_cluster_attachment import DaskClusterAttachment
 from saturn_api.models.deployment_route_recipe import DeploymentRouteRecipe
 from saturn_api.models.external_repo_attachment_recipe import (
@@ -57,6 +58,7 @@ class DeploymentSpec(BaseModel):
     environment_variables: Optional[Dict[str, StrictStr]] = None
     working_directory: Optional[StrictStr] = None
     extra_packages: Optional[ExtraPackagesRecipe] = None
+    config_files: Optional[Dict[str, ConfigFileEntry]] = None
     start_script: Optional[StrictStr] = None
     token_scope: Optional[StrictStr] = None
     dask_cluster: Optional[DaskClusterAttachment] = None
@@ -81,6 +83,7 @@ class DeploymentSpec(BaseModel):
         "environment_variables",
         "working_directory",
         "extra_packages",
+        "config_files",
         "start_script",
         "token_scope",
         "dask_cluster",
@@ -153,6 +156,13 @@ class DeploymentSpec(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of extra_packages
         if self.extra_packages:
             _dict["extra_packages"] = self.extra_packages.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each value in config_files (dict)
+        _field_dict = {}
+        if self.config_files:
+            for _key_config_files in self.config_files:
+                if self.config_files[_key_config_files]:
+                    _field_dict[_key_config_files] = self.config_files[_key_config_files].to_dict()
+            _dict["config_files"] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of dask_cluster
         if self.dask_cluster:
             _dict["dask_cluster"] = self.dask_cluster.to_dict()
@@ -195,6 +205,11 @@ class DeploymentSpec(BaseModel):
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
             _dict["tags"] = None
+
+        # set to None if config_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.config_files is None and "config_files" in self.model_fields_set:
+            _dict["config_files"] = None
 
         # set to None if start_script (nullable) is None
         # and model_fields_set contains the field
@@ -241,6 +256,14 @@ class DeploymentSpec(BaseModel):
                 "extra_packages": (
                     ExtraPackagesRecipe.from_dict(obj["extra_packages"])
                     if obj.get("extra_packages") is not None
+                    else None
+                ),
+                "config_files": (
+                    dict(
+                        (_k, ConfigFileEntry.from_dict(_v))
+                        for _k, _v in obj["config_files"].items()
+                    )
+                    if obj.get("config_files") is not None
                     else None
                 ),
                 "start_script": obj.get("start_script"),

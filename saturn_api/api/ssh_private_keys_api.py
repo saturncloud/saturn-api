@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -742,7 +740,7 @@ class SshPrivateKeysApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on SSH private key name."),
+            Field(description="Substring matched search string on SSH private key name."),
         ] = None,
         is_default: Annotated[
             Optional[StrictBool], Field(description="Filter SSH private keys by is_default.")
@@ -776,7 +774,7 @@ class SshPrivateKeysApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on SSH private key name.
+        :param name: Substring matched search string on SSH private key name.
         :type name: str
         :param is_default: Filter SSH private keys by is_default.
         :type is_default: bool
@@ -851,7 +849,7 @@ class SshPrivateKeysApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on SSH private key name."),
+            Field(description="Substring matched search string on SSH private key name."),
         ] = None,
         is_default: Annotated[
             Optional[StrictBool], Field(description="Filter SSH private keys by is_default.")
@@ -885,7 +883,7 @@ class SshPrivateKeysApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on SSH private key name.
+        :param name: Substring matched search string on SSH private key name.
         :type name: str
         :param is_default: Filter SSH private keys by is_default.
         :type is_default: bool
@@ -960,7 +958,7 @@ class SshPrivateKeysApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on SSH private key name."),
+            Field(description="Substring matched search string on SSH private key name."),
         ] = None,
         is_default: Annotated[
             Optional[StrictBool], Field(description="Filter SSH private keys by is_default.")
@@ -994,7 +992,7 @@ class SshPrivateKeysApi:
         :type group_id: str
         :param identity: Identity reference by name
         :type identity: str
-        :param name: Prefix matched search string on SSH private key name.
+        :param name: Substring matched search string on SSH private key name.
         :type name: str
         :param is_default: Filter SSH private keys by is_default.
         :type is_default: bool

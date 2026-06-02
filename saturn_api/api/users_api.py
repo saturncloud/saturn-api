@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -747,10 +745,10 @@ class UsersApi:
     async def list(
         self,
         username: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on user name.")
+            Optional[StrictStr], Field(description="Substring matched search string on user name.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on user email.")
+            Optional[StrictStr], Field(description="Substring matched search string on user email.")
         ] = None,
         details: Annotated[
             Optional[StrictBool], Field(description="Retrieve detailed user data. (Admin only)")
@@ -778,9 +776,9 @@ class UsersApi:
 
         Paginated list of users.
 
-        :param username: Prefix matched search string on user name.
+        :param username: Substring matched search string on user name.
         :type username: str
-        :param email: Prefix matched search string on user email.
+        :param email: Substring matched search string on user email.
         :type email: str
         :param details: Retrieve detailed user data. (Admin only)
         :type details: bool
@@ -842,10 +840,10 @@ class UsersApi:
     async def list_with_http_info(
         self,
         username: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on user name.")
+            Optional[StrictStr], Field(description="Substring matched search string on user name.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on user email.")
+            Optional[StrictStr], Field(description="Substring matched search string on user email.")
         ] = None,
         details: Annotated[
             Optional[StrictBool], Field(description="Retrieve detailed user data. (Admin only)")
@@ -873,9 +871,9 @@ class UsersApi:
 
         Paginated list of users.
 
-        :param username: Prefix matched search string on user name.
+        :param username: Substring matched search string on user name.
         :type username: str
-        :param email: Prefix matched search string on user email.
+        :param email: Substring matched search string on user email.
         :type email: str
         :param details: Retrieve detailed user data. (Admin only)
         :type details: bool
@@ -937,10 +935,10 @@ class UsersApi:
     async def list_without_preload_content(
         self,
         username: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on user name.")
+            Optional[StrictStr], Field(description="Substring matched search string on user name.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on user email.")
+            Optional[StrictStr], Field(description="Substring matched search string on user email.")
         ] = None,
         details: Annotated[
             Optional[StrictBool], Field(description="Retrieve detailed user data. (Admin only)")
@@ -968,9 +966,9 @@ class UsersApi:
 
         Paginated list of users.
 
-        :param username: Prefix matched search string on user name.
+        :param username: Substring matched search string on user name.
         :type username: str
-        :param email: Prefix matched search string on user email.
+        :param email: Substring matched search string on user email.
         :type email: str
         :param details: Retrieve detailed user data. (Admin only)
         :type details: bool

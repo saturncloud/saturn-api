@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -3930,7 +3928,7 @@ class OrgsApi:
     async def list(
         self,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on org name.")
+            Optional[StrictStr], Field(description="Substring matched search string on org name.")
         ] = None,
         all_orgs: Annotated[
             Optional[StrictBool],
@@ -3961,7 +3959,7 @@ class OrgsApi:
 
         Paginated list of orgs.
 
-        :param name: Prefix matched search string on org name.
+        :param name: Substring matched search string on org name.
         :type name: str
         :param all_orgs: List all orgs, instead of only orgs the user is a member of. (Admin only)
         :type all_orgs: bool
@@ -4022,7 +4020,7 @@ class OrgsApi:
     async def list_with_http_info(
         self,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on org name.")
+            Optional[StrictStr], Field(description="Substring matched search string on org name.")
         ] = None,
         all_orgs: Annotated[
             Optional[StrictBool],
@@ -4053,7 +4051,7 @@ class OrgsApi:
 
         Paginated list of orgs.
 
-        :param name: Prefix matched search string on org name.
+        :param name: Substring matched search string on org name.
         :type name: str
         :param all_orgs: List all orgs, instead of only orgs the user is a member of. (Admin only)
         :type all_orgs: bool
@@ -4114,7 +4112,7 @@ class OrgsApi:
     async def list_without_preload_content(
         self,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on org name.")
+            Optional[StrictStr], Field(description="Substring matched search string on org name.")
         ] = None,
         all_orgs: Annotated[
             Optional[StrictBool],
@@ -4145,7 +4143,7 @@ class OrgsApi:
 
         Paginated list of orgs.
 
-        :param name: Prefix matched search string on org name.
+        :param name: Substring matched search string on org name.
         :type name: str
         :param all_orgs: List all orgs, instead of only orgs the user is a member of. (Admin only)
         :type all_orgs: bool
@@ -4283,7 +4281,7 @@ class OrgsApi:
             Optional[InvitationStatus], Field(description="Filter org invitations by status.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+            Optional[StrictStr], Field(description="Substring matched search string on email.")
         ] = None,
         invitor_id: Annotated[
             Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
@@ -4314,7 +4312,7 @@ class OrgsApi:
         :type org_id: str
         :param status: Filter org invitations by status.
         :type status: InvitationStatus
-        :param email: Prefix matched search string on email.
+        :param email: Substring matched search string on email.
         :type email: str
         :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
@@ -4381,7 +4379,7 @@ class OrgsApi:
             Optional[InvitationStatus], Field(description="Filter org invitations by status.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+            Optional[StrictStr], Field(description="Substring matched search string on email.")
         ] = None,
         invitor_id: Annotated[
             Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
@@ -4412,7 +4410,7 @@ class OrgsApi:
         :type org_id: str
         :param status: Filter org invitations by status.
         :type status: InvitationStatus
-        :param email: Prefix matched search string on email.
+        :param email: Substring matched search string on email.
         :type email: str
         :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
@@ -4479,7 +4477,7 @@ class OrgsApi:
             Optional[InvitationStatus], Field(description="Filter org invitations by status.")
         ] = None,
         email: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on email.")
+            Optional[StrictStr], Field(description="Substring matched search string on email.")
         ] = None,
         invitor_id: Annotated[
             Optional[StrictStr], Field(description="Filter invitations by invitor user ID.")
@@ -4510,7 +4508,7 @@ class OrgsApi:
         :type org_id: str
         :param status: Filter org invitations by status.
         :type status: InvitationStatus
-        :param email: Prefix matched search string on email.
+        :param email: Substring matched search string on email.
         :type email: str
         :param invitor_id: Filter invitations by invitor user ID.
         :type invitor_id: str
@@ -4656,7 +4654,7 @@ class OrgsApi:
         org_id: StrictStr,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string by owner identity name."),
+            Field(description="Substring matched search string by owner identity name."),
         ] = None,
         identity_type: Annotated[
             Optional[IdentityType], Field(description="Filter owners by identity type.")
@@ -4699,7 +4697,7 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param name: Prefix matched search string by owner identity name.
+        :param name: Substring matched search string by owner identity name.
         :type name: str
         :param identity_type: Filter owners by identity type.
         :type identity_type: IdentityType
@@ -4772,7 +4770,7 @@ class OrgsApi:
         org_id: StrictStr,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string by owner identity name."),
+            Field(description="Substring matched search string by owner identity name."),
         ] = None,
         identity_type: Annotated[
             Optional[IdentityType], Field(description="Filter owners by identity type.")
@@ -4815,7 +4813,7 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param name: Prefix matched search string by owner identity name.
+        :param name: Substring matched search string by owner identity name.
         :type name: str
         :param identity_type: Filter owners by identity type.
         :type identity_type: IdentityType
@@ -4888,7 +4886,7 @@ class OrgsApi:
         org_id: StrictStr,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string by owner identity name."),
+            Field(description="Substring matched search string by owner identity name."),
         ] = None,
         identity_type: Annotated[
             Optional[IdentityType], Field(description="Filter owners by identity type.")
@@ -4931,7 +4929,7 @@ class OrgsApi:
 
         :param org_id: (required)
         :type org_id: str
-        :param name: Prefix matched search string by owner identity name.
+        :param name: Substring matched search string by owner identity name.
         :type name: str
         :param identity_type: Filter owners by identity type.
         :type identity_type: IdentityType

@@ -10,6 +10,7 @@ update: copy-client-yaml generate format
 .PHONY: generate
 generate:
 	openapi-generator-cli generate -g python -i client.yaml -c openapi-generator-config.yaml --remove-operation-id-prefix -t templates/python
+	@sed -i 's/^httpx = ">= \(.*\)"$$/httpx >= \1/' requirements.txt
 
 .PHONY: format
 format:

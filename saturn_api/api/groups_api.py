@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -1478,7 +1476,7 @@ class GroupsApi:
     async def list(
         self,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on group name.")
+            Optional[StrictStr], Field(description="Substring matched search string on group name.")
         ] = None,
         org_id: Annotated[
             Optional[StrictStr],
@@ -1515,7 +1513,7 @@ class GroupsApi:
 
         Paginated list of groups.
 
-        :param name: Prefix matched search string on group name.
+        :param name: Substring matched search string on group name.
         :type name: str
         :param org_id: Org ID to query for groups. Defaults to the default org for the authenticated user.
         :type org_id: str
@@ -1579,7 +1577,7 @@ class GroupsApi:
     async def list_with_http_info(
         self,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on group name.")
+            Optional[StrictStr], Field(description="Substring matched search string on group name.")
         ] = None,
         org_id: Annotated[
             Optional[StrictStr],
@@ -1616,7 +1614,7 @@ class GroupsApi:
 
         Paginated list of groups.
 
-        :param name: Prefix matched search string on group name.
+        :param name: Substring matched search string on group name.
         :type name: str
         :param org_id: Org ID to query for groups. Defaults to the default org for the authenticated user.
         :type org_id: str
@@ -1680,7 +1678,7 @@ class GroupsApi:
     async def list_without_preload_content(
         self,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on group name.")
+            Optional[StrictStr], Field(description="Substring matched search string on group name.")
         ] = None,
         org_id: Annotated[
             Optional[StrictStr],
@@ -1717,7 +1715,7 @@ class GroupsApi:
 
         Paginated list of groups.
 
-        :param name: Prefix matched search string on group name.
+        :param name: Substring matched search string on group name.
         :type name: str
         :param org_id: Org ID to query for groups. Defaults to the default org for the authenticated user.
         :type org_id: str
@@ -1861,7 +1859,7 @@ class GroupsApi:
         group_id: StrictStr,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on group member username."),
+            Field(description="Substring matched search string on group member username."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -1887,7 +1885,7 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param name: Prefix matched search string on group member username.
+        :param name: Substring matched search string on group member username.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -1948,7 +1946,7 @@ class GroupsApi:
         group_id: StrictStr,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on group member username."),
+            Field(description="Substring matched search string on group member username."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -1974,7 +1972,7 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param name: Prefix matched search string on group member username.
+        :param name: Substring matched search string on group member username.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -2035,7 +2033,7 @@ class GroupsApi:
         group_id: StrictStr,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on group member username."),
+            Field(description="Substring matched search string on group member username."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -2061,7 +2059,7 @@ class GroupsApi:
 
         :param group_id: (required)
         :type group_id: str
-        :param name: Prefix matched search string on group member username.
+        :param name: Substring matched search string on group member username.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str

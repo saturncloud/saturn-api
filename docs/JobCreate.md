@@ -16,12 +16,14 @@ Name | Type | Description | Notes
 **environment_variables** | **Dict[str, str]** | Mapping of environment variable keys to values. | [optional] 
 **external_repo_attachments** | [**List[ExternalRepoAttachmentNested]**](ExternalRepoAttachmentNested.md) | List of external repo attachments for the job. | [optional] 
 **extra_packages** | [**ExtraPackages**](ExtraPackages.md) | Addtitional packages to install on start. | [optional] 
+**config_files** | [**Dict[str, ConfigFileEntry]**](ConfigFileEntry.md) | User-defined config files written to $HOME at pod startup. Keys are relative paths; values contain content and mode. | [optional] 
 **start_script** | **str** | Shell script to run on start before the primary command. | [optional] 
 **working_dir** | **str** | Initial working directory for the job. | [optional] [default to '/home/jovyan/workspace']
 **is_spot** | **bool** | Enables running on spot instance sizes. | [optional] [default to False]
 **start_dind** | **bool** | Enables docker-in-docker. | [optional] [default to False]
 **command** | **str** | Command that runs on start. | 
 **scale** | **int** | Number of pod replicas. | [optional] [default to 1]
+**retries** | **int** | Maximum number of retries for a failed job. | [optional] [default to 0]
 **cron_schedule_options** | [**CronScheduleCreate**](CronScheduleCreate.md) | Cron schedule configuration for scheduled jobs. | [optional] 
 
 ## Example

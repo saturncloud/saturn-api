@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **git_repo_clone_dir** | **str** | Default directory to clone git repositories into. | 
 **app_serving_domain** | **str** | Root domain for deployment and workspace URLs. | 
 **dind_enabled** | **bool** | True if docker-in-docker is enabled. | 
+**token_factory_enabled_global** | **bool** | Install-wide Token Factory switch (the global Settings flag). Per-org enablement is narrowed client-side against the active owner&#39;s usage-limit flag. | 
 **apply_requires_confirm** | **bool** | True if recipe apply should be confirmed. | 
 **hide_invitations** | **bool** | True if invitations are hidden in frontend. | 
 **populate_examples** | **bool** | True if saturn examples are included. | 

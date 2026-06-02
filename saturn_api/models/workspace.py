@@ -50,6 +50,9 @@ class Workspace(BaseModel):
     extra_packages: Optional[ExtraPackages] = Field(
         description="Addtitional packages to install on start."
     )
+    config_files: Optional[Dict[str, Dict[str, StrictStr]]] = Field(
+        default=None, description="User-defined config files written to $HOME at pod startup."
+    )
     ide: StrictStr = Field(description="IDE of the workspace")
     start_script: Optional[StrictStr] = Field(
         description="Shell script that runs on start before the primary command."
@@ -94,6 +97,7 @@ class Workspace(BaseModel):
         "tags",
         "image_tag",
         "extra_packages",
+        "config_files",
         "ide",
         "start_script",
         "environment_variables",
@@ -195,6 +199,7 @@ class Workspace(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -204,6 +209,7 @@ class Workspace(BaseModel):
                 "description",
                 "image_tag",
                 "extra_packages",
+                "config_files",
                 "ide",
                 "start_script",
                 "environment_variables",
@@ -258,6 +264,11 @@ class Workspace(BaseModel):
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
             _dict["extra_packages"] = None
 
+        # set to None if config_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.config_files is None and "config_files" in self.model_fields_set:
+            _dict["config_files"] = None
+
         # set to None if start_script (nullable) is None
         # and model_fields_set contains the field
         if self.start_script is None and "start_script" in self.model_fields_set:
@@ -301,6 +312,7 @@ class Workspace(BaseModel):
                     if obj.get("extra_packages") is not None
                     else None
                 ),
+                "config_files": obj.get("config_files"),
                 "ide": obj.get("ide"),
                 "start_script": obj.get("start_script"),
                 "environment_variables": obj.get("environment_variables"),

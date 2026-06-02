@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -5923,7 +5921,7 @@ class WorkspacesApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on workspace name."),
+            Field(description="Substring matched search string on workspace name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -5960,7 +5958,7 @@ class WorkspacesApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on workspace name.
+        :param name: Substring matched search string on workspace name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6044,7 +6042,7 @@ class WorkspacesApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on workspace name."),
+            Field(description="Substring matched search string on workspace name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6081,7 +6079,7 @@ class WorkspacesApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on workspace name.
+        :param name: Substring matched search string on workspace name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6165,7 +6163,7 @@ class WorkspacesApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on workspace name."),
+            Field(description="Substring matched search string on workspace name."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6202,7 +6200,7 @@ class WorkspacesApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on workspace name.
+        :param name: Substring matched search string on workspace name.
         :type name: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6366,7 +6364,7 @@ class WorkspacesApi:
         workspace_id: StrictStr,
         subdomain: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on route subdomain."),
+            Field(description="Substring matched search string on route subdomain."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6393,7 +6391,7 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param subdomain: Prefix matched search string on route subdomain.
+        :param subdomain: Substring matched search string on route subdomain.
         :type subdomain: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6454,7 +6452,7 @@ class WorkspacesApi:
         workspace_id: StrictStr,
         subdomain: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on route subdomain."),
+            Field(description="Substring matched search string on route subdomain."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6481,7 +6479,7 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param subdomain: Prefix matched search string on route subdomain.
+        :param subdomain: Substring matched search string on route subdomain.
         :type subdomain: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6542,7 +6540,7 @@ class WorkspacesApi:
         workspace_id: StrictStr,
         subdomain: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on route subdomain."),
+            Field(description="Substring matched search string on route subdomain."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -6569,7 +6567,7 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param subdomain: Prefix matched search string on route subdomain.
+        :param subdomain: Substring matched search string on route subdomain.
         :type subdomain: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -6701,7 +6699,7 @@ class WorkspacesApi:
         workspace_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -6730,7 +6728,7 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType
@@ -6794,7 +6792,7 @@ class WorkspacesApi:
         workspace_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -6823,7 +6821,7 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType
@@ -6887,7 +6885,7 @@ class WorkspacesApi:
         workspace_id: StrictStr,
         location: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on secret attachment location."),
+            Field(description="Substring matched search string on secret attachment location."),
         ] = None,
         attachment_type: Annotated[
             Optional[SecretAttachmentType], Field(description="Filter secret attachments by type.")
@@ -6916,7 +6914,7 @@ class WorkspacesApi:
 
         :param workspace_id: (required)
         :type workspace_id: str
-        :param location: Prefix matched search string on secret attachment location.
+        :param location: Substring matched search string on secret attachment location.
         :type location: str
         :param attachment_type: Filter secret attachments by type.
         :type attachment_type: SecretAttachmentType

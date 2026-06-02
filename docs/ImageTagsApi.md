@@ -540,8 +540,8 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.ImageTagsApi(api_client)
     image_id = 'image_id_example' # str | 
-    version = 'version_example' # str | Prefix matched search string on image tag version. (optional)
-    image_uri = 'image_uri_example' # str | Prefix matched search string on image tag URI. (optional)
+    version = 'version_example' # str | Substring matched search string on image tag version. (optional)
+    image_uri = 'image_uri_example' # str | Substring matched search string on image tag URI. (optional)
     is_external = True # bool | Filter image tags by is_external. (optional)
     archived = True # bool | Filter images tags by archived. (optional)
     status = saturn_api.ImageBuildStatus() # ImageBuildStatus | Filter image tags by build status. (optional)
@@ -567,8 +567,8 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_id** | **str**|  | 
- **version** | **str**| Prefix matched search string on image tag version. | [optional] 
- **image_uri** | **str**| Prefix matched search string on image tag URI. | [optional] 
+ **version** | **str**| Substring matched search string on image tag version. | [optional] 
+ **image_uri** | **str**| Substring matched search string on image tag URI. | [optional] 
  **is_external** | **bool**| Filter image tags by is_external. | [optional] 
  **archived** | **bool**| Filter images tags by archived. | [optional] 
  **status** | [**ImageBuildStatus**](.md)| Filter image tags by build status. | [optional] 

@@ -53,6 +53,9 @@ class AppInfo(BaseModel):
         description="Root domain for deployment and workspace URLs."
     )
     dind_enabled: StrictBool = Field(description="True if docker-in-docker is enabled.")
+    token_factory_enabled_global: StrictBool = Field(
+        description="Install-wide Token Factory switch (the global Settings flag). Per-org enablement is narrowed client-side against the active owner's usage-limit flag."
+    )
     apply_requires_confirm: StrictBool = Field(
         description="True if recipe apply should be confirmed."
     )
@@ -79,6 +82,7 @@ class AppInfo(BaseModel):
         "git_repo_clone_dir",
         "app_serving_domain",
         "dind_enabled",
+        "token_factory_enabled_global",
         "apply_requires_confirm",
         "hide_invitations",
         "populate_examples",
@@ -163,6 +167,7 @@ class AppInfo(BaseModel):
                 "git_repo_clone_dir": obj.get("git_repo_clone_dir"),
                 "app_serving_domain": obj.get("app_serving_domain"),
                 "dind_enabled": obj.get("dind_enabled"),
+                "token_factory_enabled_global": obj.get("token_factory_enabled_global"),
                 "apply_requires_confirm": obj.get("apply_requires_confirm"),
                 "hide_invitations": obj.get("hide_invitations"),
                 "populate_examples": obj.get("populate_examples"),

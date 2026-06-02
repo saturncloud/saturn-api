@@ -28,6 +28,7 @@ from pydantic import (
 )
 from typing_extensions import Annotated, Self
 
+from saturn_api.models.config_file_entry import ConfigFileEntry
 from saturn_api.models.external_repo_attachment_nested import (
     ExternalRepoAttachmentNested,
 )
@@ -59,6 +60,10 @@ class WorkspaceUpdate(BaseModel):
     )
     extra_packages: Optional[ExtraPackages] = Field(
         default=None, description="Addtitional packages to install on start."
+    )
+    config_files: Optional[Dict[str, ConfigFileEntry]] = Field(
+        default=None,
+        description="User-defined config files written to $HOME at pod startup. Keys are relative paths; values contain content and mode.",
     )
     start_script: Optional[StrictStr] = Field(
         default=None, description="Shell script that runs on start before the primary command."
@@ -93,6 +98,7 @@ class WorkspaceUpdate(BaseModel):
         "environment_variables",
         "external_repo_attachments",
         "extra_packages",
+        "config_files",
         "start_script",
         "working_dir",
         "instance_size",
@@ -163,6 +169,13 @@ class WorkspaceUpdate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of extra_packages
         if self.extra_packages:
             _dict["extra_packages"] = self.extra_packages.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each value in config_files (dict)
+        _field_dict = {}
+        if self.config_files:
+            for _key_config_files in self.config_files:
+                if self.config_files[_key_config_files]:
+                    _field_dict[_key_config_files] = self.config_files[_key_config_files].to_dict()
+            _dict["config_files"] = _field_dict
         # set to None if tags (nullable) is None
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
@@ -172,6 +185,11 @@ class WorkspaceUpdate(BaseModel):
         # and model_fields_set contains the field
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
             _dict["extra_packages"] = None
+
+        # set to None if config_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.config_files is None and "config_files" in self.model_fields_set:
+            _dict["config_files"] = None
 
         # set to None if start_script (nullable) is None
         # and model_fields_set contains the field
@@ -218,6 +236,14 @@ class WorkspaceUpdate(BaseModel):
                 "extra_packages": (
                     ExtraPackages.from_dict(obj["extra_packages"])
                     if obj.get("extra_packages") is not None
+                    else None
+                ),
+                "config_files": (
+                    dict(
+                        (_k, ConfigFileEntry.from_dict(_v))
+                        for _k, _v in obj["config_files"].items()
+                    )
+                    if obj.get("config_files") is not None
                     else None
                 ),
                 "start_script": obj.get("start_script"),

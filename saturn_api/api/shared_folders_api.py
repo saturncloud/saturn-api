@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -752,7 +750,7 @@ class SharedFoldersApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on shared folder name."),
+            Field(description="Substring matched search string on shared folder name."),
         ] = None,
         access: Annotated[
             Optional[SharedFolderAccessLevel],
@@ -793,7 +791,7 @@ class SharedFoldersApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on shared folder name.
+        :param name: Substring matched search string on shared folder name.
         :type name: str
         :param access: Filter shared folders by access level.
         :type access: SharedFolderAccessLevel
@@ -880,7 +878,7 @@ class SharedFoldersApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on shared folder name."),
+            Field(description="Substring matched search string on shared folder name."),
         ] = None,
         access: Annotated[
             Optional[SharedFolderAccessLevel],
@@ -921,7 +919,7 @@ class SharedFoldersApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on shared folder name.
+        :param name: Substring matched search string on shared folder name.
         :type name: str
         :param access: Filter shared folders by access level.
         :type access: SharedFolderAccessLevel
@@ -1008,7 +1006,7 @@ class SharedFoldersApi:
         ] = None,
         name: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on shared folder name."),
+            Field(description="Substring matched search string on shared folder name."),
         ] = None,
         access: Annotated[
             Optional[SharedFolderAccessLevel],
@@ -1049,7 +1047,7 @@ class SharedFoldersApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on shared folder name.
+        :param name: Substring matched search string on shared folder name.
         :type name: str
         :param access: Filter shared folders by access level.
         :type access: SharedFolderAccessLevel

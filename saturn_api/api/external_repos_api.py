@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -751,7 +749,7 @@ class ExternalReposApi:
         ] = None,
         remote_url: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on repository remote URL."),
+            Field(description="Substring matched search string on repository remote URL."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -788,7 +786,7 @@ class ExternalReposApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param remote_url: Prefix matched search string on repository remote URL.
+        :param remote_url: Substring matched search string on repository remote URL.
         :type remote_url: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -872,7 +870,7 @@ class ExternalReposApi:
         ] = None,
         remote_url: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on repository remote URL."),
+            Field(description="Substring matched search string on repository remote URL."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -909,7 +907,7 @@ class ExternalReposApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param remote_url: Prefix matched search string on repository remote URL.
+        :param remote_url: Substring matched search string on repository remote URL.
         :type remote_url: str
         :param prev_key: Previous page key.
         :type prev_key: str
@@ -993,7 +991,7 @@ class ExternalReposApi:
         ] = None,
         remote_url: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on repository remote URL."),
+            Field(description="Substring matched search string on repository remote URL."),
         ] = None,
         prev_key: Annotated[Optional[StrictStr], Field(description="Previous page key.")] = None,
         next_key: Annotated[Optional[StrictStr], Field(description="Next page key.")] = None,
@@ -1030,7 +1028,7 @@ class ExternalReposApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param remote_url: Prefix matched search string on repository remote URL.
+        :param remote_url: Substring matched search string on repository remote URL.
         :type remote_url: str
         :param prev_key: Previous page key.
         :type prev_key: str

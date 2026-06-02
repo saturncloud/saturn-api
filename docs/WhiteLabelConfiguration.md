@@ -8,10 +8,13 @@ Name | Type | Description | Notes
 **enabled** | **bool** | Enable whitelabel configuration. | 
 **brand_name** | **str** | Whitelabeled brand name. | 
 **brand_short_name** | **str** | Short version of the brand name. | [optional] 
+**logo_mode** | **str** | Logo display mode: &#39;icon_and_text&#39; or &#39;logo_only&#39;. | [optional] [default to 'icon_and_text']
 **logo_icon_url** | **str** | Brand icon URL. | 
 **logo_full_url** | **str** | Brand full icon URL. | 
 **favicon_url** | **str** | Favicon URL. | [optional] 
 **primary_color** | **str** | Primary frontend color. | 
+**cloud_display_names** | **Dict[str, str]** | Map of cloud provider IDs to display names (e.g. {&#39;nebius&#39;: &#39;My Cloud&#39;}). | [optional] 
+**cloud_icon_urls** | **Dict[str, str]** | Map of cloud provider IDs to icon URLs. | [optional] 
 **support_email** | **str** | Support contact email. | 
 **website_url** | **str** | Website URL. | 
 **docs_url** | **str** | Documentation URL. | [optional] 

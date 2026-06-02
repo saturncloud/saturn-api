@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **display_name** | **str** |  | 
 **price_per_hour** | **float** |  | [optional] 
 **description** | **str** |  | [optional] [default to '']
+**disabled** | **bool** |  | [optional] [default to False]
+**disabled_message** | **str** |  | [optional] [default to '']
 
 ## Example
 

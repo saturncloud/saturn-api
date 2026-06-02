@@ -21,6 +21,8 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing_extensions import Self
 
+from saturn_api.models.usage_limits import UsageLimits
+
 
 class Org(BaseModel):
     """
@@ -36,6 +38,9 @@ class Org(BaseModel):
     website_url: Optional[StrictStr] = Field(description="Website URL of the org.")
     logo_image_url: StrictStr = Field(description="Logo of the org.")
     limits_id: Optional[StrictStr] = Field(description="Usage limits ID applied to the entire org.")
+    limits: Optional[UsageLimits] = Field(
+        default=None, description="Usage limits applied to the entire org, if set."
+    )
     is_primary: StrictBool = Field(description="Primary org for the account.")
     locked: StrictBool = Field(description="Locked orgs have restricted access to the API.")
     locked_reason: StrictStr = Field(description="Reason for the org being locked.")
@@ -49,6 +54,7 @@ class Org(BaseModel):
         "website_url",
         "logo_image_url",
         "limits_id",
+        "limits",
         "is_primary",
         "locked",
         "locked_reason",
@@ -95,6 +101,7 @@ class Org(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -107,6 +114,7 @@ class Org(BaseModel):
                 "website_url",
                 "logo_image_url",
                 "limits_id",
+                "limits",
                 "is_primary",
                 "locked",
                 "locked_reason",
@@ -118,6 +126,9 @@ class Org(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of limits
+        if self.limits:
+            _dict["limits"] = self.limits.to_dict()
         # set to None if website_url (nullable) is None
         # and model_fields_set contains the field
         if self.website_url is None and "website_url" in self.model_fields_set:
@@ -127,6 +138,11 @@ class Org(BaseModel):
         # and model_fields_set contains the field
         if self.limits_id is None and "limits_id" in self.model_fields_set:
             _dict["limits_id"] = None
+
+        # set to None if limits (nullable) is None
+        # and model_fields_set contains the field
+        if self.limits is None and "limits" in self.model_fields_set:
+            _dict["limits"] = None
 
         return _dict
 
@@ -150,6 +166,9 @@ class Org(BaseModel):
                 "website_url": obj.get("website_url"),
                 "logo_image_url": obj.get("logo_image_url"),
                 "limits_id": obj.get("limits_id"),
+                "limits": (
+                    UsageLimits.from_dict(obj["limits"]) if obj.get("limits") is not None else None
+                ),
                 "is_primary": obj.get("is_primary"),
                 "locked": obj.get("locked"),
                 "locked_reason": obj.get("locked_reason"),

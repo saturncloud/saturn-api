@@ -54,6 +54,9 @@ class Job(BaseModel):
     extra_packages: Optional[ExtraPackages] = Field(
         description="Addtitional packages to install on start."
     )
+    config_files: Optional[Dict[str, Dict[str, StrictStr]]] = Field(
+        default=None, description="User-defined config files written to $HOME at pod startup."
+    )
     cron_schedule_options: Optional[CronSchedule] = Field(
         default=None, description="Cron schedule configuration for scheduled jobs."
     )
@@ -67,6 +70,7 @@ class Job(BaseModel):
     is_spot: StrictBool = Field(description="Enables running on spot instance sizes.")
     start_dind: StrictBool = Field(description="Enables docker-in-docker.")
     scale: StrictInt = Field(description="Number of pod replicas.")
+    retries: StrictInt = Field(description="Maximum number of retries for a failed job.")
     k8s_name: StrictStr = Field(description="Unique name for associated kubernetes objects.")
     require_restart: StrictBool = Field(
         description="True if an update was applied that requires restart to take effect."
@@ -93,6 +97,7 @@ class Job(BaseModel):
         "instance_size",
         "image_tag",
         "extra_packages",
+        "config_files",
         "cron_schedule_options",
         "start_script",
         "environment_variables",
@@ -100,6 +105,7 @@ class Job(BaseModel):
         "is_spot",
         "start_dind",
         "scale",
+        "retries",
         "k8s_name",
         "require_restart",
         "resource_type",
@@ -177,6 +183,8 @@ class Job(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
@@ -188,6 +196,7 @@ class Job(BaseModel):
                 "instance_size",
                 "image_tag",
                 "extra_packages",
+                "config_files",
                 "cron_schedule_options",
                 "start_script",
                 "environment_variables",
@@ -195,6 +204,7 @@ class Job(BaseModel):
                 "is_spot",
                 "start_dind",
                 "scale",
+                "retries",
                 "k8s_name",
                 "require_restart",
                 "resource_type",
@@ -240,6 +250,11 @@ class Job(BaseModel):
         if self.extra_packages is None and "extra_packages" in self.model_fields_set:
             _dict["extra_packages"] = None
 
+        # set to None if config_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.config_files is None and "config_files" in self.model_fields_set:
+            _dict["config_files"] = None
+
         # set to None if start_script (nullable) is None
         # and model_fields_set contains the field
         if self.start_script is None and "start_script" in self.model_fields_set:
@@ -275,6 +290,7 @@ class Job(BaseModel):
                     if obj.get("extra_packages") is not None
                     else None
                 ),
+                "config_files": obj.get("config_files"),
                 "cron_schedule_options": (
                     CronSchedule.from_dict(obj["cron_schedule_options"])
                     if obj.get("cron_schedule_options") is not None
@@ -286,6 +302,7 @@ class Job(BaseModel):
                 "is_spot": obj.get("is_spot"),
                 "start_dind": obj.get("start_dind"),
                 "scale": obj.get("scale"),
+                "retries": obj.get("retries"),
                 "k8s_name": obj.get("k8s_name"),
                 "require_restart": obj.get("require_restart"),
                 "resource_type": obj.get("resource_type"),

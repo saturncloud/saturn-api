@@ -287,7 +287,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
     org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
     owner = 'owner_example' # str | Reference owner by name. (optional)
-    name = 'name_example' # str | Prefix matched search string on shared folder name. (optional)
+    name = 'name_example' # str | Substring matched search string on shared folder name. (optional)
     access = saturn_api.SharedFolderAccessLevel() # SharedFolderAccessLevel | Filter shared folders by access level. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
  **group_id** | **str**| Reference owner by group ID. | [optional] 
  **org_id** | **str**| Reference owner by org ID. | [optional] 
  **owner** | **str**| Reference owner by name. | [optional] 
- **name** | **str**| Prefix matched search string on shared folder name. | [optional] 
+ **name** | **str**| Substring matched search string on shared folder name. | [optional] 
  **access** | [**SharedFolderAccessLevel**](.md)| Filter shared folders by access level. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 

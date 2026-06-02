@@ -40,6 +40,10 @@ class UsageLimitsCreate(BaseModel):
     resource_types: Optional[List[StrictStr]] = Field(
         default=None, description="Allowed resource types. Null if no limits."
     )
+    token_factory_enabled: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether Token Factory is available under this limit. Null inherits the global setting; False hard-disables it.",
+    )
     num_instances: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
         default=None, description="Maximum number of active instances. Null if no limits."
     )
@@ -73,6 +77,7 @@ class UsageLimitsCreate(BaseModel):
         "is_default",
         "instance_sizes",
         "resource_types",
+        "token_factory_enabled",
         "num_instances",
         "auto_shutoff",
         "storage_in_gb",
@@ -130,6 +135,11 @@ class UsageLimitsCreate(BaseModel):
         # and model_fields_set contains the field
         if self.resource_types is None and "resource_types" in self.model_fields_set:
             _dict["resource_types"] = None
+
+        # set to None if token_factory_enabled (nullable) is None
+        # and model_fields_set contains the field
+        if self.token_factory_enabled is None and "token_factory_enabled" in self.model_fields_set:
+            _dict["token_factory_enabled"] = None
 
         # set to None if num_instances (nullable) is None
         # and model_fields_set contains the field
@@ -194,6 +204,7 @@ class UsageLimitsCreate(BaseModel):
                 "is_default": obj.get("is_default") if obj.get("is_default") is not None else False,
                 "instance_sizes": obj.get("instance_sizes"),
                 "resource_types": obj.get("resource_types"),
+                "token_factory_enabled": obj.get("token_factory_enabled"),
                 "num_instances": obj.get("num_instances"),
                 "auto_shutoff": obj.get("auto_shutoff"),
                 "storage_in_gb": obj.get("storage_in_gb"),

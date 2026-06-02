@@ -19,7 +19,7 @@ import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Optional, Set
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing_extensions import Annotated, Self
+from typing_extensions import Self
 
 from saturn_api.models.concurrency_policy import ConcurrencyPolicy
 
@@ -33,10 +33,7 @@ class CronScheduleUpdate(BaseModel):
         default=None, description="Cron schedule for triggering the job."
     )
     concurrency_policy: Optional[ConcurrencyPolicy] = None
-    backoff_limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
-        default=None, description="Maximum number of retries for a failed job."
-    )
-    __properties: ClassVar[List[str]] = ["schedule", "concurrency_policy", "backoff_limit"]
+    __properties: ClassVar[List[str]] = ["schedule", "concurrency_policy"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,10 +84,6 @@ class CronScheduleUpdate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {
-                "schedule": obj.get("schedule"),
-                "concurrency_policy": obj.get("concurrency_policy"),
-                "backoff_limit": obj.get("backoff_limit"),
-            }
+            {"schedule": obj.get("schedule"), "concurrency_policy": obj.get("concurrency_policy")}
         )
         return _obj

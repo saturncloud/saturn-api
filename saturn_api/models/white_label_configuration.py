@@ -32,10 +32,20 @@ class WhiteLabelConfiguration(BaseModel):
     brand_short_name: Optional[StrictStr] = Field(
         default=None, description="Short version of the brand name."
     )
+    logo_mode: Optional[StrictStr] = Field(
+        default="icon_and_text", description="Logo display mode: 'icon_and_text' or 'logo_only'."
+    )
     logo_icon_url: StrictStr = Field(description="Brand icon URL.")
     logo_full_url: StrictStr = Field(description="Brand full icon URL.")
     favicon_url: Optional[StrictStr] = Field(default=None, description="Favicon URL.")
     primary_color: StrictStr = Field(description="Primary frontend color.")
+    cloud_display_names: Optional[Dict[str, StrictStr]] = Field(
+        default=None,
+        description="Map of cloud provider IDs to display names (e.g. {'nebius': 'My Cloud'}).",
+    )
+    cloud_icon_urls: Optional[Dict[str, StrictStr]] = Field(
+        default=None, description="Map of cloud provider IDs to icon URLs."
+    )
     support_email: StrictStr = Field(description="Support contact email.")
     website_url: StrictStr = Field(description="Website URL.")
     docs_url: Optional[StrictStr] = Field(default=None, description="Documentation URL.")
@@ -43,10 +53,13 @@ class WhiteLabelConfiguration(BaseModel):
         "enabled",
         "brand_name",
         "brand_short_name",
+        "logo_mode",
         "logo_icon_url",
         "logo_full_url",
         "favicon_url",
         "primary_color",
+        "cloud_display_names",
+        "cloud_icon_urls",
         "support_email",
         "website_url",
         "docs_url",
@@ -99,6 +112,16 @@ class WhiteLabelConfiguration(BaseModel):
         if self.favicon_url is None and "favicon_url" in self.model_fields_set:
             _dict["favicon_url"] = None
 
+        # set to None if cloud_display_names (nullable) is None
+        # and model_fields_set contains the field
+        if self.cloud_display_names is None and "cloud_display_names" in self.model_fields_set:
+            _dict["cloud_display_names"] = None
+
+        # set to None if cloud_icon_urls (nullable) is None
+        # and model_fields_set contains the field
+        if self.cloud_icon_urls is None and "cloud_icon_urls" in self.model_fields_set:
+            _dict["cloud_icon_urls"] = None
+
         # set to None if docs_url (nullable) is None
         # and model_fields_set contains the field
         if self.docs_url is None and "docs_url" in self.model_fields_set:
@@ -120,10 +143,15 @@ class WhiteLabelConfiguration(BaseModel):
                 "enabled": obj.get("enabled"),
                 "brand_name": obj.get("brand_name"),
                 "brand_short_name": obj.get("brand_short_name"),
+                "logo_mode": (
+                    obj.get("logo_mode") if obj.get("logo_mode") is not None else "icon_and_text"
+                ),
                 "logo_icon_url": obj.get("logo_icon_url"),
                 "logo_full_url": obj.get("logo_full_url"),
                 "favicon_url": obj.get("favicon_url"),
                 "primary_color": obj.get("primary_color"),
+                "cloud_display_names": obj.get("cloud_display_names"),
+                "cloud_icon_urls": obj.get("cloud_icon_urls"),
                 "support_email": obj.get("support_email"),
                 "website_url": obj.get("website_url"),
                 "docs_url": obj.get("docs_url"),

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -752,7 +750,7 @@ class ImagesApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on image name.")
+            Optional[StrictStr], Field(description="Substring matched search string on image name.")
         ] = None,
         access: Annotated[
             Optional[ImageAccessLevel], Field(description="Filter images by access level.")
@@ -802,7 +800,7 @@ class ImagesApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on image name.
+        :param name: Substring matched search string on image name.
         :type name: str
         :param access: Filter images by access level.
         :type access: ImageAccessLevel
@@ -897,7 +895,7 @@ class ImagesApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on image name.")
+            Optional[StrictStr], Field(description="Substring matched search string on image name.")
         ] = None,
         access: Annotated[
             Optional[ImageAccessLevel], Field(description="Filter images by access level.")
@@ -947,7 +945,7 @@ class ImagesApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on image name.
+        :param name: Substring matched search string on image name.
         :type name: str
         :param access: Filter images by access level.
         :type access: ImageAccessLevel
@@ -1042,7 +1040,7 @@ class ImagesApi:
             Field(description="Reference owner by name."),
         ] = None,
         name: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on image name.")
+            Optional[StrictStr], Field(description="Substring matched search string on image name.")
         ] = None,
         access: Annotated[
             Optional[ImageAccessLevel], Field(description="Filter images by access level.")
@@ -1092,7 +1090,7 @@ class ImagesApi:
         :type org_id: str
         :param owner: Reference owner by name.
         :type owner: str
-        :param name: Prefix matched search string on image name.
+        :param name: Substring matched search string on image name.
         :type name: str
         :param access: Filter images by access level.
         :type access: ImageAccessLevel

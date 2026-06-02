@@ -19,7 +19,7 @@ import re  # noqa: F401
 from typing import Any, ClassVar, Dict, List, Literal, Optional, Set
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing_extensions import Annotated, Self
+from typing_extensions import Self
 
 
 class CronSchedule(BaseModel):
@@ -29,10 +29,7 @@ class CronSchedule(BaseModel):
 
     schedule: StrictStr = Field(description="Cron schedule for triggering the job.")
     concurrency_policy: Literal["Allow", "Forbid", "Replace"]
-    backoff_limit: Annotated[int, Field(strict=True, ge=0)] = Field(
-        description="Maximum number of retries for a failed job."
-    )
-    __properties: ClassVar[List[str]] = ["schedule", "concurrency_policy", "backoff_limit"]
+    __properties: ClassVar[List[str]] = ["schedule", "concurrency_policy"]
 
     @field_validator("concurrency_policy")
     def concurrency_policy_validate_enum(cls, value):
@@ -72,13 +69,11 @@ class CronSchedule(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set(
             [
                 "schedule",
                 "concurrency_policy",
-                "backoff_limit",
             ]
         )
 
@@ -99,10 +94,6 @@ class CronSchedule(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {
-                "schedule": obj.get("schedule"),
-                "concurrency_policy": obj.get("concurrency_policy"),
-                "backoff_limit": obj.get("backoff_limit"),
-            }
+            {"schedule": obj.get("schedule"), "concurrency_policy": obj.get("concurrency_policy")}
         )
         return _obj

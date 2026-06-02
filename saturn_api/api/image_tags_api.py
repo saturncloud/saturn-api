@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Saturn Cloud
 
@@ -1600,10 +1598,11 @@ class ImageTagsApi:
         image_id: StrictStr,
         version: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on image tag version."),
+            Field(description="Substring matched search string on image tag version."),
         ] = None,
         image_uri: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on image tag URI.")
+            Optional[StrictStr],
+            Field(description="Substring matched search string on image tag URI."),
         ] = None,
         is_external: Annotated[
             Optional[StrictBool], Field(description="Filter image tags by is_external.")
@@ -1639,9 +1638,9 @@ class ImageTagsApi:
 
         :param image_id: (required)
         :type image_id: str
-        :param version: Prefix matched search string on image tag version.
+        :param version: Substring matched search string on image tag version.
         :type version: str
-        :param image_uri: Prefix matched search string on image tag URI.
+        :param image_uri: Substring matched search string on image tag URI.
         :type image_uri: str
         :param is_external: Filter image tags by is_external.
         :type is_external: bool
@@ -1712,10 +1711,11 @@ class ImageTagsApi:
         image_id: StrictStr,
         version: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on image tag version."),
+            Field(description="Substring matched search string on image tag version."),
         ] = None,
         image_uri: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on image tag URI.")
+            Optional[StrictStr],
+            Field(description="Substring matched search string on image tag URI."),
         ] = None,
         is_external: Annotated[
             Optional[StrictBool], Field(description="Filter image tags by is_external.")
@@ -1751,9 +1751,9 @@ class ImageTagsApi:
 
         :param image_id: (required)
         :type image_id: str
-        :param version: Prefix matched search string on image tag version.
+        :param version: Substring matched search string on image tag version.
         :type version: str
-        :param image_uri: Prefix matched search string on image tag URI.
+        :param image_uri: Substring matched search string on image tag URI.
         :type image_uri: str
         :param is_external: Filter image tags by is_external.
         :type is_external: bool
@@ -1824,10 +1824,11 @@ class ImageTagsApi:
         image_id: StrictStr,
         version: Annotated[
             Optional[StrictStr],
-            Field(description="Prefix matched search string on image tag version."),
+            Field(description="Substring matched search string on image tag version."),
         ] = None,
         image_uri: Annotated[
-            Optional[StrictStr], Field(description="Prefix matched search string on image tag URI.")
+            Optional[StrictStr],
+            Field(description="Substring matched search string on image tag URI."),
         ] = None,
         is_external: Annotated[
             Optional[StrictBool], Field(description="Filter image tags by is_external.")
@@ -1863,9 +1864,9 @@ class ImageTagsApi:
 
         :param image_id: (required)
         :type image_id: str
-        :param version: Prefix matched search string on image tag version.
+        :param version: Substring matched search string on image tag version.
         :type version: str
-        :param image_uri: Prefix matched search string on image tag URI.
+        :param image_uri: Substring matched search string on image tag URI.
         :type image_uri: str
         :param is_external: Filter image tags by is_external.
         :type is_external: bool

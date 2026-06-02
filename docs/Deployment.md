@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **instance_size** | **str** | Instance size of the deployment. | [readonly] 
 **image_tag** | [**ImageTag**](ImageTag.md) | Image tag that is attached to the deployment. | [readonly] 
 **extra_packages** | [**ExtraPackages**](ExtraPackages.md) | Addtitional packages to install on start. | [readonly] 
+**config_files** | **Dict[str, Dict[str, str]]** | User-defined config files written to $HOME at pod startup. | [optional] [readonly] 
 **scale** | **int** | Number of pod replicas. | [readonly] 
 **start_script** | **str** | Shell script that runs on start before the primary command. | [optional] [readonly] 
 **environment_variables** | **Dict[str, str]** | Mapping of environment variable keys to values. | [readonly] 

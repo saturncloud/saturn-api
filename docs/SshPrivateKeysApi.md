@@ -283,7 +283,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | Identity reference by user ID (optional)
     group_id = 'group_id_example' # str | Identity reference by group ID (optional)
     identity = 'identity_example' # str | Identity reference by name (optional)
-    name = 'name_example' # str | Prefix matched search string on SSH private key name. (optional)
+    name = 'name_example' # str | Substring matched search string on SSH private key name. (optional)
     is_default = True # bool | Filter SSH private keys by is_default. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
  **user_id** | **str**| Identity reference by user ID | [optional] 
  **group_id** | **str**| Identity reference by group ID | [optional] 
  **identity** | **str**| Identity reference by name | [optional] 
- **name** | **str**| Prefix matched search string on SSH private key name. | [optional] 
+ **name** | **str**| Substring matched search string on SSH private key name. | [optional] 
  **is_default** | **bool**| Filter SSH private keys by is_default. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 

@@ -1966,7 +1966,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     group_id = 'group_id_example' # str | Reference owner by group ID. (optional)
     org_id = 'org_id_example' # str | Reference owner by org ID. (optional)
     owner = 'owner_example' # str | Reference owner by name. (optional)
-    name = 'name_example' # str | Prefix matched search string on workspace name. (optional)
+    name = 'name_example' # str | Substring matched search string on workspace name. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
     page_size = 100 # int | Page size. (optional) (default to 100)
@@ -1994,7 +1994,7 @@ Name | Type | Description  | Notes
  **group_id** | **str**| Reference owner by group ID. | [optional] 
  **org_id** | **str**| Reference owner by org ID. | [optional] 
  **owner** | **str**| Reference owner by name. | [optional] 
- **name** | **str**| Prefix matched search string on workspace name. | [optional] 
+ **name** | **str**| Substring matched search string on workspace name. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
  **page_size** | **int**| Page size. | [optional] [default to 100]
@@ -2059,7 +2059,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.WorkspacesApi(api_client)
     workspace_id = 'workspace_id_example' # str | 
-    subdomain = 'subdomain_example' # str | Prefix matched search string on route subdomain. (optional)
+    subdomain = 'subdomain_example' # str | Substring matched search string on route subdomain. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
     page_size = 100 # int | Page size. (optional) (default to 100)
@@ -2082,7 +2082,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_id** | **str**|  | 
- **subdomain** | **str**| Prefix matched search string on route subdomain. | [optional] 
+ **subdomain** | **str**| Substring matched search string on route subdomain. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 
  **page_size** | **int**| Page size. | [optional] [default to 100]
@@ -2146,7 +2146,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saturn_api.WorkspacesApi(api_client)
     workspace_id = 'workspace_id_example' # str | 
-    location = 'location_example' # str | Prefix matched search string on secret attachment location. (optional)
+    location = 'location_example' # str | Substring matched search string on secret attachment location. (optional)
     attachment_type = saturn_api.SecretAttachmentType() # SecretAttachmentType | Filter secret attachments by type. (optional)
     prev_key = 'prev_key_example' # str | Previous page key. (optional)
     next_key = 'next_key_example' # str | Next page key. (optional)
@@ -2170,7 +2170,7 @@ async with saturn_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_id** | **str**|  | 
- **location** | **str**| Prefix matched search string on secret attachment location. | [optional] 
+ **location** | **str**| Substring matched search string on secret attachment location. | [optional] 
  **attachment_type** | [**SecretAttachmentType**](.md)| Filter secret attachments by type. | [optional] 
  **prev_key** | **str**| Previous page key. | [optional] 
  **next_key** | **str**| Next page key. | [optional] 

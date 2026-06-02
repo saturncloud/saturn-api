@@ -21,6 +21,7 @@ from typing import Any, ClassVar, Dict, List, Optional, Set
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing_extensions import Self
 
+from saturn_api.models.disk_space_option import DiskSpaceOption
 from saturn_api.models.instance_size import InstanceSize
 
 
@@ -32,7 +33,7 @@ class ServerOptions(BaseModel):
     auto_shutoff: List[StrictStr] = Field(
         description="List of available auto-shutoff settings for workspaces."
     )
-    disk_space: List[StrictStr] = Field(description="List of available disk sizes for workspaces.")
+    disk_space: List[DiskSpaceOption] = Field(description="Available disk sizes for workspaces.")
     sizes: Dict[str, InstanceSize] = Field(
         description="Mapping of instance size names to their configurations."
     )
@@ -84,6 +85,13 @@ class ServerOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in disk_space (list)
+        _items = []
+        if self.disk_space:
+            for _item_disk_space in self.disk_space:
+                if _item_disk_space:
+                    _items.append(_item_disk_space.to_dict())
+            _dict["disk_space"] = _items
         # override the default output from pydantic by calling `to_dict()` of each value in sizes (dict)
         _field_dict = {}
         if self.sizes:
@@ -105,7 +113,11 @@ class ServerOptions(BaseModel):
         _obj = cls.model_validate(
             {
                 "auto_shutoff": obj.get("auto_shutoff"),
-                "disk_space": obj.get("disk_space"),
+                "disk_space": (
+                    [DiskSpaceOption.from_dict(_item) for _item in obj["disk_space"]]
+                    if obj.get("disk_space") is not None
+                    else None
+                ),
                 "sizes": (
                     dict((_k, InstanceSize.from_dict(_v)) for _k, _v in obj["sizes"].items())
                     if obj.get("sizes") is not None
