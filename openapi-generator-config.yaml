@@ -1,5 +1,5 @@
 projectName: saturn-api
 packageName: saturn_api
-packageUrl: github.com/saturncloud/saturn-api
-packageVersion: 1.0.0
+packageUrl: https://github.com/saturncloud/saturn-api
+packageVersion: 2026.6.3
 library: httpx

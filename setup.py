@@ -18,7 +18,7 @@ from setuptools import find_packages, setup  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "saturn-api"
-VERSION = "1.0.0"
+VERSION = "2026.6.3"
 PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
     "python-dateutil >= 2.8.2",
@@ -33,7 +33,7 @@ setup(
     description="Saturn Cloud",
     author="OpenAPI Generator community",
     author_email="team@openapitools.org",
-    url="github.com/saturncloud/saturn-api",
+    url="https://github.com/saturncloud/saturn-api",
     keywords=["OpenAPI", "OpenAPI-Generator", "Saturn Cloud"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
