@@ -1,6 +1,10 @@
 [project]
 name = "saturn_api"
-dynamic = ["version"]
+# Version is set by openapi-generator from `packageVersion` in
+# openapi-generator-config.yaml. Bump it there and regenerate to release a new
+# version; keep this value in sync (the generator stamps it across setup.py,
+# saturn_api/__init__.py, etc.).
+version = "2026.6.3"
 description = "Saturn Cloud"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
@@ -34,10 +38,8 @@ mypy = ">= 1.5"
 
 
 [build-system]
-requires = ["setuptools>=61", "setuptools-scm>=8"]
+requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools_scm]
 
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
